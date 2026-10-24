@@ -1,4 +1,40 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Invoice Generator</title><link rel="stylesheet" href="./core/shaynly.css"><style>#inv{background:#fff;color:#111;padding:28px;border:1px solid var(--line);border-radius:8px;font-size:13px}#inv table th,#inv table td{border-color:#ddd}@media print{body *{visibility:hidden}#inv,#inv *{visibility:visible}#inv{position:absolute;left:0;top:0;width:100%;border:0}}</style>  <link rel="stylesheet" href="/assets/css/style.css">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Invoice Generator</title><link rel="stylesheet" href="./core/shaynly.css"><style>#inv{background:#fff;color:#111;padding:28px;border:1px solid var(--line);border-radius:8px;font-size:13px}#inv table th,#inv table td{border-color:#ddd}@media print {
+  /* Hide site header, navigation, footer, panels, and buttons */
+  header.header, footer.footer, .panel:first-of-type, #pr, .toast, .adsbygoogle {
+    display: none !important;
+  }
+  body, html {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .wrap {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .grid {
+    display: block !important;
+  }
+  .panel:last-of-type {
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+  .panel:last-of-type h2 {
+    display: none !important;
+  }
+  #inv {
+    background: #ffffff !important;
+    border: none !important;
+    padding: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+}</style>  <link rel="stylesheet" href="/assets/css/style.css">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
   <!-- Google Analytics 4 -->
