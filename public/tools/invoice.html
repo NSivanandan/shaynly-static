@@ -69,37 +69,44 @@ $('pr').onclick = async () => {
 
   try {
     const invElement = document.getElementById('inv');
-    
-    // Capture only the #inv DOM element using html2canvas
+    if (!invElement) throw new Error('Invoice container not found');
+
+    // High resolution render of only #inv
     const canvas = await html2canvas(invElement, {
-      scale: 2, // 2x resolution for crisp high-dpi text and QR
+      scale: 2,
       useCORS: true,
       backgroundColor: '#ffffff',
       logging: false
     });
 
     const imgData = canvas.toDataURL('image/png');
+    const invoiceNum = document.getElementById('no') ? document.getElementById('no').value.trim() : 'invoice';
+
+    // Check jsPDF export from umd
+    const jsPDFClass = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
     
-    // Create jsPDF in A4 format (210mm x 297mm)
-    const { jsPDF } = window.jspdf || window;
-    const pdf = new (jsPDF || window.jsPDF)('p', 'mm', 'a4');
-    
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-    
-    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    
-    const invoiceNum = document.getElementById('no') ? document.getElementById('no').value : 'invoice';
-    pdf.save(`${invoiceNum}.pdf`);
-    
+    if (jsPDFClass) {
+      const pdf = new jsPDFClass('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`${invoiceNum}.pdf`);
+    } else {
+      // Direct high-res Image download if jsPDF class is missing
+      const link = document.createElement('a');
+      link.download = `${invoiceNum}.png`;
+      link.href = imgData;
+      link.click();
+    }
+
     D.n++;
     st.set(D);
     if (window.Shaynly && Shaynly.toast) {
-      Shaynly.toast('PDF downloaded successfully!');
+      Shaynly.toast('Downloaded successfully!');
     }
   } catch (err) {
-    console.error('html2canvas error, falling back to window.print():', err);
-    window.print();
+    console.error('Canvas export error:', err);
+    alert('Error generating file: ' + err.message);
   } finally {
     btn.textContent = origText;
     btn.disabled = false;
