@@ -45,7 +45,9 @@
     gtag('js', new Date());
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
-</head><body><script src="./core/vendor/qrcode.js"></script><script src="./core/shaynly.js"></script><script>
+</head><body>  <script src="./core/vendor/html2canvas.min.js"></script>
+  <script src="./core/vendor/jspdf.min.js"></script>
+  <script src="./core/vendor/qrcode.js"></script><script src="./core/shaynly.js"></script><script>
 const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const B=Shaynly.brand(),st=Shaynly.store('invoice'),D=st.get({n:0,gst:'',upi:'',addr:'',notes:'Payment due within the stated days.'});let items=[{d:'Service',s:'998361',q:1,r:10000}];
 const inp=(k,l,v='',t='text')=>`<div class="f"><label for="${k}">${l}</label><input id="${k}" type="${t}" value="${esc(v)}"></div>`;
@@ -59,5 +61,49 @@ function draw(){const f=n=>Shaynly.fmt(n,'INR'),v=i=>$(i).value,gr=+v('gr')||0,d
 $('it').oninput=e=>{const d=e.target.dataset;if(d.i!==undefined){items[d.i][d.k]=['q','r'].includes(d.k)?+e.target.value||0:e.target.value;draw()}};
 $('it').onclick=e=>{if(e.target.dataset.x!==undefined&&items.length>1){items.splice(+e.target.dataset.x,1);rows();draw()}};$('ai').onclick=()=>{items.push({d:'',s:'998361',q:1,r:0});rows();draw()};
 document.querySelector('.grid').addEventListener('input',()=>{D.gst=$('mg').value;D.addr=$('ma').value;D.upi=$('up').value;D.notes=$('nt').value;st.set(D);draw()});
-$('pr').onclick=()=>{D.n++;st.set(D);window.print()};rows();draw();
+$('pr').onclick = async () => {
+  const btn = $('pr');
+  const origText = btn.textContent;
+  btn.textContent = 'Generating PDF...';
+  btn.disabled = true;
+
+  try {
+    const invElement = document.getElementById('inv');
+    
+    // Capture only the #inv DOM element using html2canvas
+    const canvas = await html2canvas(invElement, {
+      scale: 2, // 2x resolution for crisp high-dpi text and QR
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      logging: false
+    });
+
+    const imgData = canvas.toDataURL('image/png');
+    
+    // Create jsPDF in A4 format (210mm x 297mm)
+    const { jsPDF } = window.jspdf || window;
+    const pdf = new (jsPDF || window.jsPDF)('p', 'mm', 'a4');
+    
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    
+    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    
+    const invoiceNum = document.getElementById('no') ? document.getElementById('no').value : 'invoice';
+    pdf.save(`${invoiceNum}.pdf`);
+    
+    D.n++;
+    st.set(D);
+    if (window.Shaynly && Shaynly.toast) {
+      Shaynly.toast('PDF downloaded successfully!');
+    }
+  } catch (err) {
+    console.error('html2canvas error, falling back to window.print():', err);
+    window.print();
+  } finally {
+    btn.textContent = origText;
+    btn.disabled = false;
+  }
+};
+rows();draw();
 </script></body></html>
