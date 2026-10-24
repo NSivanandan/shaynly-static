@@ -51,7 +51,13 @@
   "@type": "BlogPosting",
   "headline": "The Logo Color Extractor",
   "name": "The Logo Color Extractor",
-  "description": "n n n n n n Logo Color Extractor n n n // Set up a custom color for the themen tailwind.config = {n theme: {n extend: {n colors: {n 'primary': '#4f46e5',n",
+  "description": "n n n n n n Logo Color Extractor n n n // Set up a custom color for the theme
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+'primary': '#4f46e5',
+",
   "url": "https://shaynly.com/logo-color-extractor/",
   "datePublished": "2025-10-07",
   "dateModified": "2025-10-07",
@@ -127,28 +133,127 @@
           
     <div class="bg-white p-8 rounded-2xl shadow-xl max-w-2xl w-full">        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Logo Color Extractor</h1>
         <!-- File Upload Section -->        <div class="mb-8 p-6 bg-secondary rounded-xl border-2 border-dashed border-gray-300 hover:border-primary transition-colors duration-300">            <label for="logo-upload" class="flex flex-col items-center cursor-pointer">                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />                </svg>                <span class="text-gray-600 font-medium">Click to upload a logo</span>                <span class="text-sm text-gray-500">PNG, JPG, or SVG</span>            </label>            <input type="file" id="logo-upload" accept="image/png, image/jpeg, image/svg+xml" class="hidden">        </div>
-        <!-- Image Display and Canvas (Hidden) -->        <div id="image-container" class="relative rounded-xl overflow-hidden shadow-lg mb-8" style="display: none;">            <img id="uploaded-logo" class="w-full h-auto object-contain max-h-96" src="#" alt="Uploaded Logo" />            <div id="image-overlay" class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 text-white text-xl font-bold" style="display: none;">                Processing...n            </div>        </div>        <canvas id="color-canvas" class="hidden"></canvas>
+        <!-- Image Display and Canvas (Hidden) -->        <div id="image-container" class="relative rounded-xl overflow-hidden shadow-lg mb-8" style="display: none;">            <img id="uploaded-logo" class="w-full h-auto object-contain max-h-96" src="#" alt="Uploaded Logo" />            <div id="image-overlay" class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 text-white text-xl font-bold" style="display: none;">                Processing...            </div>        </div>        <canvas id="color-canvas" class="hidden"></canvas>
         <!-- Color Palette Display Section -->        <div id="color-palette" class="grid grid-cols-1 sm:grid-cols-2 gap-4">            <p class="text-center text-gray-500 col-span-full" id="placeholder-text">Upload a logo to see its dominant colors here.</p>        </div>    </div>
-    <script>        // Get references to DOM elementsn        const logoUpload = document.getElementById('logo-upload');n        const uploadedLogo = document.getElementById('uploaded-logo');n        const colorCanvas = document.getElementById('color-canvas');n        const imageContainer = document.getElementById('image-container');n        const imageOverlay = document.getElementById('image-overlay');n        const colorPalette = document.getElementById('color-palette');n        const placeholderText = document.getElementById('placeholder-text');
-        // Main event listener for file uploadn        logoUpload.addEventListener('change', function(event) {n            const file = event.target.files[0];n            if (!file) return;
-            const reader = new FileReader();n            reader.onload = function(e) {n                uploadedLogo.src = e.target.result;n                imageContainer.style.display = 'block'; // Show image containern                imageOverlay.style.display = 'flex'; // Show processing overlayn                placeholderText.style.display = 'none'; // Hide placeholder textn            };n            reader.readAsDataURL(file);n        });
-        // Event listener for when the image has loadedn        uploadedLogo.onload = function() {n            // Get a 2D rendering context for the canvasn            const ctx = colorCanvas.getContext('2d');n // Set canvas dimensions to match the imagen            colorCanvas.width = uploadedLogo.naturalWidth;n            colorCanvas.height = uploadedLogo.naturalHeight;n // Draw the image onto the canvasn            ctx.drawImage(uploadedLogo, 0, 0);
-            // Get the pixel data from the entire canvasn            const pixelData = ctx.getImageData(0, 0, colorCanvas.width, colorCanvas.height).data;
-            // Analyze and extract dominant colorsn            const dominantColors = getDominantColors(pixelData, 5); // Get top 5 colorsn // Display the extracted colors on the pagen            displayColors(dominantColors);n // Hide the processing overlayn            imageOverlay.style.display = 'none';n        };
-        /**n         * Analyzes pixel data to find the most frequent colors.n         * This uses a simple quantization method to group similar colors.n         * @param {Uint8ClampedArray} pixelData - The pixel data array from the canvas.n         * @param {number} numColors - The number of dominant colors to return.n         * @returns {Array<string>} An array of dominant color strings (e.g., 'rgb(255, 0, 0)').n         */n        function getDominantColors(pixelData, numColors) {n            const colorMap = new Map();n            const step = 4; // We process 4 bytes at a time (R, G, B, A)n // A simple color quantization: group colors into buckets by shifting bitsn            // This reduces the number of unique colors to count.n            const QUANTIZATION_BITS = 4;n            const SHIFT = 8 - QUANTIZATION_BITS;
-            for (let i = 0; i < pixelData.length; i += step) {n                const r = pixelData[i];n                const g = pixelData[i + 1];n                const b = pixelData[i + 2];n                const a = pixelData[i + 3];
-                // Skip transparent pixelsn                if (a < 128) continue;
-                // Quantize the color to group similar shadesn                const quantizedR = (r >> SHIFT);n                const quantizedG = (g >> SHIFT);n                const quantizedB = (b >> SHIFT);
-                // Create a unique key for the quantized colorn                const colorKey = `${quantizedR}-${quantizedG}-${quantizedB}`;n // Increment the count for this color keyn                colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);n            }n // Convert the map to an array and sort by count (descending)n            const sortedColors = Array.from(colorMap.entries()).sort((a, b) => b[1] - a[1]);
-            const dominantColors = sortedColors.slice(0, numColors).map(color => {n                const [r, g, b] = color[0].split('-').map(c => (parseInt(c) << SHIFT) + (1 << (SHIFT - 1)));n                return `rgb(${r}, ${g}, ${b})`;n            });
-            return dominantColors;n        }
-        /**n         * Clears the color palette and displays the new colors with their codes.n         * @param {Array<string>} colors - An array of 'rgb(...)' color strings.n         */n        function displayColors(colors) {n            // Clear previous resultsn            colorPalette.innerHTML = '';n if (colors.length === 0) {n                 colorPalette.innerHTML = '<p class="text-center text-gray-500 col-span-full">No dominant colors found. Please try another image.</p>';n                 return;n            }
-            colors.forEach(rgbColor => {n                const hexColor = rgbToHex(rgbColor);
-                const colorBox = document.createElement('div');n                colorBox.className = 'flex flex-col items-center justify-center p-4 rounded-xl shadow-md transition-transform duration-200 hover:scale-105';n                colorBox.style.backgroundColor = rgbColor;
-                const colorName = document.createElement('div');n                colorName.className = 'text-white text-lg font-bold p-2 mb-2 rounded-lg bg-gray-900 bg-opacity-50 backdrop-blur-sm';n                colorName.textContent = rgbColor;
-                const hexButton = createCopyButton('HEX', hexColor);n                const rgbButton = createCopyButton('RGB', rgbColor);
-                colorBox.append(hexButton, rgbButton);n                colorPalette.appendChild(colorBox);n            });n        }n /**n         * Helper function to create a styled copy button.n         * @param {string} label - The label for the button (e.g., 'HEX').n         * @param {string} value - The value to copy (e.g., '#FFFFFF').n         * @returns {HTMLButtonElement} A button element.n         */n        function createCopyButton(label, value) {n            const button = document.createElement('button');n            button.className = 'mt-2 px-4 py-2 bg-white text-gray-800 rounded-lg shadow-sm hover:bg-gray-200 transition-colors duration-200 text-sm font-medium';n            button.textContent = `Copy ${label}: ${value}`;n            button.onclick = () => {n                const textArea = document.createElement('textarea');n                textArea.value = value;n                document.body.appendChild(textArea);n                textArea.select();n                try {n                    document.execCommand('copy');n                    button.textContent = 'Copied!';n                    setTimeout(() => {n                        button.textContent = `Copy ${label}: ${value}`;n                    }, 2000);n                } catch (err) {n                    console.error('Failed to copy text: ', err);n                }n                document.body.removeChild(textArea);n            };n            return button;n        }
-        /**n         * Converts an RGB color string to its HEX equivalent.n         * @param {string} rgb - An RGB color string, e.g., 'rgb(255, 0, 0)'.n         * @returns {string} The HEX color string, e.g., '#FF0000'.n         */n        function rgbToHex(rgb) {n            const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);n            if (!parts) return '';n            const r = parseInt(parts[1], 10);n            const g = parseInt(parts[2], 10);n            const b = parseInt(parts[3], 10);n            return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();n        }n    </script>
+    <script>        // Get references to DOM elements
+const logoUpload = document.getElementById('logo-upload');
+const uploadedLogo = document.getElementById('uploaded-logo');
+const colorCanvas = document.getElementById('color-canvas');
+const imageContainer = document.getElementById('image-container');
+const imageOverlay = document.getElementById('image-overlay');
+const colorPalette = document.getElementById('color-palette');
+const placeholderText = document.getElementById('placeholder-text');
+        // Main event listener for file upload
+logoUpload.addEventListener('change', function(event) {
+const file = event.target.files[0];
+if (!file) return;
+            const reader = new FileReader();
+reader.onload = function(e) {
+uploadedLogo.src = e.target.result;
+imageContainer.style.display = 'block'; // Show image containern                imageOverlay.style.display = 'flex'; // Show processing overlayn                placeholderText.style.display = 'none'; // Hide placeholder text
+};
+reader.readAsDataURL(file);
+});
+        // Event listener for when the image has loaded
+uploadedLogo.onload = function() {
+// Get a 2D rendering context for the canvas
+const ctx = colorCanvas.getContext('2d');
+// Set canvas dimensions to match the image
+colorCanvas.width = uploadedLogo.naturalWidth;
+colorCanvas.height = uploadedLogo.naturalHeight;
+// Draw the image onto the canvas
+ctx.drawImage(uploadedLogo, 0, 0);
+            // Get the pixel data from the entire canvas
+const pixelData = ctx.getImageData(0, 0, colorCanvas.width, colorCanvas.height).data;
+            // Analyze and extract dominant colorsn            const dominantColors = getDominantColors(pixelData, 5); // Get top 5 colorsn // Display the extracted colors on the page
+displayColors(dominantColors);
+// Hide the processing overlay
+imageOverlay.style.display = 'none';
+};
+        /**n         * Analyzes pixel data to find the most frequent colors.n         * This uses a simple quantization method to group similar colors.n         * @param {Uint8ClampedArray} pixelData - The pixel data array from the canvas.n         * @param {
+umber} numColors - The number of dominant colors to return.n         * @returns {Array<string>} An array of dominant color strings (e.g., 'rgb(255, 0, 0)').n         */n        function getDominantColors(pixelData, numColors) {
+const colorMap = new Map();
+const step = 4; // We process 4 bytes at a time (R, G, B, A)
+// A simple color quantization: group colors into buckets by shifting bitsn            // This reduces the number of unique colors to count.
+const QUANTIZATION_BITS = 4;
+const SHIFT = 8 - QUANTIZATION_BITS;
+            for (let i = 0; i < pixelData.length; i += step) {
+const r = pixelData[i];
+const g = pixelData[i + 1];
+const b = pixelData[i + 2];
+const a = pixelData[i + 3];
+                // Skip transparent pixels
+if (a < 128) continue;
+                // Quantize the color to group similar shades
+const quantizedR = (r >> SHIFT);
+const quantizedG = (g >> SHIFT);
+const quantizedB = (b >> SHIFT);
+                // Create a unique key for the quantized color
+const colorKey = `${quantizedR}-${quantizedG}-${quantizedB}`;
+// Increment the count for this color key
+colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);
+}
+// Convert the map to a
+array and sort by count (descending)
+const sortedColors = Array.from(colorMap.entries()).sort((a, b) => b[1] - a[1]);
+            const dominantColors = sortedColors.slice(0, numColors).map(color => {
+const [r, g, b] = color[0].split('-').map(c => (parseInt(c) << SHIFT) + (1 << (SHIFT - 1)));
+return `rgb(${r}, ${g}, ${b})`;
+});
+            return dominantColors;
+}
+        /**n         * Clears the color palette and displays the new colors with their codes.n         * @param {Array<string>} colors - An array of 'rgb(...)' color strings.n         */n        function displayColors(colors) {
+// Clear previous results
+colorPalette.innerHTML = '';
+if (colors.length === 0) {
+colorPalette.innerHTML = '<p class="text-center text-gray-500 col-span-full">No dominant colors found. Please try another image.</p>';
+return;
+}
+            colors.forEach(rgbColor => {
+const hexColor = rgbToHex(rgbColor);
+                const colorBox = document.createElement('div');
+colorBox.className = 'flex flex-col items-center justify-center p-4 rounded-xl shadow-md transition-transform duration-200 hover:scale-105';
+colorBox.style.backgroundColor = rgbColor;
+                const colorName = document.createElement('div');
+colorName.className = 'text-white text-lg font-bold p-2 mb-2 rounded-lg bg-gray-900 bg-opacity-50 backdrop-blur-sm';
+colorName.textContent = rgbColor;
+                const hexButton = createCopyButton('HEX', hexColor);
+const rgbButton = createCopyButton('RGB', rgbColor);
+                colorBox.append(hexButton, rgbButton);
+colorPalette.appendChild(colorBox);
+});
+}
+/**n         * Helper function to create a styled copy button.n         * @param {string} label - The label for the button (e.g., 'HEX').n         * @param {string} value - The value to copy (e.g., '#FFFFFF').n         * @returns {HTMLButtonElement} A button element.n         */n        function createCopyButton(label, value) {
+const button = document.createElement('button');
+button.className = 'mt-2 px-4 py-2 bg-white text-gray-800 rounded-lg shadow-sm hover:bg-gray-200 transition-colors duration-200 text-sm font-medium';
+button.textContent = `Copy ${label}: ${value}`;
+button.onclick = () => {
+const textArea = document.createElement('textarea');
+textArea.value = value;
+document.body.appendChild(textArea);
+textArea.select();
+try {
+document.execCommand('copy');
+button.textContent = 'Copied!';
+setTimeout(() => {
+button.textContent = `Copy ${label}: ${value}`;
+}, 2000);
+} catch (err) {
+console.error('Failed to copy text: ', err);
+}
+document.body.removeChild(textArea);
+};
+return button;
+}
+        /**n         * Converts an RGB color string to its HEX equivalent.n         * @param {string} rgb - An RGB color string, e.g., 'rgb(255, 0, 0)'.n         * @returns {string} The HEX color string, e.g., '#FF0000'.n         */n        function rgbToHex(rgb) {
+const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+if (!parts) return '';
+const r = parseInt(parts[1], 10);
+const g = parseInt(parts[2], 10);
+const b = parseInt(parts[3], 10);
+return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+}
+</script>
     
    
     <main class="article-content">        <div class="container">            <p class="intro-text">Color is the silent ambassador of a brand. It evokes emotion, builds recognition, and sets the tone for every piece of marketing collateral. For designers, developers, and marketers, having quick and accurate access to a <a href="https://shaynly.com/brand-color-palette-generator/" title="Brand Color Palette generator" target="_blank" rel="noopener"  data-wpil-monitor-id="617">brand's core color palette</a> is not just a convenience—it's a necessity for maintaining brand consistency. The Logo Color Extractor is a powerful yet simple tool designed to eliminate guesswork and streamline this critical process. By uploading any logo, you can instantly identify and extract its most dominant colors, <a href="https://shaynly.com/branded-qr-code-generator/" title="Branded QR Code Generator: Best and Completely Free" target="_blank" rel="noopener"  data-wpil-monitor-id="627">complete with HEX and RGB codes</a> ready to be copied and used in your projects. This guide explores the "why" behind this tool, the technology that powers it, and the practical ways it can supercharge your creative workflow.</p>
@@ -159,23 +264,114 @@
             <section id="faq">                <h2><i class="fas fa-question-circle"></i>Frequently Asked Questions</h2>                <div class="faq-section">                    <div class="faq-item">                        <input type="checkbox" id="faq1">                        <label class="faq-question" for="faq1">Is my uploaded logo image safe and private?</label>                        <div class="faq-answer">                            <p>Yes, 100%. This tool operates entirely within your web browser. Your image is never uploaded to a server. All the processing, from reading the file to analyzing the pixels, is done locally on your computer using JavaScript. This makes it a completely private and secure tool.</p>                        </div>                    </div>                    <div class="faq-item">                        <input type="checkbox" id="faq2">                        <label class="faq-question" for="faq2">Why does the tool sometimes miss a very thin line or small detail?</label>                        <div class="faq-answer">                            <p>The tool is designed to find the most *dominant* colors by counting pixel frequency. If a color is only present in a very small number of pixels (like a thin accent line), it may not rank in the top 5 most frequent colors. The quantization process helps, but highly detailed or complex logos with many colors can sometimes obscure minor color details in favor of the larger, more dominant color blocks.</p>                        </div>                    </div>                    <div class="faq-item">                        <input type="checkbox" id="faq3">                        <label class="faq-question" for="faq3">Can I use this tool for images other than logos?</label>                        <div class="faq-answer">                            <p>Absolutely! While it's optimized for logos, you can upload any image—a photograph, an illustration, a piece of art—to extract its dominant color palette. It's a fantastic tool for creating mood boards, generating design inspiration from photos, or developing a color scheme for a project based on a source image.</p>                        </div>                    </div>                </div>            </section>
         </div>    </main>
     <footer class="main-footer">        <div class="container">            <p>&copy; 2026 Shaynly. All Rights Reserved. This tool is provided for educational and professional use.</p>        </div>    </footer>
-    <!-- This is a static HTML file. The script for the tool is included below.n    -->    <script>        // Get references to DOM elementsn        const logoUpload = document.getElementById('logo-upload');n        const uploadedLogo = document.getElementById('uploaded-logo');n        const colorCanvas = document.getElementById('color-canvas');n        const imageContainer = document.getElementById('image-container');n        const imageOverlay = document.getElementById('image-overlay');n        const colorPalette = document.getElementById('color-palette');n        const placeholderText = document.getElementById('placeholder-text');
-        // Main event listener for file uploadn        logoUpload.addEventListener('change', function(event) {n            const file = event.target.files[0];n            if (!file) return;
-            const reader = new FileReader();n            reader.onload = function(e) {n                uploadedLogo.src = e.target.result;n                imageContainer.style.display = 'block'; // Show image containern                imageOverlay.style.display = 'flex'; // Show processing overlayn                placeholderText.style.display = 'none'; // Hide placeholder textn            };n            reader.readAsDataURL(file);n        });
-        // Event listener for when the image has loadedn        uploadedLogo.onload = function() {n            // Get a 2D rendering context for the canvasn            const ctx = colorCanvas.getContext('2d');n // Set canvas dimensions to match the imagen            colorCanvas.width = uploadedLogo.naturalWidth;n            colorCanvas.height = uploadedLogo.naturalHeight;n // Draw the image onto the canvasn            ctx.drawImage(uploadedLogo, 0, 0);
-            // Get the pixel data from the entire canvasn            const pixelData = ctx.getImageData(0, 0, colorCanvas.width, colorCanvas.height).data;
-            // Analyze and extract dominant colorsn            const dominantColors = getDominantColors(pixelData, 5); // Get top 5 colorsn // Display the extracted colors on the pagen            displayColors(dominantColors);n // Hide the processing overlayn            imageOverlay.style.display = 'none';n        };
-        function getDominantColors(pixelData, numColors) {n            const colorMap = new Map();n            const step = 4;n            const QUANTIZATION_BITS = 4;n            const SHIFT = 8 - QUANTIZATION_BITS;
-            for (let i = 0; i < pixelData.length; i += step) {n                const a = pixelData[i + 3];n                if (a < 128) continue;n                const r = pixelData[i];n                const g = pixelData[i + 1];n                const b = pixelData[i + 2];n                const quantizedR = (r >> SHIFT);n                const quantizedG = (g >> SHIFT);n                const quantizedB = (b >> SHIFT);n                const colorKey = `${quantizedR}-${quantizedG}-${quantizedB}`;n                colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);n            }n const sortedColors = Array.from(colorMap.entries()).sort((a, b) => b[1] - a[1]);n            const dominantColors = sortedColors.slice(0, numColors).map(color => {n                const [r, g, b] = color[0].split('-').map(c => (parseInt(c) << SHIFT) + (1 << (SHIFT - 1)));n                return `rgb(${r}, ${g}, ${b})`;n            });
-            return dominantColors;n        }
-        function displayColors(colors) {n            colorPalette.innerHTML = '';n            if (colors.length === 0) {n                 colorPalette.innerHTML = '<p class="text-center text-gray-500 col-span-full">No dominant colors found. Please try another image.</p>';n                 return;n            }
-            colors.forEach(rgbColor => {n                const hexColor = rgbToHex(rgbColor);n                const colorCard = document.createElement('div');n                colorCard.className = 'flex flex-col items-center p-6 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105';n                colorCard.style.backgroundColor = rgbColor;
-                const colorInfo = document.createElement('div');n                colorInfo.className = 'w-full text-center p-3 rounded-lg bg-gray-900 bg-opacity-60 backdrop-blur-sm';n const hexText = document.createElement('p');n                hexText.className = 'text-white font-bold text-lg';n                hexText.textContent = hexColor;
-                const rgbText = document.createElement('p');n                rgbText.className = 'text-gray-200 text-sm';n                rgbText.textContent = rgbColor;
+    <!-- This is a static HTML file. The script for the tool is included below.n    -->    <script>        // Get references to DOM elements
+const logoUpload = document.getElementById('logo-upload');
+const uploadedLogo = document.getElementById('uploaded-logo');
+const colorCanvas = document.getElementById('color-canvas');
+const imageContainer = document.getElementById('image-container');
+const imageOverlay = document.getElementById('image-overlay');
+const colorPalette = document.getElementById('color-palette');
+const placeholderText = document.getElementById('placeholder-text');
+        // Main event listener for file upload
+logoUpload.addEventListener('change', function(event) {
+const file = event.target.files[0];
+if (!file) return;
+            const reader = new FileReader();
+reader.onload = function(e) {
+uploadedLogo.src = e.target.result;
+imageContainer.style.display = 'block'; // Show image containern                imageOverlay.style.display = 'flex'; // Show processing overlayn                placeholderText.style.display = 'none'; // Hide placeholder text
+};
+reader.readAsDataURL(file);
+});
+        // Event listener for when the image has loaded
+uploadedLogo.onload = function() {
+// Get a 2D rendering context for the canvas
+const ctx = colorCanvas.getContext('2d');
+// Set canvas dimensions to match the image
+colorCanvas.width = uploadedLogo.naturalWidth;
+colorCanvas.height = uploadedLogo.naturalHeight;
+// Draw the image onto the canvas
+ctx.drawImage(uploadedLogo, 0, 0);
+            // Get the pixel data from the entire canvas
+const pixelData = ctx.getImageData(0, 0, colorCanvas.width, colorCanvas.height).data;
+            // Analyze and extract dominant colorsn            const dominantColors = getDominantColors(pixelData, 5); // Get top 5 colorsn // Display the extracted colors on the page
+displayColors(dominantColors);
+// Hide the processing overlay
+imageOverlay.style.display = 'none';
+};
+        function getDominantColors(pixelData, numColors) {
+const colorMap = new Map();
+const step = 4;
+const QUANTIZATION_BITS = 4;
+const SHIFT = 8 - QUANTIZATION_BITS;
+            for (let i = 0; i < pixelData.length; i += step) {
+const a = pixelData[i + 3];
+if (a < 128) continue;
+const r = pixelData[i];
+const g = pixelData[i + 1];
+const b = pixelData[i + 2];
+const quantizedR = (r >> SHIFT);
+const quantizedG = (g >> SHIFT);
+const quantizedB = (b >> SHIFT);
+const colorKey = `${quantizedR}-${quantizedG}-${quantizedB}`;
+colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);
+}
+const sortedColors = Array.from(colorMap.entries()).sort((a, b) => b[1] - a[1]);
+const dominantColors = sortedColors.slice(0, numColors).map(color => {
+const [r, g, b] = color[0].split('-').map(c => (parseInt(c) << SHIFT) + (1 << (SHIFT - 1)));
+return `rgb(${r}, ${g}, ${b})`;
+});
+            return dominantColors;
+}
+        function displayColors(colors) {
+colorPalette.innerHTML = '';
+if (colors.length === 0) {
+colorPalette.innerHTML = '<p class="text-center text-gray-500 col-span-full">No dominant colors found. Please try another image.</p>';
+return;
+}
+            colors.forEach(rgbColor => {
+const hexColor = rgbToHex(rgbColor);
+const colorCard = document.createElement('div');
+colorCard.className = 'flex flex-col items-center p-6 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105';
+colorCard.style.backgroundColor = rgbColor;
+                const colorInfo = document.createElement('div');
+colorInfo.className = 'w-full text-center p-3 rounded-lg bg-gray-900 bg-opacity-60 backdrop-blur-sm';
+const hexText = document.createElement('p');
+hexText.className = 'text-white font-bold text-lg';
+hexText.textContent = hexColor;
+                const rgbText = document.createElement('p');
+rgbText.className = 'text-gray-200 text-sm';
+rgbText.textContent = rgbColor;
                 colorInfo.append(hexText, rgbText);
-                const buttonContainer = document.createElement('div');n                buttonContainer.className = 'mt-4 flex gap-2';n const hexButton = createCopyButton('HEX', hexColor);n                const rgbButton = createCopyButton('RGB', rgbColor);
-                buttonContainer.append(hexButton, rgbButton);n                colorCard.append(colorInfo, buttonContainer);n                colorPalette.appendChild(colorCard);n            });n        }n function createCopyButton(label, value) {n            const button = document.createElement('button');n            button.className = 'px-3 py-1 bg-white text-gray-800 rounded-md shadow-sm hover:bg-gray-200 transition-colors duration-200 text-xs font-medium';n            button.textContent = `Copy ${label}`;n            button.onclick = () => {n                navigator.clipboard.writeText(value).then(() => {n                    button.textContent = 'Copied!';n                    setTimeout(() => {n                        button.textContent = `Copy ${label}`;n                    }, 2000);n                }).catch(err => console.error('Failed to copy text: ', err));n            };n            return button;n        }
-        function rgbToHex(rgb) {n            const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);n            if (!parts) return '';n            return '#' + [1, 2, 3].map(i => parseInt(parts[i]).toString(16).padStart(2, '0')).join('').toUpperCase();n        }n    </script>
+                const buttonContainer = document.createElement('div');
+buttonContainer.className = 'mt-4 flex gap-2';
+const hexButton = createCopyButton('HEX', hexColor);
+const rgbButton = createCopyButton('RGB', rgbColor);
+                buttonContainer.append(hexButton, rgbButton);
+colorCard.append(colorInfo, buttonContainer);
+colorPalette.appendChild(colorCard);
+});
+}
+function createCopyButton(label, value) {
+const button = document.createElement('button');
+button.className = 'px-3 py-1 bg-white text-gray-800 rounded-md shadow-sm hover:bg-gray-200 transition-colors duration-200 text-xs font-medium';
+button.textContent = `Copy ${label}`;
+button.onclick = () => {
+navigator.clipboard.writeText(value).then(() => {
+button.textContent = 'Copied!';
+setTimeout(() => {
+button.textContent = `Copy ${label}`;
+}, 2000);
+}).catch(err => console.error('Failed to copy text: ', err));
+};
+return button;
+}
+        function rgbToHex(rgb) {
+const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+if (!parts) return '';
+return '#' + [1, 2, 3].map(i => parseInt(parts[i]).toString(16).padStart(2, '0')).join('').toUpperCase();
+}
+</script>
 
         </div>
       </article>

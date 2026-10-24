@@ -51,7 +51,14 @@
   "@type": "BlogPosting",
   "headline": "Branded QR Code Generator: Best and Completely Free",
   "name": "Branded QR Code Generator: Best and Completely Free",
-  "description": "n n n * {n margin: 0;n padding: 0;n box-sizing: border-box;n font-family: 'Poppins', Arial, sans-serif;n }nn .qr-container {n background: rgba(0, 0, 0, 0.7",
+  "description": "n n n * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', Arial, sans-serif;
+}
+n .qr-container {
+background: rgba(0, 0, 0, 0.7",
   "url": "https://shaynly.com/branded-qr-code-generator/",
   "datePublished": "2025-02-21",
   "dateModified": "2025-02-21",
@@ -143,12 +150,87 @@
             .qr-container h2 {n                font-size: 1.4em;n            }
             .form-group input[type="text"],n            .form-group input[type="color"],n            .form-group input[type="file"],n            .form-group select,n            .qr-container button {n                font-size: 0.9em;n                padding: 10px;n            }n        }n    </style>
     <h2>Branded QR Code Generator</h2>    <div class="form-group">        <label for="url">Enter URL</label>        <input type="text" id="url" placeholder="https://yourwebsite.com" required>    </div>    <div class="form-group">        <label for="fg-color">Foreground Color</label>        <input type="color" id="fg-color" value="#00d4ff">    </div>    <div class="form-group">        <label for="bg-color">Background Color</label>        <input type="color" id="bg-color" value="#ffffff">    </div>    <div class="form-group">        <label for="size">QR Code Size</label>        <input type="range" id="size" min="100" max="300" value="200">    </div>    <div class="form-group">        <label for="shape">Dot Shape</label>        <select id="shape">            <option value="square">Square</option>            <option value="rounded">Rounded</option>        </select>    </div>    <div class="form-group">        <label for="logo">Upload Logo (optional, any size)</label>        <input type="file" id="logo" accept="image/*">    </div>    <button onclick="generateQR()">Generate QR Code</button>    <div id="qr-result"></div>    <button id="download-btn" onclick="downloadQR()">Download QR Code</button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>    <script>        function generateQR() {n            const url = document.getElementById('url').value;n            const fgColor = document.getElementById('fg-color').value;n            const bgColor = document.getElementById('bg-color').value;n            const size = document.getElementById('size').value;n            const shape = document.getElementById('shape').value;n            const logo = document.getElementById('logo').files[0];n            const qrResult = document.getElementById('qr-result');n            const downloadBtn = document.getElementById('download-btn');
-            // Validate URLn            if (!url || !/^(http|https):\/\/[^ "]+$/.test(url)) {n                alert('Please enter a valid URL (e.g., https://example.com)');n                return;n            }
-            // Clear previous QR coden            qrResult.innerHTML = '';n            downloadBtn.style.display = 'none';
-            // Generate QR code with custom shapen            const qrCode = new QRCode(qrResult, {n                text: url,n                width: parseInt(size),n                height: parseInt(size),n                colorDark: fgColor,n                colorLight: bgColor,n                correctLevel: QRCode.CorrectLevel.H,n                dotScale: shape === 'rounded' ? 0.8 : 1.0 // Rounded dotsn            });
-            // Add logo if uploadedn            if (logo) {n                const reader = new FileReader();n                reader.onload = function (e) {n                    const img = new Image();n                    img.onload = function () {n                        setTimeout(() => {n                            const canvas = qrResult.querySelector('canvas');n                            const ctx = canvas.getContext('2d');n                            // Dynamically scale logo to 25% of QR size, with a max of 50pxn                            const logoSize = Math.min(size * 0.25, 50);n                            // Preserve aspect ration                            const aspectRatio = img.width / img.height;n                            let logoWidth = logoSize;n                            let logoHeight = logoSize / aspectRatio;n                            if (logoHeight > logoSize) {n                                logoHeight = logoSize;n                                logoWidth = logoSize * aspectRatio;n                            }n                            const x = (canvas.width - logoWidth) / 2;n                            const y = (canvas.height - logoHeight) / 2;n                            ctx.drawImage(img, x, y, logoWidth, logoHeight);n                            const qrImg = document.createElement('img');n                            qrImg.src = canvas.toDataURL('image/png');n                            qrResult.innerHTML = '';n                            qrResult.appendChild(qrImg);n                            downloadBtn.style.display = 'block';n                            downloadBtn.setAttribute('data-url', qrImg.src);n                        }, 100);n                    };n                    img.src = e.target.result;n                };n                reader.readAsDataURL(logo);n            } else {n                setTimeout(() => {n                    const canvas = qrResult.querySelector('canvas');n                    const qrImg = document.createElement('img');n                    qrImg.src = canvas.toDataURL('image/png');n                    qrResult.innerHTML = '';n                    qrResult.appendChild(qrImg);n                    downloadBtn.style.display = 'block';n                    downloadBtn.setAttribute('data-url', qrImg.src);n                }, 100);n            }n        }
-        function downloadQR() {n            const downloadBtn = document.getElementById('download-btn');n            const qrImgSrc = downloadBtn.getAttribute('data-url');n            const link = document.createElement('a');n            link.href = qrImgSrc;n            link.download = 'branded-qr-code.png';n            link.click();n        }n    </script></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>    <script>        function generateQR() {
+const url = document.getElementById('url').value;
+const fgColor = document.getElementById('fg-color').value;
+const bgColor = document.getElementById('bg-color').value;
+const size = document.getElementById('size').value;
+const shape = document.getElementById('shape').value;
+const logo = document.getElementById('logo').files[0];
+const qrResult = document.getElementById('qr-result');
+const downloadBtn = document.getElementById('download-btn');
+            // Validate URL
+if (!url || !/^(http|https):\/\/[^ "]+$/.test(url)) {
+alert('Please enter a valid URL (e.g., https://example.com)');
+return;
+}
+            // Clear previous QR code
+qrResult.innerHTML = '';
+downloadBtn.style.display = 'none';
+            // Generate QR code with custom shape
+const qrCode = new QRCode(qrResult, {
+text: url,
+width: parseInt(size),
+height: parseInt(size),
+colorDark: fgColor,
+colorLight: bgColor,
+correctLevel: QRCode.CorrectLevel.H,
+dotScale: shape === 'rounded' ? 0.8 : 1.0 // Rounded dots
+});
+            // Add logo if uploaded
+if (logo) {
+const reader = new FileReader();
+reader.onload = function (e) {
+const img = new Image();
+img.onload = function () {
+setTimeout(() => {
+const canvas = qrResult.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+// Dynamically scale logo to 25% of QR size, with a max of 50px
+const logoSize = Math.min(size * 0.25, 50);
+// Preserve aspect ratio
+const aspectRatio = img.width / img.height;
+let logoWidth = logoSize;
+let logoHeight = logoSize / aspectRatio;
+if (logoHeight > logoSize) {
+logoHeight = logoSize;
+logoWidth = logoSize * aspectRatio;
+}
+const x = (canvas.width - logoWidth) / 2;
+const y = (canvas.height - logoHeight) / 2;
+ctx.drawImage(img, x, y, logoWidth, logoHeight);
+const qrImg = document.createElement('img');
+qrImg.src = canvas.toDataURL('image/png');
+qrResult.innerHTML = '';
+qrResult.appendChild(qrImg);
+downloadBtn.style.display = 'block';
+downloadBtn.setAttribute('data-url', qrImg.src);
+}, 100);
+};
+img.src = e.target.result;
+};
+reader.readAsDataURL(logo);
+} else {
+setTimeout(() => {
+const canvas = qrResult.querySelector('canvas');
+const qrImg = document.createElement('img');
+qrImg.src = canvas.toDataURL('image/png');
+qrResult.innerHTML = '';
+qrResult.appendChild(qrImg);
+downloadBtn.style.display = 'block';
+downloadBtn.setAttribute('data-url', qrImg.src);
+}, 100);
+}
+}
+        function downloadQR() {
+const downloadBtn = document.getElementById('download-btn');
+const qrImgSrc = downloadBtn.getAttribute('data-url');
+const link = document.createElement('a');
+link.href = qrImgSrc;
+link.download = 'branded-qr-code.png';
+link.click();
+}
+</script></div>
 <div class="wp-block-rank-math-toc-block" id="rank-math-toc"><nav><div><div class=""><a href="#boost-your-brand-with-a-branded-qr-code-generator-the-ultimate-marketing-tool">Boost Your Brand with a Branded QR Code Generator: The Ultimate Marketing Tool</a><div><div class=""><a href="#what-are-qr-codes-and-why-do-they-matter">What Are QR Codes and Why Do They Matter?</a></div><div class=""><a href="#why-use-a-branded-qr-code-generator">Why Use a Branded QR Code Generator?</a></div><div class=""><a href="#how-to-use-branded-qr-codes-in-your-marketing">How to Use Branded QR Codes in Your Marketing</a></div><div class=""><a href="#introducing-our-branded-qr-code-generator-features-that-set-it-apart">Introducing Our Branded QR Code Generator: Features That Set It Apart</a></div><div class=""><a href="#tips-for-creating-effective-branded-qr-codes">Tips for Creating Effective Branded QR Codes</a></div><div class=""><a href="#why-choose-our-qr-code-tool">Why Choose Our QR Code Tool?</a></div><div class=""><a href="#conclusion">Conclusio</a></div></div></div><div class=""><a href="#faq-question-1740179703188">1. What is a Branded QR Code Generator?</a></div><div class=""><a href="#faq-question-1740179741058">2. How do I use the Branded QR Code Generator on shaynly.com?</a></div><div class=""><a href="#faq-question-1740179775997">3. Can I upload any logo size with this QR code tool?</a></div><div class=""><a href="#faq-question-1740179795267">4. Are branded QR codes scannable?</a></div><div class=""><a href="#faq-question-1740179806774">5. What are the best uses for branded QR codes in marketing?</a></div><div class=""><a href="#faq-question-1740179826373">6. Is the Branded QR Code Generator free to use?</a></div><div class=""><a href="#faq-question-1740179844127">7. Can I customize the QR code design?</a></div><div class=""><a href="#faq-question-1740179861427">8. How do I download my branded QR code?</a></div><div class=""><a href="#faq-question-1740179873336">9. Will my branded QR code work on both mobile and desktop?</a></div><div class=""><a href="#faq-question-1740179894154">10. Why should I choose shaynly.com’s QR code tool over others?</a></div></div></nav></div>
 <p></p>
 <h3 id="boost-your-brand-with-a-branded-qr-code-generator-the-ultimate-marketing-tool" class="wp-block-heading">Boost Your Brand with a Branded QR Code Generator: The Ultimate Marketing Tool</h3>

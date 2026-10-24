@@ -135,49 +135,332 @@
         <div id="loadingSpinner" class="loading-spinner hidden"></div>        <div id="messageBox" class="message-box hidden"></div>
         <!-- Validation Errors Section -->        <div id="validationErrors" class="validation-errors-section hidden">            <h3 class="section-header"><i class="fas fa-exclamation-triangle"></i> Validation Errors</h3>            <ul id="errorList"></ul>        </div>
         <div class="sitemap-output-section">            <h3 class="section-header"><i class="fas fa-code"></i> Generated XML Sitemap</h3>            <div id="sitemapOutput" class="sitemap-output">                <!-- Generated XML will appear here -->                <p class="text-center text-gray-500">Your XML sitemap will be displayed here after generation.</p>            </div>        </div>    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>    <script>        // DOM Elementsn        const urlInput = document.getElementById('urlInput');n        const addUrlsFromTextBtn = document.getElementById('addUrlsFromTextBtn');n        const urlListDiv = document.getElementById('urlList');n        const newUrlInput = document.getElementById('newUrlInput');n        const addNewUrlBtn = document.getElementById('addNewUrlBtn');n        const setLastmodTodayCheckbox = document.getElementById('setLastmodToday');n        const defaultChangefreqSelect = document.getElementById('defaultChangefreqSelect');n        const defaultPrioritySlider = document.getElementById('defaultPrioritySlider');n        const defaultPriorityValueSpan = document.getElementById('defaultPriorityValue');n        const generateSitemapBtn = document.getElementById('generateSitemapBtn');n        const downloadSitemapBtn = document.getElementById('downloadSitemapBtn');n        const resetBtn = document.getElementById('resetBtn');n        const sitemapOutputDiv = document.getElementById('sitemapOutput');n        const loadingSpinner = document.getElementById('loadingSpinner');n        const messageBox = document.getElementById('messageBox');n        const validationErrorsDiv = document.getElementById('validationErrors');n        const errorList = document.getElementById('errorList');
-        // Store URLs with their propertiesn        let urlsData = []; // [{ loc: "url", lastmod: "YYYY-MM-DD", changefreq: "daily", priority: "0.8" }]
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>    <script>        // DOM Elements
+const urlInput = document.getElementById('urlInput');
+const addUrlsFromTextBtn = document.getElementById('addUrlsFromTextBtn');
+const urlListDiv = document.getElementById('urlList');
+const newUrlInput = document.getElementById('newUrlInput');
+const addNewUrlBtn = document.getElementById('addNewUrlBtn');
+const setLastmodTodayCheckbox = document.getElementById('setLastmodToday');
+const defaultChangefreqSelect = document.getElementById('defaultChangefreqSelect');
+const defaultPrioritySlider = document.getElementById('defaultPrioritySlider');
+const defaultPriorityValueSpan = document.getElementById('defaultPriorityValue');
+const generateSitemapBtn = document.getElementById('generateSitemapBtn');
+const downloadSitemapBtn = document.getElementById('downloadSitemapBtn');
+const resetBtn = document.getElementById('resetBtn');
+const sitemapOutputDiv = document.getElementById('sitemapOutput');
+const loadingSpinner = document.getElementById('loadingSpinner');
+const messageBox = document.getElementById('messageBox');
+const validationErrorsDiv = document.getElementById('validationErrors');
+const errorList = document.getElementById('errorList');
+        // Store URLs with their properties
+let urlsData = []; // [{ loc: "url", lastmod: "YYYY-MM-DD", changefreq: "daily", priority: "0.8" }]
         // --- Utility Functions ---
-        /**n         * Displays a message in the message box.n         * @param {string} message - The message to display.n         * @param {'success'|'error'} type - The type of message (for styling).n         */n        function showMessage(message, type) {n            messageBox.textContent = message;n            messageBox.className = `message-box ${type}`;n            messageBox.classList.remove('hidden');n            setTimeout(() => {n                messageBox.classList.add('hidden');n            }, 5000); // Hide after 5 secondsn        }
-        /**n         * Shows the loading spinner.n         */n        function showLoading() {n            loadingSpinner.classList.remove('hidden');n            generateSitemapBtn.disabled = true;n            downloadSitemapBtn.disabled = true;n            resetBtn.disabled = true;n            messageBox.classList.add('hidden'); // Hide any previous messagesn            validationErrorsDiv.classList.add('hidden'); // Hide errors on new generationn            errorList.innerHTML = '';n        }
-        /**n         * Hides the loading spinner.n         */n        function hideLoading() {n            loadingSpinner.classList.add('hidden');n            generateSitemapBtn.disabled = false;n            resetBtn.disabled = false;n        }
-        /**n         * Resets the UI and clears all data.n         */n        function resetApp() {n            urlInput.value = '';n            urlsData = [];n            renderUrlList(); // Clear the URL list displayn            newUrlInput.value = '';n            setLastmodTodayCheckbox.checked = false;n            defaultChangefreqSelect.value = '';n            defaultPrioritySlider.value = 0.5;n            defaultPriorityValueSpan.textContent = 0.5;n            sitemapOutputDiv.innerHTML = '<p class="text-center text-gray-500">Your XML sitemap will be displayed here after generation.</p>';n            hideLoading();n            downloadSitemapBtn.disabled = true;n            messageBox.classList.add('hidden');n            validationErrorsDiv.classList.add('hidden');n            errorList.innerHTML = '';n            showMessage("Application reset successfully!", "success");n        }
-        /**n         * Validates if a string is a well-formed URL.n         * @param {string} urlString - The string to validate.n         * @returns {boolean} True if valid, false otherwise.n         */n        function isValidUrl(urlString) {n            try {n                new URL(urlString);n                return true;n            } catch (e) {n                return false;n            }n        }
-        /**n         * Validates if a string is in YYYY-MM-DD format.n         * @param {string} dateString - The string to validate.n         * @returns {boolean} True if valid, false otherwise.n         */n        function isValidDate(dateString) {n            if (!dateString) return true; // Empty string is valid (means omit)n            const regex = /^\d{4}-\d{2}-\d{2}$/;n            if (!regex.test(dateString)) return false;n            const date = new Date(dateString);n            const [year, month, day] = dateString.split('-').map(Number);n            return date.getFullYear() === year && (date.getMonth() + 1) === month && date.getDate() === day;n        }
-        /**n         * Adds URLs from the textarea to the urlsData array.n         */n        function addUrlsFromTextArea() {n            const urls = urlInput.value.split('\n')n                                      .map(url => url.trim())n                                      .filter(url => url !== '');
-            urls.forEach(url => {n                if (isValidUrl(url)) {n                    // Check if URL already exists to avoid duplicatesn                    if (!urlsData.some(item => item.loc === url)) {n                        urlsData.push({n                            loc: url,n                            lastmod: '',n                            changefreq: defaultChangefreqSelect.value,n                            priority: parseFloat(defaultPrioritySlider.value).toFixed(1)n                        });n                    } else {n                        showMessage(`URL already exists: ${url}`, "error");n                    }n                } else {n                    showMessage(`Skipped invalid URL from text area: ${url}`, "error");n                }n            });n            urlInput.value = ''; // Clear textarea after addingn            renderUrlList();n        }
-        /**n         * Adds a single URL from the new URL input field.n         */n        function addSingleUrl() {n            const url = newUrlInput.value.trim();n            if (!url) {n                showMessage("Please enter a URL.", "error");n                return;n            }n            if (!isValidUrl(url)) {n                showMessage("Invalid URL format.", "error");n                return;n            }n            if (urlsData.some(item => item.loc === url)) {n                showMessage("This URL is already in the list.", "error");n                return;n            }
-            urlsData.push({n                loc: url,n                lastmod: '',n                changefreq: defaultChangefreqSelect.value,n                priority: parseFloat(defaultPrioritySlider.value).toFixed(1)n            });n            newUrlInput.value = ''; // Clear input fieldn            renderUrlList();n            showMessage("URL added successfully!", "success");n        }
-        /**n         * Updates the 'loc' (URL) property of a URL item in urlsData.n         * @param {Event} event - The blur event from the contenteditable span.n         * @param {number} index - The index of the URL item to update.n         */n        function updateUrlLoc(event, index) {n            const newLoc = event.target.textContent.trim();n            const originalLoc = urlsData[index].loc;
-            if (newLoc === originalLoc) return; // No changenn            if (!isValidUrl(newLoc)) {n                showMessage(`Invalid URL format for "${newLoc}". Reverting to previous.`, 'error');n                event.target.textContent = originalLoc; // Revertn                return;n            }n            // Check for duplicates, excluding selfn            const duplicateIndex = urlsData.findIndex((item, i) => item.loc === newLoc && i !== index);n            if (duplicateIndex !== -1) {n                showMessage(`URL "${newLoc}" already exists. Reverting to previous.`, 'error');n                event.target.textContent = originalLoc; // Revertn                return;n            }n            urlsData[index].loc = newLoc;n            showMessage('URL updated.', 'success');n        }
-        /**n         * Updates a generic property of a URL item in urlsData.n         * @param {number} index - The index of the URL item to update.n         * @param {string} prop - The property name ('lastmod', 'changefreq', 'priority').n         * @param {string} value - The new value for the property.n         */n        function updateUrlProperty(index, prop, value) {n            urlsData[index][prop] = value;n            showMessage(`${prop} updated.`, 'success');n        }
-        /**n         * Removes a URL item from urlsData.n         * @param {number} index - The index of the URL item to remove.n         */n        function removeUrl(index) {n            urlsData.splice(index, 1);n            renderUrlList();n            showMessage("URL removed.", "success");n        }
-        /**n         * Helper function to create a detail group (label + input/select).n         * @param {string} labelText - Text for the label.n         * @param {string} elementType - 'input' or 'select'.n         * @param {string} [inputType] - Type for input element (e.g., 'date', 'range', 'text').n         * @param {string} value - Initial value for the input/select.n         * @param {Function} eventListener - Event listener for 'change' or 'input' event.n         * @returns {HTMLElement} The created detail group div.n         */n        function createDetailGroup(labelText, elementType, inputType, value, eventListener) {n            const group = document.createElement('div');n            group.className = 'detail-group';n            const label = document.createElement('label');n            label.textContent = labelText;n            group.appendChild(label);
-            let inputElement;n            if (elementType === 'input') {n                inputElement = document.createElement('input');n                inputElement.type = inputType;n                inputElement.value = value;n            } else if (elementType === 'select') {n                inputElement = document.createElement('select');n                inputElement.value = value;n            }n            inputElement.className = `${elementType}-input`; // Common class for stylingn            inputElement.addEventListener(inputType === 'range' ? 'input' : 'change', eventListener);n            group.appendChild(inputElement);n            return group;n        }
-        /**n         * Renders the list of URLs with their properties in the UI.n         */n        function renderUrlList() {n            urlListDiv.innerHTML = '';n            if (urlsData.length === 0) {n                urlListDiv.innerHTML = '<p class="text-center text-gray-500">No URLs added yet. Add from text area or below.</p>';n                return;n            }
-            urlsData.forEach((urlItem, index) => {n                const itemDiv = document.createElement('div');n                itemDiv.className = 'url-item';
-                // URL text (contenteditable)n                const urlSpan = document.createElement('span');n                urlSpan.className = 'url-text';n                urlSpan.textContent = urlItem.loc;n                urlSpan.contentEditable = true;n                urlSpan.spellcheck = false;n                urlSpan.addEventListener('blur', (e) => updateUrlLoc(e, index));n                urlSpan.addEventListener('keydown', (e) => {n                    if (e.key === 'Enter') {n                        e.preventDefault(); // Prevent new linen                        e.target.blur(); // Trigger blur to save changesn                    }n                });n                itemDiv.appendChild(urlSpan);
-                // Remove buttonn                const removeBtn = document.createElement('button');n                removeBtn.className = 'remove-url-btn';n                removeBtn.innerHTML = '<i class="fas fa-times"></i> Remove';n                removeBtn.addEventListener('click', () => removeUrl(index));n                itemDiv.appendChild(removeBtn);
-                // Details containern                const detailsDiv = document.createElement('div');n                detailsDiv.className = 'url-item-details col-span-full';
-                // Lastmod inputn                const lastmodGroup = createDetailGroup('Last Mod:', 'input', 'date', urlItem.lastmod, (e) => updateUrlProperty(index, 'lastmod', e.target.value));n                detailsDiv.appendChild(lastmodGroup);
-                // Changefreq selectn                const changefreqGroup = createDetailGroup('Change Freq:', 'select', null, urlItem.changefreq, (e) => updateUrlProperty(index, 'changefreq', e.target.value));n                const changefreqOptions = ["", "always", "hourly", "daily", "weekly", "monthly", "yearly", "never"];n                changefreqOptions.forEach(optionValue => {n                    const option = document.createElement('option');n                    option.value = optionValue;n                    option.textContent = optionValue === "" ? "(Omit)" : optionValue.charAt(0).toUpperCase() + optionValue.slice(1);n                    if (urlItem.changefreq === optionValue) {n                        option.selected = true;n                    }n                    changefreqGroup.querySelector('select').appendChild(option);n                });n                detailsDiv.appendChild(changefreqGroup);
-                // Priority inputn                const priorityGroup = createDetailGroup('Priority:', 'input', 'range', urlItem.priority, (e) => updateUrlProperty(index, 'priority', parseFloat(e.target.value).toFixed(1)));n                priorityGroup.querySelector('input').min = "0.0";n                priorityGroup.querySelector('input').max = "1.0";n                priorityGroup.querySelector('input').step = "0.1";n                const priorityDisplay = document.createElement('span');n                priorityDisplay.className = 'priority-value-display';n                priorityDisplay.textContent = urlItem.priority;n                priorityGroup.appendChild(priorityDisplay);n                priorityGroup.querySelector('input').addEventListener('input', (e) => {n                    priorityDisplay.textContent = parseFloat(e.target.value).toFixed(1);n                });n                detailsDiv.appendChild(priorityGroup);
-                itemDiv.appendChild(detailsDiv);n                urlListDiv.appendChild(itemDiv);n            });n        }
-        /**n         * Generates the XML sitemap string from the stored URLs data.n         */n        function generateSitemap() {n            showLoading();n            sitemapOutputDiv.innerHTML = ''; // Clear previous outputn            errorList.innerHTML = ''; // Clear previous errorsn            validationErrorsDiv.classList.add('hidden');
-            if (urlsData.length === 0) {n                showMessage("Please add at least one URL.", "error");n                hideLoading();n                return;n            }
-            let currentErrors = [];n            let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;n            sitemapXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+        /**n         * Displays a message in the message box.n         * @param {string} message - The message to display.n         * @param {'success'|'error'} type - The type of message (for styling).n         */n        function showMessage(message, type) {
+messageBox.textContent = message;
+messageBox.className = `message-box ${type}`;
+messageBox.classList.remove('hidden');
+setTimeout(() => {
+messageBox.classList.add('hidden');
+}, 5000); // Hide after 5 seconds
+}
+        /**n         * Shows the loading spinner.n         */n        function showLoading() {
+loadingSpinner.classList.remove('hidden');
+generateSitemapBtn.disabled = true;
+downloadSitemapBtn.disabled = true;
+resetBtn.disabled = true;
+messageBox.classList.add('hidden'); // Hide any previous messagesn            validationErrorsDiv.classList.add('hidden'); // Hide errors on new generation
+errorList.innerHTML = '';
+}
+        /**n         * Hides the loading spinner.n         */n        function hideLoading() {
+loadingSpinner.classList.add('hidden');
+generateSitemapBtn.disabled = false;
+resetBtn.disabled = false;
+}
+        /**n         * Resets the UI and clears all data.n         */n        function resetApp() {
+urlInput.value = '';
+urlsData = [];
+renderUrlList(); // Clear the URL list display
+newUrlInput.value = '';
+setLastmodTodayCheckbox.checked = false;
+defaultChangefreqSelect.value = '';
+defaultPrioritySlider.value = 0.5;
+defaultPriorityValueSpan.textContent = 0.5;
+sitemapOutputDiv.innerHTML = '<p class="text-center text-gray-500">Your XML sitemap will be displayed here after generation.</p>';
+hideLoading();
+downloadSitemapBtn.disabled = true;
+messageBox.classList.add('hidden');
+validationErrorsDiv.classList.add('hidden');
+errorList.innerHTML = '';
+showMessage("Application reset successfully!", "success");
+}
+        /**n         * Validates if a string is a well-formed URL.n         * @param {string} urlString - The string to validate.n         * @returns {boolean} True if valid, false otherwise.n         */n        function isValidUrl(urlString) {
+try {
+new URL(urlString);
+return true;
+} catch (e) {
+return false;
+}
+}
+        /**n         * Validates if a string is in YYYY-MM-DD format.n         * @param {string} dateString - The string to validate.n         * @returns {boolean} True if valid, false otherwise.n         */n        function isValidDate(dateString) {
+if (!dateString) return true; // Empty string is valid (means omit)
+const regex = /^\d{4}-\d{2}-\d{2}$/;
+if (!regex.test(dateString)) return false;
+const date = new Date(dateString);
+const [year, month, day] = dateString.split('-').map(Number);
+return date.getFullYear() === year && (date.getMonth() + 1) === month && date.getDate() === day;
+}
+        /**n         * Adds URLs from the textarea to the urlsData array.n         */n        function addUrlsFromTextArea() {
+const urls = urlInput.value.split('\n')
+.map(url => url.trim())
+.filter(url => url !== '');
+            urls.forEach(url => {
+if (isValidUrl(url)) {
+// Check if URL already exists to avoid duplicates
+if (!urlsData.some(item => item.loc === url)) {
+urlsData.push({
+loc: url,
+lastmod: '',
+changefreq: defaultChangefreqSelect.value,
+priority: parseFloat(defaultPrioritySlider.value).toFixed(1)
+});
+} else {
+showMessage(`URL already exists: ${url}`, "error");
+}
+} else {
+showMessage(`Skipped invalid URL from text area: ${url}`, "error");
+}
+});
+urlInput.value = ''; // Clear textarea after adding
+renderUrlList();
+}
+        /**n         * Adds a single URL from the new URL input field.n         */n        function addSingleUrl() {
+const url = newUrlInput.value.trim();
+if (!url) {
+showMessage("Please enter a URL.", "error");
+return;
+}
+if (!isValidUrl(url)) {
+showMessage("Invalid URL format.", "error");
+return;
+}
+if (urlsData.some(item => item.loc === url)) {
+showMessage("This URL is already in the list.", "error");
+return;
+}
+            urlsData.push({
+loc: url,
+lastmod: '',
+changefreq: defaultChangefreqSelect.value,
+priority: parseFloat(defaultPrioritySlider.value).toFixed(1)
+});
+newUrlInput.value = ''; // Clear input field
+renderUrlList();
+showMessage("URL added successfully!", "success");
+}
+        /**n         * Updates the 'loc' (URL) property of a URL item in urlsData.n         * @param {Event} event - The blur event from the contenteditable span.n         * @param {
+umber} index - The index of the URL item to update.n         */n        function updateUrlLoc(event, index) {
+const newLoc = event.target.textContent.trim();
+const originalLoc = urlsData[index].loc;
+            if (newLoc === originalLoc) return; // No changen
+if (!isValidUrl(newLoc)) {
+showMessage(`Invalid URL format for "${
+ewLoc}". Reverting to previous.`, 'error');
+event.target.textContent = originalLoc; // Revert
+return;
+}
+// Check for duplicates, excluding self
+const duplicateIndex = urlsData.findIndex((item, i) => item.loc === newLoc && i !== index);
+if (duplicateIndex !== -1) {
+showMessage(`URL "${
+ewLoc}" already exists. Reverting to previous.`, 'error');
+event.target.textContent = originalLoc; // Revert
+return;
+}
+urlsData[index].loc = newLoc;
+showMessage('URL updated.', 'success');
+}
+        /**n         * Updates a generic property of a URL item in urlsData.n         * @param {
+umber} index - The index of the URL item to update.n         * @param {string} prop - The property name ('lastmod', 'changefreq', 'priority').n         * @param {string} value - The new value for the property.n         */n        function updateUrlProperty(index, prop, value) {
+urlsData[index][prop] = value;
+showMessage(`${prop} updated.`, 'success');
+}
+        /**n         * Removes a URL item from urlsData.n         * @param {
+umber} index - The index of the URL item to remove.n         */n        function removeUrl(index) {
+urlsData.splice(index, 1);
+renderUrlList();
+showMessage("URL removed.", "success");
+}
+        /**n         * Helper function to create a detail group (label + input/select).n         * @param {string} labelText - Text for the label.n         * @param {string} elementType - 'input' or 'select'.n         * @param {string} [inputType] - Type for input element (e.g., 'date', 'range', 'text').n         * @param {string} value - Initial value for the input/select.n         * @param {Function} eventListener - Event listener for 'change' or 'input' event.n         * @returns {HTMLElement} The created detail group div.n         */n        function createDetailGroup(labelText, elementType, inputType, value, eventListener) {
+const group = document.createElement('div');
+group.className = 'detail-group';
+const label = document.createElement('label');
+label.textContent = labelText;
+group.appendChild(label);
+            let inputElement;
+if (elementType === 'input') {
+inputElement = document.createElement('input');
+inputElement.type = inputType;
+inputElement.value = value;
+} else if (elementType === 'select') {
+inputElement = document.createElement('select');
+inputElement.value = value;
+}
+inputElement.className = `${elementType}-input`; // Common class for styling
+inputElement.addEventListener(inputType === 'range' ? 'input' : 'change', eventListener);
+group.appendChild(inputElement);
+return group;
+}
+        /**n         * Renders the list of URLs with their properties in the UI.n         */n        function renderUrlList() {
+urlListDiv.innerHTML = '';
+if (urlsData.length === 0) {
+urlListDiv.innerHTML = '<p class="text-center text-gray-500">No URLs added yet. Add from text area or below.</p>';
+return;
+}
+            urlsData.forEach((urlItem, index) => {
+const itemDiv = document.createElement('div');
+itemDiv.className = 'url-item';
+                // URL text (contenteditable)
+const urlSpan = document.createElement('span');
+urlSpan.className = 'url-text';
+urlSpan.textContent = urlItem.loc;
+urlSpan.contentEditable = true;
+urlSpan.spellcheck = false;
+urlSpan.addEventListener('blur', (e) => updateUrlLoc(e, index));
+urlSpan.addEventListener('keydown', (e) => {
+if (e.key === 'Enter') {
+e.preventDefault(); // Prevent new linen                        e.target.blur(); // Trigger blur to save changes
+}
+});
+itemDiv.appendChild(urlSpan);
+                // Remove buttonn                const removeBt
+= document.createElement('button');
+removeBtn.className = 'remove-url-btn';
+removeBtn.innerHTML = '<i class="fas fa-times"></i> Remove';
+removeBtn.addEventListener('click', () => removeUrl(index));
+itemDiv.appendChild(removeBtn);
+                // Details container
+const detailsDiv = document.createElement('div');
+detailsDiv.className = 'url-item-details col-span-full';
+                // Lastmod input
+const lastmodGroup = createDetailGroup('Last Mod:', 'input', 'date', urlItem.lastmod, (e) => updateUrlProperty(index, 'lastmod', e.target.value));
+detailsDiv.appendChild(lastmodGroup);
+                // Changefreq select
+const changefreqGroup = createDetailGroup('Change Freq:', 'select', null, urlItem.changefreq, (e) => updateUrlProperty(index, 'changefreq', e.target.value));
+const changefreqOptions = ["", "always", "hourly", "daily", "weekly", "monthly", "yearly", "never"];
+changefreqOptions.forEach(optionValue => {
+const option = document.createElement('option');
+option.value = optionValue;
+option.textContent = optionValue === "" ? "(Omit)" : optionValue.charAt(0).toUpperCase() + optionValue.slice(1);
+if (urlItem.changefreq === optionValue) {
+option.selected = true;
+}
+changefreqGroup.querySelector('select').appendChild(option);
+});
+detailsDiv.appendChild(changefreqGroup);
+                // Priority input
+const priorityGroup = createDetailGroup('Priority:', 'input', 'range', urlItem.priority, (e) => updateUrlProperty(index, 'priority', parseFloat(e.target.value).toFixed(1)));
+priorityGroup.querySelector('input').min = "0.0";
+priorityGroup.querySelector('input').max = "1.0";
+priorityGroup.querySelector('input').step = "0.1";
+const priorityDisplay = document.createElement('span');
+priorityDisplay.className = 'priority-value-display';
+priorityDisplay.textContent = urlItem.priority;
+priorityGroup.appendChild(priorityDisplay);
+priorityGroup.querySelector('input').addEventListener('input', (e) => {
+priorityDisplay.textContent = parseFloat(e.target.value).toFixed(1);
+});
+detailsDiv.appendChild(priorityGroup);
+                itemDiv.appendChild(detailsDiv);
+urlListDiv.appendChild(itemDiv);
+});
+}
+        /**n         * Generates the XML sitemap string from the stored URLs data.n         */n        function generateSitemap() {
+showLoading();
+sitemapOutputDiv.innerHTML = ''; // Clear previous outputn            errorList.innerHTML = ''; // Clear previous errors
+validationErrorsDiv.classList.add('hidden');
+            if (urlsData.length === 0) {
+showMessage("Please add at least one URL.", "error");
+hideLoading();
+return;
+}
+            let currentErrors = [];
+let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+sitemapXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
             const today = new Date().toISOString().split('T')[0];
-            urlsData.forEach((urlItem, index) => {n                let urlLoc = urlItem.loc;n                let urlLastmod = urlItem.lastmod;n                let urlChangefreq = urlItem.changefreq;n                let urlPriority = urlItem.priority;
-                if (!isValidUrl(urlLoc)) {n                    currentErrors.push(`Invalid URL format for entry ${index + 1}: ${urlLoc}`);n                    return; // Skip this URL if invalidn                }n                if (setLastmodTodayCheckbox.checked) {n                    urlLastmod = today;n                } else if (urlLastmod && !isValidDate(urlLastmod)) {n                    currentErrors.push(`Invalid Last Modified Date format for ${urlLoc}. Use YYYY-MM-DD.`);n                    urlLastmod = ''; // Clear invalid daten                }
-                sitemapXml += `  <url>\n`;n                sitemapXml += `    <loc>${urlLoc}</loc>\n`;n                if (urlLastmod) {n                    sitemapXml += `    <lastmod>${urlLastmod}</lastmod>\n`;n                }n                if (urlChangefreq) {n                    sitemapXml += `    <changefreq>${urlChangefreq}</changefreq>\n`;n                }n                // Priority is always added if it's a valid numbern                if (!isNaN(parseFloat(urlPriority))) {n                    sitemapXml += `    <priority>${parseFloat(urlPriority).toFixed(1)}</priority>\n`;n                }n                sitemapXml += `  </url>\n`;n            });
+            urlsData.forEach((urlItem, index) => {
+let urlLoc = urlItem.loc;
+let urlLastmod = urlItem.lastmod;
+let urlChangefreq = urlItem.changefreq;
+let urlPriority = urlItem.priority;
+                if (!isValidUrl(urlLoc)) {
+currentErrors.push(`Invalid URL format for entry ${index + 1}: ${urlLoc}`);
+return; // Skip this URL if invalid
+}
+if (setLastmodTodayCheckbox.checked) {
+urlLastmod = today;
+} else if (urlLastmod && !isValidDate(urlLastmod)) {
+currentErrors.push(`Invalid Last Modified Date format for ${urlLoc}. Use YYYY-MM-DD.`);
+urlLastmod = ''; // Clear invalid date
+}
+                sitemapXml += `  <url>\n`;
+sitemapXml += `    <loc>${urlLoc}</loc>\n`;
+if (urlLastmod) {
+sitemapXml += `    <lastmod>${urlLastmod}</lastmod>\n`;
+}
+if (urlChangefreq) {
+sitemapXml += `    <changefreq>${urlChangefreq}</changefreq>\n`;
+}
+// Priority is always added if it's a valid number
+if (!isNaN(parseFloat(urlPriority))) {
+sitemapXml += `    <priority>${parseFloat(urlPriority).toFixed(1)}</priority>\n`;
+}
+sitemapXml += `  </url>\n`;
+});
             sitemapXml += `</urlset>`;
-            sitemapOutputDiv.textContent = sitemapXml;n            downloadSitemapBtn.disabled = false;
-            if (currentErrors.length > 0) {n                currentErrors.forEach(err => {n                    const li = document.createElement('li');n                    li.textContent = err;n                    errorList.appendChild(li);n                });n                validationErrorsDiv.classList.remove('hidden');n                showMessage("Sitemap generated with errors. Please check the 'Validation Errors' section.", "error");n            } else {n                showMessage("Sitemap generated successfully!", "success");n            }n            hideLoading();n        }
-        /**n         * Downloads the generated XML sitemap.n         */n        function downloadSitemap() {n            const sitemapContent = sitemapOutputDiv.textContent;n            if (!sitemapContent || sitemapContent.includes("Your XML sitemap will be displayed here")) {n                showMessage("No sitemap generated to download.", "error");n                return;n            }
-            const blob = new Blob([sitemapContent], { type: "application/xml" });n            saveAs(blob, "sitemap.xml");n            showMessage("Sitemap downloaded successfully!", "success");n        }
-        // --- Event Listeners ---n        addUrlsFromTextBtn.addEventListener('click', addUrlsFromTextArea);n        addNewUrlBtn.addEventListener('click', addSingleUrl);n        generateSitemapBtn.addEventListener('click', generateSitemap);n        downloadSitemapBtn.addEventListener('click', downloadSitemap);n        resetBtn.addEventListener('click', resetApp);
-        // Update default priority value displayn        defaultPrioritySlider.addEventListener('input', () => {n            defaultPriorityValueSpan.textContent = parseFloat(defaultPrioritySlider.value).toFixed(1);n        });
-        // Initial state on loadn        window.onload = () => {n            hideLoading();n            downloadSitemapBtn.disabled = true;n            defaultPriorityValueSpan.textContent = parseFloat(defaultPrioritySlider.value).toFixed(1);n            renderUrlList(); // Render empty list initiallyn        };n    </script>
+            sitemapOutputDiv.textContent = sitemapXml;
+downloadSitemapBtn.disabled = false;
+            if (currentErrors.length > 0) {
+currentErrors.forEach(err => {
+const li = document.createElement('li');
+li.textContent = err;
+errorList.appendChild(li);
+});
+validationErrorsDiv.classList.remove('hidden');
+showMessage("Sitemap generated with errors. Please check the 'Validation Errors' section.", "error");
+} else {
+showMessage("Sitemap generated successfully!", "success");
+}
+hideLoading();
+}
+        /**n         * Downloads the generated XML sitemap.n         */n        function downloadSitemap() {
+const sitemapContent = sitemapOutputDiv.textContent;
+if (!sitemapContent || sitemapContent.includes("Your XML sitemap will be displayed here")) {
+showMessage("No sitemap generated to download.", "error");
+return;
+}
+            const blob = new Blob([sitemapContent], { type: "application/xml" });
+saveAs(blob, "sitemap.xml");
+showMessage("Sitemap downloaded successfully!", "success");
+}
+        // --- Event Listeners ---
+addUrlsFromTextBtn.addEventListener('click', addUrlsFromTextArea);
+addNewUrlBtn.addEventListener('click', addSingleUrl);
+generateSitemapBtn.addEventListener('click', generateSitemap);
+downloadSitemapBtn.addEventListener('click', downloadSitemap);
+resetBtn.addEventListener('click', resetApp);
+        // Update default priority value display
+defaultPrioritySlider.addEventListener('input', () => {
+defaultPriorityValueSpan.textContent = parseFloat(defaultPrioritySlider.value).toFixed(1);
+});
+        // Initial state on load
+window.onload = () => {
+hideLoading();
+downloadSitemapBtn.disabled = true;
+defaultPriorityValueSpan.textContent = parseFloat(defaultPrioritySlider.value).toFixed(1);
+renderUrlList(); // Render empty list initially
+};
+</script>
 <p><strong>Why This Tool Stands Out:</strong><br>⚡&nbsp;<strong>Bulk URL Processing</strong></p>
 <ul class="wp-block-list"><li>Add URLs individually or paste lists from spreadsheets</li>
 <li>Real-time URL validation with error highlighting</li>

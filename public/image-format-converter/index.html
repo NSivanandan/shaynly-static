@@ -140,112 +140,737 @@
         <div id="loadingSpinner" class="loading-spinner hidden"></div>        <div id="messageBox" class="message-box hidden"></div>
         <!-- Preview Section -->        <div class="preview-section">            <h3 class="section-header"><i class="fas fa-image"></i> Converted Image Previews</h3>            <div id="previewGrid" class="preview-grid">                <p class="text-center text-gray-500 w-full">Converted images will appear here.</p>            </div>        </div>    </div>
     <!-- PDF.js library for PDF parsing -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>    <!-- JSZip for creating zip files -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>    <!-- FileSaver.js for saving files -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>    <!-- jsPDF for creating PDFs from images -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script>        // Set workerSrc for PDF.jsn        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';n        const { jsPDF } = window.jspdf;
-        // DOM Elementsn        const uploadArea = document.getElementById('uploadArea');n        const fileInput = document.getElementById('fileInput');n        const fileListDiv = document.getElementById('fileList');n        const outputFormatSelect = document.getElementById('outputFormat');n        const qualityControlGroup = document.getElementById('qualityControlGroup');n        const qualitySlider = document.getElementById('qualitySlider');n        const qualityValueSpan = document.getElementById('qualityValue');n        const resizeWidthInput = document.getElementById('resizeWidth');n        const resizeHeightInput = document.getElementById('resizeHeight');n        const rotationAngleSelect = document.getElementById('rotationAngle');n        const convertToGrayscaleCheckbox = document.getElementById('convertToGrayscale');n        const enableCroppingCheckbox = document.getElementById('enableCropping');n        const croppingOptionsGroup = document.getElementById('croppingOptionsGroup');n        const cropXInput = document.getElementById('cropX');n        const cropYInput = document.getElementById('cropY');n        const cropWidthInput = document.getElementById('cropWidth');n        const cropHeightInput = document.getElementById('cropHeight');n        const addWatermarkCheckbox = document.getElementById('addWatermark');n        const watermarkOptionsGroup = document.getElementById('watermarkOptionsGroup');n        const watermarkText = document.getElementById('watermarkText');n        const watermarkPositionSelect = document.getElementById('watermarkPosition');n        const watermarkOpacitySlider = document.getElementById('watermarkOpacity');n        const watermarkOpacityValueSpan = document.getElementById('watermarkOpacityValue');n        const watermarkFontSizeSlider = document.getElementById('watermarkFontSize');n        const watermarkFontSizeValueSpan = document.getElementById('watermarkFontSizeValue');n        const convertBtn = document.getElementById('convertBtn');n        const downloadAllBtn = document.getElementById('downloadAllBtn');n        const resetBtn = document.getElementById('resetBtn');n        const loadingSpinner = document.getElementById('loadingSpinner');n        const messageBox = document.getElementById('messageBox');n        const previewGrid = document.getElementById('previewGrid');
-        let uploadedFiles = []; // Stores original File objectsn        let convertedFiles = []; // Stores { name, dataURL, type, originalSize, convertedSize, status, originalDimensions, convertedDimensions } of converted images/PDFsnn        let draggedItem = null; // For drag and drop reorderingnn        // --- Utility Functions ---
-        /**n         * Displays a message in the message box.n         * @param {string} message - The message to display.n         * @param {'success'|'error'} type - The type of message (for styling).n         */n        function showMessage(message, type) {n            messageBox.textContent = message;n            messageBox.className = `message-box ${type}`;n            messageBox.classList.remove('hidden');n            setTimeout(() => {n                messageBox.classList.add('hidden');n            }, 5000); // Hide after 5 secondsn        }
-        /**n         * Shows the loading spinner.n         */n        function showLoading() {n            loadingSpinner.classList.remove('hidden');n            convertBtn.disabled = true;n            downloadAllBtn.disabled = true;n            resetBtn.disabled = true;n            messageBox.classList.add('hidden'); // Hide any previous messagesn        }
-        /**n         * Hides the loading spinner.n         */n        function hideLoading() {n            loadingSpinner.classList.add('hidden');n            convertBtn.disabled = false;n            resetBtn.disabled = false;n        }
-        /**n         * Resets the UI and clears all data.n         */n        function resetApp() {n            uploadedFiles = [];n            convertedFiles = [];n            fileInput.value = ''; // Clear file inputn            fileListDiv.innerHTML = '';n            fileListDiv.classList.add('hidden');n            previewGrid.innerHTML = '<p class="text-center text-gray-500 w-full">Converted images will appear here.</p>';n            outputFormatSelect.value = 'png';n            qualitySlider.value = 90;n            qualityValueSpan.textContent = 90;n            resizeWidthInput.value = '';n            resizeHeightInput.value = '';n            rotationAngleSelect.value = '0';n            convertToGrayscaleCheckbox.checked = false;n            enableCroppingCheckbox.checked = false;n            croppingOptionsGroup.style.display = 'none';n            cropXInput.value = 0;n            cropYInput.value = 0;n            cropWidthInput.value = '';n            cropHeightInput.value = '';n            addWatermarkCheckbox.checked = false;n            watermarkOptionsGroup.style.display = 'none';n            watermarkText.value = '';n            watermarkPositionSelect.value = 'bottom-right';n            watermarkOpacitySlider.value = 0.5;n            watermarkOpacityValueSpan.textContent = 0.5;n            watermarkFontSizeSlider.value = 30;n            watermarkFontSizeValueSpan.textContent = 30;n            hideLoading();n            downloadAllBtn.disabled = true;n            messageBox.classList.add('hidden');n            showMessage("Application reset successfully!", "success");n            toggleQualityControlVisibility(); // Ensure correct visibility on resetn        }
-        /**n         * Handles file selection from input or drag-and-drop.n         * @param {FileList} files - The FileList object from the event.n         */n        function handleFiles(files) {n            if (files.length === 0) return;
-            // Clear previous files if new ones are selectedn            uploadedFiles = [];n            fileListDiv.innerHTML = '';n            fileListDiv.classList.remove('hidden');
-            Array.from(files).forEach(file => {n                if (file.type.startsWith('image/') || file.type === 'application/pdf') {n                    uploadedFiles.push(file);n                    const fileItem = document.createElement('div');n                    fileItem.className = 'file-item';n                    fileItem.draggable = true; // Make items draggablen                    fileItem.dataset.fileName = file.name; // Store file name for identificationn                    fileItem.innerHTML = `n                        <span>${file.name} (${(file.size / 1024).toFixed(2)} KB)</span>                        <i class="fas fa-times remove-file-btn" data-name="${file.name}"></i>                    `;n                    fileListDiv.appendChild(fileItem);n                } else {n                    showMessage(`Skipped unsupported file: ${file.name}. Only images and PDFs are supported.`, 'error');n                }n            });n            addDragDropListenersToFileList(); // Add listeners after adding filesn            addRemoveButtonListeners(); // Add listeners for remove buttonsn        }
-        /**n         * Adds drag and drop listeners to file list items.n         */n        function addDragDropListenersToFileList() {n            fileListDiv.querySelectorAll('.file-item').forEach(item => {n                item.addEventListener('dragstart', (e) => {n                    draggedItem = item;n                    setTimeout(() => item.classList.add('dragging'), 0);n                    e.dataTransfer.effectAllowed = 'move';n                });
-                item.addEventListener('dragend', () => {n                    draggedItem.classList.remove('dragging');n                    draggedItem = null;n                });
-                item.addEventListener('dragover', (e) => {n                    e.preventDefault();n                    const bounding = item.getBoundingClientRect();n                    const offset = bounding.y + (bounding.height / 2);n                    if (e.clientY - offset > 0) {n                        item.style.borderBottom = '2px solid #4299e1';n                        item.style.borderTop = '';n                    } else {n                        item.style.borderTop = '2px solid #4299e1';n                        item.style.borderBottom = '';n                    }n                });
-                item.addEventListener('dragleave', () => {n                    item.style.borderBottom = '';n                    item.style.borderTop = '';n                });
-                item.addEventListener('drop', (e) => {n                    e.preventDefault();n                    item.style.borderBottom = '';n                    item.style.borderTop = '';
-                    if (draggedItem && draggedItem !== item) {n                        const allItems = Array.from(fileListDiv.children);n                        const draggedIndex = allItems.indexOf(draggedItem);n                        const dropIndex = allItems.indexOf(item);
-                        // Reorder the DOM elementsn                        if (draggedIndex < dropIndex) {n                            fileListDiv.insertBefore(draggedItem, item.nextSibling);n                        } else {n                            fileListDiv.insertBefore(draggedItem, item);n                        }
-                        // Reorder the underlying uploadedFiles arrayn                        const [removed] = uploadedFiles.splice(draggedIndex, 1);n                        uploadedFiles.splice(dropIndex, 0, removed);n                    }n                });n            });n        }
-        /**n         * Adds click listeners to remove file buttons.n         */n        function addRemoveButtonListeners() {n            fileListDiv.querySelectorAll('.remove-file-btn').forEach(btn => {n                btn.addEventListener('click', (e) => {n                    const fileNameToRemove = e.target.dataset.name;n                    uploadedFiles = uploadedFiles.filter(file => file.name !== fileNameToRemove);n                    e.target.closest('.file-item').remove();n                    if (uploadedFiles.length === 0) {n                        fileListDiv.classList.add('hidden');n                    }n                });n            });n        }
-        /**n         * Converts an image file (JPG, PNG, WebP, SVG) to a specified format.n         * @param {File} file - The image File object.n         * @param {string} outputFormat - 'jpeg', 'png', or 'webp'.n         * @param {object} options - Conversion options including watermark, resize, quality, rotation, grayscale, crop.n         * @returns {Promise<Object>} A promise resolving to { name, dataURL, type, originalSize, convertedSize, status, originalDimensions, convertedDimensions } of the converted image.n         */n        function convertImageFile(file, outputFormat, options) {n            return new Promise((resolve, reject) => {n                const reader = new FileReader();n                reader.onload = (e) => {n                    const img = new Image();n                    img.onload = () => {n                        const canvas = document.createElement('canvas');n                        const ctx = canvas.getContext('2d');
-                        let originalWidth = img.width;n                        let originalHeight = img.height;
-                        let drawX = 0;n                        let drawY = 0;n                        let drawWidth = originalWidth;n                        let drawHeight = originalHeight;
-                        // Apply cropping first if enabledn                        if (options.enableCropping) {n                            const cropX = options.cropX !== null ? options.cropX : 0;n                            const cropY = options.cropY !== null ? options.cropY : 0;n                            const cropWidth = options.cropWidth !== null ? options.cropWidth : originalWidth - cropX;n                            const cropHeight = options.cropHeight !== null ? options.cropHeight : originalHeight - cropY;
-                            // Validate crop dimensionsn                            if (cropX < 0 || cropY < 0 || cropWidth <= 0 || cropHeight <= 0 ||n                                cropX + cropWidth > originalWidth || cropY + cropHeight > originalHeight) {n                                reject(new Error(`Invalid cropping dimensions for ${file.name}.`));n                                return;n                            }
-                            drawX = cropX;n                            drawY = cropY;n                            drawWidth = cropWidth;n                            drawHeight = cropHeight;n                        }
-                        let targetWidth = options.resizeWidth || drawWidth;n                        let targetHeight = options.resizeHeight || drawHeight;
-                        // Calculate aspect ratio and adjust dimensions if only one is providedn                        if (options.resizeWidth && !options.resizeHeight) {n                            targetHeight = (drawHeight / drawWidth) * targetWidth;n                        } else if (options.resizeHeight && !options.resizeWidth) {n                            targetWidth = (drawWidth / drawHeight) * targetHeight;n                        }
-                        // Apply rotationn                        const angle = parseInt(options.rotationAngle);n                        let rotatedWidth = targetWidth;n                        let rotatedHeight = targetHeight;
-                        if (angle === 90 || angle === 270) {n                            rotatedWidth = targetHeight;n                            rotatedHeight = targetWidth;n                        }
-                        canvas.width = rotatedWidth;n                        canvas.height = rotatedHeight;
-                        ctx.save(); // Save the unrotated context statenn                        // Translate to center of canvas for rotationn                        ctx.translate(rotatedWidth / 2, rotatedHeight / 2);n                        ctx.rotate(angle * Math.PI / 180); // Rotate in radiansn                        ctx.translate(-rotatedWidth / 2, -rotatedHeight / 2); // Translate backnn                        // Draw image onto canvas (cropped and resized)n                        // The drawImage parameters need to account for the rotation's effect on coordinate systemn                        // For simplicity with translate/rotate, we draw from the center of the rotated canvas.n                        ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight,n                                      (rotatedWidth - targetWidth) / 2, (rotatedHeight - targetHeight) / 2,n                                      targetWidth, targetHeight);
-                        ctx.restore(); // Restore context to remove rotation for subsequent operations like watermarknn                        // Apply grayscale filter if enabledn                        if (options.convertToGrayscale) {n                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);n                            const data = imageData.data;n                            for (let i = 0; i < data.length; i += 4) {n                                const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;n                                data[i] = avg;     // redn                                data[i + 1] = avg; // greenn                                data[i + 2] = avg; // bluen                            }n                            ctx.putImageData(imageData, 0, 0);n                        }
-                        // Apply watermark if enabled and text is providedn                        if (options.addWatermark && options.watermarkText) {n                            applyWatermark(ctx, canvas, options.watermarkText, options.watermarkPosition, options.watermarkOpacity, options.watermarkFontSize);n                        }
-                        // Determine output MIME typen                        let mimeType;n                        let quality = options.quality / 100; // Convert to 0-1 rangen                        switch (outputFormat) {n                            case 'jpeg':n                                mimeType = 'image/jpeg';n                                break;n                            case 'webp':n                                mimeType = 'image/webp';n                                break;n                            case 'png':n                            default:n                                mimeType = 'image/png';n                                break;n                        }
-                        const dataURL = canvas.toDataURL(mimeType, quality);n                        const newFileName = `${file.name.split('.').slice(0, -1).join('.')}.${outputFormat}`;n                        const convertedSize = Math.round((dataURL.length * 0.75) / 1024); // Estimate size from base64nn                        resolve({n                            name: newFileName,n                            dataURL: dataURL,n                            type: mimeType,n                            originalSize: (file.size / 1024).toFixed(2),n                            convertedSize: convertedSize,n                            originalDimensions: `${originalWidth}x${originalHeight}`,n                            convertedDimensions: `${Math.round(canvas.width)}x${Math.round(canvas.height)}`,n                            status: 'success'n                        });n                    };n                    img.onerror = () => reject(new Error(`Could not load image: ${file.name}`));n                    img.src = e.target.result;n                };n                reader.onerror = () => reject(new Error(`Could not read file: ${file.name}`));n                reader.readAsDataURL(file);n            });n        }
-        /**n         * Converts a PDF file to an array of image data URLs (one per page).n         * @param {File} pdfFile - The PDF File object.n         * @param {string} outputFormat - 'jpeg' or 'png'.n         * @param {object} options - Conversion options including watermark, resize, quality, rotation, grayscale, crop.n         * @returns {Promise<Array<Object>>} A promise resolving to an array of { name, dataURL, type, originalSize, convertedSize, status, originalDimensions, convertedDimensions } for each page.n         */n        async function convertPdfToImages(pdfFile, outputFormat, options) {n            const convertedPages = [];n            const pdfData = await pdfFile.arrayBuffer();n            const loadingTask = pdfjsLib.getDocument({ data: pdfData });n            const pdf = await loadingTask.promise;
-            for (let i = 1; i <= pdf.numPages; i++) {n                const page = await pdf.getPage(i);n                const viewport = page.getViewport({ scale: 1.5 }); // Scale for initial render qualityn                const canvas = document.createElement('canvas');n                const ctx = canvas.getContext('2d');
-                let originalWidth = viewport.width;n                let originalHeight = viewport.height;
-                let drawX = 0;n                let drawY = 0;n                let drawWidth = originalWidth;n                let drawHeight = originalHeight;
-                // Apply cropping first if enabledn                if (options.enableCropping) {n                    const cropX = options.cropX !== null ? options.cropX : 0;n                    const cropY = options.cropY !== null ? options.cropY : 0;n                    const cropWidth = options.cropWidth !== null ? options.cropWidth : originalWidth - cropX;n                    const cropHeight = options.cropHeight !== null ? options.cropHeight : originalHeight - cropY;
-                    if (cropX < 0 || cropY < 0 || cropWidth <= 0 || cropHeight <= 0 ||n                        cropX + cropWidth > originalWidth || cropY + cropHeight > originalHeight) {n                        throw new Error(`Invalid cropping dimensions for PDF page ${i} of ${pdfFile.name}.`);n                    }
-                    drawX = cropX;n                    drawY = cropY;n                    drawWidth = cropWidth;n                    drawHeight = cropHeight;n                }
-                let targetWidth = options.resizeWidth || drawWidth;n                let targetHeight = options.resizeHeight || drawHeight;
-                // Calculate aspect ratio and adjust dimensions if only one is providedn                if (options.resizeWidth && !options.resizeHeight) {n                    targetHeight = (drawHeight / drawWidth) * targetWidth;n                } else if (options.resizeHeight && !options.resizeWidth) {n                    targetWidth = (drawWidth / drawHeight) * targetHeight;n                }
-                // Apply rotationn                const angle = parseInt(options.rotationAngle);n                let rotatedWidth = targetWidth;n                let rotatedHeight = targetHeight;
-                if (angle === 90 || angle === 270) {n                    rotatedWidth = targetHeight;n                    rotatedHeight = targetWidth;n                }
-                canvas.width = rotatedWidth;n                canvas.height = rotatedHeight;
-                ctx.save(); // Save the unrotated context statenn                // Translate to center of canvas for rotationn                ctx.translate(rotatedWidth / 2, rotatedHeight / 2);n                ctx.rotate(angle * Math.PI / 180); // Rotate in radiansn                ctx.translate(-rotatedWidth / 2, -rotatedHeight / 2); // Translate backnn                const renderContext = {n                    canvasContext: ctx,n                    viewport: page.getViewport({ scale: targetWidth / drawWidth }) // Adjust viewport scale for target dimensions after cropn                };n                await page.render(renderContext).promise;
-                ctx.restore(); // Restore context to remove rotation for subsequent operations like watermarknn                // Apply grayscale filter if enabledn                if (options.convertToGrayscale) {n                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);n                    const data = imageData.data;n                    for (let j = 0; j < data.length; j += 4) {n                        const avg = (data[j] + data[j + 1] + data[j + 2]) / 3;n                        data[j] = avg;     // redn                        data[j + 1] = avg; // greenn                        data[j + 2] = avg; // bluen                    }n                    ctx.putImageData(imageData, 0, 0);n                }
-                // Apply watermark if enabled and text is providedn                if (options.addWatermark && options.watermarkText) {n                    applyWatermark(ctx, canvas, options.watermarkText, options.watermarkPosition, options.watermarkOpacity, options.watermarkFontSize);n                }
-                let mimeType;n                let quality = options.quality / 100;n                switch (outputFormat) {n                    case 'jpeg':n                        mimeType = 'image/jpeg';n                        break;n                    case 'png':n                    default:n                        mimeType = 'image/png';n                        break;n                }
-                const dataURL = canvas.toDataURL(mimeType, quality);n                const newFileName = `${pdfFile.name.split('.').slice(0, -1).join('.')}_page${i}.${outputFormat}`;n                const convertedSize = Math.round((dataURL.length * 0.75) / 1024);
-                convertedPages.push({n                    name: newFileName,n                    dataURL: dataURL,n                    type: mimeType,n                    originalSize: (pdfFile.size / pdf.numPages / 1024).toFixed(2), // Estimate per pagen                    convertedSize: convertedSize,n                    originalDimensions: `${originalWidth}x${originalHeight}`,n                    convertedDimensions: `${Math.round(canvas.width)}x${Math.round(canvas.height)}`,n                    status: 'success'n                });n            }n            return convertedPages;n        }
-        /**n         * Converts multiple images into a single PDF document.n         * @param {Array<File>} imageFiles - Array of image File objects.n         * @param {object} options - Conversion options including watermark, resize, quality, rotation, grayscale, crop.n         * @returns {Promise<Object>} A promise resolving to { name, dataURL, type, originalSize, convertedSize, status } of the generated PDF.n         */n        async function imagesToPdf(imageFiles, options) {n            if (imageFiles.length === 0) {n                throw new Error("No images provided for PDF conversion.");n            }
-            const doc = new jsPDF({n                orientation: 'portrait', // Default to portraitn                unit: 'px',n                format: 'a4' // Default to A4 sizen            });n            doc.deletePage(1); // Remove initial blank pagenn            let totalOriginalSize = 0;
-            for (const file of imageFiles) {n                totalOriginalSize += file.size;n                const imgData = await new Promise((resolve, reject) => {n                    const reader = new FileReader();n                    reader.onload = (e) => {n                        const img = new Image();n                        img.onload = () => {n                            const canvas = document.createElement('canvas');n                            const ctx = canvas.getContext('2d');
-                            let originalWidth = img.width;n                            let originalHeight = img.height;
-                            let drawX = 0;n                            let drawY = 0;n                            let drawWidth = originalWidth;n                            let drawHeight = originalHeight;
-                            // Apply cropping first if enabledn                            if (options.enableCropping) {n                                const cropX = options.cropX !== null ? options.cropX : 0;n                                const cropY = options.cropY !== null ? options.cropY : 0;n                                const cropWidth = options.cropWidth !== null ? options.cropWidth : originalWidth - cropX;n                                const cropHeight = options.cropHeight !== null ? options.cropHeight : originalHeight - cropY;
-                                if (cropX < 0 || cropY < 0 || cropWidth <= 0 || cropHeight <= 0 ||n                                    cropX + cropWidth > originalWidth || cropY + cropHeight > originalHeight) {n                                    reject(new Error(`Invalid cropping dimensions for ${file.name}.`));n                                    return;n                                }
-                                drawX = cropX;n                                drawY = cropY;n                                drawWidth = cropWidth;n                                drawHeight = cropHeight;n                            }
-                            let targetWidth = options.resizeWidth || drawWidth;n                            let targetHeight = options.resizeHeight || drawHeight;
-                            // Calculate aspect ratio and adjust dimensions if only one is providedn                            if (options.resizeWidth && !options.resizeHeight) {n                                targetHeight = (drawHeight / drawWidth) * targetWidth;n                            } else if (options.resizeHeight && !options.resizeWidth) {n                                targetWidth = (drawWidth / drawHeight) * targetHeight;n                            }
-                            // Apply rotationn                            const angle = parseInt(options.rotationAngle);n                            let rotatedWidth = targetWidth;n                            let rotatedHeight = targetHeight;
-                            if (angle === 90 || angle === 270) {n                                rotatedWidth = targetHeight;n                                rotatedHeight = targetWidth;n                            }
-                            canvas.width = rotatedWidth;n                            canvas.height = rotatedHeight;
-                            ctx.save(); // Save the unrotated context statenn                            // Translate to center of canvas for rotationn                            ctx.translate(rotatedWidth / 2, rotatedHeight / 2);n                            ctx.rotate(angle * Math.PI / 180); // Rotate in radiansn                            ctx.translate(-rotatedWidth / 2, -rotatedHeight / 2); // Translate backnn                            ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight,n                                          (rotatedWidth - targetWidth) / 2, (rotatedHeight - targetHeight) / 2,n                                          targetWidth, targetHeight);
-                            ctx.restore(); // Restore contextnn                            // Apply grayscale filter if enabledn                            if (options.convertToGrayscale) {n                                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);n                                const data = imageData.data;n                                for (let i = 0; i < data.length; i += 4) {n                                    const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;n                                    data[i] = avg;     // redn                                    data[i + 1] = avg; // greenn                                    data[i + 2] = avg; // bluen                                }n                                ctx.putImageData(imageData, 0, 0);n                            }
-                            // Apply watermark if enabledn                            if (options.addWatermark && options.watermarkText) {n                                applyWatermark(ctx, canvas, options.watermarkText, options.watermarkPosition, options.watermarkOpacity, options.watermarkFontSize);n                            }
-                            resolve(canvas.toDataURL('image/jpeg', options.quality / 100)); // Convert to JPEG for PDFn                        };n                        img.onerror = () => reject(new Error(`Could not load image for PDF: ${file.name}`));n                        img.src = e.target.result;n                    };n                    reader.onerror = () => reject(new Error(`Could not read file for PDF: ${file.name}`));n                    reader.readAsDataURL(file);n                });
-                // Add image to PDF, scaling to fit pagen                doc.addPage();n                const pageWidth = doc.internal.pageSize.getWidth();n                const pageHeight = doc.internal.pageSize.getHeight();
-                const img = new Image(); // Create a new Image object to get dimensionsn                img.src = imgData;n                await new Promise(r => img.onload = r); // Wait for image to load to get dimensionsnn                const imgAspectRatio = img.width / img.height;n                const pageAspectRatio = pageWidth / pageHeight;
-                let finalImgWidth;n                let finalImgHeight;
-                if (imgAspectRatio > pageAspectRatio) {n                    finalImgWidth = pageWidth;n                    finalImgHeight = pageWidth / imgAspectRatio;n                } else {n                    finalImgHeight = pageHeight;n                    finalImgWidth = pageHeight * imgAspectRatio;n                }
-                const x = (pageWidth - finalImgWidth) / 2;n                const y = (pageHeight - finalImgHeight) / 2;
-                doc.addImage(imgData, 'JPEG', x, y, finalImgWidth, finalImgHeight);n            }
-            const pdfDataURL = doc.output('datauristring');n            const newFileName = `converted_images.pdf`;n            const convertedSize = Math.round((pdfDataURL.length * 0.75) / 1024); // Estimate size from base64nn            return {n                name: newFileName,n                dataURL: pdfDataURL,n                type: 'application/pdf',n                originalSize: (totalOriginalSize / 1024).toFixed(2),n                convertedSize: convertedSize,n                originalDimensions: 'N/A', // Dimensions are for individual images, not a combined PDFn                convertedDimensions: `${Math.round(doc.internal.pageSize.getWidth())}x${Math.round(doc.internal.pageSize.getHeight())}`,n                status: 'success'n            };n        }
-        /**n         * Applies a text watermark to a canvas context.n         * @param {CanvasRenderingContext2D} ctx - The canvas rendering context.n         * @param {HTMLCanvasElement} canvas - The canvas element.n         * @param {string} text - The watermark text.n         * @param {string} position - 'top-left', 'top-right', 'center', 'bottom-left', 'bottom-right'.n         * @param {number} opacity - Opacity from 0 to 1.n         * @param {number} fontSize - Font size in pixels.n         */n        function applyWatermark(ctx, canvas, text, position, opacity, fontSize) {n            ctx.font = `bold ${fontSize}px Arial`;n            ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`;n            ctx.textAlign = 'center';n            ctx.textBaseline = 'middle';
-            const margin = 20; // Padding from edgesn            const textWidth = ctx.measureText(text).width;n            const textHeight = fontSize; // Approximate text heightnn            let x, y;
-            switch (position) {n                case 'top-left':n                    x = margin;n                    y = margin + textHeight / 2;n                    ctx.textAlign = 'left';n                    ctx.textBaseline = 'top';n                    break;n                case 'top-right':n                    x = canvas.width - margin;n                    y = margin + textHeight / 2;n                    ctx.textAlign = 'right';n                    ctx.textBaseline = 'top';n                    break;n                case 'bottom-left':n                    x = margin;n                    y = canvas.height - margin - textHeight / 2;n                    ctx.textAlign = 'left';n                    ctx.textBaseline = 'bottom';n                    break;n                case 'bottom-right':n                    x = canvas.width - margin;n                    y = canvas.height - margin - textHeight / 2;n                    ctx.textAlign = 'right';n                    ctx.textBaseline = 'bottom';n                    break;n                case 'center':n                default:n                    x = canvas.width / 2;n                    y = canvas.height / 2;n                    ctx.textAlign = 'center';n                    ctx.textBaseline = 'middle';n                    break;n            }n            ctx.fillText(text, x, y);n        }
-        /**n         * Main function to initiate image conversion.n         */n        async function convertImages() {n            if (uploadedFiles.length === 0) {n                showMessage("Please upload files first!", "error");n                return;n            }
-            showLoading();n            convertedFiles = [];n            previewGrid.innerHTML = ''; // Clear previous previewsnn            const outputFormat = outputFormatSelect.value;n            const options = {n                quality: parseInt(qualitySlider.value),n                resizeWidth: resizeWidthInput.value ? parseInt(resizeWidthInput.value) : null,n                resizeHeight: resizeHeightInput.value ? parseInt(resizeHeightInput.value) : null,n                rotationAngle: rotationAngleSelect.value,n                convertToGrayscale: convertToGrayscaleCheckbox.checked,n                enableCropping: enableCroppingCheckbox.checked,n                cropX: enableCroppingCheckbox.checked && cropXInput.value !== '' ? parseInt(cropXInput.value) : null,n                cropY: enableCroppingCheckbox.checked && cropYInput.value !== '' ? parseInt(cropYInput.value) : null,n                cropWidth: enableCroppingCheckbox.checked && cropWidthInput.value !== '' ? parseInt(cropWidthInput.value) : null,n                cropHeight: enableCroppingCheckbox.checked && cropHeightInput.value !== '' ? parseInt(cropHeightInput.value) : null,n                addWatermark: addWatermarkCheckbox.checked,n                watermarkText: watermarkText.value.trim(),n                watermarkPosition: watermarkPositionSelect.value,n                watermarkOpacity: parseFloat(watermarkOpacitySlider.value),n                watermarkFontSize: parseInt(watermarkFontSizeSlider.value)n            };
-            // Filter out PDF files if output is PDF (as PDF to PDF is not supported)n            const filesToProcess = uploadedFiles.filter(file => !(file.type === 'application/pdf' && outputFormat === 'pdf'));
-            // Handle Images to PDF conversion as a special casen            if (outputFormat === 'pdf' && filesToProcess.some(f => f.type.startsWith('image/'))) {n                const imageFilesOnly = filesToProcess.filter(f => f.type.startsWith('image/'));n                if (imageFilesOnly.length > 0) {n                    try {n                        const pdfResult = await imagesToPdf(imageFilesOnly, options);n                        convertedFiles.push(pdfResult);n                        showMessage("Images successfully combined and converted to PDF!", "success");n                    } catch (error) {n                        showMessage(`Error converting images to PDF: ${error.message}`, "error");n                        console.error("PDF conversion error:", error);n                    }n                } else {n                    showMessage("No image files found to convert to PDF. Please upload image files.", "error");n                }n            } else {n                // Handle individual image/PDF page conversionsn                const conversionPromises = filesToProcess.map(async (file) => {n                    if (file.type === 'application/pdf') {n                        return await convertPdfToImages(file, outputFormat, options);n                    } else if (file.type.startsWith('image/')) {n                        return await convertImageFile(file, outputFormat, options);n                    } else {n                        // This case should ideally be caught by handleFiles, but as a fallbackn                        return {n                            name: file.name,n                            dataURL: null,n                            type: file.type,n                            originalSize: (file.size / 1024).toFixed(2),n                            convertedSize: 0,n                            originalDimensions: 'N/A',n                            convertedDimensions: 'N/A',n                            status: 'error',n                            message: 'Unsupported file type'n                        };n                    }n                });
-                // Flatten the array of arrays (for PDF pages) and filter out nullsn                const results = (await Promise.all(conversionPromises)).flat().filter(Boolean);n                convertedFiles = results;
-                if (convertedFiles.length > 0) {n                    showMessage(`Successfully converted ${convertedFiles.filter(f => f.status === 'success').length} image(s)!`, "success");n                } else {n                    showMessage("No images were successfully converted.", "error");n                }n            }
-            if (convertedFiles.length > 0) {n                displayPreviews();n                downloadAllBtn.disabled = false;n            } else {n                downloadAllBtn.disabled = true;n            }n            hideLoading();n        }
-        /**n         * Displays previews of converted images.n         */n        function displayPreviews() {n            previewGrid.innerHTML = ''; // Clear existing previewsn            if (convertedFiles.length === 0) {n                previewGrid.innerHTML = '<p class="text-center text-gray-500 w-full">No converted images to preview.</p>';n                return;n            }
-            convertedFiles.forEach(file => {n                const previewItem = document.createElement('div');n                previewItem.className = 'preview-item';n                previewItem.innerHTML = `n                    <img src="${file.dataURL}" alt="${file.name}">                    <span class="file-name">${file.name}</span>                    <span class="file-dimensions">${file.originalDimensions} &rarr; ${file.convertedDimensions}</span>                    <span class="file-sizes">Original: ${file.originalSize} KB | Converted: ${file.convertedSize} KB</span>                    <span class="conversion-status ${file.status}">${file.status.charAt(0).toUpperCase() + file.status.slice(1)}</span>                    <button class="download-single-btn" data-name="${file.name}" data-url="${file.dataURL}" data-type="${file.type}">Download</button>                `;n                previewGrid.appendChild(previewItem);n            });
-            // Add event listeners for single downloadsn            previewGrid.querySelectorAll('.download-single-btn').forEach(btn => {n                btn.addEventListener('click', (e) => {n                    const fileName = e.target.dataset.name;n                    const dataURL = e.target.dataset.url;n                    saveAs(dataURL, fileName);n                });n            });n        }
-        /**n         * Downloads all converted images as a single ZIP file.n         */n        async function downloadAllConverted() {n            if (convertedFiles.length === 0) {n                showMessage("No converted files to download!", "error");n                return;n            }
-            showLoading();n            const zip = new JSZip();
-            convertedFiles.forEach(file => {n                // Remove dataURL prefix to get base64 stringn                const base64Data = file.dataURL.split(',')[1];n                zip.file(file.name, base64Data, { base64: true });n            });
-            try {n                const content = await zip.generateAsync({ type: "blob" });n                saveAs(content, "converted_files.zip");n                showMessage("All converted files downloaded as ZIP!", "success");n            } catch (error) {n                showMessage(`Error creating zip file: ${error.message}`, "error");n                console.error("JSZip error:", error);n            } finally {n                hideLoading();n            }n        }
-        /**n         * Toggles the visibility of quality control options based on selected output format.n         */n        function toggleQualityControlVisibility() {n            const format = outputFormatSelect.value;n            if (format === 'jpeg' || format === 'webp') {n                qualityControlGroup.style.display = 'block';n            } else {n                qualityControlGroup.style.display = 'none';n            }n        }
+    <script>        // Set workerSrc for PDF.js
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+const { jsPDF } = window.jspdf;
+        // DOM Elements
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const fileListDiv = document.getElementById('fileList');
+const outputFormatSelect = document.getElementById('outputFormat');
+const qualityControlGroup = document.getElementById('qualityControlGroup');
+const qualitySlider = document.getElementById('qualitySlider');
+const qualityValueSpan = document.getElementById('qualityValue');
+const resizeWidthInput = document.getElementById('resizeWidth');
+const resizeHeightInput = document.getElementById('resizeHeight');
+const rotationAngleSelect = document.getElementById('rotationAngle');
+const convertToGrayscaleCheckbox = document.getElementById('convertToGrayscale');
+const enableCroppingCheckbox = document.getElementById('enableCropping');
+const croppingOptionsGroup = document.getElementById('croppingOptionsGroup');
+const cropXInput = document.getElementById('cropX');
+const cropYInput = document.getElementById('cropY');
+const cropWidthInput = document.getElementById('cropWidth');
+const cropHeightInput = document.getElementById('cropHeight');
+const addWatermarkCheckbox = document.getElementById('addWatermark');
+const watermarkOptionsGroup = document.getElementById('watermarkOptionsGroup');
+const watermarkText = document.getElementById('watermarkText');
+const watermarkPositionSelect = document.getElementById('watermarkPosition');
+const watermarkOpacitySlider = document.getElementById('watermarkOpacity');
+const watermarkOpacityValueSpan = document.getElementById('watermarkOpacityValue');
+const watermarkFontSizeSlider = document.getElementById('watermarkFontSize');
+const watermarkFontSizeValueSpan = document.getElementById('watermarkFontSizeValue');
+const convertBtn = document.getElementById('convertBtn');
+const downloadAllBtn = document.getElementById('downloadAllBtn');
+const resetBtn = document.getElementById('resetBtn');
+const loadingSpinner = document.getElementById('loadingSpinner');
+const messageBox = document.getElementById('messageBox');
+const previewGrid = document.getElementById('previewGrid');
+        let uploadedFiles = []; // Stores original File objectsn        let convertedFiles = []; // Stores { name, dataURL, type, originalSize, convertedSize, status, originalDimensions, convertedDimensions } of converted images/PDFsnn        let draggedItem = null; // For drag and drop reorderingn
+// --- Utility Functions ---
+        /**n         * Displays a message in the message box.n         * @param {string} message - The message to display.n         * @param {'success'|'error'} type - The type of message (for styling).n         */n        function showMessage(message, type) {
+messageBox.textContent = message;
+messageBox.className = `message-box ${type}`;
+messageBox.classList.remove('hidden');
+setTimeout(() => {
+messageBox.classList.add('hidden');
+}, 5000); // Hide after 5 seconds
+}
+        /**n         * Shows the loading spinner.n         */n        function showLoading() {
+loadingSpinner.classList.remove('hidden');
+convertBtn.disabled = true;
+downloadAllBtn.disabled = true;
+resetBtn.disabled = true;
+messageBox.classList.add('hidden'); // Hide any previous messages
+}
+        /**n         * Hides the loading spinner.n         */n        function hideLoading() {
+loadingSpinner.classList.add('hidden');
+convertBtn.disabled = false;
+resetBtn.disabled = false;
+}
+        /**n         * Resets the UI and clears all data.n         */n        function resetApp() {
+uploadedFiles = [];
+convertedFiles = [];
+fileInput.value = ''; // Clear file input
+fileListDiv.innerHTML = '';
+fileListDiv.classList.add('hidden');
+previewGrid.innerHTML = '<p class="text-center text-gray-500 w-full">Converted images will appear here.</p>';
+outputFormatSelect.value = 'png';
+qualitySlider.value = 90;
+qualityValueSpan.textContent = 90;
+resizeWidthInput.value = '';
+resizeHeightInput.value = '';
+rotationAngleSelect.value = '0';
+convertToGrayscaleCheckbox.checked = false;
+enableCroppingCheckbox.checked = false;
+croppingOptionsGroup.style.display = 'none';
+cropXInput.value = 0;
+cropYInput.value = 0;
+cropWidthInput.value = '';
+cropHeightInput.value = '';
+addWatermarkCheckbox.checked = false;
+watermarkOptionsGroup.style.display = 'none';
+watermarkText.value = '';
+watermarkPositionSelect.value = 'bottom-right';
+watermarkOpacitySlider.value = 0.5;
+watermarkOpacityValueSpan.textContent = 0.5;
+watermarkFontSizeSlider.value = 30;
+watermarkFontSizeValueSpan.textContent = 30;
+hideLoading();
+downloadAllBtn.disabled = true;
+messageBox.classList.add('hidden');
+showMessage("Application reset successfully!", "success");
+toggleQualityControlVisibility(); // Ensure correct visibility on reset
+}
+        /**n         * Handles file selection from input or drag-and-drop.n         * @param {FileList} files - The FileList object from the event.n         */n        function handleFiles(files) {
+if (files.length === 0) return;
+            // Clear previous files if new ones are selected
+uploadedFiles = [];
+fileListDiv.innerHTML = '';
+fileListDiv.classList.remove('hidden');
+            Array.from(files).forEach(file => {
+if (file.type.startsWith('image/') || file.type === 'application/pdf') {
+uploadedFiles.push(file);
+const fileItem = document.createElement('div');
+fileItem.className = 'file-item';
+fileItem.draggable = true; // Make items draggablen                    fileItem.dataset.fileName = file.name; // Store file name for identificationn                    fileItem.innerHTML = `
+<span>${file.name} (${(file.size / 1024).toFixed(2)} KB)</span>                        <i class="fas fa-times remove-file-btn" data-name="${file.name}"></i>                    `;
+fileListDiv.appendChild(fileItem);
+} else {
+showMessage(`Skipped unsupported file: ${file.name}. Only images and PDFs are supported.`, 'error');
+}
+});
+addDragDropListenersToFileList(); // Add listeners after adding filesn            addRemoveButtonListeners(); // Add listeners for remove buttons
+}
+        /**n         * Adds drag and drop listeners to file list items.n         */n        function addDragDropListenersToFileList() {
+fileListDiv.querySelectorAll('.file-item').forEach(item => {
+item.addEventListener('dragstart', (e) => {
+draggedItem = item;
+setTimeout(() => item.classList.add('dragging'), 0);
+e.dataTransfer.effectAllowed = 'move';
+});
+                item.addEventListener('dragend', () => {
+draggedItem.classList.remove('dragging');
+draggedItem = null;
+});
+                item.addEventListener('dragover', (e) => {
+e.preventDefault();
+const bounding = item.getBoundingClientRect();
+const offset = bounding.y + (bounding.height / 2);
+if (e.clientY - offset > 0) {
+item.style.borderBottom = '2px solid #4299e1';
+item.style.borderTop = '';
+} else {
+item.style.borderTop = '2px solid #4299e1';
+item.style.borderBottom = '';
+}
+});
+                item.addEventListener('dragleave', () => {
+item.style.borderBottom = '';
+item.style.borderTop = '';
+});
+                item.addEventListener('drop', (e) => {
+e.preventDefault();
+item.style.borderBottom = '';
+item.style.borderTop = '';
+                    if (draggedItem && draggedItem !== item) {
+const allItems = Array.from(fileListDiv.children);
+const draggedIndex = allItems.indexOf(draggedItem);
+const dropIndex = allItems.indexOf(item);
+                        // Reorder the DOM elements
+if (draggedIndex < dropIndex) {
+fileListDiv.insertBefore(draggedItem, item.nextSibling);
+} else {
+fileListDiv.insertBefore(draggedItem, item);
+}
+                        // Reorder the underlying uploadedFiles array
+const [removed] = uploadedFiles.splice(draggedIndex, 1);
+uploadedFiles.splice(dropIndex, 0, removed);
+}
+});
+});
+}
+        /**n         * Adds click listeners to remove file buttons.n         */n        function addRemoveButtonListeners() {
+fileListDiv.querySelectorAll('.remove-file-btn').forEach(btn => {
+btn.addEventListener('click', (e) => {
+const fileNameToRemove = e.target.dataset.name;
+uploadedFiles = uploadedFiles.filter(file => file.name !== fileNameToRemove);
+e.target.closest('.file-item').remove();
+if (uploadedFiles.length === 0) {
+fileListDiv.classList.add('hidden');
+}
+});
+});
+}
+        /**n         * Converts an image file (JPG, PNG, WebP, SVG) to a specified format.n         * @param {File} file - The image File object.n         * @param {string} outputFormat - 'jpeg', 'png', or 'webp'.n         * @param {object} options - Conversion options including watermark, resize, quality, rotation, grayscale, crop.n         * @returns {Promise<Object>} A promise resolving to { name, dataURL, type, originalSize, convertedSize, status, originalDimensions, convertedDimensions } of the converted image.n         */n        function convertImageFile(file, outputFormat, options) {
+return new Promise((resolve, reject) => {
+const reader = new FileReader();
+reader.onload = (e) => {
+const img = new Image();
+img.onload = () => {
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+                        let originalWidth = img.width;
+let originalHeight = img.height;
+                        let drawX = 0;
+let drawY = 0;
+let drawWidth = originalWidth;
+let drawHeight = originalHeight;
+                        // Apply cropping first if enabled
+if (options.enableCropping) {
+const cropX = options.cropX !== null ? options.cropX : 0;
+const cropY = options.cropY !== null ? options.cropY : 0;
+const cropWidth = options.cropWidth !== null ? options.cropWidth : originalWidth - cropX;
+const cropHeight = options.cropHeight !== null ? options.cropHeight : originalHeight - cropY;
+                            // Validate crop dimensionsn                            if (cropX < 0 || cropY < 0 || cropWidth <= 0 || cropHeight <= 0 ||
+cropX + cropWidth > originalWidth || cropY + cropHeight > originalHeight) {
+reject(new Error(`Invalid cropping dimensions for ${file.name}.`));
+return;
+}
+                            drawX = cropX;
+drawY = cropY;
+drawWidth = cropWidth;
+drawHeight = cropHeight;
+}
+                        let targetWidth = options.resizeWidth || drawWidth;
+let targetHeight = options.resizeHeight || drawHeight;
+                        // Calculate aspect ratio and adjust dimensions if only one is provided
+if (options.resizeWidth && !options.resizeHeight) {
+targetHeight = (drawHeight / drawWidth) * targetWidth;
+} else if (options.resizeHeight && !options.resizeWidth) {
+targetWidth = (drawWidth / drawHeight) * targetHeight;
+}
+                        // Apply rotation
+const angle = parseInt(options.rotationAngle);
+let rotatedWidth = targetWidth;
+let rotatedHeight = targetHeight;
+                        if (angle === 90 || angle === 270) {
+rotatedWidth = targetHeight;
+rotatedHeight = targetWidth;
+}
+                        canvas.width = rotatedWidth;
+canvas.height = rotatedHeight;
+                        ctx.save(); // Save the unrotated context statenn                        // Translate to center of canvas for rotation
+ctx.translate(rotatedWidth / 2, rotatedHeight / 2);
+ctx.rotate(angle * Math.PI / 180); // Rotate in radiansn                        ctx.translate(-rotatedWidth / 2, -rotatedHeight / 2); // Translate backn
+// Draw image onto canvas (cropped and resized)
+// The drawImage parameters need to account for the rotation's effect on coordinate systemn                        // For simplicity with translate/rotate, we draw from the center of the rotated canvas.
+ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight,
+(rotatedWidth - targetWidth) / 2, (rotatedHeight - targetHeight) / 2,
+targetWidth, targetHeight);
+                        ctx.restore(); // Restore context to remove rotation for subsequent operations like watermarknn                        // Apply grayscale filter if enabled
+if (options.convertToGrayscale) {
+const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+const data = imageData.data;
+for (let i = 0; i < data.length; i += 4) {
+const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+data[i] = avg;     // redn                                data[i + 1] = avg; // greenn                                data[i + 2] = avg; // blue
+}
+ctx.putImageData(imageData, 0, 0);
+}
+                        // Apply watermark if enabled and text is provided
+if (options.addWatermark && options.watermarkText) {
+applyWatermark(ctx, canvas, options.watermarkText, options.watermarkPosition, options.watermarkOpacity, options.watermarkFontSize);
+}
+                        // Determine output MIME type
+let mimeType;
+let quality = options.quality / 100; // Convert to 0-1 range
+switch (outputFormat) {
+case 'jpeg':
+mimeType = 'image/jpeg';
+break;
+case 'webp':
+mimeType = 'image/webp';
+break;
+case 'png':
+default:
+mimeType = 'image/png';
+break;
+}
+                        const dataURL = canvas.toDataURL(mimeType, quality);
+const newFileName = `${file.name.split('.').slice(0, -1).join('.')}.${outputFormat}`;
+const convertedSize = Math.round((dataURL.length * 0.75) / 1024); // Estimate size from base64
+resolve({
+name: newFileName,
+dataURL: dataURL,
+type: mimeType,
+originalSize: (file.size / 1024).toFixed(2),
+convertedSize: convertedSize,
+originalDimensions: `${originalWidth}x${originalHeight}`,
+convertedDimensions: `${Math.round(canvas.width)}x${Math.round(canvas.height)}`,
+status: 'success'n                        });
+};
+img.onerror = () => reject(new Error(`Could not load image: ${file.name}`));
+img.src = e.target.result;
+};
+reader.onerror = () => reject(new Error(`Could not read file: ${file.name}`));
+reader.readAsDataURL(file);
+});
+}
+        /**n         * Converts a PDF file to an array of image data URLs (one per page).n         * @param {File} pdfFile - The PDF File object.n         * @param {string} outputFormat - 'jpeg' or 'png'.n         * @param {object} options - Conversion options including watermark, resize, quality, rotation, grayscale, crop.n         * @returns {Promise<Array<Object>>} A promise resolving to an array of { name, dataURL, type, originalSize, convertedSize, status, originalDimensions, convertedDimensions } for each page.n         */n        async function convertPdfToImages(pdfFile, outputFormat, options) {
+const convertedPages = [];
+const pdfData = await pdfFile.arrayBuffer();
+const loadingTask = pdfjsLib.getDocument({ data: pdfData });
+const pdf = await loadingTask.promise;
+            for (let i = 1; i <= pdf.numPages; i++) {
+const page = await pdf.getPage(i);
+const viewport = page.getViewport({ scale: 1.5 }); // Scale for initial render quality
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+                let originalWidth = viewport.width;
+let originalHeight = viewport.height;
+                let drawX = 0;
+let drawY = 0;
+let drawWidth = originalWidth;
+let drawHeight = originalHeight;
+                // Apply cropping first if enabled
+if (options.enableCropping) {
+const cropX = options.cropX !== null ? options.cropX : 0;
+const cropY = options.cropY !== null ? options.cropY : 0;
+const cropWidth = options.cropWidth !== null ? options.cropWidth : originalWidth - cropX;
+const cropHeight = options.cropHeight !== null ? options.cropHeight : originalHeight - cropY;
+                    if (cropX < 0 || cropY < 0 || cropWidth <= 0 || cropHeight <= 0 ||n                        cropX + cropWidth > originalWidth || cropY + cropHeight > originalHeight) {
+throw new Error(`Invalid cropping dimensions for PDF page ${i} of ${pdfFile.name}.`);
+}
+                    drawX = cropX;
+drawY = cropY;
+drawWidth = cropWidth;
+drawHeight = cropHeight;
+}
+                let targetWidth = options.resizeWidth || drawWidth;
+let targetHeight = options.resizeHeight || drawHeight;
+                // Calculate aspect ratio and adjust dimensions if only one is provided
+if (options.resizeWidth && !options.resizeHeight) {
+targetHeight = (drawHeight / drawWidth) * targetWidth;
+} else if (options.resizeHeight && !options.resizeWidth) {
+targetWidth = (drawWidth / drawHeight) * targetHeight;
+}
+                // Apply rotation
+const angle = parseInt(options.rotationAngle);
+let rotatedWidth = targetWidth;
+let rotatedHeight = targetHeight;
+                if (angle === 90 || angle === 270) {
+rotatedWidth = targetHeight;
+rotatedHeight = targetWidth;
+}
+                canvas.width = rotatedWidth;
+canvas.height = rotatedHeight;
+                ctx.save(); // Save the unrotated context statenn                // Translate to center of canvas for rotation
+ctx.translate(rotatedWidth / 2, rotatedHeight / 2);
+ctx.rotate(angle * Math.PI / 180); // Rotate in radiansn                ctx.translate(-rotatedWidth / 2, -rotatedHeight / 2); // Translate backn
+const renderContext = {
+canvasContext: ctx,
+viewport: page.getViewport({ scale: targetWidth / drawWidth }) // Adjust viewport scale for target dimensions after crop
+};
+await page.render(renderContext).promise;
+                ctx.restore(); // Restore context to remove rotation for subsequent operations like watermarknn                // Apply grayscale filter if enabled
+if (options.convertToGrayscale) {
+const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+const data = imageData.data;
+for (let j = 0; j < data.length; j += 4) {
+const avg = (data[j] + data[j + 1] + data[j + 2]) / 3;
+data[j] = avg;     // redn                        data[j + 1] = avg; // greenn                        data[j + 2] = avg; // blue
+}
+ctx.putImageData(imageData, 0, 0);
+}
+                // Apply watermark if enabled and text is provided
+if (options.addWatermark && options.watermarkText) {
+applyWatermark(ctx, canvas, options.watermarkText, options.watermarkPosition, options.watermarkOpacity, options.watermarkFontSize);
+}
+                let mimeType;
+let quality = options.quality / 100;
+switch (outputFormat) {
+case 'jpeg':
+mimeType = 'image/jpeg';
+break;
+case 'png':
+default:
+mimeType = 'image/png';
+break;
+}
+                const dataURL = canvas.toDataURL(mimeType, quality);
+const newFileName = `${pdfFile.name.split('.').slice(0, -1).join('.')}_page${i}.${outputFormat}`;
+const convertedSize = Math.round((dataURL.length * 0.75) / 1024);
+                convertedPages.push({
+name: newFileName,
+dataURL: dataURL,
+type: mimeType,
+originalSize: (pdfFile.size / pdf.numPages / 1024).toFixed(2), // Estimate per page
+convertedSize: convertedSize,
+originalDimensions: `${originalWidth}x${originalHeight}`,
+convertedDimensions: `${Math.round(canvas.width)}x${Math.round(canvas.height)}`,
+status: 'success'n                });
+}
+return convertedPages;
+}
+        /**n         * Converts multiple images into a single PDF document.n         * @param {Array<File>} imageFiles - Array of image File objects.n         * @param {object} options - Conversion options including watermark, resize, quality, rotation, grayscale, crop.n         * @returns {Promise<Object>} A promise resolving to { name, dataURL, type, originalSize, convertedSize, status } of the generated PDF.n         */n        async function imagesToPdf(imageFiles, options) {
+if (imageFiles.length === 0) {
+throw new Error("No images provided for PDF conversion.");
+}
+            const doc = new jsPDF({
+orientation: 'portrait', // Default to portrait
+unit: 'px',
+format: 'a4' // Default to A4 size
+});
+doc.deletePage(1); // Remove initial blank pagen
+let totalOriginalSize = 0;
+            for (const file of imageFiles) {
+totalOriginalSize += file.size;
+const imgData = await new Promise((resolve, reject) => {
+const reader = new FileReader();
+reader.onload = (e) => {
+const img = new Image();
+img.onload = () => {
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+                            let originalWidth = img.width;
+let originalHeight = img.height;
+                            let drawX = 0;
+let drawY = 0;
+let drawWidth = originalWidth;
+let drawHeight = originalHeight;
+                            // Apply cropping first if enabled
+if (options.enableCropping) {
+const cropX = options.cropX !== null ? options.cropX : 0;
+const cropY = options.cropY !== null ? options.cropY : 0;
+const cropWidth = options.cropWidth !== null ? options.cropWidth : originalWidth - cropX;
+const cropHeight = options.cropHeight !== null ? options.cropHeight : originalHeight - cropY;
+                                if (cropX < 0 || cropY < 0 || cropWidth <= 0 || cropHeight <= 0 ||n                                    cropX + cropWidth > originalWidth || cropY + cropHeight > originalHeight) {
+reject(new Error(`Invalid cropping dimensions for ${file.name}.`));
+return;
+}
+                                drawX = cropX;
+drawY = cropY;
+drawWidth = cropWidth;
+drawHeight = cropHeight;
+}
+                            let targetWidth = options.resizeWidth || drawWidth;
+let targetHeight = options.resizeHeight || drawHeight;
+                            // Calculate aspect ratio and adjust dimensions if only one is provided
+if (options.resizeWidth && !options.resizeHeight) {
+targetHeight = (drawHeight / drawWidth) * targetWidth;
+} else if (options.resizeHeight && !options.resizeWidth) {
+targetWidth = (drawWidth / drawHeight) * targetHeight;
+}
+                            // Apply rotation
+const angle = parseInt(options.rotationAngle);
+let rotatedWidth = targetWidth;
+let rotatedHeight = targetHeight;
+                            if (angle === 90 || angle === 270) {
+rotatedWidth = targetHeight;
+rotatedHeight = targetWidth;
+}
+                            canvas.width = rotatedWidth;
+canvas.height = rotatedHeight;
+                            ctx.save(); // Save the unrotated context statenn                            // Translate to center of canvas for rotation
+ctx.translate(rotatedWidth / 2, rotatedHeight / 2);
+ctx.rotate(angle * Math.PI / 180); // Rotate in radiansn                            ctx.translate(-rotatedWidth / 2, -rotatedHeight / 2); // Translate backn
+ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight,
+(rotatedWidth - targetWidth) / 2, (rotatedHeight - targetHeight) / 2,
+targetWidth, targetHeight);
+                            ctx.restore(); // Restore contextnn                            // Apply grayscale filter if enabled
+if (options.convertToGrayscale) {
+const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+const data = imageData.data;
+for (let i = 0; i < data.length; i += 4) {
+const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+data[i] = avg;     // redn                                    data[i + 1] = avg; // greenn                                    data[i + 2] = avg; // blue
+}
+ctx.putImageData(imageData, 0, 0);
+}
+                            // Apply watermark if enabled
+if (options.addWatermark && options.watermarkText) {
+applyWatermark(ctx, canvas, options.watermarkText, options.watermarkPosition, options.watermarkOpacity, options.watermarkFontSize);
+}
+                            resolve(canvas.toDataURL('image/jpeg', options.quality / 100)); // Convert to JPEG for PDF
+};
+img.onerror = () => reject(new Error(`Could not load image for PDF: ${file.name}`));
+img.src = e.target.result;
+};
+reader.onerror = () => reject(new Error(`Could not read file for PDF: ${file.name}`));
+reader.readAsDataURL(file);
+});
+                // Add image to PDF, scaling to fit page
+doc.addPage();
+const pageWidth = doc.internal.pageSize.getWidth();
+const pageHeight = doc.internal.pageSize.getHeight();
+                const img = new Image(); // Create a new Image object to get dimensions
+img.src = imgData;
+await new Promise(r => img.onload = r); // Wait for image to load to get dimensionsn
+const imgAspectRatio = img.width / img.height;
+const pageAspectRatio = pageWidth / pageHeight;
+                let finalImgWidth;
+let finalImgHeight;
+                if (imgAspectRatio > pageAspectRatio) {
+finalImgWidth = pageWidth;
+finalImgHeight = pageWidth / imgAspectRatio;
+} else {
+finalImgHeight = pageHeight;
+finalImgWidth = pageHeight * imgAspectRatio;
+}
+                const x = (pageWidth - finalImgWidth) / 2;
+const y = (pageHeight - finalImgHeight) / 2;
+                doc.addImage(imgData, 'JPEG', x, y, finalImgWidth, finalImgHeight);
+}
+            const pdfDataURL = doc.output('datauristring');
+const newFileName = `converted_images.pdf`;
+const convertedSize = Math.round((pdfDataURL.length * 0.75) / 1024); // Estimate size from base64nn            retur
+{
+name: newFileName,
+dataURL: pdfDataURL,
+type: 'application/pdf',
+originalSize: (totalOriginalSize / 1024).toFixed(2),
+convertedSize: convertedSize,
+originalDimensions: 'N/A', // Dimensions are for individual images, not a combined PDF
+convertedDimensions: `${Math.round(doc.internal.pageSize.getWidth())}x${Math.round(doc.internal.pageSize.getHeight())}`,
+status: 'success'n            };
+}
+        /**n         * Applies a text watermark to a canvas context.n         * @param {CanvasRenderingContext2D} ctx - The canvas rendering context.n         * @param {HTMLCanvasElement} canvas - The canvas element.n         * @param {string} text - The watermark text.n         * @param {string} position - 'top-left', 'top-right', 'center', 'bottom-left', 'bottom-right'.n         * @param {
+umber} opacity - Opacity from 0 to 1.n         * @param {
+umber} fontSize - Font size in pixels.n         */n        function applyWatermark(ctx, canvas, text, position, opacity, fontSize) {
+ctx.font = `bold ${fontSize}px Arial`;
+ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`;
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+            const margin = 20; // Padding from edges
+const textWidth = ctx.measureText(text).width;
+const textHeight = fontSize; // Approximate text heightn
+let x, y;
+            switch (position) {
+case 'top-left':
+x = margin;
+y = margin + textHeight / 2;
+ctx.textAlign = 'left';
+ctx.textBaseline = 'top';
+break;
+case 'top-right':
+x = canvas.width - margin;
+y = margin + textHeight / 2;
+ctx.textAlign = 'right';
+ctx.textBaseline = 'top';
+break;
+case 'bottom-left':
+x = margin;
+y = canvas.height - margin - textHeight / 2;
+ctx.textAlign = 'left';
+ctx.textBaseline = 'bottom';
+break;
+case 'bottom-right':
+x = canvas.width - margin;
+y = canvas.height - margin - textHeight / 2;
+ctx.textAlign = 'right';
+ctx.textBaseline = 'bottom';
+break;
+case 'center':
+default:
+x = canvas.width / 2;
+y = canvas.height / 2;
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+break;
+}
+ctx.fillText(text, x, y);
+}
+        /**n         * Main function to initiate image conversion.n         */n        async function convertImages() {
+if (uploadedFiles.length === 0) {
+showMessage("Please upload files first!", "error");
+return;
+}
+            showLoading();
+convertedFiles = [];
+previewGrid.innerHTML = ''; // Clear previous previewsn
+const outputFormat = outputFormatSelect.value;
+const options = {
+quality: parseInt(qualitySlider.value),
+resizeWidth: resizeWidthInput.value ? parseInt(resizeWidthInput.value) : null,
+resizeHeight: resizeHeightInput.value ? parseInt(resizeHeightInput.value) : null,
+rotationAngle: rotationAngleSelect.value,
+convertToGrayscale: convertToGrayscaleCheckbox.checked,
+enableCropping: enableCroppingCheckbox.checked,
+cropX: enableCroppingCheckbox.checked && cropXInput.value !== '' ? parseInt(cropXInput.value) : null,
+cropY: enableCroppingCheckbox.checked && cropYInput.value !== '' ? parseInt(cropYInput.value) : null,
+cropWidth: enableCroppingCheckbox.checked && cropWidthInput.value !== '' ? parseInt(cropWidthInput.value) : null,
+cropHeight: enableCroppingCheckbox.checked && cropHeightInput.value !== '' ? parseInt(cropHeightInput.value) : null,
+addWatermark: addWatermarkCheckbox.checked,
+watermarkText: watermarkText.value.trim(),
+watermarkPosition: watermarkPositionSelect.value,
+watermarkOpacity: parseFloat(watermarkOpacitySlider.value),
+watermarkFontSize: parseInt(watermarkFontSizeSlider.value)
+};
+            // Filter out PDF files if output is PDF (as PDF to PDF is not supported)
+const filesToProcess = uploadedFiles.filter(file => !(file.type === 'application/pdf' && outputFormat === 'pdf'));
+            // Handle Images to PDF conversion as a special case
+if (outputFormat === 'pdf' && filesToProcess.some(f => f.type.startsWith('image/'))) {
+const imageFilesOnly = filesToProcess.filter(f => f.type.startsWith('image/'));
+if (imageFilesOnly.length > 0) {
+try {
+const pdfResult = await imagesToPdf(imageFilesOnly, options);
+convertedFiles.push(pdfResult);
+showMessage("Images successfully combined and converted to PDF!", "success");
+} catch (error) {
+showMessage(`Error converting images to PDF: ${error.message}`, "error");
+console.error("PDF conversion error:", error);
+}
+} else {
+showMessage("No image files found to convert to PDF. Please upload image files.", "error");
+}
+} else {
+// Handle individual image/PDF page conversions
+const conversionPromises = filesToProcess.map(async (file) => {
+if (file.type === 'application/pdf') {
+return await convertPdfToImages(file, outputFormat, options);
+} else if (file.type.startsWith('image/')) {
+return await convertImageFile(file, outputFormat, options);
+} else {
+// This case should ideally be caught by handleFiles, but as a fallbackn                        retur
+{
+name: file.name,
+dataURL: null,
+type: file.type,
+originalSize: (file.size / 1024).toFixed(2),
+convertedSize: 0,
+originalDimensions: 'N/A',
+convertedDimensions: 'N/A',
+status: 'error',
+message: 'Unsupported file type'n                        };
+}
+});
+                // Flatten the array of arrays (for PDF pages) and filter out nulls
+const results = (await Promise.all(conversionPromises)).flat().filter(Boolean);
+convertedFiles = results;
+                if (convertedFiles.length > 0) {
+showMessage(`Successfully converted ${convertedFiles.filter(f => f.status === 'success').length} image(s)!`, "success");
+} else {
+showMessage("No images were successfully converted.", "error");
+}
+}
+            if (convertedFiles.length > 0) {
+displayPreviews();
+downloadAllBtn.disabled = false;
+} else {
+downloadAllBtn.disabled = true;
+}
+hideLoading();
+}
+        /**n         * Displays previews of converted images.n         */n        function displayPreviews() {
+previewGrid.innerHTML = ''; // Clear existing previews
+if (convertedFiles.length === 0) {
+previewGrid.innerHTML = '<p class="text-center text-gray-500 w-full">No converted images to preview.</p>';
+return;
+}
+            convertedFiles.forEach(file => {
+const previewItem = document.createElement('div');
+previewItem.className = 'preview-item';
+previewItem.innerHTML = `n                    <img src="${file.dataURL}" alt="${file.name}">                    <span class="file-name">${file.name}</span>                    <span class="file-dimensions">${file.originalDimensions} &rarr; ${file.convertedDimensions}</span>                    <span class="file-sizes">Original: ${file.originalSize} KB | Converted: ${file.convertedSize} KB</span>                    <span class="conversion-status ${file.status}">${file.status.charAt(0).toUpperCase() + file.status.slice(1)}</span>                    <button class="download-single-btn" data-name="${file.name}" data-url="${file.dataURL}" data-type="${file.type}">Download</button>                `;
+previewGrid.appendChild(previewItem);
+});
+            // Add event listeners for single downloadsn            previewGrid.querySelectorAll('.download-single-btn').forEach(bt
+=> {
+btn.addEventListener('click', (e) => {
+const fileName = e.target.dataset.name;
+const dataURL = e.target.dataset.url;
+saveAs(dataURL, fileName);
+});
+});
+}
+        /**n         * Downloads all converted images as a single ZIP file.n         */n        async function downloadAllConverted() {
+if (convertedFiles.length === 0) {
+showMessage("No converted files to download!", "error");
+return;
+}
+            showLoading();
+const zip = new JSZip();
+            convertedFiles.forEach(file => {
+// Remove dataURL prefix to get base64 string
+const base64Data = file.dataURL.split(',')[1];
+zip.file(file.name, base64Data, { base64: true });
+});
+            try {
+const content = await zip.generateAsync({ type: "blob" });
+saveAs(content, "converted_files.zip");
+showMessage("All converted files downloaded as ZIP!", "success");
+} catch (error) {
+showMessage(`Error creating zip file: ${error.message}`, "error");
+console.error("JSZip error:", error);
+} finally {
+hideLoading();
+}
+}
+        /**n         * Toggles the visibility of quality control options based on selected output format.n         */n        function toggleQualityControlVisibility() {
+const format = outputFormatSelect.value;
+if (format === 'jpeg' || format === 'webp') {
+qualityControlGroup.style.display = 'block';
+} else {
+qualityControlGroup.style.display = 'none';
+}
+}
         // --- Event Listeners ---
-        // Handle file input changen        fileInput.addEventListener('change', (e) => {n            handleFiles(e.target.files);n        });
-        // Drag and drop functionality for upload arean        uploadArea.addEventListener('dragover', (e) => {n            e.preventDefault();n            e.stopPropagation();n            uploadArea.classList.add('border-blue-500', 'bg-blue-50');n        });n        uploadArea.addEventListener('dragleave', (e) => {n            e.preventDefault();n            e.stopPropagation();n            uploadArea.classList.remove('border-blue-500', 'bg-blue-50');n        });n        uploadArea.addEventListener('drop', (e) => {n            e.preventDefault();n            e.stopPropagation();n            uploadArea.classList.remove('border-blue-500', 'bg-blue-50');n            handleFiles(e.dataTransfer.files);n        });n        uploadArea.addEventListener('click', () => {n            fileInput.click(); // Trigger hidden file input clickn        });
-        // Toggle watermark options visibilityn        addWatermarkCheckbox.addEventListener('change', (e) => {n            watermarkOptionsGroup.style.display = e.target.checked ? 'block' : 'none';n        });
-        // Toggle cropping options visibilityn        enableCroppingCheckbox.addEventListener('change', (e) => {n            croppingOptionsGroup.style.display = e.target.checked ? 'block' : 'none';n        });
-        // Update quality value displayn        qualitySlider.addEventListener('input', () => {n            qualityValueSpan.textContent = qualitySlider.value;n        });
-        // Update watermark opacity value displayn        watermarkOpacitySlider.addEventListener('input', () => {n            watermarkOpacityValueSpan.textContent = watermarkOpacitySlider.value;n        });
-        // Update watermark font size value displayn        watermarkFontSizeSlider.addEventListener('input', () => {n            watermarkFontSizeValueSpan.textContent = watermarkFontSizeSlider.value;n        });
-        // Toggle quality control visibility on format changen        outputFormatSelect.addEventListener('change', toggleQualityControlVisibility);
-        // Button actionsn        convertBtn.addEventListener('click', convertImages);n        downloadAllBtn.addEventListener('click', downloadAllConverted);n        resetBtn.addEventListener('click', resetApp);
-        // Initial staten        window.onload = () => {n            hideLoading();n            downloadAllBtn.disabled = true;n            toggleQualityControlVisibility(); // Set initial visibilityn        };n    </script>
+        // Handle file input change
+fileInput.addEventListener('change', (e) => {
+handleFiles(e.target.files);
+});
+        // Drag and drop functionality for upload area
+uploadArea.addEventListener('dragover', (e) => {
+e.preventDefault();
+e.stopPropagation();
+uploadArea.classList.add('border-blue-500', 'bg-blue-50');
+});
+uploadArea.addEventListener('dragleave', (e) => {
+e.preventDefault();
+e.stopPropagation();
+uploadArea.classList.remove('border-blue-500', 'bg-blue-50');
+});
+uploadArea.addEventListener('drop', (e) => {
+e.preventDefault();
+e.stopPropagation();
+uploadArea.classList.remove('border-blue-500', 'bg-blue-50');
+handleFiles(e.dataTransfer.files);
+});
+uploadArea.addEventListener('click', () => {
+fileInput.click(); // Trigger hidden file input click
+});
+        // Toggle watermark options visibility
+addWatermarkCheckbox.addEventListener('change', (e) => {
+watermarkOptionsGroup.style.display = e.target.checked ? 'block' : 'none';
+});
+        // Toggle cropping options visibility
+enableCroppingCheckbox.addEventListener('change', (e) => {
+croppingOptionsGroup.style.display = e.target.checked ? 'block' : 'none';
+});
+        // Update quality value display
+qualitySlider.addEventListener('input', () => {
+qualityValueSpan.textContent = qualitySlider.value;
+});
+        // Update watermark opacity value display
+watermarkOpacitySlider.addEventListener('input', () => {
+watermarkOpacityValueSpan.textContent = watermarkOpacitySlider.value;
+});
+        // Update watermark font size value display
+watermarkFontSizeSlider.addEventListener('input', () => {
+watermarkFontSizeValueSpan.textContent = watermarkFontSizeSlider.value;
+});
+        // Toggle quality control visibility on format change
+outputFormatSelect.addEventListener('change', toggleQualityControlVisibility);
+        // Button actions
+convertBtn.addEventListener('click', convertImages);
+downloadAllBtn.addEventListener('click', downloadAllConverted);
+resetBtn.addEventListener('click', resetApp);
+        // Initial state
+window.onload = () => {
+hideLoading();
+downloadAllBtn.disabled = true;
+toggleQualityControlVisibility(); // Set initial visibility
+};
+</script>
 <p><strong>Why This Tool Stands Out:</strong><br>🔄&nbsp;<strong>Multi-Format Conversio</strong></p>
 <ul class="wp-block-list"><li>Convert between JPG, PNG, WebP, SVG, and PDF in both directions</li>
 <li>Extract individual pages from PDFs as images</li>

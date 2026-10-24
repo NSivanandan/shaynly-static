@@ -171,17 +171,75 @@
         <!-- Customer Engagement Section -->        <div class="guide-section" id="section2">            <h2 class="section-header">Customer Engagement</h2>            <div class="guide-card">                <div class="insight-badge">Trust Impact: High</div>                <div class="card-header">                    <div class="icon-box">💬</div>                    <h3>Review Management</h3>                </div>                <div class="dynamic-progress">                    <div class="progress-fill"></div>                </div>                <div class="checklist">                    <div class="checklist-item" onclick="gbpToggleCheck(this)">                        <input type="checkbox">                        <span class="interactive-tooltip" data-tooltip="Responding to reviews increases conversions by 35%">                            Respond to all reviewsn                        </span>                    </div>                    <div class="checklist-item" onclick="gbpToggleCheck(this)">                        <input type="checkbox">                        <span class="interactive-tooltip" data-tooltip="Positive responses improve ratings by 25%">                            Use professional languagen                        </span>                    </div>                </div>            </div>        </div>
         <!-- Visual Assets Section -->        <div class="guide-section" id="section3">            <h2 class="section-header">Visual Assets</h2>            <div class="guide-card">                <div class="insight-badge">Engagement Impact: High</div>                <div class="card-header">                    <div class="icon-box">📸</div>                    <h3>Photo Optimizatio</h3>                </div>                <div class="dynamic-progress">                    <div class="progress-fill"></div>                </div>                <div class="checklist">                    <div class="checklist-item" onclick="gbpToggleCheck(this)">                        <input type="checkbox">                        <span class="interactive-tooltip" data-tooltip="High-quality images increase profile views by 42%">                            Upload storefront photosn                        </span>                    </div>                    <div class="checklist-item" onclick="gbpToggleCheck(this)">                        <input type="checkbox">                        <span class="interactive-tooltip" data-tooltip="Product images boost inquiries by 38%">                            Showcase products/servicesn                        </span>                    </div>                </div>            </div>        </div>
         <div class="nav-buttons">            <button class="nav-button" onclick="gbpPreviousSection()">← Previous</button>            <button class="nav-button" onclick="gbpNextSection()">Next →</button>        </div>    </div>
-    <script>        (function() {n            let currentSection = 1;n            const totalSections = 4;n            let completionScore = 0;
-            function gbpLoadProgress() {n                document.querySelectorAll('.gbp-optimizer-container input').forEach(input => {n                    const savedState = localStorage.getItem('gbp-' + input.parentElement.textContent.trim());n                    if(savedState === 'true') {n                        input.checked = true;n                        input.parentElement.style.background = 'rgba(0, 194, 168, 0.05)';n                    }n                });n                gbpUpdateProgress();n            }
-            function gbpSaveProgress() {n                document.querySelectorAll('.gbp-optimizer-container input').forEach(input => {n                    localStorage.setItem(n                        'gbp-' + input.parentElement.textContent.trim(),n                        input.checkedn                    );n                });n            }
-            function gbpUpdateProgress() {n                const checkedItems = document.querySelectorAll('.gbp-optimizer-container input:checked').length;n                const totalItems = document.querySelectorAll('.gbp-optimizer-container input').length;n                completionScore = Math.round((checkedItems / totalItems) * 100);n document.getElementById('score').textContent = completionScore;n                document.querySelectorAll('.gbp-optimizer-container .progress-fill').forEach(progress => {n                    progress.style.width = `${completionScore}%`;n                });n document.getElementById('visibility').textContent = Math.round(completionScore * 0.8);n                document.getElementById('engagement').textContent = Math.round(completionScore * 0.6);n                gbpUpdateImpactMeter();n                gbpSaveProgress();n            }
-            function gbpUpdateImpactMeter() {n                const meter = document.getElementById('impactMeter');n                meter.style.background = `conic-gradient(n                    var(--secondary) ${completionScore}%, var(--light) ${completionScore}% 100%n                )`;n            }
-            window.gbpToggleCheck = function(item) {n                const checkbox = item.querySelector('input');n                checkbox.checked = !checkbox.checked;n                item.style.background = checkbox.checked ? 'rgba(0, 194, 168, 0.05)' : 'white';n                gbpUpdateProgress();n            }
-            function gbpShowSection(sectionNumber) {n                document.querySelectorAll('.gbp-optimizer-container .guide-section').forEach(section => {n                    section.classList.remove('section-active');n                });n                document.getElementById(`section${sectionNumber}`).classList.add('section-active');n                gbpUpdateProgressIndicators(sectionNumber);n            }
-            function gbpUpdateProgressIndicators(current) {n                document.querySelectorAll('.gbp-optimizer-container .step-indicator').forEach((indicator, index) => {n                    indicator.classList.toggle('active', index < current);n                });n            }
-            window.gbpNextSection = function() {n                if(currentSection < totalSections) currentSection++;n                gbpShowSection(currentSection);n            }
-            window.gbpPreviousSection = function() {n                if(currentSection > 1) currentSection--;n                gbpShowSection(currentSection);n            }
-            // Initializen            gbpLoadProgress();n            gbpUpdateImpactMeter();n            gbpShowSection(1);n        })();n    </script></div>
+    <script>        (function() {
+let currentSection = 1;
+const totalSections = 4;
+let completionScore = 0;
+            function gbpLoadProgress() {
+document.querySelectorAll('.gbp-optimizer-container input').forEach(input => {
+const savedState = localStorage.getItem('gbp-' + input.parentElement.textContent.trim());
+if(savedState === 'true') {
+input.checked = true;
+input.parentElement.style.background = 'rgba(0, 194, 168, 0.05)';
+}
+});
+gbpUpdateProgress();
+}
+            function gbpSaveProgress() {
+document.querySelectorAll('.gbp-optimizer-container input').forEach(input => {
+localStorage.setItem(n                        'gbp-' + input.parentElement.textContent.trim(),
+input.checkedn                    );
+});
+}
+            function gbpUpdateProgress() {
+const checkedItems = document.querySelectorAll('.gbp-optimizer-container input:checked').length;
+const totalItems = document.querySelectorAll('.gbp-optimizer-container input').length;
+completionScore = Math.round((checkedItems / totalItems) * 100);
+document.getElementById('score').textContent = completionScore;
+document.querySelectorAll('.gbp-optimizer-container .progress-fill').forEach(progress => {
+progress.style.width = `${completionScore}%`;
+});
+document.getElementById('visibility').textContent = Math.round(completionScore * 0.8);
+document.getElementById('engagement').textContent = Math.round(completionScore * 0.6);
+gbpUpdateImpactMeter();
+gbpSaveProgress();
+}
+            function gbpUpdateImpactMeter() {
+const meter = document.getElementById('impactMeter');
+meter.style.background = `conic-gradient(n                    var(--secondary) ${completionScore}%, var(--light) ${completionScore}% 100%n                )`;
+}
+            window.gbpToggleCheck = function(item) {
+const checkbox = item.querySelector('input');
+checkbox.checked = !checkbox.checked;
+item.style.background = checkbox.checked ? 'rgba(0, 194, 168, 0.05)' : 'white';
+gbpUpdateProgress();
+}
+            function gbpShowSection(sectionNumber) {
+document.querySelectorAll('.gbp-optimizer-container .guide-section').forEach(section => {
+section.classList.remove('section-active');
+});
+document.getElementById(`section${sectionNumber}`).classList.add('section-active');
+gbpUpdateProgressIndicators(sectionNumber);
+}
+            function gbpUpdateProgressIndicators(current) {
+document.querySelectorAll('.gbp-optimizer-container .step-indicator').forEach((indicator, index) => {
+indicator.classList.toggle('active', index < current);
+});
+}
+            window.gbpNextSection = function() {
+if(currentSection < totalSections) currentSection++;
+gbpShowSection(currentSection);
+}
+            window.gbpPreviousSection = function() {
+if(currentSection > 1) currentSection--;
+gbpShowSection(currentSection);
+}
+            // Initialize
+gbpLoadProgress();
+gbpUpdateImpactMeter();
+gbpShowSection(1);
+})();
+</script></div>
 <h2 class="wp-block-heading" id="1-complete-your-profile-information">1. Complete Your Profile Informatio</h2>
 <p>The foundation of a <a href="https://shaynly.com/credence-resource-management/" target="_blank" rel="noopener" data-wpil-monitor-id="383">successful Google Business</a> Profile is comprehensive and accurate information. Google favors listings that provide complete details, as they offer more value to searchers.</p>
 <p><strong>Essential Profile Elements to Complete:</strong></p>

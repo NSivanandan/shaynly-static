@@ -51,7 +51,8 @@
   "@type": "BlogPosting",
   "headline": "Practice Efficiency Calculator",
   "name": "Practice Efficiency Calculator",
-  "description": "n n n n n n Healthcare Practice Efficiency Calculator nn n n n nn n /* --- Global Styles & Premium Look --- */n :root {n --hpec-primary-color: #2980b9; /*",
+  "description": "n n n n n n Healthcare Practice Efficiency Calculator nn n n n nn n /* --- Global Styles & Premium Look --- */n :root {
+--hpec-primary-color: #2980b9; /*",
   "url": "https://shaynly.com/practice-efficiency-calculator/",
   "datePublished": "2025-04-05",
   "dateModified": "2025-04-05",
@@ -131,47 +132,218 @@
                 <!-- Resource Utilization -->                 <div class="hpec-form-group">                    <label for="hpec-num-rooms">Number of Exam Rooms <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Total number of active exam/treatment rooms available.</span></span></label>                    <input type="number" id="hpec-num-rooms" placeholder="e.g., 10" required min="1" step="1">                </div>                 <div class="hpec-form-group">                    <label for="hpec-room-time">Avg. Room Time per Patient (Mins) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Average total time a room is occupied per patient (visit time + prep/cleaning).</span></span></label>                     <div class="hpec-input-hint"><input type="number" id="hpec-room-time" placeholder="e.g., 45" required min="0" step="1"><span class="hpec-input-hint-symbol">mi</span></div>                </div>                 <div class="hpec-form-group">                    <label for="hpec-appt-slots">Total Appointment Slots (Day) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Total number of patient appointment slots available across all providers for the day.</span></span></label>                    <input type="number" id="hpec-appt-slots" placeholder="e.g., 96" required min="0" step="1">                </div>            </div>
             <div class="hpec-button-container">                 <button type="submit" class="hpec-primary-button">Calculate Efficiency Metrics</button>                 <button type="button" id="hpec-download-pdf-button" class="hpec-secondary-button">                     <span>Download Report as PDF</span>                 </button>            </div>             <div id="hpec-error-message" class="hpec-error-message"></div>        </form>
         <!-- Container for results area -->        <div id="hpec-results-container">            <!-- This inner div is captured for the PDF -->            <div id="hpec-pdf-content">                <h2>Practice Efficiency Report</h2>                <div class="hpec-results-display">                    <!-- Results will be populated here -->                    <div class="hpec-result-item"><strong>Patient Throughput:</strong><span id="hpec-throughput-result" class="hpec-result-value">-</span></div>                    <div class="hpec-result-item wait-time"><strong>Avg. Patient Wait Time:</strong><span id="hpec-wait-time-result" class="hpec-result-value">-</span></div>                    <div class="hpec-result-item"><strong>Patients per Provider Hour:</strong><span id="hpec-pts-per-provider-hr-result" class="hpec-result-value">-</span></div>                    <div class="hpec-result-item"><strong>Revenue per Provider Hour:</strong><span id="hpec-rev-per-provider-hr-result" class="hpec-result-value">-</span></div>                    <div class="hpec-result-item utilization"><strong>Exam Room Utilization:</strong><span id="hpec-room-util-result" class="hpec-result-value">-</span></div>                    <div class="hpec-result-item utilization"><strong>Appt. Slot Utilization:</strong><span id="hpec-slot-util-result" class="hpec-result-value">-</span></div>                </div>                <div class="hpec-insights">                    <h3>Efficiency Insights & Recommendations</h3>                    <ul id="hpec-insights-list">                         <li>Enter your practice data above to calculate efficiency metrics and receive tailored insights.</li>                    </ul>                </div>            </div>
-            <!-- Promotion link - shown in UI, added manually to PDF -->            <div class="hpec-promotion-link-container">                Optimize your practice operations. Discover tools and strategies atn                <a href="https://shaynly.com" target="_blank" rel="noopener noreferrer" id="hpec-promo-link-html">shaynly.com</a>.n            </div>        </div>
+            <!-- Promotion link - shown in UI, added manually to PDF -->            <div class="hpec-promotion-link-container">                Optimize your practice operations. Discover tools and strategies atn                <a href="https://shaynly.com" target="_blank" rel="noopener noreferrer" id="hpec-promo-link-html">shaynly.com</a>.            </div>        </div>
     </div> <!-- End #hpec-calculator-container -->
-    <script>        (function() {n            const { jsPDF } = window.jspdf;
-            const container = document.getElementById('hpec-calculator-container');n            if (!container) { console.error("HPEC Calculator container not found."); return; }
-            const hpecForm = container.querySelector('#hpec-form');n            const resultsContainer = container.querySelector('#hpec-results-container');n            const elementToCapture = container.querySelector('#hpec-pdf-content');n            const promoLinkContainer = container.querySelector('.hpec-promotion-link-container');n            const errorMessage = container.querySelector('#hpec-error-message');n            const downloadBtn = container.querySelector('#hpec-download-pdf-button');n            const downloadBtnText = downloadBtn.querySelector('span');
-            // Input Referencesn            const patientsSeenInput = container.querySelector('#hpec-patients-seen');n            const operatingHoursInput = container.querySelector('#hpec-operating-hours');n            const avgWaitTimeInput = container.querySelector('#hpec-avg-wait-time');n            const numProvidersInput = container.querySelector('#hpec-num-providers');n            const providerHoursInput = container.querySelector('#hpec-provider-hours');n            const totalRevenueInput = container.querySelector('#hpec-total-revenue');n            const numRoomsInput = container.querySelector('#hpec-num-rooms');n            const roomTimeInput = container.querySelector('#hpec-room-time');n            const apptSlotsInput = container.querySelector('#hpec-appt-slots');
-            // Result Referencesn            const throughputResultEl = container.querySelector('#hpec-throughput-result');n            const waitTimeResultEl = container.querySelector('#hpec-wait-time-result');n            const ptsPerProviderHrResultEl = container.querySelector('#hpec-pts-per-provider-hr-result');n            const revPerProviderHrResultEl = container.querySelector('#hpec-rev-per-provider-hr-result');n            const roomUtilResultEl = container.querySelector('#hpec-room-util-result');n            const slotUtilResultEl = container.querySelector('#hpec-slot-util-result');n            const insightsListEl = container.querySelector('#hpec-insights-list');
-            // --- Helper Functions ---n            function formatDecimal(value, digits = 1) {n                if (isNaN(value) || !isFinite(value)) return "-";n                return value.toFixed(digits);n            }n            function formatCurrency(value) {n                if (isNaN(value) || !isFinite(value) || value <= 0) return "N/A"; // Handle optional revenuen                return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }); // No cents needed usuallyn            }n            function showLoading(button, buttonTextElement) { button.disabled = true; button.classList.add('hpec-loading'); if (buttonTextElement) buttonTextElement.style.visibility = 'hidden'; }n            function hideLoading(button, buttonTextElement) { button.disabled = false; button.classList.remove('hpec-loading'); if (buttonTextElement) buttonTextElement.style.visibility = 'visible'; }
-            // --- Input Listeners ---n            const allInputs = container.querySelectorAll('#hpec-form input[type="number"]');n            allInputs.forEach(input => {n                input.addEventListener('input', () => {n                    if (errorMessage.style.display !== 'none') { errorMessage.style.display = 'none'; errorMessage.textContent = ''; }n                    if (resultsContainer.style.display !== 'none') {n                        resultsContainer.style.display = 'none';n                        downloadBtn.style.display = 'none';n                        promoLinkContainer.style.display = 'none';n                    }n                });n            });
-            // --- Form Submission Logic ---n            hpecForm.addEventListener('submit', function(event) {n                event.preventDefault();n                // Reset staten                resultsContainer.style.display = 'none';n                errorMessage.style.display = 'none'; errorMessage.textContent = '';n                downloadBtn.style.display = 'none';n                promoLinkContainer.style.display = 'none';
-                // --- Input Retrieval & Validation ---n                let isValid = true; const errors = [];n                const patientsSeen = parseFloat(patientsSeenInput.value);n                const operatingHours = parseFloat(operatingHoursInput.value);n                const avgWaitTime = parseFloat(avgWaitTimeInput.value);n                const numProviders = parseFloat(numProvidersInput.value);n                const providerHours = parseFloat(providerHoursInput.value);n                const totalRevenue = parseFloat(totalRevenueInput.value); // Can be 0 or NaN if emptyn                const numRooms = parseFloat(numRoomsInput.value);n                const roomTime = parseFloat(roomTimeInput.value);n                const apptSlots = parseFloat(apptSlotsInput.value);
-                // Basic Validationn                if (isNaN(patientsSeen) || patientsSeen < 0) { errors.push("Patients Seen"); isValid = false; }n                if (isNaN(operatingHours) || operatingHours <= 0) { errors.push("Operating Hours (> 0)"); isValid = false; }n                if (isNaN(avgWaitTime) || avgWaitTime < 0) { errors.push("Avg Wait Time"); isValid = false; }n                if (isNaN(numProviders) || numProviders <= 0) { errors.push("Number of Providers (> 0)"); isValid = false; }n                if (isNaN(providerHours) || providerHours <= 0) { errors.push("Total Provider Hours (> 0)"); isValid = false; }n                if (isNaN(totalRevenue) || totalRevenue < 0) { errors.push("Total Revenue (>= 0)"); isValid = false; } // Allow 0, check NaNn                if (isNaN(numRooms) || numRooms <= 0) { errors.push("Number of Rooms (> 0)"); isValid = false; }n                if (isNaN(roomTime) || roomTime <= 0) { errors.push("Avg Room Time (> 0)"); isValid = false; }n                if (isNaN(apptSlots) || apptSlots < 0) { errors.push("Appt Slots"); isValid = false; } // Allow 0, but will yield 0% or NaN util.n                if (apptSlots > 0 && patientsSeen > apptSlots) { errors.push("Patients Seen cannot exceed Appt Slots"); isValid = false; }
+    <script>        (function() {
+const { jsPDF } = window.jspdf;
+            const container = document.getElementById('hpec-calculator-container');
+if (!container) { console.error("HPEC Calculator container not found."); return; }
+            const hpecForm = container.querySelector('#hpec-form');
+const resultsContainer = container.querySelector('#hpec-results-container');
+const elementToCapture = container.querySelector('#hpec-pdf-content');
+const promoLinkContainer = container.querySelector('.hpec-promotion-link-container');
+const errorMessage = container.querySelector('#hpec-error-message');
+const downloadBtn = container.querySelector('#hpec-download-pdf-button');
+const downloadBtnText = downloadBtn.querySelector('span');
+            // Input References
+const patientsSeenInput = container.querySelector('#hpec-patients-seen');
+const operatingHoursInput = container.querySelector('#hpec-operating-hours');
+const avgWaitTimeInput = container.querySelector('#hpec-avg-wait-time');
+const numProvidersInput = container.querySelector('#hpec-num-providers');
+const providerHoursInput = container.querySelector('#hpec-provider-hours');
+const totalRevenueInput = container.querySelector('#hpec-total-revenue');
+const numRoomsInput = container.querySelector('#hpec-num-rooms');
+const roomTimeInput = container.querySelector('#hpec-room-time');
+const apptSlotsInput = container.querySelector('#hpec-appt-slots');
+            // Result References
+const throughputResultEl = container.querySelector('#hpec-throughput-result');
+const waitTimeResultEl = container.querySelector('#hpec-wait-time-result');
+const ptsPerProviderHrResultEl = container.querySelector('#hpec-pts-per-provider-hr-result');
+const revPerProviderHrResultEl = container.querySelector('#hpec-rev-per-provider-hr-result');
+const roomUtilResultEl = container.querySelector('#hpec-room-util-result');
+const slotUtilResultEl = container.querySelector('#hpec-slot-util-result');
+const insightsListEl = container.querySelector('#hpec-insights-list');
+            // --- Helper Functions ---n            functio
+formatDecimal(value, digits = 1) {
+if (isNaN(value) || !isFinite(value)) return "-";
+return value.toFixed(digits);
+}
+function formatCurrency(value) {
+if (isNaN(value) || !isFinite(value) || value <= 0) return "N/A"; // Handle optional revenuen                return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }); // No cents needed usually
+}
+function showLoading(button, buttonTextElement) { button.disabled = true; button.classList.add('hpec-loading'); if (buttonTextElement) buttonTextElement.style.visibility = 'hidden'; }
+function hideLoading(button, buttonTextElement) { button.disabled = false; button.classList.remove('hpec-loading'); if (buttonTextElement) buttonTextElement.style.visibility = 'visible'; }
+            // --- Input Listeners ---
+const allInputs = container.querySelectorAll('#hpec-form input[type="number"]');
+allInputs.forEach(input => {
+input.addEventListener('input', () => {
+if (errorMessage.style.display !== 'none') { errorMessage.style.display = 'none'; errorMessage.textContent = ''; }
+if (resultsContainer.style.display !== 'none') {
+resultsContainer.style.display = 'none';
+downloadBtn.style.display = 'none';
+promoLinkContainer.style.display = 'none';
+}
+});
+});
+            // --- Form Submission Logic ---
+hpecForm.addEventListener('submit', function(event) {
+event.preventDefault();
+// Reset state
+resultsContainer.style.display = 'none';
+errorMessage.style.display = 'none'; errorMessage.textContent = '';
+downloadBtn.style.display = 'none';
+promoLinkContainer.style.display = 'none';
+                // --- Input Retrieval & Validation ---
+let isValid = true; const errors = [];
+const patientsSeen = parseFloat(patientsSeenInput.value);
+const operatingHours = parseFloat(operatingHoursInput.value);
+const avgWaitTime = parseFloat(avgWaitTimeInput.value);
+const numProviders = parseFloat(numProvidersInput.value);
+const providerHours = parseFloat(providerHoursInput.value);
+const totalRevenue = parseFloat(totalRevenueInput.value); // Can be 0 or NaN if empty
+const numRooms = parseFloat(numRoomsInput.value);
+const roomTime = parseFloat(roomTimeInput.value);
+const apptSlots = parseFloat(apptSlotsInput.value);
+                // Basic Validationn                if (isNaN(patientsSeen) || patientsSee
+< 0) { errors.push("Patients Seen"); isValid = false; }
+if (isNaN(operatingHours) || operatingHours <= 0) { errors.push("Operating Hours (> 0)"); isValid = false; }
+if (isNaN(avgWaitTime) || avgWaitTime < 0) { errors.push("Avg Wait Time"); isValid = false; }
+if (isNaN(numProviders) || numProviders <= 0) { errors.push("Number of Providers (> 0)"); isValid = false; }
+if (isNaN(providerHours) || providerHours <= 0) { errors.push("Total Provider Hours (> 0)"); isValid = false; }
+if (isNaN(totalRevenue) || totalRevenue < 0) { errors.push("Total Revenue (>= 0)"); isValid = false; } // Allow 0, check NaN
+if (isNaN(numRooms) || numRooms <= 0) { errors.push("Number of Rooms (> 0)"); isValid = false; }
+if (isNaN(roomTime) || roomTime <= 0) { errors.push("Avg Room Time (> 0)"); isValid = false; }
+if (isNaN(apptSlots) || apptSlots < 0) { errors.push("Appt Slots"); isValid = false; } // Allow 0, but will yield 0% or NaN util.n                if (apptSlots > 0 && patientsSeen > apptSlots) { errors.push("Patients See
+cannot exceed Appt Slots"); isValid = false; }
                 if (!isValid) { errorMessage.innerHTML = `Please correct the following inputs: <br><strong>${errors.join(', ')}</strong>.`; errorMessage.style.display = 'block'; return; }
-                // --- Calculations ---n                const throughput = operatingHours > 0 ? patientsSeen / operatingHours : 0;n                const ptsPerProviderHr = providerHours > 0 ? patientsSeen / providerHours : 0;n                const revPerProviderHr = providerHours > 0 && totalRevenue > 0 ? totalRevenue / providerHours : 0;
-                const totalRoomMinutesAvailable = numRooms * operatingHours * 60;n                const totalRoomMinutesOccupied = patientsSeen * roomTime;n                const roomUtilization = totalRoomMinutesAvailable > 0 ? (totalRoomMinutesOccupied / totalRoomMinutesAvailable) * 100 : 0;
+                // --- Calculations ---n                const throughput = operatingHours > 0 ? patientsSee
+/ operatingHours : 0;
+const ptsPerProviderHr = providerHours > 0 ? patientsSeen / providerHours : 0;
+const revPerProviderHr = providerHours > 0 && totalRevenue > 0 ? totalRevenue / providerHours : 0;
+                const totalRoomMinutesAvailable = numRooms * operatingHours * 60;
+const totalRoomMinutesOccupied = patientsSeen * roomTime;
+const roomUtilization = totalRoomMinutesAvailable > 0 ? (totalRoomMinutesOccupied / totalRoomMinutesAvailable) * 100 : 0;
                 const slotUtilization = apptSlots > 0 ? (patientsSeen / apptSlots) * 100 : 0;
-                // --- Display Results ---n                throughputResultEl.textContent = `${formatDecimal(throughput, 1)} pts/hr`;n                waitTimeResultEl.textContent = `${formatDecimal(avgWaitTime, 0)} min`;n                ptsPerProviderHrResultEl.textContent = `${formatDecimal(ptsPerProviderHr, 1)} pts/hr`;n                revPerProviderHrResultEl.textContent = formatCurrency(revPerProviderHr);n                // Cap utilization at 100% for display, though calculation might exceed if inputs are inconsistentn                roomUtilResultEl.textContent = `${formatDecimal(Math.min(roomUtilization, 100), 1)}%`;n                slotUtilResultEl.textContent = `${formatDecimal(Math.min(slotUtilization, 100), 1)}%`;
-                // --- Generate Insights ---n                generateInsights({ throughput, avgWaitTime, ptsPerProviderHr, revPerProviderHr, roomUtilization, slotUtilization, operatingHours, numProviders, numRooms });
-                // --- Show Results ---n                resultsContainer.style.display = 'block';n                downloadBtn.style.display = 'block';n                promoLinkContainer.style.display = 'block';n            });
-            // --- PDF Download Button Listener ---n            downloadBtn.addEventListener('click', () => {n                if (typeof html2canvas === 'undefined' || typeof jsPDF === 'undefined') { alert('PDF generation libraries could not be loaded.'); return; }
-                const pdfFilename = 'Practice-Efficiency-Report.pdf';n                const promoTextLine1 = "Optimize your practice operations. Discover tools and strategies at";n                const promoLinkText = "shaynly.com";n                const promoLinkUrl = "https://shaynly.com";
+                // --- Display Results ---
+throughputResultEl.textContent = `${formatDecimal(throughput, 1)} pts/hr`;
+waitTimeResultEl.textContent = `${formatDecimal(avgWaitTime, 0)} min`;
+ptsPerProviderHrResultEl.textContent = `${formatDecimal(ptsPerProviderHr, 1)} pts/hr`;
+revPerProviderHrResultEl.textContent = formatCurrency(revPerProviderHr);
+// Cap utilization at 100% for display, though calculation might exceed if inputs are inconsistent
+roomUtilResultEl.textContent = `${formatDecimal(Math.min(roomUtilization, 100), 1)}%`;
+slotUtilResultEl.textContent = `${formatDecimal(Math.min(slotUtilization, 100), 1)}%`;
+                // --- Generate Insights ---
+generateInsights({ throughput, avgWaitTime, ptsPerProviderHr, revPerProviderHr, roomUtilization, slotUtilization, operatingHours, numProviders, numRooms });
+                // --- Show Results ---
+resultsContainer.style.display = 'block';
+downloadBtn.style.display = 'block';
+promoLinkContainer.style.display = 'block';
+});
+            // --- PDF Download Button Listener ---
+downloadBtn.addEventListener('click', () => {
+if (typeof html2canvas === 'undefined' || typeof jsPDF === 'undefined') { alert('PDF generation libraries could not be loaded.'); return; }
+                const pdfFilename = 'Practice-Efficiency-Report.pdf';
+const promoTextLine1 = "Optimize your practice operations. Discover tools and strategies at";
+const promoLinkText = "shaynly.com";
+const promoLinkUrl = "https://shaynly.com";
                 showLoading(downloadBtn, downloadBtnText);
-                html2canvas(elementToCapture, { scale: 2, useCORS: true, logging: false }).then(canvas => {n                    const pdf = new jsPDF('p', 'mm', 'a4');n                    const pdfWidth = pdf.internal.pageSize.getWidth();n                    const pdfHeight = pdf.internal.pageSize.getHeight();n                    const margin = 15; const contentWidth = pdfWidth - (margin * 2);
-                    const imgProps = pdf.getImageProperties(canvas);n                    const imgHeight = (imgProps.height * contentWidth) / imgProps.width;n                    let heightLeft = imgHeight; let currentYPosition = margin;
-                    pdf.addImage(canvas, 'PNG', margin, currentYPosition, contentWidth, imgHeight);n                    heightLeft -= (pdfHeight - (margin * 2));
-                    while (heightLeft > 0) {n                        currentYPosition = heightLeft - imgHeight - margin;n                        pdf.addPage();n                        pdf.addImage(canvas, 'PNG', margin, currentYPosition, contentWidth, imgHeight);n                        heightLeft -= (pdfHeight - (margin * 2));n                    }
-                    // --- Add the clickable link MANUALLY ---n                    // Calculate Y position after the image content on the last pagen                    const lastPageHeight = pdf.internal.pageSize.getHeight();n                    let linkYPosition = lastPageHeight + currentYPosition + 5; // currentYPosition is negative offset on last pagenn                     // Check if we need a new page just for the linkn                    const requiredLinkSpace = 15;n                    if (linkYPosition + requiredLinkSpace > lastPageHeight - margin) {n                        pdf.addPage();n                        linkYPosition = margin; // Start at top margin on new pagen                    } else {n                        linkYPosition += 5; // Add buffer spacen                        pdf.setDrawColor(200, 200, 200); // Separator linen                        pdf.line(margin, linkYPosition - 2, pdfWidth - margin, linkYPosition - 2);n                        linkYPosition += 5;n                    }
-                    pdf.setFontSize(9);n                    pdf.setTextColor(52, 73, 94); // ~ var(--hpec-text-color)n                    pdf.text(promoTextLine1, pdfWidth / 2, linkYPosition, { align: 'center' });n                    linkYPosition += 4;n                    pdf.setTextColor(41, 128, 185); // ~ var(--hpec-primary-color)n                    pdf.textWithLink(promoLinkText, pdfWidth / 2, linkYPosition, { url: promoLinkUrl, align: 'center' });
-                    pdf.save(pdfFilename);n                    hideLoading(downloadBtn, downloadBtnText);
-                }).catch(error => {n                    console.error('Error generating PDF:', error);n                    alert('Error generating PDF. Please try again.');n                    hideLoading(downloadBtn, downloadBtnText);n                });n            });
-            // --- Insights Generation Function ---n            function generateInsights(data) {n                insightsListEl.innerHTML = ''; // Clear previous insightsn                let insights = [];n                const { throughput, avgWaitTime, ptsPerProviderHr, revPerProviderHr, roomUtilization, slotUtilization, operatingHours, numProviders, numRooms } = data;
-                // Throughputn                insights.push(`Practice sees an average of <span class="metric-value">${formatDecimal(throughput, 1)} patients per operating hour</span>. Evaluate against benchmarks for your specialty.`);
-                // Wait Timen                 let waitTimeInsight = `Average patient wait time is <span class="metric-value">${formatDecimal(avgWaitTime, 0)} minutes</span>. `;n                 if (avgWaitTime > 20) { waitTimeInsight += `<strong>High wait times can impact patient satisfaction.</strong> Analyze workflow bottlenecks (check-in, rooming, provider availability).`; }n                 else if (avgWaitTime < 10) { waitTimeInsight += `Excellent! Low wait times enhance patient experience.`; }n                 else { waitTimeInsight += `This is within a reasonable range for many practices. Monitor consistently.`; }n                 insights.push(waitTimeInsight);
-                // Provider Productivityn                 let providerProdInsight = `Each provider sees an average of <span class="metric-value">${formatDecimal(ptsPerProviderHr, 1)} patients per hour</span>. `;n                 if (ptsPerProviderHr < 2.5) { providerProdInsight += `Consider factors impacting provider efficiency: EMR usability, support staff availability, scheduling template optimization.`; }n                 else if (ptsPerProviderHr > 5) { providerProdInsight += `High productivity. Ensure adequate support to prevent provider burnout and maintain quality.`; }n                 else { providerProdInsight += `This level reflects typical productivity for many specialties.`; }n                 insights.push(providerProdInsight);
-                // Revenue per Provider Hourn                 if (revPerProviderHr > 0) {n                     insights.push(`Practice generates approximately <span class="metric-value">${formatCurrency(revPerProviderHr)} per provider hour</span>. Analyze coding accuracy, payor mix, and service offerings to optimize this.` );n                 } else {n                     insights.push(`Revenue per provider hour not calculated (revenue data not provided). Tracking this is key for financial health.` );n                 }
-                 // Room Utilizationn                 let roomUtilInsight = `Estimated exam room utilization is <span class="metric-value">${formatDecimal(roomUtilization, 1)}%</span>. `;n                 if (roomUtilization < 60) { roomUtilInsight += `<strong>Low utilization suggests potential overcapacity or inefficient patient flow.</strong> Review scheduling density and room turnover times.`; }n                 else if (roomUtilization > 90) { roomUtilInsight += `<strong>High utilization may indicate a bottleneck.</strong> Consider optimizing room turnover, extending hours, or adding rooms if consistently high.`; }n                 else { roomUtilInsight += `This rate suggests balanced room usage for many practices.`; }n                 insights.push(roomUtilInsight);
-                 // Slot Utilizationn                  let slotUtilInsight = `Appointment slot utilization is <span class="metric-value">${formatDecimal(slotUtilization, 1)}%</span>. `;n                 if (slotUtilization < 85) { slotUtilInsight += `<strong>Significant unused capacity exists.</strong> Review scheduling practices, patient recall/reminder systems, and marketing efforts to fill empty slots.`; }n                 else if (slotUtilization > 98) { slotUtilInsight += `Very high utilization. Ensure processes can handle potential overbooks or urgent appointments. May indicate need for more capacity.`; }n                 else { slotUtilInsight += `Strong utilization. Maintain effective scheduling and minimize no-shows.`; }n                 insights.push(slotUtilInsight);
-                // Interaction Insightsn                if (avgWaitTime > 25 && roomUtilization < 65) {n                     insights.push(`<strong>High wait times despite low room usage?</strong> This often points to workflow inefficiencies *before* the patient enters the room (e.g., check-in delays, staff shortages, poor communication) or inefficient provider movement between rooms.`);n                }n                 if (slotUtilization > 90 && throughput < (numProviders * 2.5)) { // High booking but low relative throughputn                    insights.push(`<strong>High slot usage but relatively low throughput?</strong> This could indicate appointments are too long, complex cases are clustered, or significant time is lost between patients. Review appointment type durations and scheduling templates.`);n                 }
-                // Concluding Remarkn                insights.push(`Regularly tracking these metrics helps identify areas for improvement in patient flow, resource allocation, and overall practice performance.`);
-                // Add insights to the listn                insights.forEach(insightText => {n                    const li = document.createElement('li');n                    li.innerHTML = insightText;n                    insightsListEl.appendChild(li);n                });n            }
-        })(); // End IIFEn    </script>
+                html2canvas(elementToCapture, { scale: 2, useCORS: true, logging: false }).then(canvas => {
+const pdf = new jsPDF('p', 'mm', 'a4');
+const pdfWidth = pdf.internal.pageSize.getWidth();
+const pdfHeight = pdf.internal.pageSize.getHeight();
+const margin = 15; const contentWidth = pdfWidth - (margin * 2);
+                    const imgProps = pdf.getImageProperties(canvas);
+const imgHeight = (imgProps.height * contentWidth) / imgProps.width;
+let heightLeft = imgHeight; let currentYPosition = margin;
+                    pdf.addImage(canvas, 'PNG', margin, currentYPosition, contentWidth, imgHeight);
+heightLeft -= (pdfHeight - (margin * 2));
+                    while (heightLeft > 0) {
+currentYPosition = heightLeft - imgHeight - margin;
+pdf.addPage();
+pdf.addImage(canvas, 'PNG', margin, currentYPosition, contentWidth, imgHeight);
+heightLeft -= (pdfHeight - (margin * 2));
+}
+                    // --- Add the clickable link MANUALLY ---n                    // Calculate Y position after the image content on the last page
+const lastPageHeight = pdf.internal.pageSize.getHeight();
+let linkYPosition = lastPageHeight + currentYPosition + 5; // currentYPosition is negative offset on last pagenn                     // Check if we need a new page just for the link
+const requiredLinkSpace = 15;
+if (linkYPosition + requiredLinkSpace > lastPageHeight - margin) {
+pdf.addPage();
+linkYPosition = margin; // Start at top margin on new page
+} else {
+linkYPosition += 5; // Add buffer spacen                        pdf.setDrawColor(200, 200, 200); // Separator linen                        pdf.line(margin, linkYPosition - 2, pdfWidth - margin, linkYPositio
+- 2);
+linkYPosition += 5;
+}
+                    pdf.setFontSize(9);
+pdf.setTextColor(52, 73, 94); // ~ var(--hpec-text-color)
+pdf.text(promoTextLine1, pdfWidth / 2, linkYPosition, { align: 'center' });
+linkYPosition += 4;
+pdf.setTextColor(41, 128, 185); // ~ var(--hpec-primary-color)
+pdf.textWithLink(promoLinkText, pdfWidth / 2, linkYPosition, { url: promoLinkUrl, align: 'center' });
+                    pdf.save(pdfFilename);
+hideLoading(downloadBtn, downloadBtnText);
+                }).catch(error => {
+console.error('Error generating PDF:', error);
+alert('Error generating PDF. Please try again.');
+hideLoading(downloadBtn, downloadBtnText);
+});
+});
+            // --- Insights Generation Function ---n            functio
+generateInsights(data) {
+insightsListEl.innerHTML = ''; // Clear previous insights
+let insights = [];
+const { throughput, avgWaitTime, ptsPerProviderHr, revPerProviderHr, roomUtilization, slotUtilization, operatingHours, numProviders, numRooms } = data;
+                // Throughputn                insights.push(`Practice sees an average of <spa
+class="metric-value">${formatDecimal(throughput, 1)} patients per operating hour</span>. Evaluate against benchmarks for your specialty.`);
+                // Wait Timen                 let waitTimeInsight = `Average patient wait time is <spa
+class="metric-value">${formatDecimal(avgWaitTime, 0)} minutes</span>. `;
+if (avgWaitTime > 20) { waitTimeInsight += `<strong>High wait times can impact patient satisfaction.</strong> Analyze workflow bottlenecks (check-in, rooming, provider availability).`; }
+else if (avgWaitTime < 10) { waitTimeInsight += `Excellent! Low wait times enhance patient experience.`; }
+else { waitTimeInsight += `This is within a reasonable range for many practices. Monitor consistently.`; }
+insights.push(waitTimeInsight);
+                // Provider Productivityn                 let providerProdInsight = `Each provider sees an average of <spa
+class="metric-value">${formatDecimal(ptsPerProviderHr, 1)} patients per hour</span>. `;
+if (ptsPerProviderHr < 2.5) { providerProdInsight += `Consider factors impacting provider efficiency: EMR usability, support staff availability, scheduling template optimization.`; }
+else if (ptsPerProviderHr > 5) { providerProdInsight += `High productivity. Ensure adequate support to prevent provider burnout and maintain quality.`; }
+else { providerProdInsight += `This level reflects typical productivity for many specialties.`; }
+insights.push(providerProdInsight);
+                // Revenue per Provider Hour
+if (revPerProviderHr > 0) {
+insights.push(`Practice generates approximately <span class="metric-value">${formatCurrency(revPerProviderHr)} per provider hour</span>. Analyze coding accuracy, payor mix, and service offerings to optimize this.` );
+} else {
+insights.push(`Revenue per provider hour not calculated (revenue data not provided). Tracking this is key for financial health.` );
+}
+                 // Room Utilizationn                 let roomUtilInsight = `Estimated exam room utilization is <spa
+class="metric-value">${formatDecimal(roomUtilization, 1)}%</span>. `;
+if (roomUtilization < 60) { roomUtilInsight += `<strong>Low utilization suggests potential overcapacity or inefficient patient flow.</strong> Review scheduling density and room turnover times.`; }
+else if (roomUtilization > 90) { roomUtilInsight += `<strong>High utilization may indicate a bottleneck.</strong> Consider optimizing room turnover, extending hours, or adding rooms if consistently high.`; }
+else { roomUtilInsight += `This rate suggests balanced room usage for many practices.`; }
+insights.push(roomUtilInsight);
+                 // Slot Utilizationn                  let slotUtilInsight = `Appointment slot utilization is <spa
+class="metric-value">${formatDecimal(slotUtilization, 1)}%</span>. `;
+if (slotUtilization < 85) { slotUtilInsight += `<strong>Significant unused capacity exists.</strong> Review scheduling practices, patient recall/reminder systems, and marketing efforts to fill empty slots.`; }
+else if (slotUtilization > 98) { slotUtilInsight += `Very high utilization. Ensure processes can handle potential overbooks or urgent appointments. May indicate need for more capacity.`; }
+else { slotUtilInsight += `Strong utilization. Maintain effective scheduling and minimize no-shows.`; }
+insights.push(slotUtilInsight);
+                // Interaction Insights                if (avgWaitTime > 25 && roomUtilizatio
+< 65) {
+insights.push(`<strong>High wait times despite low room usage?</strong> This often points to workflow inefficiencies *before* the patient enters the room (e.g., check-in delays, staff shortages, poor communication) or inefficient provider movement between rooms.`);
+}
+if (slotUtilization > 90 && throughput < (numProviders * 2.5)) { // High booking but low relative throughputn                    insights.push(`<strong>High slot usage but relatively low throughput?</strong> This could indicate appointments are too long, complex cases are clustered, or significant time is lost betwee
+patients. Review appointment type durations and scheduling templates.`);
+}
+                // Concluding Remarkn                insights.push(`Regularly tracking these metrics helps identify areas for improvement i
+patient flow, resource allocation, and overall practice performance.`);
+                // Add insights to the list
+insights.forEach(insightText => {
+const li = document.createElement('li');
+li.innerHTML = insightText;
+insightsListEl.appendChild(li);
+});
+}
+        })(); // End IIFE
+</script>
 <h2 class="wp-block-heading"><strong>Practice Efficiency Calculator</strong> <strong>The Ultimate Guide to Optimizing Healthcare Practice Efficiency</strong></h2>
 <h2 class="wp-block-heading"><strong>Why Practice Efficiency Metrics Are Critical for Your Medical Business</strong></h2>
 <p>In today's competitive healthcare landscape,&nbsp;<strong>optimizing practice efficiency</strong>&nbsp;isn't just about seeing more patients—it's about&nbsp;<strong>maximizing revenue, improving <a href="https://shaynly.com/patient-satisfaction-strategies-for-healthcare-providers/" target="_blank" rel="noopener" data-wpil-monitor-id="181">patient satisfactio</a>, and reducing provider burnout</strong>. Our&nbsp;<strong>Healthcare Practice Efficiency Calculator</strong>&nbsp;gives you actionable insights into:</p>

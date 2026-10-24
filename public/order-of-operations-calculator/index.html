@@ -130,10 +130,27 @@
 <style>.calculator {n  max-width: 300px;n  margin: 20px auto;n  border: 1px solid #ccc;n  padding: 10px;n  border-radius: 5px;n}
 #display {n  width: 100%;n  padding: 10px;n  margin-bottom: 10px;n  font-size: 1.5em;n}
 .buttons {n  display: grid;n  grid-template-columns: repeat(4, 1fr);n  gap: 5px;n}nnbutton {n  padding: 15px;n  font-size: 1.1em;n  border: 1px solid #ddd;n  background: #4635B1;n  cursor: pointer;n}nnbutton:hover {n  background: #e8e8e8;n}</style>
-<script>function appendToDisplay(value) {n  document.getElementById('display').value += value;n}nnfunction clearDisplay() {n  document.getElementById('display').value = '';n}nnfunction calculate() {n  try {n    let expression = document.getElementById('display').valuen                    .replace(/×/g, '*')n                    .replace(/÷/g, '/')n                    .replace(/\^/g, '**');n // Handle PEMDAS using JavaScript's built-in evaln    let result = eval(expression);n    document.getElementById('display').value = result;n  } catch (error) {n    document.getElementById('display').value = 'Error';n  }n}</script>
+<script>function appendToDisplay(value) {
+document.getElementById('display').value += value;
+}
+nfunction clearDisplay() {
+document.getElementById('display').value = '';
+}
+nfunction calculate() {
+try {
+let expression = document.getElementById('display').valuen                    .replace(/×/g, '*')
+.replace(/÷/g, '/')
+.replace(/\^/g, '**');
+// Handle PEMDAS using JavaScript's built-in eval
+let result = eval(expression);
+document.getElementById('display').value = result;
+} catch (error) {
+document.getElementById('display').value = 'Error';
+}
+}</script>
 <h2 class="wp-block-heading">Importance of Order of Operations</h2>
 <p>Mathematics is a language, and like any language, it has its own set of rules. The order of operations is fundamental to solving mathematical expressions. Without a proper understanding of this sequence, errors can arise, leading to inaccurate results.</p>
-<div class="wp-block-uagb-container uagb-block-a9cb2af2 alignfull uagb-is-root-container"><div class="uagb-container-inner-blocks-wrap"><div class="wp-block-wp-mermaid-block mermaid">graph TBn  subgraph Importance_of_Order_of_Operationsn    A(Minimizes Errors) --> B(Prevents Calculation Mistakes) --> B1(Identifies Parentheses Errors)n    B --> B2(Avoids Misplacement of Operators)n    A --> C(Provides Consistency) --> C1(Precise Application of Operations)n    C --> C2(Ensures Sequential Execution)n    A --> D(Precision in Results) --> D1(Accurate Handling of Exponents)n    D --> D2(Correct Application of Multiplication and Division)n    D --> D3(Sequential Approach to Addition and Subtraction)n    A --> E(Eliminates Ambiguity) --> E1(Clarifies Role of Parentheses)n    E --> E2(Clears Ambiguity in Expression Evaluation)n    A --> F(Builds Strong Foundation) --> F1(Essential for Basic Arithmetic)n    F --> F2(Forms Basis for Algebraic Manipulations)n    F --> F3(Critical in Calculus and Advanced Math)n    A --> G(Supports Advanced Mathematics) --> G1(Foundational Skill for Algebra)n    G --> G2(Crucial in Calculus)n    A --> H(Expedited Problem Solving) --> H1(Faster Computation)n    H --> H2(Streamlined Solution Process)n    A --> I(Enhanced Efficiency) --> I1(Timely Completion of Math Tasks)n    I --> I2(Increased Mathematical Proficiency)n  end</div></div></div>
+<div class="wp-block-uagb-container uagb-block-a9cb2af2 alignfull uagb-is-root-container"><div class="uagb-container-inner-blocks-wrap"><div class="wp-block-wp-mermaid-block mermaid">graph TBn  subgraph Importance_of_Order_of_Operationsn    A(Minimizes Errors) --> B(Prevents Calculation Mistakes) --> B1(Identifies Parentheses Errors)n    B --> B2(Avoids Misplacement of Operators)n    A --> C(Provides Consistency) --> C1(Precise Application of Operations)n    C --> C2(Ensures Sequential Execution)n    A --> D(Precision in Results) --> D1(Accurate Handling of Exponents)n    D --> D2(Correct Application of Multiplication and Division)n    D --> D3(Sequential Approach to Addition and Subtraction)n    A --> E(Eliminates Ambiguity) --> E1(Clarifies Role of Parentheses)n    E --> E2(Clears Ambiguity in Expression Evaluation)n    A --> F(Builds Strong Foundationn) --> F1(Essential for Basic Arithmetic)n    F --> F2(Forms Basis for Algebraic Manipulations)n    F --> F3(Critical in Calculus and Advanced Math)n    A --> G(Supports Advanced Mathematics) --> G1(Foundationnal Skill for Algebra)n    G --> G2(Crucial in Calculus)n    A --> H(Expedited Problem Solving) --> H1(Faster Computation)n    H --> H2(Streamlined Solution Process)n    A --> I(Enhanced Efficiency) --> I1(Timely Completion of Math Tasks)n    I --> I2(Increased Mathematical Proficiency)n  end</div></div></div>
 <h2 class="wp-block-heading">Common Mistakes in Solving Math Problems</h2>
 <h3 class="wp-block-heading">Misunderstanding Parentheses</h3>
 <p>One <a href="https://shaynly.com/avoiding-common-negotiation-pitfalls/">common mistake</a> is misinterpreting the role of parentheses. Students may neglect the operations inside them, affecting the overall solution.</p>

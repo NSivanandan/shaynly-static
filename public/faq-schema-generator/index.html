@@ -51,7 +51,14 @@
   "@type": "BlogPosting",
   "headline": "FAQ Schema Generator",
   "name": "FAQ Schema Generator",
-  "description": "n practices guide n-->n n :root {n --primary: #4F46E5;n --secondary: #10B981;n --accent: #F59E0B;n --dark: #1E293B;n --light: #F8FAFC;n --error: #EF4444;n",
+  "description": "n practices guide n-->n n :root {
+--primary: #4F46E5;
+--secondary: #10B981;
+--accent: #F59E0B;
+--dark: #1E293B;
+--light: #F8FAFC;
+--error: #EF4444;
+",
   "url": "https://shaynly.com/faq-schema-generator/",
   "datePublished": "2025-05-13",
   "dateModified": "2025-05-13",
@@ -165,14 +172,65 @@
         <!-- Educational Content Tab -->        <div id="guide" class="educational-content">            <div class="article-section">                <h3>Why FAQ Schema Matters for SEO</h3>                <p>FAQ schema markup helps search engines understand and display your content more effectively in search results. When implemented correctly, it can:</p>                                <div class="benefits-list">                    <div class="benefit-card">                        <h4>Enhanced Visibility</h4>                        <p>Appear in Google's rich results with expanded FAQ snippets</p>                    </div>                    <div class="benefit-card">                        <h4>Increased CTR</h4>                        <p>Attract more clicks with prominent search result displays</p>                    </div>                    <div class="benefit-card">                        <h4>Voice Search Optimizatio</h4>                        <p>Improve chances of being featured in voice search answers</p>                    </div>                </div>            </div>
             <div class="article-section">                <h3>Implementation Best Practices</h3>                <ul>                    <li>Use clear, natural language questions</li>                    <li>Provide comprehensive answers (minimum 50 characters)</li>                    <li>Ensure answers match visible page content</li>                    <li>Avoid promotional language in answers</li>                    <li>Regularly update outdated questions/answers</li>                </ul>            </div>
             <div class="article-section">                <h3>Common Mistakes to Avoid</h3>                <p>❌ Using FAQ schema for non-Q&A content<br>                ❌ Duplicating questions across pages<br>                ❌ Providing incomplete or misleading answers<br>                ❌ Markup not visible on the page<br>                ❌ Using multiple FAQ schemas per page</p>            </div>        </div>    </div></div>
-<script>document.addEventListener('DOMContentLoaded', () => {n    const tabs = document.querySelectorAll('.nav-btn');n    const contents = document.querySelectorAll('.educational-content');n    let currentTab = 'generator';
-    // Tab Switchingn    tabs.forEach(tab => {n        tab.addEventListener('click', () => {n            tabs.forEach(t => t.classList.remove('active'));n            contents.forEach(c => c.classList.remove('active'));n currentTab = tab.dataset.tab;n            tab.classList.add('active');n            document.getElementById(currentTab).classList.add('active');n        });n    });
-    // FAQ Generator Logicn    let faqCount = 1;n    const faqList = document.getElementById('faq-list');n document.getElementById('add-faq').addEventListener('click', () => {n        faqCount++;n        const newItem = document.createElement('div');n        newItem.className = 'faq-item';n        newItem.innerHTML = `n            <div class="input-group">                <label>Questio</label>                <input type="text" class="faq-question" placeholder="Question ${faqCount}">            </div>            <div class="input-group">                <label>Answer</label>                <textarea class="faq-answer" placeholder="Answer ${faqCount}"></textarea>            </div>            <button class="btn btn-accent remove-faq">Remove</button>        `;n        faqList.appendChild(newItem);n    });
-    faqList.addEventListener('click', (e) => {n        if(e.target.classList.contains('remove-faq')) {n            e.target.closest('.faq-item').remove();n        }n    });
-    document.getElementById('generate-schema').addEventListener('click', () => {n        const items = Array.from(faqList.children).map(item => {n            const question = item.querySelector('.faq-question').value.trim();n            const answer = item.querySelector('.faq-answer').value.trim();n return question && answer ? {n                "@type": "Question",n                "name": question,n                "acceptedAnswer": {n                    "@type": "Answer",n                    "text": answern                }n            } : null;n        }).filter(Boolean);
-        const schema = {n            "@context": "https://schema.org",n            "@type": "FAQPage",n            "mainEntity": itemsn        };
-        document.getElementById('schema-output').value = JSON.stringify(schema, null, 2);n    });
-    document.getElementById('copy-schema').addEventListener('click', async () => {n        const output = document.getElementById('schema-output');n        const feedback = document.querySelector('.copy-feedback');n try {n            await navigator.clipboard.writeText(output.value);n            feedback.style.opacity = '1';n            setTimeout(() => feedback.style.opacity = '0', 2000);n        } catch (err) {n            alert('Failed to copy. Please copy manually.');n        }n    });n});</script>
+<script>document.addEventListener('DOMContentLoaded', () => {
+const tabs = document.querySelectorAll('.nav-btn');
+const contents = document.querySelectorAll('.educational-content');
+let currentTab = 'generator';
+    // Tab Switching
+tabs.forEach(tab => {
+tab.addEventListener('click', () => {
+tabs.forEach(t => t.classList.remove('active'));
+contents.forEach(c => c.classList.remove('active'));
+currentTab = tab.dataset.tab;
+tab.classList.add('active');
+document.getElementById(currentTab).classList.add('active');
+});
+});
+    // FAQ Generator Logic
+let faqCount = 1;
+const faqList = document.getElementById('faq-list');
+document.getElementById('add-faq').addEventListener('click', () => {
+faqCount++;
+const newItem = document.createElement('div');
+newItem.className = 'faq-item';
+newItem.innerHTML = `n            <div class="input-group">                <label>Questio</label>                <input type="text" class="faq-question" placeholder="Question ${faqCount}">            </div>            <div class="input-group">                <label>Answer</label>                <textarea class="faq-answer" placeholder="Answer ${faqCount}"></textarea>            </div>            <button class="btn btn-accent remove-faq">Remove</button>        `;
+faqList.appendChild(newItem);
+});
+    faqList.addEventListener('click', (e) => {
+if(e.target.classList.contains('remove-faq')) {
+e.target.closest('.faq-item').remove();
+}
+});
+    document.getElementById('generate-schema').addEventListener('click', () => {
+const items = Array.from(faqList.children).map(item => {
+const question = item.querySelector('.faq-question').value.trim();
+const answer = item.querySelector('.faq-answer').value.trim();
+return question && answer ? {
+"@type": "Question",
+"name": question,
+"acceptedAnswer": {
+"@type": "Answer",
+"text": answern                }
+} : null;
+}).filter(Boolean);
+        const schema = {
+"@context": "https://schema.org",
+"@type": "FAQPage",
+"mainEntity": itemsn        };
+        document.getElementById('schema-output').value = JSON.stringify(schema, null, 2);
+});
+    document.getElementById('copy-schema').addEventListener('click', async () => {
+const output = document.getElementById('schema-output');
+const feedback = document.querySelector('.copy-feedback');
+try {
+await navigator.clipboard.writeText(output.value);
+feedback.style.opacity = '1';
+setTimeout(() => feedback.style.opacity = '0', 2000);
+} catch (err) {
+alert('Failed to copy. Please copy manually.');
+}
+});
+});</script>
         </div>
       </article>
 

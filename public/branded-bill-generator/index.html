@@ -164,33 +164,163 @@
                 <div class="total-section">                    <div style="margin-bottom: 12px;">                        <span>Subtotal:</span>                        <span id="subtotal">$0.00</span>                    </div>                    <div style="margin-bottom: 12px;">                        <span>Tax (<span id="taxPercentage">0</span>%):</span>                        <span id="taxAmount">$0.00</span>                    </div>                    <div>                        <span>Discount (<span id="discountPercentage">0</span>%):</span>                        <span id="discountAmount">$0.00</span>                    </div>                    <div style="margin-top: 20px; font-size: 1.3em;">                        <span>Total:</span>                        <span id="previewTotal">$0.00</span>                    </div>                </div>
                 <div id="previewNotes" style="margin-top: 30px; opacity: 0.8; font-size: 0.9em;"></div>            </div>
             <button class="download-btn" onclick="generatePDF()">💾 Download Invoice</button>        </div>    </div>
-    <script>        let isDarkMode = true;n        let invoiceCounter = Number(localStorage.getItem('invoiceCounter')) || 1;n        let logoLoaded = false;
-        // Initialize brand colorn        let brandColor = '#6366f1';n        document.documentElement.style.setProperty('--accent-color', brandColor);n        document.getElementById('colorPreview').style.backgroundColor = brandColor;
-        // Real-time updatesn        document.addEventListener('input', updatePreview);
-        // Logo handlingn        document.getElementById('logoUpload').addEventListener('change', function(e) {n            const file = e.target.files[0];n            if (file) {n                const reader = new FileReader();n                reader.onload = function(e) {n                    const img = new Image();n                    img.onload = () => {n                        logoLoaded = true;n                        document.getElementById('logoPreview').style.display = 'block';n                        document.getElementById('logoPreview').src = e.target.result;n                        updatePreview();n                    };n                    img.src = e.target.result;n                };n                reader.readAsDataURL(file);n            }n        });
-        // Add invoice itemsn        function addNewItem() {n            const newItem = document.createElement('div');n            newItem.className = 'invoice-item';n            newItem.style.display = 'grid';n            newItem.style.gridTemplateColumns = '2fr 1fr 1fr';n            newItem.style.gap = '10px';n            newItem.style.marginBottom = '10px';n            newItem.innerHTML = `n                <input type="text" placeholder="Description" class="item-desc">                <input type="number" placeholder="Qty" class="item-qty" min="0" value="1">                <input type="number" placeholder="Price" class="item-price" min="0" step="0.01">            `;n            document.getElementById('itemsContainer').appendChild(newItem);n            updatePreview();n        }
-        // Get currency detailsn        function getCurrency() {n            const select = document.getElementById('currency');n            const symbol = select.value;n            const decimals = parseInt(select.options[select.selectedIndex].getAttribute('data-decimals'), 10);n            return { symbol, decimals };n        }
-        // Update preview calculationsn        function updatePreview() {n            // Brand colorn            brandColor = document.getElementById('brandColor').value;n            document.documentElement.style.setProperty('--accent-color', brandColor);n            document.getElementById('colorPreview').style.backgroundColor = brandColor;
-            // Invoice numbern            document.getElementById('invoiceNumber').textContent = invoiceCounter.toString().padStart(3, '0');
-            // Company infon            const companyName = document.getElementById('companyName').value || 'Your Company';n            document.getElementById('previewCompanyName').textContent = companyName;n            document.getElementById('previewCompanyName').style.color = brandColor; // Ensure visibilitynn            // Client infon            document.getElementById('previewClientName').textContent =n                document.getElementById('clientName').value || 'Client Name';
-            // Get currency detailsn            const currency = getCurrency();
-            // Items calculationn            let subtotal = 0;n            let itemsHTML = '';n            const items = Array.from(document.querySelectorAll('.invoice-item'));
-            items.forEach(item => {n                const desc = item.querySelector('.item-desc').value || 'Item';n                const qty = parseFloat(item.querySelector('.item-qty').value) || 0;n                const price = parseFloat(item.querySelector('.item-price').value) || 0;n                const total = qty * price;n                subtotal += total;
-                itemsHTML += `n                    <div class="invoice-item-row">                        <span>${desc}</span>                        <span>${qty} × ${currency.symbol}${price.toFixed(currency.decimals)} = ${currency.symbol}${total.toFixed(currency.decimals)}</span>                    </div>                `;n            });
-            // Tax and discountn            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;n            const discount = parseFloat(document.getElementById('discount').value) || 0;n            const taxAmount = subtotal * (taxRate / 100);n            const discountAmount = subtotal * (discount / 100);n            const total = subtotal + taxAmount - discountAmount;
-            // Update display with correct decimalsn            document.getElementById('subtotal').textContent = `${currency.symbol}${subtotal.toFixed(currency.decimals)}`;n            document.getElementById('taxPercentage').textContent = taxRate;n            document.getElementById('taxAmount').textContent = `${currency.symbol}${taxAmount.toFixed(currency.decimals)}`;n            document.getElementById('discountPercentage').textContent = discount;n            document.getElementById('discountAmount').textContent = `${currency.symbol}${discountAmount.toFixed(currency.decimals)}`;n            document.getElementById('previewTotal').textContent = `${currency.symbol}${total.toFixed(currency.decimals)}`;n            document.getElementById('previewItems').innerHTML = `n                <div class="invoice-item-row" style="font-weight: bold; border-bottom: 2px solid var(--accent-color);">                    <span>Descriptio</span>                    <span>Amount</span>                </div>                ${itemsHTML}n            `;
-            // Additional fieldsn            document.getElementById('previewDueDate').textContent =n                document.getElementById('dueDate').value ?n                new Date(document.getElementById('dueDate').value).toLocaleDateString() :n                'Not specified';
-            document.getElementById('previewNotes').innerHTML =n                document.getElementById('notes').value.replace(/\n/g, '<br>');n        }
-        // PDF Generationn        async function generatePDF() {n            document.getElementById('pdfLoading').style.display = 'block';
-            try {n                // Ensure the preview is fully updated before generating PDFn                updatePreview();n                await new Promise(resolve => setTimeout(resolve, 100)); // Small delay to ensure DOM updatesnn                // Force logo load if pendingn                if (document.getElementById('logoUpload').files.length > 0 && !logoLoaded) {n                    await new Promise(resolve => setTimeout(resolve, 500));n                }
-                const element = document.getElementById('invoicePreview');n                const scale = 2;
-                const canvas = await html2canvas(element, {n                    scale: scale,n                    useCORS: true,n                    logging: false,n                    onclone: (clonedDoc) => {n                        // Ensure logo visibilityn                        const clonedLogo = clonedDoc.getElementById('logoPreview');n                        if (document.getElementById('logoUpload').files.length > 0) {n                            clonedLogo.src = document.getElementById('logoPreview').src;n                            clonedLogo.style.display = 'block';n                        }
-                        // Inject company name and styles into cloned documentn                        const clonedCompanyName = clonedDoc.getElementById('previewCompanyName');n                        clonedCompanyName.textContent = document.getElementById('previewCompanyName').textContent;n                        clonedCompanyName.style.color = brandColor; // Use brand color directlyn                        clonedCompanyName.style.visibility = 'visible'; // Ensure visibilitynn                        // Apply accent color to cloned documentn                        clonedDoc.documentElement.style.setProperty('--accent-color', brandColor);n                        clonedDoc.querySelectorAll('[style*="var(--accent-color)"]').forEach(el => {n                            const style = el.getAttribute('style');n                            el.setAttribute('style', style.replace('var(--accent-color)', brandColor));n                        });n                    }n                });
-                const { jsPDF } = window.jspdf;n                const pdf = new jsPDF('p', 'mm', 'a4');n                const pageWidth = pdf.internal.pageSize.getWidth();n                const imgWidth = pageWidth - 20;n                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                pdf.addImage(canvas, 'PNG', 10, 10, imgWidth, imgHeight);n                pdf.save(`invoice_${invoiceCounter.toString().padStart(3, '0')}.pdf`);
-                // Update invoice countern                invoiceCounter++;n                localStorage.setItem('invoiceCounter', invoiceCounter);n                updatePreview();n            } catch (error) {n                alert('Error generating PDF: ' + error.message);n            } finally {n                document.getElementById('pdfLoading').style.display = 'none';n            }n        }
-        // Helper functionsn        function togglePreviewMode() {n            isDarkMode = !isDarkMode;n            const previewSection = document.querySelector('.preview-section');n            const invoicePreview = document.querySelector('.invoice-preview');n            previewSection.style.background = isDarkMode ? 'rgba(35, 35, 45, 0.9)' : 'rgba(255, 255, 255, 0.95)';n            previewSection.style.color = isDarkMode ? 'white' : '#333';n            invoicePreview.style.background = isDarkMode ? 'rgba(30, 30, 40, 0.9)' : '#ffffff';n            invoicePreview.style.color = isDarkMode ? 'white' : '#333';n        }
-        // Initial setupn        updatePreview();n    </script>
+    <script>        let isDarkMode = true;
+let invoiceCounter = Number(localStorage.getItem('invoiceCounter')) || 1;
+let logoLoaded = false;
+        // Initialize brand color
+let brandColor = '#6366f1';
+document.documentElement.style.setProperty('--accent-color', brandColor);
+document.getElementById('colorPreview').style.backgroundColor = brandColor;
+        // Real-time updates
+document.addEventListener('input', updatePreview);
+        // Logo handling
+document.getElementById('logoUpload').addEventListener('change', function(e) {
+const file = e.target.files[0];
+if (file) {
+const reader = new FileReader();
+reader.onload = function(e) {
+const img = new Image();
+img.onload = () => {
+logoLoaded = true;
+document.getElementById('logoPreview').style.display = 'block';
+document.getElementById('logoPreview').src = e.target.result;
+updatePreview();
+};
+img.src = e.target.result;
+};
+reader.readAsDataURL(file);
+}
+});
+        // Add invoice itemsn        functio
+addNewItem() {
+const newItem = document.createElement('div');
+newItem.className = 'invoice-item';
+newItem.style.display = 'grid';
+newItem.style.gridTemplateColumns = '2fr 1fr 1fr';
+newItem.style.gap = '10px';
+newItem.style.marginBottom = '10px';
+newItem.innerHTML = `n                <input type="text" placeholder="Description" class="item-desc">                <input type="number" placeholder="Qty" class="item-qty" min="0" value="1">                <input type="number" placeholder="Price" class="item-price" min="0" step="0.01">            `;
+document.getElementById('itemsContainer').appendChild(newItem);
+updatePreview();
+}
+        // Get currency detailsn        functio
+getCurrency() {
+const select = document.getElementById('currency');
+const symbol = select.value;
+const decimals = parseInt(select.options[select.selectedIndex].getAttribute('data-decimals'), 10);
+return { symbol, decimals };
+}
+        // Update preview calculationsn        functio
+updatePreview() {
+// Brand color
+brandColor = document.getElementById('brandColor').value;
+document.documentElement.style.setProperty('--accent-color', brandColor);
+document.getElementById('colorPreview').style.backgroundColor = brandColor;
+            // Invoice number
+document.getElementById('invoiceNumber').textContent = invoiceCounter.toString().padStart(3, '0');
+            // Company info
+const companyName = document.getElementById('companyName').value || 'Your Company';
+document.getElementById('previewCompanyName').textContent = companyName;
+document.getElementById('previewCompanyName').style.color = brandColor; // Ensure visibilitynn            // Client infon            document.getElementById('previewClientName').textContent =
+document.getElementById('clientName').value || 'Client Name';
+            // Get currency details
+const currency = getCurrency();
+            // Items calculation
+let subtotal = 0;
+let itemsHTML = '';
+const items = Array.from(document.querySelectorAll('.invoice-item'));
+            items.forEach(item => {
+const desc = item.querySelector('.item-desc').value || 'Item';
+const qty = parseFloat(item.querySelector('.item-qty').value) || 0;
+const price = parseFloat(item.querySelector('.item-price').value) || 0;
+const total = qty * price;
+subtotal += total;
+                itemsHTML += `n                    <div class="invoice-item-row">                        <span>${desc}</span>                        <span>${qty} × ${currency.symbol}${price.toFixed(currency.decimals)} = ${currency.symbol}${total.toFixed(currency.decimals)}</span>                    </div>                `;
+});
+            // Tax and discount
+const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+const discount = parseFloat(document.getElementById('discount').value) || 0;
+const taxAmount = subtotal * (taxRate / 100);
+const discountAmount = subtotal * (discount / 100);
+const total = subtotal + taxAmount - discountAmount;
+            // Update display with correct decimals
+document.getElementById('subtotal').textContent = `${currency.symbol}${subtotal.toFixed(currency.decimals)}`;
+document.getElementById('taxPercentage').textContent = taxRate;
+document.getElementById('taxAmount').textContent = `${currency.symbol}${taxAmount.toFixed(currency.decimals)}`;
+document.getElementById('discountPercentage').textContent = discount;
+document.getElementById('discountAmount').textContent = `${currency.symbol}${discountAmount.toFixed(currency.decimals)}`;
+document.getElementById('previewTotal').textContent = `${currency.symbol}${total.toFixed(currency.decimals)}`;
+document.getElementById('previewItems').innerHTML = `n                <div class="invoice-item-row" style="font-weight: bold; border-bottom: 2px solid var(--accent-color);">                    <span>Descriptio</span>                    <span>Amount</span>                </div>                ${itemsHTML}
+`;
+            // Additional fieldsn            document.getElementById('previewDueDate').textContent =n                document.getElementById('dueDate').value ?
+new Date(document.getElementById('dueDate').value).toLocaleDateString() :
+'Not specified';
+            document.getElementById('previewNotes').innerHTML =n                document.getElementById('notes').value.replace(/\n/g, '<br>');
+}
+        // PDF Generationn        async functio
+generatePDF() {
+document.getElementById('pdfLoading').style.display = 'block';
+            try {
+// Ensure the preview is fully updated before generating PDF
+updatePreview();
+await new Promise(resolve => setTimeout(resolve, 100)); // Small delay to ensure DOM updatesnn                // Force logo load if pending
+if (document.getElementById('logoUpload').files.length > 0 && !logoLoaded) {
+await new Promise(resolve => setTimeout(resolve, 500));
+}
+                const element = document.getElementById('invoicePreview');
+const scale = 2;
+                const canvas = await html2canvas(element, {
+scale: scale,
+useCORS: true,
+logging: false,
+onclone: (clonedDoc) => {
+// Ensure logo visibility
+const clonedLogo = clonedDoc.getElementById('logoPreview');
+if (document.getElementById('logoUpload').files.length > 0) {
+clonedLogo.src = document.getElementById('logoPreview').src;
+clonedLogo.style.display = 'block';
+}
+                        // Inject company name and styles into cloned document
+const clonedCompanyName = clonedDoc.getElementById('previewCompanyName');
+clonedCompanyName.textContent = document.getElementById('previewCompanyName').textContent;
+clonedCompanyName.style.color = brandColor; // Use brand color directlyn                        clonedCompanyName.style.visibility = 'visible'; // Ensure visibilitynn                        // Apply accent color to cloned document
+clonedDoc.documentElement.style.setProperty('--accent-color', brandColor);
+clonedDoc.querySelectorAll('[style*="var(--accent-color)"]').forEach(el => {
+const style = el.getAttribute('style');
+el.setAttribute('style', style.replace('var(--accent-color)', brandColor));
+});
+}
+});
+                const { jsPDF } = window.jspdf;
+const pdf = new jsPDF('p', 'mm', 'a4');
+const pageWidth = pdf.internal.pageSize.getWidth();
+const imgWidth = pageWidth - 20;
+const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                pdf.addImage(canvas, 'PNG', 10, 10, imgWidth, imgHeight);
+pdf.save(`invoice_${invoiceCounter.toString().padStart(3, '0')}.pdf`);
+                // Update invoice counter
+invoiceCounter++;
+localStorage.setItem('invoiceCounter', invoiceCounter);
+updatePreview();
+} catch (error) {
+alert('Error generating PDF: ' + error.message);
+} finally {
+document.getElementById('pdfLoading').style.display = 'none';
+}
+}
+        // Helper functionsn        functio
+togglePreviewMode() {
+isDarkMode = !isDarkMode;
+const previewSection = document.querySelector('.preview-section');
+const invoicePreview = document.querySelector('.invoice-preview');
+previewSection.style.background = isDarkMode ? 'rgba(35, 35, 45, 0.9)' : 'rgba(255, 255, 255, 0.95)';
+previewSection.style.color = isDarkMode ? 'white' : '#333';
+invoicePreview.style.background = isDarkMode ? 'rgba(30, 30, 40, 0.9)' : '#ffffff';
+invoicePreview.style.color = isDarkMode ? 'white' : '#333';
+}
+        // Initial setup
+updatePreview();
+</script>
     <!-- External Libraries -->    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script></div>
 <p></p>
 <p></p>

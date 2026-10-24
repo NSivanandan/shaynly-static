@@ -138,38 +138,322 @@
                     <div class="control-group">                        <label class="control-label">Particle Shape</label>                        <select id="particleShape">                            <option value="circle">Circle</option>                            <option value="square">Square</option>                            <option value="triangle">Triangle</option>                            <option value="star">Star</option>                            <option value="line">Dash</option>                            <option value="hexagon">Hexago</option>                            <option value="diamond">Diamond</option>                        </select>                    </div>
                     <div class="control-group">                        <div class="toggle-wrapper">                            <label class="toggle-label">Mouse Interactio</label>                            <input type="checkbox" id="mouseInteraction" checked>                        </div>                    </div>                </div>            </div>
             <div>                <div class="panel">                    <h2 class="panel-title">Live Preview</h2>                    <div class="canvas-wrapper">                        <canvas id="animationCanvas"></canvas>                    </div>                </div>
-                <div class="export-section">                    <h2 class="export-title">🚀 Export Your Animatio</h2>                    <p class="export-description">Get a clean, standalone HTML file with your custom settings built in. No dependencies required!</p>                    <div class="button-grid">                        <button class="btn btn-success" id="copyCodeBtn">                            <span>📋</span> Copy Coden                        </button>                        <button class="btn btn-primary" id="downloadBtn">                            <span>⬇️</span> Download HTMLn                        </button>                    </div>                    <div class="message" id="messageBox"></div>                </div>            </div>        </div>    </div>
-    <script>    (function() {n        'use strict';n const canvas = document.getElementById('animationCanvas');n        const ctx = canvas.getContext('2d', { alpha: false });n        let particles = [];n        let animationFrameId = null;n        const mouse = { x: null, y: null };n        let CONFIG = {};
-        const ui = {n            primaryColor: document.getElementById('primaryColor'),n            secondaryColor: document.getElementById('secondaryColor'),n            bgColor: document.getElementById('bgColor'),n            particleCount: document.getElementById('particleCount'),n            flowSpeed: document.getElementById('flowSpeed'),n            particleSize: document.getElementById('particleSize'),n            connectionDistance: document.getElementById('connectionDistance'),n            mouseInteraction: document.getElementById('mouseInteraction'),n            particleShape: document.getElementById('particleShape'),n            fadeOpacity: document.getElementById('fadeOpacity'),n            repulsionRadius: document.getElementById('repulsionRadius'),n            repulsionStrength: document.getElementById('repulsionStrength'),n            copyCodeBtn: document.getElementById('copyCodeBtn'),n            downloadBtn: document.getElementById('downloadBtn'),n            messageBox: document.getElementById('messageBox'),n            countValue: document.getElementById('countValue'),n            speedValue: document.getElementById('speedValue'),n            sizeValue: document.getElementById('sizeValue'),n            distanceValue: document.getElementById('distanceValue'),n            fadeValue: document.getElementById('fadeValue'),n            repulsionRadiusValue: document.getElementById('repulsionRadiusValue'),n            repulsionStrengthValue: document.getElementById('repulsionStrengthValue'),n            controlsHeader: document.getElementById('controlsHeader'),n            controlsContent: document.getElementById('controlsContent')n        };
-        if (window.innerWidth < 1024) {n            ui.controlsHeader.classList.add('collapsed');n            ui.controlsContent.classList.add('collapsed');n        }
-        ui.controlsHeader.addEventListener('click', function() {n            ui.controlsHeader.classList.toggle('collapsed');n            ui.controlsContent.classList.toggle('collapsed');n        });
-        const debounce = function(func, delay) {n            let timeout;n            return function() {n                const context = this;n                const args = arguments;n                clearTimeout(timeout);n                timeout = setTimeout(function() {n                    func.apply(context, args);n                }, delay);n            };n        };
-        const showMessage = function(text, isSuccess) {n            ui.messageBox.textContent = text;n            ui.messageBox.className = 'message show ' + (isSuccess ? 'success' : 'error');n            setTimeout(function() {n                ui.messageBox.classList.remove('show');n            }, 4000);n        };
-        class Particle {n            constructor(color) {n                this.color = color;n                this.x = Math.random() * canvas.width;n                this.y = Math.random() * canvas.height;n                this.radius = Math.random() * CONFIG.maxRadius + 1;n                this.baseVX = (Math.random() - 0.5) * CONFIG.speed;n                this.baseVY = (Math.random() - 0.5) * CONFIG.speed;n                this.velocityX = this.baseVX;n                this.velocityY = this.baseVY;n            }
-            draw() {n                ctx.beginPath();n                ctx.fillStyle = this.color;n switch (CONFIG.particleShape) {n                    case 'square':n                        ctx.fillRect(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);n                        break;n                    case 'triangle':n                        ctx.moveTo(this.x, this.y - this.radius);n                        ctx.lineTo(this.x + this.radius, this.y + this.radius);n                        ctx.lineTo(this.x - this.radius, this.y + this.radius);n                        ctx.closePath();n                        ctx.fill();n                        break;n                    case 'star':n                        var spikes = 5;n                        var outerRadius = this.radius * 1.5;n                        var innerRadius = this.radius * 0.7;n                        var rot = Math.PI / 2 * 3;n                        var step = Math.PI / spikes;n                        ctx.moveTo(this.x, this.y - outerRadius);n                        for (var i = 0; i < spikes; i++) {n                            ctx.lineTo(this.x + Math.cos(rot) * outerRadius, this.y + Math.sin(rot) * outerRadius);n                            rot += step;n                            ctx.lineTo(this.x + Math.cos(rot) * innerRadius, this.y + Math.sin(rot) * innerRadius);n                            rot += step;n                        }n                        ctx.lineTo(this.x, this.y - outerRadius);n                        ctx.closePath();n                        ctx.fill();n                        break;n                    case 'line':n                        ctx.fillRect(this.x - this.radius * 2, this.y - 1, this.radius * 4, 2);n                        break;n                    case 'hexagon':n                        var size = this.radius * 1.5;n                        ctx.moveTo(this.x + size, this.y);n                        for (var j = 1; j <= 6; j++) {n                            var angle = j * 2 * Math.PI / 6;n                            ctx.lineTo(this.x + size * Math.cos(angle), this.y + size * Math.sin(angle));n                        }n                        ctx.fill();n                        break;n                    case 'diamond':n                        ctx.moveTo(this.x, this.y - this.radius * 1.5);n                        ctx.lineTo(this.x + this.radius * 1.5, this.y);n                        ctx.lineTo(this.x, this.y + this.radius * 1.5);n                        ctx.lineTo(this.x - this.radius * 1.5, this.y);n                        ctx.closePath();n                        ctx.fill();n                        break;n                    default:n                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);n                        ctx.fill();n                }n            }
-            update() {n                if (CONFIG.mouseInteraction && mouse.x !== null) {n                    var dx = this.x - mouse.x;n                    var dy = this.y - mouse.y;n                    var distSq = dx * dx + dy * dy;n                    var radiusSq = CONFIG.repulsionRadius * CONFIG.repulsionRadius;n if (distSq < radiusSq) {n                        var dist = Math.sqrt(distSq);n                        var force = (1 - dist / CONFIG.repulsionRadius) * CONFIG.repulsionStrength;n                        this.velocityX += (dx / dist) * force * 0.2;n                        this.velocityY += (dy / dist) * force * 0.2;n                    }n                }
-                this.velocityX *= 0.98;n                this.velocityY *= 0.98;n                this.velocityX += (this.baseVX - this.velocityX) * 0.01;n                this.velocityY += (this.baseVY - this.velocityY) * 0.01;n this.x += this.velocityX;n                this.y += this.velocityY;
-                if (this.x > canvas.width + this.radius) this.x = -this.radius;n                if (this.x < -this.radius) this.x = canvas.width + this.radius;n                if (this.y > canvas.height + this.radius) this.y = -this.radius;n                if (this.y < -this.radius) this.y = canvas.height + this.radius;n            }n        }
-        const drawConnections = function() {n            var maxDistSq = CONFIG.connectionDistance * CONFIG.connectionDistance;n            ctx.lineWidth = 0.5;n for (var i = 0; i < particles.length; i++) {n                for (var j = i + 1; j < particles.length; j++) {n                    var dx = particles[i].x - particles[j].x;n                    var dy = particles[i].y - particles[j].y;n                    var distSq = dx * dx + dy * dy;n if (distSq < maxDistSq) {n                        var opacity = 1 - distSq / maxDistSq;n                        ctx.strokeStyle = 'rgba(255, 255, 255, ' + (opacity * 0.5) + ')';n                        ctx.beginPath();n                        ctx.moveTo(particles[i].x, particles[i].y);n                        ctx.lineTo(particles[j].x, particles[j].y);n                        ctx.stroke();n                    }n                }n            }n        };
-        const animate = function() {n            var fadeHex = Math.round(CONFIG.fadeOpacity * 255).toString(16).padStart(2, '0');n            ctx.fillStyle = CONFIG.canvasBg + fadeHex;n            ctx.fillRect(0, 0, canvas.width, canvas.height);n if (CONFIG.connectionDistance > 0) drawConnections();n for (var i = 0; i < particles.length; i++) {n                particles[i].update();n                particles[i].draw();n            }n animationFrameId = requestAnimationFrame(animate);n        };
-        const updateConfig = function() {n            CONFIG = {n                primaryColor: ui.primaryColor.value,n                secondaryColor: ui.secondaryColor.value,n                canvasBg: ui.bgColor.value,n                count: parseInt(ui.particleCount.value),n                speed: parseFloat(ui.flowSpeed.value),n                maxRadius: parseFloat(ui.particleSize.value),n                connectionDistance: parseInt(ui.connectionDistance.value),n                mouseInteraction: ui.mouseInteraction.checked,n                particleShape: ui.particleShape.value,n                fadeOpacity: parseFloat(ui.fadeOpacity.value),n                repulsionRadius: parseInt(ui.repulsionRadius.value),n                repulsionStrength: parseInt(ui.repulsionStrength.value)n            };n ui.countValue.textContent = CONFIG.count;n            ui.speedValue.textContent = CONFIG.speed;n            ui.sizeValue.textContent = CONFIG.maxRadius + 'px';n            ui.distanceValue.textContent = CONFIG.connectionDistance + 'px';n            ui.fadeValue.textContent = CONFIG.fadeOpacity;n            ui.repulsionRadiusValue.textContent = CONFIG.repulsionRadius + 'px';n            ui.repulsionStrengthValue.textContent = CONFIG.repulsionStrength + 'x';n        };
-        const restartAnimation = function() {n            if (animationFrameId) {n                cancelAnimationFrame(animationFrameId);n                animationFrameId = null;n            }n updateConfig();n var container = canvas.parentElement;n            canvas.width = container.clientWidth;n            canvas.height = container.clientHeight;n particles = [];n            for (var i = 0; i < CONFIG.count; i++) {n                particles.push(new Particle(i % 2 === 0 ? CONFIG.primaryColor : CONFIG.secondaryColor));n            }n animate();n        };
-        const generateProductionCode = function() {n            updateConfig();n            var configString = JSON.stringify(CONFIG, null, 4);n            return '<canvas id="c"></canvas>\<script>\n(function(){var cv=document.getElementById("c"),ctx=cv.getContext("2d"),ps=[],m={x:null,y:null},cfg=' + configString + ';\nfunction P(c){this.color=c;this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.r=Math.random()*cfg.maxRadius+1;this.bvx=(Math.random()-.5)*cfg.speed;this.bvy=(Math.random()-.5)*cfg.speed;this.vx=this.bvx;this.vy=this.bvy}\nP.prototype.draw=function(){ctx.beginPath();ctx.fillStyle=this.color;switch(cfg.particleShape){case"square":ctx.fillRect(this.x-this.r,this.y-this.r,this.r*2,this.r*2);break;case"triangle":ctx.moveTo(this.x,this.y-this.r);ctx.lineTo(this.x+this.r,this.y+this.r);ctx.lineTo(this.x-this.r,this.y+this.r);ctx.closePath();ctx.fill();break;case"star":var s=5,or=this.r*1.5,ir=this.r*.7,rot=Math.PI/2*3,st=Math.PI/s;ctx.moveTo(this.x,this.y-or);for(var i=0;i<s;i++){ctx.lineTo(this.x+Math.cos(rot)*or,this.y+Math.sin(rot)*or);rot+=st;ctx.lineTo(this.x+Math.cos(rot)*ir,this.y+Math.sin(rot)*ir);rot+=st}ctx.lineTo(this.x,this.y-or);ctx.closePath();ctx.fill();break;case"line":ctx.fillRect(this.x-this.r*2,this.y-1,this.r*4,2);break;case"hexagon":var sz=this.r*1.5;ctx.moveTo(this.x+sz,this.y);for(var j=1;j<=6;j++){var a=j*2*Math.PI/6;ctx.lineTo(this.x+sz*Math.cos(a),this.y+sz*Math.sin(a))}ctx.fill();break;case"diamond":ctx.moveTo(this.x,this.y-this.r*1.5);ctx.lineTo(this.x+this.r*1.5,this.y);ctx.lineTo(this.x,this.y+this.r*1.5);ctx.lineTo(this.x-this.r*1.5,this.y);ctx.closePath();ctx.fill();break;default:ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}}\nP.prototype.update=function(){if(cfg.mouseInteraction&&m.x!==null){var dx=this.x-m.x,dy=this.y-m.y,dsq=dx*dx+dy*dy,rsq=cfg.repulsionRadius*cfg.repulsionRadius;if(dsq<rsq){var d=Math.sqrt(dsq),f=(1-d/cfg.repulsionRadius)*cfg.repulsionStrength;this.vx+=(dx/d)*f*.2;this.vy+=(dy/d)*f*.2}}this.vx*=.98;this.vy*=.98;this.vx+=(this.bvx-this.vx)*.01;this.vy+=(this.bvy-this.vy)*.01;this.x+=this.vx;this.y+=this.vy;if(this.x>cv.width+this.r)this.x=-this.r;if(this.x<-this.r)this.x=cv.width+this.r;if(this.y>cv.height+this.r)this.y=-this.r;if(this.y<-this.r)this.y=cv.height+this.r}\nfunction drawL(){var mdsq=cfg.connectionDistance*cfg.connectionDistance;ctx.lineWidth=.5;for(var i=0;i<ps.length;i++){for(var j=i+1;j<ps.length;j++){var dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,dsq=dx*dx+dy*dy;if(dsq<mdsq){var o=1-dsq/mdsq;ctx.strokeStyle="rgba(255,255,255,"+(o*.5)+")";ctx.beginPath();ctx.moveTo(ps[i].x,ps[i].y);ctx.lineTo(ps[j].x,ps[j].y);ctx.stroke()}}}}\nfunction anim(){var fh=Math.round(cfg.fadeOpacity*255).toString(16).padStart(2,"0");ctx.fillStyle=cfg.canvasBg+fh;ctx.fillRect(0,0,cv.width,cv.height);if(cfg.connectionDistance>0)drawL();for(var i=0;i<ps.length;i++){ps[i].update();ps[i].draw()}requestAnimationFrame(anim)}\nfunction init(){cv.width=window.innerWidth;cv.height=window.innerHeight;ps=[];for(var i=0;i<cfg.count;i++){ps.push(new P(i%2===0?cfg.primaryColor:cfg.secondaryColor))}}\nwindow.addEventListener("resize",init);cv.addEventListener("mousemove",function(e){m.x=e.clientX;m.y=e.clientY});cv.addEventListener("touchmove",function(e){e.preventDefault();m.x=e.touches[0].clientX;m.y=e.touches[0].clientY});cv.addEventListener("mouseleave",function(){m.x=null;m.y=null});cv.addEventListener("touchend",function(){m.x=null;m.y=null});init();anim()})();\<\/script>';n        };
+                <div class="export-section">                    <h2 class="export-title">🚀 Export Your Animatio</h2>                    <p class="export-description">Get a clean, standalone HTML file with your custom settings built in. No dependencies required!</p>                    <div class="button-grid">                        <button class="btn btn-success" id="copyCodeBtn">                            <span>📋</span> Copy Coden                        </button>                        <button class="btn btn-primary" id="downloadBtn">                            <span>⬇️</span> Download HTML                        </button>                    </div>                    <div class="message" id="messageBox"></div>                </div>            </div>        </div>    </div>
+    <script>    (function() {
+'use strict';
+const canvas = document.getElementById('animationCanvas');
+const ctx = canvas.getContext('2d', { alpha: false });
+let particles = [];
+let animationFrameId = null;
+const mouse = { x: null, y: null };
+let CONFIG = {};
+        const ui = {
+primaryColor: document.getElementById('primaryColor'),
+secondaryColor: document.getElementById('secondaryColor'),
+bgColor: document.getElementById('bgColor'),
+particleCount: document.getElementById('particleCount'),
+flowSpeed: document.getElementById('flowSpeed'),
+particleSize: document.getElementById('particleSize'),
+connectionDistance: document.getElementById('connectionDistance'),
+mouseInteraction: document.getElementById('mouseInteraction'),
+particleShape: document.getElementById('particleShape'),
+fadeOpacity: document.getElementById('fadeOpacity'),
+repulsionRadius: document.getElementById('repulsionRadius'),
+repulsionStrength: document.getElementById('repulsionStrength'),
+copyCodeBtn: document.getElementById('copyCodeBtn'),
+downloadBtn: document.getElementById('downloadBtn'),
+messageBox: document.getElementById('messageBox'),
+countValue: document.getElementById('countValue'),
+speedValue: document.getElementById('speedValue'),
+sizeValue: document.getElementById('sizeValue'),
+distanceValue: document.getElementById('distanceValue'),
+fadeValue: document.getElementById('fadeValue'),
+repulsionRadiusValue: document.getElementById('repulsionRadiusValue'),
+repulsionStrengthValue: document.getElementById('repulsionStrengthValue'),
+controlsHeader: document.getElementById('controlsHeader'),
+controlsContent: document.getElementById('controlsContent')
+};
+        if (window.innerWidth < 1024) {
+ui.controlsHeader.classList.add('collapsed');
+ui.controlsContent.classList.add('collapsed');
+}
+        ui.controlsHeader.addEventListener('click', function() {
+ui.controlsHeader.classList.toggle('collapsed');
+ui.controlsContent.classList.toggle('collapsed');
+});
+        const debounce = function(func, delay) {
+let timeout;
+return function() {
+const context = this;
+const args = arguments;
+clearTimeout(timeout);
+timeout = setTimeout(function() {
+func.apply(context, args);
+}, delay);
+};
+};
+        const showMessage = function(text, isSuccess) {
+ui.messageBox.textContent = text;
+ui.messageBox.className = 'message show ' + (isSuccess ? 'success' : 'error');
+setTimeout(function() {
+ui.messageBox.classList.remove('show');
+}, 4000);
+};
+        class Particle {
+constructor(color) {
+this.color = color;
+this.x = Math.random() * canvas.width;
+this.y = Math.random() * canvas.height;
+this.radius = Math.random() * CONFIG.maxRadius + 1;
+this.baseVX = (Math.random() - 0.5) * CONFIG.speed;
+this.baseVY = (Math.random() - 0.5) * CONFIG.speed;
+this.velocityX = this.baseVX;
+this.velocityY = this.baseVY;
+}
+            draw() {
+ctx.beginPath();
+ctx.fillStyle = this.color;
+switch (CONFIG.particleShape) {
+case 'square':
+ctx.fillRect(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
+break;
+case 'triangle':
+ctx.moveTo(this.x, this.y - this.radius);
+ctx.lineTo(this.x + this.radius, this.y + this.radius);
+ctx.lineTo(this.x - this.radius, this.y + this.radius);
+ctx.closePath();
+ctx.fill();
+break;
+case 'star':
+var spikes = 5;
+var outerRadius = this.radius * 1.5;
+var innerRadius = this.radius * 0.7;
+var rot = Math.PI / 2 * 3;
+var step = Math.PI / spikes;
+ctx.moveTo(this.x, this.y - outerRadius);
+for (var i = 0; i < spikes; i++) {
+ctx.lineTo(this.x + Math.cos(rot) * outerRadius, this.y + Math.sin(rot) * outerRadius);
+rot += step;
+ctx.lineTo(this.x + Math.cos(rot) * innerRadius, this.y + Math.sin(rot) * innerRadius);
+rot += step;
+}
+ctx.lineTo(this.x, this.y - outerRadius);
+ctx.closePath();
+ctx.fill();
+break;
+case 'line':
+ctx.fillRect(this.x - this.radius * 2, this.y - 1, this.radius * 4, 2);
+break;
+case 'hexagon':
+var size = this.radius * 1.5;
+ctx.moveTo(this.x + size, this.y);
+for (var j = 1; j <= 6; j++) {
+var angle = j * 2 * Math.PI / 6;
+ctx.lineTo(this.x + size * Math.cos(angle), this.y + size * Math.sin(angle));
+}
+ctx.fill();
+break;
+case 'diamond':
+ctx.moveTo(this.x, this.y - this.radius * 1.5);
+ctx.lineTo(this.x + this.radius * 1.5, this.y);
+ctx.lineTo(this.x, this.y + this.radius * 1.5);
+ctx.lineTo(this.x - this.radius * 1.5, this.y);
+ctx.closePath();
+ctx.fill();
+break;
+default:
+ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+ctx.fill();
+}
+}
+            update() {
+if (CONFIG.mouseInteraction && mouse.x !== null) {
+var dx = this.x - mouse.x;
+var dy = this.y - mouse.y;
+var distSq = dx * dx + dy * dy;
+var radiusSq = CONFIG.repulsionRadius * CONFIG.repulsionRadius;
+if (distSq < radiusSq) {
+var dist = Math.sqrt(distSq);
+var force = (1 - dist / CONFIG.repulsionRadius) * CONFIG.repulsionStrength;
+this.velocityX += (dx / dist) * force * 0.2;
+this.velocityY += (dy / dist) * force * 0.2;
+}
+}
+                this.velocityX *= 0.98;
+this.velocityY *= 0.98;
+this.velocityX += (this.baseVX - this.velocityX) * 0.01;
+this.velocityY += (this.baseVY - this.velocityY) * 0.01;
+this.x += this.velocityX;
+this.y += this.velocityY;
+                if (this.x > canvas.width + this.radius) this.x = -this.radius;
+if (this.x < -this.radius) this.x = canvas.width + this.radius;
+if (this.y > canvas.height + this.radius) this.y = -this.radius;
+if (this.y < -this.radius) this.y = canvas.height + this.radius;
+}
+}
+        const drawConnections = function() {
+var maxDistSq = CONFIG.connectionDistance * CONFIG.connectionDistance;
+ctx.lineWidth = 0.5;
+for (var i = 0; i < particles.length; i++) {
+for (var j = i + 1; j < particles.length; j++) {
+var dx = particles[i].x - particles[j].x;
+var dy = particles[i].y - particles[j].y;
+var distSq = dx * dx + dy * dy;
+if (distSq < maxDistSq) {
+var opacity = 1 - distSq / maxDistSq;
+ctx.strokeStyle = 'rgba(255, 255, 255, ' + (opacity * 0.5) + ')';
+ctx.beginPath();
+ctx.moveTo(particles[i].x, particles[i].y);
+ctx.lineTo(particles[j].x, particles[j].y);
+ctx.stroke();
+}
+}
+}
+};
+        const animate = function() {
+var fadeHex = Math.round(CONFIG.fadeOpacity * 255).toString(16).padStart(2, '0');
+ctx.fillStyle = CONFIG.canvasBg + fadeHex;
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+if (CONFIG.connectionDistance > 0) drawConnections();
+for (var i = 0; i < particles.length; i++) {
+particles[i].update();
+particles[i].draw();
+}
+animationFrameId = requestAnimationFrame(animate);
+};
+        const updateConfig = function() {
+CONFIG = {
+primaryColor: ui.primaryColor.value,
+secondaryColor: ui.secondaryColor.value,
+canvasBg: ui.bgColor.value,
+count: parseInt(ui.particleCount.value),
+speed: parseFloat(ui.flowSpeed.value),
+maxRadius: parseFloat(ui.particleSize.value),
+connectionDistance: parseInt(ui.connectionDistance.value),
+mouseInteraction: ui.mouseInteraction.checked,
+particleShape: ui.particleShape.value,
+fadeOpacity: parseFloat(ui.fadeOpacity.value),
+repulsionRadius: parseInt(ui.repulsionRadius.value),
+repulsionStrength: parseInt(ui.repulsionStrength.value)
+};
+ui.countValue.textContent = CONFIG.count;
+ui.speedValue.textContent = CONFIG.speed;
+ui.sizeValue.textContent = CONFIG.maxRadius + 'px';
+ui.distanceValue.textContent = CONFIG.connectionDistance + 'px';
+ui.fadeValue.textContent = CONFIG.fadeOpacity;
+ui.repulsionRadiusValue.textContent = CONFIG.repulsionRadius + 'px';
+ui.repulsionStrengthValue.textContent = CONFIG.repulsionStrength + 'x';
+};
+        const restartAnimation = function() {
+if (animationFrameId) {
+cancelAnimationFrame(animationFrameId);
+animationFrameId = null;
+}
+updateConfig();
+var container = canvas.parentElement;
+canvas.width = container.clientWidth;
+canvas.height = container.clientHeight;
+particles = [];
+for (var i = 0; i < CONFIG.count; i++) {
+particles.push(new Particle(i % 2 === 0 ? CONFIG.primaryColor : CONFIG.secondaryColor));
+}
+animate();
+};
+        const generateProductionCode = function() {
+updateConfig();
+var configString = JSON.stringify(CONFIG, null, 4);
+return '<canvas id="c"></canvas>\<script>\n(function(){var cv=document.getElementById("c"),ctx=cv.getContext("2d"),ps=[],m={x:
+ull,y:
+ull},cfg=' + configString + ';\nfunction P(c){this.color=c;this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.r=Math.random()*cfg.maxRadius+1;this.bvx=(Math.random()-.5)*cfg.speed;this.bvy=(Math.random()-.5)*cfg.speed;this.vx=this.bvx;this.vy=this.bvy}\nP.prototype.draw=function(){ctx.beginPath();ctx.fillStyle=this.color;switch(cfg.particleShape){case"square":ctx.fillRect(this.x-this.r,this.y-this.r,this.r*2,this.r*2);break;case"triangle":ctx.moveTo(this.x,this.y-this.r);ctx.lineTo(this.x+this.r,this.y+this.r);ctx.lineTo(this.x-this.r,this.y+this.r);ctx.closePath();ctx.fill();break;case"star":var s=5,or=this.r*1.5,ir=this.r*.7,rot=Math.PI/2*3,st=Math.PI/s;ctx.moveTo(this.x,this.y-or);for(var i=0;i<s;i++){ctx.lineTo(this.x+Math.cos(rot)*or,this.y+Math.sin(rot)*or);rot+=st;ctx.lineTo(this.x+Math.cos(rot)*ir,this.y+Math.sin(rot)*ir);rot+=st}ctx.lineTo(this.x,this.y-or);ctx.closePath();ctx.fill();break;case"line":ctx.fillRect(this.x-this.r*2,this.y-1,this.r*4,2);break;case"hexagon":var sz=this.r*1.5;ctx.moveTo(this.x+sz,this.y);for(var j=1;j<=6;j++){var a=j*2*Math.PI/6;ctx.lineTo(this.x+sz*Math.cos(a),this.y+sz*Math.sin(a))}ctx.fill();break;case"diamond":ctx.moveTo(this.x,this.y-this.r*1.5);ctx.lineTo(this.x+this.r*1.5,this.y);ctx.lineTo(this.x,this.y+this.r*1.5);ctx.lineTo(this.x-this.r*1.5,this.y);ctx.closePath();ctx.fill();break;default:ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}}\nP.prototype.update=function(){if(cfg.mouseInteraction&&m.x!==null){var dx=this.x-m.x,dy=this.y-m.y,dsq=dx*dx+dy*dy,rsq=cfg.repulsionRadius*cfg.repulsionRadius;if(dsq<rsq){var d=Math.sqrt(dsq),f=(1-d/cfg.repulsionRadius)*cfg.repulsionStrength;this.vx+=(dx/d)*f*.2;this.vy+=(dy/d)*f*.2}}this.vx*=.98;this.vy*=.98;this.vx+=(this.bvx-this.vx)*.01;this.vy+=(this.bvy-this.vy)*.01;this.x+=this.vx;this.y+=this.vy;if(this.x>cv.width+this.r)this.x=-this.r;if(this.x<-this.r)this.x=cv.width+this.r;if(this.y>cv.height+this.r)this.y=-this.r;if(this.y<-this.r)this.y=cv.height+this.r}\nfunction drawL(){var mdsq=cfg.connectionDistance*cfg.connectionDistance;ctx.lineWidth=.5;for(var i=0;i<ps.length;i++){for(var j=i+1;j<ps.length;j++){var dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,dsq=dx*dx+dy*dy;if(dsq<mdsq){var o=1-dsq/mdsq;ctx.strokeStyle="rgba(255,255,255,"+(o*.5)+")";ctx.beginPath();ctx.moveTo(ps[i].x,ps[i].y);ctx.lineTo(ps[j].x,ps[j].y);ctx.stroke()}}}}\nfunction anim(){var fh=Math.round(cfg.fadeOpacity*255).toString(16).padStart(2,"0");ctx.fillStyle=cfg.canvasBg+fh;ctx.fillRect(0,0,cv.width,cv.height);if(cfg.connectionDistance>0)drawL();for(var i=0;i<ps.length;i++){ps[i].update();ps[i].draw()}requestAnimationFrame(anim)}\nfunction init(){cv.width=window.innerWidth;cv.height=window.innerHeight;ps=[];for(var i=0;i<cfg.count;i++){ps.push(new P(i%2===0?cfg.primaryColor:cfg.secondaryColor))}}\nwindow.addEventListener("resize",init);cv.addEventListener("mousemove",function(e){m.x=e.clientX;m.y=e.clientY});cv.addEventListener("touchmove",function(e){e.preventDefault();m.x=e.touches[0].clientX;m.y=e.touches[0].clientY});cv.addEventListener("mouseleave",function(){m.x=null;m.y=null});cv.addEventListener("touchend",function(){m.x=null;m.y=null});init();anim()})();\<\/script>';
+};
         var debouncedRestart = debounce(restartAnimation, 250);
-        ui.primaryColor.addEventListener('change', restartAnimation);n        ui.secondaryColor.addEventListener('change', restartAnimation);n        ui.bgColor.addEventListener('change', restartAnimation);n        ui.particleCount.addEventListener('input', debouncedRestart);n        ui.flowSpeed.addEventListener('input', debouncedRestart);n        ui.particleSize.addEventListener('input', debouncedRestart);n        ui.connectionDistance.addEventListener('input', debouncedRestart);n        ui.fadeOpacity.addEventListener('input', debouncedRestart);n        ui.repulsionRadius.addEventListener('input', debouncedRestart);n        ui.repulsionStrength.addEventListener('input', debouncedRestart);n        ui.mouseInteraction.addEventListener('change', restartAnimation);n        ui.particleShape.addEventListener('change', restartAnimation);
+        ui.primaryColor.addEventListener('change', restartAnimation);
+ui.secondaryColor.addEventListener('change', restartAnimation);
+ui.bgColor.addEventListener('change', restartAnimation);
+ui.particleCount.addEventListener('input', debouncedRestart);
+ui.flowSpeed.addEventListener('input', debouncedRestart);
+ui.particleSize.addEventListener('input', debouncedRestart);
+ui.connectionDistance.addEventListener('input', debouncedRestart);
+ui.fadeOpacity.addEventListener('input', debouncedRestart);
+ui.repulsionRadius.addEventListener('input', debouncedRestart);
+ui.repulsionStrength.addEventListener('input', debouncedRestart);
+ui.mouseInteraction.addEventListener('change', restartAnimation);
+ui.particleShape.addEventListener('change', restartAnimation);
         window.addEventListener('resize', debounce(restartAnimation, 300));
-        canvas.addEventListener('mousemove', function(e) {n            var rect = canvas.getBoundingClientRect();n            mouse.x = e.clientX - rect.left;n            mouse.y = e.clientY - rect.top;n        });
-        canvas.addEventListener('touchmove', function(e) {n            e.preventDefault();n            var rect = canvas.getBoundingClientRect();n            mouse.x = e.touches[0].clientX - rect.left;n            mouse.y = e.touches[0].clientY - rect.top;n        });
-        canvas.addEventListener('mouseleave', function() {n            mouse.x = null;n            mouse.y = null;n        });
-        canvas.addEventListener('touchend', function() {n            mouse.x = null;n            mouse.y = null;n        });
-        ui.copyCodeBtn.addEventListener('click', function() {n            var code = generateProductionCode();n if (navigator.clipboard && window.isSecureContext) {n                navigator.clipboard.writeText(code).then(function() {n                    showMessage('✅ Code copied to clipboard!', true);n                }).catch(function() {n                    fallbackCopy(code);n                });n            } else {n                fallbackCopy(code);n            }n        });
-        function fallbackCopy(text) {n            var textArea = document.createElement('textarea');n            textArea.value = text;n            textArea.style.position = 'fixed';n            textArea.style.left = '-9999px';n            textArea.style.top = '-9999px';n            document.body.appendChild(textArea);n            textArea.focus();n            textArea.select();n try {n                document.execCommand('copy');n                showMessage('✅ Code copied successfully!', true);n            } catch (err) {n                showMessage('❌ Copy failed. Please try again.', false);n            }n document.body.removeChild(textArea);n        }
-        ui.downloadBtn.addEventListener('click', function() {n            try {n                var code = generateProductionCode();n                var blob = new Blob([code], { type: 'text/html' });n                var url = URL.createObjectURL(blob);n                var a = document.createElement('a');n                a.href = url;n                a.download = 'particle-animation.html';n                document.body.appendChild(a);n                a.click();n setTimeout(function() {n                    document.body.removeChild(a);n                    URL.revokeObjectURL(url);n                }, 200);n showMessage('✅ Download started successfully!', true);n            } catch (err) {n                showMessage('❌ Download failed. Please try again.', false);n            }n        });
-        restartAnimation();n    })();n    </script>
+        canvas.addEventListener('mousemove', function(e) {
+var rect = canvas.getBoundingClientRect();
+mouse.x = e.clientX - rect.left;
+mouse.y = e.clientY - rect.top;
+});
+        canvas.addEventListener('touchmove', function(e) {
+e.preventDefault();
+var rect = canvas.getBoundingClientRect();
+mouse.x = e.touches[0].clientX - rect.left;
+mouse.y = e.touches[0].clientY - rect.top;
+});
+        canvas.addEventListener('mouseleave', function() {
+mouse.x = null;
+mouse.y = null;
+});
+        canvas.addEventListener('touchend', function() {
+mouse.x = null;
+mouse.y = null;
+});
+        ui.copyCodeBtn.addEventListener('click', function() {
+var code = generateProductionCode();
+if (navigator.clipboard && window.isSecureContext) {
+navigator.clipboard.writeText(code).then(function() {
+showMessage('✅ Code copied to clipboard!', true);
+}).catch(function() {
+fallbackCopy(code);
+});
+} else {
+fallbackCopy(code);
+}
+});
+        function fallbackCopy(text) {
+var textArea = document.createElement('textarea');
+textArea.value = text;
+textArea.style.position = 'fixed';
+textArea.style.left = '-9999px';
+textArea.style.top = '-9999px';
+document.body.appendChild(textArea);
+textArea.focus();
+textArea.select();
+try {
+document.execCommand('copy');
+showMessage('✅ Code copied successfully!', true);
+} catch (err) {
+showMessage('❌ Copy failed. Please try again.', false);
+}
+document.body.removeChild(textArea);
+}
+        ui.downloadBtn.addEventListener('click', function() {
+try {
+var code = generateProductionCode();
+var blob = new Blob([code], { type: 'text/html' });
+var url = URL.createObjectURL(blob);
+var a = document.createElement('a');
+a.href = url;
+a.download = 'particle-animation.html';
+document.body.appendChild(a);
+a.click();
+setTimeout(function() {
+document.body.removeChild(a);
+URL.revokeObjectURL(url);
+}, 200);
+showMessage('✅ Download started successfully!', true);
+} catch (err) {
+showMessage('❌ Download failed. Please try again.', false);
+}
+});
+        restartAnimation();
+})();
+</script>
     <main class="container-content mx-auto"> ---
-        <section class="py-12">            <h2 class="text-3xl font-bold text-center mb-10 text-gray-700">Why Build with Our Generator?</h2>                        <div class="grid gap-8 md:grid-cols-3">                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-purple-600">                    <div class="flex items-center mb-3">                        <svg class="feature-icon text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>                        <h3 class="ml-3 text-xl font-semibold">⚡ SEO-First Performance</h3>                    </div>                    <p class="text-gray-600 text-sm">                        <a href="https://shaynly.com/branded-qr-code-generator/" title="Branded QR Code Generator: Best and Completely Free" target="_blank" rel="noopener"  data-wpil-monitor-id="882">Generated code</a> is **vanilla JavaScript** and Canvas-based, meaning zero library overhead. Keep your Core Web Vitals green and your load times fast.n                    </p>                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-pink-500">                    <div class="flex items-center mb-3">                        <svg class="feature-icon text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0013.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>                        <h3 class="ml-3 text-xl font-semibold">🎨 Unlimited Customizatio</h3>                    </div>                    <p class="text-gray-600 text-sm">                        Adjust color, particle shape (circle, star, hexagon), density, speed, and responsiveness, all in a <a href="https://shaynly.com/creative-text-animation-effects/" title="Creative Text Animation Effects: Live Preview &amp; Customization" target="_blank" rel="noopener"  data-wpil-monitor-id="884">live preview</a>.n                    </p>                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500">                    <div class="flex items-center mb-3">                        <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>                        <h3 class="ml-3 text-xl font-semibold">✨ Clean, Deployable Code</h3>                    </div>                    <p class="text-gray-600 text-sm">                        Instantly copy or download a **standalone <a href="https://shaynly.com/a-beginners-guide-to-html-coding/" title="A Beginner&#8217;s Guide to HTML Coding" target="_blank" rel="noopener"  data-wpil-monitor-id="886">HTML file** containing only the code</a> needed. No bulky downloads or configuration files.n                    </p>                </div>            </div>        </section> ---
+        <section class="py-12">            <h2 class="text-3xl font-bold text-center mb-10 text-gray-700">Why Build with Our Generator?</h2>                        <div class="grid gap-8 md:grid-cols-3">                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-purple-600">                    <div class="flex items-center mb-3">                        <svg class="feature-icon text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>                        <h3 class="ml-3 text-xl font-semibold">⚡ SEO-First Performance</h3>                    </div>                    <p class="text-gray-600 text-sm">                        <a href="https://shaynly.com/branded-qr-code-generator/" title="Branded QR Code Generator: Best and Completely Free" target="_blank" rel="noopener"  data-wpil-monitor-id="882">Generated code</a> is **vanilla JavaScript** and Canvas-based, meaning zero library overhead. Keep your Core Web Vitals green and your load times fast.                    </p>                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-pink-500">                    <div class="flex items-center mb-3">                        <svg class="feature-icon text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0013.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>                        <h3 class="ml-3 text-xl font-semibold">🎨 Unlimited Customizatio</h3>                    </div>                    <p class="text-gray-600 text-sm">                        Adjust color, particle shape (circle, star, hexagon), density, speed, and responsiveness, all in a <a href="https://shaynly.com/creative-text-animation-effects/" title="Creative Text Animation Effects: Live Preview &amp; Customization" target="_blank" rel="noopener"  data-wpil-monitor-id="884">live preview</a>.                    </p>                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500">                    <div class="flex items-center mb-3">                        <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>                        <h3 class="ml-3 text-xl font-semibold">✨ Clean, Deployable Code</h3>                    </div>                    <p class="text-gray-600 text-sm">                        Instantly copy or download a **standalone <a href="https://shaynly.com/a-beginners-guide-to-html-coding/" title="A Beginner&#8217;s Guide to HTML Coding" target="_blank" rel="noopener"  data-wpil-monitor-id="886">HTML file** containing only the code</a> needed. No bulky downloads or configuration files.                    </p>                </div>            </div>        </section> ---
         <section class="py-12 bg-white rounded-xl shadow-lg" id="tool">            <h2 class="text-3xl font-bold text-center mb-8 text-gray-700">Get Your Hero Animation in 3 Steps</h2>                        <ol class="space-y-6 max-w-xl mx-auto">                <li class="flex items-start">                    <div class="text-3xl font-extrabold text-purple-600 mr-4">1.</div>                    <div>                        <h4 class="text-lg font-bold">Tweak the Controls</h4>                        <p class="text-gray-600">Use the sliders and color pickers on the left to set particle density, flow speed, size, and connection distance for your perfect visual.</p>                    </div>                </li>                <li class="flex items-start">                    <div class="text-3xl font-extrabold text-purple-600 mr-4">2.</div>                    <div>                        <h4 class="text-lg font-bold">Test the Interactio</h4>                        <p class="text-gray-600">Move your mouse over the live canvas. Our **repulsion logic** is built in to create a dynamic, engaging <a href="https://shaynly.com/e-a-t-and-user-experience/" title="Why &#8216;Experience&#8217; is the New E-A-T: Branding for Google&#8217;s Latest Algorithm Update" target="_blank" rel="noopener"  data-wpil-monitor-id="880">user experience</a>.</p>                    </div>                </li>                <li class="flex items-start">                    <div class="text-3xl font-extrabold text-purple-600 mr-4">3.</div>                    <div>                        <h4 class="text-lg font-bold">Export & Deploy</h4>                        <p class="text-gray-600">Click **'Copy Code'** or **'Download HTML File'**. Paste the resulting <a href="https://shaynly.com/marketing-email-signature-designer/" title="Marketing Email Signature Designer" target="_blank" rel="noopener"  data-wpil-monitor-id="888">code into your WordPress custom HTML</a> block or website header. Done!</p>                    </div>                </li>            </ol>        </section>
     </main>
 

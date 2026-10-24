@@ -51,7 +51,9 @@
   "@type": "BlogPosting",
   "headline": "Marketing ROI Analyzer",
   "name": "Marketing ROI Analyzer",
-  "description": "n n n n n Advanced Marketing ROI Analyzer | Comprehensive Campaign Insights | Shaynly n n n n n n body {n font-family: 'Poppins', sans-serif;n line-height:",
+  "description": "n n n n n Advanced Marketing ROI Analyzer | Comprehensive Campaign Insights | Shaynly n n n n n n body {
+font-family: 'Poppins', sans-serif;
+line-height:",
   "url": "https://shaynly.com/marketing-roi-analyzer/",
   "datePublished": "2025-02-02",
   "dateModified": "2025-02-02",
@@ -125,18 +127,183 @@
 
         <div class="article-content">
           <html><head><base href="https://shaynly.com/" /><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Unlock powerful insights with Shaynly's Advanced Marketing ROI Calculator. Analyze campaigns, compare metrics, visualize data, and make data-driven decisions to optimize your marketing strategies."><title>Advanced Marketing ROI Analyzer | Comprehensive Campaign Insights | Shaynly</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><style>    body {n        font-family: 'Poppins', sans-serif;n        line-height: 1.6;n        color: #5D0E41;n        background-color: #f0f4f8;n    }n    .calculator {n        background-color: #fff;n        border-radius: 12px;n        padding: 30px;n        box-shadow: 0 0 20px rgba(0,0,0,0.1);n        transition: all 0.3s ease;n    }n    .calculator:hover {n        transform: translateY(-5px);n        box-shadow: 0 5px 30px rgba(0,0,0,0.15);n    }n    .form-label {n        font-weight: 600;n        color: #2c3e50;n    }n    .btn-primary {n        background-color: #3498db;n        border-color: #3498db;n        transition: all 0.3s ease;n        font-weight: 600;n    }n    .btn-primary:hover {n        background-color: #2980b9;n        border-color: #2980b9;n        transform: translateY(-2px);n    }n    #resultContainer {n        display: none;n    }n    .metric-card {n        background-color: #56021F;n        border-radius: 12px;n        box-shadow: 0 4px 6px rgba(0,0,0,0.1);n        transition: all 0.3s ease;n        overflow: hidden;n    }n    .metric-card:hover {n        transform: translateY(-5px);n        box-shadow: 0 6px 12px rgba(0,0,0,0.15);n    }n    .metric-icon {n        font-size: 2rem;n        color: #5D0E41;n        background-color: #3498db;n        padding: 15px;n        border-radius: 50%;n        margin-bottom: 15px;n    }n    .chart-container {n        position: relative;n        height: 300px;n        width: 100%;n    }n    .insight-card {n        background-color: #0D7377;n        border-left: 4px solid #3498db;n        border-radius: 8px;n    }n    .campaign-comparison {n        background-color: #0D7377;n        border-radius: 12px;n        padding: 20px;n        box-shadow: 0 0 15px rgba(0,0,0,0.1);n    }n    .table-responsive {n        max-height: 400px;n        overflow-y: auto;n    }n    @media (max-width: 768px) {n        .chart-container {n            height: 250px;n        }n    }n    .btn-download {n        background-color: #27ae60;n        border-color: #27ae60;n        color: #fff;n        font-weight: 600;n        transition: all 0.3s ease;n    }n    .btn-download:hover {n        background-color: #2ecc71;n        border-color: #2ecc71;n        transform: translateY(-2px);n    }n    h1, h2, h3 {n        color: #5D0E41;n    }n    .card {n        border: none;n        box-shadow: 0 4px 6px rgba(0,0,0,0.1);n        transition: all 0.3s ease;n    }n    .card:hover {n        box-shadow: 0 6px 12px rgba(0,0,0,0.15);n    }n    .btn-shaynly {n        background-color: #5D0E41;n        border-color: #34495e;n        color: #5D0E41;n        font-weight: 600;n        transition: all 0.3s ease;n    }n    .btn-shaynly:hover {n        background-color: #2c3e50;n        border-color: #2c3e50;n        transform: translateY(-2px);n    }n    @media print {n        .no-print {n            display: none !important;n        }n    }</style></head><body>    <div class="container mt-5">        <h1 class="text-center mb-4">Advanced Marketing ROI Analyzer</h1>        <div class="calculator mb-5">            <form id="roiForm">                <div class="row">                    <div class="col-md-6 mb-3">                        <label for="campaignName" class="form-label">Campaign Name:</label>                        <input type="text" class="form-control" id="campaignName" required>                    </div>                    <div class="col-md-6 mb-3">                        <label for="campaignDuration" class="form-label">Campaign Duration (days):</label>                        <input type="number" class="form-control" id="campaignDuration" required min="1">                    </div>                </div>                <div class="row">                    <div class="col-md-4 mb-3">                        <label for="campaignCost" class="form-label">Total Campaign Cost ($):</label>                        <input type="number" class="form-control" id="campaignCost" required min="0" step="0.01">                    </div>                    <div class="col-md-4 mb-3">                        <label for="revenue" class="form-label">Total Revenue Generated ($):</label>                        <input type="number" class="form-control" id="revenue" required min="0" step="0.01">                    </div>                    <div class="col-md-4 mb-3">                        <label for="impressions" class="form-label">Total Impressions:</label>                        <input type="number" class="form-control" id="impressions" required min="0">                    </div>                </div>                <div class="row">                    <div class="col-md-4 mb-3">                        <label for="clicks" class="form-label">Total Clicks:</label>                        <input type="number" class="form-control" id="clicks" required min="0">                    </div>                    <div class="col-md-4 mb-3">                        <label for="leads" class="form-label">Number of <a href="https://shaynly.com/linkedin-marketing-agency-growth/" target="_blank" rel="noopener"  data-wpil-monitor-id="324">Leads Generated</a>:</label>                        <input type="number" class="form-control" id="leads" required min="0">                    </div>                    <div class="col-md-4 mb-3">                        <label for="conversions" class="form-label">Number of Conversions:</label>                        <input type="number" class="form-control" id="conversions" required min="0">                    </div>                </div>                <button type="submit" class="btn btn-primary w-100">Analyze Campaig</button>            </form>        </div>
-        <div id="resultContainer" class="mb-5">            <h2 class="text-center mb-4">Campaign Analysis Results</h2>            <div class="row">                <div class="col-md-3 mb-3">                    <div class="card metric-card">                        <div class="card-body text-center">                            <div class="metric-icon">                                <i class="fas fa-chart-line"></i>                            </div>                            <h5 class="card-title">ROI</h5>                            <p class="card-text" id="roiResult"></p>                        </div>                    </div>                </div>                <div class="col-md-3 mb-3">                    <div class="card metric-card">                        <div class="card-body text-center">                            <div class="metric-icon">                                <i class="fas fa-dollar-sign"></i>                            </div>                            <h5 class="card-title">ROAS</h5>                            <p class="card-text" id="roasResult"></p>                        </div>                    </div>                </div>                <div class="col-md-3 mb-3">                    <div class="card metric-card">                        <div class="card-body text-center">                            <div class="metric-icon">                                <i class="fas fa-user-plus"></i>                            </div>                            <h5 class="card-title">CPL</h5>                            <p class="card-text" id="cplResult"></p>                        </div>                    </div>                </div>                <div class="col-md-3 mb-3">                    <div class="card metric-card">                        <div class="card-body text-center">                            <div class="metric-icon">                                <i class="fas fa-shopping-cart"></i>                            </div>                            <h5 class="card-title">CPA</h5>                            <p class="card-text" id="cpaResult"></p>                        </div>                    </div>                </div>            </div>            <div class="row mt-4">                <div class="col-md-6 mb-4">                    <div class="card">                        <div class="card-body">                            <h3 class="card-title text-center">ROI Breakdow</h3>                            <div class="chart-container">                                <canvas id="roiChart"></canvas>                            </div>                        </div>                    </div>                </div>                <div class="col-md-6 mb-4">                    <div class="card">                        <div class="card-body">                            <h3 class="card-title text-center">Conversion Funnel</h3>                            <div class="chart-container">                                <canvas id="funnelChart"></canvas>                            </div>                        </div>                    </div>                </div>            </div>            <div class="row mt-4">                <div class="col-12">                    <div class="card insight-card">                        <div class="card-body">                            <h3 class="card-title">Key Insights</h3>                            <ul id="insightsList"></ul>                        </div>                    </div>                </div>            </div>            <div class="row mt-4 no-print">                <div class="col-12 text-center">                    <button id="downloadPDF" class="btn btn-download">                        <i class="fas fa-file-pdf mr-2"></i> Download Results as PDFn                    </button>                </div>            </div>        </div>
+        <div id="resultContainer" class="mb-5">            <h2 class="text-center mb-4">Campaign Analysis Results</h2>            <div class="row">                <div class="col-md-3 mb-3">                    <div class="card metric-card">                        <div class="card-body text-center">                            <div class="metric-icon">                                <i class="fas fa-chart-line"></i>                            </div>                            <h5 class="card-title">ROI</h5>                            <p class="card-text" id="roiResult"></p>                        </div>                    </div>                </div>                <div class="col-md-3 mb-3">                    <div class="card metric-card">                        <div class="card-body text-center">                            <div class="metric-icon">                                <i class="fas fa-dollar-sign"></i>                            </div>                            <h5 class="card-title">ROAS</h5>                            <p class="card-text" id="roasResult"></p>                        </div>                    </div>                </div>                <div class="col-md-3 mb-3">                    <div class="card metric-card">                        <div class="card-body text-center">                            <div class="metric-icon">                                <i class="fas fa-user-plus"></i>                            </div>                            <h5 class="card-title">CPL</h5>                            <p class="card-text" id="cplResult"></p>                        </div>                    </div>                </div>                <div class="col-md-3 mb-3">                    <div class="card metric-card">                        <div class="card-body text-center">                            <div class="metric-icon">                                <i class="fas fa-shopping-cart"></i>                            </div>                            <h5 class="card-title">CPA</h5>                            <p class="card-text" id="cpaResult"></p>                        </div>                    </div>                </div>            </div>            <div class="row mt-4">                <div class="col-md-6 mb-4">                    <div class="card">                        <div class="card-body">                            <h3 class="card-title text-center">ROI Breakdow</h3>                            <div class="chart-container">                                <canvas id="roiChart"></canvas>                            </div>                        </div>                    </div>                </div>                <div class="col-md-6 mb-4">                    <div class="card">                        <div class="card-body">                            <h3 class="card-title text-center">Conversion Funnel</h3>                            <div class="chart-container">                                <canvas id="funnelChart"></canvas>                            </div>                        </div>                    </div>                </div>            </div>            <div class="row mt-4">                <div class="col-12">                    <div class="card insight-card">                        <div class="card-body">                            <h3 class="card-title">Key Insights</h3>                            <ul id="insightsList"></ul>                        </div>                    </div>                </div>            </div>            <div class="row mt-4 no-print">                <div class="col-12 text-center">                    <button id="downloadPDF" class="btn btn-download">                        <i class="fas fa-file-pdf mr-2"></i> Download Results as PDF                    </button>                </div>            </div>        </div>
         <div class="campaign-comparison mb-5">            <h2 class="text-center mb-4">Campaign Compariso</h2>            <div class="table-responsive">                <table class="table table-hover">                    <thead>                        <tr>                            <th>Campaign Name</th>                            <th>ROI</th>                            <th>ROAS</th>                            <th>CPL</th>                            <th>CPA</th>                            <th>CTR</th>                            <th>Conversion Rate</th>                        </tr>                    </thead>                    <tbody id="campaignComparisonBody">                    </tbody>                </table>            </div>        </div>    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>    <script>        let campaigns = [];n        let roiChart, funnelChart;
-        document.getElementById('roiForm').addEventListener('submit', function(e) {n            e.preventDefault();n const campaignName = document.getElementById('campaignName').value;n            const campaignDuration = parseInt(document.getElementById('campaignDuration').value);n            const campaignCost = parseFloat(document.getElementById('campaignCost').value);n            const revenue = parseFloat(document.getElementById('revenue').value);n            const impressions = parseInt(document.getElementById('impressions').value);n            const clicks = parseInt(document.getElementById('clicks').value);n            const leads = parseInt(document.getElementById('leads').value);n            const conversions = parseInt(document.getElementById('conversions').value);n if (isNaN(campaignDuration) || isNaN(campaignCost) || isNaN(revenue) || isNaN(impressions) || isNaN(clicks) || isNaN(leads) || isNaN(conversions)) {n                alert('Please enter valid numbers for all fields.');n                return;n            }n const roi = ((revenue - campaignCost) / campaignCost) * 100;n            const roas = revenue / campaignCost;n            const cpl = campaignCost / leads;n            const cpa = campaignCost / conversions;n            const ctr = (clicks / impressions) * 100;n            const conversionRate = (conversions / clicks) * 100;n const campaign = {n                name: campaignName,n                duration: campaignDuration,n                cost: campaignCost,n                revenue: revenue,n                impressions: impressions,n                clicks: clicks,n                leads: leads,n                conversions: conversions,n                roi: roi,n                roas: roas,n                cpl: cpl,n                cpa: cpa,n                ctr: ctr,n                conversionRate: conversionRaten            };n campaigns.push(campaign);n updateResults(campaign);n            updateCharts(campaign);n            generateInsights(campaign);n            updateCampaignComparison();n document.getElementById('resultContainer').style.display = 'block';n // Send event to Google Analytics (assuming GA is set up)n            if (typeof ga !== 'undefined') {n                ga('send', 'event', 'ROI Analyzer', 'Analyze', 'Advanced Marketing ROI', roi.toFixed(2));n            }n        });
-        function updateResults(campaign) {n            document.getElementById('roiResult').textContent = `${campaign.roi.toFixed(2)}%`;n            document.getElementById('roasResult').textContent = `${campaign.roas.toFixed(2)}`;n            document.getElementById('cplResult').textContent = `$${campaign.cpl.toFixed(2)}`;n            document.getElementById('cpaResult').textContent = `$${campaign.cpa.toFixed(2)}`;n        }
-        function updateCharts(campaign) {n            const ctx1 = document.getElementById('roiChart').getContext('2d');n            const ctx2 = document.getElementById('funnelChart').getContext('2d');n if (roiChart) roiChart.destroy();n            if (funnelChart) funnelChart.destroy();n roiChart = new Chart(ctx1, {n                type: 'doughnut',n                data: {n                    labels: ['Cost', 'Profit'],n                    datasets: [{n                        data: [campaign.cost, campaign.revenue - campaign.cost],n                        backgroundColor: ['#e74c3c', '#2ecc71']n                    }]n                },n                options: {n                    responsive: true,n                    maintainAspectRatio: false,n                    plugins: {n                        title: {n                            display: true,n                            text: 'ROI Breakdown'n                        },n                        tooltip: {n                            callbacks: {n                                label: function(context) {n                                    let label = context.label || '';n                                    if (label) {n                                        label += ': ';n                                    }n                                    if (context.parsed !== null) {n                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed);n                                    }n                                    return label;n                                }n                            }n                        }n                    }n                }n            });n funnelChart = new Chart(ctx2, {n                type: 'bar',n                data: {n                    labels: ['Impressions', 'Clicks', 'Leads', 'Conversions'],n                    datasets: [{n                        label: 'Count',n                        data: [campaign.impressions, campaign.clicks, campaign.leads, campaign.conversions],n                        backgroundColor: ['#3498db', '#f1c40f', '#e67e22', '#2ecc71']n                    }]n                },n                options: {n                    responsive: true,n                    maintainAspectRatio: false,n                    scales: {n                        y: {n                            beginAtZero: true,n                            title: {n                                display: true,n                                text: 'Count'n                            }n                        }n                    },n                    plugins: {n                        title: {n                            display: true,n                            text: 'Conversion Funnel'n                        }n                    }n                }n            });n        }
-        function generateInsights(campaign) {n            const insightsList = document.getElementById('insightsList');n            insightsList.innerHTML = '';
-            const insights = [n                `Your campaign's ROI is ${campaign.roi.toFixed(2)}%, which means for every dollar spent, you're earning $${(campaign.roi / 100 + 1).toFixed(2)}.`,n                `The ROAS of ${campaign.roas.toFixed(2)} indicates that for every $1 spent on advertising, you're generating $${campaign.roas.toFixed(2)} in revenue.`,n                `Your cost per lead (CPL) is $${campaign.cpl.toFixed(2)}. Consider ways to optimize your lead generation process to lower this cost.`,n                `The cost per acquisition (CPA) of $${campaign.cpa.toFixed(2)} represents the average cost to acquire a paying customer.`,n                `Your click-through rate (CTR) is ${campaign.ctr.toFixed(2)}%. This measures the effectiveness of your ad in generating interest.`,n                `The conversion rate of ${campaign.conversionRate.toFixed(2)}% shows the percentage of clicks that result in a conversion.`,n                `Your campaign generated ${campaign.leads} leads over ${campaign.duration} days, averaging ${(campaign.leads / campaign.duration).toFixed(2)} leads per day.`,n                `The average revenue per conversion is $${(campaign.revenue / campaign.conversions).toFixed(2)}. Consider upselling or cross-selling strategies to increase this value.`,n                `Your campaign's efficiency ratio (Revenue / Cost) is ${(campaign.revenue / campaign.cost).toFixed(2)}. A ratio greater than 1 indicates profitability.`,n                `The lead-to-conversion rate is ${((campaign.conversions / campaign.leads) * 100).toFixed(2)}%. Focus on improving your sales funnel to increase this rate.`,n                `Your cost per impression (CPM) is $${((campaign.cost / campaign.impressions) * 1000).toFixed(2)} per 1000 impressions. Evaluate if you're targeting the right audience to improve this metric.`,n                `The average cost per click (CPC) for your campaign is $${(campaign.cost / campaign.clicks).toFixed(2)}. Consider A/B testing your ad creative to lower this cost.`n            ];
-            insights.forEach(insight => {n                const li = document.createElement('li');n                li.textContent = insight;n                insightsList.appendChild(li);n            });n        }
-        function updateCampaignComparison() {n            const comparisonBody = document.getElementById('campaignComparisonBody');n            comparisonBody.innerHTML = '';
-            campaigns.forEach(campaign => {n                const row = comparisonBody.insertRow();n                row.insertCell(0).textContent = campaign.name;n                row.insertCell(1).textContent = `${campaign.roi.toFixed(2)}%`;n                row.insertCell(2).textContent = campaign.roas.toFixed(2);n                row.insertCell(3).textContent = `$${campaign.cpl.toFixed(2)}`;n                row.insertCell(4).textContent = `$${campaign.cpa.toFixed(2)}`;n                row.insertCell(5).textContent = `${campaign.ctr.toFixed(2)}%`;n                row.insertCell(6).textContent = `${campaign.conversionRate.toFixed(2)}%`;n            });n        }
-        document.getElementById('downloadPDF').addEventListener('click', function() {n            const { jsPDF } = window.jspdf;n            const doc = new jsPDF();n html2canvas(document.querySelector('#resultContainer'), {n                ignoreElements: (element) => element.classList.contains('no-print')n            }).then(canvas => {n                const imgData = canvas.toDataURL('image/png');n                const imgProps= doc.getImageProperties(imgData);n                const pdfWidth = doc.internal.pageSize.getWidth();n                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;n doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);n // Add Shaynly.com buttonn                doc.setFillColor(52, 73, 94);n                doc.rect(pdfWidth/2 - 40, pdfHeight + 10, 80, 20, 'F');n                doc.setTextColor(255, 255, 255);n                doc.setFontSize(12);n                doc.text('Visit Shaynly.com', pdfWidth/2, pdfHeight + 22, { align: 'center' });n // Add link to the buttonn                doc.link(pdfWidth/2 - 40, pdfHeight + 10, 80, 20, { url: 'https://shaynly.com' });n doc.save('shaynly_marketing_roi_analysis.pdf');n            });n        });n    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>    <script>        let campaigns = [];
+let roiChart, funnelChart;
+        document.getElementById('roiForm').addEventListener('submit', function(e) {
+e.preventDefault();
+const campaignName = document.getElementById('campaignName').value;
+const campaignDuration = parseInt(document.getElementById('campaignDuration').value);
+const campaignCost = parseFloat(document.getElementById('campaignCost').value);
+const revenue = parseFloat(document.getElementById('revenue').value);
+const impressions = parseInt(document.getElementById('impressions').value);
+const clicks = parseInt(document.getElementById('clicks').value);
+const leads = parseInt(document.getElementById('leads').value);
+const conversions = parseInt(document.getElementById('conversions').value);
+if (isNaN(campaignDuration) || isNaN(campaignCost) || isNaN(revenue) || isNaN(impressions) || isNaN(clicks) || isNaN(leads) || isNaN(conversions)) {
+alert('Please enter valid numbers for all fields.');
+return;
+}
+const roi = ((revenue - campaignCost) / campaignCost) * 100;
+const roas = revenue / campaignCost;
+const cpl = campaignCost / leads;
+const cpa = campaignCost / conversions;
+const ctr = (clicks / impressions) * 100;
+const conversionRate = (conversions / clicks) * 100;
+const campaign = {
+name: campaignName,
+duration: campaignDuration,
+cost: campaignCost,
+revenue: revenue,
+impressions: impressions,
+clicks: clicks,
+leads: leads,
+conversions: conversions,
+roi: roi,
+roas: roas,
+cpl: cpl,
+cpa: cpa,
+ctr: ctr,
+conversionRate: conversionRaten            };
+campaigns.push(campaign);
+updateResults(campaign);
+updateCharts(campaign);
+generateInsights(campaign);
+updateCampaignComparison();
+document.getElementById('resultContainer').style.display = 'block';
+// Send event to Google Analytics (assuming GA is set up)
+if (typeof ga !== 'undefined') {
+ga('send', 'event', 'ROI Analyzer', 'Analyze', 'Advanced Marketing ROI', roi.toFixed(2));
+}
+});
+        function updateResults(campaign) {
+document.getElementById('roiResult').textContent = `${campaign.roi.toFixed(2)}%`;
+document.getElementById('roasResult').textContent = `${campaign.roas.toFixed(2)}`;
+document.getElementById('cplResult').textContent = `$${campaign.cpl.toFixed(2)}`;
+document.getElementById('cpaResult').textContent = `$${campaign.cpa.toFixed(2)}`;
+}
+        function updateCharts(campaign) {
+const ctx1 = document.getElementById('roiChart').getContext('2d');
+const ctx2 = document.getElementById('funnelChart').getContext('2d');
+if (roiChart) roiChart.destroy();
+if (funnelChart) funnelChart.destroy();
+roiChart = new Chart(ctx1, {
+type: 'doughnut',
+data: {
+labels: ['Cost', 'Profit'],
+datasets: [{
+data: [campaign.cost, campaign.revenue - campaign.cost],
+backgroundColor: ['#e74c3c', '#2ecc71']n                    }]n                },
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+title: {
+display: true,
+text: 'ROI Breakdown'n                        },
+tooltip: {
+callbacks: {
+label: function(context) {
+let label = context.label || '';
+if (label) {
+label += ': ';
+}
+if (context.parsed !== null) {
+label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed);
+}
+return label;
+}
+}
+}
+}
+}
+});
+funnelChart = new Chart(ctx2, {
+type: 'bar',
+data: {
+labels: ['Impressions', 'Clicks', 'Leads', 'Conversions'],
+datasets: [{
+label: 'Count',
+data: [campaign.impressions, campaign.clicks, campaign.leads, campaign.conversions],
+backgroundColor: ['#3498db', '#f1c40f', '#e67e22', '#2ecc71']n                    }]n                },
+options: {
+responsive: true,
+maintainAspectRatio: false,
+scales: {
+y: {
+beginAtZero: true,
+title: {
+display: true,
+text: 'Count'n                            }
+}
+},
+plugins: {
+title: {
+display: true,
+text: 'Conversion Funnel'n                        }
+}
+}
+});
+}
+        function generateInsights(campaign) {
+const insightsList = document.getElementById('insightsList');
+insightsList.innerHTML = '';
+            const insights = [n                `Your campaign's ROI is ${campaign.roi.toFixed(2)}%, which means for every dollar spent, you're earning $${(campaign.roi / 100 + 1).toFixed(2)}.`,
+`The ROAS of ${campaign.roas.toFixed(2)} indicates that for every $1 spent on advertising, you're generating $${campaign.roas.toFixed(2)} in revenue.`,
+`Your cost per lead (CPL) is $${campaign.cpl.toFixed(2)}. Consider ways to optimize your lead generation process to lower this cost.`,
+`The cost per acquisition (CPA) of $${campaign.cpa.toFixed(2)} represents the average cost to acquire a paying customer.`,
+`Your click-through rate (CTR) is ${campaign.ctr.toFixed(2)}%. This measures the effectiveness of your ad in generating interest.`,
+`The conversion rate of ${campaign.conversionRate.toFixed(2)}% shows the percentage of clicks that result in a conversion.`,
+`Your campaign generated ${campaign.leads} leads over ${campaign.duration} days, averaging ${(campaign.leads / campaign.duration).toFixed(2)} leads per day.`,
+`The average revenue per conversion is $${(campaign.revenue / campaign.conversions).toFixed(2)}. Consider upselling or cross-selling strategies to increase this value.`,
+`Your campaign's efficiency ratio (Revenue / Cost) is ${(campaign.revenue / campaign.cost).toFixed(2)}. A ratio greater than 1 indicates profitability.`,
+`The lead-to-conversion rate is ${((campaign.conversions / campaign.leads) * 100).toFixed(2)}%. Focus on improving your sales funnel to increase this rate.`,
+`Your cost per impression (CPM) is $${((campaign.cost / campaign.impressions) * 1000).toFixed(2)} per 1000 impressions. Evaluate if you're targeting the right audience to improve this metric.`,
+`The average cost per click (CPC) for your campaign is $${(campaign.cost / campaign.clicks).toFixed(2)}. Consider A/B testing your ad creative to lower this cost.`n            ];
+            insights.forEach(insight => {
+const li = document.createElement('li');
+li.textContent = insight;
+insightsList.appendChild(li);
+});
+}
+        function updateCampaignComparison() {
+const comparisonBody = document.getElementById('campaignComparisonBody');
+comparisonBody.innerHTML = '';
+            campaigns.forEach(campaign => {
+const row = comparisonBody.insertRow();
+row.insertCell(0).textContent = campaign.name;
+row.insertCell(1).textContent = `${campaign.roi.toFixed(2)}%`;
+row.insertCell(2).textContent = campaign.roas.toFixed(2);
+row.insertCell(3).textContent = `$${campaign.cpl.toFixed(2)}`;
+row.insertCell(4).textContent = `$${campaign.cpa.toFixed(2)}`;
+row.insertCell(5).textContent = `${campaign.ctr.toFixed(2)}%`;
+row.insertCell(6).textContent = `${campaign.conversionRate.toFixed(2)}%`;
+});
+}
+        document.getElementById('downloadPDF').addEventListener('click', function() {
+const { jsPDF } = window.jspdf;
+const doc = new jsPDF();
+html2canvas(document.querySelector('#resultContainer'), {
+ignoreElements: (element) => element.classList.contains('no-print')
+}).then(canvas => {
+const imgData = canvas.toDataURL('image/png');
+const imgProps= doc.getImageProperties(imgData);
+const pdfWidth = doc.internal.pageSize.getWidth();
+const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+// Add Shaynly.com button
+doc.setFillColor(52, 73, 94);
+doc.rect(pdfWidth/2 - 40, pdfHeight + 10, 80, 20, 'F');
+doc.setTextColor(255, 255, 255);
+doc.setFontSize(12);
+doc.text('Visit Shaynly.com', pdfWidth/2, pdfHeight + 22, { align: 'center' });
+// Add link to the button
+doc.link(pdfWidth/2 - 40, pdfHeight + 10, 80, 20, { url: 'https://shaynly.com' });
+doc.save('shaynly_marketing_roi_analysis.pdf');
+});
+});
+</script>
 <p><a href="https://shaynly.com/how-to-add-your-website-to-google-search/" title="How to Add Your Website to Google Search: Complete 24-48 Hour Indexing Guide" target="_blank" rel="noopener"  data-wpil-monitor-id="1457">Shaynly's Advanced Marketing</a> ROI Analyzer empowers marketers to transform raw campaign data into actionable insights through a comprehensive suite of analytical tools. This browser-based solution combines essential marketing metrics with advanced visualizations, enabling data-driven decision-making for campaigns of any scale1.</p>
 <h2 class="wp-block-heading has-accent-color has-text-color has-link-color">Core Analytical Capabilities</h2>
 <p>The tool calculates&nbsp;<strong>16+ key performance indicators</strong>&nbsp;through an intuitive interface:</p>

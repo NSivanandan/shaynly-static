@@ -135,28 +135,114 @@
         <div id="messageBox" class="message-box hidden"></div>
         <div class="output-sections grid grid-cols-1 md:grid-cols-2 gap-6">            <div class="html-output-section">                <h3 class="section-header"><i class="fas fa-code"></i> HTML Output</h3>                <div id="htmlOutput" class="output-area">                    <!-- HTML output will appear here -->                </div>            </div>
             <div class="html-preview-section">                <h3 class="section-header"><i class="fas fa-eye"></i> Live Preview</h3>                <div id="htmlPreview" class="preview-area">                    <!-- Rendered HTML preview will appear here -->                </div>            </div>        </div>    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>    <script>        // DOM Elementsn        const markdownInput = document.getElementById('markdownInput');n        const htmlOutputDiv = document.getElementById('htmlOutput');n        const htmlPreviewDiv = document.getElementById('htmlPreview');n        const copyHtmlBtn = document.getElementById('copyHtmlBtn');n        const downloadHtmlBtn = document.getElementById('downloadHtmlBtn');n        const downloadMarkdownBtn = document.getElementById('downloadMarkdownBtn');n        const resetBtn = document.getElementById('resetBtn');n        const messageBox = document.getElementById('messageBox');n        const gfmCheckbox = document.getElementById('gfmCheckbox');n        const sanitizeCheckbox = document.getElementById('sanitizeCheckbox');n        const wordCountSpan = document.getElementById('wordCount');n        const charCountSpan = document.getElementById('charCount');
-        // Configure Marked.js with highlight.js for code blocksn        marked.setOptions({n            highlight: function(code, lang) {n                const language = hljs.getLanguage(lang) ? lang : 'plaintext';n                return hljs.highlight(code, { language }).value;n            },n            langPrefix: 'hljs language-', // highlight.js css expects a language- prefixn            gfm: true, // Default to GFMn            sanitize: false // Default to not sanitizingn        });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>    <script>        // DOM Elements
+const markdownInput = document.getElementById('markdownInput');
+const htmlOutputDiv = document.getElementById('htmlOutput');
+const htmlPreviewDiv = document.getElementById('htmlPreview');
+const copyHtmlBtn = document.getElementById('copyHtmlBtn');
+const downloadHtmlBtn = document.getElementById('downloadHtmlBtn');
+const downloadMarkdownBtn = document.getElementById('downloadMarkdownBtn');
+const resetBtn = document.getElementById('resetBtn');
+const messageBox = document.getElementById('messageBox');
+const gfmCheckbox = document.getElementById('gfmCheckbox');
+const sanitizeCheckbox = document.getElementById('sanitizeCheckbox');
+const wordCountSpan = document.getElementById('wordCount');
+const charCountSpan = document.getElementById('charCount');
+        // Configure Marked.js with highlight.js for code blocks
+marked.setOptions({
+highlight: function(code, lang) {
+const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+return hljs.highlight(code, { language }).value;
+},
+langPrefix: 'hljs language-', // highlight.js css expects a language- prefixn            gfm: true, // Default to GFMn            sanitize: false // Default to not sanitizing
+});
         // --- Utility Functions ---
-        /**n         * Displays a message in the message box.n         * @param {string} message - The message to display.n         * @param {'success'|'error'} type - The type of message (for styling).n         */n        function showMessage(message, type) {n            messageBox.textContent = message;n            messageBox.className = `message-box ${type}`;n            messageBox.classList.remove('hidden');n            setTimeout(() => {n                messageBox.classList.add('hidden');n            }, 5000); // Hide after 5 secondsn        }
-        /**n         * Counts words and characters in the markdown input.n         */n        function updateCounts() {n            const text = markdownInput.value;n            const words = text.trim().split(/\s+/).filter(word => word.length > 0).length;n            const characters = text.length;
-            wordCountSpan.textContent = words;n            charCountSpan.textContent = characters;n        }
-        /**n         * Converts Markdown input to HTML and updates the output and preview areas.n         */n        function convertMarkdown() {n            const markdownText = markdownInput.value;
-            // Update Marked.js options based on checkboxesn            marked.setOptions({n                gfm: gfmCheckbox.checked,n                sanitize: sanitizeCheckbox.checkedn            });
-            // Use marked.js to convert Markdown to HTMLn            const html = marked.parse(markdownText);
-            htmlOutputDiv.textContent = html; // Display raw HTMLn            htmlPreviewDiv.innerHTML = html; // Render HTML in previewnn            updateCounts(); // Update word/character countsn        }
-        /**n         * Copies text content to the clipboard.n         * @param {string} content - The text content to copy.n         * @param {string} successMessage - Message to show on success.n         * @param {string} errorMessage - Message to show on error.n         */n        function copyToClipboard(content, successMessage, errorMessage) {n            if (!content.trim()) {n                showMessage(errorMessage, "error");n                return;n            }
-            const textarea = document.createElement('textarea');n            textarea.value = content;n            document.body.appendChild(textarea);n            textarea.select();n            try {n                document.execCommand('copy');n                showMessage(successMessage, "success");n            } catch (err) {n                console.error('Failed to copy text: ', err);n                showMessage(errorMessage, "error");n            } finally {n                document.body.removeChild(textarea);n            }n        }
-        /**n         * Downloads content as a file.n         * @param {string} content - The content to download.n         * @param {string} filename - The desired filename.n         * @param {string} mimeType - The MIME type of the file.n         * @param {string} successMessage - Message to show on success.n         * @param {string} errorMessage - Message to show on error.n         */n        function downloadFile(content, filename, mimeType, successMessage, errorMessage) {n            if (!content.trim()) {n                showMessage(errorMessage, "error");n                return;n            }n            try {n                const blob = new Blob([content], { type: mimeType });n                saveAs(blob, filename);n                showMessage(successMessage, "success");n            } catch (err) {n                console.error('Failed to download file: ', err);n                showMessage(errorMessage, "error");n            }n        }
-        /**n         * Resets the input and output areas.n         */n        function resetApp() {n            markdownInput.value = '';n            gfmCheckbox.checked = true; // Reset GFM to default checkedn            sanitizeCheckbox.checked = false; // Reset sanitize to default uncheckedn            convertMarkdown(); // Clear outputs and apply default optionsn            showMessage("Converter reset successfully!", "success");n        }
+        /**n         * Displays a message in the message box.n         * @param {string} message - The message to display.n         * @param {'success'|'error'} type - The type of message (for styling).n         */n        function showMessage(message, type) {
+messageBox.textContent = message;
+messageBox.className = `message-box ${type}`;
+messageBox.classList.remove('hidden');
+setTimeout(() => {
+messageBox.classList.add('hidden');
+}, 5000); // Hide after 5 seconds
+}
+        /**n         * Counts words and characters in the markdown input.n         */n        function updateCounts() {
+const text = markdownInput.value;
+const words = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+const characters = text.length;
+            wordCountSpan.textContent = words;
+charCountSpan.textContent = characters;
+}
+        /**n         * Converts Markdown input to HTML and updates the output and preview areas.n         */n        function convertMarkdown() {
+const markdownText = markdownInput.value;
+            // Update Marked.js options based on checkboxes
+marked.setOptions({
+gfm: gfmCheckbox.checked,
+sanitize: sanitizeCheckbox.checkedn            });
+            // Use marked.js to convert Markdown to HTML
+const html = marked.parse(markdownText);
+            htmlOutputDiv.textContent = html; // Display raw HTMLn            htmlPreviewDiv.innerHTML = html; // Render HTML in previewnn            updateCounts(); // Update word/character counts
+}
+        /**n         * Copies text content to the clipboard.n         * @param {string} content - The text content to copy.n         * @param {string} successMessage - Message to show on success.n         * @param {string} errorMessage - Message to show on error.n         */n        function copyToClipboard(content, successMessage, errorMessage) {
+if (!content.trim()) {
+showMessage(errorMessage, "error");
+return;
+}
+            const textarea = document.createElement('textarea');
+textarea.value = content;
+document.body.appendChild(textarea);
+textarea.select();
+try {
+document.execCommand('copy');
+showMessage(successMessage, "success");
+} catch (err) {
+console.error('Failed to copy text: ', err);
+showMessage(errorMessage, "error");
+} finally {
+document.body.removeChild(textarea);
+}
+}
+        /**n         * Downloads content as a file.n         * @param {string} content - The content to download.n         * @param {string} filename - The desired filename.n         * @param {string} mimeType - The MIME type of the file.n         * @param {string} successMessage - Message to show on success.n         * @param {string} errorMessage - Message to show on error.n         */n        function downloadFile(content, filename, mimeType, successMessage, errorMessage) {
+if (!content.trim()) {
+showMessage(errorMessage, "error");
+return;
+}
+try {
+const blob = new Blob([content], { type: mimeType });
+saveAs(blob, filename);
+showMessage(successMessage, "success");
+} catch (err) {
+console.error('Failed to download file: ', err);
+showMessage(errorMessage, "error");
+}
+}
+        /**n         * Resets the input and output areas.n         */n        function resetApp() {
+markdownInput.value = '';
+gfmCheckbox.checked = true; // Reset GFM to default checkedn            sanitizeCheckbox.checked = false; // Reset sanitize to default uncheckedn            convertMarkdown(); // Clear outputs and apply default options
+showMessage("Converter reset successfully!", "success");
+}
         // --- Event Listeners ---
-        // Listen for input changes in the markdown textarea for live conversionn        markdownInput.addEventListener('input', convertMarkdown);
-        // Listen for changes in Markdown optionsn        gfmCheckbox.addEventListener('change', convertMarkdown);n        sanitizeCheckbox.addEventListener('change', convertMarkdown);
-        // Copy HTML button clickn        copyHtmlBtn.addEventListener('click', () => {n            copyToClipboard(htmlOutputDiv.textContent, "HTML copied to clipboard!", "No HTML to copy!");n        });
-        // Download HTML button clickn        downloadHtmlBtn.addEventListener('click', () => {n            downloadFile(htmlOutputDiv.textContent, "output.html", "text/html", "HTML downloaded successfully!", "No HTML to download!");n        });
-        // Download Markdown button clickn        downloadMarkdownBtn.addEventListener('click', () => {n            downloadFile(markdownInput.value, "input.md", "text/markdown", "Markdown downloaded successfully!", "No Markdown to download!");n        });
-        // Reset button clickn        resetBtn.addEventListener('click', resetApp);
-        // Initial conversion on page load with default markdownn        window.onload = convertMarkdown;n    </script>
+        // Listen for input changes in the markdown textarea for live conversion
+markdownInput.addEventListener('input', convertMarkdown);
+        // Listen for changes in Markdown options
+gfmCheckbox.addEventListener('change', convertMarkdown);
+sanitizeCheckbox.addEventListener('change', convertMarkdown);
+        // Copy HTML button click
+copyHtmlBtn.addEventListener('click', () => {
+copyToClipboard(htmlOutputDiv.textContent, "HTML copied to clipboard!", "No HTML to copy!");
+});
+        // Download HTML button click
+downloadHtmlBtn.addEventListener('click', () => {
+downloadFile(htmlOutputDiv.textContent, "output.html", "text/html", "HTML downloaded successfully!", "No HTML to download!");
+});
+        // Download Markdown button click
+downloadMarkdownBtn.addEventListener('click', () => {
+downloadFile(markdownInput.value, "input.md", "text/markdown", "Markdown downloaded successfully!", "No Markdown to download!");
+});
+        // Reset button click
+resetBtn.addEventListener('click', resetApp);
+        // Initial conversion on page load with default markdown
+window.onload = convertMarkdown;
+</script>
 <p><strong>Why This Tool Stands Out:</strong><br>⚡&nbsp;<strong>Instant Conversio</strong></p>
 <ul class="wp-block-list"><li>Real-time Markdown-to-HTML rendering with live preview</li>
 <li>Supports GitHub Flavored Markdown (GFM) for tables, task lists, and more</li>

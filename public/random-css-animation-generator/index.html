@@ -129,8 +129,57 @@
 <title>Free CSS Animation Generator Online - Random Keyframes Maker</title><meta name="description" content="Create random CSS animations instantly with this free CSS animation generator. Preview keyframes, copy clean animation code, and customize timing, transforms, opacity, size, color, and more."><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><link rel="canonical" href="https://shaynly.com/css-animation-generator-dark">
 <meta property="og:type" content="website"><meta property="og:title" content="Free CSS Animation Generator Online - Random Keyframes Maker"><meta property="og:description" content="Generate random CSS animation code online, preview it live, and copy ready-to-use keyframes for your website projects."><meta property="og:url" content="https://shaynly.com/css-animation-generator-dark"><meta property="og:site_name" content="Shaynly">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Free CSS Animation Generator Online - Random Keyframes Maker"><meta name="twitter:description" content="Generate random CSS animations, preview them live, and copy production-ready keyframes.">
-<script type="application/ld+json">{n  "@context": "https://schema.org",n  "@type": "WebApplication",n  "name": "CSS Animation Generator",n  "url": "https://shaynly.com/css-animation-generator-dark",n  "applicationCategory": "DeveloperApplication",n  "operatingSystem": "Any",n  "browserRequirements": "Requires JavaScript",n  "description": "Free online CSS animation generator that creates random keyframes and live previews for developers and designers.",n  "offers": {n    "@type": "Offer",n    "price": "0",n    "priceCurrency": "USD"n  },n  "publisher": {n    "@type": "Organization",n    "name": "Shaynly",n    "url": "https://shaynly.com"n  }n}</script>
-<script type="application/ld+json">{n  "@context": "https://schema.org",n  "@type": "FAQPage",n  "mainEntity": [n    {n      "@type": "Question",n      "name": "How does this CSS animation generator work?",n      "acceptedAnswer": {n        "@type": "Answer",n        "text": "This tool creates random CSS keyframes using properties such as transform, opacity, size, position, border radius, and background color. You can preview the animation and copy the generated CSS code instantly."n      }n    },n    {n      "@type": "Question",n      "name": "Can I use the generated animation code in my website?",n      "acceptedAnswer": {n        "@type": "Answer",n        "text": "Yes. Copy the generated keyframes and animation declaration, paste them into your stylesheet, and apply the animated class to any HTML element."n      }n    },n    {n      "@type": "Question",n      "name": "Is this CSS animation generator free to use?",n      "acceptedAnswer": {n        "@type": "Answer",n        "text": "Yes. The tool is free to use for personal projects, experiments, prototypes, and client work."n      }n    },n    {n      "@type": "Question",n      "name": "Who is this tool for?",n      "acceptedAnswer": {n        "@type": "Answer",n        "text": "This tool is useful for front-end developers, web designers, students, freelancers, and anyone who wants quick CSS animation ideas or starter code."n      }n    }n  ]n}</script>
+<script type="application/ld+json">{
+"@context": "https://schema.org",
+"@type": "WebApplication",
+"name": "CSS Animation Generator",
+"url": "https://shaynly.com/css-animation-generator-dark",
+"applicationCategory": "DeveloperApplication",
+"operatingSystem": "Any",
+"browserRequirements": "Requires JavaScript",
+"description": "Free online CSS animation generator that creates random keyframes and live previews for developers and designers.",
+"offers": {
+"@type": "Offer",
+"price": "0",
+"priceCurrency": "USD"n  },
+"publisher": {
+"@type": "Organization",
+"name": "Shaynly",
+"url": "https://shaynly.com"
+}
+}</script>
+<script type="application/ld+json">{
+"@context": "https://schema.org",
+"@type": "FAQPage",
+"mainEntity": [n    {
+"@type": "Question",
+"name": "How does this CSS animation generator work?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "This tool creates random CSS keyframes using properties such as transform, opacity, size, position, border radius, and background color. You can preview the animation and copy the generated CSS code instantly."n      }
+},
+{
+"@type": "Question",
+"name": "Can I use the generated animation code in my website?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Yes. Copy the generated keyframes and animation declaration, paste them into your stylesheet, and apply the animated class to any HTML element."n      }
+},
+{
+"@type": "Question",
+"name": "Is this CSS animation generator free to use?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Yes. The tool is free to use for personal projects, experiments, prototypes, and client work."n      }
+},
+{
+"@type": "Question",
+"name": "Who is this tool for?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "This tool is useful for front-end developers, web designers, students, freelancers, and anyone who wants quick CSS animation ideas or starter code."n      }
+}
+]n}</script>
 <style>  :root{n    --scag-page-bg:#121212;n    --scag-page-panel:#1d1d1d;n    --scag-page-panel-2:#242424;n    --scag-page-border:#3a3a3a;n    --scag-page-text:#eeeeee;n    --scag-page-muted:#b8b8b8;n    --scag-page-primary:#bb86fc;n    --scag-page-secondary:#64b5f6;n    --scag-page-accent:#03dac5;n    --scag-page-radius:16px;n    --scag-page-shadow:0 10px 28px rgba(0,0,0,.28);n  }
   *{box-sizing:border-box}n  body{n    margin:0;n    padding:8px;n    background:var(--scag-page-bg);n    color:var(--scag-page-text);n    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;n    line-height:1.65;n  }
   .scag-page{n    max-width:1160px;n    margin:0 auto;n    background:var(--scag-page-panel);n    border-radius:20px;n    padding:18px;n    box-shadow:var(--scag-page-shadow);n  }
@@ -176,24 +225,123 @@
         <div class="scat-preview" aria-label="Animation preview area">          <div class="scat-preview-el" id="scatPreviewElement"></div>        </div>
         <div class="scat-actions">          <button id="scatGenerateBtn" class="scat-btn scat-btn-primary" type="button">Generate Random Animatio</button>          <button id="scatCopyBtn" class="scat-btn scat-btn-secondary" type="button">Copy Code</button>        </div>
         <div class="scat-code" id="scatAnimationCode" aria-live="polite"></div>        <p class="scat-note"><strong>How to use:</strong> Generate a new animation, copy the code, paste it into your stylesheet, and apply the <code>.animated-element</code> class to any HTML element you want to animate.</p>
-        <script>          (function(){n            const root = document.getElementById('shaynly-css-animation-tool');n            if(!root) return;
-            const previewElement = root.querySelector('#scatPreviewElement');n            const codeBox = root.querySelector('#scatAnimationCode');n            const generateBtn = root.querySelector('#scatGenerateBtn');n            const copyBtn = root.querySelector('#scatCopyBtn');
-            const properties = [n              'transform',n              'opacity',n              'background-color',n              'width',n              'height',n              'border-radius',n              'top',n              'left',n              'rotate',n              'scale',n              'skew'n            ];
-            const timingFunctions = [n              'linear',n              'ease',n              'ease-in',n              'ease-out',n              'ease-in-out',n              'cubic-bezier(0.1, 0.7, 1.0, 0.1)',n              'steps(5, end)'n            ];
-            const dynamicStyleEl = document.createElement('style');n            root.appendChild(dynamicStyleEl);
-            function getRandomProperty() {n              return properties[Math.floor(Math.random() * properties.length)];n            }
-            function getRandomValue(property) {n              switch (property) {n                case 'transform': {n                  const transformTypes = ['translate', 'rotate', 'scale', 'skew'];n                  const type = transformTypes[Math.floor(Math.random() * transformTypes.length)];n                  switch (type) {n                    case 'translate':n                      return `translate(${Math.floor(Math.random() * 100)}px, ${Math.floor(Math.random() * 100)}px)`;n                    case 'rotate':n                      return `rotate(${Math.floor(Math.random() * 360)}deg)`;n                    case 'scale':n                      return `scale(${(Math.random() * 2).toFixed(2)})`;n                    case 'skew':n                      return `skew(${Math.floor(Math.random() * 90)}deg, ${Math.floor(Math.random() * 90)}deg)`;n                  }n                  break;n                }n                case 'opacity':n                  return Math.random().toFixed(2);n                case 'background-color':n                  return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;n                case 'width':n                case 'height':n                  return `${Math.floor(Math.random() * 100)}px`;n                case 'border-radius':n                  return `${Math.floor(Math.random() * 50)}%`;n                case 'top':n                case 'left':n                  return `${Math.floor(Math.random() * 150) - 75}px`;n                case 'rotate':n                  return `${Math.floor(Math.random() * 360)}deg`;n                case 'scale':n                  return (Math.random() * 2).toFixed(2);n                case 'skew':n                  return `${Math.floor(Math.random() * 90)}deg`;n                default:n                  return '0';n              }n            }
-            function generateRandomAnimation() {n              const keyframes = [];n              const steps = Math.floor(Math.random() * 3) + 2;n              const usedPercents = new Set([0, 100]);
-              for (let i = 0; i < steps; i++) {n                let percent;n                if (i === 0) {n                  percent = 0;n                } else if (i === steps - 1) {n                  percent = 100;n                } else {n                  do {n                    percent = Math.floor(Math.random() * 100);n                  } while (usedPercents.has(percent));n                  usedPercents.add(percent);n                }
-                const property = getRandomProperty();n                const value = getRandomValue(property);n                keyframes.push({ percent, rule: `  ${percent}% { ${property}: ${value}; }` });n              }
+        <script>          (function(){
+const root = document.getElementById('shaynly-css-animation-tool');
+if(!root) return;
+            const previewElement = root.querySelector('#scatPreviewElement');
+const codeBox = root.querySelector('#scatAnimationCode');
+const generateBtn = root.querySelector('#scatGenerateBtn');
+const copyBtn = root.querySelector('#scatCopyBtn');
+            const properties = [n              'transform',
+'opacity',
+'background-color',
+'width',
+'height',
+'border-radius',
+'top',
+'left',
+'rotate',
+'scale',
+'skew'n            ];
+            const timingFunctions = [n              'linear',
+'ease',
+'ease-in',
+'ease-out',
+'ease-in-out',
+'cubic-bezier(0.1, 0.7, 1.0, 0.1)',
+'steps(5, end)'n            ];
+            const dynamicStyleEl = document.createElement('style');
+root.appendChild(dynamicStyleEl);
+            function getRandomProperty() {
+return properties[Math.floor(Math.random() * properties.length)];
+}
+            function getRandomValue(property) {
+switch (property) {
+case 'transform': {
+const transformTypes = ['translate', 'rotate', 'scale', 'skew'];
+const type = transformTypes[Math.floor(Math.random() * transformTypes.length)];
+switch (type) {
+case 'translate':
+return `translate(${Math.floor(Math.random() * 100)}px, ${Math.floor(Math.random() * 100)}px)`;
+case 'rotate':
+return `rotate(${Math.floor(Math.random() * 360)}deg)`;
+case 'scale':
+return `scale(${(Math.random() * 2).toFixed(2)})`;
+case 'skew':
+return `skew(${Math.floor(Math.random() * 90)}deg, ${Math.floor(Math.random() * 90)}deg)`;
+}
+break;
+}
+case 'opacity':
+return Math.random().toFixed(2);
+case 'background-color':
+return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+case 'width':
+case 'height':
+return `${Math.floor(Math.random() * 100)}px`;
+case 'border-radius':
+return `${Math.floor(Math.random() * 50)}%`;
+case 'top':
+case 'left':
+return `${Math.floor(Math.random() * 150) - 75}px`;
+case 'rotate':
+return `${Math.floor(Math.random() * 360)}deg`;
+case 'scale':
+return (Math.random() * 2).toFixed(2);
+case 'skew':
+return `${Math.floor(Math.random() * 90)}deg`;
+default:
+return '0';
+}
+}
+            function generateRandomAnimation() {
+const keyframes = [];
+const steps = Math.floor(Math.random() * 3) + 2;
+const usedPercents = new Set([0, 100]);
+              for (let i = 0; i < steps; i++) {
+let percent;
+if (i === 0) {
+percent = 0;
+} else if (i === steps - 1) {
+percent = 100;
+} else {
+do {
+percent = Math.floor(Math.random() * 100);
+} while (usedPercents.has(percent));
+usedPercents.add(percent);
+}
+                const property = getRandomProperty();
+const value = getRandomValue(property);
+keyframes.push({ percent, rule: `  ${percent}% { ${property}: ${value}; }` });
+}
               keyframes.sort((a, b) => a.percent - b.percent);
-              const animationName = 'randomAnimation' + Math.floor(Math.random() * 100000);n              const duration = (Math.random() * 3 + 1).toFixed(1);n              const timingFunction = timingFunctions[Math.floor(Math.random() * timingFunctions.length)];n              const iterationCount = Math.random() < 0.5 ? 'infinite' : Math.floor(Math.random() * 5) + 1;
-              const keyframesCSS = `@keyframes ${animationName} {\n${keyframes.map(k => k.rule).join('\n')}\n}`;n              const animationCSS = `animation: ${animationName} ${duration}s ${timingFunction} ${iterationCount};`;n              const fullCSS = `${keyframesCSS}\n\n.animated-element {\n  ${animationCSS}\n}`;
+              const animationName = 'randomAnimation' + Math.floor(Math.random() * 100000);
+const duration = (Math.random() * 3 + 1).toFixed(1);
+const timingFunction = timingFunctions[Math.floor(Math.random() * timingFunctions.length)];
+const iterationCount = Math.random() < 0.5 ? 'infinite' : Math.floor(Math.random() * 5) + 1;
+              const keyframesCSS = `@keyframes ${animationName} {\n${keyframes.map(k => k.rule).join('\n')}\n}`;
+const animationCSS = `animation: ${animationName} ${duration}s ${timingFunction} ${iterationCount};`;
+const fullCSS = `${keyframesCSS}\n\n.animated-element {\n  ${animationCSS}\n}`;
               codeBox.textContent = fullCSS;
-              previewElement.style.animation = 'none';n              void previewElement.offsetWidth;n              dynamicStyleEl.textContent = keyframesCSS;n              previewElement.style.animation = `${animationName} ${duration}s ${timingFunction} ${iterationCount}`;n            }
-            function copyCode() {n              const codeSnippet = codeBox.textContent;n              navigator.clipboard.writeText(codeSnippet).then(() => {n                copyBtn.textContent = 'Copied!';n                setTimeout(() => {n                  copyBtn.textContent = 'Copy Code';n                }, 2000);n              });n            }
-            generateBtn.addEventListener('click', generateRandomAnimation);n            copyBtn.addEventListener('click', copyCode);
-            generateRandomAnimation();n          })();n        </script>      </div>    </section>
+              previewElement.style.animation = 'none';
+void previewElement.offsetWidth;
+dynamicStyleEl.textContent = keyframesCSS;
+previewElement.style.animation = `${animationName} ${duration}s ${timingFunction} ${iterationCount}`;
+}
+            function copyCode() {
+const codeSnippet = codeBox.textContent;
+navigator.clipboard.writeText(codeSnippet).then(() => {
+copyBtn.textContent = 'Copied!';
+setTimeout(() => {
+copyBtn.textContent = 'Copy Code';
+}, 2000);
+});
+}
+            generateBtn.addEventListener('click', generateRandomAnimation);
+copyBtn.addEventListener('click', copyCode);
+            generateRandomAnimation();
+})();
+</script>      </div>    </section>
     <aside class="scag-side">      <section class="scag-section">        <h2>Why use this tool</h2>        <ul>          <li>Generate CSS animation ideas quickly without starting from scratch.</li>          <li>Preview keyframes before adding them to a project.</li>          <li>Discover different timing functions, transforms, and property combinations.</li>          <li>Use the output as a base for production-ready custom motion design.</li>        </ul>      </section>
       <section class="scag-section">        <h2>Best for</h2>        <ul>          <li>Front-end developers building UI interactions.</li>          <li>Web designers testing motion concepts.</li>          <li>Students learning CSS keyframes and timing functions.</li>          <li>Freelancers needing fast prototype animations.</li>        </ul>      </section>    </aside>  </main>
   <section class="scag-section">    <h2>How to use the CSS animation generator</h2>    <p>Click the generate button to create a random animation. The tool builds a unique <code>@keyframes</code> block and an example <code>.animated-element</code> rule that you can copy directly into your CSS file.</p>    <p>After pasting the code into your stylesheet, attach the class to any element on your page. You can then adjust duration, iteration count, easing, transform values, colors, or sizes to better match your design system.</p>  </section>

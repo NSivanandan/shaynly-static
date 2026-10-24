@@ -136,101 +136,584 @@
         <!-- Buttons -->        <div class="button-group">            <button id="checkContrastBtn" class="primary"><i class="fas fa-check-circle"></i> Check Contrast</button>            <button id="swapColorsBtn" class="secondary"><i class="fas fa-exchange-alt"></i> Swap Colors</button>            <button id="resetBtn" class="secondary"><i class="fas fa-redo"></i> Reset</button>        </div>
         <!-- Color Suggestions Section -->        <div class="color-suggestion-section">            <h3><i class="fas fa-lightbulb"></i> AI Color Palette Suggestions</h3>            <div class="button-group">                <button id="suggestColorsBtn" class="primary"><i class="fas fa-magic"></i> Get Suggestions</button>            </div>            <div id="suggestionLoading" class="loading-spinner hidden"></div>            <div id="colorSuggestions" class="mt-4 flex flex-col gap-4">                <!-- Suggestions will be loaded here -->            </div>        </div>
         <!-- Color Blindness Simulation Section -->        <div class="color-blindness-section">            <h3><i class="fas fa-eye"></i> Color Blindness Simulatio</h3>            <div class="select-wrapper mx-auto">                <select id="colorBlindnessType">                    <option value="normal">Normal Visio</option>                    <option value="protanopia">Protanopia (Red-blind)</option>                    <option value="deuteranopia">Deuteranopia (Green-blind)</option>                    <option value="tritanopia">Tritanopia (Blue-blind)</option>                </select>            </div>            <canvas id="colorBlindnessCanvas" class="color-blindness-canvas"></canvas>        </div>    </div>
-    <script>        // Get DOM elementsn        const foregroundColorPicker = document.getElementById('foregroundColorPicker');n        const foregroundColorText = document.getElementById('foregroundColorText');n        const backgroundColorPicker = document.getElementById('backgroundColorPicker');n        const backgroundColorText = document.getElementById('backgroundColorText');n        const foregroundColorError = document.getElementById('foregroundColorError');n        const backgroundColorError = document.getElementById('backgroundColorError');n        const contrastRatioDisplay = document.getElementById('contrastRatio');n        const wcagAANormal = document.getElementById('wcagAANormal');n        const wcagAALarge = document.getElementById('wcagAALarge');n        const wcagAAANormal = document.getElementById('wcagAAANormal');n        const wcagAAALarge = document.getElementById('wcagAAALarge');n        const checkContrastBtn = document.getElementById('checkContrastBtn');n        const resetBtn = document.getElementById('resetBtn');n        const swapColorsBtn = document.getElementById('swapColorsBtn');n        const suggestColorsBtn = document.getElementById('suggestColorsBtn');n        const suggestionLoading = document.getElementById('suggestionLoading');n        const colorSuggestionsDiv = document.getElementById('colorSuggestions');n        const colorBlindnessType = document.getElementById('colorBlindnessType');n        const colorBlindnessCanvas = document.getElementById('colorBlindnessCanvas');n        const livePreviewBox = document.getElementById('livePreviewBox');n        const guidelineSummaryDiv = document.getElementById('guidelineSummary');n        const ctx = colorBlindnessCanvas.getContext('2d');
-        // Color format display elementsn        const fgHexDisplay = document.getElementById('fgHexDisplay');n        const fgRgbDisplay = document.getElementById('fgRgbDisplay');n        const fgHslDisplay = document.getElementById('fgHslDisplay');n        const bgHexDisplay = document.getElementById('bgHexDisplay');n        const bgRgbDisplay = document.getElementById('bgRgbDisplay');n        const bgHslDisplay = document.getElementById('bgHslDisplay');
-        // --- Color Conversion and Calculation Functions ---
-        /**n         * Converts a hexadecimal color string to an RGB array.n         * @param {string} hex - The hexadecimal color string (e.g., "#RRGGBB" or "RRGGBB").n         * @returns {number[]|null} An array [R, G, B] or null if invalid.n         */n        function hexToRgb(hex) {n            const cleanHex = hex.startsWith('#') ? hex.slice(1) : hex;n            let r, g, b;
-            if (cleanHex.length === 3) {n                r = parseInt(cleanHex[0] + cleanHex[0], 16);n                g = parseInt(cleanHex[1] + cleanHex[1], 16);n                b = parseInt(cleanHex[2] + cleanHex[2], 16);n            } else if (cleanHex.length === 6) {n                r = parseInt(cleanHex.substring(0, 2), 16);n                g = parseInt(cleanHex.substring(2, 4), 16);n                b = parseInt(cleanHex.substring(4, 6), 16);n            } else {n                return null; // Invalid hex formatn            }
-            if (isNaN(r) || isNaN(g) || isNaN(b)) {n                return null; // Invalid hex charactersn            }n            return [r, g, b];n        }
-        /**n         * Converts an RGB color array to a hexadecimal string.n         * @param {number[]} rgb - An array [R, G, B].n         * @returns {string} The hexadecimal color string (e.g., "#RRGGBB").n         */n        function rgbToHex(rgb) {n            return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1).toUpperCase();n        }
-        /**n         * Converts an RGB color array to an HSL string.n         * @param {number[]} rgb - An array [R, G, B].n         * @returns {string} The HSL color string (e.g., "hsl(0,0%,0%)").n         */n        function rgbToHsl(rgb) {n            let r = rgb[0] / 255;n            let g = rgb[1] / 255;n            let b = rgb[2] / 255;
-            let max = Math.max(r, g, b);n            let min = Math.min(r, g, b);n            let h, s, l = (max + min) / 2;
-            if (max === min) {n                h = s = 0; // achromaticn            } else {n                let d = max - min;n                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);n                switch (max) {n                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;n                    case g: h = (b - r) / d + 2; break;n                    case b: h = (r - g) / d + 4; break;n                }n                h /= 6;n            }n            return `hsl(${Math.round(h * 360)},${Math.round(s * 100)}%,${Math.round(l * 100)}%)`;n        }
-        /**n         * Converts an HSL color array [h, s, l] (h:0-360, s:0-1, l:0-1) to an RGB array [R, G, B] (0-255).n         * @param {number[]} hsl - An array [H, S, L].n         * @returns {number[]} An array [R, G, B].n         */n        function hslArrayToRgb(hsl) {n            let h = hsl[0];n            let s = hsl[1];n            let l = hsl[2];
-            let c = (1 - Math.abs(2 * l - 1)) * s;n            let x = c * (1 - Math.abs((h / 60) % 2 - 1));n            let m = l - c / 2;n            let r = 0, g = 0, b = 0;
-            if (0 <= h && h < 60) {n                r = c; g = x; b = 0;n            } else if (60 <= h && h < 120) {n                r = x; g = c; b = 0;n            } else if (120 <= h && h < 180) {n                r = 0; g = c; b = x;n            } else if (180 <= h && h < 240) {n                r = 0; g = x; b = c;n            } else if (240 <= h && h < 300) {n                r = x; g = 0; b = c;n            } else if (300 <= h && h < 360) {n                r = c; g = 0; b = x;n            }n            r = Math.round((r + m) * 255);n            g = Math.round((g + m) * 255);n            b = Math.round((b + m) * 255);n            return [r, g, b];n        }
-        /**n         * Converts an sRGB color component (0-255) to its linear RGB equivalent.n         * @param {number} c - The sRGB color component (0-255).n         * @returns {number} The linear RGB component.n         */n        function sRGBtoLinearRGB(c) {n            c /= 255;n            return (c <= 0.03928) ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);n        }
-        /**n         * Calculates the relative luminance of an RGB color.n         * @param {number[]} rgb - An array [R, G, B] where R, G, B are integers from 0 to 255.n         * @returns {number} The relative luminance (0 to 1).n         */n        function calculateLuminance(rgb) {n            if (!rgb || rgb.length !== 3) return 0; // Handle invalid RGBn            const r = sRGBtoLinearRGB(rgb[0]);n            const g = sRGBtoLinearRGB(rgb[1]);n            const b = sRGBtoLinearRGB(rgb[2]);n            return 0.2126 * r + 0.7152 * g + 0.0722 * b;n        }
-        /**n         * Calculates the contrast ratio between two colors.n         * @param {string} color1Hex - Hexadecimal string for the first color.n         * @param {string} color2Hex - Hexadecimal string for the second color.n         * @returns {number} The contrast ratio.n         */n        function calculateContrastRatio(color1Hex, color2Hex) {n            const rgb1 = hexToRgb(color1Hex);n            const rgb2 = hexToRgb(color2Hex);
-            if (!rgb1 || !rgb2) return 0; // Return 0 if any color is invalidnn            const L1 = calculateLuminance(rgb1);n            const L2 = calculateLuminance(rgb2);
-            const brighterL = Math.max(L1, L2);n            const darkerL = Math.min(L1, L2);
-            return (brighterL + 0.05) / (darkerL + 0.05);n        }
-        /**n         * Parses a color string (hex, rgb(), hsl()) into an RGB array.n         * @param {string} colorString - The color string to parse.n         * @returns {number[]|null} An array [R, G, B] or null if invalid.n         */n        function parseColor(colorString) {n            colorString = colorString.trim();
-            // Try Hexn            if (colorString.startsWith('#')) {n                return hexToRgb(colorString);n            }
-            // Try RGBn            const rgbMatch = colorString.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i);n            if (rgbMatch) {n                const r = parseInt(rgbMatch[1]);n                const g = parseInt(rgbMatch[2]);n                const b = parseInt(rgbMatch[3]);n                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {n                    return [r, g, b];n                }n            }
-            // Try HSLn            const hslMatch = colorString.match(/^hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)$/i);n            if (hslMatch) {n                const h = parseInt(hslMatch[1]);n                const s = parseInt(hslMatch[2]);n                const l = parseInt(hslMatch[3]);n                if (h >= 0 && h <= 360 && s >= 0 && s <= 100 && l >= 0 && l <= 100) {n                    return hslArrayToRgb([h, s / 100, l / 100]); // Convert S, L to 0-1 rangen                }n            }
-            return null; // No valid format matchedn        }
-        /**n         * Updates the WCAG compliance verdict for a given element and ratio.n         * @param {HTMLElement} element - The DOM element to update.n         * @param {number} ratio - The calculated contrast ratio.n         * @param {number} minRatio - The minimum required ratio for compliance.n         */n        function updateWCAGVerdict(element, ratio, minRatio) {n            const oldText = element.textContent;n            if (ratio >= minRatio) {n                element.classList.remove('fail');n                element.classList.add('pass');n                element.textContent = `Pass (Min: ${minRatio}:1)`;n            } else {n                element.classList.remove('pass');n                element.classList.add('fail');n                element.textContent = `Fail (Min: ${minRatio}:1)`;n            }n            // Add flash animation if the verdict changedn            if (oldText !== element.textContent) {n                element.classList.add('flash-animation');n                element.addEventListener('animationend', () => {n                    element.classList.remove('flash-animation');n                }, { once: true });n            }n        }
-        /**n         * Updates the displayed color formats (Hex, RGB, HSL) for foreground and background.n         */n        function updateColorFormatsDisplay() {n            const fgRgb = parseColor(foregroundColorText.value);n            const bgRgb = parseColor(backgroundColorText.value);
-            if (fgRgb) {n                fgHexDisplay.textContent = rgbToHex(fgRgb);n                fgRgbDisplay.textContent = `rgb(${fgRgb[0]},${fgRgb[1]},${fgRgb[2]})`;n                fgHslDisplay.textContent = rgbToHsl(fgRgb);n            } else {n                fgHexDisplay.textContent = 'N/A';n                fgRgbDisplay.textContent = 'N/A';n                fgHslDisplay.textContent = 'N/A';n            }
-            if (bgRgb) {n                bgHexDisplay.textContent = rgbToHex(bgRgb);n                bgRgbDisplay.textContent = `rgb(${bgRgb[0]},${bgRgb[1]},${bgRgb[2]})`;n                bgHslDisplay.textContent = rgbToHsl(bgRgb);n            } else {n                bgHexDisplay.textContent = 'N/A';n                bgRgbDisplay.textContent = 'N/A';n                bgHslDisplay.textContent = 'N/A';n            }n        }
-        /**n         * Main function to perform the contrast check and update the UI.n         */n        function checkContrast() {n            const foregroundColorInput = foregroundColorText.value;n            const backgroundColorInput = backgroundColorText.value;
-            const foregroundRgb = parseColor(foregroundColorInput);n            const backgroundRgb = parseColor(backgroundColorInput);
-            let isValidForeground = true;n            let isValidBackground = true;
-            if (!foregroundRgb) {n                foregroundColorError.textContent = "Invalid color format (e.g., #HEX, rgb(R,G,B), hsl(H,S%,L%))";n                isValidForeground = false;n            } else {n                foregroundColorError.textContent = "";n                foregroundColorPicker.value = rgbToHex(foregroundRgb);n            }
-            if (!backgroundRgb) {n                backgroundColorError.textContent = "Invalid color format (e.g., #HEX, rgb(R,G,B), hsl(H,S%,L%))";n                isValidBackground = false;n            } else {n                backgroundColorError.textContent = "";n                backgroundColorPicker.value = rgbToHex(backgroundRgb);n            }
-            updateColorFormatsDisplay(); // Always update color format displaysnn            if (!isValidForeground || !isValidBackground) {n                contrastRatioDisplay.textContent = "--";n                // Reset WCAG verdicts to default 'Fail' state if inputs are invalidn                updateWCAGVerdict(wcagAANormal, 0, 4.5);n                updateWCAGVerdict(wcagAALarge, 0, 3);n                updateWCAGVerdict(wcagAAANormal, 0, 7);n                updateWCAGVerdict(wcagAAALarge, 0, 4.5);n                drawColorBlindnessSimulation(); // Redraw with current (potentially invalid) colorsn                updateLivePreview(); // Update live previewn                updateGuidelineSummary(0, false, false); // Update summary for invalid staten                return;n            }
-            // Update background color of the body and text color of the container for visual feedbackn            document.body.style.backgroundColor = rgbToHex(backgroundRgb);n            document.querySelector('.container').style.color = rgbToHex(foregroundRgb);
-            const ratio = calculateContrastRatio(rgbToHex(foregroundRgb), rgbToHex(backgroundRgb));n            contrastRatioDisplay.textContent = ratio.toFixed(2); // Display ratio with 2 decimal placesn            contrastRatioDisplay.classList.add('flash-animation'); // Add animation to ration            contrastRatioDisplay.addEventListener('animationend', () => {n                contrastRatioDisplay.classList.remove('flash-animation');n            }, { once: true });
-            // Update WCAG compliance verdictsn            updateWCAGVerdict(wcagAANormal, ratio, 4.5);n            updateWCAGVerdict(wcagAALarge, ratio, 3);n            updateWCAGVerdict(wcagAAANormal, ratio, 7);n            updateWCAGVerdict(wcagAAALarge, ratio, 4.5);
-            drawColorBlindnessSimulation(); // Redraw simulation with new colorsn            updateLivePreview(); // Update live previewn            updateGuidelineSummary(ratio, ratio >= 4.5, ratio >= 7); // Update summary based on resultsn        }
-        /**n         * Updates the live text preview box with current foreground and background colors.n         */n        function updateLivePreview() {n            const fgHex = foregroundColorText.value;n            const bgHex = backgroundColorText.value;n            const fgRgb = parseColor(fgHex);n            const bgRgb = parseColor(bgHex);
-            if (fgRgb && bgRgb) {n                livePreviewBox.style.backgroundColor = rgbToHex(bgRgb);n                livePreviewBox.style.color = rgbToHex(fgRgb);n            } else {n                livePreviewBox.style.backgroundColor = '#f0f0f0'; // Default light grayn                livePreviewBox.style.color = '#666'; // Default dark grayn            }n        }
-        /**n         * Updates the accessibility guidelines summary based on contrast results.n         * @param {number} ratio - The current contrast ratio.n         * @param {boolean} passesAA - True if AA compliance is met for normal text.n         * @param {boolean} passesAAA - True if AAA compliance is met for normal text.n         */n        function updateGuidelineSummary(ratio, passesAA, passesAAA) {n            let summaryHtml = `n                <p>The current contrast ratio is <strong>${ratio.toFixed(2)}:1</strong>.</p>            `;
-            if (passesAAA) {n                summaryHtml += `<p class="text-green-700 font-semibold">This color combination meets WCAG AAA standards for normal text, providing excellent accessibility!</p>`;n            } else if (passesAA) {n                summaryHtml += `<p class="text-green-700 font-semibold">This color combination meets WCAG AA standards for normal text, which is generally considered good for accessibility.</p>`;n            } else {n                summaryHtml += `<p class="text-red-700 font-semibold">This color combination does NOT meet WCAG AA standards for normal text. Consider adjusting the colors for better readability and accessibility.</p>`;n            }
-            summaryHtml += `n                <p class="mt-4">WCAG (Web Content Accessibility Guidelines) are developed by the W3C to provide a single shared standard for web content accessibility that meets the needs of individuals, organizations, and governments internationally.</p>                <p>Learn more about <a href="https://www.w3.org/WAI/WCAG21/Understanding/" target="_blank">WCAG 2.1</a>.</p>            `;n            guidelineSummaryDiv.innerHTML = summaryHtml;n        }
-        /**n         * Resets all input fields and result displays to their initial state.n         */n        function resetInputs() {n            foregroundColorPicker.value = "#000000";n            foregroundColorText.value = "#000000";n            backgroundColorPicker.value = "#FFFFFF";n            backgroundColorText.value = "#FFFFFF";n            foregroundColorError.textContent = "";n            backgroundColorError.textContent = "";n            colorSuggestionsDiv.innerHTML = ""; // Clear suggestionsn            colorBlindnessType.value = "normal"; // Reset color blindness filtern            livePreviewBox.textContent = "Accessible Text Example"; // Reset live preview textn            checkContrast(); // Re-run check to update UI to defaultn            document.body.style.background = 'linear-gradient(135deg, #e0f2fe 0%, #c5e1f7 100%)'; // Reset body backgroundn            document.querySelector('.container').style.color = '#1f2937'; // Reset container text colorn        }
-        /**n         * Swaps the foreground and background colors.n         */n        function swapColors() {n            const currentFg = foregroundColorText.value;n            const currentBg = backgroundColorText.value;
-            foregroundColorText.value = currentBg;n            foregroundColorPicker.value = parseColor(currentBg) ? rgbToHex(parseColor(currentBg)) : '#000000'; // Ensure picker updatesn            backgroundColorText.value = currentFg;n            backgroundColorPicker.value = parseColor(currentFg) ? rgbToHex(parseColor(currentFg)) : '#FFFFFF'; // Ensure picker updatesnn            checkContrast(); // Recalculate contrast with swapped colorsn        }
-        /**n         * Copies text from a given element ID to the clipboard.n         * @param {string} elementId - The ID of the element whose text content should be copied.n         * @param {HTMLElement} buttonElement - The button element that was clicked.n         */n        function copyToClipboard(elementId, buttonElement) {n            const element = document.getElementById(elementId);n            if (element && element.textContent) {n                const textToCopy = element.textContent;n                // Use execCommand for broader compatibility in iframesn                const textarea = document.createElement('textarea');n                textarea.value = textToCopy;n                document.body.appendChild(textarea);n                textarea.select();n                try {n                    document.execCommand('copy');n                    // Provide visual feedback to the user on the buttonn                    const originalButtonText = buttonElement.innerHTML;n                    buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';n                    setTimeout(() => {n                        buttonElement.innerHTML = originalButtonText;n                    }, 1500);n                } catch (err) {n                    console.error('Failed to copy text: ', err);n                    // Fallback for environments where execCommand might be restrictedn                    // Could display a message "Copy failed, please copy manually: [text]"n                } finally {n                    document.body.removeChild(textarea);n                }n            }n        }
-        // --- Color Blindness Simulation ---
-        /**n         * Applies a color blindness filter matrix to an RGB color.n         * Matrix values from https://www.color-blindness.com/n         * @param {number[]} rgb - [R, G, B] array.n         * @param {string} type - Type of color blindness ('normal', 'protanopia', 'deuteranopia', 'tritanopia').n         * @returns {number[]} Filtered [R, G, B] array.n         */n        function applyColorBlindnessFilter(rgb, type) {n            let r = rgb[0];n            let g = rgb[1];n            let b = rgb[2];n            let newR, newG, newB;
-            switch (type) {n                case 'protanopia': // Red-blindn                    newR = (0.567 * r) + (0.433 * g) + (0.000 * b);n                    newG = (0.558 * r) + (0.442 * g) + (0.000 * b);n                    newB = (0.000 * r) + (0.242 * g) + (0.758 * b);n                    break;n                case 'deuteranopia': // Green-blindn                    newR = (0.625 * r) + (0.375 * g) + (0.000 * b);n                    newG = (0.700 * r) + (0.300 * g) + (0.000 * b);n                    newB = (0.000 * r) + (0.300 * g) + (0.700 * b);n                    break;n                case 'tritanopia': // Blue-blindn                    newR = (0.950 * r) + (0.050 * g) + (0.000 * b);n                    newG = (0.000 * r) + (0.433 * g) + (0.567 * b);n                    newB = (0.000 * r) + (0.475 * g) + (0.525 * b);n                    break;n                default: // Normal visionn                    return rgb;n            }n            return [Math.round(newR), Math.round(newG), Math.round(newB)];n        }
-        /**n         * Draws the current foreground and background colors on the canvasn         * and applies the selected color blindness filter.n         */n        function drawColorBlindnessSimulation() {n            const fgHex = foregroundColorText.value;n            const bgHex = backgroundColorText.value;n            const fgRgb = parseColor(fgHex);n            const bgRgb = parseColor(bgHex);
-            // Clear canvasn            ctx.clearRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
-            if (!fgRgb || !bgRgb) {n                ctx.fillStyle = '#f0f0f0';n                ctx.fillRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);n                ctx.fillStyle = '#666';n                ctx.font = '18px Inter';n                ctx.textAlign = 'center';n                ctx.textBaseline = 'middle';n                ctx.fillText('Invalid Colors for Simulation', colorBlindnessCanvas.width / 2, colorBlindnessCanvas.height / 2);n                return;n            }
-            const selectedFilter = colorBlindnessType.value;n            const filteredFgRgb = applyColorBlindnessFilter(fgRgb, selectedFilter);n            const filteredBgRgb = applyColorBlindnessFilter(bgRgb, selectedFilter);
-            const filteredFgHex = rgbToHex(filteredFgRgb);n            const filteredBgHex = rgbToHex(filteredBgRgb);
-            // Draw backgroundn            ctx.fillStyle = filteredBgHex;n            ctx.fillRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
-            // Draw sample textn            ctx.fillStyle = filteredFgHex;n            ctx.font = 'bold 56px Inter'; /* Larger text for simulation */n            ctx.textAlign = 'center';n            ctx.textBaseline = 'middle';n            ctx.fillText('Aa', colorBlindnessCanvas.width / 2, colorBlindnessCanvas.height / 2);
-            // Draw a small circle to show color interactionn            ctx.beginPath();n            ctx.arc(colorBlindnessCanvas.width / 4, colorBlindnessCanvas.height / 4, 35, 0, Math.PI * 2); /* Larger circle */n            ctx.fillStyle = filteredFgHex;n            ctx.fill();n            ctx.strokeStyle = filteredBgHex;n            ctx.lineWidth = 6; /* Thicker stroke */n            ctx.stroke();
-            ctx.beginPath();n            ctx.arc(colorBlindnessCanvas.width * 3 / 4, colorBlindnessCanvas.height * 3 / 4, 35, 0, Math.PI * 2);n            ctx.fillStyle = filteredBgHex;n            ctx.fill();n            ctx.strokeStyle = filteredFgHex;n            ctx.lineWidth = 6;n            ctx.stroke();n        }
-        // Adjust canvas size on window load and resizen        function resizeCanvas() {n            colorBlindnessCanvas.width = colorBlindnessCanvas.offsetWidth;n            colorBlindnessCanvas.height = colorBlindnessCanvas.offsetHeight;n            drawColorBlindnessSimulation();n        }
+    <script>        // Get DOM elements
+const foregroundColorPicker = document.getElementById('foregroundColorPicker');
+const foregroundColorText = document.getElementById('foregroundColorText');
+const backgroundColorPicker = document.getElementById('backgroundColorPicker');
+const backgroundColorText = document.getElementById('backgroundColorText');
+const foregroundColorError = document.getElementById('foregroundColorError');
+const backgroundColorError = document.getElementById('backgroundColorError');
+const contrastRatioDisplay = document.getElementById('contrastRatio');
+const wcagAANormal = document.getElementById('wcagAANormal');
+const wcagAALarge = document.getElementById('wcagAALarge');
+const wcagAAANormal = document.getElementById('wcagAAANormal');
+const wcagAAALarge = document.getElementById('wcagAAALarge');
+const checkContrastBtn = document.getElementById('checkContrastBtn');
+const resetBtn = document.getElementById('resetBtn');
+const swapColorsBtn = document.getElementById('swapColorsBtn');
+const suggestColorsBtn = document.getElementById('suggestColorsBtn');
+const suggestionLoading = document.getElementById('suggestionLoading');
+const colorSuggestionsDiv = document.getElementById('colorSuggestions');
+const colorBlindnessType = document.getElementById('colorBlindnessType');
+const colorBlindnessCanvas = document.getElementById('colorBlindnessCanvas');
+const livePreviewBox = document.getElementById('livePreviewBox');
+const guidelineSummaryDiv = document.getElementById('guidelineSummary');
+const ctx = colorBlindnessCanvas.getContext('2d');
+        // Color format display elements
+const fgHexDisplay = document.getElementById('fgHexDisplay');
+const fgRgbDisplay = document.getElementById('fgRgbDisplay');
+const fgHslDisplay = document.getElementById('fgHslDisplay');
+const bgHexDisplay = document.getElementById('bgHexDisplay');
+const bgRgbDisplay = document.getElementById('bgRgbDisplay');
+const bgHslDisplay = document.getElementById('bgHslDisplay');
+        // --- Color Conversion and Calculatio
+Functions ---
+        /**n         * Converts a hexadecimal color string to an RGB array.n         * @param {string} hex - The hexadecimal color string (e.g., "#RRGGBB" or "RRGGBB").n         * @returns {
+umber[]|null} An array [R, G, B] or null if invalid.n         */n        function hexToRgb(hex) {
+const cleanHex = hex.startsWith('#') ? hex.slice(1) : hex;
+let r, g, b;
+            if (cleanHex.length === 3) {
+r = parseInt(cleanHex[0] + cleanHex[0], 16);
+g = parseInt(cleanHex[1] + cleanHex[1], 16);
+b = parseInt(cleanHex[2] + cleanHex[2], 16);
+} else if (cleanHex.length === 6) {
+r = parseInt(cleanHex.substring(0, 2), 16);
+g = parseInt(cleanHex.substring(2, 4), 16);
+b = parseInt(cleanHex.substring(4, 6), 16);
+} else {
+return null; // Invalid hex format
+}
+            if (isNaN(r) || isNaN(g) || isNaN(b)) {
+return null; // Invalid hex characters
+}
+return [r, g, b];
+}
+        /**n         * Converts an RGB color array to a hexadecimal string.n         * @param {
+umber[]} rgb - An array [R, G, B].n         * @returns {string} The hexadecimal color string (e.g., "#RRGGBB").n         */n        function rgbToHex(rgb) {
+return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1).toUpperCase();
+}
+        /**n         * Converts an RGB color array to an HSL string.n         * @param {
+umber[]} rgb - An array [R, G, B].n         * @returns {string} The HSL color string (e.g., "hsl(0,0%,0%)").n         */n        function rgbToHsl(rgb) {
+let r = rgb[0] / 255;
+let g = rgb[1] / 255;
+let b = rgb[2] / 255;
+            let max = Math.max(r, g, b);
+let min = Math.min(r, g, b);
+let h, s, l = (max + min) / 2;
+            if (max === min) {
+h = s = 0; // achromatic
+} else {
+let d = max - min;
+s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+switch (max) {
+case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+case g: h = (b - r) / d + 2; break;
+case b: h = (r - g) / d + 4; break;
+}
+h /= 6;
+}
+return `hsl(${Math.round(h * 360)},${Math.round(s * 100)}%,${Math.round(l * 100)}%)`;
+}
+        /**n         * Converts an HSL color array [h, s, l] (h:0-360, s:0-1, l:0-1) to an RGB array [R, G, B] (0-255).n         * @param {
+umber[]} hsl - An array [H, S, L].n         * @returns {
+umber[]} An array [R, G, B].n         */n        function hslArrayToRgb(hsl) {
+let h = hsl[0];
+let s = hsl[1];
+let l = hsl[2];
+            let c = (1 - Math.abs(2 * l - 1)) * s;
+let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+let m = l - c / 2;
+let r = 0, g = 0, b = 0;
+            if (0 <= h && h < 60) {
+r = c; g = x; b = 0;
+} else if (60 <= h && h < 120) {
+r = x; g = c; b = 0;
+} else if (120 <= h && h < 180) {
+r = 0; g = c; b = x;
+} else if (180 <= h && h < 240) {
+r = 0; g = x; b = c;
+} else if (240 <= h && h < 300) {
+r = x; g = 0; b = c;
+} else if (300 <= h && h < 360) {
+r = c; g = 0; b = x;
+}
+r = Math.round((r + m) * 255);
+g = Math.round((g + m) * 255);
+b = Math.round((b + m) * 255);
+return [r, g, b];
+}
+        /**n         * Converts an sRGB color component (0-255) to its linear RGB equivalent.n         * @param {
+umber} c - The sRGB color component (0-255).n         * @returns {
+umber} The linear RGB component.n         */n        function sRGBtoLinearRGB(c) {
+c /= 255;
+return (c <= 0.03928) ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+}
+        /**n         * Calculates the relative luminance of an RGB color.n         * @param {
+umber[]} rgb - An array [R, G, B] where R, G, B are integers from 0 to 255.n         * @returns {
+umber} The relative luminance (0 to 1).n         */n        function calculateLuminance(rgb) {
+if (!rgb || rgb.length !== 3) return 0; // Handle invalid RGB
+const r = sRGBtoLinearRGB(rgb[0]);
+const g = sRGBtoLinearRGB(rgb[1]);
+const b = sRGBtoLinearRGB(rgb[2]);
+return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+        /**n         * Calculates the contrast ratio between two colors.n         * @param {string} color1Hex - Hexadecimal string for the first color.n         * @param {string} color2Hex - Hexadecimal string for the second color.n         * @returns {
+umber} The contrast ratio.n         */n        function calculateContrastRatio(color1Hex, color2Hex) {
+const rgb1 = hexToRgb(color1Hex);
+const rgb2 = hexToRgb(color2Hex);
+            if (!rgb1 || !rgb2) return 0; // Return 0 if any color is invalidn
+const L1 = calculateLuminance(rgb1);
+const L2 = calculateLuminance(rgb2);
+            const brighterL = Math.max(L1, L2);
+const darkerL = Math.min(L1, L2);
+            return (brighterL + 0.05) / (darkerL + 0.05);
+}
+        /**n         * Parses a color string (hex, rgb(), hsl()) into an RGB array.n         * @param {string} colorString - The color string to parse.n         * @returns {
+umber[]|null} An array [R, G, B] or null if invalid.n         */n        function parseColor(colorString) {
+colorString = colorString.trim();
+            // Try Hex
+if (colorString.startsWith('#')) {
+return hexToRgb(colorString);
+}
+            // Try RGB
+const rgbMatch = colorString.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i);
+if (rgbMatch) {
+const r = parseInt(rgbMatch[1]);
+const g = parseInt(rgbMatch[2]);
+const b = parseInt(rgbMatch[3]);
+if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+return [r, g, b];
+}
+}
+            // Try HSL
+const hslMatch = colorString.match(/^hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)$/i);
+if (hslMatch) {
+const h = parseInt(hslMatch[1]);
+const s = parseInt(hslMatch[2]);
+const l = parseInt(hslMatch[3]);
+if (h >= 0 && h <= 360 && s >= 0 && s <= 100 && l >= 0 && l <= 100) {
+return hslArrayToRgb([h, s / 100, l / 100]); // Convert S, L to 0-1 range
+}
+}
+            return null; // No valid format matched
+}
+        /**n         * Updates the WCAG compliance verdict for a given element and ratio.n         * @param {HTMLElement} element - The DOM element to update.n         * @param {
+umber} ratio - The calculated contrast ratio.n         * @param {
+umber} minRatio - The minimum required ratio for compliance.n         */n        function updateWCAGVerdict(element, ratio, minRatio) {
+const oldText = element.textContent;
+if (ratio >= minRatio) {
+element.classList.remove('fail');
+element.classList.add('pass');
+element.textContent = `Pass (Min: ${minRatio}:1)`;
+} else {
+element.classList.remove('pass');
+element.classList.add('fail');
+element.textContent = `Fail (Min: ${minRatio}:1)`;
+}
+// Add flash animation if the verdict changed
+if (oldText !== element.textContent) {
+element.classList.add('flash-animation');
+element.addEventListener('animationend', () => {
+element.classList.remove('flash-animation');
+}, { once: true });
+}
+}
+        /**n         * Updates the displayed color formats (Hex, RGB, HSL) for foreground and background.n         */n        function updateColorFormatsDisplay() {
+const fgRgb = parseColor(foregroundColorText.value);
+const bgRgb = parseColor(backgroundColorText.value);
+            if (fgRgb) {
+fgHexDisplay.textContent = rgbToHex(fgRgb);
+fgRgbDisplay.textContent = `rgb(${fgRgb[0]},${fgRgb[1]},${fgRgb[2]})`;
+fgHslDisplay.textContent = rgbToHsl(fgRgb);
+} else {
+fgHexDisplay.textContent = 'N/A';
+fgRgbDisplay.textContent = 'N/A';
+fgHslDisplay.textContent = 'N/A';
+}
+            if (bgRgb) {
+bgHexDisplay.textContent = rgbToHex(bgRgb);
+bgRgbDisplay.textContent = `rgb(${bgRgb[0]},${bgRgb[1]},${bgRgb[2]})`;
+bgHslDisplay.textContent = rgbToHsl(bgRgb);
+} else {
+bgHexDisplay.textContent = 'N/A';
+bgRgbDisplay.textContent = 'N/A';
+bgHslDisplay.textContent = 'N/A';
+}
+}
+        /**n         * Main function to perform the contrast check and update the UI.n         */n        function checkContrast() {
+const foregroundColorInput = foregroundColorText.value;
+const backgroundColorInput = backgroundColorText.value;
+            const foregroundRgb = parseColor(foregroundColorInput);
+const backgroundRgb = parseColor(backgroundColorInput);
+            let isValidForeground = true;
+let isValidBackground = true;
+            if (!foregroundRgb) {
+foregroundColorError.textContent = "Invalid color format (e.g., #HEX, rgb(R,G,B), hsl(H,S%,L%))";
+isValidForeground = false;
+} else {
+foregroundColorError.textContent = "";
+foregroundColorPicker.value = rgbToHex(foregroundRgb);
+}
+            if (!backgroundRgb) {
+backgroundColorError.textContent = "Invalid color format (e.g., #HEX, rgb(R,G,B), hsl(H,S%,L%))";
+isValidBackground = false;
+} else {
+backgroundColorError.textContent = "";
+backgroundColorPicker.value = rgbToHex(backgroundRgb);
+}
+            updateColorFormatsDisplay(); // Always update color format displaysn
+if (!isValidForeground || !isValidBackground) {
+contrastRatioDisplay.textContent = "--";
+// Reset WCAG verdicts to default 'Fail' state if inputs are invalid
+updateWCAGVerdict(wcagAANormal, 0, 4.5);
+updateWCAGVerdict(wcagAALarge, 0, 3);
+updateWCAGVerdict(wcagAAANormal, 0, 7);
+updateWCAGVerdict(wcagAAALarge, 0, 4.5);
+drawColorBlindnessSimulation(); // Redraw with current (potentially invalid) colorsn                updateLivePreview(); // Update live previewn                updateGuidelineSummary(0, false, false); // Update summary for invalid state
+return;
+}
+            // Update background color of the body and text color of the container for visual feedback
+document.body.style.backgroundColor = rgbToHex(backgroundRgb);
+document.querySelector('.container').style.color = rgbToHex(foregroundRgb);
+            const ratio = calculateContrastRatio(rgbToHex(foregroundRgb), rgbToHex(backgroundRgb));
+contrastRatioDisplay.textContent = ratio.toFixed(2); // Display ratio with 2 decimal placesn            contrastRatioDisplay.classList.add('flash-animation'); // Add animation to ratio
+contrastRatioDisplay.addEventListener('animationend', () => {
+contrastRatioDisplay.classList.remove('flash-animation');
+}, { once: true });
+            // Update WCAG compliance verdicts
+updateWCAGVerdict(wcagAANormal, ratio, 4.5);
+updateWCAGVerdict(wcagAALarge, ratio, 3);
+updateWCAGVerdict(wcagAAANormal, ratio, 7);
+updateWCAGVerdict(wcagAAALarge, ratio, 4.5);
+            drawColorBlindnessSimulation(); // Redraw simulation with new colorsn            updateLivePreview(); // Update live previewn            updateGuidelineSummary(ratio, ratio >= 4.5, ratio >= 7); // Update summary based on results
+}
+        /**n         * Updates the live text preview box with current foreground and background colors.n         */n        function updateLivePreview() {
+const fgHex = foregroundColorText.value;
+const bgHex = backgroundColorText.value;
+const fgRgb = parseColor(fgHex);
+const bgRgb = parseColor(bgHex);
+            if (fgRgb && bgRgb) {
+livePreviewBox.style.backgroundColor = rgbToHex(bgRgb);
+livePreviewBox.style.color = rgbToHex(fgRgb);
+} else {
+livePreviewBox.style.backgroundColor = '#f0f0f0'; // Default light grayn                livePreviewBox.style.color = '#666'; // Default dark gray
+}
+}
+        /**n         * Updates the accessibility guidelines summary based on contrast results.n         * @param {
+umber} ratio - The current contrast ratio.n         * @param {boolean} passesAA - True if AA compliance is met for normal text.n         * @param {boolean} passesAAA - True if AAA compliance is met for normal text.n         */n        function updateGuidelineSummary(ratio, passesAA, passesAAA) {
+let summaryHtml = `n                <p>The current contrast ratio is <strong>${ratio.toFixed(2)}:1</strong>.</p>            `;
+            if (passesAAA) {
+summaryHtml += `<p class="text-green-700 font-semibold">This color combination meets WCAG AAA standards for normal text, providing excellent accessibility!</p>`;
+} else if (passesAA) {
+summaryHtml += `<p class="text-green-700 font-semibold">This color combination meets WCAG AA standards for normal text, which is generally considered good for accessibility.</p>`;
+} else {
+summaryHtml += `<p class="text-red-700 font-semibold">This color combination does NOT meet WCAG AA standards for normal text. Consider adjusting the colors for better readability and accessibility.</p>`;
+}
+            summaryHtml += `n                <p class="mt-4">WCAG (Web Content Accessibility Guidelines) are developed by the W3C to provide a single shared standard for web content accessibility that meets the needs of individuals, organizations, and governments internationally.</p>                <p>Learn more about <a href="https://www.w3.org/WAI/WCAG21/Understanding/" target="_blank">WCAG 2.1</a>.</p>            `;
+guidelineSummaryDiv.innerHTML = summaryHtml;
+}
+        /**n         * Resets all input fields and result displays to their initial state.n         */n        function resetInputs() {
+foregroundColorPicker.value = "#000000";
+foregroundColorText.value = "#000000";
+backgroundColorPicker.value = "#FFFFFF";
+backgroundColorText.value = "#FFFFFF";
+foregroundColorError.textContent = "";
+backgroundColorError.textContent = "";
+colorSuggestionsDiv.innerHTML = ""; // Clear suggestionsn            colorBlindnessType.value = "normal"; // Reset color blindness filtern            livePreviewBox.textContent = "Accessible Text Example"; // Reset live preview textn            checkContrast(); // Re-run check to update UI to defaultn            document.body.style.background = 'linear-gradient(135deg, #e0f2fe 0%, #c5e1f7 100%)'; // Reset body backgroundn            document.querySelector('.container').style.color = '#1f2937'; // Reset container text color
+}
+        /**n         * Swaps the foreground and background colors.n         */n        function swapColors() {
+const currentFg = foregroundColorText.value;
+const currentBg = backgroundColorText.value;
+            foregroundColorText.value = currentBg;
+foregroundColorPicker.value = parseColor(currentBg) ? rgbToHex(parseColor(currentBg)) : '#000000'; // Ensure picker updates
+backgroundColorText.value = currentFg;
+backgroundColorPicker.value = parseColor(currentFg) ? rgbToHex(parseColor(currentFg)) : '#FFFFFF'; // Ensure picker updatesnn            checkContrast(); // Recalculate contrast with swapped colors
+}
+        /**n         * Copies text from a given element ID to the clipboard.n         * @param {string} elementId - The ID of the element whose text content should be copied.n         * @param {HTMLElement} buttonElement - The button element that was clicked.n         */n        function copyToClipboard(elementId, buttonElement) {
+const element = document.getElementById(elementId);
+if (element && element.textContent) {
+const textToCopy = element.textContent;
+// Use execCommand for broader compatibility in iframes
+const textarea = document.createElement('textarea');
+textarea.value = textToCopy;
+document.body.appendChild(textarea);
+textarea.select();
+try {
+document.execCommand('copy');
+// Provide visual feedback to the user on the button
+const originalButtonText = buttonElement.innerHTML;
+buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';
+setTimeout(() => {
+buttonElement.innerHTML = originalButtonText;
+}, 1500);
+} catch (err) {
+console.error('Failed to copy text: ', err);
+// Fallback for environments where execCommand might be restrictedn                    // Could display a message "Copy failed, please copy manually: [text]"
+} finally {
+document.body.removeChild(textarea);
+}
+}
+}
+        // --- Color Blindness Simulatio
+---
+        /**n         * Applies a color blindness filter matrix to an RGB color.n         * Matrix values from https://www.color-blindness.com/
+* @param {
+umber[]} rgb - [R, G, B] array.n         * @param {string} type - Type of color blindness ('normal', 'protanopia', 'deuteranopia', 'tritanopia').n         * @returns {
+umber[]} Filtered [R, G, B] array.n         */n        function applyColorBlindnessFilter(rgb, type) {
+let r = rgb[0];
+let g = rgb[1];
+let b = rgb[2];
+let newR, newG, newB;
+            switch (type) {
+case 'protanopia': // Red-blind
+newR = (0.567 * r) + (0.433 * g) + (0.000 * b);
+newG = (0.558 * r) + (0.442 * g) + (0.000 * b);
+newB = (0.000 * r) + (0.242 * g) + (0.758 * b);
+break;
+case 'deuteranopia': // Green-blind
+newR = (0.625 * r) + (0.375 * g) + (0.000 * b);
+newG = (0.700 * r) + (0.300 * g) + (0.000 * b);
+newB = (0.000 * r) + (0.300 * g) + (0.700 * b);
+break;
+case 'tritanopia': // Blue-blind
+newR = (0.950 * r) + (0.050 * g) + (0.000 * b);
+newG = (0.000 * r) + (0.433 * g) + (0.567 * b);
+newB = (0.000 * r) + (0.475 * g) + (0.525 * b);
+break;
+default: // Normal visionn                    retur
+rgb;
+}
+return [Math.round(newR), Math.round(newG), Math.round(newB)];
+}
+        /**n         * Draws the current foreground and background colors on the canvasn         * and applies the selected color blindness filter.n         */n        function drawColorBlindnessSimulation() {
+const fgHex = foregroundColorText.value;
+const bgHex = backgroundColorText.value;
+const fgRgb = parseColor(fgHex);
+const bgRgb = parseColor(bgHex);
+            // Clear canvas
+ctx.clearRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
+            if (!fgRgb || !bgRgb) {
+ctx.fillStyle = '#f0f0f0';
+ctx.fillRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
+ctx.fillStyle = '#666';
+ctx.font = '18px Inter';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillText('Invalid Colors for Simulation', colorBlindnessCanvas.width / 2, colorBlindnessCanvas.height / 2);
+return;
+}
+            const selectedFilter = colorBlindnessType.value;
+const filteredFgRgb = applyColorBlindnessFilter(fgRgb, selectedFilter);
+const filteredBgRgb = applyColorBlindnessFilter(bgRgb, selectedFilter);
+            const filteredFgHex = rgbToHex(filteredFgRgb);
+const filteredBgHex = rgbToHex(filteredBgRgb);
+            // Draw background
+ctx.fillStyle = filteredBgHex;
+ctx.fillRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
+            // Draw sample text
+ctx.fillStyle = filteredFgHex;
+ctx.font = 'bold 56px Inter'; /* Larger text for simulation */n            ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillText('Aa', colorBlindnessCanvas.width / 2, colorBlindnessCanvas.height / 2);
+            // Draw a small circle to show color interaction
+ctx.beginPath();
+ctx.arc(colorBlindnessCanvas.width / 4, colorBlindnessCanvas.height / 4, 35, 0, Math.PI * 2); /* Larger circle */n            ctx.fillStyle = filteredFgHex;
+ctx.fill();
+ctx.strokeStyle = filteredBgHex;
+ctx.lineWidth = 6; /* Thicker stroke */n            ctx.stroke();
+            ctx.beginPath();
+ctx.arc(colorBlindnessCanvas.width * 3 / 4, colorBlindnessCanvas.height * 3 / 4, 35, 0, Math.PI * 2);
+ctx.fillStyle = filteredBgHex;
+ctx.fill();
+ctx.strokeStyle = filteredFgHex;
+ctx.lineWidth = 6;
+ctx.stroke();
+}
+        // Adjust canvas size on window load and resizen        functio
+resizeCanvas() {
+colorBlindnessCanvas.width = colorBlindnessCanvas.offsetWidth;
+colorBlindnessCanvas.height = colorBlindnessCanvas.offsetHeight;
+drawColorBlindnessSimulation();
+}
         // --- Client-Side AI Color Suggestions ---
-        /**n         * Adjusts the lightness of a base color to achieve minimum contrast with a reference color.n         * @param {number[]} baseColorRgb - The RGB array of the color to adjust.n         * @param {number[]} referenceColorRgb - The RGB array of the color it needs to contrast with.n         * @param {number} minContrastRatio - The target minimum contrast ratio (e.g., 4.5 for AA).n         * @returns {number[]} The adjusted RGB array of the base color.n         */n        function getContrastCompliantColor(baseColorRgb, referenceColorRgb, minContrastRatio = 4.5) {n            let baseHsl = rgbToHsl(baseColorRgb).match(/\d+/g).map(Number); // Convert to [h, s, l] (h:0-360, s:0-100, l:0-100)n            baseHsl[1] /= 100; // Convert s to 0-1n            baseHsl[2] /= 100; // Convert l to 0-1nn            const checkRatio = (adjustedL) => {n                let testHsl = [baseHsl[0], baseHsl[1], adjustedL];n                let testRgb = hslArrayToRgb(testHsl);n                return calculateContrastRatio(rgbToHex(testRgb), rgbToHex(referenceColorRgb));n            };
-            let currentL = baseHsl[2];n            let ratio = checkRatio(currentL);
-            if (ratio >= minContrastRatio) {n                return hslArrayToRgb(baseHsl); // Already compliantn            }
-            // Try increasing lightnessn            for (let l = currentL; l <= 1.0; l += 0.02) { // Step by 2% lightnessn                if (checkRatio(l) >= minContrastRatio) {n                    return hslArrayToRgb([baseHsl[0], baseHsl[1], l]);n                }n            }
-            // Try decreasing lightnessn            for (let l = currentL; l >= 0.0; l -= 0.02) {n                if (checkRatio(l) >= minContrastRatio) {n                    return hslArrayToRgb([baseHsl[0], baseHsl[1], l]);n                }n            }
-            // Fallback: If no compliant lightness found, return black or white depending on which gives better contrastn            const blackRgb = [0, 0, 0];n            const whiteRgb = [255, 255, 255];n            const ratioWithBlack = calculateContrastRatio(rgbToHex(blackRgb), rgbToHex(referenceColorRgb));n            const ratioWithWhite = calculateContrastRatio(rgbToHex(whiteRgb), rgbToHex(referenceColorRgb));
-            if (ratioWithBlack >= minContrastRatio) return blackRgb;n            if (ratioWithWhite >= minContrastRatio) return whiteRgb;
-            return baseColorRgb; // Should ideally not reach here if reference color is reasonablen        }
-        /**n         * Generates a complementary color.n         * @param {number[]} hsl - HSL array [h, s, l] (h:0-360, s:0-1, l:0-1).n         * @returns {number[]} HSL array of the complementary color.n         */n        function getComplementaryColor(hsl) {n            let h = (hsl[0] + 180) % 360;n            return [h, hsl[1], hsl[2]];n        }
-        /**n         * Generates analogous colors (two colors near the original hue).n         * @param {number[]} hsl - HSL array [h, s, l] (h:0-360, s:0-1, l:0-1).n         * @param {number} angle - The angle difference for analogous colors (e.g., 30 degrees).n         * @returns {Array<number[]>} An array of two HSL arrays for analogous colors.n         */n        function getAnalogousColors(hsl, angle = 30) {n            let h1 = (hsl[0] + angle) % 360;n            let h2 = (hsl[0] - angle + 360) % 360;n            return [[h1, hsl[1], hsl[2]], [h2, hsl[1], hsl[2]]];n        }
-        async function getAiColorSuggestions() {n            suggestionLoading.classList.remove('hidden');n            colorSuggestionsDiv.innerHTML = ''; // Clear previous suggestionsnn            const currentFgRgb = parseColor(foregroundColorText.value);n            const currentBgRgb = parseColor(backgroundColorText.value);
-            if (!currentFgRgb || !currentBgRgb) {n                colorSuggestionsDiv.innerHTML = '<p class="text-red-500 text-center">Please enter valid foreground and background colors to get suggestions.</p>';n                suggestionLoading.classList.add('hidden');n                return;n            }
+        /**n         * Adjusts the lightness of a base color to achieve minimum contrast with a reference color.n         * @param {
+umber[]} baseColorRgb - The RGB array of the color to adjust.n         * @param {
+umber[]} referenceColorRgb - The RGB array of the color it needs to contrast with.n         * @param {
+umber} minContrastRatio - The target minimum contrast ratio (e.g., 4.5 for AA).n         * @returns {
+umber[]} The adjusted RGB array of the base color.n         */n        function getContrastCompliantColor(baseColorRgb, referenceColorRgb, minContrastRatio = 4.5) {
+let baseHsl = rgbToHsl(baseColorRgb).match(/\d+/g).map(Number); // Convert to [h, s, l] (h:0-360, s:0-100, l:0-100)
+baseHsl[1] /= 100; // Convert s to 0-1n            baseHsl[2] /= 100; // Convert l to 0-1
+const checkRatio = (adjustedL) => {
+let testHsl = [baseHsl[0], baseHsl[1], adjustedL];
+let testRgb = hslArrayToRgb(testHsl);
+return calculateContrastRatio(rgbToHex(testRgb), rgbToHex(referenceColorRgb));
+};
+            let currentL = baseHsl[2];
+let ratio = checkRatio(currentL);
+            if (ratio >= minContrastRatio) {
+return hslArrayToRgb(baseHsl); // Already compliant
+}
+            // Try increasing lightnessn            for (let l = currentL; l <= 1.0; l += 0.02) { // Step by 2% lightness
+if (checkRatio(l) >= minContrastRatio) {
+return hslArrayToRgb([baseHsl[0], baseHsl[1], l]);
+}
+}
+            // Try decreasing lightness
+for (let l = currentL; l >= 0.0; l -= 0.02) {
+if (checkRatio(l) >= minContrastRatio) {
+return hslArrayToRgb([baseHsl[0], baseHsl[1], l]);
+}
+}
+            // Fallback: If no compliant lightness found, return black or white depending on which gives better contrast
+const blackRgb = [0, 0, 0];
+const whiteRgb = [255, 255, 255];
+const ratioWithBlack = calculateContrastRatio(rgbToHex(blackRgb), rgbToHex(referenceColorRgb));
+const ratioWithWhite = calculateContrastRatio(rgbToHex(whiteRgb), rgbToHex(referenceColorRgb));
+            if (ratioWithBlack >= minContrastRatio) return blackRgb;
+if (ratioWithWhite >= minContrastRatio) return whiteRgb;
+            return baseColorRgb; // Should ideally not reach here if reference color is reasonable
+}
+        /**n         * Generates a complementary color.n         * @param {
+umber[]} hsl - HSL array [h, s, l] (h:0-360, s:0-1, l:0-1).n         * @returns {
+umber[]} HSL array of the complementary color.n         */n        function getComplementaryColor(hsl) {
+let h = (hsl[0] + 180) % 360;
+return [h, hsl[1], hsl[2]];
+}
+        /**n         * Generates analogous colors (two colors near the original hue).n         * @param {
+umber[]} hsl - HSL array [h, s, l] (h:0-360, s:0-1, l:0-1).n         * @param {
+umber} angle - The angle difference for analogous colors (e.g., 30 degrees).n         * @returns {Array<number[]>} An array of two HSL arrays for analogous colors.n         */n        function getAnalogousColors(hsl, angle = 30) {
+let h1 = (hsl[0] + angle) % 360;
+let h2 = (hsl[0] - angle + 360) % 360;
+return [[h1, hsl[1], hsl[2]], [h2, hsl[1], hsl[2]]];
+}
+        async function getAiColorSuggestions() {
+suggestionLoading.classList.remove('hidden');
+colorSuggestionsDiv.innerHTML = ''; // Clear previous suggestionsn
+const currentFgRgb = parseColor(foregroundColorText.value);
+const currentBgRgb = parseColor(backgroundColorText.value);
+            if (!currentFgRgb || !currentBgRgb) {
+colorSuggestionsDiv.innerHTML = '<p class="text-red-500 text-center">Please enter valid foreground and background colors to get suggestions.</p>';
+suggestionLoading.classList.add('hidden');
+return;
+}
             const suggestions = [];
-            // Palette 1: Adjusted Foreground (keeping background)n            let fgForPalette1 = getContrastCompliantColor(currentFgRgb, currentBgRgb);n            suggestions.push({n                paletteName: "Adjusted Foreground",n                foregroundColor: rgbToHex(fgForPalette1),n                backgroundColor: rgbToHex(currentBgRgb)n            });
-            // Palette 2: Adjusted Background (keeping foreground)n            let bgForPalette2 = getContrastCompliantColor(currentBgRgb, currentFgRgb);n            suggestions.push({n                paletteName: "Adjusted Background",n                foregroundColor: rgbToHex(currentFgRgb),n                backgroundColor: rgbToHex(bgForPalette2)n            });
-            // Palette 3: Inverted Colors (and then adjusted for contrast)n            let invertedFg = currentBgRgb;n            let invertedBg = currentFgRgb;n            let adjustedInvertedFg = getContrastCompliantColor(invertedFg, invertedBg);n            let adjustedInvertedBg = getContrastCompliantColor(invertedBg, adjustedInvertedFg);n            suggestions.push({n                paletteName: "Inverted & Adjusted",n                foregroundColor: rgbToHex(adjustedInvertedFg),n                backgroundColor: rgbToHex(adjustedInvertedBg)n            });
-            // Palette 4: Monochromatic background derived from foreground (adjusted for contrast)n            let fgHsl = rgbToHsl(currentFgRgb).match(/\d+/g).map(Number);n            let monoBgHsl = [fgHsl[0], fgHsl[1] * 0.8, (fgHsl[2] > 50 ? fgHsl[2] - 30 : fgHsl[2] + 30)]; // Adjust lightness, slightly desaturaten            monoBgHsl[1] = Math.max(0, Math.min(100, monoBgHsl[1])); // Clamp saturationn            monoBgHsl[2] = Math.max(0, Math.min(100, monoBgHsl[2])); // Clamp lightnessn            let monoBgRgb = hslArrayToRgb([monoBgHsl[0], monoBgHsl[1] / 100, monoBgHsl[2] / 100]);n            let adjustedMonoBgRgb = getContrastCompliantColor(monoBgRgb, currentFgRgb);n            suggestions.push({n                paletteName: "Monochromatic Background",n                foregroundColor: rgbToHex(currentFgRgb),n                backgroundColor: rgbToHex(adjustedMonoBgRgb)n            });
-            // Palette 5: Complementary foreground (adjusted for contrast)n            let currentFgHslArray = rgbToHsl(currentFgRgb).match(/\d+/g).map(Number);n            currentFgHslArray[1] /= 100; // Convert s to 0-1n            currentFgHslArray[2] /= 100; // Convert l to 0-1nn            let complementaryFgHsl = getComplementaryColor(currentFgHslArray);n            let complementaryFgRgb = hslArrayToRgb(complementaryFgHsl);n            let adjustedComplementaryFgRgb = getContrastCompliantColor(complementaryFgRgb, currentBgRgb);n            suggestions.push({n                paletteName: "Complementary Foreground",n                foregroundColor: rgbToHex(adjustedComplementaryFgRgb),n                backgroundColor: rgbToHex(currentBgRgb)n            });
-            // Palette 6: Analogous foreground (adjusted for contrast) - picking one of the twon            let analogousFgHsl = getAnalogousColors(currentFgHslArray)[0]; // Take the first analogous colorn            let analogousFgRgb = hslArrayToRgb(analogousFgHsl);n            let adjustedAnalogousFgRgb = getContrastCompliantColor(analogousFgRgb, currentBgRgb);n            suggestions.push({n                paletteName: "Analogous Foreground",n                foregroundColor: rgbToHex(adjustedAnalogousFgRgb),n                backgroundColor: rgbToHex(currentBgRgb)n            });
-            displayColorSuggestions(suggestions);n            suggestionLoading.classList.add('hidden');n        }
-        /**n         * Displays the AI-generated color suggestions in the UI.n         * @param {Array<Object>} suggestions - An array of color palette objects.n         */n        function displayColorSuggestions(suggestions) {n            colorSuggestionsDiv.innerHTML = ''; // Clear existing suggestionsn            if (suggestions.length === 0) {n                colorSuggestionsDiv.innerHTML = '<p class="text-gray-600 text-center">No suggestions available.</p>';n                return;n            }
-            suggestions.forEach((palette, index) => {n                const paletteDiv = document.createElement('div');n                paletteDiv.className = 'bg-white rounded-lg p-4 shadow-sm border border-gray-200';n                paletteDiv.innerHTML = `n                    <h5 class="font-semibold text-gray-800 mb-2">${palette.paletteName || `Palette ${index + 1}`}</h5>                    <div class="suggestion-palette">                        <div class="suggestion-color-box" style="background-color: ${palette.foregroundColor};" data-color="${palette.foregroundColor}" data-type="foreground" title="Click to set as Foreground"></div>                        <div class="suggestion-color-box" style="background-color: ${palette.backgroundColor};" data-color="${palette.backgroundColor}" data-type="background" title="Click to set as Background"></div>                    </div>                    <p class="suggestion-text">FG: ${palette.foregroundColor} | BG: ${palette.backgroundColor}</p>                `;n                colorSuggestionsDiv.appendChild(paletteDiv);
-                // Add click listeners to color boxes to apply them to inputsn                paletteDiv.querySelectorAll('.suggestion-color-box').forEach(box => {n                    box.addEventListener('click', (event) => {n                        const color = event.target.dataset.color;n                        const type = event.target.dataset.type;n                        if (type === 'foreground') {n                            foregroundColorText.value = color;n                            foregroundColorPicker.value = color;n                        } else {n                            backgroundColorText.value = color;n                            backgroundColorPicker.value = color;n                        }n                        checkContrast(); // Recalculate contrast with new colorsn                    });n                });n            });n        }
+            // Palette 1: Adjusted Foreground (keeping background)
+let fgForPalette1 = getContrastCompliantColor(currentFgRgb, currentBgRgb);
+suggestions.push({
+paletteName: "Adjusted Foreground",
+foregroundColor: rgbToHex(fgForPalette1),
+backgroundColor: rgbToHex(currentBgRgb)
+});
+            // Palette 2: Adjusted Background (keeping foreground)
+let bgForPalette2 = getContrastCompliantColor(currentBgRgb, currentFgRgb);
+suggestions.push({
+paletteName: "Adjusted Background",
+foregroundColor: rgbToHex(currentFgRgb),
+backgroundColor: rgbToHex(bgForPalette2)
+});
+            // Palette 3: Inverted Colors (and the
+adjusted for contrast)
+let invertedFg = currentBgRgb;
+let invertedBg = currentFgRgb;
+let adjustedInvertedFg = getContrastCompliantColor(invertedFg, invertedBg);
+let adjustedInvertedBg = getContrastCompliantColor(invertedBg, adjustedInvertedFg);
+suggestions.push({
+paletteName: "Inverted & Adjusted",
+foregroundColor: rgbToHex(adjustedInvertedFg),
+backgroundColor: rgbToHex(adjustedInvertedBg)
+});
+            // Palette 4: Monochromatic background derived from foreground (adjusted for contrast)
+let fgHsl = rgbToHsl(currentFgRgb).match(/\d+/g).map(Number);
+let monoBgHsl = [fgHsl[0], fgHsl[1] * 0.8, (fgHsl[2] > 50 ? fgHsl[2] - 30 : fgHsl[2] + 30)]; // Adjust lightness, slightly desaturaten            monoBgHsl[1] = Math.max(0, Math.min(100, monoBgHsl[1])); // Clamp saturationn            monoBgHsl[2] = Math.max(0, Math.min(100, monoBgHsl[2])); // Clamp lightness
+let monoBgRgb = hslArrayToRgb([monoBgHsl[0], monoBgHsl[1] / 100, monoBgHsl[2] / 100]);
+let adjustedMonoBgRgb = getContrastCompliantColor(monoBgRgb, currentFgRgb);
+suggestions.push({
+paletteName: "Monochromatic Background",
+foregroundColor: rgbToHex(currentFgRgb),
+backgroundColor: rgbToHex(adjustedMonoBgRgb)
+});
+            // Palette 5: Complementary foreground (adjusted for contrast)
+let currentFgHslArray = rgbToHsl(currentFgRgb).match(/\d+/g).map(Number);
+currentFgHslArray[1] /= 100; // Convert s to 0-1n            currentFgHslArray[2] /= 100; // Convert l to 0-1
+let complementaryFgHsl = getComplementaryColor(currentFgHslArray);
+let complementaryFgRgb = hslArrayToRgb(complementaryFgHsl);
+let adjustedComplementaryFgRgb = getContrastCompliantColor(complementaryFgRgb, currentBgRgb);
+suggestions.push({
+paletteName: "Complementary Foreground",
+foregroundColor: rgbToHex(adjustedComplementaryFgRgb),
+backgroundColor: rgbToHex(currentBgRgb)
+});
+            // Palette 6: Analogous foreground (adjusted for contrast) - picking one of the twon            let analogousFgHsl = getAnalogousColors(currentFgHslArray)[0]; // Take the first analogous color
+let analogousFgRgb = hslArrayToRgb(analogousFgHsl);
+let adjustedAnalogousFgRgb = getContrastCompliantColor(analogousFgRgb, currentBgRgb);
+suggestions.push({
+paletteName: "Analogous Foreground",
+foregroundColor: rgbToHex(adjustedAnalogousFgRgb),
+backgroundColor: rgbToHex(currentBgRgb)
+});
+            displayColorSuggestions(suggestions);
+suggestionLoading.classList.add('hidden');
+}
+        /**n         * Displays the AI-generated color suggestions in the UI.n         * @param {Array<Object>} suggestions - An array of color palette objects.n         */n        function displayColorSuggestions(suggestions) {
+colorSuggestionsDiv.innerHTML = ''; // Clear existing suggestions
+if (suggestions.length === 0) {
+colorSuggestionsDiv.innerHTML = '<p class="text-gray-600 text-center">No suggestions available.</p>';
+return;
+}
+            suggestions.forEach((palette, index) => {
+const paletteDiv = document.createElement('div');
+paletteDiv.className = 'bg-white rounded-lg p-4 shadow-sm border border-gray-200';
+paletteDiv.innerHTML = `n                    <h5 class="font-semibold text-gray-800 mb-2">${palette.paletteName || `Palette ${index + 1}`}</h5>                    <div class="suggestion-palette">                        <div class="suggestion-color-box" style="background-color: ${palette.foregroundColor};" data-color="${palette.foregroundColor}" data-type="foreground" title="Click to set as Foreground"></div>                        <div class="suggestion-color-box" style="background-color: ${palette.backgroundColor};" data-color="${palette.backgroundColor}" data-type="background" title="Click to set as Background"></div>                    </div>                    <p class="suggestion-text">FG: ${palette.foregroundColor} | BG: ${palette.backgroundColor}</p>                `;
+colorSuggestionsDiv.appendChild(paletteDiv);
+                // Add click listeners to color boxes to apply them to inputs
+paletteDiv.querySelectorAll('.suggestion-color-box').forEach(box => {
+box.addEventListener('click', (event) => {
+const color = event.target.dataset.color;
+const type = event.target.dataset.type;
+if (type === 'foreground') {
+foregroundColorText.value = color;
+foregroundColorPicker.value = color;
+} else {
+backgroundColorText.value = color;
+backgroundColorPicker.value = color;
+}
+checkContrast(); // Recalculate contrast with new colors
+});
+});
+});
+}
         // --- Event Listeners ---
-        // Sync color picker with text input and trigger checkn        foregroundColorPicker.addEventListener('input', (event) => {n            foregroundColorText.value = event.target.value.toUpperCase();n            checkContrast();n        });n        backgroundColorPicker.addEventListener('input', (event) => {n            backgroundColorText.value = event.target.value.toUpperCase();n            checkContrast();n        });
-        // Sync text input with color picker and trigger check (with validation)n        foregroundColorText.addEventListener('input', checkContrast);n        backgroundColorText.addEventListener('input', checkContrast);
-        // Live preview text inputn        livePreviewBox.addEventListener('input', updateLivePreview);
-        // Trigger check on button clickn        checkContrastBtn.addEventListener('click', checkContrast);
-        // Reset button functionalityn        resetBtn.addEventListener('click', resetInputs);
-        // Swap colors buttonn        swapColorsBtn.addEventListener('click', swapColors);
-        // AI Suggestions buttonn        suggestColorsBtn.addEventListener('click', getAiColorSuggestions);
-        // Color blindness type changen        colorBlindnessType.addEventListener('change', drawColorBlindnessSimulation);
-        // Global function for copy to clipboardn        window.copyToClipboard = copyToClipboard;
-        // Initial setup when the page loadsn        window.onload = function() {n            resizeCanvas(); // Set initial canvas sizen            checkContrast(); // Initial check with default valuesn            window.addEventListener('resize', resizeCanvas); // Adjust canvas on resizen        };n    </script>
+        // Sync color picker with text input and trigger check
+foregroundColorPicker.addEventListener('input', (event) => {
+foregroundColorText.value = event.target.value.toUpperCase();
+checkContrast();
+});
+backgroundColorPicker.addEventListener('input', (event) => {
+backgroundColorText.value = event.target.value.toUpperCase();
+checkContrast();
+});
+        // Sync text input with color picker and trigger check (with validation)
+foregroundColorText.addEventListener('input', checkContrast);
+backgroundColorText.addEventListener('input', checkContrast);
+        // Live preview text input
+livePreviewBox.addEventListener('input', updateLivePreview);
+        // Trigger check on button click
+checkContrastBtn.addEventListener('click', checkContrast);
+        // Reset button functionality
+resetBtn.addEventListener('click', resetInputs);
+        // Swap colors button
+swapColorsBtn.addEventListener('click', swapColors);
+        // AI Suggestions button
+suggestColorsBtn.addEventListener('click', getAiColorSuggestions);
+        // Color blindness type change
+colorBlindnessType.addEventListener('change', drawColorBlindnessSimulation);
+        // Global function for copy to clipboard
+window.copyToClipboard = copyToClipboard;
+        // Initial setup when the page loads
+window.onload = function() {
+resizeCanvas(); // Set initial canvas sizen            checkContrast(); // Initial check with default valuesn            window.addEventListener('resize', resizeCanvas); // Adjust canvas on resize
+};
+</script>
 <p><strong>Why This Tool Stands Out:</strong><br>✅&nbsp;<strong>Real-Time WCAG Analysis</strong></p>
 <ul class="wp-block-list"><li>Automatically checks against AA/AAA standards for both normal and large text</li>
 <li>Visual pass/fail indicators with minimum ratio requirements</li></ul>

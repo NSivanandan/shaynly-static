@@ -125,8 +125,21 @@
 
         <div class="article-content">
           
-    <h1>Percentage Calculator</h1>    <div id="calculator">        <label>What is:</label>        <input type="text" id="value1" placeholder="Enter a value">        <label>of:</label>        <input type="text" id="value2" placeholder="Enter another value">        <button onclick="calculate()">Calculate</button>        <p id="result"></p>        <p id="tip"></p>    </div>    <script>        function calculate() {n            var value1 = parseFloat(document.getElementById("value1").value);n            var value2 = parseFloat(document.getElementById("value2").value);n            var result = value1 / value2 * 100;n            document.getElementById("result").innerHTML = result.toFixed(2) + "%";
-            var tips = [n                "Did you know that the word 'percent' comes from the Latin 'per centum', meaning 'by the hundred'?",n                "In mathematics, percentages are often used to describe the probability of an event occurring.",n                "Percentages can be used to express changes in value over time, such as an increase or decrease in stock prices.",n                "Calculating percentages is an important skill for budgeting and financial planning.",n                "In cooking, percentages can be used to adjust recipes based on the number of servings needed.",n                "Percentages can be used to compare different quantities or values, such as test scores or sales figures."n            ];n            var randomTip = tips[Math.floor(Math.random() * tips.length)];n            document.getElementById("tip").innerHTML = randomTip;n        }n    </script>
+    <h1>Percentage Calculator</h1>    <div id="calculator">        <label>What is:</label>        <input type="text" id="value1" placeholder="Enter a value">        <label>of:</label>        <input type="text" id="value2" placeholder="Enter another value">        <button onclick="calculate()">Calculate</button>        <p id="result"></p>        <p id="tip"></p>    </div>    <script>        function calculate() {
+var value1 = parseFloat(document.getElementById("value1").value);
+var value2 = parseFloat(document.getElementById("value2").value);
+var result = value1 / value2 * 100;
+document.getElementById("result").innerHTML = result.toFixed(2) + "%";
+            var tips = [n                "Did you know that the word 'percent' comes from the Latin 'per centum', meaning 'by the hundred'?",
+"In mathematics, percentages are often used to describe the probability of an event occurring.",
+"Percentages can be used to express changes in value over time, such as an increase or decrease in stock prices.",
+"Calculating percentages is an important skill for budgeting and financial planning.",
+"In cooking, percentages can be used to adjust recipes based on the number of servings needed.",
+"Percentages can be used to compare different quantities or values, such as test scores or sales figures."n            ];
+var randomTip = tips[Math.floor(Math.random() * tips.length)];
+document.getElementById("tip").innerHTML = randomTip;
+}
+</script>
 <p></p>
 <h2 class="wp-block-heading">Understanding Percent Difference: Calculation and Practical Uses</h2>
 <p>Percent difference calculator is used to a measure of the relative difference between two values. It is often used in scientific and engineering applications to compare the accuracy of two measurements or the effectiveness of two processes. To calculate percent difference, you need to determine the absolute difference between the two values, divide it by the average of the two values, and then multiply by 100 to express the result as a percentage.</p>

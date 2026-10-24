@@ -135,97 +135,645 @@
             <!-- Color Harmony Tab -->            <div id="harmonyTab" class="tab-content">                <div class="control-group">                    <div class="control-item">                        <label for="saturation">Saturatio</label>                        <input type="range" id="saturation" min="0" max="100" value="70">                    </div>                    <div class="control-item">                        <label for="lightness">Lightness</label>                        <input type="range" id="lightness" min="0" max="100" value="50">                    </div>                    <div class="control-item">                        <label for="temperature">Temperature</label>                        <select id="temperature">                            <option value="neutral">Neutral</option>                            <option value="warm">Warm</option>                            <option value="cool">Cool</option>                        </select>                    </div>                    <div class="control-item">                        <label>&nbsp;</label>                        <button class="btn secondary" onclick="applyHarmony()">                            <svg class="icon"><use href="#icon-gradient"></use></svg> Apply Harmonyn                        </button>                    </div>                </div>            </div>
             <!-- Accessibility Tab -->            <div id="accessibilityTab" class="tab-content">                <div class="control-group">                    <div class="control-item">                        <label for="contrastLevel">Contrast Standard</label>                        <select id="contrastLevel">                            <option value="aa">WCAG AA (4.5:1)</option>                            <option value="aaa">WCAG AAA (7:1)</option>                        </select>                    </div>                    <div class="control-item">                        <label for="colorBlindType">Color Blind Simulatio</label>                        <select id="colorBlindType" onchange="applyColorBlindFilter()">                            <option value="none">None</option>                            <option value="protanopia">Protanopia (Red-Green)</option>                            <option value="deuteranopia">Deuteranopia (Red-Green)</option>                            <option value="tritanopia">Tritanopia (Blue-Yellow)</option>                        </select>                    </div>                    <div class="control-item">                        <label>&nbsp;</label>                        <button class="btn secondary" onclick="checkAccessibility()">                            <svg class="icon"><use href="#icon-contrast"></use></svg> Check Accessibilityn                        </button>                    </div>                </div>                <div id="accessibilityResults" class="analysis-grid" style="margin-top: 30px; display: none;">                    <!-- Accessibility results will be dynamically inserted here -->                </div>            </div>
             <!-- Export Tab -->            <div id="exportTab" class="tab-content">                <div class="control-group">                    <div class="control-item">                        <label for="exportFormat">Export Format</label>                        <select id="exportFormat" onchange="generateExportCode()">                            <option value="css">CSS Variables</option>                            <option value="scss">SCSS Variables</option>                            <option value="json">JSON</option>                            <option value="plaintext">Plain Text (HEX List)</option>                        </select>                    </div>                    <div class="control-item">                        <label>&nbsp;</label>                        <button class="btn" onclick="exportToFile()">                            <svg class="icon"><use href="#icon-export"></use></svg> Download Filen                        </button>                    </div>                    <div class="control-item" style="grid-column: 1 / -1; text-align: center;">                        <button class="btn secondary" onclick="copyExportCodeToClipboard()">                            <svg class="icon"><use href="#icon-copy"></use></svg> Copy to Clipboardn                        </button>                    </div>                </div>                <pre id="exportCode" style="display: none; background: var(--tool-bg-alt); border: 1px solid var(--tool-border-color); border-radius: 12px; padding: 20px; margin-top: 20px; font-size: 0.9rem; overflow-x: auto; color: var(--tool-text-primary);"></pre>            </div>        </section>
-        <main class="main-content">            <!-- Palette Display Section -->            <section class="palette-section">                <div class="palette-header">                    <h2 class="palette-title">Your Color Palette</h2>                    <div class="palette-actions">                        <button class="btn secondary" onclick="shufflePalette()">                            <svg class="icon"><use href="#icon-shuffle"></use></svg> Shufflen                        </button>                        <button class="btn secondary" onclick="copyAllHexToClipboard()">                            <svg class="icon"><use href="#icon-copy"></use></svg> Copy All HEXn                        </button>                        <button class="btn" onclick="generatePalette()">                            <svg class="icon"><use href="#icon-manual"></use></svg> Regenerate Alln                        </button>                    </div>                </div>                <div id="colorPalette" class="colors">                    <!-- Color cards will be dynamically inserted here -->                </div>            </section>
+        <main class="main-content">            <!-- Palette Display Section -->            <section class="palette-section">                <div class="palette-header">                    <h2 class="palette-title">Your Color Palette</h2>                    <div class="palette-actions">                        <button class="btn secondary" onclick="shufflePalette()">                            <svg class="icon"><use href="#icon-shuffle"></use></svg> Shufflen                        </button>                        <button class="btn secondary" onclick="copyAllHexToClipboard()">                            <svg class="icon"><use href="#icon-copy"></use></svg> Copy All HEX                        </button>                        <button class="btn" onclick="generatePalette()">                            <svg class="icon"><use href="#icon-manual"></use></svg> Regenerate Alln                        </button>                    </div>                </div>                <div id="colorPalette" class="colors">                    <!-- Color cards will be dynamically inserted here -->                </div>            </section>
             <!-- Analysis Section -->            <section class="analysis-section">                <h2 class="palette-title" style="margin-bottom: 30px;">Palette Analysis</h2>                <div class="analysis-grid">                    <div class="analysis-card">                        <h3><svg class="icon"><use href="#icon-contrast"></use></svg> Contrast Ratios</h3>                        <ul id="contrastAnalysis">                            <!-- Contrast analysis results -->                        </ul>                    </div>                    <div class="analysis-card">                        <h3><svg class="icon"><use href="#icon-preview"></use></svg> Visual Preview</h3>                        <div id="visualPreview" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">                            <!-- Dynamic text/background previews -->                        </div>                    </div>                </div>            </section>        </main>    </div>
     <!-- Toast Notification -->    <div id="toast" class="toast"></div>
-    <script>        // Global array to store current palette colors (HEX values)n        let currentPalette = [];n        let lockedColors = {}; // Stores locked colors: { hex: true }
-        // Initial palette generation on loadn        document.addEventListener('DOMContentLoaded', () => {n            generatePalette();n            // Set initial theme based on user preference or default to lightn            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');n            document.body.setAttribute('data-theme', savedTheme);n            updateThemeIcon(savedTheme);n        });
-        /**n         * Toggles between light and dark themes.n         */n        function toggleTheme() {n            const body = document.body;n            const currentTheme = body.getAttribute('data-theme');n            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';n            body.setAttribute('data-theme', newTheme);n            localStorage.setItem('theme', newTheme);n            updateThemeIcon(newTheme);n        }
-        /**n         * Updates the theme toggle icon based on the current theme.n         * @param {string} theme - The current theme ('light' or 'dark').n         */n        function updateThemeIcon(theme) {n            const themeIcon = document.getElementById('theme-icon');n            if (theme === 'dark') {n                themeIcon.innerHTML = '<use href="#icon-sun"></use>';n                themeIcon.setAttribute('aria-label', 'Switch to light mode');n            } else {n                themeIcon.innerHTML = '<use href="#icon-moon"></use>';n                themeIcon.setAttribute('aria-label', 'Switch to dark mode');n            }n        }
-        /**n         * Switches between control tabs.n         * @param {string} tabId - The ID of the tab to activate (e.g., 'generate', 'harmony').n         */n        function switchTab(tabId) {n            // Deactivate all tab buttons and contentn            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));n            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            // Activate the selected tab button and contentn            document.querySelector(`.tab-btn[onclick="switchTab('${tabId}')"]`).classList.add('active');n            document.getElementById(`${tabId}Tab`).classList.add('active');
-            // Clear accessibility results when switching away from accessibility tabn            if (tabId !== 'accessibility') {n                document.getElementById('accessibilityResults').style.display = 'none';n                document.getElementById('accessibilityResults').innerHTML = '';n            }n            // Clear export code when switching away from export tabn            if (tabId !== 'export') {n                document.getElementById('exportCode').style.display = 'none';n                document.getElementById('exportCode').innerHTML = '';n            } else {n                // If switching to export tab, generate code immediatelyn                generateExportCode();n            }n        }
-        /**n         * Converts a HEX color to an HSL object.n         * @param {string} hex - The HEX color string (e.g., "#RRGGBB").n         * @returns {object} HSL object {h, s, l}.n         */n        function hexToHsl(hex) {n            let r = 0, g = 0, b = 0;n            // Handle different hex formatsn            if (hex.length === 4) {n                r = parseInt(hex[1] + hex[1], 16);n                g = parseInt(hex[2] + hex[2], 16);n                b = parseInt(hex[3] + hex[3], 16);n            } else if (hex.length === 7) {n                r = parseInt(hex.substring(1, 3), 16);n                g = parseInt(hex.substring(3, 5), 16);n                b = parseInt(hex.substring(5, 7), 16);n            }
-            r /= 255;n            g /= 255;n            b /= 255;
-            let max = Math.max(r, g, b);n            let min = Math.min(r, g, b);n            let h, s, l = (max + min) / 2;
-            if (max === min) {n                h = s = 0; // achromaticn            } else {n                let d = max - min;n                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);n                switch (max) {n                    case r:n                        h = (g - b) / d + (g < b ? 6 : 0);n                        break;n                    case g:n                        h = (b - r) / d + 2;n                        break;n                    case b:n                        h = (r - g) / d + 4;n                        break;n                }n                h /= 6;n            }
-            return {n                h: h * 360,n                s: s * 100,n                l: l * 100n            };n        }
-        /**n         * Converts an HSL object to a HEX color string.n         * @param {object} hsl - HSL object {h, s, l}.n         * @returns {string} HEX color string.n         */n        function hslToHex(hsl) {n            let h = hsl.h;n            let s = hsl.s / 100;n            let l = hsl.l / 100;
-            let c = (1 - Math.abs(2 * l - 1)) * s;n            let x = c * (1 - Math.abs((h / 60) % 2 - 1));n            let m = l - c / 2;n            let r = 0, g = 0, b = 0;
-            if (0 <= h && h < 60) {n                r = c;n                g = x;n                b = 0;n            } else if (60 <= h && h < 120) {n                r = x;n                g = c;n                b = 0;n            } else if (120 <= h && h < 180) {n                r = 0;n                g = c;n                b = x;n            } else if (180 <= h && h < 240) {n                r = 0;n                g = x;n                b = c;n            } else if (240 <= h && h < 300) {n                r = x;n                g = 0;n                b = c;n            } else if (300 <= h && h < 360) {n                r = c;n                g = 0;n                b = x;n            }
-            r = Math.round((r + m) * 255).toString(16);n            g = Math.round((g + m) * 255).toString(16);n            b = Math.round((b + m) * 255).toString(16);
-            if (r.length === 1) r = "0" + r;n            if (g.length === 1) g = "0" + g;n            if (b.length === 1) b = "0" + b;
-            return "#" + r + g + b;n        }
-        /**n         * Generates a color palette based on a base color, type, and count.n         */n        function generatePalette() {n            const baseColorHex = document.getElementById('baseColor').value;n            const paletteType = document.getElementById('paletteType').value;n            const colorCount = parseInt(document.getElementById('colorCount').value);
-            let baseHsl = hexToHsl(baseColorHex);n            let newPalette = [];
-            // Add locked colors firstn            currentPalette.forEach(color => {n                if (lockedColors[color]) {n                    newPalette.push(color);n                }n            });
-            // Fill the rest of the palette based on type, avoiding locked colorsn            while (newPalette.length < colorCount) {n                let generatedColor;n                switch (paletteType) {n                    case 'complementary':n                        generatedColor = generateComplementary(baseHsl, newPalette.length);n                        break;n                    case 'triadic':n                        generatedColor = generateTriadic(baseHsl, newPalette.length);n                        break;n                    case 'analogous':n                        generatedColor = generateAnalogous(baseHsl, newPalette.length);n                        break;n                    case 'monochromatic':n                        generatedColor = generateMonochromatic(baseHsl, newPalette.length);n                        break;n                    case 'tetradic':n                        generatedColor = generateTetradic(baseHsl, newPalette.length);n                        break;n                    default:n                        generatedColor = baseColorHex;n                }
-                // Ensure unique colors and not already lockedn                if (!newPalette.includes(generatedColor)) {n                    newPalette.push(generatedColor);n                } else {n                    // If duplicate, slightly adjust to find a new colorn                    let attempts = 0;n                    let uniqueFound = false;n                    while (!uniqueFound && attempts < 100) {n                        let tempHsl = hexToHsl(generatedColor);n                        tempHsl.h = (tempHsl.h + (Math.random() * 30 - 15) + 360) % 360; // Small random hue shiftn                        tempHsl.s = Math.min(100, Math.max(0, tempHsl.s + (Math.random() * 20 - 10))); // Small random saturation shiftn                        tempHsl.l = Math.min(100, Math.max(0, tempHsl.l + (Math.random() * 20 - 10))); // Small random lightness shiftn                        let newHex = hslToHex(tempHsl);n                        if (!newPalette.includes(newHex) && !lockedColors[newHex]) {n                            generatedColor = newHex;n                            uniqueFound = true;n                        }n                        attempts++;n                    }n                    if (uniqueFound) {n                        newPalette.push(generatedColor);n                    } else {n                        // Fallback if unable to find unique color after many attemptsn                        console.warn("Could not generate a unique color, adding a random fallback.");n                        newPalette.push(getRandomHexColor());n                    }n                }n            }
-            // Shuffle the non-locked colors to mix them up while keeping locked ones in placen            const unlockedColors = newPalette.filter(color => !lockedColors[color]);n            shuffleArray(unlockedColors);
-            let finalPalette = [];n            let unlockedIndex = 0;n            for (let i = 0; i < colorCount; i++) {n                if (lockedColors[currentPalette[i]]) { // Keep original position of locked colorsn                    finalPalette.push(currentPalette[i]);n                } else if (unlockedIndex < unlockedColors.length) {n                    finalPalette.push(unlockedColors[unlockedIndex]);n                    unlockedIndex++;n                } else {n                    // If we run out of shuffled unlocked colors, fill with random or basen                    finalPalette.push(getRandomHexColor());n                }n            }
-            // If the new palette is smaller than the old one, remove excess from the endn            finalPalette = finalPalette.slice(0, colorCount);
-            // If new palette has fewer locked colors than previous iteration, remove old locksn            Object.keys(lockedColors).forEach(lockedHex => {n                if (!finalPalette.includes(lockedHex)) {n                    delete lockedColors[lockedHex];n                }n            });
-            currentPalette = finalPalette;n            renderPalette();n            checkAccessibility(); // Re-run accessibility check after generationn        }
-        /**n         * Generates a random HEX color.n         * @returns {string} Random HEX color.n         */n        function getRandomHexColor() {n            return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');n        }
-        /**n         * Generates a complementary color.n         * @param {object} hsl - Base HSL color.n         * @param {number} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateComplementary(hsl, index) {n            if (index === 0) return hslToHex(hsl);n            if (index === 1) return hslToHex({ h: (hsl.h + 180) % 360, s: hsl.s, l: hsl.l });n            // Add variations for more colorsn            if (index === 2) return hslToHex({ h: hsl.h, s: Math.min(100, hsl.s + 20), l: Math.min(100, hsl.l + 10) });n            if (index === 3) return hslToHex({ h: (hsl.h + 180) % 360, s: Math.max(0, hsl.s - 20), l: Math.max(0, hsl.l - 10) });n            return hslToHex({ h: (hsl.h + (index * 30)) % 360, s: hsl.s, l: hsl.l });n        }
-        /**n         * Generates triadic colors.n         * @param {object} hsl - Base HSL color.n         * @param {number} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateTriadic(hsl, index) {n            const hues = [hsl.h, (hsl.h + 120) % 360, (hsl.h + 240) % 360];n            const hue = hues[index % hues.length];n            const s = hsl.s + (index % 2 === 0 ? 0 : 10); // Slight saturation variationn            const l = hsl.l + (index % 2 === 0 ? 0 : -5); // Slight lightness variationn            return hslToHex({ h: hue, s: Math.min(100, Math.max(0, s)), l: Math.min(100, Math.max(0, l)) });n        }
-        /**n         * Generates analogous colors.n         * @param {object} hsl - Base HSL color.n         * @param {number} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateAnalogous(hsl, index) {n            const offset = (index - Math.floor(document.getElementById('colorCount').value / 2)) * 30; // 30 degree stepsn            const h = (hsl.h + offset + 360) % 360;n            return hslToHex({ h, s: hsl.s, l: hsl.l });n        }
-        /**n         * Generates monochromatic colors.n         * @param {object} hsl - Base HSL color.n         * @param {number} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateMonochromatic(hsl, index) {n            const lightnessStep = 100 / (parseInt(document.getElementById('colorCount').value) + 1);n            const l = (index + 1) * lightnessStep;n            return hslToHex({ h: hsl.h, s: hsl.s, l: Math.min(100, Math.max(0, l)) });n        }
-        /**n         * Generates tetradic colors.n         * @param {object} hsl - Base HSL color.n         * @param {number} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateTetradic(hsl, index) {n            const hues = [hsl.h, (hsl.h + 60) % 360, (hsl.h + 180) % 360, (hsl.h + 240) % 360];n            const hue = hues[index % hues.length];n            const s = hsl.s + (index % 2 === 0 ? 0 : 15);n            const l = hsl.l + (index % 2 === 0 ? 0 : -10);n            return hslToHex({ h: hue, s: Math.min(100, Math.max(0, s)), l: Math.min(100, Math.max(0, l)) });n        }
-        /**n         * Applies harmony adjustments (saturation, lightness, temperature) to the current palette.n         */n        function applyHarmony() {n            const saturation = parseInt(document.getElementById('saturation').value);n            const lightness = parseInt(document.getElementById('lightness').value);n            const temperature = document.getElementById('temperature').value;
-            currentPalette = currentPalette.map(hex => {n                if (lockedColors[hex]) return hex; // Don't modify locked colorsnn                let hsl = hexToHsl(hex);n                hsl.s = saturation;n                hsl.l = lightness;
-                // Adjust hue for temperaturen                if (temperature === 'warm') {n                    if (hsl.h >= 0 && hsl.h < 180) { // Red to Green-Yellown                        hsl.h = (hsl.h + 10) % 360;n                    } else { // Green-Blue to Red-Violetn                        hsl.h = (hsl.h - 10 + 360) % 360;n                    }n                } else if (temperature === 'cool') {n                    if (hsl.h >= 0 && hsl.h < 180) { // Red to Green-Yellown                        hsl.h = (hsl.h - 10 + 360) % 360;n                    } else { // Green-Blue to Red-Violetn                        hsl.h = (hsl.h + 10) % 360;n                    }n                }n                return hslToHex(hsl);n            });n            renderPalette();n            checkAccessibility();n            showToast('Harmony applied!');n        }
-        /**n         * Shuffles the non-locked colors in the current palette.n         */n        function shufflePalette() {n            const unlockedColors = currentPalette.filter(color => !lockedColors[color]);n            shuffleArray(unlockedColors);
-            let shuffledPalette = [];n            let unlockedIndex = 0;n            for (let i = 0; i < currentPalette.length; i++) {n                if (lockedColors[currentPalette[i]]) {n                    shuffledPalette.push(currentPalette[i]);n                } else {n                    shuffledPalette.push(unlockedColors[unlockedIndex]);n                    unlockedIndex++;n                }n            }n            currentPalette = shuffledPalette;n            renderPalette();n            showToast('Palette shuffled!');n        }
-        /**n         * Shuffles an array in place (Fisher-Yates algorithm).n         * @param {Array} array - The array to shuffle.n         */n        function shuffleArray(array) {n            for (let i = array.length - 1; i > 0; i--) {n                const j = Math.floor(Math.random() * (i + 1));n                [array[i], array[j]] = [array[j], array[i]];n            }n        }
-        /**n         * Renders the current palette to the DOM.n         */n        function renderPalette() {n            const paletteContainer = document.getElementById('colorPalette');n            paletteContainer.innerHTML = ''; // Clear existing cardsnn            currentPalette.forEach((color, index) => {n                const colorCard = document.createElement('div');n                colorCard.className = `color-card ${lockedColors[color] ? 'locked' : ''}`;n                colorCard.setAttribute('draggable', 'true');n                colorCard.dataset.color = color; // Store color for drag-dropnn                // Determine text color for swatch based on luminancen                const textColor = getLuminance(color) > 0.5 ? '#1e293b' : '#f1f5f9';
-                colorCard.innerHTML = `n                    <div class="color-swatch" style="background-color: ${color};">                        <div class="card-actions">                            <button class="lock-btn" data-color="${color}" onclick="toggleLock(event, '${color}')">                                <svg class="icon"><use href="#${lockedColors[color] ? 'icon-lock' : 'icon-unlock'}"></use></svg>                            </button>                        </div>                    </div>                    <div class="color-info">                        <div class="color-name">${color}</div>                        <div class="color-value" onclick="copyToClipboard(this, '${color}')">HEX: ${color.toUpperCase()}</div>                        <div class="color-value" onclick="copyToClipboard(this, '${rgbToHex(hexToRgb(color))}')">RGB: ${hexToRgb(color).r}, ${hexToRgb(color).g}, ${hexToRgb(color).b}</div>                        <div class="color-value" onclick="copyToClipboard(this, '${hslToCss(hexToHsl(color))}')">HSL: ${Math.round(hexToHsl(color).h)}, ${Math.round(hexToHsl(color).s)}%, ${Math.round(hexToHsl(color).l)}%</div>                    </div>                `;n                paletteContainer.appendChild(colorCard);n            });
-            addDragAndDropListeners();n        }
-        /**n         * Toggles the lock state of a color.n         * @param {Event} event - The click event.n         * @param {string} color - The HEX color to toggle.n         */n        function toggleLock(event, color) {n            event.stopPropagation(); // Prevent card drag from startingn            if (lockedColors[color]) {n                delete lockedColors[color];n                event.currentTarget.closest('.color-card').classList.remove('locked');n                event.currentTarget.innerHTML = '<svg class="icon"><use href="#icon-unlock"></use></svg>';n                showToast(`Unlocked ${color.toUpperCase()}`);n            } else {n                lockedColors[color] = true;n                event.currentTarget.closest('.color-card').classList.add('locked');n                event.currentTarget.innerHTML = '<svg class="icon"><use href="#icon-lock"></use></svg>';n                showToast(`Locked ${color.toUpperCase()}`);n            }n        }
+    <script>        // Global array to store current palette colors (HEX values)
+let currentPalette = [];
+let lockedColors = {}; // Stores locked colors: { hex: true }
+        // Initial palette generation on load
+document.addEventListener('DOMContentLoaded', () => {
+generatePalette();
+// Set initial theme based on user preference or default to light
+const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+document.body.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+});
+        /**n         * Toggles between light and dark themes.n         */n        function toggleTheme() {
+const body = document.body;
+const currentTheme = body.getAttribute('data-theme');
+const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+body.setAttribute('data-theme', newTheme);
+localStorage.setItem('theme', newTheme);
+updateThemeIcon(newTheme);
+}
+        /**n         * Updates the theme toggle icon based on the current theme.n         * @param {string} theme - The current theme ('light' or 'dark').n         */n        function updateThemeIcon(theme) {
+const themeIcon = document.getElementById('theme-icon');
+if (theme === 'dark') {
+themeIcon.innerHTML = '<use href="#icon-sun"></use>';
+themeIcon.setAttribute('aria-label', 'Switch to light mode');
+} else {
+themeIcon.innerHTML = '<use href="#icon-moon"></use>';
+themeIcon.setAttribute('aria-label', 'Switch to dark mode');
+}
+}
+        /**n         * Switches between control tabs.n         * @param {string} tabId - The ID of the tab to activate (e.g., 'generate', 'harmony').n         */n        function switchTab(tabId) {
+// Deactivate all tab buttons and contentn            document.querySelectorAll('.tab-btn').forEach(bt
+=> btn.classList.remove('active'));
+document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            // Activate the selected tab button and content
+document.querySelector(`.tab-btn[onclick="switchTab('${tabId}')"]`).classList.add('active');
+document.getElementById(`${tabId}Tab`).classList.add('active');
+            // Clear accessibility results when switching away from accessibility tab
+if (tabId !== 'accessibility') {
+document.getElementById('accessibilityResults').style.display = 'none';
+document.getElementById('accessibilityResults').innerHTML = '';
+}
+// Clear export code when switching away from export tab
+if (tabId !== 'export') {
+document.getElementById('exportCode').style.display = 'none';
+document.getElementById('exportCode').innerHTML = '';
+} else {
+// If switching to export tab, generate code immediately
+generateExportCode();
+}
+}
+        /**n         * Converts a HEX color to an HSL object.n         * @param {string} hex - The HEX color string (e.g., "#RRGGBB").n         * @returns {object} HSL object {h, s, l}.n         */n        function hexToHsl(hex) {
+let r = 0, g = 0, b = 0;
+// Handle different hex formats
+if (hex.length === 4) {
+r = parseInt(hex[1] + hex[1], 16);
+g = parseInt(hex[2] + hex[2], 16);
+b = parseInt(hex[3] + hex[3], 16);
+} else if (hex.length === 7) {
+r = parseInt(hex.substring(1, 3), 16);
+g = parseInt(hex.substring(3, 5), 16);
+b = parseInt(hex.substring(5, 7), 16);
+}
+            r /= 255;
+g /= 255;
+b /= 255;
+            let max = Math.max(r, g, b);
+let min = Math.min(r, g, b);
+let h, s, l = (max + min) / 2;
+            if (max === min) {
+h = s = 0; // achromatic
+} else {
+let d = max - min;
+s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+switch (max) {
+case r:
+h = (g - b) / d + (g < b ? 6 : 0);
+break;
+case g:
+h = (b - r) / d + 2;
+break;
+case b:
+h = (r - g) / d + 4;
+break;
+}
+h /= 6;
+}
+            return {
+h: h * 360,
+s: s * 100,
+l: l * 100n            };
+}
+        /**n         * Converts an HSL object to a HEX color string.n         * @param {object} hsl - HSL object {h, s, l}.n         * @returns {string} HEX color string.n         */n        function hslToHex(hsl) {
+let h = hsl.h;
+let s = hsl.s / 100;
+let l = hsl.l / 100;
+            let c = (1 - Math.abs(2 * l - 1)) * s;
+let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+let m = l - c / 2;
+let r = 0, g = 0, b = 0;
+            if (0 <= h && h < 60) {
+r = c;
+g = x;
+b = 0;
+} else if (60 <= h && h < 120) {
+r = x;
+g = c;
+b = 0;
+} else if (120 <= h && h < 180) {
+r = 0;
+g = c;
+b = x;
+} else if (180 <= h && h < 240) {
+r = 0;
+g = x;
+b = c;
+} else if (240 <= h && h < 300) {
+r = x;
+g = 0;
+b = c;
+} else if (300 <= h && h < 360) {
+r = c;
+g = 0;
+b = x;
+}
+            r = Math.round((r + m) * 255).toString(16);
+g = Math.round((g + m) * 255).toString(16);
+b = Math.round((b + m) * 255).toString(16);
+            if (r.length === 1) r = "0" + r;
+if (g.length === 1) g = "0" + g;
+if (b.length === 1) b = "0" + b;
+            return "#" + r + g + b;
+}
+        /**n         * Generates a color palette based on a base color, type, and count.n         */n        function generatePalette() {
+const baseColorHex = document.getElementById('baseColor').value;
+const paletteType = document.getElementById('paletteType').value;
+const colorCount = parseInt(document.getElementById('colorCount').value);
+            let baseHsl = hexToHsl(baseColorHex);
+let newPalette = [];
+            // Add locked colors first
+currentPalette.forEach(color => {
+if (lockedColors[color]) {
+newPalette.push(color);
+}
+});
+            // Fill the rest of the palette based on type, avoiding locked colors
+while (newPalette.length < colorCount) {
+let generatedColor;
+switch (paletteType) {
+case 'complementary':
+generatedColor = generateComplementary(baseHsl, newPalette.length);
+break;
+case 'triadic':
+generatedColor = generateTriadic(baseHsl, newPalette.length);
+break;
+case 'analogous':
+generatedColor = generateAnalogous(baseHsl, newPalette.length);
+break;
+case 'monochromatic':
+generatedColor = generateMonochromatic(baseHsl, newPalette.length);
+break;
+case 'tetradic':
+generatedColor = generateTetradic(baseHsl, newPalette.length);
+break;
+default:
+generatedColor = baseColorHex;
+}
+                // Ensure unique colors and not already locked
+if (!newPalette.includes(generatedColor)) {
+newPalette.push(generatedColor);
+} else {
+// If duplicate, slightly adjust to find a new color
+let attempts = 0;
+let uniqueFound = false;
+while (!uniqueFound && attempts < 100) {
+let tempHsl = hexToHsl(generatedColor);
+tempHsl.h = (tempHsl.h + (Math.random() * 30 - 15) + 360) % 360; // Small random hue shiftn                        tempHsl.s = Math.min(100, Math.max(0, tempHsl.s + (Math.random() * 20 - 10))); // Small random saturation shiftn                        tempHsl.l = Math.min(100, Math.max(0, tempHsl.l + (Math.random() * 20 - 10))); // Small random lightness shift
+let newHex = hslToHex(tempHsl);
+if (!newPalette.includes(newHex) && !lockedColors[newHex]) {
+generatedColor = newHex;
+uniqueFound = true;
+}
+attempts++;
+}
+if (uniqueFound) {
+newPalette.push(generatedColor);
+} else {
+// Fallback if unable to find unique color after many attempts
+console.warn("Could not generate a unique color, adding a random fallback.");
+newPalette.push(getRandomHexColor());
+}
+}
+}
+            // Shuffle the non-locked colors to mix them up while keeping locked ones in place
+const unlockedColors = newPalette.filter(color => !lockedColors[color]);
+shuffleArray(unlockedColors);
+            let finalPalette = [];
+let unlockedIndex = 0;
+for (let i = 0; i < colorCount; i++) {
+if (lockedColors[currentPalette[i]]) { // Keep original position of locked colors
+finalPalette.push(currentPalette[i]);
+} else if (unlockedIndex < unlockedColors.length) {
+finalPalette.push(unlockedColors[unlockedIndex]);
+unlockedIndex++;
+} else {
+// If we run out of shuffled unlocked colors, fill with random or base
+finalPalette.push(getRandomHexColor());
+}
+}
+            // If the new palette is smaller than the old one, remove excess from the end
+finalPalette = finalPalette.slice(0, colorCount);
+            // If new palette has fewer locked colors than previous iteration, remove old locks
+Object.keys(lockedColors).forEach(lockedHex => {
+if (!finalPalette.includes(lockedHex)) {
+delete lockedColors[lockedHex];
+}
+});
+            currentPalette = finalPalette;
+renderPalette();
+checkAccessibility(); // Re-run accessibility check after generation
+}
+        /**n         * Generates a random HEX color.n         * @returns {string} Random HEX color.n         */n        function getRandomHexColor() {
+return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+}
+        /**n         * Generates a complementary color.n         * @param {object} hsl - Base HSL color.n         * @param {
+umber} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateComplementary(hsl, index) {
+if (index === 0) return hslToHex(hsl);
+if (index === 1) return hslToHex({ h: (hsl.h + 180) % 360, s: hsl.s, l: hsl.l });
+// Add variations for more colorsn            if (index === 2) retur
+hslToHex({ h: hsl.h, s: Math.min(100, hsl.s + 20), l: Math.min(100, hsl.l + 10) });
+if (index === 3) return hslToHex({ h: (hsl.h + 180) % 360, s: Math.max(0, hsl.s - 20), l: Math.max(0, hsl.l - 10) });
+return hslToHex({ h: (hsl.h + (index * 30)) % 360, s: hsl.s, l: hsl.l });
+}
+        /**n         * Generates triadic colors.n         * @param {object} hsl - Base HSL color.n         * @param {
+umber} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateTriadic(hsl, index) {
+const hues = [hsl.h, (hsl.h + 120) % 360, (hsl.h + 240) % 360];
+const hue = hues[index % hues.length];
+const s = hsl.s + (index % 2 === 0 ? 0 : 10); // Slight saturation variationn            const l = hsl.l + (index % 2 === 0 ? 0 : -5); // Slight lightness variationn            retur
+hslToHex({ h: hue, s: Math.min(100, Math.max(0, s)), l: Math.min(100, Math.max(0, l)) });
+}
+        /**n         * Generates analogous colors.n         * @param {object} hsl - Base HSL color.n         * @param {
+umber} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateAnalogous(hsl, index) {
+const offset = (index - Math.floor(document.getElementById('colorCount').value / 2)) * 30; // 30 degree steps
+const h = (hsl.h + offset + 360) % 360;
+return hslToHex({ h, s: hsl.s, l: hsl.l });
+}
+        /**n         * Generates monochromatic colors.n         * @param {object} hsl - Base HSL color.n         * @param {
+umber} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateMonochromatic(hsl, index) {
+const lightnessStep = 100 / (parseInt(document.getElementById('colorCount').value) + 1);
+const l = (index + 1) * lightnessStep;
+return hslToHex({ h: hsl.h, s: hsl.s, l: Math.min(100, Math.max(0, l)) });
+}
+        /**n         * Generates tetradic colors.n         * @param {object} hsl - Base HSL color.n         * @param {
+umber} index - Index for variation.n         * @returns {string} HEX color.n         */n        function generateTetradic(hsl, index) {
+const hues = [hsl.h, (hsl.h + 60) % 360, (hsl.h + 180) % 360, (hsl.h + 240) % 360];
+const hue = hues[index % hues.length];
+const s = hsl.s + (index % 2 === 0 ? 0 : 15);
+const l = hsl.l + (index % 2 === 0 ? 0 : -10);
+return hslToHex({ h: hue, s: Math.min(100, Math.max(0, s)), l: Math.min(100, Math.max(0, l)) });
+}
+        /**n         * Applies harmony adjustments (saturation, lightness, temperature) to the current palette.n         */n        function applyHarmony() {
+const saturation = parseInt(document.getElementById('saturation').value);
+const lightness = parseInt(document.getElementById('lightness').value);
+const temperature = document.getElementById('temperature').value;
+            currentPalette = currentPalette.map(hex => {
+if (lockedColors[hex]) return hex; // Don't modify locked colorsn
+let hsl = hexToHsl(hex);
+hsl.s = saturation;
+hsl.l = lightness;
+                // Adjust hue for temperature
+if (temperature === 'warm') {
+if (hsl.h >= 0 && hsl.h < 180) { // Red to Green-Yellow
+hsl.h = (hsl.h + 10) % 360;
+} else { // Green-Blue to Red-Violet
+hsl.h = (hsl.h - 10 + 360) % 360;
+}
+} else if (temperature === 'cool') {
+if (hsl.h >= 0 && hsl.h < 180) { // Red to Green-Yellow
+hsl.h = (hsl.h - 10 + 360) % 360;
+} else { // Green-Blue to Red-Violet
+hsl.h = (hsl.h + 10) % 360;
+}
+}
+return hslToHex(hsl);
+});
+renderPalette();
+checkAccessibility();
+showToast('Harmony applied!');
+}
+        /**n         * Shuffles the non-locked colors in the current palette.n         */n        function shufflePalette() {
+const unlockedColors = currentPalette.filter(color => !lockedColors[color]);
+shuffleArray(unlockedColors);
+            let shuffledPalette = [];
+let unlockedIndex = 0;
+for (let i = 0; i < currentPalette.length; i++) {
+if (lockedColors[currentPalette[i]]) {
+shuffledPalette.push(currentPalette[i]);
+} else {
+shuffledPalette.push(unlockedColors[unlockedIndex]);
+unlockedIndex++;
+}
+}
+currentPalette = shuffledPalette;
+renderPalette();
+showToast('Palette shuffled!');
+}
+        /**n         * Shuffles an array in place (Fisher-Yates algorithm).n         * @param {Array} array - The array to shuffle.n         */n        function shuffleArray(array) {
+for (let i = array.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[array[i], array[j]] = [array[j], array[i]];
+}
+}
+        /**n         * Renders the current palette to the DOM.n         */n        function renderPalette() {
+const paletteContainer = document.getElementById('colorPalette');
+paletteContainer.innerHTML = ''; // Clear existing cardsn
+currentPalette.forEach((color, index) => {
+const colorCard = document.createElement('div');
+colorCard.className = `color-card ${lockedColors[color] ? 'locked' : ''}`;
+colorCard.setAttribute('draggable', 'true');
+colorCard.dataset.color = color; // Store color for drag-dropnn                // Determine text color for swatch based on luminance
+const textColor = getLuminance(color) > 0.5 ? '#1e293b' : '#f1f5f9';
+                colorCard.innerHTML = `n                    <div class="color-swatch" style="background-color: ${color};">                        <div class="card-actions">                            <button class="lock-btn" data-color="${color}" onclick="toggleLock(event, '${color}')">                                <svg class="icon"><use href="#${lockedColors[color] ? 'icon-lock' : 'icon-unlock'}"></use></svg>                            </button>                        </div>                    </div>                    <div class="color-info">                        <div class="color-name">${color}</div>                        <div class="color-value" onclick="copyToClipboard(this, '${color}')">HEX: ${color.toUpperCase()}</div>                        <div class="color-value" onclick="copyToClipboard(this, '${rgbToHex(hexToRgb(color))}')">RGB: ${hexToRgb(color).r}, ${hexToRgb(color).g}, ${hexToRgb(color).b}</div>                        <div class="color-value" onclick="copyToClipboard(this, '${hslToCss(hexToHsl(color))}')">HSL: ${Math.round(hexToHsl(color).h)}, ${Math.round(hexToHsl(color).s)}%, ${Math.round(hexToHsl(color).l)}%</div>                    </div>                `;
+paletteContainer.appendChild(colorCard);
+});
+            addDragAndDropListeners();
+}
+        /**n         * Toggles the lock state of a color.n         * @param {Event} event - The click event.n         * @param {string} color - The HEX color to toggle.n         */n        function toggleLock(event, color) {
+event.stopPropagation(); // Prevent card drag from starting
+if (lockedColors[color]) {
+delete lockedColors[color];
+event.currentTarget.closest('.color-card').classList.remove('locked');
+event.currentTarget.innerHTML = '<svg class="icon"><use href="#icon-unlock"></use></svg>';
+showToast(`Unlocked ${color.toUpperCase()}`);
+} else {
+lockedColors[color] = true;
+event.currentTarget.closest('.color-card').classList.add('locked');
+event.currentTarget.innerHTML = '<svg class="icon"><use href="#icon-lock"></use></svg>';
+showToast(`Locked ${color.toUpperCase()}`);
+}
+}
         let draggedItem = null;
-        /**n         * Adds drag and drop listeners to color cards.n         */n        function addDragAndDropListeners() {n            const colorCards = document.querySelectorAll('.color-card');n            colorCards.forEach(card => {n                card.addEventListener('dragstart', handleDragStart);n                card.addEventListener('dragover', handleDragOver);n                card.addEventListener('dragleave', handleDragLeave);n                card.addEventListener('drop', handleDrop);n                card.addEventListener('dragend', handleDragEnd);n            });n        }
-        function handleDragStart(e) {n            draggedItem = this;n            setTimeout(() => this.classList.add('dragging'), 0);n            e.dataTransfer.effectAllowed = 'move';n            e.dataTransfer.setData('text/plain', this.dataset.color);n        }
-        function handleDragOver(e) {n            e.preventDefault(); // Necessary to allow dropn            if (this !== draggedItem) {n                const bounding = this.getBoundingClientRect();n                const offset = bounding.y + (bounding.height / 2);n                if (e.clientY - offset > 0) {n                    this.style.borderBottom = '2px solid var(--tool-accent-primary)';n                    this.style.borderTop = '';n                } else {n                    this.style.borderTop = '2px solid var(--tool-accent-primary)';n                    this.style.borderBottom = '';n                }n            }n        }
-        function handleDragLeave() {n            this.style.borderBottom = '';n            this.style.borderTop = '';n        }
-        function handleDrop(e) {n            e.preventDefault();n            this.style.borderBottom = '';n            this.style.borderTop = '';
-            if (this !== draggedItem) {n                const colorsContainer = document.getElementById('colorPalette');n                const draggedColor = draggedItem.dataset.color;n                const targetColor = this.dataset.color;
-                const draggedIndex = currentPalette.indexOf(draggedColor);n                const targetIndex = currentPalette.indexOf(targetColor);
-                // Remove dragged color from its original positionn                currentPalette.splice(draggedIndex, 1);
-                // Insert dragged color at the new positionn                const bounding = this.getBoundingClientRect();n                const offset = bounding.y + (bounding.height / 2);
-                if (e.clientY - offset > 0) {n                    // Drop after the targetn                    currentPalette.splice(targetIndex + 1, 0, draggedColor);n                } else {n                    // Drop before the targetn                    currentPalette.splice(targetIndex, 0, draggedColor);n                }n                renderPalette(); // Re-render to reflect new ordern            }n        }
-        function handleDragEnd() {n            this.classList.remove('dragging');n            draggedItem = null;n            document.querySelectorAll('.color-card').forEach(card => {n                card.style.borderBottom = '';n                card.style.borderTop = '';n            });n        }
-        /**n         * Converts a HEX color to an RGB object.n         * @param {string} hex - The HEX color string.n         * @returns {object} RGB object {r, g, b}.n         */n        function hexToRgb(hex) {n            let r = 0, g = 0, b = 0;n            // Handle different hex formatsn            if (hex.length === 4) {n                r = parseInt(hex[1] + hex[1], 16);n                g = parseInt(hex[2] + hex[2], 16);n                b = parseInt(hex[3] + hex[3], 16);n            } else if (hex.length === 7) {n                r = parseInt(hex.substring(1, 3), 16);n                g = parseInt(hex.substring(3, 5), 16);n                b = parseInt(hex.substring(5, 7), 16);n            }n            return { r, g, b };n        }
-        /**n         * Converts an RGB object to a HEX color string.n         * @param {object} rgb - RGB object {r, g, b}.n         * @returns {string} HEX color string.n         */n        function rgbToHex(rgb) {n            const toHex = (c) => {n                const hex = Math.round(c).toString(16);n                return hex.length === 1 ? "0" + hex : hex;n            };n            return `#${toHex(rgb.r)}${toHex(rgb.g)}${toHex(rgb.b)}`;n        }
-        /**n         * Converts an HSL object to a CSS HSL string.n         * @param {object} hsl - HSL object {h, s, l}.n         * @returns {string} CSS HSL string (e.g., "hsl(120, 100%, 50%)").n         */n        function hslToCss(hsl) {n            return `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)`;n        }
-        /**n         * Calculates the relative luminance of a color.n         * @param {string} hex - The HEX color string.n         * @returns {number} The relative luminance (0-1).n         */n        function getLuminance(hex) {n            const rgb = hexToRgb(hex);n            const a = [rgb.r, rgb.g, rgb.b].map(v => {n                v /= 255;n                return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);n            });n            return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;n        }
-        /**n         * Calculates the contrast ratio between two HEX colors.n         * @param {string} hex1 - First HEX color.n         * @param {string} hex2 - Second HEX color.n         * @returns {number} The contrast ratio.n         */n        function getContrastRatio(hex1, hex2) {n            const l1 = getLuminance(hex1);n            const l2 = getLuminance(hex2);n            return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);n        }
-        /**n         * Checks the accessibility of the current palette based on WCAG guidelines.n         */n        function checkAccessibility() {n            const contrastLevel = document.getElementById('contrastLevel').value;n            const accessibilityResults = document.getElementById('accessibilityResults');n            const visualPreview = document.getElementById('visualPreview');n            accessibilityResults.innerHTML = '';n            visualPreview.innerHTML = '';n            accessibilityResults.style.display = 'grid'; // Show results gridnn            const requiredRatio = contrastLevel === 'aa' ? 4.5 : 7; // WCAG AA vs AAAnn            let contrastHtml = '';n            let previewHtml = '';
-            // Check contrast for all pairsn            for (let i = 0; i < currentPalette.length; i++) {n                for (let j = i + 1; j < currentPalette.length; j++) {n                    const color1 = currentPalette[i];n                    const color2 = currentPalette[j];n                    const ratio = getContrastRatio(color1, color2);n                    const pass = ratio >= requiredRatio;n                    const statusIcon = pass ? '<svg class="icon status-icon pass"><use href="#icon-check"></use></svg>' : '<svg class="icon status-icon fail"><use href="#icon-x"></use></svg>';n                    const wcagLevel = pass ? (ratio >= 7 ? 'AAA' : 'AA') : 'Fail';
-                    contrastHtml += `n                        <li>                            ${statusIcon}n                            <strong>${color1.toUpperCase()}</strong> vs <strong>${color2.toUpperCase()}</strong>:n                            ${ratio.toFixed(2)}:1 (${wcagLevel})n                        </li>                    `;
-                    // Add visual preview for each pairn                    previewHtml += `n                        <div style="background-color: ${color1}; color: ${color2}; padding: 10px; border-radius: 8px; text-align: center; flex: 1 1 auto; min-width: 120px;">                            Text on Backgroundn                        </div>                        <div style="background-color: ${color2}; color: ${color1}; padding: 10px; border-radius: 8px; text-align: center; flex: 1 1 auto; min-width: 120px;">                            Text on Backgroundn                        </div>                    `;n                }n            }n            document.getElementById('contrastAnalysis').innerHTML = contrastHtml;n            visualPreview.innerHTML = previewHtml;n        }
-        /**n         * Applies color blind simulation filter to the body.n         */n        function applyColorBlindFilter() {n            const colorBlindType = document.getElementById('colorBlindType').value;n            const body = document.body;
-            // Remove existing filtersn            body.classList.remove('protanopia-filter', 'deuteranopia-filter', 'tritanopia-filter');
-            if (colorBlindType !== 'none') {n                body.classList.add(`${colorBlindType}-filter`);n                showToast(`Applied ${colorBlindType} filter`);n            } else {n                showToast('Color blind filter removed');n            }n        }
-        /**n         * Generates the export code based on the selected format.n         * This function populates the <pre> tag.n         */n        function generateExportCode() {n            const exportFormat = document.getElementById('exportFormat').value;n            const exportCodePre = document.getElementById('exportCode');n            exportCodePre.style.display = 'block'; // Ensure the pre tag is visiblenn            let code = '';n            let fileName = 'brand-palette';n            let mimeType = 'text/plain';
-            if (exportFormat === 'css') {n                code = `:root {\n`;n                currentPalette.forEach((color, index) => {n                    code += `  --color-${index + 1}: ${color.toLowerCase()};\n`;n                });n                code += `}`;n                fileName += '.css';n                mimeType = 'text/css';n            } else if (exportFormat === 'scss') {n                currentPalette.forEach((color, index) => {n                    code += `$color-${index + 1}: ${color.toLowerCase()};\n`;n                });n                fileName += '.scss';n                mimeType = 'text/x-scss';n            } else if (exportFormat === 'json') {n                const paletteObject = {};n                currentPalette.forEach((color, index) => {n                    paletteObject[`color${index + 1}`] = color.toLowerCase();n                });n                code = JSON.stringify(paletteObject, null, 2);n                fileName += '.json';n                mimeType = 'application/json';n            } else if (exportFormat === 'plaintext') {n                code = currentPalette.map(color => color.toUpperCase()).join('\n');n                fileName += '.txt';n                mimeType = 'text/plain';n            }
-            exportCodePre.textContent = code;n            // Store filename and mimetype in data attributes for downloadn            exportCodePre.dataset.filename = fileName;n            exportCodePre.dataset.mimetype = mimeType;n        }
-        /**n         * Triggers the download of the generated code.n         */n        function exportToFile() {n            const exportCodePre = document.getElementById('exportCode');n            const code = exportCodePre.textContent;n            const filename = exportCodePre.dataset.filename || 'brand-palette.txt';n            const mimeType = exportCodePre.dataset.mimetype || 'text/plain';
-            if (!code) {n                showToast('No code to download. Generate a palette first.', 'fail');n                return;n            }
-            const blob = new Blob([code], { type: mimeType });n            const url = URL.createObjectURL(blob);n            const a = document.createElement('a');n            a.href = url;n            a.download = filename;n            document.body.appendChild(a);n            a.click();n            document.body.removeChild(a);n            URL.revokeObjectURL(url);n            showToast(`Downloaded ${filename}!`);n        }
-        /**n         * Copies the currently displayed export code to the clipboard.n         */n        function copyExportCodeToClipboard() {n            const exportCodePre = document.getElementById('exportCode');n            const codeToCopy = exportCodePre.textContent;
-            if (!codeToCopy) {n                showToast('No code to copy. Generate a palette first.', 'fail');n                return;n            }n            copyToClipboard(null, codeToCopy); // Use existing copyToClipboard functionn            showToast('Export code copied to clipboard!');n        }
-        /**n         * Copies all current palette HEX codes to the clipboard.n         */n        function copyAllHexToClipboard() {n            const hexList = currentPalette.map(color => color.toUpperCase()).join('\n');n            if (hexList) {n                copyToClipboard(null, hexList);n                showToast('All HEX codes copied to clipboard!');n            } else {n                showToast('No colors to copy.', 'fail');n            }n        }
-        /**n         * Copies text to the clipboard.n         * @param {HTMLElement} element - The element that was clicked (can be null).n         * @param {string} text - The text to copy.n         */n        function copyToClipboard(element, text) {n            const textarea = document.createElement('textarea');n            textarea.value = text;n            document.body.appendChild(textarea);n            textarea.select();n            document.execCommand('copy'); // Fallback for navigator.clipboardn            document.body.removeChild(textarea);
-            // Toast message handled by calling functionsn        }
-        /**n         * AI-powered palette generation using Gemini API.n         */n        async function generateAIPalette() {n            const aiPrompt = document.getElementById('aiPrompt').value.trim();n            const aiLoading = document.getElementById('aiLoading');n            const paletteContainer = document.getElementById('colorPalette');n            const colorCount = parseInt(document.getElementById('colorCount').value); // Get desired color countnn            if (!aiPrompt) {n                showToast('Please enter a prompt for AI generation.', 'fail');n                return;n            }
-            aiLoading.style.display = 'block'; // Show loading spinnern            paletteContainer.innerHTML = ''; // Clear current palettenn            try {n                let chatHistory = [];n                // Request a JSON response with a specific schema for colorsn                chatHistory.push({n                    role: "user",n                    parts: [{n                        text: `Generate a brand color palette (${colorCount} distinct HEX colors) based on the following description: "${aiPrompt}". Provide the output as a JSON array of strings, where each string is a HEX color code (e.g., ["#RRGGBB", "#AABBCC"]). Ensure the colors are distinct and suitable for a brand palette. Only return the JSON array.`n                    }]n                });
-                const payload = {n                    contents: chatHistory,n                    generationConfig: {n                        responseMimeType: "application/json",n                        responseSchema: {n                            type: "ARRAY",n                            items: {n                                type: "STRING",n                                pattern: "^#[0-9a-fA-F]{6}$" // Regex to ensure it's a valid hex colorn                            }n                        }n                    }n                };
-                const apiKey = ""; // Canvas will automatically provide thisn                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                const response = await fetch(apiUrl, {n                    method: 'POST',n                    headers: { 'Content-Type': 'application/json' },n                    body: JSON.stringify(payload)n                });
+        /**n         * Adds drag and drop listeners to color cards.n         */n        function addDragAndDropListeners() {
+const colorCards = document.querySelectorAll('.color-card');
+colorCards.forEach(card => {
+card.addEventListener('dragstart', handleDragStart);
+card.addEventListener('dragover', handleDragOver);
+card.addEventListener('dragleave', handleDragLeave);
+card.addEventListener('drop', handleDrop);
+card.addEventListener('dragend', handleDragEnd);
+});
+}
+        function handleDragStart(e) {
+draggedItem = this;
+setTimeout(() => this.classList.add('dragging'), 0);
+e.dataTransfer.effectAllowed = 'move';
+e.dataTransfer.setData('text/plain', this.dataset.color);
+}
+        function handleDragOver(e) {
+e.preventDefault(); // Necessary to allow drop
+if (this !== draggedItem) {
+const bounding = this.getBoundingClientRect();
+const offset = bounding.y + (bounding.height / 2);
+if (e.clientY - offset > 0) {
+this.style.borderBottom = '2px solid var(--tool-accent-primary)';
+this.style.borderTop = '';
+} else {
+this.style.borderTop = '2px solid var(--tool-accent-primary)';
+this.style.borderBottom = '';
+}
+}
+}
+        function handleDragLeave() {
+this.style.borderBottom = '';
+this.style.borderTop = '';
+}
+        function handleDrop(e) {
+e.preventDefault();
+this.style.borderBottom = '';
+this.style.borderTop = '';
+            if (this !== draggedItem) {
+const colorsContainer = document.getElementById('colorPalette');
+const draggedColor = draggedItem.dataset.color;
+const targetColor = this.dataset.color;
+                const draggedIndex = currentPalette.indexOf(draggedColor);
+const targetIndex = currentPalette.indexOf(targetColor);
+                // Remove dragged color from its original position
+currentPalette.splice(draggedIndex, 1);
+                // Insert dragged color at the new position
+const bounding = this.getBoundingClientRect();
+const offset = bounding.y + (bounding.height / 2);
+                if (e.clientY - offset > 0) {
+// Drop after the target
+currentPalette.splice(targetIndex + 1, 0, draggedColor);
+} else {
+// Drop before the target
+currentPalette.splice(targetIndex, 0, draggedColor);
+}
+renderPalette(); // Re-render to reflect new order
+}
+}
+        function handleDragEnd() {
+this.classList.remove('dragging');
+draggedItem = null;
+document.querySelectorAll('.color-card').forEach(card => {
+card.style.borderBottom = '';
+card.style.borderTop = '';
+});
+}
+        /**n         * Converts a HEX color to an RGB object.n         * @param {string} hex - The HEX color string.n         * @returns {object} RGB object {r, g, b}.n         */n        function hexToRgb(hex) {
+let r = 0, g = 0, b = 0;
+// Handle different hex formats
+if (hex.length === 4) {
+r = parseInt(hex[1] + hex[1], 16);
+g = parseInt(hex[2] + hex[2], 16);
+b = parseInt(hex[3] + hex[3], 16);
+} else if (hex.length === 7) {
+r = parseInt(hex.substring(1, 3), 16);
+g = parseInt(hex.substring(3, 5), 16);
+b = parseInt(hex.substring(5, 7), 16);
+}
+return { r, g, b };
+}
+        /**n         * Converts an RGB object to a HEX color string.n         * @param {object} rgb - RGB object {r, g, b}.n         * @returns {string} HEX color string.n         */n        function rgbToHex(rgb) {
+const toHex = (c) => {
+const hex = Math.round(c).toString(16);
+return hex.length === 1 ? "0" + hex : hex;
+};
+return `#${toHex(rgb.r)}${toHex(rgb.g)}${toHex(rgb.b)}`;
+}
+        /**n         * Converts an HSL object to a CSS HSL string.n         * @param {object} hsl - HSL object {h, s, l}.n         * @returns {string} CSS HSL string (e.g., "hsl(120, 100%, 50%)").n         */n        function hslToCss(hsl) {
+return `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)`;
+}
+        /**n         * Calculates the relative luminance of a color.n         * @param {string} hex - The HEX color string.n         * @returns {
+umber} The relative luminance (0-1).n         */n        function getLuminance(hex) {
+const rgb = hexToRgb(hex);
+const a = [rgb.r, rgb.g, rgb.b].map(v => {
+v /= 255;
+return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+});
+return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+        /**n         * Calculates the contrast ratio between two HEX colors.n         * @param {string} hex1 - First HEX color.n         * @param {string} hex2 - Second HEX color.n         * @returns {
+umber} The contrast ratio.n         */n        function getContrastRatio(hex1, hex2) {
+const l1 = getLuminance(hex1);
+const l2 = getLuminance(hex2);
+return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+}
+        /**n         * Checks the accessibility of the current palette based on WCAG guidelines.n         */n        function checkAccessibility() {
+const contrastLevel = document.getElementById('contrastLevel').value;
+const accessibilityResults = document.getElementById('accessibilityResults');
+const visualPreview = document.getElementById('visualPreview');
+accessibilityResults.innerHTML = '';
+visualPreview.innerHTML = '';
+accessibilityResults.style.display = 'grid'; // Show results gridnn            const requiredRatio = contrastLevel === 'aa' ? 4.5 : 7; // WCAG AA vs AAAn
+let contrastHtml = '';
+let previewHtml = '';
+            // Check contrast for all pairs
+for (let i = 0; i < currentPalette.length; i++) {
+for (let j = i + 1; j < currentPalette.length; j++) {
+const color1 = currentPalette[i];
+const color2 = currentPalette[j];
+const ratio = getContrastRatio(color1, color2);
+const pass = ratio >= requiredRatio;
+const statusIcon = pass ? '<svg class="icon status-icon pass"><use href="#icon-check"></use></svg>' : '<svg class="icon status-icon fail"><use href="#icon-x"></use></svg>';
+const wcagLevel = pass ? (ratio >= 7 ? 'AAA' : 'AA') : 'Fail';
+                    contrastHtml += `n                        <li>                            ${statusIcon}
+<strong>${color1.toUpperCase()}</strong> vs <strong>${color2.toUpperCase()}</strong>:
+${ratio.toFixed(2)}:1 (${wcagLevel})
+</li>                    `;
+                    // Add visual preview for each pairn                    previewHtml += `n                        <div style="background-color: ${color1}; color: ${color2}; padding: 10px; border-radius: 8px; text-align: center; flex: 1 1 auto; min-width: 120px;">                            Text on Backgroundn                        </div>                        <div style="background-color: ${color2}; color: ${color1}; padding: 10px; border-radius: 8px; text-align: center; flex: 1 1 auto; min-width: 120px;">                            Text on Background
+</div>                    `;
+}
+}
+document.getElementById('contrastAnalysis').innerHTML = contrastHtml;
+visualPreview.innerHTML = previewHtml;
+}
+        /**n         * Applies color blind simulation filter to the body.n         */n        function applyColorBlindFilter() {
+const colorBlindType = document.getElementById('colorBlindType').value;
+const body = document.body;
+            // Remove existing filters
+body.classList.remove('protanopia-filter', 'deuteranopia-filter', 'tritanopia-filter');
+            if (colorBlindType !== 'none') {
+body.classList.add(`${colorBlindType}-filter`);
+showToast(`Applied ${colorBlindType} filter`);
+} else {
+showToast('Color blind filter removed');
+}
+}
+        /**n         * Generates the export code based on the selected format.n         * This function populates the <pre> tag.n         */n        function generateExportCode() {
+const exportFormat = document.getElementById('exportFormat').value;
+const exportCodePre = document.getElementById('exportCode');
+exportCodePre.style.display = 'block'; // Ensure the pre tag is visiblen
+let code = '';
+let fileName = 'brand-palette';
+let mimeType = 'text/plain';
+            if (exportFormat === 'css') {
+code = `:root {\n`;
+currentPalette.forEach((color, index) => {
+code += `  --color-${index + 1}: ${color.toLowerCase()};\n`;
+});
+code += `}`;
+fileName += '.css';
+mimeType = 'text/css';
+} else if (exportFormat === 'scss') {
+currentPalette.forEach((color, index) => {
+code += `$color-${index + 1}: ${color.toLowerCase()};\n`;
+});
+fileName += '.scss';
+mimeType = 'text/x-scss';
+} else if (exportFormat === 'json') {
+const paletteObject = {};
+currentPalette.forEach((color, index) => {
+paletteObject[`color${index + 1}`] = color.toLowerCase();
+});
+code = JSON.stringify(paletteObject, null, 2);
+fileName += '.json';
+mimeType = 'application/json';
+} else if (exportFormat === 'plaintext') {
+code = currentPalette.map(color => color.toUpperCase()).join('\n');
+fileName += '.txt';
+mimeType = 'text/plain';
+}
+            exportCodePre.textContent = code;
+// Store filename and mimetype in data attributes for download
+exportCodePre.dataset.filename = fileName;
+exportCodePre.dataset.mimetype = mimeType;
+}
+        /**n         * Triggers the download of the generated code.n         */n        function exportToFile() {
+const exportCodePre = document.getElementById('exportCode');
+const code = exportCodePre.textContent;
+const filename = exportCodePre.dataset.filename || 'brand-palette.txt';
+const mimeType = exportCodePre.dataset.mimetype || 'text/plain';
+            if (!code) {
+showToast('No code to download. Generate a palette first.', 'fail');
+return;
+}
+            const blob = new Blob([code], { type: mimeType });
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = filename;
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+URL.revokeObjectURL(url);
+showToast(`Downloaded ${filename}!`);
+}
+        /**n         * Copies the currently displayed export code to the clipboard.n         */n        function copyExportCodeToClipboard() {
+const exportCodePre = document.getElementById('exportCode');
+const codeToCopy = exportCodePre.textContent;
+            if (!codeToCopy) {
+showToast('No code to copy. Generate a palette first.', 'fail');
+return;
+}
+copyToClipboard(null, codeToCopy); // Use existing copyToClipboard function
+showToast('Export code copied to clipboard!');
+}
+        /**n         * Copies all current palette HEX codes to the clipboard.n         */n        function copyAllHexToClipboard() {
+const hexList = currentPalette.map(color => color.toUpperCase()).join('\n');
+if (hexList) {
+copyToClipboard(null, hexList);
+showToast('All HEX codes copied to clipboard!');
+} else {
+showToast('No colors to copy.', 'fail');
+}
+}
+        /**n         * Copies text to the clipboard.n         * @param {HTMLElement} element - The element that was clicked (can be null).n         * @param {string} text - The text to copy.n         */n        function copyToClipboard(element, text) {
+const textarea = document.createElement('textarea');
+textarea.value = text;
+document.body.appendChild(textarea);
+textarea.select();
+document.execCommand('copy'); // Fallback for navigator.clipboard
+document.body.removeChild(textarea);
+            // Toast message handled by calling functions
+}
+        /**n         * AI-powered palette generation using Gemini API.n         */n        async function generateAIPalette() {
+const aiPrompt = document.getElementById('aiPrompt').value.trim();
+const aiLoading = document.getElementById('aiLoading');
+const paletteContainer = document.getElementById('colorPalette');
+const colorCount = parseInt(document.getElementById('colorCount').value); // Get desired color countn
+if (!aiPrompt) {
+showToast('Please enter a prompt for AI generation.', 'fail');
+return;
+}
+            aiLoading.style.display = 'block'; // Show loading spinnern            paletteContainer.innerHTML = ''; // Clear current paletten
+try {
+let chatHistory = [];
+// Request a JSON response with a specific schema for colors
+chatHistory.push({
+role: "user",
+parts: [{
+text: `Generate a brand color palette (${colorCount} distinct HEX colors) based on the following description: "${aiPrompt}". Provide the output as a JSON array of strings, where each string is a HEX color code (e.g., ["#RRGGBB", "#AABBCC"]). Ensure the colors are distinct and suitable for a brand palette. Only return the JSON array.`n                    }]n                });
+                const payload = {
+contents: chatHistory,
+generationConfig: {
+responseMimeType: "application/json",
+responseSchema: {
+type: "ARRAY",
+items: {
+type: "STRING",
+pattern: "^#[0-9a-fA-F]{6}$" // Regex to ensure it's a valid hex color
+}
+}
+}
+};
+                const apiKey = ""; // Canvas will automatically provide this
+const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                const response = await fetch(apiUrl, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(payload)
+});
                 const result = await response.json();
-                if (result.candidates && result.candidates.length > 0 &&n                    result.candidates[0].content && result.candidates[0].content.parts &&n                    result.candidates[0].content.parts.length > 0) {n                    const jsonString = result.candidates[0].content.parts[0].text;n                    const generatedColors = JSON.parse(jsonString);
-                    if (Array.isArray(generatedColors) && generatedColors.every(c => typeof c === 'string' && c.startsWith('#') && c.length === 7)) {n                        currentPalette = generatedColors.slice(0, colorCount); // Take exactly the requested number of colorsn                        lockedColors = {}; // Clear locks for new AI paletten                        renderPalette();n                        checkAccessibility();n                        showToast('AI Palette generated successfully!');n                    } else {n                        throw new Error('Invalid JSON format received from AI.');n                    }n                } else {n                    throw new Error('No valid response from AI.');n                }n            } catch (error) {n                console.error('Error generating AI palette:', error);n                showToast('Failed to generate AI palette. Please try again.', 'fail');n            } finally {n                aiLoading.style.display = 'none'; // Hide loading spinnern            }n        }n    </script>
-    <!-- No JavaScript Allowed -->    <script>        // This is a purely static HTML file. No JavaScript is used for functionality or design.n        // All responsiveness and visual effects are achieved purely with HTML and CSS.n        // The content below describes the Professional Color System Workspace tool.n    </script>
+                if (result.candidates && result.candidates.length > 0 &&n                    result.candidates[0].content && result.candidates[0].content.parts &&n                    result.candidates[0].content.parts.length > 0) {
+const jsonString = result.candidates[0].content.parts[0].text;
+const generatedColors = JSON.parse(jsonString);
+                    if (Array.isArray(generatedColors) && generatedColors.every(c => typeof c === 'string' && c.startsWith('#') && c.length === 7)) {
+currentPalette = generatedColors.slice(0, colorCount); // Take exactly the requested number of colorsn                        lockedColors = {}; // Clear locks for new AI palette
+renderPalette();
+checkAccessibility();
+showToast('AI Palette generated successfully!');
+} else {
+throw new Error('Invalid JSON format received from AI.');
+}
+} else {
+throw new Error('No valid response from AI.');
+}
+} catch (error) {
+console.error('Error generating AI palette:', error);
+showToast('Failed to generate AI palette. Please try again.', 'fail');
+} finally {
+aiLoading.style.display = 'none'; // Hide loading spinner
+}
+}
+</script>
+    <!-- No JavaScript Allowed -->    <script>        // This is a purely static HTML file. No JavaScript is used for functionality or design.n        // All responsiveness and visual effects are achieved purely with HTML and CSS.n        // The content below describes the Professional Color System Workspace tool.
+</script>
     <div class="container">
         <h1>Master Your Brand Color Palette: A Deep Dive into the Ultimate Generator</h1>
         <section id="introduction">            <h2>Introduction: The Cornerstone of Your Brand Identity</h2>            <p>Your brand's color palette is more than just a visual choice; it's a fundamental element of your identity, influencing everything from customer perception and emotional connection to recognition and recall. The right colors can convey trust, excitement, professionalism, or creativity, setting the tone for every interaction a customer has with your brand. Conversely, a poorly chosen or inconsistent palette can dilute your message, confuse your audience, and hinder your ability to build a strong, memorable presence in the market.</p>            <p>Developing a compelling and effective brand color palette requires careful consideration of color psychology, harmony, contrast, and accessibility. While manual selection has its place, the complexity of balancing aesthetic appeal with technical requirements and usability standards can be daunting. This is where a sophisticated <strong><a href="https://shaynly.com/branded-bill-generator/" target="_blank" rel="noopener"  data-wpil-monitor-id="494">Brand Color Palette Generator</a></strong> becomes an indispensable tool.</p>            <p>A professional-grade generator, like the Professional <a href="https://shaynly.com/exploring-the-fascinating-world-of-colors/" target="_blank" rel="noopener"  data-wpil-monitor-id="496">Color System Workspace we will explore</a> in detail, streamlines the process of creating, refining, and validating your brand colors. It moves beyond simple suggestions, offering intelligent generation methods, powerful analysis tools, and diverse export options to ensure your palette is not only beautiful but also functional and optimized for real-world application across all digital and print mediums. This article will guide you through the <a href="https://shaynly.com/why-employer-branding/" title="Why Employer Branding is Your Most Critical Organizational Capability" target="_blank" rel="noopener"  data-wpil-monitor-id="1585">critical role of brand</a> colors, introduce you to the capabilities of a premium generator, and show you how to leverage its features to craft a brand palette that truly stands out.</p>            <p>We'll delve into the 'why' behind strategic color choices, explore the 'how' using advanced generation techniques, and emphasize the importance of validation through accessibility checks and live previews. By the end, you'll understand how a modern Brand Color Palette Generator can transform your branding workflow, ensuring consistency, impact, and inclusivity.</p>

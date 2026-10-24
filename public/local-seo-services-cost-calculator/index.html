@@ -135,25 +135,336 @@
                 <div class="mt-6 p-4 bg-white rounded-lg shadow-inner border border-gray-100 text-left text-sm text-gray-600">                    <p class="font-semibold text-gray-800 mb-2">Important Considerations:</p>                    <ul class="list-disc list-inside space-y-1">                        <li>This calculator provides an *estimate* based on common industry factors.</li>                        <li>Actual costs can vary significantly based on your specific goals, market nuances, and chosen provider.</li>                        <li>Investing in local SEO is a long-term strategy for sustained growth and visibility.</li>                    </ul>                </div>
                 <div class="mt-6">                    <p class="text-md text-gray-700 mb-3">Ready for a precise strategy tailored to your business?</p>                    <a href="https://wa.me/919894446685" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">                        Get a Custom Quoten                    </a>                </div>            </div>        </div>
         <div class="text-center mt-8">            <button id="resetButton" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-6 rounded-lg transition duration-200 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">                Reset Calculatorn            </button>        </div>    </div>
-    <script>        // Define base prices and multipliers for different countries, business sizes, industries, and servicesn        const prices = {n            IN: {n                base: 5000,n                locationMultiplier: 0.05, // 5% increase per additional locationn                industry: {n                    general: 1,n                    realestate: 1.5,n                    healthcare: 1.6,n                    retail: 1.4,n                    restaurant: 1.5,n                    professional: 1.3,n                    automotive: 1.45,n                    home_services: 1.35n                },n                competition: [0.9, 1, 1.2], // Low, Medium, High competition multipliersn                services: {n                    onpage: 0.3,n                    gmb: 0.25,n                    citation: 0.2,n                    reviews: 0.15,n                    localads: 0.4,n                    content_marketing: 0.35n                },n                currencySymbol: '₹',n                currencyCode: 'INR',n                serviceDescriptions: {n                    onpage: "Optimizing your website's content and technical elements for local search relevance.",n                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",n                    citation: "Building consistent business listings across various online directories to improve local search authority.",n                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",n                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",n                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }n            },n            US: {n                base: 500,n                locationMultiplier: 0.08, // 8% increase per additional locationn                industry: {n                    general: 1,n                    realestate: 1.6,n                    healthcare: 1.7,n                    retail: 1.5,n                    restaurant: 1.6,n                    professional: 1.4,n                    automotive: 1.55,n                    home_services: 1.45n                },n                competition: [0.9, 1, 1.3],n                services: {n                    onpage: 0.4,n                    gmb: 0.3,n                    citation: 0.25,n                    reviews: 0.2,n                    localads: 0.5,n                    content_marketing: 0.45n                },n                currencySymbol: '$',n                currencyCode: 'USD',n                serviceDescriptions: {n                    onpage: "Optimizing your website's content and technical elements for local search relevance.",n                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",n                    citation: "Building consistent business listings across various online directories to improve local search authority.",n                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",n                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",n                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }n            },n            UK: {n                base: 400,n                locationMultiplier: 0.07,n                industry: {n                    general: 1,n                    realestate: 1.55,n                    healthcare: 1.65,n                    retail: 1.45,n                    restaurant: 1.55,n                    professional: 1.35,n                    automotive: 1.5,n                    home_services: 1.4n                },n                competition: [0.9, 1, 1.25],n                services: {n                    onpage: 0.35,n                    gmb: 0.28,n                    citation: 0.22,n                    reviews: 0.18,n                    localads: 0.45,n                    content_marketing: 0.4n                },n                currencySymbol: '£',n                currencyCode: 'GBP',n                serviceDescriptions: {n                    onpage: "Optimizing your website's content and technical elements for local search relevance.",n                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",n                    citation: "Building consistent business listings across various online directories to improve local search authority.",n                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",n                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",n                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }n            },n            CA: {n                base: 600,n                locationMultiplier: 0.06,n                industry: {n                    general: 1,n                    realestate: 1.5,n                    healthcare: 1.6,n                    retail: 1.4,n                    restaurant: 1.5,n                    professional: 1.3,n                    automotive: 1.45,n                    home_services: 1.35n                },n                competition: [0.9, 1, 1.2],n                services: {n                    onpage: 0.32,n                    gmb: 0.27,n                    citation: 0.21,n                    reviews: 0.16,n                    localads: 0.42,n                    content_marketing: 0.37n                },n                currencySymbol: 'C$',n                currencyCode: 'CAD',n                serviceDescriptions: {n                    onpage: "Optimizing your website's content and technical elements for local search relevance.",n                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",n                    citation: "Building consistent business listings across various online directories to improve local search authority.",n                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",n                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",n                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }n            },n            AU: {n                base: 650,n                locationMultiplier: 0.065,n                industry: {n                    general: 1,n                    realestate: 1.52,n                    healthcare: 1.62,n                    retail: 1.42,n                    restaurant: 1.52,n                    professional: 1.32,n                    automotive: 1.47,n                    home_services: 1.37n                },n                competition: [0.9, 1, 1.22],n                services: {n                    onpage: 0.33,n                    gmb: 0.28,n                    citation: 0.22,n                    reviews: 0.17,n                    localads: 0.43,n                    content_marketing: 0.38n                },n                currencySymbol: 'A$',n                currencyCode: 'AUD',n                serviceDescriptions: {n                    onpage: "Optimizing your website's content and technical elements for local search relevance.",n                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",n                    citation: "Building consistent business listings across various online directories to improve local search authority.",n                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",n                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",n                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }n            }n        };
-        // Get DOM elementsn        const countrySelect = document.getElementById('countrySelect');n        const numLocationsInput = document.getElementById('numLocations');n        const numLocationsValueDisplay = document.getElementById('numLocationsValue');n        const industrySelect = document.getElementById('industry');n        const competitionLevelInput = document.getElementById('competitionLevel');n        const competitionLevelValueDisplay = document.getElementById('competitionLevelValue');n        const serviceCheckboxes = document.querySelectorAll('.services-container input[type="checkbox"]');n        const allServicesCheckbox = document.getElementById('all');n        const customServicesContainer = document.getElementById('customServicesContainer');n        const addCustomServiceButton = document.getElementById('addCustomService');n        const priceDisplay = document.getElementById('priceDisplay');n        const breakdownDisplay = document.getElementById('breakdown');n        const resetButton = document.getElementById('resetButton');
-        let customServiceCount = 0; // To keep track of custom service inputsnn        // Function to format currencyn        function formatCurrency(amount, symbol) {n            return `${symbol}${Math.round(amount).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;n        }
-        // Function to calculate the estimated costn        function calculateCost() {n            const country = countrySelect.value;n            const currentCountryPrices = prices[country];n            const currencySymbol = currentCountryPrices.currencySymbol;n            const currencyCode = currentCountryPrices.currencyCode;
-            let totalCost = 0;n            let breakdownItems = []; // Use an array to build the breakdown for easier formattingnn            // 1. Base Pricen            let currentBasePrice = currentCountryPrices.base;n            totalCost += currentBasePrice;n            breakdownItems.push(`<div><strong>Base Investment:</strong> ${formatCurrency(currentBasePrice, currencySymbol)} <span class="text-gray-500 text-xs">- The foundational monthly fee for essential strategy and management.</span></div>`);
-            // 2. Number of Locations Multipliern            const numLocations = parseInt(numLocationsInput.value);n            numLocationsValueDisplay.textContent = numLocations; // Update displayn            if (numLocations > 1) {n                const locationAdjust = currentBasePrice * currentCountryPrices.locationMultiplier * (numLocations - 1);n                totalCost += locationAdjust;n                breakdownItems.push(`<div><strong>Additional Locations (${numLocations} locations):</strong> +${formatCurrency(locationAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Each additional location requires unique optimization efforts for Google My Business, local citations, and localized content strategies.</span></div>`);n            }
-            // 3. Industry Multipliern            const industry = industrySelect.value;n            const industryMultiplier = currentCountryPrices.industry[industry];n            const industryAdjust = currentBasePrice * (industryMultiplier - 1); // Only add the *additional* costn            totalCost += industryAdjust;n            const industryName = industry.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');n            if (industryAdjust > 0) {n                 breakdownItems.push(`<div><strong>Industry Complexity (${industryName}):</strong> +${formatCurrency(industryAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Certain industries (e.g., healthcare, legal, real estate) are inherently more competitive or complex in local SEO, demanding specialized strategies and more intensive effort.</span></div>`);n            } else {n                 breakdownItems.push(`<div><strong>Industry Complexity (General):</strong> ${formatCurrency(industryAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- This indicates a standard level of industry competition.</span></div>`);n            }n           
-            // 4. Competition Level Multipliern            const competitionLevelIndex = parseInt(competitionLevelInput.value);n            const competitionLevelText = ['Low', 'Medium', 'High'][competitionLevelIndex];n            competitionLevelValueDisplay.textContent = competitionLevelText; // Update displayn            const competitionMultiplier = currentCountryPrices.competition[competitionLevelIndex];n            const competitionAdjust = currentBasePrice * (competitionMultiplier - 1); // Only add the *additional* costn            totalCost += competitionAdjust;n            if (competitionAdjust > 0) {n                breakdownItems.push(`<div><strong>Local Competition (${competitionLevelText}):</strong> +${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Higher local competition demands more aggressive and sustained SEO efforts to achieve prominent rankings and outmaneuver competitors.</span></div>`);n            } else if (competitionAdjust < 0) {n                breakdownItems.push(`<div><strong>Local Competition (${competitionLevelText}):</strong> ${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Lower competition may allow for more cost-effective strategies.</span></div>`);n            } else {n                 breakdownItems.push(`<div><strong>Local Competition (${competitionLevelText}):</strong> ${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- This represents a standard level of local competition.</span></div>`);n            }
-            // 5. Selected Servicesn            let servicesCost = 0;n            let selectedServicesDetails = [];n            serviceCheckboxes.forEach(checkbox => {n                if (checkbox.checked && checkbox.id !== 'all') {n                    const serviceId = checkbox.id;n                    const serviceMultiplier = currentCountryPrices.services[serviceId];n                    if (serviceMultiplier) { // Ensure multiplier exists for the servicen                        const servicePrice = currentBasePrice * serviceMultiplier;n                        servicesCost += servicePrice;n                        const serviceDisplayName = checkbox.parentElement.textContent.trim().replace('Select All Core Services', '');n                        const serviceDescription = currentCountryPrices.serviceDescriptions[serviceId] || '';n                        selectedServicesDetails.push({ name: serviceDisplayName, cost: servicePrice, description: serviceDescription });n                    }n                }n            });n            totalCost += servicesCost;n            if (selectedServicesDetails.length > 0) {n                breakdownItems.push(`<div><strong>Selected Services:</strong></div>`);n                selectedServicesDetails.forEach(service => {n                    breakdownItems.push(`<div class="ml-4">- ${service.name}: ${formatCurrency(service.cost, currencySymbol)} <span class="text-gray-500 text-xs">${service.description}</span></div>`);n                });n            } else {n                breakdownItems.push(`<div><strong>Selected Services:</strong> <span class="text-gray-500 text-xs">- No specific core services selected. Consider adding services relevant to your goals.</span></div>`);n            }
-            // 6. Custom Servicesn            let customServicesTotal = 0;n            const customServiceInputs = customServicesContainer.querySelectorAll('.custom-service-item input[type="number"]');n            let customServicesList = [];n            customServiceInputs.forEach(input => {n                const customValue = parseFloat(input.value) || 0;n                if (customValue > 0) {n                    customServicesTotal += customValue;n                    const serviceNameInput = input.previousElementSibling;n                    const serviceName = serviceNameInput ? serviceNameInput.value || 'Custom Service' : 'Custom Service';n                    customServicesList.push(`- ${serviceName}: ${formatCurrency(customValue, currencySymbol)}`);n                }n            });n            totalCost += customServicesTotal;n            if (customServicesTotal > 0) {n                 breakdownItems.push(`<div><strong>Custom Services / Add-ons:</strong> +${formatCurrency(customServicesTotal, currencySymbol)}</div>`);n                 customServicesList.forEach(item => breakdownItems.push(`<div class="ml-4">${item}</div>`));n            }
-            // Display total costn            priceDisplay.textContent = formatCurrency(totalCost, currencySymbol);n // Display breakdownn            breakdownDisplay.innerHTML = breakdownItems.join('');n        }
-        // Function to add a new custom service input fieldn        function addCustomServiceInput() {n            customServiceCount++;n            const div = document.createElement('div');n            div.className = 'custom-service-item flex items-center space-x-2';n            div.innerHTML = `n                <input type="text" placeholder="Service Name (e.g., 'Local Link Building')" class="flex-grow px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 ease-in-out text-sm">                <input type="number" placeholder="Cost" min="0" class="w-24 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 ease-in-out text-sm">                <button class="remove-custom-service text-red-500 hover:text-red-700 p-1 rounded-full transition-colors duration-200" title="Remove Custom Service">                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 01-2 0v6a1 1 0 112 0V8z" clip-rule="evenodd" />                    </svg>                </button>            `;n            customServicesContainer.appendChild(div);
-            // Add event listeners to the new inputs and remove buttonn            div.querySelector('input[type="text"]').addEventListener('input', calculateCost);n            div.querySelector('input[type="number"]').addEventListener('input', calculateCost);n            div.querySelector('.remove-custom-service').addEventListener('click', function() {n                div.remove();n                calculateCost();n            });n        }
-        // Function to reset all inputs to their default valuesn        function resetCalculator() {n            countrySelect.value = 'IN';n            numLocationsInput.value = '1';n            industrySelect.value = 'general';n            competitionLevelInput.value = '1'; // Mediumnn            serviceCheckboxes.forEach(checkbox => {n                if (checkbox.id === 'onpage') {n                    checkbox.checked = true; // Default checkedn                } else {n                    checkbox.checked = false;n                }n            });n            allServicesCheckbox.checked = false; // Uncheck "All Services"
-            customServicesContainer.innerHTML = ''; // Clear custom servicesn            customServiceCount = 0;
-            calculateCost(); // Recalculate after resetn        }
-        // Event Listenersn        countrySelect.addEventListener('change', calculateCost);n        numLocationsInput.addEventListener('input', calculateCost); // Use 'input' for real-time updates from slidern        industrySelect.addEventListener('change', calculateCost);n        competitionLevelInput.addEventListener('input', calculateCost); // Use 'input' for real-time updates from slidernn        serviceCheckboxes.forEach(checkbox => {n            checkbox.addEventListener('change', function() {n                if (this.id === 'all') {n                    serviceCheckboxes.forEach(cb => {n                        if (cb.id !== 'all') { // Don't uncheck 'all' itselfn                            cb.checked = this.checked;n                        }n                    });n                } else {n                    // If any service is unchecked, uncheck "All Services"n                    if (!this.checked) {n                        allServicesCheckbox.checked = false;n                    } else {n                        // If all other services are checked, check "All Services"n                        const allOthersChecked = Array.from(serviceCheckboxes).filter(cb => cb.id !== 'all').every(cb => cb.checked);n                        if (allOthersChecked) {n                            allServicesCheckbox.checked = true;n                        }n                    }n                }n                calculateCost();n            });n        });
-        addCustomServiceButton.addEventListener('click', addCustomServiceInput);n        resetButton.addEventListener('click', resetCalculator);
-        // Initial calculation on page loadn        calculateCost();n    </script>
+    <script>        // Define base prices and multipliers for different countries, business sizes, industries, and services
+const prices = {
+IN: {
+base: 5000,
+locationMultiplier: 0.05, // 5% increase per additional location
+industry: {
+general: 1,
+realestate: 1.5,
+healthcare: 1.6,
+retail: 1.4,
+restaurant: 1.5,
+professional: 1.3,
+automotive: 1.45,
+home_services: 1.35n                },
+competition: [0.9, 1, 1.2], // Low, Medium, High competition multipliers
+services: {
+onpage: 0.3,
+gmb: 0.25,
+citation: 0.2,
+reviews: 0.15,
+localads: 0.4,
+content_marketing: 0.35n                },
+currencySymbol: '₹',
+currencyCode: 'INR',
+serviceDescriptions: {
+onpage: "Optimizing your website's content and technical elements for local search relevance.",
+gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+citation: "Building consistent business listings across various online directories to improve local search authority.",
+reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }
+},
+US: {
+base: 500,
+locationMultiplier: 0.08, // 8% increase per additional location
+industry: {
+general: 1,
+realestate: 1.6,
+healthcare: 1.7,
+retail: 1.5,
+restaurant: 1.6,
+professional: 1.4,
+automotive: 1.55,
+home_services: 1.45n                },
+competition: [0.9, 1, 1.3],
+services: {
+onpage: 0.4,
+gmb: 0.3,
+citation: 0.25,
+reviews: 0.2,
+localads: 0.5,
+content_marketing: 0.45n                },
+currencySymbol: '$',
+currencyCode: 'USD',
+serviceDescriptions: {
+onpage: "Optimizing your website's content and technical elements for local search relevance.",
+gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+citation: "Building consistent business listings across various online directories to improve local search authority.",
+reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }
+},
+UK: {
+base: 400,
+locationMultiplier: 0.07,
+industry: {
+general: 1,
+realestate: 1.55,
+healthcare: 1.65,
+retail: 1.45,
+restaurant: 1.55,
+professional: 1.35,
+automotive: 1.5,
+home_services: 1.4n                },
+competition: [0.9, 1, 1.25],
+services: {
+onpage: 0.35,
+gmb: 0.28,
+citation: 0.22,
+reviews: 0.18,
+localads: 0.45,
+content_marketing: 0.4n                },
+currencySymbol: '£',
+currencyCode: 'GBP',
+serviceDescriptions: {
+onpage: "Optimizing your website's content and technical elements for local search relevance.",
+gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+citation: "Building consistent business listings across various online directories to improve local search authority.",
+reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }
+},
+CA: {
+base: 600,
+locationMultiplier: 0.06,
+industry: {
+general: 1,
+realestate: 1.5,
+healthcare: 1.6,
+retail: 1.4,
+restaurant: 1.5,
+professional: 1.3,
+automotive: 1.45,
+home_services: 1.35n                },
+competition: [0.9, 1, 1.2],
+services: {
+onpage: 0.32,
+gmb: 0.27,
+citation: 0.21,
+reviews: 0.16,
+localads: 0.42,
+content_marketing: 0.37n                },
+currencySymbol: 'C$',
+currencyCode: 'CAD',
+serviceDescriptions: {
+onpage: "Optimizing your website's content and technical elements for local search relevance.",
+gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+citation: "Building consistent business listings across various online directories to improve local search authority.",
+reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }
+},
+AU: {
+base: 650,
+locationMultiplier: 0.065,
+industry: {
+general: 1,
+realestate: 1.52,
+healthcare: 1.62,
+retail: 1.42,
+restaurant: 1.52,
+professional: 1.32,
+automotive: 1.47,
+home_services: 1.37n                },
+competition: [0.9, 1, 1.22],
+services: {
+onpage: 0.33,
+gmb: 0.28,
+citation: 0.22,
+reviews: 0.17,
+localads: 0.43,
+content_marketing: 0.38n                },
+currencySymbol: 'A$',
+currencyCode: 'AUD',
+serviceDescriptions: {
+onpage: "Optimizing your website's content and technical elements for local search relevance.",
+gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+citation: "Building consistent business listings across various online directories to improve local search authority.",
+reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."n                }
+}
+};
+        // Get DOM elements
+const countrySelect = document.getElementById('countrySelect');
+const numLocationsInput = document.getElementById('numLocations');
+const numLocationsValueDisplay = document.getElementById('numLocationsValue');
+const industrySelect = document.getElementById('industry');
+const competitionLevelInput = document.getElementById('competitionLevel');
+const competitionLevelValueDisplay = document.getElementById('competitionLevelValue');
+const serviceCheckboxes = document.querySelectorAll('.services-container input[type="checkbox"]');
+const allServicesCheckbox = document.getElementById('all');
+const customServicesContainer = document.getElementById('customServicesContainer');
+const addCustomServiceButton = document.getElementById('addCustomService');
+const priceDisplay = document.getElementById('priceDisplay');
+const breakdownDisplay = document.getElementById('breakdown');
+const resetButton = document.getElementById('resetButton');
+        let customServiceCount = 0; // To keep track of custom service inputsnn        // Function to format currencyn        functio
+formatCurrency(amount, symbol) {
+return `${symbol}${Math.round(amount).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+}
+        // Function to calculate the estimated costn        functio
+calculateCost() {
+const country = countrySelect.value;
+const currentCountryPrices = prices[country];
+const currencySymbol = currentCountryPrices.currencySymbol;
+const currencyCode = currentCountryPrices.currencyCode;
+            let totalCost = 0;
+let breakdownItems = []; // Use an array to build the breakdown for easier formattingnn            // 1. Base Price
+let currentBasePrice = currentCountryPrices.base;
+totalCost += currentBasePrice;
+breakdownItems.push(`<div><strong>Base Investment:</strong> ${formatCurrency(currentBasePrice, currencySymbol)} <span class="text-gray-500 text-xs">- The foundational monthly fee for essential strategy and management.</span></div>`);
+            // 2. Number of Locations Multiplier
+const numLocations = parseInt(numLocationsInput.value);
+numLocationsValueDisplay.textContent = numLocations; // Update display
+if (numLocations > 1) {
+const locationAdjust = currentBasePrice * currentCountryPrices.locationMultiplier * (numLocations - 1);
+totalCost += locationAdjust;
+breakdownItems.push(`<div><strong>Additional Locations (${
+umLocations} locations):</strong> +${formatCurrency(locationAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Each additional location requires unique optimization efforts for Google My Business, local citations, and localized content strategies.</span></div>`);
+}
+            // 3. Industry Multiplier
+const industry = industrySelect.value;
+const industryMultiplier = currentCountryPrices.industry[industry];
+const industryAdjust = currentBasePrice * (industryMultiplier - 1); // Only add the *additional* cost
+totalCost += industryAdjust;
+const industryName = industry.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+if (industryAdjust > 0) {
+breakdownItems.push(`<div><strong>Industry Complexity (${industryName}):</strong> +${formatCurrency(industryAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Certain industries (e.g., healthcare, legal, real estate) are inherently more competitive or complex in local SEO, demanding specialized strategies and more intensive effort.</span></div>`);
+} else {
+breakdownItems.push(`<div><strong>Industry Complexity (General):</strong> ${formatCurrency(industryAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- This indicates a standard level of industry competition.</span></div>`);
+}
+// 4. Competition Level Multiplier
+const competitionLevelIndex = parseInt(competitionLevelInput.value);
+const competitionLevelText = ['Low', 'Medium', 'High'][competitionLevelIndex];
+competitionLevelValueDisplay.textContent = competitionLevelText; // Update display
+const competitionMultiplier = currentCountryPrices.competition[competitionLevelIndex];
+const competitionAdjust = currentBasePrice * (competitionMultiplier - 1); // Only add the *additional* cost
+totalCost += competitionAdjust;
+if (competitionAdjust > 0) {
+breakdownItems.push(`<div><strong>Local Competition (${competitionLevelText}):</strong> +${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Higher local competition demands more aggressive and sustained SEO efforts to achieve prominent rankings and outmaneuver competitors.</span></div>`);
+} else if (competitionAdjust < 0) {
+breakdownItems.push(`<div><strong>Local Competition (${competitionLevelText}):</strong> ${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Lower competition may allow for more cost-effective strategies.</span></div>`);
+} else {
+breakdownItems.push(`<div><strong>Local Competition (${competitionLevelText}):</strong> ${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- This represents a standard level of local competition.</span></div>`);
+}
+            // 5. Selected Services
+let servicesCost = 0;
+let selectedServicesDetails = [];
+serviceCheckboxes.forEach(checkbox => {
+if (checkbox.checked && checkbox.id !== 'all') {
+const serviceId = checkbox.id;
+const serviceMultiplier = currentCountryPrices.services[serviceId];
+if (serviceMultiplier) { // Ensure multiplier exists for the service
+const servicePrice = currentBasePrice * serviceMultiplier;
+servicesCost += servicePrice;
+const serviceDisplayName = checkbox.parentElement.textContent.trim().replace('Select All Core Services', '');
+const serviceDescription = currentCountryPrices.serviceDescriptions[serviceId] || '';
+selectedServicesDetails.push({ name: serviceDisplayName, cost: servicePrice, description: serviceDescription });
+}
+}
+});
+totalCost += servicesCost;
+if (selectedServicesDetails.length > 0) {
+breakdownItems.push(`<div><strong>Selected Services:</strong></div>`);
+selectedServicesDetails.forEach(service => {
+breakdownItems.push(`<div class="ml-4">- ${service.name}: ${formatCurrency(service.cost, currencySymbol)} <span class="text-gray-500 text-xs">${service.description}</span></div>`);
+});
+} else {
+breakdownItems.push(`<div><strong>Selected Services:</strong> <span class="text-gray-500 text-xs">- No specific core services selected. Consider adding services relevant to your goals.</span></div>`);
+}
+            // 6. Custom Services
+let customServicesTotal = 0;
+const customServiceInputs = customServicesContainer.querySelectorAll('.custom-service-item input[type="number"]');
+let customServicesList = [];
+customServiceInputs.forEach(input => {
+const customValue = parseFloat(input.value) || 0;
+if (customValue > 0) {
+customServicesTotal += customValue;
+const serviceNameInput = input.previousElementSibling;
+const serviceName = serviceNameInput ? serviceNameInput.value || 'Custom Service' : 'Custom Service';
+customServicesList.push(`- ${serviceName}: ${formatCurrency(customValue, currencySymbol)}`);
+}
+});
+totalCost += customServicesTotal;
+if (customServicesTotal > 0) {
+breakdownItems.push(`<div><strong>Custom Services / Add-ons:</strong> +${formatCurrency(customServicesTotal, currencySymbol)}</div>`);
+customServicesList.forEach(item => breakdownItems.push(`<div class="ml-4">${item}</div>`));
+}
+            // Display total cost
+priceDisplay.textContent = formatCurrency(totalCost, currencySymbol);
+// Display breakdown
+breakdownDisplay.innerHTML = breakdownItems.join('');
+}
+        // Function to add a new custom service input fieldn        functio
+addCustomServiceInput() {
+customServiceCount++;
+const div = document.createElement('div');
+div.className = 'custom-service-item flex items-center space-x-2';
+div.innerHTML = `n                <input type="text" placeholder="Service Name (e.g., 'Local Link Building')" class="flex-grow px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 ease-in-out text-sm">                <input type="number" placeholder="Cost" min="0" class="w-24 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 ease-in-out text-sm">                <button class="remove-custom-service text-red-500 hover:text-red-700 p-1 rounded-full transition-colors duration-200" title="Remove Custom Service">                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 01-2 0v6a1 1 0 112 0V8z" clip-rule="evenodd" />                    </svg>                </button>            `;
+customServicesContainer.appendChild(div);
+            // Add event listeners to the new inputs and remove button
+div.querySelector('input[type="text"]').addEventListener('input', calculateCost);
+div.querySelector('input[type="number"]').addEventListener('input', calculateCost);
+div.querySelector('.remove-custom-service').addEventListener('click', function() {
+div.remove();
+calculateCost();
+});
+}
+        // Function to reset all inputs to their default valuesn        functio
+resetCalculator() {
+countrySelect.value = 'IN';
+numLocationsInput.value = '1';
+industrySelect.value = 'general';
+competitionLevelInput.value = '1'; // Mediumn
+serviceCheckboxes.forEach(checkbox => {
+if (checkbox.id === 'onpage') {
+checkbox.checked = true; // Default checked
+} else {
+checkbox.checked = false;
+}
+});
+allServicesCheckbox.checked = false; // Uncheck "All Services"
+            customServicesContainer.innerHTML = ''; // Clear custom services
+customServiceCount = 0;
+            calculateCost(); // Recalculate after reset
+}
+        // Event Listeners
+countrySelect.addEventListener('change', calculateCost);
+numLocationsInput.addEventListener('input', calculateCost); // Use 'input' for real-time updates from slider
+industrySelect.addEventListener('change', calculateCost);
+competitionLevelInput.addEventListener('input', calculateCost); // Use 'input' for real-time updates from slidern
+serviceCheckboxes.forEach(checkbox => {
+checkbox.addEventListener('change', function() {
+if (this.id === 'all') {
+serviceCheckboxes.forEach(cb => {
+if (cb.id !== 'all') { // Don't uncheck 'all' itself
+cb.checked = this.checked;
+}
+});
+} else {
+// If any service is unchecked, uncheck "All Services"
+if (!this.checked) {
+allServicesCheckbox.checked = false;
+} else {
+// If all other services are checked, check "All Services"
+const allOthersChecked = Array.from(serviceCheckboxes).filter(cb => cb.id !== 'all').every(cb => cb.checked);
+if (allOthersChecked) {
+allServicesCheckbox.checked = true;
+}
+}
+}
+calculateCost();
+});
+});
+        addCustomServiceButton.addEventListener('click', addCustomServiceInput);
+resetButton.addEventListener('click', resetCalculator);
+        // Initial calculation on page load
+calculateCost();
+</script>
 <h2 class="wp-block-heading has-text-align-center">local seo services cost calculator</h2>
 <p>In today's digitally driven world, a strong local online presence is no longer a luxury but a necessity for businesses aiming to attract nearby customers. But how much does it truly cost to dominate <a href="https://shaynly.com/google-ai-agentic-search/" title="Google AI Agentic Search Has &#8220;Hijacked&#8221; Local Search 2026" target="_blank" rel="noopener"  data-wpil-monitor-id="1520">local search</a> results? This is where the <strong>Advanced Local SEO Services Cost Calculator</strong> comes in, a powerful and intuitive tool designed to provide businesses with transparent and tailored estimates for their local SEO investment.</p>
 <p>Gone are the days of guesswork and opaque pricing. This innovative calculator, built with modern web technologies like HTML, Tailwind CSS, and JavaScript, empowers businesses to understand the potential monthly investment required for their specific local SEO needs, allowing for better budget planning and strategic decision-making.</p>

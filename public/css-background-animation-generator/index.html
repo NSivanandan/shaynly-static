@@ -200,49 +200,396 @@
         <section class="sbg-code-panel">          <div class="sbg-panel-header">            <div class="sbg-panel-title">🧩 <span>Generated code</span></div>            <div class="sbg-panel-sub">Copy CSS only or export an HTML + CSS snippet.</div>          </div>          <div class="sbg-code-tabs">            <button type="button" class="sbg-code-tab-btn active" data-tab="css">CSS</button>            <button type="button" class="sbg-code-tab-btn" data-tab="snippet">HTML + CSS</button>          </div>          <pre><code data-sbg="codeOutput">/* Click “Generate CSS” to export current setup */</code></pre>          <div class="sbg-code-actions">            <button class="sbg-btn sbg-btn-secondary" type="button" data-sbg="copy">📋 <span>Copy</span></button>          </div>        </section>      </section>    </div>
     <div class="sbg-footer">      <span>CSS Background Studio by Shaynly.</span>      <span>Animated CSS background generator · mobile-first tool.</span>    </div>
     <div class="sbg-toast" data-sbg="toast">      <span>✅</span><span data-sbg="toastMessage">Copied!</span>    </div>  </div>
-  <script>    (function(){n      const root = document.getElementById('shaynly-css-bg-tool');n      if(!root) return;
-      const q = sel => root.querySelector(sel);n      const qa = sel => Array.from(root.querySelectorAll(sel));n      const byKey = key => q('[data-sbg="' + key + '"]');
-      const previewCanvas = byKey("previewCanvas");n      const codeOutput = byKey("codeOutput");n      const btnGenerate = byKey("generate");n      const btnRandom = byKey("random");n      const btnCopy = byKey("copy");n      const btnPlayPause = byKey("playPause");n      const btnRefresh = byKey("refresh");n      const previewStatusLabel = byKey("previewStatusLabel");n      const toast = byKey("toast");n      const toastMessage = byKey("toastMessage");
-      const typeRow = byKey("typeRow");n      const sections = {n        gradient: q('[data-section="gradient"]'),n        bokeh: q('[data-section="bokeh"]'),n        particles: q('[data-section="particles"]'),n        waves: q('[data-section="waves"]'),n        aurora: q('[data-section="aurora"]'),n        stripes: q('[data-section="stripes"]'),n        blobs: q('[data-section="blobs"]')n      };
+  <script>    (function(){
+const root = document.getElementById('shaynly-css-bg-tool');
+if(!root) return;
+      const q = sel => root.querySelector(sel);
+const qa = sel => Array.from(root.querySelectorAll(sel));
+const byKey = key => q('[data-sbg="' + key + '"]');
+      const previewCanvas = byKey("previewCanvas");
+const codeOutput = byKey("codeOutput");
+const btnGenerate = byKey("generate");
+const btnRandom = byKey("random");
+const btnCopy = byKey("copy");
+const btnPlayPause = byKey("playPause");
+const btnRefresh = byKey("refresh");
+const previewStatusLabel = byKey("previewStatusLabel");
+const toast = byKey("toast");
+const toastMessage = byKey("toastMessage");
+      const typeRow = byKey("typeRow");
+const sections = {
+gradient: q('[data-section="gradient"]'),
+bokeh: q('[data-section="bokeh"]'),
+particles: q('[data-section="particles"]'),
+waves: q('[data-section="waves"]'),
+aurora: q('[data-section="aurora"]'),
+stripes: q('[data-section="stripes"]'),
+blobs: q('[data-section="blobs"]')
+};
       const el = key => byKey(key);
-      let currentType = "gradient";n      let isPaused = false;n      let activeTab = "css";
-      const gradientPresets = [n        { id:"sunset", label:"Sunset", angle:45, colors:["#ff9a9e","#fad0c4","#ffecd2"] },n        { id:"aurora", label:"Aurora", angle:120, colors:["#43cea2","#185a9d","#2b5876"] },n        { id:"midnight", label:"Midnight", angle:135, colors:["#141e30","#243b55","#0b1220"] },n        { id:"candy", label:"Candy", angle:60, colors:["#f093fb","#f5576c","#f9dd94"] },n        { id:"ocean", label:"Ocean", angle:160, colors:["#00c6ff","#0072ff","#001f54"] }n      ];
-      function showToast(msg){n        toastMessage.textContent = msg;n        toast.classList.add("show");n        setTimeout(() => toast.classList.remove("show"), 1800);n      }
-      function syncSections(type){n        Object.keys(sections).forEach(key => sections[key].hidden = key !== type);n      }
-      function setType(type){n        currentType = type;n        qa('.sbg-segmented').forEach(btn => {n          btn.classList.toggle('active', btn.dataset.type === type);n        });n        syncSections(type);n        renderPreview();n      }
-      qa('.sbg-segmented').forEach(btn => {n        btn.addEventListener('click', () => setType(btn.dataset.type));n      });
-      function attachSlider(sliderKey, labelKey, suffix = "", transformFn){n        const slider = el(sliderKey);n        const label = el(labelKey);n        const update = () => {n          const raw = slider.value;n          const v = transformFn ? transformFn(raw) : raw;n          label.textContent = v + suffix;n          renderPreview();n        };n        slider.addEventListener("input", update);n        update();n      }
-      attachSlider("gradientAngle","gradientAngleValue","°");n      attachSlider("gradientSpeed","gradientSpeedValue","s");n      ["gradientColor1","gradientColor2","gradientColor3"].forEach(k => el(k).addEventListener("input", renderPreview));
-      attachSlider("bokehCount","bokehCountValue");n      attachSlider("bokehSize","bokehSizeValue","px");n      attachSlider("bokehBlur","bokehBlurValue","px");n      ["bokehColor1","bokehColor2"].forEach(k => el(k).addEventListener("input", renderPreview));n      attachSlider("bokehSpeed","bokehSpeedValue","s");
-      attachSlider("particleCount","particleCountValue");n      attachSlider("particleSize","particleSizeValue","px");n      attachSlider("particleSpeed","particleSpeedValue","s");n      el("particleColor").addEventListener("input", renderPreview);n      attachSlider("windEffect","windEffectValue","px");
-      attachSlider("waveCount","waveCountValue");n      attachSlider("waveOpacity","waveOpacityValue","", v => (v / 10).toFixed(1));n      ["waveColor1","waveColor2","waveColor3"].forEach(k => el(k).addEventListener("input", renderPreview));n      attachSlider("waveSpeed","waveSpeedValue","s");
-      attachSlider("auroraCount","auroraCountValue");n      attachSlider("auroraBlur","auroraBlurValue","px");n      ["auroraColor1","auroraColor2","auroraColor3"].forEach(k => el(k).addEventListener("input", renderPreview));n      attachSlider("auroraSpeed","auroraSpeedValue","s");
-      attachSlider("stripesAngle","stripesAngleValue","°");n      attachSlider("stripesWidth","stripesWidthValue","px");n      attachSlider("stripesGap","stripesGapValue","px");n      ["stripesColor","stripesBg"].forEach(k => el(k).addEventListener("input", renderPreview));n      attachSlider("stripesSpeed","stripesSpeedValue","s");
-      attachSlider("blobCount","blobCountValue");n      attachSlider("blobSize","blobSizeValue","px");n      attachSlider("blobBlur","blobBlurValue","px");n      ["blobColor1","blobColor2","blobColor3"].forEach(k => el(k).addEventListener("input", renderPreview));n      attachSlider("blobSpeed","blobSpeedValue","s");
-      function clearPreview(){n        previewCanvas.innerHTML = "";n      }
-      function createGradientLayer(){n        const = document.createElement("div");n        n.style.position = "absolute";n        n.style.inset = "0";n        n.style.background = `linear-gradient(${el("gradientAngle").value}deg,${el("gradientColor1").value},${el("gradientColor2").value},${el("gradientColor3").value})`;n        n.style.backgroundSize = "400% 400%";n        n.style.animation = `sbg-gradientShift ${el("gradientSpeed").value}s infinite ease`;n        previewCanvas.appendChild(n);n      }
-      function createBokehLayer(){n        const container = document.createElement("div");n        container.style.position = "absolute";n        container.style.inset = "0";n        const count = parseInt(el("bokehCount").value,10);n        const size = parseInt(el("bokehSize").value,10);n        const blur = parseInt(el("bokehBlur").value,10);n        const speed = parseInt(el("bokehSpeed").value,10);n        const c1 = el("bokehColor1").value;n        const c2 = el("bokehColor2").value;n        for(let i=0;i<count;i++){n          const bubble = document.createElement("span");n          const s = size * (0.7 + Math.random() * 0.6);n          bubble.style.position = "absolute";n          bubble.style.width = s + "px";n          bubble.style.height = s + "px";n          bubble.style.borderRadius = "50%";n          bubble.style.filter = `blur(${blur}px)`;n          bubble.style.background = i % 2 === 0 ? c1 : c2;n          bubble.style.left = Math.random() * 100 + "%";n          bubble.style.top = Math.random() * 100 + "%";n          bubble.style.setProperty("--moveX",(Math.random() - 0.5) * 120 + "px");n          bubble.style.setProperty("--moveY",(Math.random() - 0.5) * 120 + "px");n          bubble.style.animation = `sbg-bokehMotion ${speed + Math.random() * speed}s infinite alternate ease-in-out`;n          container.appendChild(bubble);n        }n        previewCanvas.appendChild(container);n      }
-      function createParticlesLayer(){n        const container = document.createElement("div");n        container.style.position = "absolute";n        container.style.inset = "0";n        container.style.background = "#020617";n        const count = parseInt(el("particleCount").value,10);n        const size = parseInt(el("particleSize").value,10);n        const speed = parseInt(el("particleSpeed").value,10);n        const color = el("particleColor").value;n        const wind = parseInt(el("windEffect").value,10);n        for(let i=0;i<count;i++){n          const dot = document.createElement("span");n          const s = size * (0.7 + Math.random() * 0.6);n          dot.style.position = "absolute";n          dot.style.width = s + "px";n          dot.style.height = s + "px";n          dot.style.borderRadius = "50%";n          dot.style.background = color;n          dot.style.left = Math.random() * 100 + "%";n          dot.style.setProperty("--wind", wind + "px");n          dot.style.animation = `sbg-particleFloat ${speed + Math.random() * speed}s infinite linear`;n          dot.style.animationDelay = Math.random() * speed + "s";n          container.appendChild(dot);n        }n        previewCanvas.appendChild(container);n      }
-      function createWavesLayer(){n        const container = document.createElement("div");n        container.style.position = "absolute";n        container.style.inset = "0";n        container.style.overflow = "hidden";n        const count = parseInt(el("waveCount").value,10);n        const opacity = parseInt(el("waveOpacity").value,10) / 10;n        const colors = [el("waveColor1").value, el("waveColor2").value, el("waveColor3").value];n        const speed = parseInt(el("waveSpeed").value,10);n        for(let i=0;i<count;i++){n          const wave = document.createElement("div");n          wave.style.position = "absolute";n          wave.style.width = "200%";n          wave.style.height = "200%";n          wave.style.borderRadius = "40%";n          wave.style.background = colors[i % 3];n          wave.style.opacity = opacity;n          wave.style.top = i * (100 / count) + "%";n          wave.style.left = "-50%";n          wave.style.animation = `sbg-waveRotate ${speed / (i + 1)}s infinite linear`;n          container.appendChild(wave);n        }n        previewCanvas.appendChild(container);n      }
-      function createAuroraLayer(){n        const container = document.createElement("div");n        container.style.position = "absolute";n        container.style.inset = "0";n        container.style.background = "radial-gradient(circle at 0 0,rgba(15,23,42,0.9),#020617)";n        const count = parseInt(el("auroraCount").value,10);n        const blur = parseInt(el("auroraBlur").value,10);n        const speed = parseInt(el("auroraSpeed").value,10);n        const colors = [el("auroraColor1").value, el("auroraColor2").value, el("auroraColor3").value];n        for(let i=0;i<count;i++){n          const ribbon = document.createElement("div");n          ribbon.style.position = "absolute";n          ribbon.style.width = "160%";n          ribbon.style.height = "60%";n          ribbon.style.background = `radial-gradient(circle at 20% 0%,${colors[i % colors.length]},transparent 70%)`;n          ribbon.style.filter = `blur(${blur}px)`;n          ribbon.style.opacity = "0.8";n          ribbon.style.left = "-30%";n          ribbon.style.top = i * (40 / count) + "%";n          ribbon.style.mixBlendMode = "screen";n          ribbon.style.animation = `sbg-auroraDrift ${speed + i * 5}s infinite alternate ease-in-out`;n          container.appendChild(ribbon);n        }n        previewCanvas.appendChild(container);n      }
-      function createStripesLayer(){n        const container = document.createElement("div");n        container.style.position = "absolute";n        container.style.inset = "0";n        const angle = parseInt(el("stripesAngle").value,10);n        const w = parseInt(el("stripesWidth").value,10);n        const g = parseInt(el("stripesGap").value,10);n        const color = el("stripesColor").value;n        const bg = el("stripesBg").value;n        const speed = parseInt(el("stripesSpeed").value,10);n        container.style.backgroundColor = bg;n        container.style.backgroundImage = `repeating-linear-gradient(${angle}deg,${color} 0,${color} ${w}px,transparent ${w}px,transparent ${w+g}px)`;n        container.style.animation = `sbg-stripesShift ${speed}s linear infinite`;n        previewCanvas.appendChild(container);n      }
-      function createBlobsLayer(){n        const container = document.createElement("div");n        container.style.position = "absolute";n        container.style.inset = "0";n        container.style.background = "#020617";n        const count = parseInt(el("blobCount").value,10);n        const base = parseInt(el("blobSize").value,10);n        const blur = parseInt(el("blobBlur").value,10);n        const speed = parseInt(el("blobSpeed").value,10);n        const colors = [el("blobColor1").value, el("blobColor2").value, el("blobColor3").value];n        for(let i=0;i<count;i++){n          const blob = document.createElement("div");n          const size = base * (0.7 + Math.random() * 0.6);n          blob.style.position = "absolute";n          blob.style.width = size + "px";n          blob.style.height = size + "px";n          blob.style.borderRadius = "50%";n          blob.style.background = colors[i % colors.length];n          blob.style.filter = `blur(${blur}px)`;n          blob.style.opacity = "0.9";n          blob.style.left = Math.random() * 80 + "%";n          blob.style.top = Math.random() * 80 + "%";n          blob.style.mixBlendMode = "screen";n          blob.style.setProperty("--dx",(Math.random() - 0.5) * 80 + "px");n          blob.style.setProperty("--dy",(Math.random() - 0.5) * 80 + "px");n          blob.style.animation = `sbg-blobDrift ${speed + Math.random() * speed}s infinite ease-in-out`;n          container.appendChild(blob);n        }n        previewCanvas.appendChild(container);n      }
-      function renderPreview(){n        clearPreview();n        if(currentType === "gradient") createGradientLayer();n        if(currentType === "bokeh") createBokehLayer();n        if(currentType === "particles") createParticlesLayer();n        if(currentType === "waves") createWavesLayer();n        if(currentType === "aurora") createAuroraLayer();n        if(currentType === "stripes") createStripesLayer();n        if(currentType === "blobs") createBlobsLayer();n        applyPauseState();n        generateCode();n      }
-      function generateCode(){n        let css = "@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}\\n";n        css += "@keyframes bokehMotion{0%{transform:translate(0,0)}100%{transform:translate(var(--moveX),var(--moveY))}}\\n";n        css += "@keyframes particleFloat{0%{transform:translateY(100%) translateX(0);opacity:1}100%{transform:translateY(-20%) translateX(var(--wind));opacity:0}}\\n";n        css += "@keyframes waveRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}\\n";n        css += "@keyframes auroraDrift{0%{transform:translateX(-10%) translateY(-10%) rotate(0deg)}50%{transform:translateX(5%) translateY(10%) rotate(10deg)}100%{transform:translateX(-10%) translateY(-10%) rotate(0deg)}}\\n";n        css += "@keyframes stripesShift{0%{background-position:0 0}100%{background-position:200px 200px}}\\n";n        css += "@keyframes blobDrift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(var(--dx),var(--dy)) scale(1.3)}100%{transform:translate(0,0) scale(1)}}\\n\\n";n        css += ".bg-animated{position:relative;overflow:hidden}\\n";n        css += ".bg-animated>*{position:relative;z-index:1}\\n\\n";
+      let currentType = "gradient";
+let isPaused = false;
+let activeTab = "css";
+      const gradientPresets = [n        { id:"sunset", label:"Sunset", angle:45, colors:["#ff9a9e","#fad0c4","#ffecd2"] },
+{ id:"aurora", label:"Aurora", angle:120, colors:["#43cea2","#185a9d","#2b5876"] },
+{ id:"midnight", label:"Midnight", angle:135, colors:["#141e30","#243b55","#0b1220"] },
+{ id:"candy", label:"Candy", angle:60, colors:["#f093fb","#f5576c","#f9dd94"] },
+{ id:"ocean", label:"Ocean", angle:160, colors:["#00c6ff","#0072ff","#001f54"] }
+];
+      function showToast(msg){
+toastMessage.textContent = msg;
+toast.classList.add("show");
+setTimeout(() => toast.classList.remove("show"), 1800);
+}
+      function syncSections(type){
+Object.keys(sections).forEach(key => sections[key].hidden = key !== type);
+}
+      function setType(type){
+currentType = type;
+qa('.sbg-segmented').forEach(btn => {
+btn.classList.toggle('active', btn.dataset.type === type);
+});
+syncSections(type);
+renderPreview();
+}
+      qa('.sbg-segmented').forEach(btn => {
+btn.addEventListener('click', () => setType(btn.dataset.type));
+});
+      function attachSlider(sliderKey, labelKey, suffix = "", transformFn){
+const slider = el(sliderKey);
+const label = el(labelKey);
+const update = () => {
+const raw = slider.value;
+const v = transformFn ? transformFn(raw) : raw;
+label.textContent = v + suffix;
+renderPreview();
+};
+slider.addEventListener("input", update);
+update();
+}
+      attachSlider("gradientAngle","gradientAngleValue","°");
+attachSlider("gradientSpeed","gradientSpeedValue","s");
+["gradientColor1","gradientColor2","gradientColor3"].forEach(k => el(k).addEventListener("input", renderPreview));
+      attachSlider("bokehCount","bokehCountValue");
+attachSlider("bokehSize","bokehSizeValue","px");
+attachSlider("bokehBlur","bokehBlurValue","px");
+["bokehColor1","bokehColor2"].forEach(k => el(k).addEventListener("input", renderPreview));
+attachSlider("bokehSpeed","bokehSpeedValue","s");
+      attachSlider("particleCount","particleCountValue");
+attachSlider("particleSize","particleSizeValue","px");
+attachSlider("particleSpeed","particleSpeedValue","s");
+el("particleColor").addEventListener("input", renderPreview);
+attachSlider("windEffect","windEffectValue","px");
+      attachSlider("waveCount","waveCountValue");
+attachSlider("waveOpacity","waveOpacityValue","", v => (v / 10).toFixed(1));
+["waveColor1","waveColor2","waveColor3"].forEach(k => el(k).addEventListener("input", renderPreview));
+attachSlider("waveSpeed","waveSpeedValue","s");
+      attachSlider("auroraCount","auroraCountValue");
+attachSlider("auroraBlur","auroraBlurValue","px");
+["auroraColor1","auroraColor2","auroraColor3"].forEach(k => el(k).addEventListener("input", renderPreview));
+attachSlider("auroraSpeed","auroraSpeedValue","s");
+      attachSlider("stripesAngle","stripesAngleValue","°");
+attachSlider("stripesWidth","stripesWidthValue","px");
+attachSlider("stripesGap","stripesGapValue","px");
+["stripesColor","stripesBg"].forEach(k => el(k).addEventListener("input", renderPreview));
+attachSlider("stripesSpeed","stripesSpeedValue","s");
+      attachSlider("blobCount","blobCountValue");
+attachSlider("blobSize","blobSizeValue","px");
+attachSlider("blobBlur","blobBlurValue","px");
+["blobColor1","blobColor2","blobColor3"].forEach(k => el(k).addEventListener("input", renderPreview));
+attachSlider("blobSpeed","blobSpeedValue","s");
+      function clearPreview(){
+previewCanvas.innerHTML = "";
+}
+      function createGradientLayer(){
+const = document.createElement("div");
+n.style.position = "absolute";
+n.style.inset = "0";
+n.style.background = `linear-gradient(${el("gradientAngle").value}deg,${el("gradientColor1").value},${el("gradientColor2").value},${el("gradientColor3").value})`;
+n.style.backgroundSize = "400% 400%";
+n.style.animation = `sbg-gradientShift ${el("gradientSpeed").value}s infinite ease`;
+previewCanvas.appendChild(n);
+}
+      function createBokehLayer(){
+const container = document.createElement("div");
+container.style.position = "absolute";
+container.style.inset = "0";
+const count = parseInt(el("bokehCount").value,10);
+const size = parseInt(el("bokehSize").value,10);
+const blur = parseInt(el("bokehBlur").value,10);
+const speed = parseInt(el("bokehSpeed").value,10);
+const c1 = el("bokehColor1").value;
+const c2 = el("bokehColor2").value;
+for(let i=0;i<count;i++){
+const bubble = document.createElement("span");
+const s = size * (0.7 + Math.random() * 0.6);
+bubble.style.position = "absolute";
+bubble.style.width = s + "px";
+bubble.style.height = s + "px";
+bubble.style.borderRadius = "50%";
+bubble.style.filter = `blur(${blur}px)`;
+bubble.style.background = i % 2 === 0 ? c1 : c2;
+bubble.style.left = Math.random() * 100 + "%";
+bubble.style.top = Math.random() * 100 + "%";
+bubble.style.setProperty("--moveX",(Math.random() - 0.5) * 120 + "px");
+bubble.style.setProperty("--moveY",(Math.random() - 0.5) * 120 + "px");
+bubble.style.animation = `sbg-bokehMotion ${speed + Math.random() * speed}s infinite alternate ease-in-out`;
+container.appendChild(bubble);
+}
+previewCanvas.appendChild(container);
+}
+      function createParticlesLayer(){
+const container = document.createElement("div");
+container.style.position = "absolute";
+container.style.inset = "0";
+container.style.background = "#020617";
+const count = parseInt(el("particleCount").value,10);
+const size = parseInt(el("particleSize").value,10);
+const speed = parseInt(el("particleSpeed").value,10);
+const color = el("particleColor").value;
+const wind = parseInt(el("windEffect").value,10);
+for(let i=0;i<count;i++){
+const dot = document.createElement("span");
+const s = size * (0.7 + Math.random() * 0.6);
+dot.style.position = "absolute";
+dot.style.width = s + "px";
+dot.style.height = s + "px";
+dot.style.borderRadius = "50%";
+dot.style.background = color;
+dot.style.left = Math.random() * 100 + "%";
+dot.style.setProperty("--wind", wind + "px");
+dot.style.animation = `sbg-particleFloat ${speed + Math.random() * speed}s infinite linear`;
+dot.style.animationDelay = Math.random() * speed + "s";
+container.appendChild(dot);
+}
+previewCanvas.appendChild(container);
+}
+      function createWavesLayer(){
+const container = document.createElement("div");
+container.style.position = "absolute";
+container.style.inset = "0";
+container.style.overflow = "hidden";
+const count = parseInt(el("waveCount").value,10);
+const opacity = parseInt(el("waveOpacity").value,10) / 10;
+const colors = [el("waveColor1").value, el("waveColor2").value, el("waveColor3").value];
+const speed = parseInt(el("waveSpeed").value,10);
+for(let i=0;i<count;i++){
+const wave = document.createElement("div");
+wave.style.position = "absolute";
+wave.style.width = "200%";
+wave.style.height = "200%";
+wave.style.borderRadius = "40%";
+wave.style.background = colors[i % 3];
+wave.style.opacity = opacity;
+wave.style.top = i * (100 / count) + "%";
+wave.style.left = "-50%";
+wave.style.animation = `sbg-waveRotate ${speed / (i + 1)}s infinite linear`;
+container.appendChild(wave);
+}
+previewCanvas.appendChild(container);
+}
+      function createAuroraLayer(){
+const container = document.createElement("div");
+container.style.position = "absolute";
+container.style.inset = "0";
+container.style.background = "radial-gradient(circle at 0 0,rgba(15,23,42,0.9),#020617)";
+const count = parseInt(el("auroraCount").value,10);
+const blur = parseInt(el("auroraBlur").value,10);
+const speed = parseInt(el("auroraSpeed").value,10);
+const colors = [el("auroraColor1").value, el("auroraColor2").value, el("auroraColor3").value];
+for(let i=0;i<count;i++){
+const ribbon = document.createElement("div");
+ribbon.style.position = "absolute";
+ribbon.style.width = "160%";
+ribbon.style.height = "60%";
+ribbon.style.background = `radial-gradient(circle at 20% 0%,${colors[i % colors.length]},transparent 70%)`;
+ribbon.style.filter = `blur(${blur}px)`;
+ribbon.style.opacity = "0.8";
+ribbon.style.left = "-30%";
+ribbon.style.top = i * (40 / count) + "%";
+ribbon.style.mixBlendMode = "screen";
+ribbon.style.animation = `sbg-auroraDrift ${speed + i * 5}s infinite alternate ease-in-out`;
+container.appendChild(ribbon);
+}
+previewCanvas.appendChild(container);
+}
+      function createStripesLayer(){
+const container = document.createElement("div");
+container.style.position = "absolute";
+container.style.inset = "0";
+const angle = parseInt(el("stripesAngle").value,10);
+const w = parseInt(el("stripesWidth").value,10);
+const g = parseInt(el("stripesGap").value,10);
+const color = el("stripesColor").value;
+const bg = el("stripesBg").value;
+const speed = parseInt(el("stripesSpeed").value,10);
+container.style.backgroundColor = bg;
+container.style.backgroundImage = `repeating-linear-gradient(${angle}deg,${color} 0,${color} ${w}px,transparent ${w}px,transparent ${w+g}px)`;
+container.style.animation = `sbg-stripesShift ${speed}s linear infinite`;
+previewCanvas.appendChild(container);
+}
+      function createBlobsLayer(){
+const container = document.createElement("div");
+container.style.position = "absolute";
+container.style.inset = "0";
+container.style.background = "#020617";
+const count = parseInt(el("blobCount").value,10);
+const base = parseInt(el("blobSize").value,10);
+const blur = parseInt(el("blobBlur").value,10);
+const speed = parseInt(el("blobSpeed").value,10);
+const colors = [el("blobColor1").value, el("blobColor2").value, el("blobColor3").value];
+for(let i=0;i<count;i++){
+const blob = document.createElement("div");
+const size = base * (0.7 + Math.random() * 0.6);
+blob.style.position = "absolute";
+blob.style.width = size + "px";
+blob.style.height = size + "px";
+blob.style.borderRadius = "50%";
+blob.style.background = colors[i % colors.length];
+blob.style.filter = `blur(${blur}px)`;
+blob.style.opacity = "0.9";
+blob.style.left = Math.random() * 80 + "%";
+blob.style.top = Math.random() * 80 + "%";
+blob.style.mixBlendMode = "screen";
+blob.style.setProperty("--dx",(Math.random() - 0.5) * 80 + "px");
+blob.style.setProperty("--dy",(Math.random() - 0.5) * 80 + "px");
+blob.style.animation = `sbg-blobDrift ${speed + Math.random() * speed}s infinite ease-in-out`;
+container.appendChild(blob);
+}
+previewCanvas.appendChild(container);
+}
+      function renderPreview(){
+clearPreview();
+if(currentType === "gradient") createGradientLayer();
+if(currentType === "bokeh") createBokehLayer();
+if(currentType === "particles") createParticlesLayer();
+if(currentType === "waves") createWavesLayer();
+if(currentType === "aurora") createAuroraLayer();
+if(currentType === "stripes") createStripesLayer();
+if(currentType === "blobs") createBlobsLayer();
+applyPauseState();
+generateCode();
+}
+      function generateCode(){
+let css = "@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}\\n";
+css += "@keyframes bokehMotion{0%{transform:translate(0,0)}100%{transform:translate(var(--moveX),var(--moveY))}}\\n";
+css += "@keyframes particleFloat{0%{transform:translateY(100%) translateX(0);opacity:1}100%{transform:translateY(-20%) translateX(var(--wind));opacity:0}}\\n";
+css += "@keyframes waveRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}\\n";
+css += "@keyframes auroraDrift{0%{transform:translateX(-10%) translateY(-10%) rotate(0deg)}50%{transform:translateX(5%) translateY(10%) rotate(10deg)}100%{transform:translateX(-10%) translateY(-10%) rotate(0deg)}}\\n";
+css += "@keyframes stripesShift{0%{background-position:0 0}100%{background-position:200px 200px}}\\n";
+css += "@keyframes blobDrift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(var(--dx),var(--dy)) scale(1.3)}100%{transform:translate(0,0) scale(1)}}\\n\\n";
+css += ".bg-animated{position:relative;overflow:hidden}\\n";
+css += ".bg-animated>*{position:relative;z-index:1}\\n\\n";
         let html = "<div class=\\\"bg-animated\\\">\\n  <!-- your content here -->\\n";
-        if(currentType === "gradient"){n          css += ".bg-animated::before{content:\\\"\\\";position:absolute;inset:0;";n          css += "background:linear-gradient(" + el("gradientAngle").value + "deg," + el("gradientColor1").value + "," + el("gradientColor2").value + "," + el("gradientColor3").value + ");";n          css += "background-size:400% 400%;animation:gradientShift " + el("gradientSpeed").value + "s infinite ease;z-index:0}\\n";n        } else if(currentType === "bokeh"){n          css += ".bg-animated{background:#020617}\\n";n          css += ".bg-animated .bokeh{position:absolute;inset:0;z-index:0}\\n";n          css += ".bg-animated .bokeh span{position:absolute;border-radius:50%;filter:blur(" + el("bokehBlur").value + "px);animation:bokehMotion " + el("bokehSpeed").value + "s infinite alternate ease-in-out}\\n";n          html += "  <div class=\\\"bokeh\\\">\\n    <span style=\\\"--moveX:60px;--moveY:-40px;width:40px;height:40px;left:10%;top:20%;background:" + el("bokehColor1").value + ";\\\"></span>\\n    <span style=\\\"--moveX:-80px;--moveY:50px;width:50px;height:50px;left:70%;top:60%;background:" + el("bokehColor2").value + ";\\\"></span>\\n  </div>\\n";n        } else if(currentType === "particles"){n          css += ".bg-animated{background:#020617}\\n";n          css += ".bg-animated .particles{position:absolute;inset:0;z-index:0}\\n";n          css += ".bg-animated .particles span{position:absolute;border-radius:50%;background:" + el("particleColor").value + ";animation:particleFloat " + el("particleSpeed").value + "s infinite linear}\\n";n          html += "  <div class=\\\"particles\\\">\\n    <span style=\\\"left:10%;width:4px;height:4px;--wind:" + el("windEffect").value + "px;\\\"></span>\\n    <span style=\\\"left:40%;width:6px;height:6px;--wind:" + el("windEffect").value + "px;\\\"></span>\\n    <span style=\\\"left:70%;width:3px;height:3px;--wind:" + el("windEffect").value + "px;\\\"></span>\\n  </div>\\n";n        } else if(currentType === "waves"){n          css += ".bg-animated{background:#020617}\\n";n          css += ".bg-animated .wave-layer{position:absolute;inset:0;overflow:hidden;z-index:0}\\n";n          css += ".bg-animated .wave-layer .wave{position:absolute;width:200%;height:200%;border-radius:40%;opacity:" + (el("waveOpacity").value / 10).toFixed(1) + ";animation:waveRotate " + el("waveSpeed").value + "s infinite linear}\\n";n          html += "  <div class=\\\"wave-layer\\\">\\n    <div class=\\\"wave\\\" style=\\\"background:" + el("waveColor1").value + ";top:0;left:-50%;\\\"></div>\\n    <div class=\\\"wave\\\" style=\\\"background:" + el("waveColor2").value + ";top:30%;left:-60%;animation-duration:" + (el("waveSpeed").value / 2) + "s;\\\"></div>\\n  </div>\\n";n        } else if(currentType === "aurora"){n          css += ".bg-animated{background:#020617}\\n";n          css += ".bg-animated .aurora-layer{position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 0 0,rgba(15,23,42,0.9),#020617)}\\n";n          css += ".bg-animated .aurora-layer .ribbon{position:absolute;width:160%;height:60%;mix-blend-mode:screen;opacity:.8;filter:blur(" + el("auroraBlur").value + "px);animation:auroraDrift " + el("auroraSpeed").value + "s infinite alternate ease-in-out}\\n";n          html += "  <div class=\\\"aurora-layer\\\">\\n    <div class=\\\"ribbon\\\" style=\\\"background:radial-gradient(circle at 20% 0%," + el("auroraColor1").value + ",transparent 70%);left:-30%;top:0;\\\"></div>\\n    <div class=\\\"ribbon\\\" style=\\\"background:radial-gradient(circle at 20% 0%," + el("auroraColor2").value + ",transparent 70%);left:-20%;top:30%;animation-duration:" + (el("auroraSpeed").value * 1.2) + "s;\\\"></div>\\n  </div>\\n";n        } else if(currentType === "stripes"){n          const total = parseInt(el("stripesWidth").value,10) + parseInt(el("stripesGap").value,10);n          css += ".bg-animated{background:" + el("stripesBg").value + "}\\n";n          css += ".bg-animated::before{content:\\\"\\\";position:absolute;inset:0;background:repeating-linear-gradient(" + el("stripesAngle").value + "deg," + el("stripesColor").value + " 0," + el("stripesColor").value + " " + el("stripesWidth").value + "px,transparent " + el("stripesWidth").value + "px,transparent " + total + "px);animation:stripesShift " + el("stripesSpeed").value + "s linear infinite;opacity:.9;z-index:0}\\n";n        } else if(currentType === "blobs"){n          css += ".bg-animated{background:#020617}\\n";n          css += ".bg-animated .blob-layer{position:absolute;inset:0;z-index:0}\\n";n          css += ".bg-animated .blob-layer .blob{position:absolute;border-radius:50%;filter:blur(" + el("blobBlur").value + "px);mix-blend-mode:screen;opacity:.9;animation:blobDrift " + el("blobSpeed").value + "s infinite ease-in-out}\\n";n          html += "  <div class=\\\"blob-layer\\\">\\n    <div class=\\\"blob\\\" style=\\\"width:" + el("blobSize").value + "px;height:" + el("blobSize").value + "px;left:10%;top:20%;background:" + el("blobColor1").value + ";--dx:60px;--dy:-40px;\\\"></div>\\n    <div class=\\\"blob\\\" style=\\\"width:" + (el("blobSize").value * 0.8) + "px;height:" + (el("blobSize").value * 0.8) + "px;left:60%;top:50%;background:" + el("blobColor2").value + ";--dx:-40px;--dy:50px;\\\"></div>\\n  </div>\\n";n        }
-        if(activeTab === "css"){n          codeOutput.textContent = css;n        } else {n          codeOutput.textContent = html + "</div>\\n\\n/* CSS */\\n" + css;n        }n      }
-      qa('.sbg-code-tab-btn').forEach(btn => {n        btn.addEventListener('click', () => {n          qa('.sbg-code-tab-btn').forEach(b => b.classList.remove('active'));n          btn.classList.add('active');n          activeTab = btn.dataset.tab;n          generateCode();n        });n      });
-      function applyPauseState(){n        const state = isPaused ? "paused" : "running";n        previewCanvas.querySelectorAll("*").forEach(node => node.style.animationPlayState = state);n        previewStatusLabel.textContent = isPaused ? "Paused" : "Playing";n        btnPlayPause.querySelector("span:last-child").textContent = isPaused ? "Play" : "Pause";n      }
-      btnGenerate.addEventListener("click", () => {n        generateCode();n        showToast("CSS refreshed");n      });
-      function randomHex(){n        return "#" + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6,"0");n      }
-      btnRandom.addEventListener("click", () => {n        const types = ["gradient","bokeh","particles","waves","aurora","stripes","blobs"];n        setType(types[Math.floor(Math.random() * types.length)]);n        el("gradientAngle").value = Math.floor(Math.random() * 360);n        el("gradientSpeed").value = 4 + Math.floor(Math.random() * 18);n        el("gradientColor1").value = randomHex();n        el("gradientColor2").value = randomHex();n        el("gradientColor3").value = randomHex();n        el("gradientAngleValue").textContent = el("gradientAngle").value + "°";n        el("gradientSpeedValue").textContent = el("gradientSpeed").value + "s";n        renderPreview();n        showToast("Random mood applied");n      });
-      btnCopy.addEventListener("click", () => {n        navigator.clipboard.writeText(codeOutput.textContent || "").then(() => showToast("Code copied"));n      });
-      btnPlayPause.addEventListener("click", () => {n        isPaused = !isPaused;n        applyPauseState();n      });
-      btnRefresh.addEventListener("click", () => {n        renderPreview();n        showToast("Preview refreshed");n      });
-      const paletteRow = el("gradientPaletteRow");n      gradientPresets.forEach(p => {n        const chip = document.createElement("button");n        chip.type = "button";n        chip.className = "sbg-palette-chip";n        chip.dataset.id = p.id;n        chip.innerHTML = '<div class="sbg-palette-swatch" style="background-image:linear-gradient(' + p.angle + 'deg,' + p.colors.join(",") + ')"></div><div class="sbg-palette-label"><span>' + p.label + '</span><span>' + p.angle + '°</span></div>';n        chip.addEventListener("click", () => {n          qa('.sbg-palette-chip').forEach(c => c.classList.remove('active'));n          chip.classList.add('active');n          el("gradientAngle").value = p.angle;n          el("gradientAngleValue").textContent = p.angle + "°";n          el("gradientColor1").value = p.colors[0];n          el("gradientColor2").value = p.colors[1] || p.colors[0];n          el("gradientColor3").value = p.colors[2] || p.colors[1] || p.colors[0];n          renderPreview();n        });n        paletteRow.appendChild(chip);n      });
-      const firstPalette = q('.sbg-palette-chip');n      if(firstPalette) firstPalette.classList.add('active');
-      renderPreview();n    })();n  </script></div></div>
+        if(currentType === "gradient"){
+css += ".bg-animated::before{content:\\\"\\\";position:absolute;inset:0;";
+css += "background:linear-gradient(" + el("gradientAngle").value + "deg," + el("gradientColor1").value + "," + el("gradientColor2").value + "," + el("gradientColor3").value + ");";
+css += "background-size:400% 400%;animation:gradientShift " + el("gradientSpeed").value + "s infinite ease;z-index:0}\\n";
+} else if(currentType === "bokeh"){
+css += ".bg-animated{background:#020617}\\n";
+css += ".bg-animated .bokeh{position:absolute;inset:0;z-index:0}\\n";
+css += ".bg-animated .bokeh span{position:absolute;border-radius:50%;filter:blur(" + el("bokehBlur").value + "px);animation:bokehMotion " + el("bokehSpeed").value + "s infinite alternate ease-in-out}\\n";
+html += "  <div class=\\\"bokeh\\\">\\n    <span style=\\\"--moveX:60px;--moveY:-40px;width:40px;height:40px;left:10%;top:20%;background:" + el("bokehColor1").value + ";\\\"></span>\\n    <span style=\\\"--moveX:-80px;--moveY:50px;width:50px;height:50px;left:70%;top:60%;background:" + el("bokehColor2").value + ";\\\"></span>\\n  </div>\\n";
+} else if(currentType === "particles"){
+css += ".bg-animated{background:#020617}\\n";
+css += ".bg-animated .particles{position:absolute;inset:0;z-index:0}\\n";
+css += ".bg-animated .particles span{position:absolute;border-radius:50%;background:" + el("particleColor").value + ";animation:particleFloat " + el("particleSpeed").value + "s infinite linear}\\n";
+html += "  <div class=\\\"particles\\\">\\n    <span style=\\\"left:10%;width:4px;height:4px;--wind:" + el("windEffect").value + "px;\\\"></span>\\n    <span style=\\\"left:40%;width:6px;height:6px;--wind:" + el("windEffect").value + "px;\\\"></span>\\n    <span style=\\\"left:70%;width:3px;height:3px;--wind:" + el("windEffect").value + "px;\\\"></span>\\n  </div>\\n";
+} else if(currentType === "waves"){
+css += ".bg-animated{background:#020617}\\n";
+css += ".bg-animated .wave-layer{position:absolute;inset:0;overflow:hidden;z-index:0}\\n";
+css += ".bg-animated .wave-layer .wave{position:absolute;width:200%;height:200%;border-radius:40%;opacity:" + (el("waveOpacity").value / 10).toFixed(1) + ";animation:waveRotate " + el("waveSpeed").value + "s infinite linear}\\n";
+html += "  <div class=\\\"wave-layer\\\">\\n    <div class=\\\"wave\\\" style=\\\"background:" + el("waveColor1").value + ";top:0;left:-50%;\\\"></div>\\n    <div class=\\\"wave\\\" style=\\\"background:" + el("waveColor2").value + ";top:30%;left:-60%;animation-duration:" + (el("waveSpeed").value / 2) + "s;\\\"></div>\\n  </div>\\n";
+} else if(currentType === "aurora"){
+css += ".bg-animated{background:#020617}\\n";
+css += ".bg-animated .aurora-layer{position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 0 0,rgba(15,23,42,0.9),#020617)}\\n";
+css += ".bg-animated .aurora-layer .ribbon{position:absolute;width:160%;height:60%;mix-blend-mode:screen;opacity:.8;filter:blur(" + el("auroraBlur").value + "px);animation:auroraDrift " + el("auroraSpeed").value + "s infinite alternate ease-in-out}\\n";
+html += "  <div class=\\\"aurora-layer\\\">\\n    <div class=\\\"ribbon\\\" style=\\\"background:radial-gradient(circle at 20% 0%," + el("auroraColor1").value + ",transparent 70%);left:-30%;top:0;\\\"></div>\\n    <div class=\\\"ribbon\\\" style=\\\"background:radial-gradient(circle at 20% 0%," + el("auroraColor2").value + ",transparent 70%);left:-20%;top:30%;animation-duration:" + (el("auroraSpeed").value * 1.2) + "s;\\\"></div>\\n  </div>\\n";
+} else if(currentType === "stripes"){
+const total = parseInt(el("stripesWidth").value,10) + parseInt(el("stripesGap").value,10);
+css += ".bg-animated{background:" + el("stripesBg").value + "}\\n";
+css += ".bg-animated::before{content:\\\"\\\";position:absolute;inset:0;background:repeating-linear-gradient(" + el("stripesAngle").value + "deg," + el("stripesColor").value + " 0," + el("stripesColor").value + " " + el("stripesWidth").value + "px,transparent " + el("stripesWidth").value + "px,transparent " + total + "px);animation:stripesShift " + el("stripesSpeed").value + "s linear infinite;opacity:.9;z-index:0}\\n";
+} else if(currentType === "blobs"){
+css += ".bg-animated{background:#020617}\\n";
+css += ".bg-animated .blob-layer{position:absolute;inset:0;z-index:0}\\n";
+css += ".bg-animated .blob-layer .blob{position:absolute;border-radius:50%;filter:blur(" + el("blobBlur").value + "px);mix-blend-mode:screen;opacity:.9;animation:blobDrift " + el("blobSpeed").value + "s infinite ease-in-out}\\n";
+html += "  <div class=\\\"blob-layer\\\">\\n    <div class=\\\"blob\\\" style=\\\"width:" + el("blobSize").value + "px;height:" + el("blobSize").value + "px;left:10%;top:20%;background:" + el("blobColor1").value + ";--dx:60px;--dy:-40px;\\\"></div>\\n    <div class=\\\"blob\\\" style=\\\"width:" + (el("blobSize").value * 0.8) + "px;height:" + (el("blobSize").value * 0.8) + "px;left:60%;top:50%;background:" + el("blobColor2").value + ";--dx:-40px;--dy:50px;\\\"></div>\\n  </div>\\n";
+}
+        if(activeTab === "css"){
+codeOutput.textContent = css;
+} else {
+codeOutput.textContent = html + "</div>\\n\\n/* CSS */\\n" + css;
+}
+}
+      qa('.sbg-code-tab-btn').forEach(btn => {
+btn.addEventListener('click', () => {
+qa('.sbg-code-tab-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+activeTab = btn.dataset.tab;
+generateCode();
+});
+});
+      function applyPauseState(){
+const state = isPaused ? "paused" : "running";
+previewCanvas.querySelectorAll("*").forEach(node => node.style.animationPlayState = state);
+previewStatusLabel.textContent = isPaused ? "Paused" : "Playing";
+btnPlayPause.querySelector("span:last-child").textContent = isPaused ? "Play" : "Pause";
+}
+      btnGenerate.addEventListener("click", () => {
+generateCode();
+showToast("CSS refreshed");
+});
+      function randomHex(){
+return "#" + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6,"0");
+}
+      btnRandom.addEventListener("click", () => {
+const types = ["gradient","bokeh","particles","waves","aurora","stripes","blobs"];
+setType(types[Math.floor(Math.random() * types.length)]);
+el("gradientAngle").value = Math.floor(Math.random() * 360);
+el("gradientSpeed").value = 4 + Math.floor(Math.random() * 18);
+el("gradientColor1").value = randomHex();
+el("gradientColor2").value = randomHex();
+el("gradientColor3").value = randomHex();
+el("gradientAngleValue").textContent = el("gradientAngle").value + "°";
+el("gradientSpeedValue").textContent = el("gradientSpeed").value + "s";
+renderPreview();
+showToast("Random mood applied");
+});
+      btnCopy.addEventListener("click", () => {
+navigator.clipboard.writeText(codeOutput.textContent || "").then(() => showToast("Code copied"));
+});
+      btnPlayPause.addEventListener("click", () => {
+isPaused = !isPaused;
+applyPauseState();
+});
+      btnRefresh.addEventListener("click", () => {
+renderPreview();
+showToast("Preview refreshed");
+});
+      const paletteRow = el("gradientPaletteRow");
+gradientPresets.forEach(p => {
+const chip = document.createElement("button");
+chip.type = "button";
+chip.className = "sbg-palette-chip";
+chip.dataset.id = p.id;
+chip.innerHTML = '<div class="sbg-palette-swatch" style="background-image:linear-gradient(' + p.angle + 'deg,' + p.colors.join(",") + ')"></div><div class="sbg-palette-label"><span>' + p.label + '</span><span>' + p.angle + '°</span></div>';
+chip.addEventListener("click", () => {
+qa('.sbg-palette-chip').forEach(c => c.classList.remove('active'));
+chip.classList.add('active');
+el("gradientAngle").value = p.angle;
+el("gradientAngleValue").textContent = p.angle + "°";
+el("gradientColor1").value = p.colors[0];
+el("gradientColor2").value = p.colors[1] || p.colors[0];
+el("gradientColor3").value = p.colors[2] || p.colors[1] || p.colors[0];
+renderPreview();
+});
+paletteRow.appendChild(chip);
+});
+      const firstPalette = q('.sbg-palette-chip');
+if(firstPalette) firstPalette.classList.add('active');
+      renderPreview();
+})();
+</script></div></div>
 <div class="wp-block-rank-math-toc-block" id="rank-math-toc"><nav><div><div class=""><a href="#css-background-animation-generator-create-stunning-animated-backgrounds-for-your-website">CSS Background Animation Generator</a></div><div class=""><a href="#why-use-css-background-animations">Why Use CSS Background Animations?</a></div><div class=""><a href="#the-css-background-animation-generator">The CSS Background Animation Generator</a></div><div class=""><a href="#key-features">Key Features</a></div><div class=""><a href="#how-to-use-the-generator">How to Use the Generator</a></div><div class=""><a href="#animation-types-explained">Animation Types Explained</a></div><div class=""><a href="#gradient-animation">Gradient Animatio</a></div><div class=""><a href="#bokeh-effect">Bokeh Effect</a></div><div class=""><a href="#particles-animation">Particles Animatio</a></div><div class=""><a href="#waves-animation">Waves Animatio</a></div><div class=""><a href="#shooting-stars">Shooting Stars</a></div><div class=""><a href="#neon-glow">Neon Glow</a></div><div class=""><a href="#matrix-rain">Matrix Rai</a></div><div class=""><a href="#best-practices-for-using-animated-backgrounds">Best Practices for Using Animated Backgrounds</a></div><div class=""><a href="#conclusion">Conclusio</a></div><div class=""><a href="#frequently-asked-questions">Frequently Asked Questions</a><div><div class=""><a href="#faq-question-1742342364246">What is the CSS Background Animation Generator?</a></div><div class=""><a href="#faq-question-1742342382392">Is this tool completely free to use?</a></div><div class=""><a href="#faq-question-1742342398231">Do I need coding knowledge to use this generator?</a></div><div class=""><a href="#faq-question-1742342416219">Which browsers support these CSS animations?</a></div><div class=""><a href="#faq-question-1742342435370">What is the "Interactive Mode"?</a></div><div class=""><a href="#faq-question-1742342472021">How do animation layers work?</a></div><div class=""><a href="#faq-question-1742342493183">My animation looks different on mobile devices. How can I fix this?</a></div><div class=""><a href="#faq-question-1742342510656">The animation is causing accessibility issues. What should I do?</a></div><div class=""><a href="#faq-question-1742342536123">Can I save my animations for later use?</a></div></div></div></div></nav></div>
 <h2 id="css-background-animation-generator-create-stunning-animated-backgrounds-for-your-website" class="wp-block-heading">CSS Background Animation Generator</h2>
 <p>In today's competitive digital landscape, static websites no longer capture visitor attention effectively. CSS animations have become essential for creating engaging, memorable user experiences that keep visitors on your site longer. Our CSS Background Animation Generator offers a powerful, code-free solution for implementing beautiful animated backgrounds on any website.</p>
