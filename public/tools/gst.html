@@ -1,4 +1,67 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css"></head><body><script src="../core/shaynly.js"></script><script>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
+  <!-- Master Tool Theme Alignment -->
+  <style>
+    :root {
+      --primary: #d97706 !important;
+      --primary-hover: #b45309 !important;
+      --primary-light: #fef3c7 !important;
+      --border: #e2e8f0 !important;
+      --text: #1e293b !important;
+      --text-muted: #64748b !important;
+    }
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .tool-header-bar {
+      display: none !important;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .tool-render-area {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 20px;
+    }
+    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
+      background-color: #d97706 !important;
+      border-color: #d97706 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+    }
+    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
+      background-color: #b45309 !important;
+      border-color: #b45309 !important;
+    }
+  </style>
+
+</head><body>
+<header class="header">
+    <div class="header-wrap">
+      <a href="/" class="logo-area">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">Shaynly</span>
+        <span class="logo-tag">Business &amp; Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/category/technology/">Technology</a>
+        <a href="/category/marketing/">Marketing</a>
+        <a href="/category/management/">Management</a>
+        <a href="/tools/" class="active">Toolkit (100+)</a>
+        <a href="/tools/" class="nav-btn">All Tools</a>
+      </nav>
+    </div>
+  </header><script src="../core/shaynly.js"></script><script>
 Shaynly.page('GST Calculator',`<div class="f"><label for="a">Amount (₹)</label><input id="a" type="number" min="0" step="any" value="10000"></div><div class="row"><div class="f"><label for="r">GST rate %</label><input id="r" type="number" min="0" step="any" value="18" list="rl"><datalist id="rl"><option>0<option>3<option>5<option>18<option>40</datalist></div><div class="f"><label for="m">Amount is</label><select id="m"><option value="ex">Before GST</option><option value="in">Including GST</option></select></div></div><div class="f"><label for="sp">Supply</label><select id="sp"><option value="intra">Same state (CGST + SGST)</option><option value="inter">Different state (IGST)</option></select></div><p class="muted">Check the rate for your HSN or SAC code on the GST portal. Rates change.</p>`,'<div class="big" id="tot">–</div><table id="t" style="margin-top:12px"></table><p class="err" id="er" role="alert"></p><button class="btn alt" id="cp" style="margin-top:12px">Copy summary</button>');
 const $=i=>document.getElementById(i),f=n=>Shaynly.fmt(n,'INR');let sm='';
 function r(){const a=+$('a').value,p=+$('r').value,er=$('er');er.textContent='';if(!(a>=0)||!(p>=0)){er.textContent='Enter an amount and rate of zero or more.';return}
@@ -6,4 +69,49 @@ function r(){const a=+$('a').value,p=+$('r').value,er=$('er');er.textContent='';
  if($('sp').value==='intra')rows.push(['CGST @ '+p/2+'%',tax/2],['SGST @ '+p/2+'%',tax/2]);else rows.push(['IGST @ '+p+'%',tax]);
  $('tot').textContent=f(tot);$('t').innerHTML=rows.map(x=>`<tr><td>${x[0]}</td><td class="n">${f(x[1])}</td></tr>`).join('')+`<tr><th>Total</th><th class="n">${f(tot)}</th></tr>`;sm=rows.map(x=>x[0]+': '+f(x[1])).join('\n')+'\nTotal: '+f(tot)}
 document.querySelector('.grid').oninput=r;$('cp').onclick=()=>Shaynly.copy(sm);r();
-</script></body></html>
+</script><footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body></html>

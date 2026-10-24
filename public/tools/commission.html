@@ -1,5 +1,68 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Commission Calculator</title>
-<link rel="stylesheet" href="../core/shaynly.css"></head><body><div class="wrap"><div class="grid">
+<link rel="stylesheet" href="../core/shaynly.css">
+  <!-- Master Tool Theme Alignment -->
+  <style>
+    :root {
+      --primary: #d97706 !important;
+      --primary-hover: #b45309 !important;
+      --primary-light: #fef3c7 !important;
+      --border: #e2e8f0 !important;
+      --text: #1e293b !important;
+      --text-muted: #64748b !important;
+    }
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .tool-header-bar {
+      display: none !important;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .tool-render-area {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 20px;
+    }
+    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
+      background-color: #d97706 !important;
+      border-color: #d97706 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+    }
+    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
+      background-color: #b45309 !important;
+      border-color: #b45309 !important;
+    }
+  </style>
+
+</head><body>
+<header class="header">
+    <div class="header-wrap">
+      <a href="/" class="logo-area">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">Shaynly</span>
+        <span class="logo-tag">Business &amp; Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/category/technology/">Technology</a>
+        <a href="/category/marketing/">Marketing</a>
+        <a href="/category/management/">Management</a>
+        <a href="/tools/" class="active">Toolkit (100+)</a>
+        <a href="/tools/" class="nav-btn">All Tools</a>
+      </nav>
+    </div>
+  </header><div class="wrap"><div class="grid">
 <section class="panel"><h2>Commission plan</h2>
 <div class="row"><div class="f"><label for="cur">Currency</label><select id="cur"><option value="INR">₹ INR</option><option value="USD">$ USD</option><option value="GBP">£ GBP</option><option value="CAD">C$ CAD</option></select></div>
 <div class="f"><label for="mode">Method</label><select id="mode"><option value="marginal">Marginal: each slab earns its own rate</option><option value="retro">Retroactive: the top slab reached applies to all sales</option></select></div></div>
@@ -26,4 +89,49 @@ function calc(){const er=$('er');er.textContent='';rows=[];const t=tiers(),f=n=>
  else{const x=t.find(x=>x.upto===null||S<=x.upto);tot=S*x.rate/100;rows.push(['All sales',x.rate,S,tot])}
  $('pay').textContent=f(tot);$('bd').innerHTML='<tr><th>Slab</th><th class="n">Rate</th><th class="n">Sales</th><th class="n">Commission</th></tr>'+rows.map(r=>`<tr><td>${r[0]}</td><td class="n">${r[1]}%</td><td class="n">${f(r[2])}</td><td class="n">${f(r[3])}</td></tr>`).join('')+`<tr><th>Total</th><th></th><th class="n">${f(S)}</th><th class="n">${f(tot)}</th></tr>`}
 $('csv').onclick=()=>{if(!rows.length){Shaynly.toast('Enter total sales first');return}Shaynly.save(new Blob(['Slab,Rate %,Sales,Commission\n'+rows.map(r=>`"${r[0]}",${r[1]},${r[2].toFixed(2)},${r[3].toFixed(2)}`).join('\n')],{type:'text/csv'}),'commission.csv')};
-render();</script></body></html>
+render();</script><footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body></html>

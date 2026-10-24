@@ -1,4 +1,67 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css"></head><body><script src="../core/vendor/qrcode.js"></script><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
+  <!-- Master Tool Theme Alignment -->
+  <style>
+    :root {
+      --primary: #d97706 !important;
+      --primary-hover: #b45309 !important;
+      --primary-light: #fef3c7 !important;
+      --border: #e2e8f0 !important;
+      --text: #1e293b !important;
+      --text-muted: #64748b !important;
+    }
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .tool-header-bar {
+      display: none !important;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .tool-render-area {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 20px;
+    }
+    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
+      background-color: #d97706 !important;
+      border-color: #d97706 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+    }
+    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
+      background-color: #b45309 !important;
+      border-color: #b45309 !important;
+    }
+  </style>
+
+</head><body>
+<header class="header">
+    <div class="header-wrap">
+      <a href="/" class="logo-area">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">Shaynly</span>
+        <span class="logo-tag">Business &amp; Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/category/technology/">Technology</a>
+        <a href="/category/marketing/">Marketing</a>
+        <a href="/category/management/">Management</a>
+        <a href="/tools/" class="active">Toolkit (100+)</a>
+        <a href="/tools/" class="nav-btn">All Tools</a>
+      </nav>
+    </div>
+  </header><script src="../core/vendor/qrcode.js"></script><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const A=[['Technical','HTTPS on every page',3,'Browsers flag non-secure pages and it is a baseline trust signal.'],['Technical','Key pages are indexable (no accidental noindex)',3,'A stray noindex removes a page from Google entirely.'],['Technical','XML sitemap submitted in Search Console',2,'Helps discovery; check the Pages report for exclusions.'],['Technical','robots.txt does not block key pages or the AI crawlers you want',3,'Blocking GPTBot, ClaudeBot or PerplexityBot removes you from those tools; decide on purpose.'],['Technical','Canonical tags set where duplicate URLs exist',2,'Prevents split signals across parameter and duplicate URLs.'],['Technical','Largest Contentful Paint 2.5 s or less',2,'Google "good" threshold for field data at the 75th percentile.'],['Technical','Interaction to Next Paint 200 ms or less',2,'Google "good" threshold; INP replaced FID in March 2024.'],['Technical','Cumulative Layout Shift 0.1 or less',2,'Google "good" threshold.'],['Technical','Layout works on mobile',2,'Google indexes the mobile version first.'],
 ['On-page','Unique, descriptive title on every page',3,'Titles are a strong relevance signal and the clickable headline.'],['On-page','Unique meta description on key pages',1,'Not a ranking factor, but it shapes click-through.'],['On-page','One clear H1 per page',2,'Best practice for structure, not a Google requirement.'],['On-page','Descriptive alt text on meaningful images',1,'Accessibility first; also helps image search.'],['On-page','Descriptive internal links to key pages',2,'Anchor text tells crawlers and readers what the target is.'],
 ['Content and answers','Each page answers its main question in the first 40–60 words',3,'A practitioner heuristic, not a published rule. Direct answers are easy for people and AI tools to lift.'],['Content and answers','Question-style subheadings, each followed by a direct answer',2,'Mirrors how people phrase prompts.'],['Content and answers','Lists or tables for steps and comparisons',1,'Scannable structure is easier to quote accurately.'],['Content and answers','Original data, examples or first-hand experience',3,'Google\'s guidance rewards experience and original value over rewritten content.'],['Content and answers','Named author, credentials and a visible updated date',2,'Supports trust and lets readers judge freshness.'],
@@ -14,4 +77,49 @@ function render(){const done=all[cur]||{};let tot=0,got=0,g={};A.forEach((a,i)=>
 $('l').onchange=e=>{if(e.target.dataset.i===undefined)return;save();all[cur][e.target.dataset.i]=e.target.checked;st.set(all);render()};
 $('cl').oninput=()=>{cur=$('cl').value.trim()||'Untitled';all[cur]=all[cur]||{};render()};$('cls').innerHTML=Object.keys(all).map(k=>`<option>${esc(k)}</option>`).join('');
 $('pr').onclick=()=>window.print();cur='Untitled';render();
-</script></body></html>
+</script><footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body></html>

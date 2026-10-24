@@ -1,4 +1,67 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css"></head><body><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
+  <!-- Master Tool Theme Alignment -->
+  <style>
+    :root {
+      --primary: #d97706 !important;
+      --primary-hover: #b45309 !important;
+      --primary-light: #fef3c7 !important;
+      --border: #e2e8f0 !important;
+      --text: #1e293b !important;
+      --text-muted: #64748b !important;
+    }
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .tool-header-bar {
+      display: none !important;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .tool-render-area {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 20px;
+    }
+    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
+      background-color: #d97706 !important;
+      border-color: #d97706 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+    }
+    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
+      background-color: #b45309 !important;
+      border-color: #b45309 !important;
+    }
+  </style>
+
+</head><body>
+<header class="header">
+    <div class="header-wrap">
+      <a href="/" class="logo-area">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">Shaynly</span>
+        <span class="logo-tag">Business &amp; Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/category/technology/">Technology</a>
+        <a href="/category/marketing/">Marketing</a>
+        <a href="/category/management/">Management</a>
+        <a href="/tools/" class="active">Toolkit (100+)</a>
+        <a href="/tools/" class="nav-btn">All Tools</a>
+      </nav>
+    </div>
+  </header><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 Shaynly.page('Image Compressor & Converter',`<div class="f"><label for="f">Images (select many)</label><input id="f" type="file" accept="image/*" multiple></div><div class="row"><div class="f"><label for="fm">Output format</label><select id="fm"><option value="image/webp">WebP (smallest)</option><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select></div><div class="f"><label for="mw">Max width (px)</label><input id="mw" type="number" value="1600" min="100"></div></div><div class="f"><label for="q">Quality: <span id="qv">80</span>%</label><input id="q" type="range" min="30" max="100" value="80"></div><p class="muted">Works offline. Images never leave your device. PNG ignores the quality setting.</p>`,'<div id="r"><p class="muted">Choose images to start.</p></div><button class="btn gold" id="all" style="margin-top:12px;display:none">Download all</button>');
 let out=[];const kb=n=>n>1048576?(n/1048576).toFixed(2)+' MB':Math.round(n/1024)+' KB',ext={'image/webp':'webp','image/jpeg':'jpg','image/png':'png'};
 async function run(){const fs=[...$('f').files];out=[];$('qv').textContent=$('q').value;if(!fs.length)return;$('r').innerHTML='<p class="muted">Working…</p>';
@@ -8,4 +71,49 @@ async function run(){const fs=[...$('f').files];out=[];$('qv').textContent=$('q'
  $('r').innerHTML=`<div class="big">${Math.max(0,Math.round((1-tn/to)*100))}% smaller</div><div class="muted">${kb(to)} to ${kb(tn)}</div><table style="margin-top:10px">`+out.map((x,i)=>`<tr><td>${esc(x.n)}<br><span class="muted">${x.w}×${x.h}</span></td><td class="n">${kb(x.o)} to ${kb(x.b.size)}${x.b.size>x.o?'<br><span class="no">larger than original</span>':''}</td><td><button class="btn alt" data-i="${i}">Save</button></td></tr>`).join('')+'</table>';$('all').style.display='inline-flex'}
 document.querySelector('.grid').onchange=run;$('q').oninput=()=>$('qv').textContent=$('q').value;
 $('r').onclick=e=>{const i=e.target.dataset.i;if(i)Shaynly.save(out[i].b,out[i].n)};$('all').onclick=()=>out.forEach((x,i)=>setTimeout(()=>Shaynly.save(x.b,x.n),i*300));
-</script></body></html>
+</script><footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body></html>

@@ -492,19 +492,70 @@
             color: #6a11cb;
         }
     </style>
+
+  <!-- Master Tool Theme Alignment -->
+  <style>
+    :root {
+      --primary: #d97706 !important;
+      --primary-hover: #b45309 !important;
+      --primary-light: #fef3c7 !important;
+      --border: #e2e8f0 !important;
+      --text: #1e293b !important;
+      --text-muted: #64748b !important;
+    }
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .tool-header-bar {
+      display: none !important;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .tool-render-area {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 20px;
+    }
+    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
+      background-color: #d97706 !important;
+      border-color: #d97706 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+    }
+    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
+      background-color: #b45309 !important;
+      border-color: #b45309 !important;
+    }
+  </style>
+
 </head>
 <body>
   <!-- Header Bar -->
-  <header class="tool-header-bar">
-    <div class="tool-header-inner">
-      <a href="/tools/" class="tool-back-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-        Back to Shaynly Toolkit
+  <header class="header">
+    <div class="header-wrap">
+      <a href="/" class="logo-area">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">Shaynly</span>
+        <span class="logo-tag">Business &amp; Tools</span>
       </a>
-      <div style="display:flex;align-items:center;gap:1.5rem;">
-        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
-        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
-      </div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/category/technology/">Technology</a>
+        <a href="/category/marketing/">Marketing</a>
+        <a href="/category/management/">Management</a>
+        <a href="/tools/" class="active">Toolkit (100+)</a>
+        <a href="/tools/" class="nav-btn">All Tools</a>
+      </nav>
     </div>
   </header>
 
@@ -677,13 +728,48 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer-content">
-      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
-      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms-and-conditions-of-use/">Terms</a>
-        <a href="/site-map/">Site Directory</a>
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
       </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
     </div>
   </footer>
 

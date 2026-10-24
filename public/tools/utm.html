@@ -1,4 +1,67 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css"></head><body><script src="../core/vendor/qrcode.js"></script><script src="../core/shaynly.js"></script><script>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
+  <!-- Master Tool Theme Alignment -->
+  <style>
+    :root {
+      --primary: #d97706 !important;
+      --primary-hover: #b45309 !important;
+      --primary-light: #fef3c7 !important;
+      --border: #e2e8f0 !important;
+      --text: #1e293b !important;
+      --text-muted: #64748b !important;
+    }
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .tool-header-bar {
+      display: none !important;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .tool-render-area {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 20px;
+    }
+    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
+      background-color: #d97706 !important;
+      border-color: #d97706 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+    }
+    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
+      background-color: #b45309 !important;
+      border-color: #b45309 !important;
+    }
+  </style>
+
+</head><body>
+<header class="header">
+    <div class="header-wrap">
+      <a href="/" class="logo-area">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">Shaynly</span>
+        <span class="logo-tag">Business &amp; Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/category/technology/">Technology</a>
+        <a href="/category/marketing/">Marketing</a>
+        <a href="/category/management/">Management</a>
+        <a href="/tools/" class="active">Toolkit (100+)</a>
+        <a href="/tools/" class="nav-btn">All Tools</a>
+      </nav>
+    </div>
+  </header><script src="../core/vendor/qrcode.js"></script><script src="../core/shaynly.js"></script><script>
 Shaynly.page('UTM Link Builder',`${[['u','Page URL','https://example.com/offer'],['s','Source (where it appears)','linkedin'],['m','Medium (type of channel)','social'],['c','Campaign name','diwali-sale'],['t','Term (optional)',''],['n','Content (optional)','']].map(([k,l,v])=>`<div class="f"><label for="${k}">${l}</label><input id="${k}" value="${v}"></div>`).join('')}`,'<textarea id="o" rows="4" readonly></textarea><p class="err" id="er" role="alert"></p><div class="row" style="margin:10px 0"><button class="btn gold" id="cp">Copy link</button><button class="btn alt" id="sv">Save to history</button></div><div id="qr" style="margin:12px 0"></div><h2 style="font-size:1rem;margin-top:14px">History</h2><div id="h"></div>');
 const $=i=>document.getElementById(i),st=Shaynly.store('utm'),slug=v=>v.trim().toLowerCase().replace(/\s+/g,'-');let url='';
 function r(){const er=$('er');er.textContent='';url='';$('qr').innerHTML='';try{const x=new URL($('u').value.trim());if(!/^https?:/.test(x.protocol))throw 0;if(!$('s').value||!$('m').value||!$('c').value){er.textContent='Source, medium and campaign are required.';$('o').value='';return}
@@ -6,4 +69,49 @@ function r(){const er=$('er');er.textContent='';url='';$('qr').innerHTML='';try{
 function h(){const l=st.get([]);$('h').innerHTML=l.length?'<table>'+l.map((x,i)=>`<tr><td style="word-break:break-all;font-size:.8rem">${x.replace(/</g,'&lt;')}</td><td><button class="btn alt" data-i="${i}">Copy</button></td></tr>`).join('')+'</table>':'<p class="muted">Saved links appear here.</p>'}
 $('h').onclick=e=>{const i=e.target.dataset.i;if(i)Shaynly.copy(st.get([])[i])};
 document.querySelector('.grid').oninput=r;$('cp').onclick=()=>url&&Shaynly.copy(url);$('sv').onclick=()=>{if(!url)return;st.set([url,...st.get([])].slice(0,30));h();Shaynly.toast('Saved')};r();h();
-</script></body></html>
+</script><footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body></html>

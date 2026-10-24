@@ -1,4 +1,67 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css"></head><body><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
+  <!-- Master Tool Theme Alignment -->
+  <style>
+    :root {
+      --primary: #d97706 !important;
+      --primary-hover: #b45309 !important;
+      --primary-light: #fef3c7 !important;
+      --border: #e2e8f0 !important;
+      --text: #1e293b !important;
+      --text-muted: #64748b !important;
+    }
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .tool-header-bar {
+      display: none !important;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .tool-render-area {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 20px;
+    }
+    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
+      background-color: #d97706 !important;
+      border-color: #d97706 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+    }
+    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
+      background-color: #b45309 !important;
+      border-color: #b45309 !important;
+    }
+  </style>
+
+</head><body>
+<header class="header">
+    <div class="header-wrap">
+      <a href="/" class="logo-area">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">Shaynly</span>
+        <span class="logo-tag">Business &amp; Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/category/technology/">Technology</a>
+        <a href="/category/marketing/">Marketing</a>
+        <a href="/category/management/">Management</a>
+        <a href="/tools/" class="active">Toolkit (100+)</a>
+        <a href="/tools/" class="nav-btn">All Tools</a>
+      </nav>
+    </div>
+  </header><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const B=Shaynly.brand(),inp=(k,l,v='',p='')=>`<div class="f"><label for="${k}">${l}</label><input id="${k}" value="${esc(v)}" placeholder="${p}"></div>`;
 Shaynly.page('Email Signature Designer',`${inp('nm','Name','Your Name')}${inp('tt','Title','Founder')}${inp('cm','Company',B.name||'')}${inp('ph','Phone',B.phone||'')}${inp('em','Email',B.email||'')}${inp('wb','Website',B.website||'')}${inp('lg','Logo image address (https://…)','','Must be a public https address')}<div class="f"><label for="so">Social links (one per line: Label | address)</label><textarea id="so" rows="3">${(B.sameAs||'').split('\n').filter(Boolean).map(u=>(u.match(/linkedin|instagram|twitter|x\.com|facebook|youtube/i)?.[0]||'Profile')+' | '+u).join('\n')}</textarea></div><div class="row"><div class="f"><label for="co">Accent</label><input type="color" id="co" value="${B.color||'#1f6f6b'}"></div><div class="f"><label for="ly">Layout</label><select id="ly"><option value="h">Logo beside details</option><option value="v">Stacked</option></select></div></div>${inp('ds','Short disclaimer (optional)')}`,'<div id="pv" style="background:#fff;color:#222;padding:16px;border:1px solid var(--line);border-radius:8px;overflow:auto"></div><div class="row" style="margin-top:14px"><button class="btn gold" id="cp">Copy signature</button><button class="btn alt" id="ch">Copy HTML code</button></div><p class="muted" style="margin-top:10px">Gmail and Outlook strip embedded images, so the logo must be a public https address (your website or an image host). Paste into Gmail via Settings, Signature. In Outlook, use the Signatures editor.</p>');
 let h='';function build(){const v=i=>esc($(i).value.trim()),c=$('co').value,F="font-family:Arial,Helvetica,sans-serif;",a=u=>`<a href="${u}" style="color:${c};text-decoration:none">`;
@@ -8,4 +71,49 @@ let h='';function build(){const v=i=>esc($(i).value.trim()),c=$('co').value,F="f
  h=$('ly').value==='h'?`<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse"><tr>${lg}${det}</tr></table>`:`<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse">${lg?`<tr>${lg}</tr>`:''}<tr>${det}</tr></table>`;$('pv').innerHTML=h}
 document.querySelector('.grid').oninput=build;
 $('cp').onclick=async()=>{try{await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([h],{type:'text/html'}),'text/plain':new Blob([$('pv').innerText],{type:'text/plain'})})]);Shaynly.toast('Signature copied. Paste it into your email settings.')}catch{Shaynly.copy(h)}};$('ch').onclick=()=>Shaynly.copy(h);build();
-</script></body></html>
+</script><footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body></html>

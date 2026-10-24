@@ -1,4 +1,67 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css"></head><body><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
+  <!-- Master Tool Theme Alignment -->
+  <style>
+    :root {
+      --primary: #d97706 !important;
+      --primary-hover: #b45309 !important;
+      --primary-light: #fef3c7 !important;
+      --border: #e2e8f0 !important;
+      --text: #1e293b !important;
+      --text-muted: #64748b !important;
+    }
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .tool-header-bar {
+      display: none !important;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .tool-render-area {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      margin-top: 20px;
+    }
+    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
+      background-color: #d97706 !important;
+      border-color: #d97706 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+    }
+    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
+      background-color: #b45309 !important;
+      border-color: #b45309 !important;
+    }
+  </style>
+
+</head><body>
+<header class="header">
+    <div class="header-wrap">
+      <a href="/" class="logo-area">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">Shaynly</span>
+        <span class="logo-tag">Business &amp; Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/category/technology/">Technology</a>
+        <a href="/category/marketing/">Marketing</a>
+        <a href="/category/management/">Management</a>
+        <a href="/tools/" class="active">Toolkit (100+)</a>
+        <a href="/tools/" class="nav-btn">All Tools</a>
+      </nav>
+    </div>
+  </header><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const SW=new Set('a an the for in to of and or with on at near me my your best top how what why is are can do does vs'.split(' '));
 Shaynly.page('Keyword Clusterer',`<div class="f"><label for="k">Paste keywords (one per line)</label><textarea id="k" rows="14" placeholder="dentist in bangalore\nbest dentist near me\nteeth whitening cost\n…"></textarea></div><div class="f"><label for="mn">Smallest cluster to show: <span id="mv">2</span></label><input type="range" id="mn" min="1" max="6" value="2"></div><button class="btn gold" id="go">Cluster keywords</button><p class="muted" style="margin-top:10px">Groups by the most shared meaningful word and labels search intent from wording. It is a fast first pass, so review the groups before building pages.</p>`,'<div id="r"><p class="muted">Paste a list and press Cluster keywords.</p></div><button class="btn alt" id="csv" style="margin-top:12px;display:none">Export CSV</button>');
 const IN=[['Transactional',/\b(buy|price|prices|cost|cheap|hire|quote|book|order|near me|coupon|discount|pricing)\b/],['Commercial',/\b(best|top|vs|versus|review|reviews|compare|comparison|alternative|alternatives)\b/],['Informational',/\b(how|what|why|when|guide|tips|ideas|examples|meaning|tutorial|learn)\b/]];
@@ -9,4 +72,49 @@ function run(){const ks=[...new Set($('k').value.split('\n').map(x=>x.trim().toL
  const shown=rows.reduce((a,r)=>a+r.v.length,0);$('r').innerHTML=ks.length?`<div class="muted">${ks.length} unique keywords, ${rows.length} clusters, ${ks.length-shown} below the size cutoff.</div>`+rows.map(r=>`<div class="chk"><span><b>${esc(r.h)}</b> <span class="muted">${r.v.length} keywords | ${esc(r.i)}</span><small>${r.v.map(esc).join(', ')}</small></span></div>`).join('')+(rows.length?'<p class="muted" style="margin-top:10px">Tip: one page per cluster, with the clearest keyword in the title and the rest as subheadings.</p>':''):'<p class="err">Paste at least one keyword.</p>';$('csv').style.display=rows.length?'inline-flex':'none'}
 $('go').onclick=run;$('mn').oninput=()=>{$('mv').textContent=$('mn').value;if($('r').textContent.includes('clusters'))run()};
 $('csv').onclick=()=>Shaynly.save(new Blob(['Cluster,Intent,Keyword\n'+rows.flatMap(r=>r.v.map(k=>`"${r.h}","${r.i}","${k}"`)).join('\n')],{type:'text/csv'}),'keyword-clusters.csv');
-</script></body></html>
+</script><footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body></html>
