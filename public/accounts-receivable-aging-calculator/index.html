@@ -1,41 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accounts Receivable Aging Calculator - Shaynly</title>
-  <meta name="description" content="Accounts Receivable Aging Calculator | Analyze Outstanding Invoices body { font-family: 'Roboto', sans-serif; backg">
+<html><head><base href="https://shaynly.com/" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accounts Receivable Aging Calculator | Analyze Outstanding Invoices</title>
+<meta name="description" content="Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow.">
+<link rel="canonical" href="https://shaynly.com/accounts-receivable-aging-calculator" />
+<meta property="og:title" content="Accounts Receivable Aging Calculator | Analyze Outstanding Invoices">
+<meta property="og:description" content="Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow.">
+<meta property="og:url" content="https://shaynly.com/accounts-receivable-aging-calculator">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Accounts Receivable Aging Calculator | Analyze Outstanding Invoices">
+<meta name="twitter:description" content="Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f3f6;
+        color: #333;
+    }
+    .container {
+        max-width: 1200px;
+    }
+    .calculator-container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        padding: 40px;
+        margin-top: 50px;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    .form-label {
+        font-weight: 600;
+    }
+    .btn-primary {
+        background-color: #3498db;
+        border-color: #3498db;
+    }
+    .btn-primary:hover {
+        background-color: #2980b9;
+        border-color: #2980b9;
+    }
+    .chart-container {
+        margin-top: 40px;
+    }
+    .insights-container {
+        background-color: #e8f6ff;
+        border-radius: 15px;
+        padding: 30px;
+        margin-top: 40px;
+    }
+    .insight-item {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    #recommendations {
+        background-color: #fdf2e9;
+        border-radius: 15px;
+        padding: 30px;
+        margin-top: 40px;
+    }
+    .recommendation-item {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .input-description {
+        font-size: 0.85rem;
+        color: #6c757d;
+        margin-top: 0.25rem;
+    }
+    .results-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+    .results-table th, .results-table td {
+        padding: 15px;
+        text-align: left;
+        vertical-align: middle;
+    }
+    .results-table tbody tr {
+        background-color: #f1f8ff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+    .results-table tbody tr:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .results-table th {
+        background-color: #3498db;
+        color: #ffffff;
+        font-weight: bold;
+    }
+    .metric-value {
+        font-size: 18px;
+        font-weight: bold;
+        color: #2c3e50;
+    }
+    .insight-category {
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
+    .insight-details {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .insight-title {
+        font-weight: bold;
+        color: #3498db;
+        margin-bottom: 5px;
+    }
+    .insight-description {
+        margin-bottom: 10px;
+    }
+    .insight-impact {
+        font-style: italic;
+        color: #e74c3c;
+    }
+    .trend-indicator {
+        font-size: 20px;
+        margin-right: 5px;
+    }
+    .trend-up {
+        color: #2ecc71;
+    }
+    .trend-down {
+        color: #e74c3c;
+    }
+    .trend-stable {
+        color: #f39c12;
+    }
+</style>
+  <meta name="description" content="Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow.">
   <link rel="canonical" href="https://shaynly.com/accounts-receivable-aging-calculator/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/accounts-receivable-aging-calculator/">
   <meta property="og:title" content="Accounts Receivable Aging Calculator - Shaynly">
-  <meta property="og:description" content="Accounts Receivable Aging Calculator | Analyze Outstanding Invoices body { font-family: 'Roboto', sans-serif; backg">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2024/08/Accounts-Receivable-Aging-Calculator.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:description" content="Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Accounts Receivable Aging Calculator - Shaynly">
-  <meta name="twitter:description" content="Accounts Receivable Aging Calculator | Analyze Outstanding Invoices body { font-family: 'Roboto', sans-serif; backg">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2024/08/Accounts-Receivable-Aging-Calculator.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:description" content="Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,49 +178,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Accounts Receivable Aging Calculator",
-  "name": "Accounts Receivable Aging Calculator",
-  "description": "n n n n Accounts Receivable Aging Calculator | Analyze Outstanding Invoices n n n n n n n n n n n n n n n body {
-font-family: 'Roboto', sans-serif;
-backg",
-  "url": "https://shaynly.com/accounts-receivable-aging-calculator/",
-  "datePublished": "2024-08-22",
-  "dateModified": "2024-08-22",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2024/08/Accounts-Receivable-Aging-Calculator.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -104,393 +200,522 @@ backg",
       </nav>
     </div>
   </header>
+    <div class="container">
+        <div class="calculator-container">
+            <h1 class="text-center mb-4">Accounts Receivable Aging Calculator</h1>
+            <form id="arAgingForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="totalReceivables" class="form-label">Total Accounts Receivable ($):</label>
+                        <input type="number" class="form-control" id="totalReceivables" required min="0" step="0.01">
+                        <div class="input-description">The total amount of all outstanding invoices.</div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="current" class="form-label">Current (Not Yet Due) ($):</label>
+                        <input type="number" class="form-control" id="current" required min="0" step="0.01">
+                        <div class="input-description">The amount of invoices that are not yet due.</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="days1to30" class="form-label">1-30 Days Past Due ($):</label>
+                        <input type="number" class="form-control" id="days1to30" required min="0" step="0.01">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="days31to60" class="form-label">31-60 Days Past Due ($):</label>
+                        <input type="number" class="form-control" id="days31to60" required min="0" step="0.01">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="days61to90" class="form-label">61-90 Days Past Due ($):</label>
+                        <input type="number" class="form-control" id="days61to90" required min="0" step="0.01">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="days90Plus" class="form-label">90+ Days Past Due ($):</label>
+                        <input type="number" class="form-control" id="days90Plus" required min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="creditSales" class="form-label">Total Credit Sales (Last 12 Months) ($):</label>
+                        <input type="number" class="form-control" id="creditSales" required min="0" step="0.01">
+                        <div class="input-description">The total amount of sales made on credit in the last 12 months.</div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="badDebtAllowance" class="form-label">Bad Debt Allowance ($):</label>
+                        <input type="number" class="form-control" id="badDebtAllowance" required min="0" step="0.01">
+                        <div class="input-description">The amount set aside to cover potential bad debts.</div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Calculate AR Aging</button>
+            </form>
 
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/tools/">Tools</a> <span>/</span> <span>Accounts Receivable Aging Calculator</span>
+            <div id="resultsContainer" style="display: none;">
+                <h2 class="text-center mt-5 mb-4">Accounts Receivable Aging Analysis</h2>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTableBody">
+                        <!-- Results will be populated here -->
+                    </tbody>
+                </table>
+
+                <div class="chart-container">
+                    <canvas id="arAgingChart"></canvas>
+                </div>
+
+                <div class="insights-container mt-5">
+                    <h3>Detailed AR Aging Insights</h3>
+                    <div id="detailedInsightsList"></div>
+                </div>
+
+                <div id="recommendations">
+                    <h3>Recommendations</h3>
+                    <div id="recommendationsList"></div>
+                </div>
+            </div>
         </div>
-        <a href="/category/tools/" class="cat-badge" style="text-decoration:none;">Tools</a>
-        <h1 class="article-title">Accounts Receivable Aging Calculator</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2024-08-22</span>
-          <span>•</span>
-          <span>9 min read</span>
-        </div>
-
-        <img src="/wp-content/uploads/2024/08/Accounts-Receivable-Aging-Calculator.png" alt="Accounts Receivable Aging Calculator" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
-
-        <div class="article-content">
-          <html><head><base href="https://shaynly.com/" /><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Accounts Receivable Aging Calculator | Analyze Outstanding Invoices</title><meta name="description" content="Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow."><link rel="canonical" href="https://shaynly.com/accounts-receivable-aging-calculator" /><meta property="og:title" content="Accounts Receivable Aging Calculator | Analyze Outstanding Invoices"><meta property="og:description" content="Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow."><meta property="og:url" content="https://shaynly.com/accounts-receivable-aging-calculator"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Accounts Receivable Aging Calculator | Analyze Outstanding Invoices"><meta name="twitter:description" content="Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow."><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"><style>    body {n        font-family: 'Roboto', sans-serif;n        background-color: #f0f3f6;n        color: #333;n    }n    .container {n        max-width: 1200px;n    }n    .calculator-container {n        background-color: #ffffff;n        border-radius: 15px;n        box-shadow: 0 0 30px rgba(0,0,0,0.1);n        padding: 40px;n        margin-top: 50px;n    }n    h1, h2, h3 {n        color: #2c3e50;n    }n    .form-label {n        font-weight: 600;n    }n    .btn-primary {n        background-color: #3498db;n        border-color: #3498db;n    }n    .btn-primary:hover {n        background-color: #2980b9;n        border-color: #2980b9;n    }n    .chart-container {n        margin-top: 40px;n    }n    .insights-container {n        background-color: #e8f6ff;n        border-radius: 15px;n        padding: 30px;n        margin-top: 40px;n    }n    .insight-item {n        margin-bottom: 15px;n        padding: 15px;n        background-color: #ffffff;n        border-radius: 10px;n        box-shadow: 0 5px 15px rgba(0,0,0,0.05);n    }n    #recommendations {n        background-color: #fdf2e9;n        border-radius: 15px;n        padding: 30px;n        margin-top: 40px;n    }n    .recommendation-item {n        background-color: #ffffff;n        border-radius: 10px;n        padding: 15px;n        margin-bottom: 15px;n        box-shadow: 0 5px 15px rgba(0,0,0,0.05);n    }n    .input-description {n        font-size: 0.85rem;n        color: #6c757d;n        margin-top: 0.25rem;n    }n    .results-table {n        width: 100%;n        border-collapse: separate;n        border-spacing: 0 15px;n    }n    .results-table th, .results-table td {n        padding: 15px;n        text-align: left;n        vertical-align: middle;n    }n    .results-table tbody tr {n        background-color: #f1f8ff;n        box-shadow: 0 2px 5px rgba(0,0,0,0.05);n        transition: all 0.3s ease;n    }n    .results-table tbody tr:hover {n        transform: translateY(-3px);n        box-shadow: 0 5px 15px rgba(0,0,0,0.1);n    }n    .results-table th {n        background-color: #3498db;n        color: #ffffff;n        font-weight: bold;n    }n    .metric-value {n        font-size: 18px;n        font-weight: bold;n        color: #2c3e50;n    }n    .insight-category {n        font-weight: bold;n        margin-top: 20px;n        margin-bottom: 10px;n        color: #2c3e50;n    }n    .insight-details {n        background-color: #ffffff;n        border-radius: 10px;n        padding: 15px;n        margin-bottom: 15px;n        box-shadow: 0 5px 15px rgba(0,0,0,0.05);n    }n    .insight-title {n        font-weight: bold;n        color: #3498db;n        margin-bottom: 5px;n    }n    .insight-description {n        margin-bottom: 10px;n    }n    .insight-impact {n        font-style: italic;n        color: #e74c3c;n    }n    .trend-indicator {n        font-size: 20px;n        margin-right: 5px;n    }n    .trend-up {n        color: #2ecc71;n    }n    .trend-down {n        color: #e74c3c;n    }n    .trend-stable {n        color: #f39c12;n    }</style></head><body>    <div class="container">        <div class="calculator-container">            <h1 class="text-center mb-4">Accounts Receivable Aging Calculator</h1>            <form id="arAgingForm">                <div class="row">                    <div class="col-md-6 mb-3">                        <label for="totalReceivables" class="form-label">Total Accounts Receivable ($):</label>                        <input type="number" class="form-control" id="totalReceivables" required min="0" step="0.01">                        <div class="input-description">The total amount of all outstanding invoices.</div>                    </div>                    <div class="col-md-6 mb-3">                        <label for="current" class="form-label">Current (Not Yet Due) ($):</label>                        <input type="number" class="form-control" id="current" required min="0" step="0.01">                        <div class="input-description">The amount of invoices that are not yet due.</div>                    </div>                </div>                <div class="row">                    <div class="col-md-3 mb-3">                        <label for="days1to30" class="form-label">1-30 Days Past Due ($):</label>                        <input type="number" class="form-control" id="days1to30" required min="0" step="0.01">                    </div>                    <div class="col-md-3 mb-3">                        <label for="days31to60" class="form-label">31-60 Days Past Due ($):</label>                        <input type="number" class="form-control" id="days31to60" required min="0" step="0.01">                    </div>                    <div class="col-md-3 mb-3">                        <label for="days61to90" class="form-label">61-90 Days Past Due ($):</label>                        <input type="number" class="form-control" id="days61to90" required min="0" step="0.01">                    </div>                    <div class="col-md-3 mb-3">                        <label for="days90Plus" class="form-label">90+ Days Past Due ($):</label>                        <input type="number" class="form-control" id="days90Plus" required min="0" step="0.01">                    </div>                </div>                <div class="row">                    <div class="col-md-6 mb-3">                        <label for="creditSales" class="form-label">Total Credit Sales (Last 12 Months) ($):</label>                        <input type="number" class="form-control" id="creditSales" required min="0" step="0.01">                        <div class="input-description">The total amount of sales made on credit in the last 12 months.</div>                    </div>                    <div class="col-md-6 mb-3">                        <label for="badDebtAllowance" class="form-label">Bad Debt Allowance ($):</label>                        <input type="number" class="form-control" id="badDebtAllowance" required min="0" step="0.01">                        <div class="input-description">The amount set aside to cover potential bad debts.</div>                    </div>                </div>                <button type="submit" class="btn btn-primary w-100">Calculate AR Aging</button>            </form>
-            <div id="resultsContainer" style="display: none;">                <h2 class="text-center mt-5 mb-4">Accounts Receivable Aging Analysis</h2>                <table class="results-table">                    <thead>                        <tr>                            <th>Metric</th>                            <th>Value</th>                        </tr>                    </thead>                    <tbody id="resultsTableBody">                        <!-- Results will be populated here -->                    </tbody>                </table>
-                <div class="chart-container">                    <canvas id="arAgingChart"></canvas>                </div>
-                <div class="insights-container mt-5">                    <h3>Detailed AR Aging Insights</h3>                    <div id="detailedInsightsList"></div>                </div>
-                <div id="recommendations">                    <h3>Recommendations</h3>                    <div id="recommendationsList"></div>                </div>            </div>        </div>    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>    document.getElementById('arAgingForm').addEventListener('submit', function(e) {
-e.preventDefault();
-calculateARaging();
-});
-    function calculateARaging() {
-const totalReceivables = parseFloat(document.getElementById('totalReceivables').value);
-const current = parseFloat(document.getElementById('current').value);
-const days1to30 = parseFloat(document.getElementById('days1to30').value);
-const days31to60 = parseFloat(document.getElementById('days31to60').value);
-const days61to90 = parseFloat(document.getElementById('days61to90').value);
-const days90Plus = parseFloat(document.getElementById('days90Plus').value);
-const creditSales = parseFloat(document.getElementById('creditSales').value);
-const badDebtAllowance = parseFloat(document.getElementById('badDebtAllowance').value);
-        const totalPastDue = days1to30 + days31to60 + days61to90 + days90Plus;
-const percentagePastDue = (totalPastDue / totalReceivables) * 100;
-const dso = (totalReceivables / creditSales) * 365;
-const badDebtRatio = (badDebtAllowance / totalReceivables) * 100;
-        updateResults({
-totalReceivables,
-current,
-days1to30,
-days31to60,
-days61to90,
-days90Plus,
-totalPastDue,
-percentagePastDue,
-dso,
-badDebtRation        });
-        createChart(current, days1to30, days31to60, days61to90, days90Plus);
-generateDetailedInsights({
-totalReceivables,
-current,
-days1to30,
-days31to60,
-days61to90,
-days90Plus,
-totalPastDue,
-percentagePastDue,
-dso,
-badDebtRatio,
-creditSalesn        });
-generateRecommendations({
-percentagePastDue,
-dso,
-badDebtRation        });
-        document.getElementById('resultsContainer').style.display = 'block';
-}
-    function updateResults(data) {
-const resultsTableBody = document.getElementById('resultsTableBody');
-resultsTableBody.innerHTML = '';
-        const metrics = [n            { label: 'Total Accounts Receivable', value: formatCurrency(data.totalReceivables) },
-{ label: 'Current (Not Yet Due)', value: formatCurrency(data.current) },
-{ label: '1-30 Days Past Due', value: formatCurrency(data.days1to30) },
-{ label: '31-60 Days Past Due', value: formatCurrency(data.days31to60) },
-{ label: '61-90 Days Past Due', value: formatCurrency(data.days61to90) },
-{ label: '90+ Days Past Due', value: formatCurrency(data.days90Plus) },
-{ label: 'Total Past Due', value: formatCurrency(data.totalPastDue) },
-{ label: 'Percentage Past Due', value: data.percentagePastDue.toFixed(2) + '%' },
-{ label: 'Days Sales Outstanding (DSO)', value: data.dso.toFixed(2) + ' days' },
-{ label: 'Bad Debt Ratio', value: data.badDebtRatio.toFixed(2) + '%' }
-];
-        metrics.forEach(metric => {
-const row = document.createElement('tr');
-row.innerHTML = `n                <td>${metric.label}</td>                <td><span class="metric-value">${metric.value}</span></td>            `;
-resultsTableBody.appendChild(row);
-});
-}
-    function createChart(current, days1to30, days31to60, days61to90, days90Plus) {
-const ctx = document.getElementById('arAgingChart').getContext('2d');
-new Chart(ctx, {
-type: 'pie',
-data: {
-labels: ['Current', '1-30 Days', '31-60 Days', '61-90 Days', '90+ Days'],
-datasets: [{
-data: [current, days1to30, days31to60, days61to90, days90Plus],
-backgroundColor: ['#2ecc71', '#3498db', '#f1c40f', '#e67e22', '#e74c3c'],
-borderColor: '#ffffff',
-borderWidth: 2n                }]n            },
-options: {
-responsive: true,
-plugins: {
-title: {
-display: true,
-text: 'AR Aging Distribution',
-font: {
-size: 18n                        }
-},
-legend: {
-position: 'bottom'n                    },
-tooltip: {
-callbacks: {
-label: function(context) {
-let label = context.label || '';
-if (label) {
-label += ': ';
-}
-label += formatCurrency(context.raw);
-return label;
-}
-}
-}
-}
-}
-});
-}
-    function generateDetailedInsights(data) {
-const insightsList = document.getElementById('detailedInsightsList');
-insightsList.innerHTML = '';
-        const categories = [n            {
-title: "Overall AR Health",
-insights: [n                    {
-title: "Total Receivables",
-description: `Your total accounts receivable is ${formatCurrency(data.totalReceivables)}.`,
-impact: getTotalReceivablesImpact(data.totalReceivables, data.creditSales),
-trend: getTotalReceivablesTrend(data.totalReceivables, data.creditSales)
-},
-{
-title: "Past Due Percentage",
-description: `${data.percentagePastDue.toFixed(2)}% of your receivables are past due.`,
-impact: getPastDuePercentageImpact(data.percentagePastDue),
-trend: getPastDuePercentageTrend(data.percentagePastDue)
-}
-]n            },
-{
-title: "Aging Breakdown",
-insights: [n                    {
-title: "Current Receivables",
-description: `${formatCurrency(data.current)} (${((data.current / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are current.`,
-impact: getCurrentReceivablesImpact(data.current, data.totalReceivables),
-trend: getCurrentReceivablesTrend(data.current, data.totalReceivables)
-},
-{
-title: "1-30 Days Past Due",
-description: `${formatCurrency(data.days1to30)} (${((data.days1to30 / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are 1-30 days past due.`,
-impact: getAgingCategoryImpact(data.days1to30, data.totalReceivables, 30),
-trend: getAgingCategoryTrend(data.days1to30, data.totalReceivables, 30)
-},
-{
-title: "31-60 Days Past Due",
-description: `${formatCurrency(data.days31to60)} (${((data.days31to60 / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are 31-60 days past due.`,
-impact: getAgingCategoryImpact(data.days31to60, data.totalReceivables, 60),
-trend: getAgingCategoryTrend(data.days31to60, data.totalReceivables, 60)
-},
-{
-title: "61-90 Days Past Due",
-description: `${formatCurrency(data.days61to90)} (${((data.days61to90 / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are 61-90 days past due.`,
-impact: getAgingCategoryImpact(data.days61to90, data.totalReceivables, 90),
-trend: getAgingCategoryTrend(data.days61to90, data.totalReceivables, 90)
-},
-{
-title: "90+ Days Past Due",
-description: `${formatCurrency(data.days90Plus)} (${((data.days90Plus / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are over 90 days past due.`,
-impact: getAgingCategoryImpact(data.days90Plus, data.totalReceivables, 120),
-trend: getAgingCategoryTrend(data.days90Plus, data.totalReceivables, 120)
-}
-]n            },
-{
-title: "Key Performance Indicators",
-insights: [n                    {
-title: "Days Sales Outstanding (DSO)",
-description: `Your DSO is ${data.dso.toFixed(2)} days.`,
-impact: getDSOImpact(data.dso),
-trend: getDSOTrend(data.dso)
-},
-{
-title: "Bad Debt Ratio",
-description: `Your bad debt ratio is ${data.badDebtRatio.toFixed(2)}%.`,
-impact: getBadDebtRatioImpact(data.badDebtRatio),
-trend: getBadDebtRatioTrend(data.badDebtRatio)
-}
-]n            }
-];
-        categories.forEach(category => {
-const categoryElement = document.createElement('div');
-categoryElement.innerHTML = `<h4 class="insight-category">${category.title}</h4>`;
-category.insights.forEach(insight => {
-const insightElement = document.createElement('div');
-insightElement.className = 'insight-details';
-insightElement.innerHTML = `n                    <h5 class="insight-title">${insight.title}</h5>                    <p class="insight-description">${insight.description}</p>                    <p class="insight-impact">${insight.impact}</p>                    <p class="trend-indicator ${getTrendClass(insight.trend)}">${getTrendIcon(insight.trend)} ${insight.trend}</p>                `;
-categoryElement.appendChild(insightElement);
-});
-            insightsList.appendChild(categoryElement);
-});
-}
-    function generateRecommendations(data) {
-const recommendationsList = document.getElementById('recommendationsList');
-recommendationsList.innerHTML = '';
-        const recommendations = [n            {
-condition: data.percentagePastDue > 20,
-message: "Implement stricter credit policies and consider offering early payment discounts to reduce the high percentage of past due receivables.",
-icon: "📜"n            },
-{
-condition: data.dso > 45,
-message: "Focus on improving collection efforts. Automate invoice reminders and follow-up processes to reduce Days Sales Outstanding.",
-icon: "⏳"n            },
-{
-condition: data.badDebtRatio > 2,
-message: "Review and enhance credit risk assessment procedures. Consider credit insurance for high-risk customers to mitigate the impact of bad debts.",
-icon: "🔍"n            },
-{
-condition: data.percentagePastDue > 30,
-message: "Evaluate the possibility of factoring or invoice financing to improve cash flow, especially for accounts that are significantly past due.",
-icon: "💳"n            },
-{
-condition: true,
-message: "Implement a regular review process for accounts receivable aging. This will help identify trends and potential issues early, allowing for proactive management.",
-icon: "📅"n            }
-];
-        recommendations.forEach(recommendation => {
-if (recommendation.condition) {
-const recommendationElement = document.createElement('div');
-recommendationElement.className = 'recommendation-item';
-recommendationElement.innerHTML = `<p>${recommendation.icon} ${recommendation.message}</p>`;
-recommendationsList.appendChild(recommendationElement);
-}
-});
-}
-    function formatCurrency(value) {
-return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
-}
-    function getTotalReceivablesImpact(totalReceivables, creditSales) {
-const ratio = totalReceivables / creditSales;
-if (ratio > 0.25) {
-return "High total receivables relative to credit sales. This may indicate collection issues or overly lenient credit terms.";
-} else if (ratio > 0.15) {
-return "Moderate total receivables relative to credit sales. Monitor closely to prevent cash flow issues.";
-} else {
-return "Healthy total receivables relative to credit sales. Continue to maintain good collection practices.";
-}
-}
-    function getPastDuePercentageImpact(percentagePastDue) {
-if (percentagePastDue > 25) {
-return "High percentage of past due receivables. This indicates significant collection issues that need immediate attention.";
-} else if (percentagePastDue > 10) {
-return "Moderate percentage of past due receivables. There's room for improvement in collection efforts.";
-} else {
-return "Low percentage of past due receivables. Keep up the good work with your current collection practices.";
-}
-}
-    function getCurrentReceivablesImpact(current, totalReceivables) {
-const ratio = current / totalReceivables;
-if (ratio < 0.5) {
-return "Low proportion of current receivables. This may indicate issues with timely payments from customers.";
-} else if (ratio < 0.7) {
-return "Moderate proportion of current receivables. There's room for improvement in encouraging timely payments.";
-} else {
-return "High proportion of current receivables. This indicates good payment practices from customers.";
-}
-}
-    function getAgingCategoryImpact(amount, totalReceivables, days) {
-const ratio = amount / totalReceivables;
-if (ratio > 0.1) {
-return `High proportion of receivables in the ${days}-day category. This may indicate collection issues for invoices of this age.`;
-} else if (ratio > 0.05) {
-return `Moderate proportion of receivables in the ${days}-day category. Monitor closely and consider targeted collection efforts.`;
-} else {
-return `Low proportion of receivables in the ${days}-day category. Continue to maintain good collection practices for invoices of this age.`;
-}
-}
-    function getDSOImpact(dso) {
-if (dso > 60) {
-return "High DSO indicates potential issues with collection efficiency or customer payment behavior. Consider reviewing credit policies and collection processes.";
-} else if (dso > 45) {
-return "Moderate DSO. There's room for improvement in collection speed and efficiency.";
-} else {
-return "Low DSO indicates efficient collection practices. Continue to maintain these good practices.";
-}
-}
-    function getBadDebtRatioImpact(badDebtRatio) {
-if (badDebtRatio > 2) {
-return "High bad debt ratio. This may indicate issues with credit assessment or collection practices. Review and tighten credit policies.";
-} else if (badDebtRatio > 1) {
-return "Moderate bad debt ratio. There's room for improvement in credit assessment and collection efforts.";
-} else {
-return "Low bad debt ratio indicates effective credit management. Continue to maintain these good practices.";
-}
-}
-    function getTotalReceivablesTrend(totalReceivables, creditSales) {
-const ratio = totalReceivables / creditSales;
-if (ratio > 0.25) return "Increasing";
-if (ratio < 0.15) return "Decreasing";
-return "Stable";
-}
-    function getPastDuePercentageTrend(percentagePastDue) {
-if (percentagePastDue > 25) return "Increasing";
-if (percentagePastDue < 10) return "Decreasing";
-return "Stable";
-}
-    function getCurrentReceivablesTrend(current, totalReceivables) {
-const ratio = current / totalReceivables;
-if (ratio > 0.7) return "Increasing";
-if (ratio < 0.5) return "Decreasing";
-return "Stable";
-}
-    function getAgingCategoryTrend(amount, totalReceivables, days) {
-const ratio = amount / totalReceivables;
-if (ratio > 0.1) return "Increasing";
-if (ratio < 0.05) return "Decreasing";
-return "Stable";
-}
-    function getDSOTrend(dso) {
-if (dso > 60) return "Increasing";
-if (dso < 45) return "Decreasing";
-return "Stable";
-}
-    function getBadDebtRatioTrend(badDebtRatio) {
-if (badDebtRatio > 2) return "Increasing";
-if (badDebtRatio < 1) return "Decreasing";
-return "Stable";
-}
-    function getTrendClass(trend) {
-switch (trend) {
-case "Increasing": return "trend-up";
-case "Decreasing": return "trend-down";
-default: return "trend-stable";
-}
-}
-    function getTrendIcon(trend) {
-switch (trend) {
-case "Increasing": return "↗️";
-case "Decreasing": return "↘️";
-default: return "➡️";
-}
-}
-</script>
-
-        </div>
-      </article>
-
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
-        </div>
-
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
-        </div>
-      </aside>
     </div>
-    
-  </main>
 
-  <!-- Footer -->
-  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <script src="/assets/js/main.js"></script>
+    <script>
+    document.getElementById('arAgingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        calculateARaging();
+    });
 
+    function calculateARaging() {
+        const totalReceivables = parseFloat(document.getElementById('totalReceivables').value);
+        const current = parseFloat(document.getElementById('current').value);
+        const days1to30 = parseFloat(document.getElementById('days1to30').value);
+        const days31to60 = parseFloat(document.getElementById('days31to60').value);
+        const days61to90 = parseFloat(document.getElementById('days61to90').value);
+        const days90Plus = parseFloat(document.getElementById('days90Plus').value);
+        const creditSales = parseFloat(document.getElementById('creditSales').value);
+        const badDebtAllowance = parseFloat(document.getElementById('badDebtAllowance').value);
+
+        const totalPastDue = days1to30 + days31to60 + days61to90 + days90Plus;
+        const percentagePastDue = (totalPastDue / totalReceivables) * 100;
+        const dso = (totalReceivables / creditSales) * 365;
+        const badDebtRatio = (badDebtAllowance / totalReceivables) * 100;
+
+        updateResults({
+            totalReceivables,
+            current,
+            days1to30,
+            days31to60,
+            days61to90,
+            days90Plus,
+            totalPastDue,
+            percentagePastDue,
+            dso,
+            badDebtRatio
+        });
+
+        createChart(current, days1to30, days31to60, days61to90, days90Plus);
+        generateDetailedInsights({
+            totalReceivables,
+            current,
+            days1to30,
+            days31to60,
+            days61to90,
+            days90Plus,
+            totalPastDue,
+            percentagePastDue,
+            dso,
+            badDebtRatio,
+            creditSales
+        });
+        generateRecommendations({
+            percentagePastDue,
+            dso,
+            badDebtRatio
+        });
+
+        document.getElementById('resultsContainer').style.display = 'block';
+    }
+
+    function updateResults(data) {
+        const resultsTableBody = document.getElementById('resultsTableBody');
+        resultsTableBody.innerHTML = '';
+
+        const metrics = [
+            { label: 'Total Accounts Receivable', value: formatCurrency(data.totalReceivables) },
+            { label: 'Current (Not Yet Due)', value: formatCurrency(data.current) },
+            { label: '1-30 Days Past Due', value: formatCurrency(data.days1to30) },
+            { label: '31-60 Days Past Due', value: formatCurrency(data.days31to60) },
+            { label: '61-90 Days Past Due', value: formatCurrency(data.days61to90) },
+            { label: '90+ Days Past Due', value: formatCurrency(data.days90Plus) },
+            { label: 'Total Past Due', value: formatCurrency(data.totalPastDue) },
+            { label: 'Percentage Past Due', value: data.percentagePastDue.toFixed(2) + '%' },
+            { label: 'Days Sales Outstanding (DSO)', value: data.dso.toFixed(2) + ' days' },
+            { label: 'Bad Debt Ratio', value: data.badDebtRatio.toFixed(2) + '%' }
+        ];
+
+        metrics.forEach(metric => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${metric.label}</td>
+                <td><span class="metric-value">${metric.value}</span></td>
+            `;
+            resultsTableBody.appendChild(row);
+        });
+    }
+
+    function createChart(current, days1to30, days31to60, days61to90, days90Plus) {
+        const ctx = document.getElementById('arAgingChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Current', '1-30 Days', '31-60 Days', '61-90 Days', '90+ Days'],
+                datasets: [{
+                    data: [current, days1to30, days31to60, days61to90, days90Plus],
+                    backgroundColor: ['#2ecc71', '#3498db', '#f1c40f', '#e67e22', '#e74c3c'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'AR Aging Distribution',
+                        font: {
+                            size: 18
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += formatCurrency(context.raw);
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function generateDetailedInsights(data) {
+        const insightsList = document.getElementById('detailedInsightsList');
+        insightsList.innerHTML = '';
+
+        const categories = [
+            {
+                title: "Overall AR Health",
+                insights: [
+                    {
+                        title: "Total Receivables",
+                        description: `Your total accounts receivable is ${formatCurrency(data.totalReceivables)}.`,
+                        impact: getTotalReceivablesImpact(data.totalReceivables, data.creditSales),
+                        trend: getTotalReceivablesTrend(data.totalReceivables, data.creditSales)
+                    },
+                    {
+                        title: "Past Due Percentage",
+                        description: `${data.percentagePastDue.toFixed(2)}% of your receivables are past due.`,
+                        impact: getPastDuePercentageImpact(data.percentagePastDue),
+                        trend: getPastDuePercentageTrend(data.percentagePastDue)
+                    }
+                ]
+            },
+            {
+                title: "Aging Breakdown",
+                insights: [
+                    {
+                        title: "Current Receivables",
+                        description: `${formatCurrency(data.current)} (${((data.current / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are current.`,
+                        impact: getCurrentReceivablesImpact(data.current, data.totalReceivables),
+                        trend: getCurrentReceivablesTrend(data.current, data.totalReceivables)
+                    },
+                    {
+                        title: "1-30 Days Past Due",
+                        description: `${formatCurrency(data.days1to30)} (${((data.days1to30 / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are 1-30 days past due.`,
+                        impact: getAgingCategoryImpact(data.days1to30, data.totalReceivables, 30),
+                        trend: getAgingCategoryTrend(data.days1to30, data.totalReceivables, 30)
+                    },
+                    {
+                        title: "31-60 Days Past Due",
+                        description: `${formatCurrency(data.days31to60)} (${((data.days31to60 / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are 31-60 days past due.`,
+                        impact: getAgingCategoryImpact(data.days31to60, data.totalReceivables, 60),
+                        trend: getAgingCategoryTrend(data.days31to60, data.totalReceivables, 60)
+                    },
+                    {
+                        title: "61-90 Days Past Due",
+                        description: `${formatCurrency(data.days61to90)} (${((data.days61to90 / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are 61-90 days past due.`,
+                        impact: getAgingCategoryImpact(data.days61to90, data.totalReceivables, 90),
+                        trend: getAgingCategoryTrend(data.days61to90, data.totalReceivables, 90)
+                    },
+                    {
+                        title: "90+ Days Past Due",
+                        description: `${formatCurrency(data.days90Plus)} (${((data.days90Plus / data.totalReceivables) * 100).toFixed(2)}%) of your receivables are over 90 days past due.`,
+                        impact: getAgingCategoryImpact(data.days90Plus, data.totalReceivables, 120),
+                        trend: getAgingCategoryTrend(data.days90Plus, data.totalReceivables, 120)
+                    }
+                ]
+            },
+            {
+                title: "Key Performance Indicators",
+                insights: [
+                    {
+                        title: "Days Sales Outstanding (DSO)",
+                        description: `Your DSO is ${data.dso.toFixed(2)} days.`,
+                        impact: getDSOImpact(data.dso),
+                        trend: getDSOTrend(data.dso)
+                    },
+                    {
+                        title: "Bad Debt Ratio",
+                        description: `Your bad debt ratio is ${data.badDebtRatio.toFixed(2)}%.`,
+                        impact: getBadDebtRatioImpact(data.badDebtRatio),
+                        trend: getBadDebtRatioTrend(data.badDebtRatio)
+                    }
+                ]
+            }
+        ];
+
+        categories.forEach(category => {
+            const categoryElement = document.createElement('div');
+            categoryElement.innerHTML = `<h4 class="insight-category">${category.title}</h4>`;
+            
+            category.insights.forEach(insight => {
+                const insightElement = document.createElement('div');
+                insightElement.className = 'insight-details';
+                insightElement.innerHTML = `
+                    <h5 class="insight-title">${insight.title}</h5>
+                    <p class="insight-description">${insight.description}</p>
+                    <p class="insight-impact">${insight.impact}</p>
+                    <p class="trend-indicator ${getTrendClass(insight.trend)}">${getTrendIcon(insight.trend)} ${insight.trend}</p>
+                `;
+                categoryElement.appendChild(insightElement);
+            });
+
+            insightsList.appendChild(categoryElement);
+        });
+    }
+
+    function generateRecommendations(data) {
+        const recommendationsList = document.getElementById('recommendationsList');
+        recommendationsList.innerHTML = '';
+
+        const recommendations = [
+            {
+                condition: data.percentagePastDue > 20,
+                message: "Implement stricter credit policies and consider offering early payment discounts to reduce the high percentage of past due receivables.",
+                icon: "📜"
+            },
+            {
+                condition: data.dso > 45,
+                message: "Focus on improving collection efforts. Automate invoice reminders and follow-up processes to reduce Days Sales Outstanding.",
+                icon: "⏳"
+            },
+            {
+                condition: data.badDebtRatio > 2,
+                message: "Review and enhance credit risk assessment procedures. Consider credit insurance for high-risk customers to mitigate the impact of bad debts.",
+                icon: "🔍"
+            },
+            {
+                condition: data.percentagePastDue > 30,
+                message: "Evaluate the possibility of factoring or invoice financing to improve cash flow, especially for accounts that are significantly past due.",
+                icon: "💳"
+            },
+            {
+                condition: true,
+                message: "Implement a regular review process for accounts receivable aging. This will help identify trends and potential issues early, allowing for proactive management.",
+                icon: "📅"
+            }
+        ];
+
+        recommendations.forEach(recommendation => {
+            if (recommendation.condition) {
+                const recommendationElement = document.createElement('div');
+                recommendationElement.className = 'recommendation-item';
+                recommendationElement.innerHTML = `<p>${recommendation.icon} ${recommendation.message}</p>`;
+                recommendationsList.appendChild(recommendationElement);
+            }
+        });
+    }
+
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+    }
+
+    function getTotalReceivablesImpact(totalReceivables, creditSales) {
+        const ratio = totalReceivables / creditSales;
+        if (ratio > 0.25) {
+            return "High total receivables relative to credit sales. This may indicate collection issues or overly lenient credit terms.";
+        } else if (ratio > 0.15) {
+            return "Moderate total receivables relative to credit sales. Monitor closely to prevent cash flow issues.";
+        } else {
+            return "Healthy total receivables relative to credit sales. Continue to maintain good collection practices.";
+        }
+    }
+
+    function getPastDuePercentageImpact(percentagePastDue) {
+        if (percentagePastDue > 25) {
+            return "High percentage of past due receivables. This indicates significant collection issues that need immediate attention.";
+        } else if (percentagePastDue > 10) {
+            return "Moderate percentage of past due receivables. There's room for improvement in collection efforts.";
+        } else {
+            return "Low percentage of past due receivables. Keep up the good work with your current collection practices.";
+        }
+    }
+
+    function getCurrentReceivablesImpact(current, totalReceivables) {
+        const ratio = current / totalReceivables;
+        if (ratio < 0.5) {
+            return "Low proportion of current receivables. This may indicate issues with timely payments from customers.";
+        } else if (ratio < 0.7) {
+            return "Moderate proportion of current receivables. There's room for improvement in encouraging timely payments.";
+        } else {
+            return "High proportion of current receivables. This indicates good payment practices from customers.";
+        }
+    }
+
+    function getAgingCategoryImpact(amount, totalReceivables, days) {
+        const ratio = amount / totalReceivables;
+        if (ratio > 0.1) {
+            return `High proportion of receivables in the ${days}-day category. This may indicate collection issues for invoices of this age.`;
+        } else if (ratio > 0.05) {
+            return `Moderate proportion of receivables in the ${days}-day category. Monitor closely and consider targeted collection efforts.`;
+        } else {
+            return `Low proportion of receivables in the ${days}-day category. Continue to maintain good collection practices for invoices of this age.`;
+        }
+    }
+
+    function getDSOImpact(dso) {
+        if (dso > 60) {
+            return "High DSO indicates potential issues with collection efficiency or customer payment behavior. Consider reviewing credit policies and collection processes.";
+        } else if (dso > 45) {
+            return "Moderate DSO. There's room for improvement in collection speed and efficiency.";
+        } else {
+            return "Low DSO indicates efficient collection practices. Continue to maintain these good practices.";
+        }
+    }
+
+    function getBadDebtRatioImpact(badDebtRatio) {
+        if (badDebtRatio > 2) {
+            return "High bad debt ratio. This may indicate issues with credit assessment or collection practices. Review and tighten credit policies.";
+        } else if (badDebtRatio > 1) {
+            return "Moderate bad debt ratio. There's room for improvement in credit assessment and collection efforts.";
+        } else {
+            return "Low bad debt ratio indicates effective credit management. Continue to maintain these good practices.";
+        }
+    }
+
+    function getTotalReceivablesTrend(totalReceivables, creditSales) {
+        const ratio = totalReceivables / creditSales;
+        if (ratio > 0.25) return "Increasing";
+        if (ratio < 0.15) return "Decreasing";
+        return "Stable";
+    }
+
+    function getPastDuePercentageTrend(percentagePastDue) {
+        if (percentagePastDue > 25) return "Increasing";
+        if (percentagePastDue < 10) return "Decreasing";
+        return "Stable";
+    }
+
+    function getCurrentReceivablesTrend(current, totalReceivables) {
+        const ratio = current / totalReceivables;
+        if (ratio > 0.7) return "Increasing";
+        if (ratio < 0.5) return "Decreasing";
+        return "Stable";
+    }
+
+    function getAgingCategoryTrend(amount, totalReceivables, days) {
+        const ratio = amount / totalReceivables;
+        if (ratio > 0.1) return "Increasing";
+        if (ratio < 0.05) return "Decreasing";
+        return "Stable";
+    }
+
+    function getDSOTrend(dso) {
+        if (dso > 60) return "Increasing";
+        if (dso < 45) return "Decreasing";
+        return "Stable";
+    }
+
+    function getBadDebtRatioTrend(badDebtRatio) {
+        if (badDebtRatio > 2) return "Increasing";
+        if (badDebtRatio < 1) return "Decreasing";
+        return "Stable";
+    }
+
+    function getTrendClass(trend) {
+        switch (trend) {
+            case "Increasing": return "trend-up";
+            case "Decreasing": return "trend-down";
+            default: return "trend-stable";
+        }
+    }
+
+    function getTrendIcon(trend) {
+        switch (trend) {
+            case "Increasing": return "↗️";
+            case "Decreasing": return "↘️";
+            default: return "➡️";
+        }
+    }
+    </script>
+
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>

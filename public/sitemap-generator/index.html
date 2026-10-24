@@ -1,41 +1,371 @@
+<h2 class="wp-block-heading has-text-align-center">Sitemap Generator</h2>
+
+
+
+<p>Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modified dates. Validate sitemaps in real-time and download for improved website indexing.</p>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sitemap Generator - Shaynly</title>
-  <meta name="description" content="Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modified dates. Validate sitemaps in real-time and download for improved website indexing.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Sitemap Generator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles for the Inter font and overall aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); /* Light blue gradient background */
+                        align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            padding: 30px; /* Adjusted padding for better mobile fit */
+            max-width: 1200px; /* Increased max-width */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Adjusted gap between sections */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .container {
+                padding: 40px;
+                gap: 30px;
+            }
+        }
+        h2 {
+            font-size: 2rem; /* Slightly smaller for mobile */
+            font-weight: 800;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px; /* Adjusted margin */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.08);
+        }
+        @media (min-width: 640px) {
+            h2 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+        }
+        .section-header {
+            font-size: 1.3rem; /* Adjusted font size */
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 15px; /* Adjusted margin */
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px; /* Adjusted gap */
+        }
+        @media (min-width: 640px) {
+            .section-header {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                gap: 10px;
+            }
+        }
+        .form-group {
+            margin-bottom: 15px; /* Adjusted margin */
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 6px; /* Adjusted margin */
+            display: block;
+            font-size: 0.95rem; /* Adjusted font size */
+        }
+        .form-group textarea,
+        .form-group input[type="text"],
+        .form-group input[type="date"], /* Added date type */
+        .form-group input[type="number"],
+        .form-group input[type="range"],
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px; /* Adjusted padding */
+            border: 1px solid #cbd5e0;
+            border-radius: 8px; /* Slightly less rounded for inputs */
+            font-size: 0.95rem; /* Adjusted font size */
+            color: #2d3748;
+            background-color: #fff;
+            outline: none;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            min-height: 150px; /* Default height for textarea */
+            resize: vertical; /* Allow vertical resizing */
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group input[type="range"],
+        .form-group select {
+            min-height: auto; /* Override for non-textarea inputs */
+        }
+
+        .form-group textarea:focus,
+        .form-group input[type="text"]:focus,
+        .form-group input[type="date"]:focus,
+        .form-group input[type="number"]:focus,
+        .form-group input[type="range"]:focus,
+        .form-group select:focus {
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+        }
+        .form-group input[type="checkbox"] {
+            margin-right: 8px;
+            transform: scale(1.1); /* Slightly smaller checkbox */
+        }
+        .priority-display {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-left: 8px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Adjusted gap */
+            margin-top: 20px; /* Adjusted margin */
+            flex-wrap: wrap;
+        }
+        @media (min-width: 640px) {
+            .button-group {
+                gap: 20px;
+                margin-top: 25px;
+            }
+        }
+        .button-group button {
+            padding: 12px 24px; /* Adjusted padding */
+            border-radius: 8px; /* Adjusted border-radius */
+            font-size: 1rem; /* Adjusted font size */
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px; /* Adjusted gap */
+        }
+        @media (min-width: 640px) {
+            .button-group button {
+                padding: 14px 28px;
+                border-radius: 10px;
+                font-size: 1.05rem;
+                gap: 8px;
+            }
+        }
+        .button-group button i {
+            font-size: 1.1em; /* Adjusted icon size */
+        }
+        @media (min-width: 640px) {
+            .button-group button i {
+                font-size: 1.2em;
+            }
+        }
+        .button-group button.primary {
+            background: linear-gradient(45deg, #4299e1, #3182ce);
+            color: #ffffff;
+            box-shadow: 0 6px 15px rgba(66, 153, 225, 0.4);
+        }
+        .button-group button.primary:hover {
+            background: linear-gradient(45deg, #3182ce, #2b6cb0);
+            box-shadow: 0 8px 20px rgba(66, 153, 225, 0.5);
+            transform: translateY(-2px);
+        }
+        .button-group button.secondary {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .button-group button.secondary:hover {
+            background-color: #cbd5e0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #4299e1;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 15px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .sitemap-output {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #2d3748;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-break: break-all; /* Break long words */
+        }
+        .message-box {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        .message-box.success {
+            background-color: #e6fffa;
+            color: #38a169;
+            border: 1px solid #81e6d9;
+        }
+        .message-box.error {
+            background-color: #ffebeb;
+            color: #e53e3e;
+            border: 1px solid #feb2b2;
+        }
+
+        /* URL List Styles */
+        .url-list-container {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #fdfefe;
+        }
+        .url-item {
+            display: grid;
+            grid-template-columns: 1fr auto; /* URL and delete button */
+            gap: 10px;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .url-item:last-child {
+            border-bottom: none;
+        }
+        .url-item .url-text {
+            word-break: break-all;
+            font-size: 0.9rem;
+            color: #333;
+            outline: none; /* Remove outline on focus for contenteditable */
+        }
+        .url-item .url-text:focus {
+            border-bottom: 1px solid #4299e1; /* Visual cue on edit */
+        }
+        .url-item .remove-url-btn {
+            background-color: #ef4444; /* Red */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .url-item .remove-url-btn:hover {
+            background-color: #dc2626;
+        }
+        .url-item-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid for details */
+            gap: 10px;
+            margin-top: 10px;
+            padding-left: 10px;
+            border-left: 2px solid #a0d9ff;
+        }
+        .url-item-details .detail-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        .url-item-details .detail-group input,
+        .url-item-details .detail-group select {
+            padding: 6px 8px;
+            font-size: 0.85rem;
+            border-radius: 5px;
+        }
+        .add-url-row {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbd5e0;
+        }
+        @media (min-width: 640px) {
+            .add-url-row {
+                flex-direction: row;
+                align-items: flex-end;
+            }
+        }
+        .add-url-row input {
+            flex-grow: 1;
+        }
+        .add-url-row button {
+            flex-shrink: 0;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Validation Errors Section */
+        .validation-errors-section {
+            background-color: #ffebeb;
+            border: 1px solid #feb2b2;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .validation-errors-section h3 {
+            color: #e53e3e;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .validation-errors-section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #c53030;
+            font-size: 0.9rem;
+        }
+    </style>
+  <meta name="description" content="Sitemap Generator Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modif...">
   <link rel="canonical" href="https://shaynly.com/sitemap-generator/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/sitemap-generator/">
   <meta property="og:title" content="Sitemap Generator - Shaynly">
-  <meta property="og:description" content="Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modified dates. Validate sitemaps in real-time and download for improved website indexing.">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2025/07/Sitemap-Generator.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:description" content="Sitemap Generator Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modif...">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sitemap Generator - Shaynly">
-  <meta name="twitter:description" content="Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modified dates. Validate sitemaps in real-time and download for improved website indexing.">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2025/07/Sitemap-Generator.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:description" content="Sitemap Generator Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modif...">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,47 +374,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Sitemap Generator",
-  "name": "Sitemap Generator",
-  "description": "Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modified dates. Validate sitemaps in real-time and download for improved website indexing.",
-  "url": "https://shaynly.com/sitemap-generator/",
-  "datePublished": "2025-07-20",
-  "dateModified": "2025-07-20",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2025/07/Sitemap-Generator.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -102,415 +396,633 @@
       </nav>
     </div>
   </header>
+    <div class="container">
+        <h2>Sitemap Generator</h2>
 
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/tools/">Tools</a> <span>/</span> <span>Sitemap Generator</span>
-        </div>
-        <a href="/category/tools/" class="cat-badge" style="text-decoration:none;">Tools</a>
-        <h1 class="article-title">Sitemap Generator</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2025-07-20</span>
-          <span>•</span>
-          <span>14 min read</span>
+        <div class="form-group">
+            <label for="urlInput">Paste URLs (one per line):</label>
+            <textarea id="urlInput" placeholder="https://example.com/
+https://example.com/about
+https://example.com/products/item1"></textarea>
+            <p class="text-sm text-gray-500 mt-1">Paste multiple URLs here. They will be added to the list below.</p>
         </div>
 
-        <img src="/wp-content/uploads/2025/07/Sitemap-Generator.png" alt="Sitemap Generator" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
-
-        <div class="article-content">
-          <h2 class="wp-block-heading has-text-align-center">Sitemap Generator</h2>
-<p>Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modified dates. Validate sitemaps in real-time and download for improved website indexing.</p>
-    <div class="container">        <h2>Sitemap Generator</h2>
-        <div class="form-group">            <label for="urlInput">Paste URLs (one per line):</label>            <textarea id="urlInput" placeholder="https://example.com/nhttps://example.com/aboutnhttps://example.com/products/item1"></textarea>            <p class="text-sm text-gray-500 mt-1">Paste multiple URLs here. They will be added to the list below.</p>        </div>
-        <div class="button-group">            <button id="addUrlsFromTextBtn" class="secondary"><i class="fas fa-plus"></i> Add URLs from Text</button>        </div>
-        <!-- URL Management Section -->        <div class="url-list-container">            <h3 class="section-header"><i class="fas fa-list"></i> Manage URLs Individually</h3>            <div id="urlList">                <p class="text-center text-gray-500">No URLs added yet. Add from text area or below.</p>            </div>
-            <div class="add-url-row">                <input type="text" id="newUrlInput" placeholder="Enter new URL (e.g., https://example.com/new-page)">                <button id="addNewUrlBtn" class="primary"><i class="fas fa-plus-circle"></i> Add Single URL</button>            </div>            <div class="form-group flex items-center mt-4">                <input type="checkbox" id="setLastmodToday">                <label for="setLastmodToday" class="mb-0 cursor-pointer">Set Last Modified to Today for all URLs</label>            </div>            <div class="form-group">                <label for="defaultChangefreqSelect">Default Change Frequency:</label>                <select id="defaultChangefreqSelect" class="w-full">                    <option value="">(Omit)</option>                    <option value="always">Always</option>                    <option value="hourly">Hourly</option>                    <option value="daily">Daily</option>                    <option value="weekly">Weekly</option>                    <option value="monthly">Monthly</option>                    <option value="yearly">Yearly</option>                    <option value="never">Never</option>                </select>            </div>            <div class="form-group">                <label for="defaultPrioritySlider">Default Priority (0.0 - 1.0): <span id="defaultPriorityValue" class="priority-display">0.5</span></label>                <input type="range" id="defaultPrioritySlider" min="0.0" max="1.0" step="0.1" value="0.5">            </div>        </div>
-        <div class="button-group">            <button id="generateSitemapBtn" class="primary"><i class="fas fa-sitemap"></i> Generate Sitemap</button>            <button id="downloadSitemapBtn" class="secondary" disabled><i class="fas fa-download"></i> Download Sitemap</button>            <button id="resetBtn" class="secondary"><i class="fas fa-redo"></i> Reset</button>        </div>
-        <div id="loadingSpinner" class="loading-spinner hidden"></div>        <div id="messageBox" class="message-box hidden"></div>
-        <!-- Validation Errors Section -->        <div id="validationErrors" class="validation-errors-section hidden">            <h3 class="section-header"><i class="fas fa-exclamation-triangle"></i> Validation Errors</h3>            <ul id="errorList"></ul>        </div>
-        <div class="sitemap-output-section">            <h3 class="section-header"><i class="fas fa-code"></i> Generated XML Sitemap</h3>            <div id="sitemapOutput" class="sitemap-output">                <!-- Generated XML will appear here -->                <p class="text-center text-gray-500">Your XML sitemap will be displayed here after generation.</p>            </div>        </div>    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>    <script>        // DOM Elements
-const urlInput = document.getElementById('urlInput');
-const addUrlsFromTextBtn = document.getElementById('addUrlsFromTextBtn');
-const urlListDiv = document.getElementById('urlList');
-const newUrlInput = document.getElementById('newUrlInput');
-const addNewUrlBtn = document.getElementById('addNewUrlBtn');
-const setLastmodTodayCheckbox = document.getElementById('setLastmodToday');
-const defaultChangefreqSelect = document.getElementById('defaultChangefreqSelect');
-const defaultPrioritySlider = document.getElementById('defaultPrioritySlider');
-const defaultPriorityValueSpan = document.getElementById('defaultPriorityValue');
-const generateSitemapBtn = document.getElementById('generateSitemapBtn');
-const downloadSitemapBtn = document.getElementById('downloadSitemapBtn');
-const resetBtn = document.getElementById('resetBtn');
-const sitemapOutputDiv = document.getElementById('sitemapOutput');
-const loadingSpinner = document.getElementById('loadingSpinner');
-const messageBox = document.getElementById('messageBox');
-const validationErrorsDiv = document.getElementById('validationErrors');
-const errorList = document.getElementById('errorList');
-        // Store URLs with their properties
-let urlsData = []; // [{ loc: "url", lastmod: "YYYY-MM-DD", changefreq: "daily", priority: "0.8" }]
-        // --- Utility Functions ---
-        /**n         * Displays a message in the message box.n         * @param {string} message - The message to display.n         * @param {'success'|'error'} type - The type of message (for styling).n         */n        function showMessage(message, type) {
-messageBox.textContent = message;
-messageBox.className = `message-box ${type}`;
-messageBox.classList.remove('hidden');
-setTimeout(() => {
-messageBox.classList.add('hidden');
-}, 5000); // Hide after 5 seconds
-}
-        /**n         * Shows the loading spinner.n         */n        function showLoading() {
-loadingSpinner.classList.remove('hidden');
-generateSitemapBtn.disabled = true;
-downloadSitemapBtn.disabled = true;
-resetBtn.disabled = true;
-messageBox.classList.add('hidden'); // Hide any previous messagesn            validationErrorsDiv.classList.add('hidden'); // Hide errors on new generation
-errorList.innerHTML = '';
-}
-        /**n         * Hides the loading spinner.n         */n        function hideLoading() {
-loadingSpinner.classList.add('hidden');
-generateSitemapBtn.disabled = false;
-resetBtn.disabled = false;
-}
-        /**n         * Resets the UI and clears all data.n         */n        function resetApp() {
-urlInput.value = '';
-urlsData = [];
-renderUrlList(); // Clear the URL list display
-newUrlInput.value = '';
-setLastmodTodayCheckbox.checked = false;
-defaultChangefreqSelect.value = '';
-defaultPrioritySlider.value = 0.5;
-defaultPriorityValueSpan.textContent = 0.5;
-sitemapOutputDiv.innerHTML = '<p class="text-center text-gray-500">Your XML sitemap will be displayed here after generation.</p>';
-hideLoading();
-downloadSitemapBtn.disabled = true;
-messageBox.classList.add('hidden');
-validationErrorsDiv.classList.add('hidden');
-errorList.innerHTML = '';
-showMessage("Application reset successfully!", "success");
-}
-        /**n         * Validates if a string is a well-formed URL.n         * @param {string} urlString - The string to validate.n         * @returns {boolean} True if valid, false otherwise.n         */n        function isValidUrl(urlString) {
-try {
-new URL(urlString);
-return true;
-} catch (e) {
-return false;
-}
-}
-        /**n         * Validates if a string is in YYYY-MM-DD format.n         * @param {string} dateString - The string to validate.n         * @returns {boolean} True if valid, false otherwise.n         */n        function isValidDate(dateString) {
-if (!dateString) return true; // Empty string is valid (means omit)
-const regex = /^\d{4}-\d{2}-\d{2}$/;
-if (!regex.test(dateString)) return false;
-const date = new Date(dateString);
-const [year, month, day] = dateString.split('-').map(Number);
-return date.getFullYear() === year && (date.getMonth() + 1) === month && date.getDate() === day;
-}
-        /**n         * Adds URLs from the textarea to the urlsData array.n         */n        function addUrlsFromTextArea() {
-const urls = urlInput.value.split('\n')
-.map(url => url.trim())
-.filter(url => url !== '');
-            urls.forEach(url => {
-if (isValidUrl(url)) {
-// Check if URL already exists to avoid duplicates
-if (!urlsData.some(item => item.loc === url)) {
-urlsData.push({
-loc: url,
-lastmod: '',
-changefreq: defaultChangefreqSelect.value,
-priority: parseFloat(defaultPrioritySlider.value).toFixed(1)
-});
-} else {
-showMessage(`URL already exists: ${url}`, "error");
-}
-} else {
-showMessage(`Skipped invalid URL from text area: ${url}`, "error");
-}
-});
-urlInput.value = ''; // Clear textarea after adding
-renderUrlList();
-}
-        /**n         * Adds a single URL from the new URL input field.n         */n        function addSingleUrl() {
-const url = newUrlInput.value.trim();
-if (!url) {
-showMessage("Please enter a URL.", "error");
-return;
-}
-if (!isValidUrl(url)) {
-showMessage("Invalid URL format.", "error");
-return;
-}
-if (urlsData.some(item => item.loc === url)) {
-showMessage("This URL is already in the list.", "error");
-return;
-}
-            urlsData.push({
-loc: url,
-lastmod: '',
-changefreq: defaultChangefreqSelect.value,
-priority: parseFloat(defaultPrioritySlider.value).toFixed(1)
-});
-newUrlInput.value = ''; // Clear input field
-renderUrlList();
-showMessage("URL added successfully!", "success");
-}
-        /**n         * Updates the 'loc' (URL) property of a URL item in urlsData.n         * @param {Event} event - The blur event from the contenteditable span.n         * @param {
-umber} index - The index of the URL item to update.n         */n        function updateUrlLoc(event, index) {
-const newLoc = event.target.textContent.trim();
-const originalLoc = urlsData[index].loc;
-            if (newLoc === originalLoc) return; // No changen
-if (!isValidUrl(newLoc)) {
-showMessage(`Invalid URL format for "${
-ewLoc}". Reverting to previous.`, 'error');
-event.target.textContent = originalLoc; // Revert
-return;
-}
-// Check for duplicates, excluding self
-const duplicateIndex = urlsData.findIndex((item, i) => item.loc === newLoc && i !== index);
-if (duplicateIndex !== -1) {
-showMessage(`URL "${
-ewLoc}" already exists. Reverting to previous.`, 'error');
-event.target.textContent = originalLoc; // Revert
-return;
-}
-urlsData[index].loc = newLoc;
-showMessage('URL updated.', 'success');
-}
-        /**n         * Updates a generic property of a URL item in urlsData.n         * @param {
-umber} index - The index of the URL item to update.n         * @param {string} prop - The property name ('lastmod', 'changefreq', 'priority').n         * @param {string} value - The new value for the property.n         */n        function updateUrlProperty(index, prop, value) {
-urlsData[index][prop] = value;
-showMessage(`${prop} updated.`, 'success');
-}
-        /**n         * Removes a URL item from urlsData.n         * @param {
-umber} index - The index of the URL item to remove.n         */n        function removeUrl(index) {
-urlsData.splice(index, 1);
-renderUrlList();
-showMessage("URL removed.", "success");
-}
-        /**n         * Helper function to create a detail group (label + input/select).n         * @param {string} labelText - Text for the label.n         * @param {string} elementType - 'input' or 'select'.n         * @param {string} [inputType] - Type for input element (e.g., 'date', 'range', 'text').n         * @param {string} value - Initial value for the input/select.n         * @param {Function} eventListener - Event listener for 'change' or 'input' event.n         * @returns {HTMLElement} The created detail group div.n         */n        function createDetailGroup(labelText, elementType, inputType, value, eventListener) {
-const group = document.createElement('div');
-group.className = 'detail-group';
-const label = document.createElement('label');
-label.textContent = labelText;
-group.appendChild(label);
-            let inputElement;
-if (elementType === 'input') {
-inputElement = document.createElement('input');
-inputElement.type = inputType;
-inputElement.value = value;
-} else if (elementType === 'select') {
-inputElement = document.createElement('select');
-inputElement.value = value;
-}
-inputElement.className = `${elementType}-input`; // Common class for styling
-inputElement.addEventListener(inputType === 'range' ? 'input' : 'change', eventListener);
-group.appendChild(inputElement);
-return group;
-}
-        /**n         * Renders the list of URLs with their properties in the UI.n         */n        function renderUrlList() {
-urlListDiv.innerHTML = '';
-if (urlsData.length === 0) {
-urlListDiv.innerHTML = '<p class="text-center text-gray-500">No URLs added yet. Add from text area or below.</p>';
-return;
-}
-            urlsData.forEach((urlItem, index) => {
-const itemDiv = document.createElement('div');
-itemDiv.className = 'url-item';
-                // URL text (contenteditable)
-const urlSpan = document.createElement('span');
-urlSpan.className = 'url-text';
-urlSpan.textContent = urlItem.loc;
-urlSpan.contentEditable = true;
-urlSpan.spellcheck = false;
-urlSpan.addEventListener('blur', (e) => updateUrlLoc(e, index));
-urlSpan.addEventListener('keydown', (e) => {
-if (e.key === 'Enter') {
-e.preventDefault(); // Prevent new linen                        e.target.blur(); // Trigger blur to save changes
-}
-});
-itemDiv.appendChild(urlSpan);
-                // Remove buttonn                const removeBt
-= document.createElement('button');
-removeBtn.className = 'remove-url-btn';
-removeBtn.innerHTML = '<i class="fas fa-times"></i> Remove';
-removeBtn.addEventListener('click', () => removeUrl(index));
-itemDiv.appendChild(removeBtn);
-                // Details container
-const detailsDiv = document.createElement('div');
-detailsDiv.className = 'url-item-details col-span-full';
-                // Lastmod input
-const lastmodGroup = createDetailGroup('Last Mod:', 'input', 'date', urlItem.lastmod, (e) => updateUrlProperty(index, 'lastmod', e.target.value));
-detailsDiv.appendChild(lastmodGroup);
-                // Changefreq select
-const changefreqGroup = createDetailGroup('Change Freq:', 'select', null, urlItem.changefreq, (e) => updateUrlProperty(index, 'changefreq', e.target.value));
-const changefreqOptions = ["", "always", "hourly", "daily", "weekly", "monthly", "yearly", "never"];
-changefreqOptions.forEach(optionValue => {
-const option = document.createElement('option');
-option.value = optionValue;
-option.textContent = optionValue === "" ? "(Omit)" : optionValue.charAt(0).toUpperCase() + optionValue.slice(1);
-if (urlItem.changefreq === optionValue) {
-option.selected = true;
-}
-changefreqGroup.querySelector('select').appendChild(option);
-});
-detailsDiv.appendChild(changefreqGroup);
-                // Priority input
-const priorityGroup = createDetailGroup('Priority:', 'input', 'range', urlItem.priority, (e) => updateUrlProperty(index, 'priority', parseFloat(e.target.value).toFixed(1)));
-priorityGroup.querySelector('input').min = "0.0";
-priorityGroup.querySelector('input').max = "1.0";
-priorityGroup.querySelector('input').step = "0.1";
-const priorityDisplay = document.createElement('span');
-priorityDisplay.className = 'priority-value-display';
-priorityDisplay.textContent = urlItem.priority;
-priorityGroup.appendChild(priorityDisplay);
-priorityGroup.querySelector('input').addEventListener('input', (e) => {
-priorityDisplay.textContent = parseFloat(e.target.value).toFixed(1);
-});
-detailsDiv.appendChild(priorityGroup);
-                itemDiv.appendChild(detailsDiv);
-urlListDiv.appendChild(itemDiv);
-});
-}
-        /**n         * Generates the XML sitemap string from the stored URLs data.n         */n        function generateSitemap() {
-showLoading();
-sitemapOutputDiv.innerHTML = ''; // Clear previous outputn            errorList.innerHTML = ''; // Clear previous errors
-validationErrorsDiv.classList.add('hidden');
-            if (urlsData.length === 0) {
-showMessage("Please add at least one URL.", "error");
-hideLoading();
-return;
-}
-            let currentErrors = [];
-let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-sitemapXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-            const today = new Date().toISOString().split('T')[0];
-            urlsData.forEach((urlItem, index) => {
-let urlLoc = urlItem.loc;
-let urlLastmod = urlItem.lastmod;
-let urlChangefreq = urlItem.changefreq;
-let urlPriority = urlItem.priority;
-                if (!isValidUrl(urlLoc)) {
-currentErrors.push(`Invalid URL format for entry ${index + 1}: ${urlLoc}`);
-return; // Skip this URL if invalid
-}
-if (setLastmodTodayCheckbox.checked) {
-urlLastmod = today;
-} else if (urlLastmod && !isValidDate(urlLastmod)) {
-currentErrors.push(`Invalid Last Modified Date format for ${urlLoc}. Use YYYY-MM-DD.`);
-urlLastmod = ''; // Clear invalid date
-}
-                sitemapXml += `  <url>\n`;
-sitemapXml += `    <loc>${urlLoc}</loc>\n`;
-if (urlLastmod) {
-sitemapXml += `    <lastmod>${urlLastmod}</lastmod>\n`;
-}
-if (urlChangefreq) {
-sitemapXml += `    <changefreq>${urlChangefreq}</changefreq>\n`;
-}
-// Priority is always added if it's a valid number
-if (!isNaN(parseFloat(urlPriority))) {
-sitemapXml += `    <priority>${parseFloat(urlPriority).toFixed(1)}</priority>\n`;
-}
-sitemapXml += `  </url>\n`;
-});
-            sitemapXml += `</urlset>`;
-            sitemapOutputDiv.textContent = sitemapXml;
-downloadSitemapBtn.disabled = false;
-            if (currentErrors.length > 0) {
-currentErrors.forEach(err => {
-const li = document.createElement('li');
-li.textContent = err;
-errorList.appendChild(li);
-});
-validationErrorsDiv.classList.remove('hidden');
-showMessage("Sitemap generated with errors. Please check the 'Validation Errors' section.", "error");
-} else {
-showMessage("Sitemap generated successfully!", "success");
-}
-hideLoading();
-}
-        /**n         * Downloads the generated XML sitemap.n         */n        function downloadSitemap() {
-const sitemapContent = sitemapOutputDiv.textContent;
-if (!sitemapContent || sitemapContent.includes("Your XML sitemap will be displayed here")) {
-showMessage("No sitemap generated to download.", "error");
-return;
-}
-            const blob = new Blob([sitemapContent], { type: "application/xml" });
-saveAs(blob, "sitemap.xml");
-showMessage("Sitemap downloaded successfully!", "success");
-}
-        // --- Event Listeners ---
-addUrlsFromTextBtn.addEventListener('click', addUrlsFromTextArea);
-addNewUrlBtn.addEventListener('click', addSingleUrl);
-generateSitemapBtn.addEventListener('click', generateSitemap);
-downloadSitemapBtn.addEventListener('click', downloadSitemap);
-resetBtn.addEventListener('click', resetApp);
-        // Update default priority value display
-defaultPrioritySlider.addEventListener('input', () => {
-defaultPriorityValueSpan.textContent = parseFloat(defaultPrioritySlider.value).toFixed(1);
-});
-        // Initial state on load
-window.onload = () => {
-hideLoading();
-downloadSitemapBtn.disabled = true;
-defaultPriorityValueSpan.textContent = parseFloat(defaultPrioritySlider.value).toFixed(1);
-renderUrlList(); // Render empty list initially
-};
-</script>
-<p><strong>Why This Tool Stands Out:</strong><br>⚡&nbsp;<strong>Bulk URL Processing</strong></p>
-<ul class="wp-block-list"><li>Add URLs individually or paste lists from spreadsheets</li>
-<li>Real-time URL validation with error highlighting</li>
-<li>Drag-and-drop URL reorganizatio</li></ul>
-<p>⚙️&nbsp;<strong>Granular Control</strong></p>
-<ul class="wp-block-list"><li>Set individual priorities (0.0-1.0) and change frequencies</li>
-<li>Batch-set last modified dates to current date</li>
-<li>Custom defaults for new entries</li></ul>
-<p>✅&nbsp;<strong>Smart Validatio</strong></p>
-<ul class="wp-block-list"><li>Automatic URL format checking</li>
-<li>Date format enforcement (YYYY-MM-DD)</li>
-<li>Duplicate URL preventio</li></ul>
-<p>📥&nbsp;<strong>Instant Output</strong></p>
-<ul class="wp-block-list"><li>Real-time XML preview with syntax highlighting</li>
-<li>One-click download as .xml file</li>
-<li>No server processing - all operations browser-based</li></ul>
-<p>🔍 <strong>SEO Pro Tip:</strong><br>Use priority 1.0 for cornerstone content and 0.8-0.9 for category pages. Set "monthly" change frequency for <a href="https://shaynly.com/healthcare/">blogs </a>and "weekly" for product pages to signal freshness to <a href="https://google.com/">search engines</a>.</p>
-        </div>
-      </article>
-
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
+        <div class="button-group">
+            <button id="addUrlsFromTextBtn" class="secondary"><i class="fas fa-plus"></i> Add URLs from Text</button>
         </div>
 
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
+        <!-- URL Management Section -->
+        <div class="url-list-container">
+            <h3 class="section-header"><i class="fas fa-list"></i> Manage URLs Individually</h3>
+            <div id="urlList">
+                <p class="text-center text-gray-500">No URLs added yet. Add from text area or below.</p>
+            </div>
+
+            <div class="add-url-row">
+                <input type="text" id="newUrlInput" placeholder="Enter new URL (e.g., https://example.com/new-page)">
+                <button id="addNewUrlBtn" class="primary"><i class="fas fa-plus-circle"></i> Add Single URL</button>
+            </div>
+            <div class="form-group flex items-center mt-4">
+                <input type="checkbox" id="setLastmodToday">
+                <label for="setLastmodToday" class="mb-0 cursor-pointer">Set Last Modified to Today for all URLs</label>
+            </div>
+            <div class="form-group">
+                <label for="defaultChangefreqSelect">Default Change Frequency:</label>
+                <select id="defaultChangefreqSelect" class="w-full">
+                    <option value="">(Omit)</option>
+                    <option value="always">Always</option>
+                    <option value="hourly">Hourly</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                    <option value="never">Never</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="defaultPrioritySlider">Default Priority (0.0 - 1.0): <span id="defaultPriorityValue" class="priority-display">0.5</span></label>
+                <input type="range" id="defaultPrioritySlider" min="0.0" max="1.0" step="0.1" value="0.5">
+            </div>
         </div>
-      </aside>
+
+        <div class="button-group">
+            <button id="generateSitemapBtn" class="primary"><i class="fas fa-sitemap"></i> Generate Sitemap</button>
+            <button id="downloadSitemapBtn" class="secondary" disabled><i class="fas fa-download"></i> Download Sitemap</button>
+            <button id="resetBtn" class="secondary"><i class="fas fa-redo"></i> Reset</button>
+        </div>
+
+        <div id="loadingSpinner" class="loading-spinner hidden"></div>
+        <div id="messageBox" class="message-box hidden"></div>
+
+        <!-- Validation Errors Section -->
+        <div id="validationErrors" class="validation-errors-section hidden">
+            <h3 class="section-header"><i class="fas fa-exclamation-triangle"></i> Validation Errors</h3>
+            <ul id="errorList"></ul>
+        </div>
+
+        <div class="sitemap-output-section">
+            <h3 class="section-header"><i class="fas fa-code"></i> Generated XML Sitemap</h3>
+            <div id="sitemapOutput" class="sitemap-output">
+                <!-- Generated XML will appear here -->
+                <p class="text-center text-gray-500">Your XML sitemap will be displayed here after generation.</p>
+            </div>
+        </div>
     </div>
-    
-  </main>
 
-  <!-- Footer -->
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script>
+        // DOM Elements
+        const urlInput = document.getElementById('urlInput');
+        const addUrlsFromTextBtn = document.getElementById('addUrlsFromTextBtn');
+        const urlListDiv = document.getElementById('urlList');
+        const newUrlInput = document.getElementById('newUrlInput');
+        const addNewUrlBtn = document.getElementById('addNewUrlBtn');
+        const setLastmodTodayCheckbox = document.getElementById('setLastmodToday');
+        const defaultChangefreqSelect = document.getElementById('defaultChangefreqSelect');
+        const defaultPrioritySlider = document.getElementById('defaultPrioritySlider');
+        const defaultPriorityValueSpan = document.getElementById('defaultPriorityValue');
+        const generateSitemapBtn = document.getElementById('generateSitemapBtn');
+        const downloadSitemapBtn = document.getElementById('downloadSitemapBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const sitemapOutputDiv = document.getElementById('sitemapOutput');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const messageBox = document.getElementById('messageBox');
+        const validationErrorsDiv = document.getElementById('validationErrors');
+        const errorList = document.getElementById('errorList');
 
-  <script src="/assets/js/main.js"></script>
+        // Store URLs with their properties
+        let urlsData = []; // [{ loc: "url", lastmod: "YYYY-MM-DD", changefreq: "daily", priority: "0.8" }]
 
+        // --- Utility Functions ---
+
+        /**
+         * Displays a message in the message box.
+         * @param {string} message - The message to display.
+         * @param {'success'|'error'} type - The type of message (for styling).
+         */
+        function showMessage(message, type) {
+            messageBox.textContent = message;
+            messageBox.className = `message-box ${type}`;
+            messageBox.classList.remove('hidden');
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 5000); // Hide after 5 seconds
+        }
+
+        /**
+         * Shows the loading spinner.
+         */
+        function showLoading() {
+            loadingSpinner.classList.remove('hidden');
+            generateSitemapBtn.disabled = true;
+            downloadSitemapBtn.disabled = true;
+            resetBtn.disabled = true;
+            messageBox.classList.add('hidden'); // Hide any previous messages
+            validationErrorsDiv.classList.add('hidden'); // Hide errors on new generation
+            errorList.innerHTML = '';
+        }
+
+        /**
+         * Hides the loading spinner.
+         */
+        function hideLoading() {
+            loadingSpinner.classList.add('hidden');
+            generateSitemapBtn.disabled = false;
+            resetBtn.disabled = false;
+        }
+
+        /**
+         * Resets the UI and clears all data.
+         */
+        function resetApp() {
+            urlInput.value = '';
+            urlsData = [];
+            renderUrlList(); // Clear the URL list display
+            newUrlInput.value = '';
+            setLastmodTodayCheckbox.checked = false;
+            defaultChangefreqSelect.value = '';
+            defaultPrioritySlider.value = 0.5;
+            defaultPriorityValueSpan.textContent = 0.5;
+            sitemapOutputDiv.innerHTML = '<p class="text-center text-gray-500">Your XML sitemap will be displayed here after generation.</p>';
+            hideLoading();
+            downloadSitemapBtn.disabled = true;
+            messageBox.classList.add('hidden');
+            validationErrorsDiv.classList.add('hidden');
+            errorList.innerHTML = '';
+            showMessage("Application reset successfully!", "success");
+        }
+
+        /**
+         * Validates if a string is a well-formed URL.
+         * @param {string} urlString - The string to validate.
+         * @returns {boolean} True if valid, false otherwise.
+         */
+        function isValidUrl(urlString) {
+            try {
+                new URL(urlString);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        /**
+         * Validates if a string is in YYYY-MM-DD format.
+         * @param {string} dateString - The string to validate.
+         * @returns {boolean} True if valid, false otherwise.
+         */
+        function isValidDate(dateString) {
+            if (!dateString) return true; // Empty string is valid (means omit)
+            const regex = /^\d{4}-\d{2}-\d{2}$/;
+            if (!regex.test(dateString)) return false;
+            const date = new Date(dateString);
+            const [year, month, day] = dateString.split('-').map(Number);
+            return date.getFullYear() === year && (date.getMonth() + 1) === month && date.getDate() === day;
+        }
+
+        /**
+         * Adds URLs from the textarea to the urlsData array.
+         */
+        function addUrlsFromTextArea() {
+            const urls = urlInput.value.split('\n')
+                                      .map(url => url.trim())
+                                      .filter(url => url !== '');
+
+            urls.forEach(url => {
+                if (isValidUrl(url)) {
+                    // Check if URL already exists to avoid duplicates
+                    if (!urlsData.some(item => item.loc === url)) {
+                        urlsData.push({
+                            loc: url,
+                            lastmod: '',
+                            changefreq: defaultChangefreqSelect.value,
+                            priority: parseFloat(defaultPrioritySlider.value).toFixed(1)
+                        });
+                    } else {
+                        showMessage(`URL already exists: ${url}`, "error");
+                    }
+                } else {
+                    showMessage(`Skipped invalid URL from text area: ${url}`, "error");
+                }
+            });
+            urlInput.value = ''; // Clear textarea after adding
+            renderUrlList();
+        }
+
+        /**
+         * Adds a single URL from the new URL input field.
+         */
+        function addSingleUrl() {
+            const url = newUrlInput.value.trim();
+            if (!url) {
+                showMessage("Please enter a URL.", "error");
+                return;
+            }
+            if (!isValidUrl(url)) {
+                showMessage("Invalid URL format.", "error");
+                return;
+            }
+            if (urlsData.some(item => item.loc === url)) {
+                showMessage("This URL is already in the list.", "error");
+                return;
+            }
+
+            urlsData.push({
+                loc: url,
+                lastmod: '',
+                changefreq: defaultChangefreqSelect.value,
+                priority: parseFloat(defaultPrioritySlider.value).toFixed(1)
+            });
+            newUrlInput.value = ''; // Clear input field
+            renderUrlList();
+            showMessage("URL added successfully!", "success");
+        }
+
+        /**
+         * Updates the 'loc' (URL) property of a URL item in urlsData.
+         * @param {Event} event - The blur event from the contenteditable span.
+         * @param {number} index - The index of the URL item to update.
+         */
+        function updateUrlLoc(event, index) {
+            const newLoc = event.target.textContent.trim();
+            const originalLoc = urlsData[index].loc;
+
+            if (newLoc === originalLoc) return; // No change
+
+            if (!isValidUrl(newLoc)) {
+                showMessage(`Invalid URL format for "${newLoc}". Reverting to previous.`, 'error');
+                event.target.textContent = originalLoc; // Revert
+                return;
+            }
+            // Check for duplicates, excluding self
+            const duplicateIndex = urlsData.findIndex((item, i) => item.loc === newLoc && i !== index);
+            if (duplicateIndex !== -1) {
+                showMessage(`URL "${newLoc}" already exists. Reverting to previous.`, 'error');
+                event.target.textContent = originalLoc; // Revert
+                return;
+            }
+            urlsData[index].loc = newLoc;
+            showMessage('URL updated.', 'success');
+        }
+
+        /**
+         * Updates a generic property of a URL item in urlsData.
+         * @param {number} index - The index of the URL item to update.
+         * @param {string} prop - The property name ('lastmod', 'changefreq', 'priority').
+         * @param {string} value - The new value for the property.
+         */
+        function updateUrlProperty(index, prop, value) {
+            urlsData[index][prop] = value;
+            showMessage(`${prop} updated.`, 'success');
+        }
+
+        /**
+         * Removes a URL item from urlsData.
+         * @param {number} index - The index of the URL item to remove.
+         */
+        function removeUrl(index) {
+            urlsData.splice(index, 1);
+            renderUrlList();
+            showMessage("URL removed.", "success");
+        }
+
+        /**
+         * Helper function to create a detail group (label + input/select).
+         * @param {string} labelText - Text for the label.
+         * @param {string} elementType - 'input' or 'select'.
+         * @param {string} [inputType] - Type for input element (e.g., 'date', 'range', 'text').
+         * @param {string} value - Initial value for the input/select.
+         * @param {Function} eventListener - Event listener for 'change' or 'input' event.
+         * @returns {HTMLElement} The created detail group div.
+         */
+        function createDetailGroup(labelText, elementType, inputType, value, eventListener) {
+            const group = document.createElement('div');
+            group.className = 'detail-group';
+            const label = document.createElement('label');
+            label.textContent = labelText;
+            group.appendChild(label);
+
+            let inputElement;
+            if (elementType === 'input') {
+                inputElement = document.createElement('input');
+                inputElement.type = inputType;
+                inputElement.value = value;
+            } else if (elementType === 'select') {
+                inputElement = document.createElement('select');
+                inputElement.value = value;
+            }
+            inputElement.className = `${elementType}-input`; // Common class for styling
+            inputElement.addEventListener(inputType === 'range' ? 'input' : 'change', eventListener);
+            group.appendChild(inputElement);
+            return group;
+        }
+
+        /**
+         * Renders the list of URLs with their properties in the UI.
+         */
+        function renderUrlList() {
+            urlListDiv.innerHTML = '';
+            if (urlsData.length === 0) {
+                urlListDiv.innerHTML = '<p class="text-center text-gray-500">No URLs added yet. Add from text area or below.</p>';
+                return;
+            }
+
+            urlsData.forEach((urlItem, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'url-item';
+
+                // URL text (contenteditable)
+                const urlSpan = document.createElement('span');
+                urlSpan.className = 'url-text';
+                urlSpan.textContent = urlItem.loc;
+                urlSpan.contentEditable = true;
+                urlSpan.spellcheck = false;
+                urlSpan.addEventListener('blur', (e) => updateUrlLoc(e, index));
+                urlSpan.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault(); // Prevent new line
+                        e.target.blur(); // Trigger blur to save changes
+                    }
+                });
+                itemDiv.appendChild(urlSpan);
+
+                // Remove button
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-url-btn';
+                removeBtn.innerHTML = '<i class="fas fa-times"></i> Remove';
+                removeBtn.addEventListener('click', () => removeUrl(index));
+                itemDiv.appendChild(removeBtn);
+
+                // Details container
+                const detailsDiv = document.createElement('div');
+                detailsDiv.className = 'url-item-details col-span-full';
+
+                // Lastmod input
+                const lastmodGroup = createDetailGroup('Last Mod:', 'input', 'date', urlItem.lastmod, (e) => updateUrlProperty(index, 'lastmod', e.target.value));
+                detailsDiv.appendChild(lastmodGroup);
+
+                // Changefreq select
+                const changefreqGroup = createDetailGroup('Change Freq:', 'select', null, urlItem.changefreq, (e) => updateUrlProperty(index, 'changefreq', e.target.value));
+                const changefreqOptions = ["", "always", "hourly", "daily", "weekly", "monthly", "yearly", "never"];
+                changefreqOptions.forEach(optionValue => {
+                    const option = document.createElement('option');
+                    option.value = optionValue;
+                    option.textContent = optionValue === "" ? "(Omit)" : optionValue.charAt(0).toUpperCase() + optionValue.slice(1);
+                    if (urlItem.changefreq === optionValue) {
+                        option.selected = true;
+                    }
+                    changefreqGroup.querySelector('select').appendChild(option);
+                });
+                detailsDiv.appendChild(changefreqGroup);
+
+                // Priority input
+                const priorityGroup = createDetailGroup('Priority:', 'input', 'range', urlItem.priority, (e) => updateUrlProperty(index, 'priority', parseFloat(e.target.value).toFixed(1)));
+                priorityGroup.querySelector('input').min = "0.0";
+                priorityGroup.querySelector('input').max = "1.0";
+                priorityGroup.querySelector('input').step = "0.1";
+                const priorityDisplay = document.createElement('span');
+                priorityDisplay.className = 'priority-value-display';
+                priorityDisplay.textContent = urlItem.priority;
+                priorityGroup.appendChild(priorityDisplay);
+                priorityGroup.querySelector('input').addEventListener('input', (e) => {
+                    priorityDisplay.textContent = parseFloat(e.target.value).toFixed(1);
+                });
+                detailsDiv.appendChild(priorityGroup);
+
+                itemDiv.appendChild(detailsDiv);
+                urlListDiv.appendChild(itemDiv);
+            });
+        }
+
+        /**
+         * Generates the XML sitemap string from the stored URLs data.
+         */
+        function generateSitemap() {
+            showLoading();
+            sitemapOutputDiv.innerHTML = ''; // Clear previous output
+            errorList.innerHTML = ''; // Clear previous errors
+            validationErrorsDiv.classList.add('hidden');
+
+            if (urlsData.length === 0) {
+                showMessage("Please add at least one URL.", "error");
+                hideLoading();
+                return;
+            }
+
+            let currentErrors = [];
+            let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+            sitemapXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+            const today = new Date().toISOString().split('T')[0];
+
+            urlsData.forEach((urlItem, index) => {
+                let urlLoc = urlItem.loc;
+                let urlLastmod = urlItem.lastmod;
+                let urlChangefreq = urlItem.changefreq;
+                let urlPriority = urlItem.priority;
+
+                if (!isValidUrl(urlLoc)) {
+                    currentErrors.push(`Invalid URL format for entry ${index + 1}: ${urlLoc}`);
+                    return; // Skip this URL if invalid
+                }
+                if (setLastmodTodayCheckbox.checked) {
+                    urlLastmod = today;
+                } else if (urlLastmod && !isValidDate(urlLastmod)) {
+                    currentErrors.push(`Invalid Last Modified Date format for ${urlLoc}. Use YYYY-MM-DD.`);
+                    urlLastmod = ''; // Clear invalid date
+                }
+
+                sitemapXml += `  <url>\n`;
+                sitemapXml += `    <loc>${urlLoc}</loc>\n`;
+                if (urlLastmod) {
+                    sitemapXml += `    <lastmod>${urlLastmod}</lastmod>\n`;
+                }
+                if (urlChangefreq) {
+                    sitemapXml += `    <changefreq>${urlChangefreq}</changefreq>\n`;
+                }
+                // Priority is always added if it's a valid number
+                if (!isNaN(parseFloat(urlPriority))) {
+                    sitemapXml += `    <priority>${parseFloat(urlPriority).toFixed(1)}</priority>\n`;
+                }
+                sitemapXml += `  </url>\n`;
+            });
+
+            sitemapXml += `</urlset>`;
+
+            sitemapOutputDiv.textContent = sitemapXml;
+            downloadSitemapBtn.disabled = false;
+
+            if (currentErrors.length > 0) {
+                currentErrors.forEach(err => {
+                    const li = document.createElement('li');
+                    li.textContent = err;
+                    errorList.appendChild(li);
+                });
+                validationErrorsDiv.classList.remove('hidden');
+                showMessage("Sitemap generated with errors. Please check the 'Validation Errors' section.", "error");
+            } else {
+                showMessage("Sitemap generated successfully!", "success");
+            }
+            hideLoading();
+        }
+
+        /**
+         * Downloads the generated XML sitemap.
+         */
+        function downloadSitemap() {
+            const sitemapContent = sitemapOutputDiv.textContent;
+            if (!sitemapContent || sitemapContent.includes("Your XML sitemap will be displayed here")) {
+                showMessage("No sitemap generated to download.", "error");
+                return;
+            }
+
+            const blob = new Blob([sitemapContent], { type: "application/xml" });
+            saveAs(blob, "sitemap.xml");
+            showMessage("Sitemap downloaded successfully!", "success");
+        }
+
+        // --- Event Listeners ---
+        addUrlsFromTextBtn.addEventListener('click', addUrlsFromTextArea);
+        addNewUrlBtn.addEventListener('click', addSingleUrl);
+        generateSitemapBtn.addEventListener('click', generateSitemap);
+        downloadSitemapBtn.addEventListener('click', downloadSitemap);
+        resetBtn.addEventListener('click', resetApp);
+
+        // Update default priority value display
+        defaultPrioritySlider.addEventListener('input', () => {
+            defaultPriorityValueSpan.textContent = parseFloat(defaultPrioritySlider.value).toFixed(1);
+        });
+
+        // Initial state on load
+        window.onload = () => {
+            hideLoading();
+            downloadSitemapBtn.disabled = true;
+            defaultPriorityValueSpan.textContent = parseFloat(defaultPrioritySlider.value).toFixed(1);
+            renderUrlList(); // Render empty list initially
+        };
+    </script>
+
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+<p><strong>Why This Tool Stands Out:</strong><br>⚡&nbsp;<strong>Bulk URL Processing</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Add URLs individually or paste lists from spreadsheets</li>
+
+
+
+<li>Real-time URL validation with error highlighting</li>
+
+
+
+<li>Drag-and-drop URL reorganization</li>
+</ul>
+
+
+
+<p>⚙️&nbsp;<strong>Granular Control</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Set individual priorities (0.0-1.0) and change frequencies</li>
+
+
+
+<li>Batch-set last modified dates to current date</li>
+
+
+
+<li>Custom defaults for new entries</li>
+</ul>
+
+
+
+<p>✅&nbsp;<strong>Smart Validation</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Automatic URL format checking</li>
+
+
+
+<li>Date format enforcement (YYYY-MM-DD)</li>
+
+
+
+<li>Duplicate URL prevention</li>
+</ul>
+
+
+
+<p>📥&nbsp;<strong>Instant Output</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Real-time XML preview with syntax highlighting</li>
+
+
+
+<li>One-click download as .xml file</li>
+
+
+
+<li>No server processing - all operations browser-based</li>
+</ul>
+
+
+
+<p>🔍 <strong>SEO Pro Tip:</strong><br>Use priority 1.0 for cornerstone content and 0.8-0.9 for category pages. Set "monthly" change frequency for <a href="https://shaynly.com/healthcare/">blogs </a>and "weekly" for product pages to signal freshness to <a href="https://google.com/">search engines</a>.</p>

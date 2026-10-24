@@ -1,41 +1,448 @@
+<h2 class="wp-block-heading has-text-align-center">Color Contrast Checker</h2>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Contrast Checker - Shaynly</title>
-  <meta name="description" content="Ensure your designs are accessible with the Color Contrast Checker. Instantly test foreground and background color combinations for WCAG compliance, simulate color blindness effects, and get AI-generated palette suggestions. Perfect for designers and developers!">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Color Contrast Master</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles for the Inter font and overall aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #c5e1f7 100%); /* Soft blue gradient background */
+                        align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px; /* Even more rounded corners */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Stronger, more diffused shadow */
+            padding: 40px; /* Increased padding */
+            max-width: 780px; /* Slightly increased max-width */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Increased gap between sections */
+        }
+        h2 {
+            font-size: 2.5rem; /* Larger heading */
+            font-weight: 800; /* Extra bold */
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.08);
+        }
+        .input-group label {
+            font-weight: 600;
+            color: #2c3e50; /* Darker, more professional text color */
+            margin-bottom: 8px;
+            display: block;
+            font-size: 1.05rem;
+        }
+        .input-group input[type="color"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 60px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: transparent;
+            padding: 0;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+        }
+        .input-group input[type="color"]:hover {
+            transform: scale(1.05);
+        }
+        .input-group input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        .input-group input[type="color"]::-webkit-color-swatch {
+            border: 2px solid #a0aec0; /* Slightly thicker border */
+            border-radius: 8px;
+        }
+        .input-group input[type="color"]::-moz-color-swatch-wrapper {
+            padding: 0;
+        }
+        .input-group input[type="color"]::-moz-color-swatch {
+            border: 2px solid #a0aec0;
+            border-radius: 8px;
+        }
+        .input-group input[type="text"] {
+            flex-grow: 1;
+            padding: 12px 16px; /* Increased padding */
+            border: 1px solid #cbd5e0; /* Lighter border */
+            border-radius: 10px; /* More rounded */
+            font-size: 1.05rem;
+            color: #2d3748;
+            outline: none;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .input-group input[type="text"]:focus {
+            border-color: #4299e1; /* Brighter blue focus */
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3); /* Soft blue glow */
+        }
+        .result-box {
+            background-color: #e2f0ff; /* Lighter blue background */
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid #90cdf4; /* Blue border */
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05); /* Inner shadow for depth */
+            transition: all 0.3s ease-in-out;
+        }
+        .result-box .ratio {
+            font-size: 3rem; /* Larger font size */
+            font-weight: 800; /* Bolder */
+            color: #2b6cb0; /* Darker blue color */
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        .result-box .label {
+            font-size: 1.2rem;
+            color: #4a5568;
+        }
+        .compliance-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted min-width */
+            gap: 20px; /* Increased gap */
+        }
+        .compliance-item {
+            background-color: #f7fafc; /* Very light background */
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+            transition: transform 0.2s ease-in-out;
+        }
+        .compliance-item:hover {
+            transform: translateY(-3px);
+        }
+        .compliance-item h4 {
+            font-weight: 700; /* Bolder */
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .compliance-item p {
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .pass {
+            color: #2f855a; /* Deeper green */
+        }
+        .fail {
+            color: #c53030; /* Deeper red */
+        }
+        .pass::before {
+            content: '✓';
+            font-weight: bold;
+            font-size: 1.3em; /* Slightly larger checkmark */
+            color: #38a169; /* Brighter green checkmark */
+        }
+        .fail::before {
+            content: '✗';
+            font-weight: bold;
+            font-size: 1.3em; /* Slightly larger cross */
+            color: #e53e3e; /* Brighter red cross */
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Increased gap */
+            margin-top: 25px;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+        .button-group button {
+            padding: 14px 28px; /* Larger padding */
+            border-radius: 10px; /* More rounded */
+            font-size: 1.05rem;
+            font-weight: 700; /* Bolder text */
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .button-group button i {
+            font-size: 1.2em;
+        }
+        .button-group button.primary {
+            background: linear-gradient(45deg, #4299e1, #3182ce); /* Blue gradient */
+            color: #ffffff;
+            box-shadow: 0 6px 15px rgba(66, 153, 225, 0.4);
+        }
+        .button-group button.primary:hover {
+            background: linear-gradient(45deg, #3182ce, #2b6cb0); /* Darker blue gradient on hover */
+            box-shadow: 0 8px 20px rgba(66, 153, 225, 0.5);
+            transform: translateY(-2px);
+        }
+        .button-group button.secondary {
+            background-color: #e2e8f0; /* Light gray */
+            color: #4a5568;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .button-group button.secondary:hover {
+            background-color: #cbd5e0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .error-message {
+            color: #e53e3e; /* Brighter red for errors */
+            font-size: 0.9rem;
+            margin-top: 6px;
+            min-height: 22px; /* Ensure space */
+            font-weight: 500;
+        }
+        .color-info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .color-info-item {
+            background-color: #f7fafc;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .color-info-item span {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1rem;
+        }
+        .color-info-item button {
+            background-color: #4299e1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .color-info-item button:hover {
+            background-color: #3182ce;
+        }
+
+        .live-preview-section {
+            background-color: #f7fafc;
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        .live-preview-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        .live-preview-box {
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden; /* Ensure text doesn't overflow */
+            word-break: break-word; /* Break long words */
+            white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+            text-align: center;
+        }
+        .live-preview-box:focus {
+            outline: 2px solid #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+        }
+
+        .color-suggestion-section, .color-blindness-section {
+            background-color: #f7fafc;
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .color-suggestion-section h3, .color-blindness-section h3 {
+            font-size: 1.5rem; /* Larger heading */
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .suggestion-palette {
+            display: flex;
+            gap: 12px; /* Increased gap */
+            justify-content: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .suggestion-color-box {
+            width: 48px; /* Larger boxes */
+            height: 48px;
+            border-radius: 10px; /* More rounded */
+            border: 2px solid #a0aec0;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+        .suggestion-color-box:hover {
+            transform: scale(1.1);
+            border-color: #4299e1; /* Blue border on hover */
+        }
+        .suggestion-text {
+            font-size: 0.95rem;
+            color: #4a5568;
+            text-align: center;
+            font-weight: 500;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #4299e1; /* Blue spinner */
+            border-radius: 50%;
+            width: 30px; /* Larger spinner */
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 15px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .color-blindness-canvas {
+            border: 1px solid #cbd5e0;
+            border-radius: 12px;
+            background-color: #fff;
+            margin-top: 20px;
+            width: 100%;
+            height: 180px; /* Slightly taller canvas */
+        }
+        .select-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 280px; /* Slightly wider select */
+        }
+        .select-wrapper select {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #2d3748;
+            background-color: #fff;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s ease-in-out;
+        }
+        .select-wrapper select:focus {
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+        }
+        .select-wrapper::after {
+            content: '▼';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #718096;
+            pointer-events: none;
+            font-size: 0.8em;
+        }
+
+        /* Animation for results change */
+        .flash-animation {
+            animation: flash 0.3s ease-out;
+        }
+        @keyframes flash {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Accessibility Guidelines Section */
+        .accessibility-guidelines-section {
+            background-color: #f7fafc;
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .accessibility-guidelines-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .guideline-summary p {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .guideline-summary a {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .guideline-summary a:hover {
+            text-decoration: underline;
+        }
+    </style>
+  <meta name="description" content="Color Contrast Checker Advanced Color Contrast Master /* Custom styles for the Inter font and overall aesthetics */ body { font-family: &#x27;Inter&#x27;, sans-serif...">
   <link rel="canonical" href="https://shaynly.com/color-contrast-checker/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/color-contrast-checker/">
   <meta property="og:title" content="Color Contrast Checker - Shaynly">
-  <meta property="og:description" content="Ensure your designs are accessible with the Color Contrast Checker. Instantly test foreground and background color combinations for WCAG compliance, simulate color blindness effects, and get AI-generated palette suggestions. Perfect for designers and developers!">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2025/07/Color-Contrast-Checker.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:description" content="Color Contrast Checker Advanced Color Contrast Master /* Custom styles for the Inter font and overall aesthetics */ body { font-family: &#x27;Inter&#x27;, sans-serif...">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Color Contrast Checker - Shaynly">
-  <meta name="twitter:description" content="Ensure your designs are accessible with the Color Contrast Checker. Instantly test foreground and background color combinations for WCAG compliance, simulate color blindness effects, and get AI-generated palette suggestions. Perfect for designers and developers!">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2025/07/Color-Contrast-Checker.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:description" content="Color Contrast Checker Advanced Color Contrast Master /* Custom styles for the Inter font and overall aesthetics */ body { font-family: &#x27;Inter&#x27;, sans-serif...">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,47 +451,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Color Contrast Checker",
-  "name": "Color Contrast Checker",
-  "description": "Ensure your designs are accessible with the Color Contrast Checker. Instantly test foreground and background color combinations for WCAG compliance, simulate color blindness effects, and get AI-generated palette suggestions. Perfect for designers and developers!",
-  "url": "https://shaynly.com/color-contrast-checker/",
-  "datePublished": "2025-07-18",
-  "dateModified": "2025-07-18",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2025/07/Color-Contrast-Checker.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -102,666 +473,1045 @@
       </nav>
     </div>
   </header>
+    <div class="container">
+        <h2>Color Contrast Checker</h2>
 
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/tools/">Tools</a> <span>/</span> <span>Color Contrast Checker</span>
-        </div>
-        <a href="/category/tools/" class="cat-badge" style="text-decoration:none;">Tools</a>
-        <h1 class="article-title">Color Contrast Checker</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2025-07-18</span>
-          <span>•</span>
-          <span>22 min read</span>
+        <!-- Foreground Color Input -->
+        <div class="input-group flex flex-col sm:flex-row items-center gap-4">
+            <label for="foregroundColor" class="w-full sm:w-36 text-left sm:text-right">Foreground Color:</label>
+            <input type="color" id="foregroundColorPicker" value="#000000" class="flex-shrink-0">
+            <input type="text" id="foregroundColorText" value="#000000" placeholder="e.g., #000000, rgb(0,0,0), hsl(0,0%,0%)" class="flex-grow">
+            <div id="foregroundColorError" class="error-message w-full sm:w-auto text-left sm:text-right"></div>
         </div>
 
-        <img src="/wp-content/uploads/2025/07/Color-Contrast-Checker.png" alt="Color Contrast Checker" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
-
-        <div class="article-content">
-          <h2 class="wp-block-heading has-text-align-center">Color Contrast Checker</h2>
-    <div class="container">        <h2>Color Contrast Checker</h2>
-        <!-- Foreground Color Input -->        <div class="input-group flex flex-col sm:flex-row items-center gap-4">            <label for="foregroundColor" class="w-full sm:w-36 text-left sm:text-right">Foreground Color:</label>            <input type="color" id="foregroundColorPicker" value="#000000" class="flex-shrink-0">            <input type="text" id="foregroundColorText" value="#000000" placeholder="e.g., #000000, rgb(0,0,0), hsl(0,0%,0%)" class="flex-grow">            <div id="foregroundColorError" class="error-message w-full sm:w-auto text-left sm:text-right"></div>        </div>
-        <!-- Background Color Input -->        <div class="input-group flex flex-col sm:flex-row items-center gap-4">            <label for="backgroundColor" class="w-full sm:w-36 text-left sm:text-right">Background Color:</label>            <input type="color" id="backgroundColorPicker" value="#FFFFFF" class="flex-shrink-0">            <input type="text" id="backgroundColorText" value="#FFFFFF" placeholder="e.g., #FFFFFF, rgb(255,255,255), hsl(0,0%,100%)" class="flex-grow">            <div id="backgroundColorError" class="error-message w-full sm:w-auto text-left sm:text-right"></div>        </div>
-        <!-- Color Format Displays -->        <div class="color-info-section">            <div class="color-info-item">                <span>HEX: <span id="fgHexDisplay">#000000</span></span>                <button onclick="copyToClipboard('fgHexDisplay', this)"><i class="fas fa-copy"></i> Copy</button>            </div>            <div class="color-info-item">                <span>RGB: <span id="fgRgbDisplay">rgb(0,0,0)</span></span>                <button onclick="copyToClipboard('fgRgbDisplay', this)"><i class="fas fa-copy"></i> Copy</button>            </div>            <div class="color-info-item">                <span>HSL: <span id="fgHslDisplay">hsl(0,0%,0%)</span></span>                <button onclick="copyToClipboard('fgHslDisplay', this)"><i class="fas fa-copy"></i> Copy</button>            </div>            <div class="color-info-item">                <span>HEX: <span id="bgHexDisplay">#FFFFFF</span></span>                <button onclick="copyToClipboard('bgHexDisplay', this)"><i class="fas fa-copy"></i> Copy</button>            </div>            <div class="color-info-item">                <span>RGB: <span id="bgRgbDisplay">rgb(255,255,255)</span></span>                <button onclick="copyToClipboard('bgRgbDisplay', this)"><i class="fas fa-copy"></i> Copy</button>            </div>            <div class="color-info-item">                <span>HSL: <span id="bgHslDisplay">hsl(0,0%,100%)</span></span>                <button onclick="copyToClipboard('bgHslDisplay', this)"><i class="fas fa-copy"></i> Copy</button>            </div>        </div>
-        <!-- Live Text Preview -->        <div class="live-preview-section">            <h3>Live Text Preview</h3>            <div id="livePreviewBox" class="live-preview-box" contenteditable="true" spellcheck="false">                Accessible Text Examplen            </div>        </div>
-        <!-- Contrast Ratio Result -->        <div class="result-box">            <div class="ratio" id="contrastRatio">--</div>            <div class="label">Contrast Ratio</div>        </div>
-        <!-- WCAG Compliance Section -->        <div class="compliance-section">            <div class="compliance-item">                <h4>WCAG AA Normal Text</h4>                <p id="wcagAANormal" class="fail">Fail (Min: 4.5:1)</p>            </div>            <div class="compliance-item">                <h4>WCAG AA Large Text</h4>                <p id="wcagAALarge" class="fail">Fail (Min: 3:1)</p>            </div>            <div class="compliance-item">                <h4>WCAG AAA Normal Text</h4>                <p id="wcagAAANormal" class="fail">Fail (Min: 7:1)</p>            </div>            <div class="compliance-item">                <h4>WCAG AAA Large Text</h4>                <p id="wcagAAALarge" class="fail">Fail (Min: 4.5:1)</p>            </div>        </div>
-        <!-- Accessibility Guidelines Summary -->        <div class="accessibility-guidelines-section">            <h3><i class="fas fa-info-circle"></i> Accessibility Guidelines Summary</h3>            <div id="guidelineSummary" class="guideline-summary">                <p>Enter colors and check contrast to see a summary of WCAG compliance here.</p>                <p>WCAG (Web Content Accessibility Guidelines) are developed by the W3C to provide a single shared standard for web content accessibility that meets the needs of individuals, organizations, and governments internationally.</p>                <p>Learn more about <a href="https://www.w3.org/WAI/WCAG21/Understanding/" target="_blank">WCAG 2.1</a>.</p>            </div>        </div>
-        <!-- Buttons -->        <div class="button-group">            <button id="checkContrastBtn" class="primary"><i class="fas fa-check-circle"></i> Check Contrast</button>            <button id="swapColorsBtn" class="secondary"><i class="fas fa-exchange-alt"></i> Swap Colors</button>            <button id="resetBtn" class="secondary"><i class="fas fa-redo"></i> Reset</button>        </div>
-        <!-- Color Suggestions Section -->        <div class="color-suggestion-section">            <h3><i class="fas fa-lightbulb"></i> AI Color Palette Suggestions</h3>            <div class="button-group">                <button id="suggestColorsBtn" class="primary"><i class="fas fa-magic"></i> Get Suggestions</button>            </div>            <div id="suggestionLoading" class="loading-spinner hidden"></div>            <div id="colorSuggestions" class="mt-4 flex flex-col gap-4">                <!-- Suggestions will be loaded here -->            </div>        </div>
-        <!-- Color Blindness Simulation Section -->        <div class="color-blindness-section">            <h3><i class="fas fa-eye"></i> Color Blindness Simulatio</h3>            <div class="select-wrapper mx-auto">                <select id="colorBlindnessType">                    <option value="normal">Normal Visio</option>                    <option value="protanopia">Protanopia (Red-blind)</option>                    <option value="deuteranopia">Deuteranopia (Green-blind)</option>                    <option value="tritanopia">Tritanopia (Blue-blind)</option>                </select>            </div>            <canvas id="colorBlindnessCanvas" class="color-blindness-canvas"></canvas>        </div>    </div>
-    <script>        // Get DOM elements
-const foregroundColorPicker = document.getElementById('foregroundColorPicker');
-const foregroundColorText = document.getElementById('foregroundColorText');
-const backgroundColorPicker = document.getElementById('backgroundColorPicker');
-const backgroundColorText = document.getElementById('backgroundColorText');
-const foregroundColorError = document.getElementById('foregroundColorError');
-const backgroundColorError = document.getElementById('backgroundColorError');
-const contrastRatioDisplay = document.getElementById('contrastRatio');
-const wcagAANormal = document.getElementById('wcagAANormal');
-const wcagAALarge = document.getElementById('wcagAALarge');
-const wcagAAANormal = document.getElementById('wcagAAANormal');
-const wcagAAALarge = document.getElementById('wcagAAALarge');
-const checkContrastBtn = document.getElementById('checkContrastBtn');
-const resetBtn = document.getElementById('resetBtn');
-const swapColorsBtn = document.getElementById('swapColorsBtn');
-const suggestColorsBtn = document.getElementById('suggestColorsBtn');
-const suggestionLoading = document.getElementById('suggestionLoading');
-const colorSuggestionsDiv = document.getElementById('colorSuggestions');
-const colorBlindnessType = document.getElementById('colorBlindnessType');
-const colorBlindnessCanvas = document.getElementById('colorBlindnessCanvas');
-const livePreviewBox = document.getElementById('livePreviewBox');
-const guidelineSummaryDiv = document.getElementById('guidelineSummary');
-const ctx = colorBlindnessCanvas.getContext('2d');
-        // Color format display elements
-const fgHexDisplay = document.getElementById('fgHexDisplay');
-const fgRgbDisplay = document.getElementById('fgRgbDisplay');
-const fgHslDisplay = document.getElementById('fgHslDisplay');
-const bgHexDisplay = document.getElementById('bgHexDisplay');
-const bgRgbDisplay = document.getElementById('bgRgbDisplay');
-const bgHslDisplay = document.getElementById('bgHslDisplay');
-        // --- Color Conversion and Calculatio
-Functions ---
-        /**n         * Converts a hexadecimal color string to an RGB array.n         * @param {string} hex - The hexadecimal color string (e.g., "#RRGGBB" or "RRGGBB").n         * @returns {
-umber[]|null} An array [R, G, B] or null if invalid.n         */n        function hexToRgb(hex) {
-const cleanHex = hex.startsWith('#') ? hex.slice(1) : hex;
-let r, g, b;
-            if (cleanHex.length === 3) {
-r = parseInt(cleanHex[0] + cleanHex[0], 16);
-g = parseInt(cleanHex[1] + cleanHex[1], 16);
-b = parseInt(cleanHex[2] + cleanHex[2], 16);
-} else if (cleanHex.length === 6) {
-r = parseInt(cleanHex.substring(0, 2), 16);
-g = parseInt(cleanHex.substring(2, 4), 16);
-b = parseInt(cleanHex.substring(4, 6), 16);
-} else {
-return null; // Invalid hex format
-}
-            if (isNaN(r) || isNaN(g) || isNaN(b)) {
-return null; // Invalid hex characters
-}
-return [r, g, b];
-}
-        /**n         * Converts an RGB color array to a hexadecimal string.n         * @param {
-umber[]} rgb - An array [R, G, B].n         * @returns {string} The hexadecimal color string (e.g., "#RRGGBB").n         */n        function rgbToHex(rgb) {
-return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1).toUpperCase();
-}
-        /**n         * Converts an RGB color array to an HSL string.n         * @param {
-umber[]} rgb - An array [R, G, B].n         * @returns {string} The HSL color string (e.g., "hsl(0,0%,0%)").n         */n        function rgbToHsl(rgb) {
-let r = rgb[0] / 255;
-let g = rgb[1] / 255;
-let b = rgb[2] / 255;
-            let max = Math.max(r, g, b);
-let min = Math.min(r, g, b);
-let h, s, l = (max + min) / 2;
-            if (max === min) {
-h = s = 0; // achromatic
-} else {
-let d = max - min;
-s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-switch (max) {
-case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-case g: h = (b - r) / d + 2; break;
-case b: h = (r - g) / d + 4; break;
-}
-h /= 6;
-}
-return `hsl(${Math.round(h * 360)},${Math.round(s * 100)}%,${Math.round(l * 100)}%)`;
-}
-        /**n         * Converts an HSL color array [h, s, l] (h:0-360, s:0-1, l:0-1) to an RGB array [R, G, B] (0-255).n         * @param {
-umber[]} hsl - An array [H, S, L].n         * @returns {
-umber[]} An array [R, G, B].n         */n        function hslArrayToRgb(hsl) {
-let h = hsl[0];
-let s = hsl[1];
-let l = hsl[2];
-            let c = (1 - Math.abs(2 * l - 1)) * s;
-let x = c * (1 - Math.abs((h / 60) % 2 - 1));
-let m = l - c / 2;
-let r = 0, g = 0, b = 0;
-            if (0 <= h && h < 60) {
-r = c; g = x; b = 0;
-} else if (60 <= h && h < 120) {
-r = x; g = c; b = 0;
-} else if (120 <= h && h < 180) {
-r = 0; g = c; b = x;
-} else if (180 <= h && h < 240) {
-r = 0; g = x; b = c;
-} else if (240 <= h && h < 300) {
-r = x; g = 0; b = c;
-} else if (300 <= h && h < 360) {
-r = c; g = 0; b = x;
-}
-r = Math.round((r + m) * 255);
-g = Math.round((g + m) * 255);
-b = Math.round((b + m) * 255);
-return [r, g, b];
-}
-        /**n         * Converts an sRGB color component (0-255) to its linear RGB equivalent.n         * @param {
-umber} c - The sRGB color component (0-255).n         * @returns {
-umber} The linear RGB component.n         */n        function sRGBtoLinearRGB(c) {
-c /= 255;
-return (c <= 0.03928) ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
-}
-        /**n         * Calculates the relative luminance of an RGB color.n         * @param {
-umber[]} rgb - An array [R, G, B] where R, G, B are integers from 0 to 255.n         * @returns {
-umber} The relative luminance (0 to 1).n         */n        function calculateLuminance(rgb) {
-if (!rgb || rgb.length !== 3) return 0; // Handle invalid RGB
-const r = sRGBtoLinearRGB(rgb[0]);
-const g = sRGBtoLinearRGB(rgb[1]);
-const b = sRGBtoLinearRGB(rgb[2]);
-return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-}
-        /**n         * Calculates the contrast ratio between two colors.n         * @param {string} color1Hex - Hexadecimal string for the first color.n         * @param {string} color2Hex - Hexadecimal string for the second color.n         * @returns {
-umber} The contrast ratio.n         */n        function calculateContrastRatio(color1Hex, color2Hex) {
-const rgb1 = hexToRgb(color1Hex);
-const rgb2 = hexToRgb(color2Hex);
-            if (!rgb1 || !rgb2) return 0; // Return 0 if any color is invalidn
-const L1 = calculateLuminance(rgb1);
-const L2 = calculateLuminance(rgb2);
-            const brighterL = Math.max(L1, L2);
-const darkerL = Math.min(L1, L2);
-            return (brighterL + 0.05) / (darkerL + 0.05);
-}
-        /**n         * Parses a color string (hex, rgb(), hsl()) into an RGB array.n         * @param {string} colorString - The color string to parse.n         * @returns {
-umber[]|null} An array [R, G, B] or null if invalid.n         */n        function parseColor(colorString) {
-colorString = colorString.trim();
-            // Try Hex
-if (colorString.startsWith('#')) {
-return hexToRgb(colorString);
-}
-            // Try RGB
-const rgbMatch = colorString.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i);
-if (rgbMatch) {
-const r = parseInt(rgbMatch[1]);
-const g = parseInt(rgbMatch[2]);
-const b = parseInt(rgbMatch[3]);
-if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
-return [r, g, b];
-}
-}
-            // Try HSL
-const hslMatch = colorString.match(/^hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)$/i);
-if (hslMatch) {
-const h = parseInt(hslMatch[1]);
-const s = parseInt(hslMatch[2]);
-const l = parseInt(hslMatch[3]);
-if (h >= 0 && h <= 360 && s >= 0 && s <= 100 && l >= 0 && l <= 100) {
-return hslArrayToRgb([h, s / 100, l / 100]); // Convert S, L to 0-1 range
-}
-}
-            return null; // No valid format matched
-}
-        /**n         * Updates the WCAG compliance verdict for a given element and ratio.n         * @param {HTMLElement} element - The DOM element to update.n         * @param {
-umber} ratio - The calculated contrast ratio.n         * @param {
-umber} minRatio - The minimum required ratio for compliance.n         */n        function updateWCAGVerdict(element, ratio, minRatio) {
-const oldText = element.textContent;
-if (ratio >= minRatio) {
-element.classList.remove('fail');
-element.classList.add('pass');
-element.textContent = `Pass (Min: ${minRatio}:1)`;
-} else {
-element.classList.remove('pass');
-element.classList.add('fail');
-element.textContent = `Fail (Min: ${minRatio}:1)`;
-}
-// Add flash animation if the verdict changed
-if (oldText !== element.textContent) {
-element.classList.add('flash-animation');
-element.addEventListener('animationend', () => {
-element.classList.remove('flash-animation');
-}, { once: true });
-}
-}
-        /**n         * Updates the displayed color formats (Hex, RGB, HSL) for foreground and background.n         */n        function updateColorFormatsDisplay() {
-const fgRgb = parseColor(foregroundColorText.value);
-const bgRgb = parseColor(backgroundColorText.value);
-            if (fgRgb) {
-fgHexDisplay.textContent = rgbToHex(fgRgb);
-fgRgbDisplay.textContent = `rgb(${fgRgb[0]},${fgRgb[1]},${fgRgb[2]})`;
-fgHslDisplay.textContent = rgbToHsl(fgRgb);
-} else {
-fgHexDisplay.textContent = 'N/A';
-fgRgbDisplay.textContent = 'N/A';
-fgHslDisplay.textContent = 'N/A';
-}
-            if (bgRgb) {
-bgHexDisplay.textContent = rgbToHex(bgRgb);
-bgRgbDisplay.textContent = `rgb(${bgRgb[0]},${bgRgb[1]},${bgRgb[2]})`;
-bgHslDisplay.textContent = rgbToHsl(bgRgb);
-} else {
-bgHexDisplay.textContent = 'N/A';
-bgRgbDisplay.textContent = 'N/A';
-bgHslDisplay.textContent = 'N/A';
-}
-}
-        /**n         * Main function to perform the contrast check and update the UI.n         */n        function checkContrast() {
-const foregroundColorInput = foregroundColorText.value;
-const backgroundColorInput = backgroundColorText.value;
-            const foregroundRgb = parseColor(foregroundColorInput);
-const backgroundRgb = parseColor(backgroundColorInput);
-            let isValidForeground = true;
-let isValidBackground = true;
-            if (!foregroundRgb) {
-foregroundColorError.textContent = "Invalid color format (e.g., #HEX, rgb(R,G,B), hsl(H,S%,L%))";
-isValidForeground = false;
-} else {
-foregroundColorError.textContent = "";
-foregroundColorPicker.value = rgbToHex(foregroundRgb);
-}
-            if (!backgroundRgb) {
-backgroundColorError.textContent = "Invalid color format (e.g., #HEX, rgb(R,G,B), hsl(H,S%,L%))";
-isValidBackground = false;
-} else {
-backgroundColorError.textContent = "";
-backgroundColorPicker.value = rgbToHex(backgroundRgb);
-}
-            updateColorFormatsDisplay(); // Always update color format displaysn
-if (!isValidForeground || !isValidBackground) {
-contrastRatioDisplay.textContent = "--";
-// Reset WCAG verdicts to default 'Fail' state if inputs are invalid
-updateWCAGVerdict(wcagAANormal, 0, 4.5);
-updateWCAGVerdict(wcagAALarge, 0, 3);
-updateWCAGVerdict(wcagAAANormal, 0, 7);
-updateWCAGVerdict(wcagAAALarge, 0, 4.5);
-drawColorBlindnessSimulation(); // Redraw with current (potentially invalid) colorsn                updateLivePreview(); // Update live previewn                updateGuidelineSummary(0, false, false); // Update summary for invalid state
-return;
-}
-            // Update background color of the body and text color of the container for visual feedback
-document.body.style.backgroundColor = rgbToHex(backgroundRgb);
-document.querySelector('.container').style.color = rgbToHex(foregroundRgb);
-            const ratio = calculateContrastRatio(rgbToHex(foregroundRgb), rgbToHex(backgroundRgb));
-contrastRatioDisplay.textContent = ratio.toFixed(2); // Display ratio with 2 decimal placesn            contrastRatioDisplay.classList.add('flash-animation'); // Add animation to ratio
-contrastRatioDisplay.addEventListener('animationend', () => {
-contrastRatioDisplay.classList.remove('flash-animation');
-}, { once: true });
-            // Update WCAG compliance verdicts
-updateWCAGVerdict(wcagAANormal, ratio, 4.5);
-updateWCAGVerdict(wcagAALarge, ratio, 3);
-updateWCAGVerdict(wcagAAANormal, ratio, 7);
-updateWCAGVerdict(wcagAAALarge, ratio, 4.5);
-            drawColorBlindnessSimulation(); // Redraw simulation with new colorsn            updateLivePreview(); // Update live previewn            updateGuidelineSummary(ratio, ratio >= 4.5, ratio >= 7); // Update summary based on results
-}
-        /**n         * Updates the live text preview box with current foreground and background colors.n         */n        function updateLivePreview() {
-const fgHex = foregroundColorText.value;
-const bgHex = backgroundColorText.value;
-const fgRgb = parseColor(fgHex);
-const bgRgb = parseColor(bgHex);
-            if (fgRgb && bgRgb) {
-livePreviewBox.style.backgroundColor = rgbToHex(bgRgb);
-livePreviewBox.style.color = rgbToHex(fgRgb);
-} else {
-livePreviewBox.style.backgroundColor = '#f0f0f0'; // Default light grayn                livePreviewBox.style.color = '#666'; // Default dark gray
-}
-}
-        /**n         * Updates the accessibility guidelines summary based on contrast results.n         * @param {
-umber} ratio - The current contrast ratio.n         * @param {boolean} passesAA - True if AA compliance is met for normal text.n         * @param {boolean} passesAAA - True if AAA compliance is met for normal text.n         */n        function updateGuidelineSummary(ratio, passesAA, passesAAA) {
-let summaryHtml = `n                <p>The current contrast ratio is <strong>${ratio.toFixed(2)}:1</strong>.</p>            `;
-            if (passesAAA) {
-summaryHtml += `<p class="text-green-700 font-semibold">This color combination meets WCAG AAA standards for normal text, providing excellent accessibility!</p>`;
-} else if (passesAA) {
-summaryHtml += `<p class="text-green-700 font-semibold">This color combination meets WCAG AA standards for normal text, which is generally considered good for accessibility.</p>`;
-} else {
-summaryHtml += `<p class="text-red-700 font-semibold">This color combination does NOT meet WCAG AA standards for normal text. Consider adjusting the colors for better readability and accessibility.</p>`;
-}
-            summaryHtml += `n                <p class="mt-4">WCAG (Web Content Accessibility Guidelines) are developed by the W3C to provide a single shared standard for web content accessibility that meets the needs of individuals, organizations, and governments internationally.</p>                <p>Learn more about <a href="https://www.w3.org/WAI/WCAG21/Understanding/" target="_blank">WCAG 2.1</a>.</p>            `;
-guidelineSummaryDiv.innerHTML = summaryHtml;
-}
-        /**n         * Resets all input fields and result displays to their initial state.n         */n        function resetInputs() {
-foregroundColorPicker.value = "#000000";
-foregroundColorText.value = "#000000";
-backgroundColorPicker.value = "#FFFFFF";
-backgroundColorText.value = "#FFFFFF";
-foregroundColorError.textContent = "";
-backgroundColorError.textContent = "";
-colorSuggestionsDiv.innerHTML = ""; // Clear suggestionsn            colorBlindnessType.value = "normal"; // Reset color blindness filtern            livePreviewBox.textContent = "Accessible Text Example"; // Reset live preview textn            checkContrast(); // Re-run check to update UI to defaultn            document.body.style.background = 'linear-gradient(135deg, #e0f2fe 0%, #c5e1f7 100%)'; // Reset body backgroundn            document.querySelector('.container').style.color = '#1f2937'; // Reset container text color
-}
-        /**n         * Swaps the foreground and background colors.n         */n        function swapColors() {
-const currentFg = foregroundColorText.value;
-const currentBg = backgroundColorText.value;
-            foregroundColorText.value = currentBg;
-foregroundColorPicker.value = parseColor(currentBg) ? rgbToHex(parseColor(currentBg)) : '#000000'; // Ensure picker updates
-backgroundColorText.value = currentFg;
-backgroundColorPicker.value = parseColor(currentFg) ? rgbToHex(parseColor(currentFg)) : '#FFFFFF'; // Ensure picker updatesnn            checkContrast(); // Recalculate contrast with swapped colors
-}
-        /**n         * Copies text from a given element ID to the clipboard.n         * @param {string} elementId - The ID of the element whose text content should be copied.n         * @param {HTMLElement} buttonElement - The button element that was clicked.n         */n        function copyToClipboard(elementId, buttonElement) {
-const element = document.getElementById(elementId);
-if (element && element.textContent) {
-const textToCopy = element.textContent;
-// Use execCommand for broader compatibility in iframes
-const textarea = document.createElement('textarea');
-textarea.value = textToCopy;
-document.body.appendChild(textarea);
-textarea.select();
-try {
-document.execCommand('copy');
-// Provide visual feedback to the user on the button
-const originalButtonText = buttonElement.innerHTML;
-buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';
-setTimeout(() => {
-buttonElement.innerHTML = originalButtonText;
-}, 1500);
-} catch (err) {
-console.error('Failed to copy text: ', err);
-// Fallback for environments where execCommand might be restrictedn                    // Could display a message "Copy failed, please copy manually: [text]"
-} finally {
-document.body.removeChild(textarea);
-}
-}
-}
-        // --- Color Blindness Simulatio
----
-        /**n         * Applies a color blindness filter matrix to an RGB color.n         * Matrix values from https://www.color-blindness.com/
-* @param {
-umber[]} rgb - [R, G, B] array.n         * @param {string} type - Type of color blindness ('normal', 'protanopia', 'deuteranopia', 'tritanopia').n         * @returns {
-umber[]} Filtered [R, G, B] array.n         */n        function applyColorBlindnessFilter(rgb, type) {
-let r = rgb[0];
-let g = rgb[1];
-let b = rgb[2];
-let newR, newG, newB;
-            switch (type) {
-case 'protanopia': // Red-blind
-newR = (0.567 * r) + (0.433 * g) + (0.000 * b);
-newG = (0.558 * r) + (0.442 * g) + (0.000 * b);
-newB = (0.000 * r) + (0.242 * g) + (0.758 * b);
-break;
-case 'deuteranopia': // Green-blind
-newR = (0.625 * r) + (0.375 * g) + (0.000 * b);
-newG = (0.700 * r) + (0.300 * g) + (0.000 * b);
-newB = (0.000 * r) + (0.300 * g) + (0.700 * b);
-break;
-case 'tritanopia': // Blue-blind
-newR = (0.950 * r) + (0.050 * g) + (0.000 * b);
-newG = (0.000 * r) + (0.433 * g) + (0.567 * b);
-newB = (0.000 * r) + (0.475 * g) + (0.525 * b);
-break;
-default: // Normal visionn                    retur
-rgb;
-}
-return [Math.round(newR), Math.round(newG), Math.round(newB)];
-}
-        /**n         * Draws the current foreground and background colors on the canvasn         * and applies the selected color blindness filter.n         */n        function drawColorBlindnessSimulation() {
-const fgHex = foregroundColorText.value;
-const bgHex = backgroundColorText.value;
-const fgRgb = parseColor(fgHex);
-const bgRgb = parseColor(bgHex);
-            // Clear canvas
-ctx.clearRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
-            if (!fgRgb || !bgRgb) {
-ctx.fillStyle = '#f0f0f0';
-ctx.fillRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
-ctx.fillStyle = '#666';
-ctx.font = '18px Inter';
-ctx.textAlign = 'center';
-ctx.textBaseline = 'middle';
-ctx.fillText('Invalid Colors for Simulation', colorBlindnessCanvas.width / 2, colorBlindnessCanvas.height / 2);
-return;
-}
-            const selectedFilter = colorBlindnessType.value;
-const filteredFgRgb = applyColorBlindnessFilter(fgRgb, selectedFilter);
-const filteredBgRgb = applyColorBlindnessFilter(bgRgb, selectedFilter);
-            const filteredFgHex = rgbToHex(filteredFgRgb);
-const filteredBgHex = rgbToHex(filteredBgRgb);
-            // Draw background
-ctx.fillStyle = filteredBgHex;
-ctx.fillRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
-            // Draw sample text
-ctx.fillStyle = filteredFgHex;
-ctx.font = 'bold 56px Inter'; /* Larger text for simulation */n            ctx.textAlign = 'center';
-ctx.textBaseline = 'middle';
-ctx.fillText('Aa', colorBlindnessCanvas.width / 2, colorBlindnessCanvas.height / 2);
-            // Draw a small circle to show color interaction
-ctx.beginPath();
-ctx.arc(colorBlindnessCanvas.width / 4, colorBlindnessCanvas.height / 4, 35, 0, Math.PI * 2); /* Larger circle */n            ctx.fillStyle = filteredFgHex;
-ctx.fill();
-ctx.strokeStyle = filteredBgHex;
-ctx.lineWidth = 6; /* Thicker stroke */n            ctx.stroke();
-            ctx.beginPath();
-ctx.arc(colorBlindnessCanvas.width * 3 / 4, colorBlindnessCanvas.height * 3 / 4, 35, 0, Math.PI * 2);
-ctx.fillStyle = filteredBgHex;
-ctx.fill();
-ctx.strokeStyle = filteredFgHex;
-ctx.lineWidth = 6;
-ctx.stroke();
-}
-        // Adjust canvas size on window load and resizen        functio
-resizeCanvas() {
-colorBlindnessCanvas.width = colorBlindnessCanvas.offsetWidth;
-colorBlindnessCanvas.height = colorBlindnessCanvas.offsetHeight;
-drawColorBlindnessSimulation();
-}
-        // --- Client-Side AI Color Suggestions ---
-        /**n         * Adjusts the lightness of a base color to achieve minimum contrast with a reference color.n         * @param {
-umber[]} baseColorRgb - The RGB array of the color to adjust.n         * @param {
-umber[]} referenceColorRgb - The RGB array of the color it needs to contrast with.n         * @param {
-umber} minContrastRatio - The target minimum contrast ratio (e.g., 4.5 for AA).n         * @returns {
-umber[]} The adjusted RGB array of the base color.n         */n        function getContrastCompliantColor(baseColorRgb, referenceColorRgb, minContrastRatio = 4.5) {
-let baseHsl = rgbToHsl(baseColorRgb).match(/\d+/g).map(Number); // Convert to [h, s, l] (h:0-360, s:0-100, l:0-100)
-baseHsl[1] /= 100; // Convert s to 0-1n            baseHsl[2] /= 100; // Convert l to 0-1
-const checkRatio = (adjustedL) => {
-let testHsl = [baseHsl[0], baseHsl[1], adjustedL];
-let testRgb = hslArrayToRgb(testHsl);
-return calculateContrastRatio(rgbToHex(testRgb), rgbToHex(referenceColorRgb));
-};
-            let currentL = baseHsl[2];
-let ratio = checkRatio(currentL);
-            if (ratio >= minContrastRatio) {
-return hslArrayToRgb(baseHsl); // Already compliant
-}
-            // Try increasing lightnessn            for (let l = currentL; l <= 1.0; l += 0.02) { // Step by 2% lightness
-if (checkRatio(l) >= minContrastRatio) {
-return hslArrayToRgb([baseHsl[0], baseHsl[1], l]);
-}
-}
-            // Try decreasing lightness
-for (let l = currentL; l >= 0.0; l -= 0.02) {
-if (checkRatio(l) >= minContrastRatio) {
-return hslArrayToRgb([baseHsl[0], baseHsl[1], l]);
-}
-}
-            // Fallback: If no compliant lightness found, return black or white depending on which gives better contrast
-const blackRgb = [0, 0, 0];
-const whiteRgb = [255, 255, 255];
-const ratioWithBlack = calculateContrastRatio(rgbToHex(blackRgb), rgbToHex(referenceColorRgb));
-const ratioWithWhite = calculateContrastRatio(rgbToHex(whiteRgb), rgbToHex(referenceColorRgb));
-            if (ratioWithBlack >= minContrastRatio) return blackRgb;
-if (ratioWithWhite >= minContrastRatio) return whiteRgb;
-            return baseColorRgb; // Should ideally not reach here if reference color is reasonable
-}
-        /**n         * Generates a complementary color.n         * @param {
-umber[]} hsl - HSL array [h, s, l] (h:0-360, s:0-1, l:0-1).n         * @returns {
-umber[]} HSL array of the complementary color.n         */n        function getComplementaryColor(hsl) {
-let h = (hsl[0] + 180) % 360;
-return [h, hsl[1], hsl[2]];
-}
-        /**n         * Generates analogous colors (two colors near the original hue).n         * @param {
-umber[]} hsl - HSL array [h, s, l] (h:0-360, s:0-1, l:0-1).n         * @param {
-umber} angle - The angle difference for analogous colors (e.g., 30 degrees).n         * @returns {Array<number[]>} An array of two HSL arrays for analogous colors.n         */n        function getAnalogousColors(hsl, angle = 30) {
-let h1 = (hsl[0] + angle) % 360;
-let h2 = (hsl[0] - angle + 360) % 360;
-return [[h1, hsl[1], hsl[2]], [h2, hsl[1], hsl[2]]];
-}
-        async function getAiColorSuggestions() {
-suggestionLoading.classList.remove('hidden');
-colorSuggestionsDiv.innerHTML = ''; // Clear previous suggestionsn
-const currentFgRgb = parseColor(foregroundColorText.value);
-const currentBgRgb = parseColor(backgroundColorText.value);
-            if (!currentFgRgb || !currentBgRgb) {
-colorSuggestionsDiv.innerHTML = '<p class="text-red-500 text-center">Please enter valid foreground and background colors to get suggestions.</p>';
-suggestionLoading.classList.add('hidden');
-return;
-}
-            const suggestions = [];
-            // Palette 1: Adjusted Foreground (keeping background)
-let fgForPalette1 = getContrastCompliantColor(currentFgRgb, currentBgRgb);
-suggestions.push({
-paletteName: "Adjusted Foreground",
-foregroundColor: rgbToHex(fgForPalette1),
-backgroundColor: rgbToHex(currentBgRgb)
-});
-            // Palette 2: Adjusted Background (keeping foreground)
-let bgForPalette2 = getContrastCompliantColor(currentBgRgb, currentFgRgb);
-suggestions.push({
-paletteName: "Adjusted Background",
-foregroundColor: rgbToHex(currentFgRgb),
-backgroundColor: rgbToHex(bgForPalette2)
-});
-            // Palette 3: Inverted Colors (and the
-adjusted for contrast)
-let invertedFg = currentBgRgb;
-let invertedBg = currentFgRgb;
-let adjustedInvertedFg = getContrastCompliantColor(invertedFg, invertedBg);
-let adjustedInvertedBg = getContrastCompliantColor(invertedBg, adjustedInvertedFg);
-suggestions.push({
-paletteName: "Inverted & Adjusted",
-foregroundColor: rgbToHex(adjustedInvertedFg),
-backgroundColor: rgbToHex(adjustedInvertedBg)
-});
-            // Palette 4: Monochromatic background derived from foreground (adjusted for contrast)
-let fgHsl = rgbToHsl(currentFgRgb).match(/\d+/g).map(Number);
-let monoBgHsl = [fgHsl[0], fgHsl[1] * 0.8, (fgHsl[2] > 50 ? fgHsl[2] - 30 : fgHsl[2] + 30)]; // Adjust lightness, slightly desaturaten            monoBgHsl[1] = Math.max(0, Math.min(100, monoBgHsl[1])); // Clamp saturationn            monoBgHsl[2] = Math.max(0, Math.min(100, monoBgHsl[2])); // Clamp lightness
-let monoBgRgb = hslArrayToRgb([monoBgHsl[0], monoBgHsl[1] / 100, monoBgHsl[2] / 100]);
-let adjustedMonoBgRgb = getContrastCompliantColor(monoBgRgb, currentFgRgb);
-suggestions.push({
-paletteName: "Monochromatic Background",
-foregroundColor: rgbToHex(currentFgRgb),
-backgroundColor: rgbToHex(adjustedMonoBgRgb)
-});
-            // Palette 5: Complementary foreground (adjusted for contrast)
-let currentFgHslArray = rgbToHsl(currentFgRgb).match(/\d+/g).map(Number);
-currentFgHslArray[1] /= 100; // Convert s to 0-1n            currentFgHslArray[2] /= 100; // Convert l to 0-1
-let complementaryFgHsl = getComplementaryColor(currentFgHslArray);
-let complementaryFgRgb = hslArrayToRgb(complementaryFgHsl);
-let adjustedComplementaryFgRgb = getContrastCompliantColor(complementaryFgRgb, currentBgRgb);
-suggestions.push({
-paletteName: "Complementary Foreground",
-foregroundColor: rgbToHex(adjustedComplementaryFgRgb),
-backgroundColor: rgbToHex(currentBgRgb)
-});
-            // Palette 6: Analogous foreground (adjusted for contrast) - picking one of the twon            let analogousFgHsl = getAnalogousColors(currentFgHslArray)[0]; // Take the first analogous color
-let analogousFgRgb = hslArrayToRgb(analogousFgHsl);
-let adjustedAnalogousFgRgb = getContrastCompliantColor(analogousFgRgb, currentBgRgb);
-suggestions.push({
-paletteName: "Analogous Foreground",
-foregroundColor: rgbToHex(adjustedAnalogousFgRgb),
-backgroundColor: rgbToHex(currentBgRgb)
-});
-            displayColorSuggestions(suggestions);
-suggestionLoading.classList.add('hidden');
-}
-        /**n         * Displays the AI-generated color suggestions in the UI.n         * @param {Array<Object>} suggestions - An array of color palette objects.n         */n        function displayColorSuggestions(suggestions) {
-colorSuggestionsDiv.innerHTML = ''; // Clear existing suggestions
-if (suggestions.length === 0) {
-colorSuggestionsDiv.innerHTML = '<p class="text-gray-600 text-center">No suggestions available.</p>';
-return;
-}
-            suggestions.forEach((palette, index) => {
-const paletteDiv = document.createElement('div');
-paletteDiv.className = 'bg-white rounded-lg p-4 shadow-sm border border-gray-200';
-paletteDiv.innerHTML = `n                    <h5 class="font-semibold text-gray-800 mb-2">${palette.paletteName || `Palette ${index + 1}`}</h5>                    <div class="suggestion-palette">                        <div class="suggestion-color-box" style="background-color: ${palette.foregroundColor};" data-color="${palette.foregroundColor}" data-type="foreground" title="Click to set as Foreground"></div>                        <div class="suggestion-color-box" style="background-color: ${palette.backgroundColor};" data-color="${palette.backgroundColor}" data-type="background" title="Click to set as Background"></div>                    </div>                    <p class="suggestion-text">FG: ${palette.foregroundColor} | BG: ${palette.backgroundColor}</p>                `;
-colorSuggestionsDiv.appendChild(paletteDiv);
-                // Add click listeners to color boxes to apply them to inputs
-paletteDiv.querySelectorAll('.suggestion-color-box').forEach(box => {
-box.addEventListener('click', (event) => {
-const color = event.target.dataset.color;
-const type = event.target.dataset.type;
-if (type === 'foreground') {
-foregroundColorText.value = color;
-foregroundColorPicker.value = color;
-} else {
-backgroundColorText.value = color;
-backgroundColorPicker.value = color;
-}
-checkContrast(); // Recalculate contrast with new colors
-});
-});
-});
-}
-        // --- Event Listeners ---
-        // Sync color picker with text input and trigger check
-foregroundColorPicker.addEventListener('input', (event) => {
-foregroundColorText.value = event.target.value.toUpperCase();
-checkContrast();
-});
-backgroundColorPicker.addEventListener('input', (event) => {
-backgroundColorText.value = event.target.value.toUpperCase();
-checkContrast();
-});
-        // Sync text input with color picker and trigger check (with validation)
-foregroundColorText.addEventListener('input', checkContrast);
-backgroundColorText.addEventListener('input', checkContrast);
-        // Live preview text input
-livePreviewBox.addEventListener('input', updateLivePreview);
-        // Trigger check on button click
-checkContrastBtn.addEventListener('click', checkContrast);
-        // Reset button functionality
-resetBtn.addEventListener('click', resetInputs);
-        // Swap colors button
-swapColorsBtn.addEventListener('click', swapColors);
-        // AI Suggestions button
-suggestColorsBtn.addEventListener('click', getAiColorSuggestions);
-        // Color blindness type change
-colorBlindnessType.addEventListener('change', drawColorBlindnessSimulation);
-        // Global function for copy to clipboard
-window.copyToClipboard = copyToClipboard;
-        // Initial setup when the page loads
-window.onload = function() {
-resizeCanvas(); // Set initial canvas sizen            checkContrast(); // Initial check with default valuesn            window.addEventListener('resize', resizeCanvas); // Adjust canvas on resize
-};
-</script>
-<p><strong>Why This Tool Stands Out:</strong><br>✅&nbsp;<strong>Real-Time WCAG Analysis</strong></p>
-<ul class="wp-block-list"><li>Automatically checks against AA/AAA standards for both normal and large text</li>
-<li>Visual pass/fail indicators with minimum ratio requirements</li></ul>
-<p>🎨&nbsp;<strong>Advanced Color Intelligence</strong></p>
-<ul class="wp-block-list"><li>AI suggests accessible alternatives when colors fail compliance</li>
-<li>Monochromatic/complementary palette generatio</li>
-<li>One-click color inversion and adjustment</li></ul>
-<p>👁️&nbsp;<strong>Inclusive Design Features</strong></p>
-<ul class="wp-block-list"><li>4 types of color blindness simulation (Protanopia, Deuteranopia, etc.)</li>
-<li>Interactive preview canvas showing text/element visibility</li></ul>
-<p>📋&nbsp;<strong>Developer-Friendly Workflow</strong></p>
-<ul class="wp-block-list"><li>Copy color values in HEX/RGB/HSL with one click</li>
-<li>Editable live text preview with real-time contrast updates</li>
-<li>Full WCAG guidelines summary with official resources</li></ul>
-<p>💡 <strong>Pro Tip:</strong><br>The "Get Suggestions" button leverages HSL color-space algorithms to generate WCAG-compliant alternatives while preserving your original color harmony - perfect for fixing accessibility issues without compromising <a href="https://shaynly.com/brand-color-palette-generator/">brand colors</a>.</p>
-        </div>
-      </article>
-
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
+        <!-- Background Color Input -->
+        <div class="input-group flex flex-col sm:flex-row items-center gap-4">
+            <label for="backgroundColor" class="w-full sm:w-36 text-left sm:text-right">Background Color:</label>
+            <input type="color" id="backgroundColorPicker" value="#FFFFFF" class="flex-shrink-0">
+            <input type="text" id="backgroundColorText" value="#FFFFFF" placeholder="e.g., #FFFFFF, rgb(255,255,255), hsl(0,0%,100%)" class="flex-grow">
+            <div id="backgroundColorError" class="error-message w-full sm:w-auto text-left sm:text-right"></div>
         </div>
 
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
+        <!-- Color Format Displays -->
+        <div class="color-info-section">
+            <div class="color-info-item">
+                <span>HEX: <span id="fgHexDisplay">#000000</span></span>
+                <button onclick="copyToClipboard('fgHexDisplay', this)"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+            <div class="color-info-item">
+                <span>RGB: <span id="fgRgbDisplay">rgb(0,0,0)</span></span>
+                <button onclick="copyToClipboard('fgRgbDisplay', this)"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+            <div class="color-info-item">
+                <span>HSL: <span id="fgHslDisplay">hsl(0,0%,0%)</span></span>
+                <button onclick="copyToClipboard('fgHslDisplay', this)"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+            <div class="color-info-item">
+                <span>HEX: <span id="bgHexDisplay">#FFFFFF</span></span>
+                <button onclick="copyToClipboard('bgHexDisplay', this)"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+            <div class="color-info-item">
+                <span>RGB: <span id="bgRgbDisplay">rgb(255,255,255)</span></span>
+                <button onclick="copyToClipboard('bgRgbDisplay', this)"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+            <div class="color-info-item">
+                <span>HSL: <span id="bgHslDisplay">hsl(0,0%,100%)</span></span>
+                <button onclick="copyToClipboard('bgHslDisplay', this)"><i class="fas fa-copy"></i> Copy</button>
+            </div>
         </div>
-      </aside>
+
+        <!-- Live Text Preview -->
+        <div class="live-preview-section">
+            <h3>Live Text Preview</h3>
+            <div id="livePreviewBox" class="live-preview-box" contenteditable="true" spellcheck="false">
+                Accessible Text Example
+            </div>
+        </div>
+
+        <!-- Contrast Ratio Result -->
+        <div class="result-box">
+            <div class="ratio" id="contrastRatio">--</div>
+            <div class="label">Contrast Ratio</div>
+        </div>
+
+        <!-- WCAG Compliance Section -->
+        <div class="compliance-section">
+            <div class="compliance-item">
+                <h4>WCAG AA Normal Text</h4>
+                <p id="wcagAANormal" class="fail">Fail (Min: 4.5:1)</p>
+            </div>
+            <div class="compliance-item">
+                <h4>WCAG AA Large Text</h4>
+                <p id="wcagAALarge" class="fail">Fail (Min: 3:1)</p>
+            </div>
+            <div class="compliance-item">
+                <h4>WCAG AAA Normal Text</h4>
+                <p id="wcagAAANormal" class="fail">Fail (Min: 7:1)</p>
+            </div>
+            <div class="compliance-item">
+                <h4>WCAG AAA Large Text</h4>
+                <p id="wcagAAALarge" class="fail">Fail (Min: 4.5:1)</p>
+            </div>
+        </div>
+
+        <!-- Accessibility Guidelines Summary -->
+        <div class="accessibility-guidelines-section">
+            <h3><i class="fas fa-info-circle"></i> Accessibility Guidelines Summary</h3>
+            <div id="guidelineSummary" class="guideline-summary">
+                <p>Enter colors and check contrast to see a summary of WCAG compliance here.</p>
+                <p>WCAG (Web Content Accessibility Guidelines) are developed by the W3C to provide a single shared standard for web content accessibility that meets the needs of individuals, organizations, and governments internationally.</p>
+                <p>Learn more about <a href="https://www.w3.org/WAI/WCAG21/Understanding/" target="_blank">WCAG 2.1</a>.</p>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+            <button id="checkContrastBtn" class="primary"><i class="fas fa-check-circle"></i> Check Contrast</button>
+            <button id="swapColorsBtn" class="secondary"><i class="fas fa-exchange-alt"></i> Swap Colors</button>
+            <button id="resetBtn" class="secondary"><i class="fas fa-redo"></i> Reset</button>
+        </div>
+
+        <!-- Color Suggestions Section -->
+        <div class="color-suggestion-section">
+            <h3><i class="fas fa-lightbulb"></i> AI Color Palette Suggestions</h3>
+            <div class="button-group">
+                <button id="suggestColorsBtn" class="primary"><i class="fas fa-magic"></i> Get Suggestions</button>
+            </div>
+            <div id="suggestionLoading" class="loading-spinner hidden"></div>
+            <div id="colorSuggestions" class="mt-4 flex flex-col gap-4">
+                <!-- Suggestions will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Color Blindness Simulation Section -->
+        <div class="color-blindness-section">
+            <h3><i class="fas fa-eye"></i> Color Blindness Simulation</h3>
+            <div class="select-wrapper mx-auto">
+                <select id="colorBlindnessType">
+                    <option value="normal">Normal Vision</option>
+                    <option value="protanopia">Protanopia (Red-blind)</option>
+                    <option value="deuteranopia">Deuteranopia (Green-blind)</option>
+                    <option value="tritanopia">Tritanopia (Blue-blind)</option>
+                </select>
+            </div>
+            <canvas id="colorBlindnessCanvas" class="color-blindness-canvas"></canvas>
+        </div>
     </div>
-    
-  </main>
 
-  <!-- Footer -->
-  
+    <script>
+        // Get DOM elements
+        const foregroundColorPicker = document.getElementById('foregroundColorPicker');
+        const foregroundColorText = document.getElementById('foregroundColorText');
+        const backgroundColorPicker = document.getElementById('backgroundColorPicker');
+        const backgroundColorText = document.getElementById('backgroundColorText');
+        const foregroundColorError = document.getElementById('foregroundColorError');
+        const backgroundColorError = document.getElementById('backgroundColorError');
+        const contrastRatioDisplay = document.getElementById('contrastRatio');
+        const wcagAANormal = document.getElementById('wcagAANormal');
+        const wcagAALarge = document.getElementById('wcagAALarge');
+        const wcagAAANormal = document.getElementById('wcagAAANormal');
+        const wcagAAALarge = document.getElementById('wcagAAALarge');
+        const checkContrastBtn = document.getElementById('checkContrastBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const swapColorsBtn = document.getElementById('swapColorsBtn');
+        const suggestColorsBtn = document.getElementById('suggestColorsBtn');
+        const suggestionLoading = document.getElementById('suggestionLoading');
+        const colorSuggestionsDiv = document.getElementById('colorSuggestions');
+        const colorBlindnessType = document.getElementById('colorBlindnessType');
+        const colorBlindnessCanvas = document.getElementById('colorBlindnessCanvas');
+        const livePreviewBox = document.getElementById('livePreviewBox');
+        const guidelineSummaryDiv = document.getElementById('guidelineSummary');
+        const ctx = colorBlindnessCanvas.getContext('2d');
 
-  <script src="/assets/js/main.js"></script>
+        // Color format display elements
+        const fgHexDisplay = document.getElementById('fgHexDisplay');
+        const fgRgbDisplay = document.getElementById('fgRgbDisplay');
+        const fgHslDisplay = document.getElementById('fgHslDisplay');
+        const bgHexDisplay = document.getElementById('bgHexDisplay');
+        const bgRgbDisplay = document.getElementById('bgRgbDisplay');
+        const bgHslDisplay = document.getElementById('bgHslDisplay');
 
+        // --- Color Conversion and Calculation Functions ---
+
+        /**
+         * Converts a hexadecimal color string to an RGB array.
+         * @param {string} hex - The hexadecimal color string (e.g., "#RRGGBB" or "RRGGBB").
+         * @returns {number[]|null} An array [R, G, B] or null if invalid.
+         */
+        function hexToRgb(hex) {
+            const cleanHex = hex.startsWith('#') ? hex.slice(1) : hex;
+            let r, g, b;
+
+            if (cleanHex.length === 3) {
+                r = parseInt(cleanHex[0] + cleanHex[0], 16);
+                g = parseInt(cleanHex[1] + cleanHex[1], 16);
+                b = parseInt(cleanHex[2] + cleanHex[2], 16);
+            } else if (cleanHex.length === 6) {
+                r = parseInt(cleanHex.substring(0, 2), 16);
+                g = parseInt(cleanHex.substring(2, 4), 16);
+                b = parseInt(cleanHex.substring(4, 6), 16);
+            } else {
+                return null; // Invalid hex format
+            }
+
+            if (isNaN(r) || isNaN(g) || isNaN(b)) {
+                return null; // Invalid hex characters
+            }
+            return [r, g, b];
+        }
+
+        /**
+         * Converts an RGB color array to a hexadecimal string.
+         * @param {number[]} rgb - An array [R, G, B].
+         * @returns {string} The hexadecimal color string (e.g., "#RRGGBB").
+         */
+        function rgbToHex(rgb) {
+            return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1).toUpperCase();
+        }
+
+        /**
+         * Converts an RGB color array to an HSL string.
+         * @param {number[]} rgb - An array [R, G, B].
+         * @returns {string} The HSL color string (e.g., "hsl(0,0%,0%)").
+         */
+        function rgbToHsl(rgb) {
+            let r = rgb[0] / 255;
+            let g = rgb[1] / 255;
+            let b = rgb[2] / 255;
+
+            let max = Math.max(r, g, b);
+            let min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+
+            if (max === min) {
+                h = s = 0; // achromatic
+            } else {
+                let d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                }
+                h /= 6;
+            }
+            return `hsl(${Math.round(h * 360)},${Math.round(s * 100)}%,${Math.round(l * 100)}%)`;
+        }
+
+        /**
+         * Converts an HSL color array [h, s, l] (h:0-360, s:0-1, l:0-1) to an RGB array [R, G, B] (0-255).
+         * @param {number[]} hsl - An array [H, S, L].
+         * @returns {number[]} An array [R, G, B].
+         */
+        function hslArrayToRgb(hsl) {
+            let h = hsl[0];
+            let s = hsl[1];
+            let l = hsl[2];
+
+            let c = (1 - Math.abs(2 * l - 1)) * s;
+            let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+            let m = l - c / 2;
+            let r = 0, g = 0, b = 0;
+
+            if (0 <= h && h < 60) {
+                r = c; g = x; b = 0;
+            } else if (60 <= h && h < 120) {
+                r = x; g = c; b = 0;
+            } else if (120 <= h && h < 180) {
+                r = 0; g = c; b = x;
+            } else if (180 <= h && h < 240) {
+                r = 0; g = x; b = c;
+            } else if (240 <= h && h < 300) {
+                r = x; g = 0; b = c;
+            } else if (300 <= h && h < 360) {
+                r = c; g = 0; b = x;
+            }
+            r = Math.round((r + m) * 255);
+            g = Math.round((g + m) * 255);
+            b = Math.round((b + m) * 255);
+            return [r, g, b];
+        }
+
+        /**
+         * Converts an sRGB color component (0-255) to its linear RGB equivalent.
+         * @param {number} c - The sRGB color component (0-255).
+         * @returns {number} The linear RGB component.
+         */
+        function sRGBtoLinearRGB(c) {
+            c /= 255;
+            return (c <= 0.03928) ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+        }
+
+        /**
+         * Calculates the relative luminance of an RGB color.
+         * @param {number[]} rgb - An array [R, G, B] where R, G, B are integers from 0 to 255.
+         * @returns {number} The relative luminance (0 to 1).
+         */
+        function calculateLuminance(rgb) {
+            if (!rgb || rgb.length !== 3) return 0; // Handle invalid RGB
+            const r = sRGBtoLinearRGB(rgb[0]);
+            const g = sRGBtoLinearRGB(rgb[1]);
+            const b = sRGBtoLinearRGB(rgb[2]);
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        }
+
+        /**
+         * Calculates the contrast ratio between two colors.
+         * @param {string} color1Hex - Hexadecimal string for the first color.
+         * @param {string} color2Hex - Hexadecimal string for the second color.
+         * @returns {number} The contrast ratio.
+         */
+        function calculateContrastRatio(color1Hex, color2Hex) {
+            const rgb1 = hexToRgb(color1Hex);
+            const rgb2 = hexToRgb(color2Hex);
+
+            if (!rgb1 || !rgb2) return 0; // Return 0 if any color is invalid
+
+            const L1 = calculateLuminance(rgb1);
+            const L2 = calculateLuminance(rgb2);
+
+            const brighterL = Math.max(L1, L2);
+            const darkerL = Math.min(L1, L2);
+
+            return (brighterL + 0.05) / (darkerL + 0.05);
+        }
+
+        /**
+         * Parses a color string (hex, rgb(), hsl()) into an RGB array.
+         * @param {string} colorString - The color string to parse.
+         * @returns {number[]|null} An array [R, G, B] or null if invalid.
+         */
+        function parseColor(colorString) {
+            colorString = colorString.trim();
+
+            // Try Hex
+            if (colorString.startsWith('#')) {
+                return hexToRgb(colorString);
+            }
+
+            // Try RGB
+            const rgbMatch = colorString.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i);
+            if (rgbMatch) {
+                const r = parseInt(rgbMatch[1]);
+                const g = parseInt(rgbMatch[2]);
+                const b = parseInt(rgbMatch[3]);
+                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                    return [r, g, b];
+                }
+            }
+
+            // Try HSL
+            const hslMatch = colorString.match(/^hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)$/i);
+            if (hslMatch) {
+                const h = parseInt(hslMatch[1]);
+                const s = parseInt(hslMatch[2]);
+                const l = parseInt(hslMatch[3]);
+                if (h >= 0 && h <= 360 && s >= 0 && s <= 100 && l >= 0 && l <= 100) {
+                    return hslArrayToRgb([h, s / 100, l / 100]); // Convert S, L to 0-1 range
+                }
+            }
+
+            return null; // No valid format matched
+        }
+
+        /**
+         * Updates the WCAG compliance verdict for a given element and ratio.
+         * @param {HTMLElement} element - The DOM element to update.
+         * @param {number} ratio - The calculated contrast ratio.
+         * @param {number} minRatio - The minimum required ratio for compliance.
+         */
+        function updateWCAGVerdict(element, ratio, minRatio) {
+            const oldText = element.textContent;
+            if (ratio >= minRatio) {
+                element.classList.remove('fail');
+                element.classList.add('pass');
+                element.textContent = `Pass (Min: ${minRatio}:1)`;
+            } else {
+                element.classList.remove('pass');
+                element.classList.add('fail');
+                element.textContent = `Fail (Min: ${minRatio}:1)`;
+            }
+            // Add flash animation if the verdict changed
+            if (oldText !== element.textContent) {
+                element.classList.add('flash-animation');
+                element.addEventListener('animationend', () => {
+                    element.classList.remove('flash-animation');
+                }, { once: true });
+            }
+        }
+
+        /**
+         * Updates the displayed color formats (Hex, RGB, HSL) for foreground and background.
+         */
+        function updateColorFormatsDisplay() {
+            const fgRgb = parseColor(foregroundColorText.value);
+            const bgRgb = parseColor(backgroundColorText.value);
+
+            if (fgRgb) {
+                fgHexDisplay.textContent = rgbToHex(fgRgb);
+                fgRgbDisplay.textContent = `rgb(${fgRgb[0]},${fgRgb[1]},${fgRgb[2]})`;
+                fgHslDisplay.textContent = rgbToHsl(fgRgb);
+            } else {
+                fgHexDisplay.textContent = 'N/A';
+                fgRgbDisplay.textContent = 'N/A';
+                fgHslDisplay.textContent = 'N/A';
+            }
+
+            if (bgRgb) {
+                bgHexDisplay.textContent = rgbToHex(bgRgb);
+                bgRgbDisplay.textContent = `rgb(${bgRgb[0]},${bgRgb[1]},${bgRgb[2]})`;
+                bgHslDisplay.textContent = rgbToHsl(bgRgb);
+            } else {
+                bgHexDisplay.textContent = 'N/A';
+                bgRgbDisplay.textContent = 'N/A';
+                bgHslDisplay.textContent = 'N/A';
+            }
+        }
+
+        /**
+         * Main function to perform the contrast check and update the UI.
+         */
+        function checkContrast() {
+            const foregroundColorInput = foregroundColorText.value;
+            const backgroundColorInput = backgroundColorText.value;
+
+            const foregroundRgb = parseColor(foregroundColorInput);
+            const backgroundRgb = parseColor(backgroundColorInput);
+
+            let isValidForeground = true;
+            let isValidBackground = true;
+
+            if (!foregroundRgb) {
+                foregroundColorError.textContent = "Invalid color format (e.g., #HEX, rgb(R,G,B), hsl(H,S%,L%))";
+                isValidForeground = false;
+            } else {
+                foregroundColorError.textContent = "";
+                foregroundColorPicker.value = rgbToHex(foregroundRgb);
+            }
+
+            if (!backgroundRgb) {
+                backgroundColorError.textContent = "Invalid color format (e.g., #HEX, rgb(R,G,B), hsl(H,S%,L%))";
+                isValidBackground = false;
+            } else {
+                backgroundColorError.textContent = "";
+                backgroundColorPicker.value = rgbToHex(backgroundRgb);
+            }
+
+            updateColorFormatsDisplay(); // Always update color format displays
+
+            if (!isValidForeground || !isValidBackground) {
+                contrastRatioDisplay.textContent = "--";
+                // Reset WCAG verdicts to default 'Fail' state if inputs are invalid
+                updateWCAGVerdict(wcagAANormal, 0, 4.5);
+                updateWCAGVerdict(wcagAALarge, 0, 3);
+                updateWCAGVerdict(wcagAAANormal, 0, 7);
+                updateWCAGVerdict(wcagAAALarge, 0, 4.5);
+                drawColorBlindnessSimulation(); // Redraw with current (potentially invalid) colors
+                updateLivePreview(); // Update live preview
+                updateGuidelineSummary(0, false, false); // Update summary for invalid state
+                return;
+            }
+
+            // Update background color of the body and text color of the container for visual feedback
+            document.body.style.backgroundColor = rgbToHex(backgroundRgb);
+            document.querySelector('.container').style.color = rgbToHex(foregroundRgb);
+
+
+            const ratio = calculateContrastRatio(rgbToHex(foregroundRgb), rgbToHex(backgroundRgb));
+            contrastRatioDisplay.textContent = ratio.toFixed(2); // Display ratio with 2 decimal places
+            contrastRatioDisplay.classList.add('flash-animation'); // Add animation to ratio
+            contrastRatioDisplay.addEventListener('animationend', () => {
+                contrastRatioDisplay.classList.remove('flash-animation');
+            }, { once: true });
+
+
+            // Update WCAG compliance verdicts
+            updateWCAGVerdict(wcagAANormal, ratio, 4.5);
+            updateWCAGVerdict(wcagAALarge, ratio, 3);
+            updateWCAGVerdict(wcagAAANormal, ratio, 7);
+            updateWCAGVerdict(wcagAAALarge, ratio, 4.5);
+
+            drawColorBlindnessSimulation(); // Redraw simulation with new colors
+            updateLivePreview(); // Update live preview
+            updateGuidelineSummary(ratio, ratio >= 4.5, ratio >= 7); // Update summary based on results
+        }
+
+        /**
+         * Updates the live text preview box with current foreground and background colors.
+         */
+        function updateLivePreview() {
+            const fgHex = foregroundColorText.value;
+            const bgHex = backgroundColorText.value;
+            const fgRgb = parseColor(fgHex);
+            const bgRgb = parseColor(bgHex);
+
+            if (fgRgb && bgRgb) {
+                livePreviewBox.style.backgroundColor = rgbToHex(bgRgb);
+                livePreviewBox.style.color = rgbToHex(fgRgb);
+            } else {
+                livePreviewBox.style.backgroundColor = '#f0f0f0'; // Default light gray
+                livePreviewBox.style.color = '#666'; // Default dark gray
+            }
+        }
+
+        /**
+         * Updates the accessibility guidelines summary based on contrast results.
+         * @param {number} ratio - The current contrast ratio.
+         * @param {boolean} passesAA - True if AA compliance is met for normal text.
+         * @param {boolean} passesAAA - True if AAA compliance is met for normal text.
+         */
+        function updateGuidelineSummary(ratio, passesAA, passesAAA) {
+            let summaryHtml = `
+                <p>The current contrast ratio is <strong>${ratio.toFixed(2)}:1</strong>.</p>
+            `;
+
+            if (passesAAA) {
+                summaryHtml += `<p class="text-green-700 font-semibold">This color combination meets WCAG AAA standards for normal text, providing excellent accessibility!</p>`;
+            } else if (passesAA) {
+                summaryHtml += `<p class="text-green-700 font-semibold">This color combination meets WCAG AA standards for normal text, which is generally considered good for accessibility.</p>`;
+            } else {
+                summaryHtml += `<p class="text-red-700 font-semibold">This color combination does NOT meet WCAG AA standards for normal text. Consider adjusting the colors for better readability and accessibility.</p>`;
+            }
+
+            summaryHtml += `
+                <p class="mt-4">WCAG (Web Content Accessibility Guidelines) are developed by the W3C to provide a single shared standard for web content accessibility that meets the needs of individuals, organizations, and governments internationally.</p>
+                <p>Learn more about <a href="https://www.w3.org/WAI/WCAG21/Understanding/" target="_blank">WCAG 2.1</a>.</p>
+            `;
+            guidelineSummaryDiv.innerHTML = summaryHtml;
+        }
+
+
+        /**
+         * Resets all input fields and result displays to their initial state.
+         */
+        function resetInputs() {
+            foregroundColorPicker.value = "#000000";
+            foregroundColorText.value = "#000000";
+            backgroundColorPicker.value = "#FFFFFF";
+            backgroundColorText.value = "#FFFFFF";
+            foregroundColorError.textContent = "";
+            backgroundColorError.textContent = "";
+            colorSuggestionsDiv.innerHTML = ""; // Clear suggestions
+            colorBlindnessType.value = "normal"; // Reset color blindness filter
+            livePreviewBox.textContent = "Accessible Text Example"; // Reset live preview text
+            checkContrast(); // Re-run check to update UI to default
+            document.body.style.background = 'linear-gradient(135deg, #e0f2fe 0%, #c5e1f7 100%)'; // Reset body background
+            document.querySelector('.container').style.color = '#1f2937'; // Reset container text color
+        }
+
+        /**
+         * Swaps the foreground and background colors.
+         */
+        function swapColors() {
+            const currentFg = foregroundColorText.value;
+            const currentBg = backgroundColorText.value;
+
+            foregroundColorText.value = currentBg;
+            foregroundColorPicker.value = parseColor(currentBg) ? rgbToHex(parseColor(currentBg)) : '#000000'; // Ensure picker updates
+            backgroundColorText.value = currentFg;
+            backgroundColorPicker.value = parseColor(currentFg) ? rgbToHex(parseColor(currentFg)) : '#FFFFFF'; // Ensure picker updates
+
+            checkContrast(); // Recalculate contrast with swapped colors
+        }
+
+        /**
+         * Copies text from a given element ID to the clipboard.
+         * @param {string} elementId - The ID of the element whose text content should be copied.
+         * @param {HTMLElement} buttonElement - The button element that was clicked.
+         */
+        function copyToClipboard(elementId, buttonElement) {
+            const element = document.getElementById(elementId);
+            if (element && element.textContent) {
+                const textToCopy = element.textContent;
+                // Use execCommand for broader compatibility in iframes
+                const textarea = document.createElement('textarea');
+                textarea.value = textToCopy;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    // Provide visual feedback to the user on the button
+                    const originalButtonText = buttonElement.innerHTML;
+                    buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                        buttonElement.innerHTML = originalButtonText;
+                    }, 1500);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    // Fallback for environments where execCommand might be restricted
+                    // Could display a message "Copy failed, please copy manually: [text]"
+                } finally {
+                    document.body.removeChild(textarea);
+                }
+            }
+        }
+
+
+        // --- Color Blindness Simulation ---
+
+        /**
+         * Applies a color blindness filter matrix to an RGB color.
+         * Matrix values from https://www.color-blindness.com/
+         * @param {number[]} rgb - [R, G, B] array.
+         * @param {string} type - Type of color blindness ('normal', 'protanopia', 'deuteranopia', 'tritanopia').
+         * @returns {number[]} Filtered [R, G, B] array.
+         */
+        function applyColorBlindnessFilter(rgb, type) {
+            let r = rgb[0];
+            let g = rgb[1];
+            let b = rgb[2];
+            let newR, newG, newB;
+
+            switch (type) {
+                case 'protanopia': // Red-blind
+                    newR = (0.567 * r) + (0.433 * g) + (0.000 * b);
+                    newG = (0.558 * r) + (0.442 * g) + (0.000 * b);
+                    newB = (0.000 * r) + (0.242 * g) + (0.758 * b);
+                    break;
+                case 'deuteranopia': // Green-blind
+                    newR = (0.625 * r) + (0.375 * g) + (0.000 * b);
+                    newG = (0.700 * r) + (0.300 * g) + (0.000 * b);
+                    newB = (0.000 * r) + (0.300 * g) + (0.700 * b);
+                    break;
+                case 'tritanopia': // Blue-blind
+                    newR = (0.950 * r) + (0.050 * g) + (0.000 * b);
+                    newG = (0.000 * r) + (0.433 * g) + (0.567 * b);
+                    newB = (0.000 * r) + (0.475 * g) + (0.525 * b);
+                    break;
+                default: // Normal vision
+                    return rgb;
+            }
+            return [Math.round(newR), Math.round(newG), Math.round(newB)];
+        }
+
+        /**
+         * Draws the current foreground and background colors on the canvas
+         * and applies the selected color blindness filter.
+         */
+        function drawColorBlindnessSimulation() {
+            const fgHex = foregroundColorText.value;
+            const bgHex = backgroundColorText.value;
+            const fgRgb = parseColor(fgHex);
+            const bgRgb = parseColor(bgHex);
+
+            // Clear canvas
+            ctx.clearRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
+
+            if (!fgRgb || !bgRgb) {
+                ctx.fillStyle = '#f0f0f0';
+                ctx.fillRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
+                ctx.fillStyle = '#666';
+                ctx.font = '18px Inter';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('Invalid Colors for Simulation', colorBlindnessCanvas.width / 2, colorBlindnessCanvas.height / 2);
+                return;
+            }
+
+            const selectedFilter = colorBlindnessType.value;
+            const filteredFgRgb = applyColorBlindnessFilter(fgRgb, selectedFilter);
+            const filteredBgRgb = applyColorBlindnessFilter(bgRgb, selectedFilter);
+
+            const filteredFgHex = rgbToHex(filteredFgRgb);
+            const filteredBgHex = rgbToHex(filteredBgRgb);
+
+            // Draw background
+            ctx.fillStyle = filteredBgHex;
+            ctx.fillRect(0, 0, colorBlindnessCanvas.width, colorBlindnessCanvas.height);
+
+            // Draw sample text
+            ctx.fillStyle = filteredFgHex;
+            ctx.font = 'bold 56px Inter'; /* Larger text for simulation */
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Aa', colorBlindnessCanvas.width / 2, colorBlindnessCanvas.height / 2);
+
+            // Draw a small circle to show color interaction
+            ctx.beginPath();
+            ctx.arc(colorBlindnessCanvas.width / 4, colorBlindnessCanvas.height / 4, 35, 0, Math.PI * 2); /* Larger circle */
+            ctx.fillStyle = filteredFgHex;
+            ctx.fill();
+            ctx.strokeStyle = filteredBgHex;
+            ctx.lineWidth = 6; /* Thicker stroke */
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(colorBlindnessCanvas.width * 3 / 4, colorBlindnessCanvas.height * 3 / 4, 35, 0, Math.PI * 2);
+            ctx.fillStyle = filteredBgHex;
+            ctx.fill();
+            ctx.strokeStyle = filteredFgHex;
+            ctx.lineWidth = 6;
+            ctx.stroke();
+        }
+
+        // Adjust canvas size on window load and resize
+        function resizeCanvas() {
+            colorBlindnessCanvas.width = colorBlindnessCanvas.offsetWidth;
+            colorBlindnessCanvas.height = colorBlindnessCanvas.offsetHeight;
+            drawColorBlindnessSimulation();
+        }
+
+        // --- Client-Side AI Color Suggestions ---
+
+        /**
+         * Adjusts the lightness of a base color to achieve minimum contrast with a reference color.
+         * @param {number[]} baseColorRgb - The RGB array of the color to adjust.
+         * @param {number[]} referenceColorRgb - The RGB array of the color it needs to contrast with.
+         * @param {number} minContrastRatio - The target minimum contrast ratio (e.g., 4.5 for AA).
+         * @returns {number[]} The adjusted RGB array of the base color.
+         */
+        function getContrastCompliantColor(baseColorRgb, referenceColorRgb, minContrastRatio = 4.5) {
+            let baseHsl = rgbToHsl(baseColorRgb).match(/\d+/g).map(Number); // Convert to [h, s, l] (h:0-360, s:0-100, l:0-100)
+            baseHsl[1] /= 100; // Convert s to 0-1
+            baseHsl[2] /= 100; // Convert l to 0-1
+
+            const checkRatio = (adjustedL) => {
+                let testHsl = [baseHsl[0], baseHsl[1], adjustedL];
+                let testRgb = hslArrayToRgb(testHsl);
+                return calculateContrastRatio(rgbToHex(testRgb), rgbToHex(referenceColorRgb));
+            };
+
+            let currentL = baseHsl[2];
+            let ratio = checkRatio(currentL);
+
+            if (ratio >= minContrastRatio) {
+                return hslArrayToRgb(baseHsl); // Already compliant
+            }
+
+            // Try increasing lightness
+            for (let l = currentL; l <= 1.0; l += 0.02) { // Step by 2% lightness
+                if (checkRatio(l) >= minContrastRatio) {
+                    return hslArrayToRgb([baseHsl[0], baseHsl[1], l]);
+                }
+            }
+
+            // Try decreasing lightness
+            for (let l = currentL; l >= 0.0; l -= 0.02) {
+                if (checkRatio(l) >= minContrastRatio) {
+                    return hslArrayToRgb([baseHsl[0], baseHsl[1], l]);
+                }
+            }
+
+            // Fallback: If no compliant lightness found, return black or white depending on which gives better contrast
+            const blackRgb = [0, 0, 0];
+            const whiteRgb = [255, 255, 255];
+            const ratioWithBlack = calculateContrastRatio(rgbToHex(blackRgb), rgbToHex(referenceColorRgb));
+            const ratioWithWhite = calculateContrastRatio(rgbToHex(whiteRgb), rgbToHex(referenceColorRgb));
+
+            if (ratioWithBlack >= minContrastRatio) return blackRgb;
+            if (ratioWithWhite >= minContrastRatio) return whiteRgb;
+
+            return baseColorRgb; // Should ideally not reach here if reference color is reasonable
+        }
+
+        /**
+         * Generates a complementary color.
+         * @param {number[]} hsl - HSL array [h, s, l] (h:0-360, s:0-1, l:0-1).
+         * @returns {number[]} HSL array of the complementary color.
+         */
+        function getComplementaryColor(hsl) {
+            let h = (hsl[0] + 180) % 360;
+            return [h, hsl[1], hsl[2]];
+        }
+
+        /**
+         * Generates analogous colors (two colors near the original hue).
+         * @param {number[]} hsl - HSL array [h, s, l] (h:0-360, s:0-1, l:0-1).
+         * @param {number} angle - The angle difference for analogous colors (e.g., 30 degrees).
+         * @returns {Array<number[]>} An array of two HSL arrays for analogous colors.
+         */
+        function getAnalogousColors(hsl, angle = 30) {
+            let h1 = (hsl[0] + angle) % 360;
+            let h2 = (hsl[0] - angle + 360) % 360;
+            return [[h1, hsl[1], hsl[2]], [h2, hsl[1], hsl[2]]];
+        }
+
+
+        async function getAiColorSuggestions() {
+            suggestionLoading.classList.remove('hidden');
+            colorSuggestionsDiv.innerHTML = ''; // Clear previous suggestions
+
+            const currentFgRgb = parseColor(foregroundColorText.value);
+            const currentBgRgb = parseColor(backgroundColorText.value);
+
+            if (!currentFgRgb || !currentBgRgb) {
+                colorSuggestionsDiv.innerHTML = '<p class="text-red-500 text-center">Please enter valid foreground and background colors to get suggestions.</p>';
+                suggestionLoading.classList.add('hidden');
+                return;
+            }
+
+            const suggestions = [];
+
+            // Palette 1: Adjusted Foreground (keeping background)
+            let fgForPalette1 = getContrastCompliantColor(currentFgRgb, currentBgRgb);
+            suggestions.push({
+                paletteName: "Adjusted Foreground",
+                foregroundColor: rgbToHex(fgForPalette1),
+                backgroundColor: rgbToHex(currentBgRgb)
+            });
+
+            // Palette 2: Adjusted Background (keeping foreground)
+            let bgForPalette2 = getContrastCompliantColor(currentBgRgb, currentFgRgb);
+            suggestions.push({
+                paletteName: "Adjusted Background",
+                foregroundColor: rgbToHex(currentFgRgb),
+                backgroundColor: rgbToHex(bgForPalette2)
+            });
+
+            // Palette 3: Inverted Colors (and then adjusted for contrast)
+            let invertedFg = currentBgRgb;
+            let invertedBg = currentFgRgb;
+            let adjustedInvertedFg = getContrastCompliantColor(invertedFg, invertedBg);
+            let adjustedInvertedBg = getContrastCompliantColor(invertedBg, adjustedInvertedFg);
+            suggestions.push({
+                paletteName: "Inverted & Adjusted",
+                foregroundColor: rgbToHex(adjustedInvertedFg),
+                backgroundColor: rgbToHex(adjustedInvertedBg)
+            });
+
+            // Palette 4: Monochromatic background derived from foreground (adjusted for contrast)
+            let fgHsl = rgbToHsl(currentFgRgb).match(/\d+/g).map(Number);
+            let monoBgHsl = [fgHsl[0], fgHsl[1] * 0.8, (fgHsl[2] > 50 ? fgHsl[2] - 30 : fgHsl[2] + 30)]; // Adjust lightness, slightly desaturate
+            monoBgHsl[1] = Math.max(0, Math.min(100, monoBgHsl[1])); // Clamp saturation
+            monoBgHsl[2] = Math.max(0, Math.min(100, monoBgHsl[2])); // Clamp lightness
+            let monoBgRgb = hslArrayToRgb([monoBgHsl[0], monoBgHsl[1] / 100, monoBgHsl[2] / 100]);
+            let adjustedMonoBgRgb = getContrastCompliantColor(monoBgRgb, currentFgRgb);
+            suggestions.push({
+                paletteName: "Monochromatic Background",
+                foregroundColor: rgbToHex(currentFgRgb),
+                backgroundColor: rgbToHex(adjustedMonoBgRgb)
+            });
+
+            // Palette 5: Complementary foreground (adjusted for contrast)
+            let currentFgHslArray = rgbToHsl(currentFgRgb).match(/\d+/g).map(Number);
+            currentFgHslArray[1] /= 100; // Convert s to 0-1
+            currentFgHslArray[2] /= 100; // Convert l to 0-1
+
+            let complementaryFgHsl = getComplementaryColor(currentFgHslArray);
+            let complementaryFgRgb = hslArrayToRgb(complementaryFgHsl);
+            let adjustedComplementaryFgRgb = getContrastCompliantColor(complementaryFgRgb, currentBgRgb);
+            suggestions.push({
+                paletteName: "Complementary Foreground",
+                foregroundColor: rgbToHex(adjustedComplementaryFgRgb),
+                backgroundColor: rgbToHex(currentBgRgb)
+            });
+
+            // Palette 6: Analogous foreground (adjusted for contrast) - picking one of the two
+            let analogousFgHsl = getAnalogousColors(currentFgHslArray)[0]; // Take the first analogous color
+            let analogousFgRgb = hslArrayToRgb(analogousFgHsl);
+            let adjustedAnalogousFgRgb = getContrastCompliantColor(analogousFgRgb, currentBgRgb);
+            suggestions.push({
+                paletteName: "Analogous Foreground",
+                foregroundColor: rgbToHex(adjustedAnalogousFgRgb),
+                backgroundColor: rgbToHex(currentBgRgb)
+            });
+
+            displayColorSuggestions(suggestions);
+            suggestionLoading.classList.add('hidden');
+        }
+
+        /**
+         * Displays the AI-generated color suggestions in the UI.
+         * @param {Array<Object>} suggestions - An array of color palette objects.
+         */
+        function displayColorSuggestions(suggestions) {
+            colorSuggestionsDiv.innerHTML = ''; // Clear existing suggestions
+            if (suggestions.length === 0) {
+                colorSuggestionsDiv.innerHTML = '<p class="text-gray-600 text-center">No suggestions available.</p>';
+                return;
+            }
+
+            suggestions.forEach((palette, index) => {
+                const paletteDiv = document.createElement('div');
+                paletteDiv.className = 'bg-white rounded-lg p-4 shadow-sm border border-gray-200';
+                paletteDiv.innerHTML = `
+                    <h5 class="font-semibold text-gray-800 mb-2">${palette.paletteName || `Palette ${index + 1}`}</h5>
+                    <div class="suggestion-palette">
+                        <div class="suggestion-color-box" style="background-color: ${palette.foregroundColor};" data-color="${palette.foregroundColor}" data-type="foreground" title="Click to set as Foreground"></div>
+                        <div class="suggestion-color-box" style="background-color: ${palette.backgroundColor};" data-color="${palette.backgroundColor}" data-type="background" title="Click to set as Background"></div>
+                    </div>
+                    <p class="suggestion-text">FG: ${palette.foregroundColor} | BG: ${palette.backgroundColor}</p>
+                `;
+                colorSuggestionsDiv.appendChild(paletteDiv);
+
+                // Add click listeners to color boxes to apply them to inputs
+                paletteDiv.querySelectorAll('.suggestion-color-box').forEach(box => {
+                    box.addEventListener('click', (event) => {
+                        const color = event.target.dataset.color;
+                        const type = event.target.dataset.type;
+                        if (type === 'foreground') {
+                            foregroundColorText.value = color;
+                            foregroundColorPicker.value = color;
+                        } else {
+                            backgroundColorText.value = color;
+                            backgroundColorPicker.value = color;
+                        }
+                        checkContrast(); // Recalculate contrast with new colors
+                    });
+                });
+            });
+        }
+
+
+        // --- Event Listeners ---
+
+        // Sync color picker with text input and trigger check
+        foregroundColorPicker.addEventListener('input', (event) => {
+            foregroundColorText.value = event.target.value.toUpperCase();
+            checkContrast();
+        });
+        backgroundColorPicker.addEventListener('input', (event) => {
+            backgroundColorText.value = event.target.value.toUpperCase();
+            checkContrast();
+        });
+
+        // Sync text input with color picker and trigger check (with validation)
+        foregroundColorText.addEventListener('input', checkContrast);
+        backgroundColorText.addEventListener('input', checkContrast);
+
+        // Live preview text input
+        livePreviewBox.addEventListener('input', updateLivePreview);
+
+
+        // Trigger check on button click
+        checkContrastBtn.addEventListener('click', checkContrast);
+
+        // Reset button functionality
+        resetBtn.addEventListener('click', resetInputs);
+
+        // Swap colors button
+        swapColorsBtn.addEventListener('click', swapColors);
+
+        // AI Suggestions button
+        suggestColorsBtn.addEventListener('click', getAiColorSuggestions);
+
+        // Color blindness type change
+        colorBlindnessType.addEventListener('change', drawColorBlindnessSimulation);
+
+        // Global function for copy to clipboard
+        window.copyToClipboard = copyToClipboard;
+
+        // Initial setup when the page loads
+        window.onload = function() {
+            resizeCanvas(); // Set initial canvas size
+            checkContrast(); // Initial check with default values
+            window.addEventListener('resize', resizeCanvas); // Adjust canvas on resize
+        };
+    </script>
+
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+<p><strong>Why This Tool Stands Out:</strong><br>✅&nbsp;<strong>Real-Time WCAG Analysis</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Automatically checks against AA/AAA standards for both normal and large text</li>
+
+
+
+<li>Visual pass/fail indicators with minimum ratio requirements</li>
+</ul>
+
+
+
+<p>🎨&nbsp;<strong>Advanced Color Intelligence</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>AI suggests accessible alternatives when colors fail compliance</li>
+
+
+
+<li>Monochromatic/complementary palette generation</li>
+
+
+
+<li>One-click color inversion and adjustment</li>
+</ul>
+
+
+
+<p>👁️&nbsp;<strong>Inclusive Design Features</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>4 types of color blindness simulation (Protanopia, Deuteranopia, etc.)</li>
+
+
+
+<li>Interactive preview canvas showing text/element visibility</li>
+</ul>
+
+
+
+<p>📋&nbsp;<strong>Developer-Friendly Workflow</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Copy color values in HEX/RGB/HSL with one click</li>
+
+
+
+<li>Editable live text preview with real-time contrast updates</li>
+
+
+
+<li>Full WCAG guidelines summary with official resources</li>
+</ul>
+
+
+
+<p>💡 <strong>Pro Tip:</strong><br>The "Get Suggestions" button leverages HSL color-space algorithms to generate WCAG-compliant alternatives while preserving your original color harmony - perfect for fixing accessibility issues without compromising <a href="https://shaynly.com/brand-color-palette-generator/">brand colors</a>.</p>

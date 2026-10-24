@@ -1,41 +1,237 @@
+<p>HTML tables are a fundamental part of web development, allowing you to organize and display data in a structured format. They provide a powerful tool for presenting information in rows and columns, making content more digestible and accessible to users. In this comprehensive guide, we will explore the world of HTML tables, from basic structure to advanced techniques, best practices, and accessibility considerations.</p>
+
+
+
+<h2 class="wp-block-heading" id="1-introduction-to-html-tables">1. <strong>Introduction to HTML Tables</strong></h2>
+
+
+
+<p><a href="https://shaynly.com/demystifying-html-syntax/" target="_blank" rel="noopener">HTML tables have been a part of web</a> development since the early days of the internet. They are used to display data in a grid-like structure, where information is organized into rows and columns. Tables are widely employed for various purposes, such as displaying product specifications, financial data, sports scores, and more.</p>
+
+
+
+<h2 class="wp-block-heading" id="2-basic-table-structure">2. <strong>Basic Table Structure</strong></h2>
+
+
+
+<p>To create a <a href="https://shaynly.com/a-beginners-guide-to-html-coding/" target="_blank" rel="noopener">basic HTML</a> table, you use a combination of elements: &lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, and &lt;td&gt;. Here's a simple example of a table structure:</p>
+
+
+
+<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Header 1&lt;/th&gt;
+        &lt;th&gt;Header 2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Data 1&lt;/td&gt;
+        &lt;td&gt;Data 2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+
+
+<ul>
+<li><code>&lt;table&gt;</code>: This element defines the table.</li>
+
+
+
+<li><code>&lt;tr&gt;</code>: Stands for "table row" and is used to define a row within the table.</li>
+
+
+
+<li><code>&lt;th&gt;</code>: Represents a table header cell. Typically, the header row contains these cells.</li>
+
+
+
+<li><code>&lt;td&gt;</code>: Represents a standard data cell within the table.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="3-table-headers-th">3. <strong>Table Headers: <code>&lt;th&gt;</code></strong></h2>
+
+
+
+<p>In HTML tables, it's important to distinguish between table header cells (<code>&lt;th&gt;</code>) and regular data cells (<code>&lt;td&gt;</code>). The use of <code>&lt;th&gt;</code> elements in the header row provides semantic information to assistive technologies and improves accessibility.</p>
+
+
+
+<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Age&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+
+
+<p>By using <code>&lt;th&gt;</code> for headers, you indicate that the content in these cells is a header for a column, making it easier for screen readers and other assistive technologies to interpret the table structure.</p>
+
+
+
+<h2 class="wp-block-heading" id="4-table-rows-and-data-cells-tr-and-td">4. <strong>Table Rows and Data Cells: <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code></strong></h2>
+
+
+
+<p>Rows (<code>&lt;tr&gt;</code>) contain data cells (<code>&lt;td&gt;</code>) that hold the actual content of the table. Each <code>&lt;tr&gt;</code> element represents a new row in the table, and the <code>&lt;td&gt;</code> elements inside it represent the data for that row.</p>
+
+
+
+<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Product&lt;/th&gt;
+        &lt;th&gt;Price&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Laptop&lt;/td&gt;
+        &lt;td&gt;$1000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Smartphone&lt;/td&gt;
+        &lt;td&gt;$500&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+
+
+<h2 class="wp-block-heading" id="5-spanning-rows-and-columns">5. <strong>Spanning Rows and Columns</strong></h2>
+
+
+
+<p>Sometimes, you may need to merge cells to span multiple rows or columns. You can achieve this using the <code>rowspan</code> and <code>colspan</code> attributes.</p>
+
+
+
+<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Product&lt;/th&gt;
+        &lt;th&gt;Price&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Laptop&lt;/td&gt;
+        &lt;td rowspan="2"&gt;$1000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Accessories&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+
+
+<p>In this example, the second cell in the "Price" column spans two rows, effectively merging with the cell below it.</p>
+
+
+
+<h2 class="wp-block-heading" id="6-table-captions">6. <strong>Table Captions</strong></h2>
+
+
+
+<p>HTML tables can include a caption using the <code>&lt;caption&gt;</code> element. A caption provides a brief description or title for the table.</p>
+
+
+
+<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;
+    &lt;caption&gt;Monthly Expenses&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Category&lt;/th&gt;
+        &lt;th&gt;Amount&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Rent&lt;/td&gt;
+        &lt;td&gt;$1000&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+
+
+<p>Captions are typically placed at the top of the table, and they contribute to the table's accessibility by providing context.</p>
+
+
+
+<h2 class="wp-block-heading" id="7-styling-tables-with-css">7. <strong>Styling Tables with CSS</strong></h2>
+
+
+
+<p>You can use CSS to style tables, changing their appearance to match your website's design. CSS allows you to control aspects such as borders, spacing, background colors, and text formatting.</p>
+
+
+
+<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}</code></pre>
+
+
+
+<p>This CSS snippet sets a border for table cells and aligns text to the left. Adjust these styles to suit your design preferences.</p>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mastering HTML Tables: Building Structured and Accessible Data Displays</title>
-  <meta name="description" content="Learn how to create tables in HTML to organize and display data effectively.\n">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+        
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+  <meta name="description" content="HTML tables are a fundamental part of web development, allowing you to organize and display data in a structured format. They provide a powerful tool for p...">
   <link rel="canonical" href="https://shaynly.com/mastering-html-tables/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/mastering-html-tables/">
-  <meta property="og:title" content="Mastering HTML Tables: Building Structured and Accessible Data Displays">
-  <meta property="og:description" content="Learn how to create tables in HTML to organize and display data effectively.\n">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2023/09/html-tables.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:title" content="Mastering HTML Tables: Building Structured and Accessible Data Displays - Shaynly">
+  <meta property="og:description" content="HTML tables are a fundamental part of web development, allowing you to organize and display data in a structured format. They provide a powerful tool for p...">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mastering HTML Tables: Building Structured and Accessible Data Displays">
-  <meta name="twitter:description" content="Learn how to create tables in HTML to organize and display data effectively.\n">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2023/09/html-tables.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:title" content="Mastering HTML Tables: Building Structured and Accessible Data Displays - Shaynly">
+  <meta name="twitter:description" content="HTML tables are a fundamental part of web development, allowing you to organize and display data in a structured format. They provide a powerful tool for p...">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,47 +240,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Mastering HTML Tables: Building Structured and Accessible Data Displays",
-  "name": "Mastering HTML Tables: Building Structured and Accessible Data Displays",
-  "description": "Learn how to create tables in HTML to organize and display data effectively.\\n",
-  "url": "https://shaynly.com/mastering-html-tables/",
-  "datePublished": "2023-09-18",
-  "dateModified": "2023-09-18",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2023/09/html-tables.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -102,112 +262,168 @@
       </nav>
     </div>
   </header>
-
-  <!-- Main Body -->
-  <main class="container">
+    <h4>Styled Table Example</h4>
     
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/resources/">Resources</a> <span>/</span> <span>Mastering HTML Tables: Building Structured and Accessible Data Displays</span>
-        </div>
-        <a href="/category/resources/" class="cat-badge" style="text-decoration:none;">Resources</a>
-        <h1 class="article-title">Mastering HTML Tables: Building Structured and Accessible Data Displays</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2023-09-18</span>
-          <span>•</span>
-          <span>5 min read</span>
-        </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>30</td>
+                <td>USA</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>25</td>
+                <td>Canada</td>
+            </tr>
+            <tr>
+                <td>Maria García</td>
+                <td>28</td>
+                <td>Spain</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <img src="/wp-content/uploads/2023/09/html-tables.png" alt="Mastering HTML Tables: Building Structured and Accessible Data Displays" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
-
-        <div class="article-content">
-          <p>HTML tables are a fundamental part of web development, allowing you to organize and display data in a structured format. They provide a powerful tool for presenting information in rows and columns, making content more digestible and accessible to users. In this comprehensive guide, we will explore the world of HTML tables, from basic structure to advanced techniques, best practices, and accessibility considerations.</p>
-<h2 class="wp-block-heading" id="1-introduction-to-html-tables">1. <strong>Introduction to HTML Tables</strong></h2>
-<p><a href="https://shaynly.com/demystifying-html-syntax/" target="_blank" rel="noopener">HTML tables have been a part of web</a> development since the early days of the internet. They are used to display data in a grid-like structure, where information is organized into rows and columns. Tables are widely employed for various purposes, such as displaying product specifications, financial data, sports scores, and more.</p>
-<h2 class="wp-block-heading" id="2-basic-table-structure">2. <strong>Basic Table Structure</strong></h2>
-<p>To create a <a href="https://shaynly.com/a-beginners-guide-to-html-coding/" target="_blank" rel="noopener">basic HTML</a> table, you use a combination of elements: &lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, and &lt;td&gt;. Here's a simple example of a table structure:</p>
-<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;n    &lt;tr&gt;n        &lt;th&gt;Header 1&lt;/th&gt;n        &lt;th&gt;Header 2&lt;/th&gt;n    &lt;/tr&gt;n    &lt;tr&gt;n        &lt;td&gt;Data 1&lt;/td&gt;n        &lt;td&gt;Data 2&lt;/td&gt;n    &lt;/tr&gt;n&lt;/table&gt;</code></pre>
-<ul><li><code>&lt;table&gt;</code>: This element defines the table.</li>
-<li><code>&lt;tr&gt;</code>: Stands for "table row" and is used to define a row within the table.</li>
-<li><code>&lt;th&gt;</code>: Represents a table header cell. Typically, the header row contains these cells.</li>
-<li><code>&lt;td&gt;</code>: Represents a standard data cell within the table.</li></ul>
-<h2 class="wp-block-heading" id="3-table-headers-th">3. <strong>Table Headers: <code>&lt;th&gt;</code></strong></h2>
-<p>In HTML tables, it's important to distinguish between table header cells (<code>&lt;th&gt;</code>) and regular data cells (<code>&lt;td&gt;</code>). The use of <code>&lt;th&gt;</code> elements in the header row provides semantic information to assistive technologies and improves accessibility.</p>
-<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;n    &lt;tr&gt;n        &lt;th&gt;Name&lt;/th&gt;n        &lt;th&gt;Age&lt;/th&gt;n    &lt;/tr&gt;n    &lt;tr&gt;n        &lt;td&gt;John&lt;/td&gt;n        &lt;td&gt;30&lt;/td&gt;n    &lt;/tr&gt;n&lt;/table&gt;</code></pre>
-<p>By using <code>&lt;th&gt;</code> for headers, you indicate that the content in these cells is a header for a column, making it easier for screen readers and other assistive technologies to interpret the table structure.</p>
-<h2 class="wp-block-heading" id="4-table-rows-and-data-cells-tr-and-td">4. <strong>Table Rows and Data Cells: <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code></strong></h2>
-<p>Rows (<code>&lt;tr&gt;</code>) contain data cells (<code>&lt;td&gt;</code>) that hold the actual content of the table. Each <code>&lt;tr&gt;</code> element represents a new row in the table, and the <code>&lt;td&gt;</code> elements inside it represent the data for that row.</p>
-<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;n    &lt;tr&gt;n        &lt;th&gt;Product&lt;/th&gt;n        &lt;th&gt;Price&lt;/th&gt;n    &lt;/tr&gt;n    &lt;tr&gt;n        &lt;td&gt;Laptop&lt;/td&gt;n        &lt;td&gt;$1000&lt;/td&gt;n    &lt;/tr&gt;n    &lt;tr&gt;n        &lt;td&gt;Smartphone&lt;/td&gt;n        &lt;td&gt;$500&lt;/td&gt;n    &lt;/tr&gt;n&lt;/table&gt;</code></pre>
-<h2 class="wp-block-heading" id="5-spanning-rows-and-columns">5. <strong>Spanning Rows and Columns</strong></h2>
-<p>Sometimes, you may need to merge cells to span multiple rows or columns. You can achieve this using the <code>rowspa</code> and <code>colspa</code> attributes.</p>
-<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;n    &lt;tr&gt;n        &lt;th&gt;Product&lt;/th&gt;n        &lt;th&gt;Price&lt;/th&gt;n    &lt;/tr&gt;n    &lt;tr&gt;n        &lt;td&gt;Laptop&lt;/td&gt;n        &lt;td rowspan="2"&gt;$1000&lt;/td&gt;n    &lt;/tr&gt;n    &lt;tr&gt;n        &lt;td&gt;Accessories&lt;/td&gt;n    &lt;/tr&gt;n&lt;/table&gt;</code></pre>
-<p>In this example, the second cell in the "Price" column spans two rows, effectively merging with the cell below it.</p>
-<h2 class="wp-block-heading" id="6-table-captions">6. <strong>Table Captions</strong></h2>
-<p>HTML tables can include a caption using the <code>&lt;caption&gt;</code> element. A caption provides a brief description or title for the table.</p>
-<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>&lt;table&gt;n    &lt;caption&gt;Monthly Expenses&lt;/caption&gt;n    &lt;tr&gt;n        &lt;th&gt;Category&lt;/th&gt;n        &lt;th&gt;Amount&lt;/th&gt;n    &lt;/tr&gt;n    &lt;tr&gt;n        &lt;td&gt;Rent&lt;/td&gt;n        &lt;td&gt;$1000&lt;/td&gt;n    &lt;/tr&gt;n&lt;/table&gt;</code></pre>
-<p>Captions are typically placed at the top of the table, and they contribute to the table's accessibility by providing context.</p>
-<h2 class="wp-block-heading" id="7-styling-tables-with-css">7. <strong>Styling Tables with CSS</strong></h2>
-<p>You can use CSS to style tables, changing their appearance to match your website's design. CSS allows you to control aspects such as borders, spacing, background colors, and text formatting.</p>
-<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>table {n    border-collapse: collapse;n    width: 100%;n}nnth, td {n    border: 1px solid #ddd;n    padding: 8px;n    text-align: left;n}</code></pre>
-<p>This CSS snippet sets a border for table cells and aligns text to the left. Adjust these styles to suit your design preferences.</p>
-    <h4>Styled Table Example</h4>        <table>        <thead>            <tr>                <th>Name</th>                <th>Age</th>                <th>Country</th>            </tr>        </thead>        <tbody>            <tr>                <td>John Doe</td>                <td>30</td>                <td>USA</td>            </tr>            <tr>                <td>Jane Smith</td>                <td>25</td>                <td>Canada</td>            </tr>            <tr>                <td>Maria García</td>                <td>28</td>                <td>Spai</td>            </tr>        </tbody>    </table>
-<h2 class="wp-block-heading" id="8-responsive-tables">8. <strong>Responsive Tables</strong></h2>
-<p>In today's mobile-first web, <a href="https://shaynly.com/soundwise-essentials-plan-create-audio-products/" target="_blank" rel="noopener">creating responsive tables is essential</a>. Tables can become challenging to read on small screens. Consider using CSS techniques like media queries and horizontal scrolling for wide tables to ensure they display well on all devices.</p>
-<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>@media screen and (max-width: 600px) {n    table {n        overflow-x: auto;n    }n}</code></pre>
-<h2 class="wp-block-heading" id="9-accessible-tables">9. <strong>Accessible Tables</strong></h2>
-<p>Accessibility is a critical aspect of <a href="https://shaynly.com/collection-of-resources-for-frontend-web-developers/" target="_blank" rel="noopener">web development</a>. To make tables accessible:</p>
-<ul><li>Use semantic <a href="https://shaynly.com/exploring-html-elements-a-comprehensive-guide/" target="_blank" rel="noopener">HTML elements</a> (&lt;th&gt;, &lt;caption&gt;) to provide structure.</li>
-<li>Include appropriate alternative <a href="https://shaynly.com/alttext-ai-generate-image-alt-text-automatically/" target="_blank" rel="noopener">text for images</a> within tables.</li>
-<li>Ensure text contrast for legibility.</li>
-<li>Use ARIA roles and attributes for complex tables.</li>
-<li>Test your tables with screen readers and accessibility tools.</li></ul>
-<h2 class="wp-block-heading" id="10-common-table-use-cases">10. <strong>Common Table Use Cases</strong></h2>
-<p>Tables have a wide range of use cases on the web:</p>
-<ul><li><strong>Data Tables</strong>: For displaying datasets and tabular information.</li>
-<li><strong>Pricing Tables</strong>: Often used on e-commerce websites to compare product features and prices.</li>
-<li><strong>Event Calendars</strong>: To display schedules and events.</li>
-<li><strong>Scoreboards and Leaderboards</strong>: Displaying game scores or rankings.</li>
-<li><strong>Responsive Email Layouts</strong>: Used in HTML email <a href="https://shaynly.com/per-my-last-email-email-tips-and-templates-for-freelancers-and-clients/" target="_blank" rel="noopener">templates to ensure consistent layout across email clients</a>.</li></ul>
-<h2 class="wp-block-heading" id="11-conclusion">11. <strong>Conclusio</strong></h2>
-<p>HTML tables are versatile tools for presenting structured data on the web. By following best practices, you can create tables that are both visually appealing and accessible to all users. Remember to use semantic elements, distinguish headers with <code>&lt;th&gt;</code>, and apply CSS for styling and responsiveness. Regular testing and adherence to accessibility guidelines will ensure that your tables <a href="https://shaynly.com/mastering-ui-graphics-learning-resource/" target="_blank" rel="noopener">enhance the user experience</a> on your website.</p>
-<p>Mastering the art of <a href="https://shaynly.com/best-practices-for-html-forms-creating-user-friendly/" target="_blank" rel="noopener">creating effective and accessible HTML tables takes practice</a>, but the results are well worth the effort. Whether you're building data dashboards, e-commerce sites, or informational resources, tables remain a valuable tool in your <a href="https://shaynly.com/html-vs-css/" target="_blank" rel="noopener">web development</a> arsenal.</p>
-
-        </div>
-      </article>
-
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
-        </div>
-
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
-        </div>
-      </aside>
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
     </div>
-    
-  </main>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>
 
-  <!-- Footer -->
-  
 
-  <script src="/assets/js/main.js"></script>
 
+<h2 class="wp-block-heading" id="8-responsive-tables">8. <strong>Responsive Tables</strong></h2>
+
+
+
+<p>In today's mobile-first web, <a href="https://shaynly.com/soundwise-essentials-plan-create-audio-products/" target="_blank" rel="noopener">creating responsive tables is essential</a>. Tables can become challenging to read on small screens. Consider using CSS techniques like media queries and horizontal scrolling for wide tables to ensure they display well on all devices.</p>
+
+
+
+<pre class="wp-block-code has-text-color has-background" style="color:#f200e7;background-color:#000000"><code>@media screen and (max-width: 600px) {
+    table {
+        overflow-x: auto;
+    }
+}</code></pre>
+
+
+
+<h2 class="wp-block-heading" id="9-accessible-tables">9. <strong>Accessible Tables</strong></h2>
+
+
+
+<p>Accessibility is a critical aspect of <a href="https://shaynly.com/collection-of-resources-for-frontend-web-developers/" target="_blank" rel="noopener">web development</a>. To make tables accessible:</p>
+
+
+
+<ul>
+<li>Use semantic <a href="https://shaynly.com/exploring-html-elements-a-comprehensive-guide/" target="_blank" rel="noopener">HTML elements</a> (&lt;th&gt;, &lt;caption&gt;) to provide structure.</li>
+
+
+
+<li>Include appropriate alternative <a href="https://shaynly.com/alttext-ai-generate-image-alt-text-automatically/" target="_blank" rel="noopener">text for images</a> within tables.</li>
+
+
+
+<li>Ensure text contrast for legibility.</li>
+
+
+
+<li>Use ARIA roles and attributes for complex tables.</li>
+
+
+
+<li>Test your tables with screen readers and accessibility tools.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="10-common-table-use-cases">10. <strong>Common Table Use Cases</strong></h2>
+
+
+
+<p>Tables have a wide range of use cases on the web:</p>
+
+
+
+<ul>
+<li><strong>Data Tables</strong>: For displaying datasets and tabular information.</li>
+
+
+
+<li><strong>Pricing Tables</strong>: Often used on e-commerce websites to compare product features and prices.</li>
+
+
+
+<li><strong>Event Calendars</strong>: To display schedules and events.</li>
+
+
+
+<li><strong>Scoreboards and Leaderboards</strong>: Displaying game scores or rankings.</li>
+
+
+
+<li><strong>Responsive Email Layouts</strong>: Used in HTML email <a href="https://shaynly.com/per-my-last-email-email-tips-and-templates-for-freelancers-and-clients/" target="_blank" rel="noopener">templates to ensure consistent layout across email clients</a>.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="11-conclusion">11. <strong>Conclusion</strong></h2>
+
+
+
+<p>HTML tables are versatile tools for presenting structured data on the web. By following best practices, you can create tables that are both visually appealing and accessible to all users. Remember to use semantic elements, distinguish headers with <code>&lt;th&gt;</code>, and apply CSS for styling and responsiveness. Regular testing and adherence to accessibility guidelines will ensure that your tables <a href="https://shaynly.com/mastering-ui-graphics-learning-resource/" target="_blank" rel="noopener">enhance the user experience</a> on your website.</p>
+
+
+
+<p>Mastering the art of <a href="https://shaynly.com/best-practices-for-html-forms-creating-user-friendly/" target="_blank" rel="noopener">creating effective and accessible HTML tables takes practice</a>, but the results are well worth the effort. Whether you're building data dashboards, e-commerce sites, or informational resources, tables remain a valuable tool in your <a href="https://shaynly.com/html-vs-css/" target="_blank" rel="noopener">web development</a> arsenal.</p>

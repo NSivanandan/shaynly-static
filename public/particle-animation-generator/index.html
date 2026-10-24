@@ -1,41 +1,469 @@
+<h2 class="wp-block-heading has-text-align-center">Particle Animation Generator - Customize Your Website Hero</h2>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Particle Animation Generator - Customize Your Website Hero - Shaynly</title>
-  <meta name="description" content="Design and instantly export beautiful, customizable particle animation generator for your website hero section. Live preview, adjustable colors, speed, and density.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
+    <meta name="keywords" content="particle animation, canvas animation, animation generator, web animation, interactive design">
+    <meta name="author" content="Particle Animation Generator">
+    <meta property="og:title" content="Particle Animation Generator - Create Stunning Visual Effects">
+    <meta property="og:description" content="Design and export beautiful particle animations with live preview and customizable settings">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#8B5CF6">
+    <title>Particle Animation Generator | Create Custom Visual Effects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #EC4899;
+            --success: #10B981;
+            --success-dark: #059669;
+            --bg-light: #F9FAFB;
+            --bg-white: #FFFFFF;
+            --text-dark: #1F2937;
+            --text-gray: #6B7280;
+            --border: #E5E7EB;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.2s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        header {
+            text-align: center;
+            padding: 24px 16px;
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(24px, 5vw, 36px);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: clamp(14px, 3vw, 16px);
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 380px 1fr;
+            }
+            
+            header {
+                padding: 32px 16px;
+                margin-bottom: 32px;
+            }
+            
+            .container {
+                padding: 24px;
+            }
+        }
+
+        .panel {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            padding: 20px;
+        }
+
+        .panel-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .control-value {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+        }
+
+        input[type="color"] {
+            width: 100%;
+            height: 48px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        input[type="color"]:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(to right, var(--border) 0%, var(--primary) 100%);
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 3px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+            transition: var(--transition);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.6);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 3px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+            transition: var(--transition);
+        }
+
+        select {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            font-size: 15px;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        select:hover, select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .toggle-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .toggle-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        input[type="checkbox"] {
+            width: 48px;
+            height: 24px;
+            position: relative;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--border);
+            border-radius: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        input[type="checkbox"]:checked {
+            background: var(--primary);
+        }
+
+        input[type="checkbox"]::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: white;
+            top: 3px;
+            left: 3px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        input[type="checkbox"]:checked::before {
+            transform: translateX(24px);
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 20px;
+        }
+
+        #animationCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        .export-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 24px;
+            border-radius: var(--radius);
+            color: white;
+            margin-top: 20px;
+        }
+
+        .export-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .export-description {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .button-grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .button-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .btn {
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            touch-action: manipulation;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: var(--success-dark);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #f3f4f6;
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.success {
+            background: #D1FAE5;
+            color: #065F46;
+            border-left: 4px solid var(--success);
+        }
+
+        .message.error {
+            background: #FEE2E2;
+            color: #991B1B;
+            border-left: 4px solid #EF4444;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .collapsible-header {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible-header.collapsed .collapsible-icon {
+            transform: rotate(-90deg);
+        }
+
+        .collapsible-content {
+            max-height: 3000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+        }
+
+        @media (max-width: 640px) {
+            .panel {
+                padding: 16px;
+            }
+            
+            .panel-title {
+                font-size: 18px;
+            }
+            
+            .control-group {
+                margin-bottom: 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+  <meta name="description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
   <link rel="canonical" href="https://shaynly.com/particle-animation-generator/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/particle-animation-generator/">
   <meta property="og:title" content="Particle Animation Generator - Customize Your Website Hero - Shaynly">
-  <meta property="og:description" content="Design and instantly export beautiful, customizable particle animation generator for your website hero section. Live preview, adjustable colors, speed, and density.">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2025/11/modern-word-art-brand-logo-vector-_Particle-Animation-Generator_.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Particle Animation Generator - Customize Your Website Hero - Shaynly">
-  <meta name="twitter:description" content="Design and instantly export beautiful, customizable particle animation generator for your website hero section. Live preview, adjustable colors, speed, and density.">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2025/11/modern-word-art-brand-logo-vector-_Particle-Animation-Generator_.jpg">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,47 +472,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Particle Animation Generator - Customize Your Website Hero",
-  "name": "Particle Animation Generator - Customize Your Website Hero",
-  "description": "Design and instantly export beautiful, customizable particle animation generator for your website hero section. Live preview, adjustable colors, speed, and density.",
-  "url": "https://shaynly.com/particle-animation-generator/",
-  "datePublished": "2025-11-02",
-  "dateModified": "2025-11-02",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2025/11/modern-word-art-brand-logo-vector-_Particle-Animation-Generator_.jpg",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -102,394 +494,771 @@
       </nav>
     </div>
   </header>
+    <header>
+        <h1>✨ Particle Animation Generator</h1>
+        <p class="subtitle">Design stunning particle animations with live preview and export production-ready code instantly</p>
+    </header>
 
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/tools/">Tools</a> <span>/</span> <span>Particle Animation Generator - Customize Your Website Hero</span>
+    <div class="container">
+        <div class="content-grid">
+            <div class="panel">
+                <div class="collapsible-header" id="controlsHeader">
+                    <h2 class="panel-title">Settings</h2>
+                    <span class="collapsible-icon">▼</span>
+                </div>
+                <div class="collapsible-content" id="controlsContent">
+                    <div class="control-group">
+                        <div class="color-grid">
+                            <div>
+                                <label class="control-label">Primary Color</label>
+                                <input type="color" id="primaryColor" value="#8B5CF6">
+                            </div>
+                            <div>
+                                <label class="control-label">Secondary Color</label>
+                                <input type="color" id="secondaryColor" value="#EC4899">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Background Color</label>
+                        <input type="color" id="bgColor" value="#0d1a26">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">
+                            <span>Particle Density</span>
+                            <span class="control-value" id="countValue">60</span>
+                        </label>
+                        <input type="range" id="particleCount" min="20" max="250" value="60" step="5">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">
+                            <span>Flow Speed</span>
+                            <span class="control-value" id="speedValue">0.5</span>
+                        </label>
+                        <input type="range" id="flowSpeed" min="0.1" max="2.0" value="0.5" step="0.1">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">
+                            <span>Particle Size</span>
+                            <span class="control-value" id="sizeValue">4px</span>
+                        </label>
+                        <input type="range" id="particleSize" min="1" max="10" value="4" step="0.5">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">
+                            <span>Connection Distance</span>
+                            <span class="control-value" id="distanceValue">100px</span>
+                        </label>
+                        <input type="range" id="connectionDistance" min="0" max="250" value="100" step="5">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">
+                            <span>Trail Effect</span>
+                            <span class="control-value" id="fadeValue">0.05</span>
+                        </label>
+                        <input type="range" id="fadeOpacity" min="0.01" max="1.0" value="0.05" step="0.01">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">
+                            <span>Repulsion Radius</span>
+                            <span class="control-value" id="repulsionRadiusValue">100px</span>
+                        </label>
+                        <input type="range" id="repulsionRadius" min="50" max="300" value="100" step="10">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">
+                            <span>Repulsion Strength</span>
+                            <span class="control-value" id="repulsionStrengthValue">10x</span>
+                        </label>
+                        <input type="range" id="repulsionStrength" min="1" max="30" value="10" step="1">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Particle Shape</label>
+                        <select id="particleShape">
+                            <option value="circle">Circle</option>
+                            <option value="square">Square</option>
+                            <option value="triangle">Triangle</option>
+                            <option value="star">Star</option>
+                            <option value="line">Dash</option>
+                            <option value="hexagon">Hexagon</option>
+                            <option value="diamond">Diamond</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="toggle-wrapper">
+                            <label class="toggle-label">Mouse Interaction</label>
+                            <input type="checkbox" id="mouseInteraction" checked>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="panel">
+                    <h2 class="panel-title">Live Preview</h2>
+                    <div class="canvas-wrapper">
+                        <canvas id="animationCanvas"></canvas>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <h2 class="export-title">🚀 Export Your Animation</h2>
+                    <p class="export-description">Get a clean, standalone HTML file with your custom settings built in. No dependencies required!</p>
+                    <div class="button-grid">
+                        <button class="btn btn-success" id="copyCodeBtn">
+                            <span>📋</span> Copy Code
+                        </button>
+                        <button class="btn btn-primary" id="downloadBtn">
+                            <span>⬇️</span> Download HTML
+                        </button>
+                    </div>
+                    <div class="message" id="messageBox"></div>
+                </div>
+            </div>
         </div>
-        <a href="/category/tools/" class="cat-badge" style="text-decoration:none;">Tools</a>
-        <h1 class="article-title">Particle Animation Generator - Customize Your Website Hero</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2025-11-02</span>
-          <span>•</span>
-          <span>9 min read</span>
-        </div>
+    </div>
 
-        <img src="/wp-content/uploads/2025/11/modern-word-art-brand-logo-vector-_Particle-Animation-Generator_.jpg" alt="Particle Animation Generator - Customize Your Website Hero" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
+    <script>
+    (function() {
+        'use strict';
+        
+        const canvas = document.getElementById('animationCanvas');
+        const ctx = canvas.getContext('2d', { alpha: false });
+        let particles = [];
+        let animationFrameId = null;
+        const mouse = { x: null, y: null };
+        let CONFIG = {};
 
-        <div class="article-content">
-          <h2 class="wp-block-heading has-text-align-center">Particle Animation Generator - Customize Your Website Hero</h2>
-    
-    <div class="container">        <div class="content-grid">            <div class="panel">                <div class="collapsible-header" id="controlsHeader">                    <h2 class="panel-title">Settings</h2>                    <span class="collapsible-icon">▼</span>                </div>                <div class="collapsible-content" id="controlsContent">                    <div class="control-group">                        <div class="color-grid">                            <div>                                <label class="control-label">Primary Color</label>                                <input type="color" id="primaryColor" value="#8B5CF6">                            </div>                            <div>                                <label class="control-label">Secondary Color</label>                                <input type="color" id="secondaryColor" value="#EC4899">                            </div>                        </div>                    </div>
-                    <div class="control-group">                        <label class="control-label">Background Color</label>                        <input type="color" id="bgColor" value="#0d1a26">                    </div>
-                    <div class="control-group">                        <label class="control-label">                            <span>Particle Density</span>                            <span class="control-value" id="countValue">60</span>                        </label>                        <input type="range" id="particleCount" min="20" max="250" value="60" step="5">                    </div>
-                    <div class="control-group">                        <label class="control-label">                            <span>Flow Speed</span>                            <span class="control-value" id="speedValue">0.5</span>                        </label>                        <input type="range" id="flowSpeed" min="0.1" max="2.0" value="0.5" step="0.1">                    </div>
-                    <div class="control-group">                        <label class="control-label">                            <span>Particle Size</span>                            <span class="control-value" id="sizeValue">4px</span>                        </label>                        <input type="range" id="particleSize" min="1" max="10" value="4" step="0.5">                    </div>
-                    <div class="control-group">                        <label class="control-label">                            <span>Connection Distance</span>                            <span class="control-value" id="distanceValue">100px</span>                        </label>                        <input type="range" id="connectionDistance" min="0" max="250" value="100" step="5">                    </div>
-                    <div class="control-group">                        <label class="control-label">                            <span>Trail Effect</span>                            <span class="control-value" id="fadeValue">0.05</span>                        </label>                        <input type="range" id="fadeOpacity" min="0.01" max="1.0" value="0.05" step="0.01">                    </div>
-                    <div class="control-group">                        <label class="control-label">                            <span>Repulsion Radius</span>                            <span class="control-value" id="repulsionRadiusValue">100px</span>                        </label>                        <input type="range" id="repulsionRadius" min="50" max="300" value="100" step="10">                    </div>
-                    <div class="control-group">                        <label class="control-label">                            <span>Repulsion Strength</span>                            <span class="control-value" id="repulsionStrengthValue">10x</span>                        </label>                        <input type="range" id="repulsionStrength" min="1" max="30" value="10" step="1">                    </div>
-                    <div class="control-group">                        <label class="control-label">Particle Shape</label>                        <select id="particleShape">                            <option value="circle">Circle</option>                            <option value="square">Square</option>                            <option value="triangle">Triangle</option>                            <option value="star">Star</option>                            <option value="line">Dash</option>                            <option value="hexagon">Hexago</option>                            <option value="diamond">Diamond</option>                        </select>                    </div>
-                    <div class="control-group">                        <div class="toggle-wrapper">                            <label class="toggle-label">Mouse Interactio</label>                            <input type="checkbox" id="mouseInteraction" checked>                        </div>                    </div>                </div>            </div>
-            <div>                <div class="panel">                    <h2 class="panel-title">Live Preview</h2>                    <div class="canvas-wrapper">                        <canvas id="animationCanvas"></canvas>                    </div>                </div>
-                <div class="export-section">                    <h2 class="export-title">🚀 Export Your Animatio</h2>                    <p class="export-description">Get a clean, standalone HTML file with your custom settings built in. No dependencies required!</p>                    <div class="button-grid">                        <button class="btn btn-success" id="copyCodeBtn">                            <span>📋</span> Copy Coden                        </button>                        <button class="btn btn-primary" id="downloadBtn">                            <span>⬇️</span> Download HTML                        </button>                    </div>                    <div class="message" id="messageBox"></div>                </div>            </div>        </div>    </div>
-    <script>    (function() {
-'use strict';
-const canvas = document.getElementById('animationCanvas');
-const ctx = canvas.getContext('2d', { alpha: false });
-let particles = [];
-let animationFrameId = null;
-const mouse = { x: null, y: null };
-let CONFIG = {};
         const ui = {
-primaryColor: document.getElementById('primaryColor'),
-secondaryColor: document.getElementById('secondaryColor'),
-bgColor: document.getElementById('bgColor'),
-particleCount: document.getElementById('particleCount'),
-flowSpeed: document.getElementById('flowSpeed'),
-particleSize: document.getElementById('particleSize'),
-connectionDistance: document.getElementById('connectionDistance'),
-mouseInteraction: document.getElementById('mouseInteraction'),
-particleShape: document.getElementById('particleShape'),
-fadeOpacity: document.getElementById('fadeOpacity'),
-repulsionRadius: document.getElementById('repulsionRadius'),
-repulsionStrength: document.getElementById('repulsionStrength'),
-copyCodeBtn: document.getElementById('copyCodeBtn'),
-downloadBtn: document.getElementById('downloadBtn'),
-messageBox: document.getElementById('messageBox'),
-countValue: document.getElementById('countValue'),
-speedValue: document.getElementById('speedValue'),
-sizeValue: document.getElementById('sizeValue'),
-distanceValue: document.getElementById('distanceValue'),
-fadeValue: document.getElementById('fadeValue'),
-repulsionRadiusValue: document.getElementById('repulsionRadiusValue'),
-repulsionStrengthValue: document.getElementById('repulsionStrengthValue'),
-controlsHeader: document.getElementById('controlsHeader'),
-controlsContent: document.getElementById('controlsContent')
-};
+            primaryColor: document.getElementById('primaryColor'),
+            secondaryColor: document.getElementById('secondaryColor'),
+            bgColor: document.getElementById('bgColor'),
+            particleCount: document.getElementById('particleCount'),
+            flowSpeed: document.getElementById('flowSpeed'),
+            particleSize: document.getElementById('particleSize'),
+            connectionDistance: document.getElementById('connectionDistance'),
+            mouseInteraction: document.getElementById('mouseInteraction'),
+            particleShape: document.getElementById('particleShape'),
+            fadeOpacity: document.getElementById('fadeOpacity'),
+            repulsionRadius: document.getElementById('repulsionRadius'),
+            repulsionStrength: document.getElementById('repulsionStrength'),
+            copyCodeBtn: document.getElementById('copyCodeBtn'),
+            downloadBtn: document.getElementById('downloadBtn'),
+            messageBox: document.getElementById('messageBox'),
+            countValue: document.getElementById('countValue'),
+            speedValue: document.getElementById('speedValue'),
+            sizeValue: document.getElementById('sizeValue'),
+            distanceValue: document.getElementById('distanceValue'),
+            fadeValue: document.getElementById('fadeValue'),
+            repulsionRadiusValue: document.getElementById('repulsionRadiusValue'),
+            repulsionStrengthValue: document.getElementById('repulsionStrengthValue'),
+            controlsHeader: document.getElementById('controlsHeader'),
+            controlsContent: document.getElementById('controlsContent')
+        };
+
         if (window.innerWidth < 1024) {
-ui.controlsHeader.classList.add('collapsed');
-ui.controlsContent.classList.add('collapsed');
-}
+            ui.controlsHeader.classList.add('collapsed');
+            ui.controlsContent.classList.add('collapsed');
+        }
+
         ui.controlsHeader.addEventListener('click', function() {
-ui.controlsHeader.classList.toggle('collapsed');
-ui.controlsContent.classList.toggle('collapsed');
-});
+            ui.controlsHeader.classList.toggle('collapsed');
+            ui.controlsContent.classList.toggle('collapsed');
+        });
+
         const debounce = function(func, delay) {
-let timeout;
-return function() {
-const context = this;
-const args = arguments;
-clearTimeout(timeout);
-timeout = setTimeout(function() {
-func.apply(context, args);
-}, delay);
-};
-};
+            let timeout;
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    func.apply(context, args);
+                }, delay);
+            };
+        };
+
         const showMessage = function(text, isSuccess) {
-ui.messageBox.textContent = text;
-ui.messageBox.className = 'message show ' + (isSuccess ? 'success' : 'error');
-setTimeout(function() {
-ui.messageBox.classList.remove('show');
-}, 4000);
-};
+            ui.messageBox.textContent = text;
+            ui.messageBox.className = 'message show ' + (isSuccess ? 'success' : 'error');
+            setTimeout(function() {
+                ui.messageBox.classList.remove('show');
+            }, 4000);
+        };
+
         class Particle {
-constructor(color) {
-this.color = color;
-this.x = Math.random() * canvas.width;
-this.y = Math.random() * canvas.height;
-this.radius = Math.random() * CONFIG.maxRadius + 1;
-this.baseVX = (Math.random() - 0.5) * CONFIG.speed;
-this.baseVY = (Math.random() - 0.5) * CONFIG.speed;
-this.velocityX = this.baseVX;
-this.velocityY = this.baseVY;
-}
+            constructor(color) {
+                this.color = color;
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.radius = Math.random() * CONFIG.maxRadius + 1;
+                this.baseVX = (Math.random() - 0.5) * CONFIG.speed;
+                this.baseVY = (Math.random() - 0.5) * CONFIG.speed;
+                this.velocityX = this.baseVX;
+                this.velocityY = this.baseVY;
+            }
+
             draw() {
-ctx.beginPath();
-ctx.fillStyle = this.color;
-switch (CONFIG.particleShape) {
-case 'square':
-ctx.fillRect(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
-break;
-case 'triangle':
-ctx.moveTo(this.x, this.y - this.radius);
-ctx.lineTo(this.x + this.radius, this.y + this.radius);
-ctx.lineTo(this.x - this.radius, this.y + this.radius);
-ctx.closePath();
-ctx.fill();
-break;
-case 'star':
-var spikes = 5;
-var outerRadius = this.radius * 1.5;
-var innerRadius = this.radius * 0.7;
-var rot = Math.PI / 2 * 3;
-var step = Math.PI / spikes;
-ctx.moveTo(this.x, this.y - outerRadius);
-for (var i = 0; i < spikes; i++) {
-ctx.lineTo(this.x + Math.cos(rot) * outerRadius, this.y + Math.sin(rot) * outerRadius);
-rot += step;
-ctx.lineTo(this.x + Math.cos(rot) * innerRadius, this.y + Math.sin(rot) * innerRadius);
-rot += step;
-}
-ctx.lineTo(this.x, this.y - outerRadius);
-ctx.closePath();
-ctx.fill();
-break;
-case 'line':
-ctx.fillRect(this.x - this.radius * 2, this.y - 1, this.radius * 4, 2);
-break;
-case 'hexagon':
-var size = this.radius * 1.5;
-ctx.moveTo(this.x + size, this.y);
-for (var j = 1; j <= 6; j++) {
-var angle = j * 2 * Math.PI / 6;
-ctx.lineTo(this.x + size * Math.cos(angle), this.y + size * Math.sin(angle));
-}
-ctx.fill();
-break;
-case 'diamond':
-ctx.moveTo(this.x, this.y - this.radius * 1.5);
-ctx.lineTo(this.x + this.radius * 1.5, this.y);
-ctx.lineTo(this.x, this.y + this.radius * 1.5);
-ctx.lineTo(this.x - this.radius * 1.5, this.y);
-ctx.closePath();
-ctx.fill();
-break;
-default:
-ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-ctx.fill();
-}
-}
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                
+                switch (CONFIG.particleShape) {
+                    case 'square':
+                        ctx.fillRect(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
+                        break;
+                    case 'triangle':
+                        ctx.moveTo(this.x, this.y - this.radius);
+                        ctx.lineTo(this.x + this.radius, this.y + this.radius);
+                        ctx.lineTo(this.x - this.radius, this.y + this.radius);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                    case 'star':
+                        var spikes = 5;
+                        var outerRadius = this.radius * 1.5;
+                        var innerRadius = this.radius * 0.7;
+                        var rot = Math.PI / 2 * 3;
+                        var step = Math.PI / spikes;
+                        ctx.moveTo(this.x, this.y - outerRadius);
+                        for (var i = 0; i < spikes; i++) {
+                            ctx.lineTo(this.x + Math.cos(rot) * outerRadius, this.y + Math.sin(rot) * outerRadius);
+                            rot += step;
+                            ctx.lineTo(this.x + Math.cos(rot) * innerRadius, this.y + Math.sin(rot) * innerRadius);
+                            rot += step;
+                        }
+                        ctx.lineTo(this.x, this.y - outerRadius);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                    case 'line':
+                        ctx.fillRect(this.x - this.radius * 2, this.y - 1, this.radius * 4, 2);
+                        break;
+                    case 'hexagon':
+                        var size = this.radius * 1.5;
+                        ctx.moveTo(this.x + size, this.y);
+                        for (var j = 1; j <= 6; j++) {
+                            var angle = j * 2 * Math.PI / 6;
+                            ctx.lineTo(this.x + size * Math.cos(angle), this.y + size * Math.sin(angle));
+                        }
+                        ctx.fill();
+                        break;
+                    case 'diamond':
+                        ctx.moveTo(this.x, this.y - this.radius * 1.5);
+                        ctx.lineTo(this.x + this.radius * 1.5, this.y);
+                        ctx.lineTo(this.x, this.y + this.radius * 1.5);
+                        ctx.lineTo(this.x - this.radius * 1.5, this.y);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                    default:
+                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                        ctx.fill();
+                }
+            }
+
             update() {
-if (CONFIG.mouseInteraction && mouse.x !== null) {
-var dx = this.x - mouse.x;
-var dy = this.y - mouse.y;
-var distSq = dx * dx + dy * dy;
-var radiusSq = CONFIG.repulsionRadius * CONFIG.repulsionRadius;
-if (distSq < radiusSq) {
-var dist = Math.sqrt(distSq);
-var force = (1 - dist / CONFIG.repulsionRadius) * CONFIG.repulsionStrength;
-this.velocityX += (dx / dist) * force * 0.2;
-this.velocityY += (dy / dist) * force * 0.2;
-}
-}
+                if (CONFIG.mouseInteraction && mouse.x !== null) {
+                    var dx = this.x - mouse.x;
+                    var dy = this.y - mouse.y;
+                    var distSq = dx * dx + dy * dy;
+                    var radiusSq = CONFIG.repulsionRadius * CONFIG.repulsionRadius;
+                    
+                    if (distSq < radiusSq) {
+                        var dist = Math.sqrt(distSq);
+                        var force = (1 - dist / CONFIG.repulsionRadius) * CONFIG.repulsionStrength;
+                        this.velocityX += (dx / dist) * force * 0.2;
+                        this.velocityY += (dy / dist) * force * 0.2;
+                    }
+                }
+
                 this.velocityX *= 0.98;
-this.velocityY *= 0.98;
-this.velocityX += (this.baseVX - this.velocityX) * 0.01;
-this.velocityY += (this.baseVY - this.velocityY) * 0.01;
-this.x += this.velocityX;
-this.y += this.velocityY;
+                this.velocityY *= 0.98;
+                this.velocityX += (this.baseVX - this.velocityX) * 0.01;
+                this.velocityY += (this.baseVY - this.velocityY) * 0.01;
+                
+                this.x += this.velocityX;
+                this.y += this.velocityY;
+
                 if (this.x > canvas.width + this.radius) this.x = -this.radius;
-if (this.x < -this.radius) this.x = canvas.width + this.radius;
-if (this.y > canvas.height + this.radius) this.y = -this.radius;
-if (this.y < -this.radius) this.y = canvas.height + this.radius;
-}
-}
+                if (this.x < -this.radius) this.x = canvas.width + this.radius;
+                if (this.y > canvas.height + this.radius) this.y = -this.radius;
+                if (this.y < -this.radius) this.y = canvas.height + this.radius;
+            }
+        }
+
         const drawConnections = function() {
-var maxDistSq = CONFIG.connectionDistance * CONFIG.connectionDistance;
-ctx.lineWidth = 0.5;
-for (var i = 0; i < particles.length; i++) {
-for (var j = i + 1; j < particles.length; j++) {
-var dx = particles[i].x - particles[j].x;
-var dy = particles[i].y - particles[j].y;
-var distSq = dx * dx + dy * dy;
-if (distSq < maxDistSq) {
-var opacity = 1 - distSq / maxDistSq;
-ctx.strokeStyle = 'rgba(255, 255, 255, ' + (opacity * 0.5) + ')';
-ctx.beginPath();
-ctx.moveTo(particles[i].x, particles[i].y);
-ctx.lineTo(particles[j].x, particles[j].y);
-ctx.stroke();
-}
-}
-}
-};
+            var maxDistSq = CONFIG.connectionDistance * CONFIG.connectionDistance;
+            ctx.lineWidth = 0.5;
+            
+            for (var i = 0; i < particles.length; i++) {
+                for (var j = i + 1; j < particles.length; j++) {
+                    var dx = particles[i].x - particles[j].x;
+                    var dy = particles[i].y - particles[j].y;
+                    var distSq = dx * dx + dy * dy;
+                    
+                    if (distSq < maxDistSq) {
+                        var opacity = 1 - distSq / maxDistSq;
+                        ctx.strokeStyle = 'rgba(255, 255, 255, ' + (opacity * 0.5) + ')';
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        };
+
         const animate = function() {
-var fadeHex = Math.round(CONFIG.fadeOpacity * 255).toString(16).padStart(2, '0');
-ctx.fillStyle = CONFIG.canvasBg + fadeHex;
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-if (CONFIG.connectionDistance > 0) drawConnections();
-for (var i = 0; i < particles.length; i++) {
-particles[i].update();
-particles[i].draw();
-}
-animationFrameId = requestAnimationFrame(animate);
-};
+            var fadeHex = Math.round(CONFIG.fadeOpacity * 255).toString(16).padStart(2, '0');
+            ctx.fillStyle = CONFIG.canvasBg + fadeHex;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            if (CONFIG.connectionDistance > 0) drawConnections();
+            
+            for (var i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            
+            animationFrameId = requestAnimationFrame(animate);
+        };
+
         const updateConfig = function() {
-CONFIG = {
-primaryColor: ui.primaryColor.value,
-secondaryColor: ui.secondaryColor.value,
-canvasBg: ui.bgColor.value,
-count: parseInt(ui.particleCount.value),
-speed: parseFloat(ui.flowSpeed.value),
-maxRadius: parseFloat(ui.particleSize.value),
-connectionDistance: parseInt(ui.connectionDistance.value),
-mouseInteraction: ui.mouseInteraction.checked,
-particleShape: ui.particleShape.value,
-fadeOpacity: parseFloat(ui.fadeOpacity.value),
-repulsionRadius: parseInt(ui.repulsionRadius.value),
-repulsionStrength: parseInt(ui.repulsionStrength.value)
-};
-ui.countValue.textContent = CONFIG.count;
-ui.speedValue.textContent = CONFIG.speed;
-ui.sizeValue.textContent = CONFIG.maxRadius + 'px';
-ui.distanceValue.textContent = CONFIG.connectionDistance + 'px';
-ui.fadeValue.textContent = CONFIG.fadeOpacity;
-ui.repulsionRadiusValue.textContent = CONFIG.repulsionRadius + 'px';
-ui.repulsionStrengthValue.textContent = CONFIG.repulsionStrength + 'x';
-};
+            CONFIG = {
+                primaryColor: ui.primaryColor.value,
+                secondaryColor: ui.secondaryColor.value,
+                canvasBg: ui.bgColor.value,
+                count: parseInt(ui.particleCount.value),
+                speed: parseFloat(ui.flowSpeed.value),
+                maxRadius: parseFloat(ui.particleSize.value),
+                connectionDistance: parseInt(ui.connectionDistance.value),
+                mouseInteraction: ui.mouseInteraction.checked,
+                particleShape: ui.particleShape.value,
+                fadeOpacity: parseFloat(ui.fadeOpacity.value),
+                repulsionRadius: parseInt(ui.repulsionRadius.value),
+                repulsionStrength: parseInt(ui.repulsionStrength.value)
+            };
+            
+            ui.countValue.textContent = CONFIG.count;
+            ui.speedValue.textContent = CONFIG.speed;
+            ui.sizeValue.textContent = CONFIG.maxRadius + 'px';
+            ui.distanceValue.textContent = CONFIG.connectionDistance + 'px';
+            ui.fadeValue.textContent = CONFIG.fadeOpacity;
+            ui.repulsionRadiusValue.textContent = CONFIG.repulsionRadius + 'px';
+            ui.repulsionStrengthValue.textContent = CONFIG.repulsionStrength + 'x';
+        };
+
         const restartAnimation = function() {
-if (animationFrameId) {
-cancelAnimationFrame(animationFrameId);
-animationFrameId = null;
-}
-updateConfig();
-var container = canvas.parentElement;
-canvas.width = container.clientWidth;
-canvas.height = container.clientHeight;
-particles = [];
-for (var i = 0; i < CONFIG.count; i++) {
-particles.push(new Particle(i % 2 === 0 ? CONFIG.primaryColor : CONFIG.secondaryColor));
-}
-animate();
-};
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            
+            updateConfig();
+            
+            var container = canvas.parentElement;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            
+            particles = [];
+            for (var i = 0; i < CONFIG.count; i++) {
+                particles.push(new Particle(i % 2 === 0 ? CONFIG.primaryColor : CONFIG.secondaryColor));
+            }
+            
+            animate();
+        };
+
         const generateProductionCode = function() {
-updateConfig();
-var configString = JSON.stringify(CONFIG, null, 4);
-return '<canvas id="c"></canvas>\<script>\n(function(){var cv=document.getElementById("c"),ctx=cv.getContext("2d"),ps=[],m={x:
-ull,y:
-ull},cfg=' + configString + ';\nfunction P(c){this.color=c;this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.r=Math.random()*cfg.maxRadius+1;this.bvx=(Math.random()-.5)*cfg.speed;this.bvy=(Math.random()-.5)*cfg.speed;this.vx=this.bvx;this.vy=this.bvy}\nP.prototype.draw=function(){ctx.beginPath();ctx.fillStyle=this.color;switch(cfg.particleShape){case"square":ctx.fillRect(this.x-this.r,this.y-this.r,this.r*2,this.r*2);break;case"triangle":ctx.moveTo(this.x,this.y-this.r);ctx.lineTo(this.x+this.r,this.y+this.r);ctx.lineTo(this.x-this.r,this.y+this.r);ctx.closePath();ctx.fill();break;case"star":var s=5,or=this.r*1.5,ir=this.r*.7,rot=Math.PI/2*3,st=Math.PI/s;ctx.moveTo(this.x,this.y-or);for(var i=0;i<s;i++){ctx.lineTo(this.x+Math.cos(rot)*or,this.y+Math.sin(rot)*or);rot+=st;ctx.lineTo(this.x+Math.cos(rot)*ir,this.y+Math.sin(rot)*ir);rot+=st}ctx.lineTo(this.x,this.y-or);ctx.closePath();ctx.fill();break;case"line":ctx.fillRect(this.x-this.r*2,this.y-1,this.r*4,2);break;case"hexagon":var sz=this.r*1.5;ctx.moveTo(this.x+sz,this.y);for(var j=1;j<=6;j++){var a=j*2*Math.PI/6;ctx.lineTo(this.x+sz*Math.cos(a),this.y+sz*Math.sin(a))}ctx.fill();break;case"diamond":ctx.moveTo(this.x,this.y-this.r*1.5);ctx.lineTo(this.x+this.r*1.5,this.y);ctx.lineTo(this.x,this.y+this.r*1.5);ctx.lineTo(this.x-this.r*1.5,this.y);ctx.closePath();ctx.fill();break;default:ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}}\nP.prototype.update=function(){if(cfg.mouseInteraction&&m.x!==null){var dx=this.x-m.x,dy=this.y-m.y,dsq=dx*dx+dy*dy,rsq=cfg.repulsionRadius*cfg.repulsionRadius;if(dsq<rsq){var d=Math.sqrt(dsq),f=(1-d/cfg.repulsionRadius)*cfg.repulsionStrength;this.vx+=(dx/d)*f*.2;this.vy+=(dy/d)*f*.2}}this.vx*=.98;this.vy*=.98;this.vx+=(this.bvx-this.vx)*.01;this.vy+=(this.bvy-this.vy)*.01;this.x+=this.vx;this.y+=this.vy;if(this.x>cv.width+this.r)this.x=-this.r;if(this.x<-this.r)this.x=cv.width+this.r;if(this.y>cv.height+this.r)this.y=-this.r;if(this.y<-this.r)this.y=cv.height+this.r}\nfunction drawL(){var mdsq=cfg.connectionDistance*cfg.connectionDistance;ctx.lineWidth=.5;for(var i=0;i<ps.length;i++){for(var j=i+1;j<ps.length;j++){var dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,dsq=dx*dx+dy*dy;if(dsq<mdsq){var o=1-dsq/mdsq;ctx.strokeStyle="rgba(255,255,255,"+(o*.5)+")";ctx.beginPath();ctx.moveTo(ps[i].x,ps[i].y);ctx.lineTo(ps[j].x,ps[j].y);ctx.stroke()}}}}\nfunction anim(){var fh=Math.round(cfg.fadeOpacity*255).toString(16).padStart(2,"0");ctx.fillStyle=cfg.canvasBg+fh;ctx.fillRect(0,0,cv.width,cv.height);if(cfg.connectionDistance>0)drawL();for(var i=0;i<ps.length;i++){ps[i].update();ps[i].draw()}requestAnimationFrame(anim)}\nfunction init(){cv.width=window.innerWidth;cv.height=window.innerHeight;ps=[];for(var i=0;i<cfg.count;i++){ps.push(new P(i%2===0?cfg.primaryColor:cfg.secondaryColor))}}\nwindow.addEventListener("resize",init);cv.addEventListener("mousemove",function(e){m.x=e.clientX;m.y=e.clientY});cv.addEventListener("touchmove",function(e){e.preventDefault();m.x=e.touches[0].clientX;m.y=e.touches[0].clientY});cv.addEventListener("mouseleave",function(){m.x=null;m.y=null});cv.addEventListener("touchend",function(){m.x=null;m.y=null});init();anim()})();\<\/script>';
-};
+            updateConfig();
+            var configString = JSON.stringify(CONFIG, null, 4);
+            return '<!DOCTYPE html>\n<html lang="en">\n<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Particle Animation</title>\n<style>body,html{margin:0;padding:0;overflow:hidden}#c{display:block;background:' + CONFIG.canvasBg + '}</style>\n  <meta name="description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
+  <link rel="canonical" href="https://shaynly.com/particle-animation-generator/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/particle-animation-generator/">
+  <meta property="og:title" content="Particle Animation Generator - Customize Your Website Hero - Shaynly">
+  <meta property="og:description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Particle Animation Generator - Customize Your Website Hero - Shaynly">
+  <meta name="twitter:description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head><body><canvas id="c"></canvas>\n<script>\n(function(){var cv=document.getElementById("c"),ctx=cv.getContext("2d"),ps=[],m={x:null,y:null},cfg=' + configString + ';\nfunction P(c){this.color=c;this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.r=Math.random()*cfg.maxRadius+1;this.bvx=(Math.random()-.5)*cfg.speed;this.bvy=(Math.random()-.5)*cfg.speed;this.vx=this.bvx;this.vy=this.bvy}\nP.prototype.draw=function(){ctx.beginPath();ctx.fillStyle=this.color;switch(cfg.particleShape){case"square":ctx.fillRect(this.x-this.r,this.y-this.r,this.r*2,this.r*2);break;case"triangle":ctx.moveTo(this.x,this.y-this.r);ctx.lineTo(this.x+this.r,this.y+this.r);ctx.lineTo(this.x-this.r,this.y+this.r);ctx.closePath();ctx.fill();break;case"star":var s=5,or=this.r*1.5,ir=this.r*.7,rot=Math.PI/2*3,st=Math.PI/s;ctx.moveTo(this.x,this.y-or);for(var i=0;i<s;i++){ctx.lineTo(this.x+Math.cos(rot)*or,this.y+Math.sin(rot)*or);rot+=st;ctx.lineTo(this.x+Math.cos(rot)*ir,this.y+Math.sin(rot)*ir);rot+=st}ctx.lineTo(this.x,this.y-or);ctx.closePath();ctx.fill();break;case"line":ctx.fillRect(this.x-this.r*2,this.y-1,this.r*4,2);break;case"hexagon":var sz=this.r*1.5;ctx.moveTo(this.x+sz,this.y);for(var j=1;j<=6;j++){var a=j*2*Math.PI/6;ctx.lineTo(this.x+sz*Math.cos(a),this.y+sz*Math.sin(a))}ctx.fill();break;case"diamond":ctx.moveTo(this.x,this.y-this.r*1.5);ctx.lineTo(this.x+this.r*1.5,this.y);ctx.lineTo(this.x,this.y+this.r*1.5);ctx.lineTo(this.x-this.r*1.5,this.y);ctx.closePath();ctx.fill();break;default:ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}}\nP.prototype.update=function(){if(cfg.mouseInteraction&&m.x!==null){var dx=this.x-m.x,dy=this.y-m.y,dsq=dx*dx+dy*dy,rsq=cfg.repulsionRadius*cfg.repulsionRadius;if(dsq<rsq){var d=Math.sqrt(dsq),f=(1-d/cfg.repulsionRadius)*cfg.repulsionStrength;this.vx+=(dx/d)*f*.2;this.vy+=(dy/d)*f*.2}}this.vx*=.98;this.vy*=.98;this.vx+=(this.bvx-this.vx)*.01;this.vy+=(this.bvy-this.vy)*.01;this.x+=this.vx;this.y+=this.vy;if(this.x>cv.width+this.r)this.x=-this.r;if(this.x<-this.r)this.x=cv.width+this.r;if(this.y>cv.height+this.r)this.y=-this.r;if(this.y<-this.r)this.y=cv.height+this.r}\nfunction drawL(){var mdsq=cfg.connectionDistance*cfg.connectionDistance;ctx.lineWidth=.5;for(var i=0;i<ps.length;i++){for(var j=i+1;j<ps.length;j++){var dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,dsq=dx*dx+dy*dy;if(dsq<mdsq){var o=1-dsq/mdsq;ctx.strokeStyle="rgba(255,255,255,"+(o*.5)+")";ctx.beginPath();ctx.moveTo(ps[i].x,ps[i].y);ctx.lineTo(ps[j].x,ps[j].y);ctx.stroke()}}}}\nfunction anim(){var fh=Math.round(cfg.fadeOpacity*255).toString(16).padStart(2,"0");ctx.fillStyle=cfg.canvasBg+fh;ctx.fillRect(0,0,cv.width,cv.height);if(cfg.connectionDistance>0)drawL();for(var i=0;i<ps.length;i++){ps[i].update();ps[i].draw()}requestAnimationFrame(anim)}\nfunction init(){cv.width=window.innerWidth;cv.height=window.innerHeight;ps=[];for(var i=0;i<cfg.count;i++){ps.push(new P(i%2===0?cfg.primaryColor:cfg.secondaryColor))}}\nwindow.addEventListener("resize",init);cv.addEventListener("mousemove",function(e){m.x=e.clientX;m.y=e.clientY});cv.addEventListener("touchmove",function(e){e.preventDefault();m.x=e.touches[0].clientX;m.y=e.touches[0].clientY});cv.addEventListener("mouseleave",function(){m.x=null;m.y=null});cv.addEventListener("touchend",function(){m.x=null;m.y=null});init();anim()})();\n<\/script>
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body></html>';
+        };
+
         var debouncedRestart = debounce(restartAnimation, 250);
+
         ui.primaryColor.addEventListener('change', restartAnimation);
-ui.secondaryColor.addEventListener('change', restartAnimation);
-ui.bgColor.addEventListener('change', restartAnimation);
-ui.particleCount.addEventListener('input', debouncedRestart);
-ui.flowSpeed.addEventListener('input', debouncedRestart);
-ui.particleSize.addEventListener('input', debouncedRestart);
-ui.connectionDistance.addEventListener('input', debouncedRestart);
-ui.fadeOpacity.addEventListener('input', debouncedRestart);
-ui.repulsionRadius.addEventListener('input', debouncedRestart);
-ui.repulsionStrength.addEventListener('input', debouncedRestart);
-ui.mouseInteraction.addEventListener('change', restartAnimation);
-ui.particleShape.addEventListener('change', restartAnimation);
+        ui.secondaryColor.addEventListener('change', restartAnimation);
+        ui.bgColor.addEventListener('change', restartAnimation);
+        ui.particleCount.addEventListener('input', debouncedRestart);
+        ui.flowSpeed.addEventListener('input', debouncedRestart);
+        ui.particleSize.addEventListener('input', debouncedRestart);
+        ui.connectionDistance.addEventListener('input', debouncedRestart);
+        ui.fadeOpacity.addEventListener('input', debouncedRestart);
+        ui.repulsionRadius.addEventListener('input', debouncedRestart);
+        ui.repulsionStrength.addEventListener('input', debouncedRestart);
+        ui.mouseInteraction.addEventListener('change', restartAnimation);
+        ui.particleShape.addEventListener('change', restartAnimation);
+
         window.addEventListener('resize', debounce(restartAnimation, 300));
+
         canvas.addEventListener('mousemove', function(e) {
-var rect = canvas.getBoundingClientRect();
-mouse.x = e.clientX - rect.left;
-mouse.y = e.clientY - rect.top;
-});
+            var rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
         canvas.addEventListener('touchmove', function(e) {
-e.preventDefault();
-var rect = canvas.getBoundingClientRect();
-mouse.x = e.touches[0].clientX - rect.left;
-mouse.y = e.touches[0].clientY - rect.top;
-});
+            e.preventDefault();
+            var rect = canvas.getBoundingClientRect();
+            mouse.x = e.touches[0].clientX - rect.left;
+            mouse.y = e.touches[0].clientY - rect.top;
+        });
+
         canvas.addEventListener('mouseleave', function() {
-mouse.x = null;
-mouse.y = null;
-});
+            mouse.x = null;
+            mouse.y = null;
+        });
+
         canvas.addEventListener('touchend', function() {
-mouse.x = null;
-mouse.y = null;
-});
+            mouse.x = null;
+            mouse.y = null;
+        });
+
         ui.copyCodeBtn.addEventListener('click', function() {
-var code = generateProductionCode();
-if (navigator.clipboard && window.isSecureContext) {
-navigator.clipboard.writeText(code).then(function() {
-showMessage('✅ Code copied to clipboard!', true);
-}).catch(function() {
-fallbackCopy(code);
-});
-} else {
-fallbackCopy(code);
-}
-});
+            var code = generateProductionCode();
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(code).then(function() {
+                    showMessage('✅ Code copied to clipboard!', true);
+                }).catch(function() {
+                    fallbackCopy(code);
+                });
+            } else {
+                fallbackCopy(code);
+            }
+        });
+
         function fallbackCopy(text) {
-var textArea = document.createElement('textarea');
-textArea.value = text;
-textArea.style.position = 'fixed';
-textArea.style.left = '-9999px';
-textArea.style.top = '-9999px';
-document.body.appendChild(textArea);
-textArea.focus();
-textArea.select();
-try {
-document.execCommand('copy');
-showMessage('✅ Code copied successfully!', true);
-} catch (err) {
-showMessage('❌ Copy failed. Please try again.', false);
-}
-document.body.removeChild(textArea);
-}
+            var textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-9999px';
+            textArea.style.top = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showMessage('✅ Code copied successfully!', true);
+            } catch (err) {
+                showMessage('❌ Copy failed. Please try again.', false);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
         ui.downloadBtn.addEventListener('click', function() {
-try {
-var code = generateProductionCode();
-var blob = new Blob([code], { type: 'text/html' });
-var url = URL.createObjectURL(blob);
-var a = document.createElement('a');
-a.href = url;
-a.download = 'particle-animation.html';
-document.body.appendChild(a);
-a.click();
-setTimeout(function() {
-document.body.removeChild(a);
-URL.revokeObjectURL(url);
-}, 200);
-showMessage('✅ Download started successfully!', true);
-} catch (err) {
-showMessage('❌ Download failed. Please try again.', false);
-}
-});
+            try {
+                var code = generateProductionCode();
+                var blob = new Blob([code], { type: 'text/html' });
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'particle-animation.html';
+                document.body.appendChild(a);
+                a.click();
+                
+                setTimeout(function() {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 200);
+                
+                showMessage('✅ Download started successfully!', true);
+            } catch (err) {
+                showMessage('❌ Download failed. Please try again.', false);
+            }
+        });
+
         restartAnimation();
-})();
-</script>
-    <main class="container-content mx-auto"> ---
-        <section class="py-12">            <h2 class="text-3xl font-bold text-center mb-10 text-gray-700">Why Build with Our Generator?</h2>                        <div class="grid gap-8 md:grid-cols-3">                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-purple-600">                    <div class="flex items-center mb-3">                        <svg class="feature-icon text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>                        <h3 class="ml-3 text-xl font-semibold">⚡ SEO-First Performance</h3>                    </div>                    <p class="text-gray-600 text-sm">                        <a href="https://shaynly.com/branded-qr-code-generator/" title="Branded QR Code Generator: Best and Completely Free" target="_blank" rel="noopener"  data-wpil-monitor-id="882">Generated code</a> is **vanilla JavaScript** and Canvas-based, meaning zero library overhead. Keep your Core Web Vitals green and your load times fast.                    </p>                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-pink-500">                    <div class="flex items-center mb-3">                        <svg class="feature-icon text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0013.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>                        <h3 class="ml-3 text-xl font-semibold">🎨 Unlimited Customizatio</h3>                    </div>                    <p class="text-gray-600 text-sm">                        Adjust color, particle shape (circle, star, hexagon), density, speed, and responsiveness, all in a <a href="https://shaynly.com/creative-text-animation-effects/" title="Creative Text Animation Effects: Live Preview &amp; Customization" target="_blank" rel="noopener"  data-wpil-monitor-id="884">live preview</a>.                    </p>                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500">                    <div class="flex items-center mb-3">                        <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>                        <h3 class="ml-3 text-xl font-semibold">✨ Clean, Deployable Code</h3>                    </div>                    <p class="text-gray-600 text-sm">                        Instantly copy or download a **standalone <a href="https://shaynly.com/a-beginners-guide-to-html-coding/" title="A Beginner&#8217;s Guide to HTML Coding" target="_blank" rel="noopener"  data-wpil-monitor-id="886">HTML file** containing only the code</a> needed. No bulky downloads or configuration files.                    </p>                </div>            </div>        </section> ---
-        <section class="py-12 bg-white rounded-xl shadow-lg" id="tool">            <h2 class="text-3xl font-bold text-center mb-8 text-gray-700">Get Your Hero Animation in 3 Steps</h2>                        <ol class="space-y-6 max-w-xl mx-auto">                <li class="flex items-start">                    <div class="text-3xl font-extrabold text-purple-600 mr-4">1.</div>                    <div>                        <h4 class="text-lg font-bold">Tweak the Controls</h4>                        <p class="text-gray-600">Use the sliders and color pickers on the left to set particle density, flow speed, size, and connection distance for your perfect visual.</p>                    </div>                </li>                <li class="flex items-start">                    <div class="text-3xl font-extrabold text-purple-600 mr-4">2.</div>                    <div>                        <h4 class="text-lg font-bold">Test the Interactio</h4>                        <p class="text-gray-600">Move your mouse over the live canvas. Our **repulsion logic** is built in to create a dynamic, engaging <a href="https://shaynly.com/e-a-t-and-user-experience/" title="Why &#8216;Experience&#8217; is the New E-A-T: Branding for Google&#8217;s Latest Algorithm Update" target="_blank" rel="noopener"  data-wpil-monitor-id="880">user experience</a>.</p>                    </div>                </li>                <li class="flex items-start">                    <div class="text-3xl font-extrabold text-purple-600 mr-4">3.</div>                    <div>                        <h4 class="text-lg font-bold">Export & Deploy</h4>                        <p class="text-gray-600">Click **'Copy Code'** or **'Download HTML File'**. Paste the resulting <a href="https://shaynly.com/marketing-email-signature-designer/" title="Marketing Email Signature Designer" target="_blank" rel="noopener"  data-wpil-monitor-id="888">code into your WordPress custom HTML</a> block or website header. Done!</p>                    </div>                </li>            </ol>        </section>
+    })();
+    </script>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Particle Animation Generator - Lightweight Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base styles for mobile-first approach */
+        :root { font-family: 'Inter', sans-serif, system-ui; }
+        .purple-gradient-text {
+            /* Simulating a subtle text gradient for visual pop */
+            background-image: linear-gradient(to right, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .container-content {
+            /* Mobile-first padding, max-width for readability on desktop */
+            padding: 1.5rem; /* p-6 */
+            max-width: 6xl; /* mx-auto */
+        }
+        .feature-icon {
+            /* Consistent size for icons */
+            min-width: 2.5rem; /* w-10 */
+            min-height: 2.5rem; /* h-10 */
+        }
+    </style>
+  <meta name="description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
+  <link rel="canonical" href="https://shaynly.com/particle-animation-generator/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/particle-animation-generator/">
+  <meta property="og:title" content="Particle Animation Generator - Customize Your Website Hero - Shaynly">
+  <meta property="og:description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Particle Animation Generator - Customize Your Website Hero - Shaynly">
+  <meta name="twitter:description" content="Create stunning particle animations with live preview. Design, customize, and export production-ready HTML code instantly. Mobile-friendly particle animation generator.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <main class="container-content mx-auto">
+        
+        <header class="text-center pt-8 pb-10">
+            <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+                The <span class="purple-gradient-text">Particle Animation Generator</span>:
+                <br> Lightweight & Code-Ready
+            </h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                Stop using heavy video backgrounds. Design a stunning, **performance-optimized** particle hero section and instantly export pure HTML/JS code.
+            </p>
+            
+        </header>
+
+        ---
+
+        <section class="py-12">
+            <h2 class="text-3xl font-bold text-center mb-10 text-gray-700">Why Build with Our Generator?</h2>
+            
+            <div class="grid gap-8 md:grid-cols-3">
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-purple-600">
+                    <div class="flex items-center mb-3">
+                        <svg class="feature-icon text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <h3 class="ml-3 text-xl font-semibold">⚡ SEO-First Performance</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        <a href="https://shaynly.com/branded-qr-code-generator/" title="Branded QR Code Generator: Best and Completely Free" target="_blank" rel="noopener"  data-wpil-monitor-id="882">Generated code</a> is **vanilla JavaScript** and Canvas-based, meaning zero library overhead. Keep your Core Web Vitals green and your load times fast.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-pink-500">
+                    <div class="flex items-center mb-3">
+                        <svg class="feature-icon text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0013.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <h3 class="ml-3 text-xl font-semibold">🎨 Unlimited Customization</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Adjust color, particle shape (circle, star, hexagon), density, speed, and responsiveness, all in a <a href="https://shaynly.com/creative-text-animation-effects/" title="Creative Text Animation Effects: Live Preview &amp; Customization" target="_blank" rel="noopener"  data-wpil-monitor-id="884">live preview</a>.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500">
+                    <div class="flex items-center mb-3">
+                        <svg class="feature-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <h3 class="ml-3 text-xl font-semibold">✨ Clean, Deployable Code</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Instantly copy or download a **standalone <a href="https://shaynly.com/a-beginners-guide-to-html-coding/" title="A Beginner&#8217;s Guide to HTML Coding" target="_blank" rel="noopener"  data-wpil-monitor-id="886">HTML file** containing only the code</a> needed. No bulky downloads or configuration files.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        ---
+
+        <section class="py-12 bg-white rounded-xl shadow-lg" id="tool">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-700">Get Your Hero Animation in 3 Steps</h2>
+            
+            <ol class="space-y-6 max-w-xl mx-auto">
+                <li class="flex items-start">
+                    <div class="text-3xl font-extrabold text-purple-600 mr-4">1.</div>
+                    <div>
+                        <h4 class="text-lg font-bold">Tweak the Controls</h4>
+                        <p class="text-gray-600">Use the sliders and color pickers on the left to set particle density, flow speed, size, and connection distance for your perfect visual.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <div class="text-3xl font-extrabold text-purple-600 mr-4">2.</div>
+                    <div>
+                        <h4 class="text-lg font-bold">Test the Interaction</h4>
+                        <p class="text-gray-600">Move your mouse over the live canvas. Our **repulsion logic** is built in to create a dynamic, engaging <a href="https://shaynly.com/e-a-t-and-user-experience/" title="Why &#8216;Experience&#8217; is the New E-A-T: Branding for Google&#8217;s Latest Algorithm Update" target="_blank" rel="noopener"  data-wpil-monitor-id="880">user experience</a>.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <div class="text-3xl font-extrabold text-purple-600 mr-4">3.</div>
+                    <div>
+                        <h4 class="text-lg font-bold">Export & Deploy</h4>
+                        <p class="text-gray-600">Click **'Copy Code'** or **'Download HTML File'**. Paste the resulting <a href="https://shaynly.com/marketing-email-signature-designer/" title="Marketing Email Signature Designer" target="_blank" rel="noopener"  data-wpil-monitor-id="888">code into your WordPress custom HTML</a> block or website header. Done!</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
     </main>
 
-        </div>
-      </article>
-
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
-        </div>
-
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
-        </div>
-      </aside>
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
     </div>
-    
-  </main>
-
-  <!-- Footer -->
-  
-
-  <script src="/assets/js/main.js"></script>
-
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,41 +1,263 @@
+<h2 class="wp-block-heading has-text-align-center">Gmail Filtering Broken</h2>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gmail Filtering Broken? Why Your Primary Inbox is Flooded - Shaynly</title>
-  <meta name="description" content="Complete guide to the January 24, 2026 Gmail filtering Broken crisis. Learn why your Primary inbox is flooded with promotions, the death of Gmailify, and how to fix Incident NNnDkY9CJ36annsfytjQ.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Filtering Broken? (January 2026 Update) | Why Your Primary Inbox is Flooded & How to Fix It</title>
+    <meta name="description" content="Complete guide to the January 24, 2026 Gmail filtering crisis. Learn why your Primary inbox is flooded with promotions, the death of Gmailify, and how to fix Incident NNnDkY9CJ36annsfytjQ.">
+    
+    <!-- External Resources -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --g-blue: #4285F4;
+            --g-red: #EA4335;
+            --g-yellow: #FBBC05;
+            --g-green: #34A853;
+            --bg-main: #ffffff;
+            --text-main: #1f2937;
+            --accent-soft: #f0f7ff;
+            --card-border: #e5e7eb;
+            --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+            background-color: #fafbfc;
+            line-height: 1.7;
+        }
+
+        /* Premium Typography */
+        h1, h2, h3, h4 {
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .gradient-heading {
+            background: linear-gradient(135deg, var(--g-blue), #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Layout */
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Custom Visual Patterns */
+        .incident-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            background: #fff1f0;
+            border: 1px solid #ffa39e;
+            color: #cf1322;
+            border-radius: 99px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pulse-dot {
+            height: 8px;
+            width: 8px;
+            background-color: #cf1322;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(207, 19, 34, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(207, 19, 34, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(207, 19, 34, 0); }
+        }
+
+        /* Styled Cards */
+        .content-card {
+            background: white;
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-premium);
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Timeline Pattern */
+        .timeline-steps {
+            border-left: 3px solid var(--g-blue);
+            padding-left: 2rem;
+            margin-left: 1rem;
+            position: relative;
+        }
+
+        .step-node {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .step-node::before {
+            content: "";
+            position: absolute;
+            left: -calc(2rem + 10px);
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--g-blue);
+            border-radius: 50%;
+        }
+
+        /* Comparison Table */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: #f8fafc;
+            padding: 1.25rem;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid #edf2f7;
+        }
+
+        td {
+            padding: 1.25rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* Code Block */
+        .code-box {
+            font-family: 'JetBrains Mono', monospace;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            position: relative;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .code-label {
+            position: absolute;
+            top: 0;
+            right: 1.5rem;
+            background: #334155;
+            padding: 2px 10px;
+            font-size: 0.7rem;
+            border-radius: 0 0 6px 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Pro Tip Callout */
+        .pro-tip {
+            background: linear-gradient(to right, #e0f2fe, #f0f9ff);
+            border-left: 5px solid var(--g-blue);
+            padding: 1.5rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+        }
+
+        /* Table of Contents */
+        .toc-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .toc-link {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            color: #475569;
+            text-decoration: none;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        .toc-link:hover {
+            color: var(--g-blue);
+            transform: translateX(5px);
+        }
+
+        .toc-link i {
+            margin-right: 12px;
+            font-size: 0.8rem;
+            color: var(--g-blue);
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            padding: 4rem 0;
+            text-align: center;
+            background: radial-gradient(circle at top right, #f8fafc, #fff);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 640px) {
+            .article-container { padding: 1rem; }
+            .content-card { padding: 1.5rem; }
+            h1 { font-size: 2.25rem !important; }
+            .hero-section { padding: 2rem 0; }
+        }
+    </style>
+  <meta name="description" content="Complete guide to the January 24, 2026 Gmail filtering crisis. Learn why your Primary inbox is flooded with promotions, the death of Gmailify, and how to fix Incident NNnDkY9CJ36annsfytjQ.">
   <link rel="canonical" href="https://shaynly.com/gmail-filtering-broken/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/gmail-filtering-broken/">
   <meta property="og:title" content="Gmail Filtering Broken? Why Your Primary Inbox is Flooded - Shaynly">
-  <meta property="og:description" content="Complete guide to the January 24, 2026 Gmail filtering Broken crisis. Learn why your Primary inbox is flooded with promotions, the death of Gmailify, and how to fix Incident NNnDkY9CJ36annsfytjQ.">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2026/01/Gmail-Filtering-Broken-Why-Your-Primary-Inbox-is-Flooded.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:description" content="Complete guide to the January 24, 2026 Gmail filtering crisis. Learn why your Primary inbox is flooded with promotions, the death of Gmailify, and how to fix Incident NNnDkY9CJ36annsfytjQ.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Gmail Filtering Broken? Why Your Primary Inbox is Flooded - Shaynly">
-  <meta name="twitter:description" content="Complete guide to the January 24, 2026 Gmail filtering Broken crisis. Learn why your Primary inbox is flooded with promotions, the death of Gmailify, and how to fix Incident NNnDkY9CJ36annsfytjQ.">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2026/01/Gmail-Filtering-Broken-Why-Your-Primary-Inbox-is-Flooded.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:description" content="Complete guide to the January 24, 2026 Gmail filtering crisis. Learn why your Primary inbox is flooded with promotions, the death of Gmailify, and how to fix Incident NNnDkY9CJ36annsfytjQ.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,47 +266,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Gmail Filtering Broken? Why Your Primary Inbox is Flooded",
-  "name": "Gmail Filtering Broken? Why Your Primary Inbox is Flooded",
-  "description": "Complete guide to the January 24, 2026 Gmail filtering Broken crisis. Learn why your Primary inbox is flooded with promotions, the death of Gmailify, and how to fix Incident NNnDkY9CJ36annsfytjQ.",
-  "url": "https://shaynly.com/gmail-filtering-broken/",
-  "datePublished": "2026-01-24",
-  "dateModified": "2026-01-24",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2026/01/Gmail-Filtering-Broken-Why-Your-Primary-Inbox-is-Flooded.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -103,82 +289,389 @@
     </div>
   </header>
 
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/technology/">Technology</a> <span>/</span> <span>Gmail Filtering Broken? Why Your Primary Inbox is Flooded</span>
+    <!-- Hero Header -->
+    <header class="hero-section">
+        <div class="article-container">
+            <div class="incident-badge">
+                <span class="pulse-dot"></span> 
+                Live Incident: Google Workspace #NNnDkY9CJ36annsfytjQ
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Gmail Filtering Broken? <br>
+                <span class="gradient-heading">Why Your Primary Inbox is Flooded</span>
+            </h1>
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-8 font-light">
+                As of late January 2026, millions are facing an "Inbox Apocalypse." Here is the 360-degree technical breakdown and fix for the filtering crisis.
+            </p>
+            <div class="flex justify-center gap-4 text-sm font-semibold text-gray-400">
+                <span><i class="far fa-calendar-alt mr-2"></i>Updated Jan 26, 2026</span>
+                <span><i class="far fa-clock mr-2"></i>22 Min Read</span>
+            </div>
         </div>
-        <a href="/category/technology/" class="cat-badge" style="text-decoration:none;">Technology</a>
-        <h1 class="article-title">Gmail Filtering Broken? Why Your Primary Inbox is Flooded</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2026-01-24</span>
-          <span>•</span>
-          <span>10 min read</span>
-        </div>
+    </header>
 
-        <img src="/wp-content/uploads/2026/01/Gmail-Filtering-Broken-Why-Your-Primary-Inbox-is-Flooded.png" alt="Gmail Filtering Broken? Why Your Primary Inbox is Flooded" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
+    <div class="article-container">
+        
+        <!-- Introduction Content Block -->
+        <section class="content-card">
+            <h2 class="text-2xl font-bold mb-4">I. The Current Crisis: A Global Flood</h2>
+            <p class="mb-4">
+                On the morning of January 24, 2026, users worldwide opened their Gmail apps to a jarring sight. Instead of the clean, sorted inbox they had enjoyed for over a decade, their <strong>Primary</strong> tab was inundated with thousands of retail newsletters, <a href="https://shaynly.com/social-media-marketing-in-healthcare-dos-and-donts/" title="Social Media Marketing in Healthcare: Dos and Don&#8217;ts" target="_blank" rel="noopener"  data-wpil-monitor-id="1178">social media</a> notifications, and forum alerts.
+            </p>
+            <p class="mb-6">
+                The wall between "important" and "promotional" has effectively collapsed. For many, this isn't just an annoyance—it's a productivity killer. Legitimate work emails are getting buried, and critical two-factor authentication (2FA) codes are being lost in a sea of discount codes and status updates.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-4 mt-8">
+                <div class="p-4 rounded-xl bg-orange-50 border border-orange-100">
+                    <h4 class="font-bold text-orange-800 mb-2"><i class="fas fa-bell-slash mr-2"></i> Notification Chaos</h4>
+                    <p class="text-sm text-orange-700">Phones are buzzing relentlessly as Gmail pushes "Promotions" as "Primary" notifications in real-time.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-red-50 border border-red-100">
+                    <h4 class="font-bold text-red-800 mb-2"><i class="fas fa-shield-alt mr-2"></i> Security Blind Spots</h4>
+                    <p class="text-sm text-red-700">The "Scanning Failed" error means users might inadvertently click malicious links that missed the filter.</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="article-content">
-          <h2 class="wp-block-heading has-text-align-center">Gmail Filtering Broke</h2>
-    <!-- Hero Header -->    
-    <div class="article-container">                <!-- Introduction Content Block -->        <section class="content-card">            <h2 class="text-2xl font-bold mb-4">I. The Current Crisis: A Global Flood</h2>            <p class="mb-4">                On the morning of January 24, 2026, users worldwide opened their Gmail apps to a jarring sight. Instead of the clean, sorted inbox they had enjoyed for over a decade, their <strong>Primary</strong> tab was inundated with thousands of retail newsletters, <a href="https://shaynly.com/social-media-marketing-in-healthcare-dos-and-donts/" title="Social Media Marketing in Healthcare: Dos and Don&#8217;ts" target="_blank" rel="noopener"  data-wpil-monitor-id="1178">social media</a> notifications, and forum alerts.            </p>            <p class="mb-6">                The wall between "important" and "promotional" has effectively collapsed. For many, this isn't just an annoyance—it's a productivity killer. Legitimate work emails are getting buried, and critical two-factor authentication (2FA) codes are being lost in a sea of discount codes and status updates.            </p>                        <div class="grid md:grid-cols-2 gap-4 mt-8">                <div class="p-4 rounded-xl bg-orange-50 border border-orange-100">                    <h4 class="font-bold text-orange-800 mb-2"><i class="fas fa-bell-slash mr-2"></i> Notification Chaos</h4>                    <p class="text-sm text-orange-700">Phones are buzzing relentlessly as Gmail pushes "Promotions" as "Primary" notifications in real-time.</p>                </div>                <div class="p-4 rounded-xl bg-red-50 border border-red-100">                    <h4 class="font-bold text-red-800 mb-2"><i class="fas fa-shield-alt mr-2"></i> Security Blind Spots</h4>                    <p class="text-sm text-red-700">The "Scanning Failed" error means users might inadvertently click malicious links that missed the filter.</p>                </div>            </div>        </section>
-        <!-- Table of Contents -->        <nav class="toc-box">            <h3 class="text-xl font-bold mb-6 flex items-center">                <i class="fas fa-stream mr-3 text-blue-500"></i> Detailed Guide Navigationn            </h3>            <div class="grid md:grid-cols-2 gap-x-8 gap-y-2">                <a href="#understanding-outage" class="toc-link"><i class="fas fa-chevron-right"></i> Understanding the Jan 2026 Outage</a>                <a href="#turning-point" class="toc-link"><i class="fas fa-chevron-right"></i> 2026: The Year Gmail Changed</a>                <a href="#death-of-gmailify" class="toc-link"><i class="fas fa-chevron-right"></i> Deprecation of Legacy Features</a>                <a href="#retvec-ai" class="toc-link"><i class="fas fa-chevron-right"></i> RETVec AI & Security Rules</a>                <a href="#troubleshooting" class="toc-link"><i class="fas fa-chevron-right"></i> Troubleshooting Guide (Steps)</a>                <a href="#advanced-workarounds" class="toc-link"><i class="fas fa-chevron-right"></i> Advanced Search Operators</a>                <a href="#faqs" class="toc-link"><i class="fas fa-chevron-right"></i> Frequently Asked Questions</a>            </div>        </nav>
-        <!-- Section 2: Technical Deep Dive -->        <section id="understanding-outage" class="mb-20">            <h2 class="text-3xl font-extrabold mb-8 flex items-center">                <span class="bg-blue-100 text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">II</span>                Understanding the January 2026 Glitchn            </h2>                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">                Google Incident <strong>NNnDkY9CJ36annsfytjQ</strong> is not a single bug, but a "perfect storm" of overlapping technical issues within the Gmail delivery pipeline.             </p>
-            <div class="grid md:grid-cols-3 gap-6">                <!-- Symptom 1 -->                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">                        <i class="fas fa-filter text-red-600"></i>                    </div>                    <h4 class="font-bold mb-2">Tab Bypass</h4>                    <p class="text-sm text-gray-500">Classification metadata is failing to attach to incoming SMTP headers, causing Gmail to default all mail to the Primary tab.</p>                </div>                <!-- Symptom 2 -->                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">                        <i class="fas fa-biohazard text-yellow-600"></i>                    </div>                    <h4 class="font-bold mb-2">Scanning Errors</h4>                    <p class="text-sm text-gray-500">The red banner warning "Gmail hasn't scanned this message..." appears on legitimate mail due to a timeout in the sandboxing layer.</p>                </div>                <!-- Symptom 3 -->                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">                        <i class="fas fa-hourglass-half text-blue-600"></i>                    </div>                    <h4 class="font-bold mb-2">MTA Latency</h4>                    <p class="text-sm text-gray-500">Mail Transfer Agents (MTA) are experiencing massive backlogs, causing delivery delays ranging from 20 minutes to 4 hours.</p>                </div>            </div>
-            <div class="pro-tip mt-10">                <h4 class="font-bold text-blue-900 mb-2"><i class="fas fa-info-circle mr-2"></i> Why is this happening now?</h4>                <p class="text-blue-800 text-sm">                    Google recently migrated its entire spam-detection infrastructure to a decentralized processing model. On Jan 24th, a configuration error in the "Categorization Node" led to a failure in the logic that routes mail to Promotions and Social tabs.                </p>            </div>        </section>
-        <!-- Section 3: The 2026 Turning Point -->        <section id="turning-point" class="mb-20">            <h2 class="text-3xl font-extrabold mb-8 flex items-center">                <span class="bg-purple-100 text-purple-600 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">III</span>                Why 2026 is a Major Turning Pointn            </h2>            <p class="mb-8">                If you think this is just another temporary glitch, you may be surprised. 2026 was designated by Google as the year of "Modern Gmail Architecture." This transition involves shutting down "insecure" legacy features that have existed since the early 2000s.            </p>
-            <h3 id="death-of-gmailify" class="text-2xl font-bold mb-6 text-gray-800">The Deprecation of Gmailify & POP3</h3>            <p class="mb-6">                As of January 1, 2026, <strong>Gmailify</strong> and legacy <strong>POP3 Fetching</strong> have been officially sunset. This is a critical factor in the current filtering crisis.            </p>
-            <div class="table-responsive">                <table>                    <thead>                        <tr>                            <th>Feature</th>                            <th>Status (2025)</th>                            <th>Status (2026)</th>                            <th>User Impact</th>                        </tr>                    </thead>                    <tbody>                        <tr>                            <td class="font-bold">Gmailify (Yahoo/Outlook)</td>                            <td class="text-green-600">Active</td>                            <td class="text-red-600">Deprecated</td>                            <td>External mail no longer filtered by Google's AI.</td>                        </tr>                        <tr>                            <td class="font-bold">Legacy POP3</td>                            <td class="text-green-600">Standard</td>                            <td class="text-red-600">Disabled</td>                            <td>Syncing errors & filtering failures for older accounts.</td>                        </tr>                        <tr>                            <td class="font-bold">Basic Auth</td>                            <td class="text-yellow-600">Permitted</td>                            <td class="text-red-600">Blocked</td>                            <td>Requires mandatory OAuth 2.0; blocks many third-party apps.</td>                        </tr>                    </tbody>                </table>            </div>
-            <h3 id="retvec-ai" class="text-2xl font-bold mt-12 mb-6 text-gray-800">The RETVec AI Algorithm</h3>            <p class="mb-6">                Gmail's new <strong>RETVec (Resilient Entirely-convolutional Text Vectorizer)</strong> is a massive upgrade over traditional spam filters. It is <a href="https://shaynly.com/mastering-ui-graphics-learning-resource/" title="Mastering UI Graphics: Enhancing User Experience Through Visual Design" target="_blank" rel="noopener"  data-wpil-monitor-id="1184">designed to "read" the visual</a> structure of an email rather than just looking for keywords like "SALE" or "OFFER.            </p>            <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl">                <h4 class="font-bold mb-4 text-gray-700">How RETVec Works:</h4>                <ul class="space-y-4">                    <li class="flex items-start">                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>                        <span><strong>Visual Understanding:</strong> It detects text hidden within images or stylized characters (e.g., "v1agra" vs "viagra").</span>                    </li>                    <li class="flex items-start">                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>                        <span><strong>Contextual Layering:</strong> It analyzes the relationship between the sender's history and the recipient's response rate.</span>                    </li>                    <li class="flex items-start">                        <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>                        <span class="text-red-600 font-medium">The Current Problem:</span>                        <span class="ml-2">During the Jan 2026 incident, RETVec's "Confidence Threshold" was reset to 0, meaning it treats every authenticated email as "High Importance" by default.</span>                    </li>                </ul>            </div>        </section>
-        <!-- Section 4: Troubleshooting Guide -->        <section id="troubleshooting" class="mb-20">            <h2 class="text-3xl font-extrabold mb-12 flex items-center">                <span class="bg-green-100 text-green-600 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">IV</span>                Step-by-Step Troubleshooting Guiden            </h2>
-            <div class="timeline-steps">                <!-- Step 1 -->                <div class="step-node">                    <h4 class="text-xl font-bold mb-2">1. Check Service Status</h4>                    <p class="text-gray-600">Before <a href="https://shaynly.com/how-to-enable-and-disable-macros-in-excel/" title="How to enable and disable macros in Excel" target="_blank" rel="noopener"  data-wpil-monitor-id="1182">changing settings</a>, verify if the glitch is still active in your region. Visit the <a href="#" class="text-blue-500 underline">Google Workspace Status Dashboard</a> and look for Incident <strong>#NNnDkY9CJ36annsfytjQ</strong>.</p>                </div>                <!-- Step 2 -->                <div class="step-node">                    <h4 class="text-xl font-bold mb-2">2. Enable Smart Features</h4>                    <p class="text-gray-600 mb-4">The AI categorization engine requires <a href="https://shaynly.com/linkedin-sales-navigator/" title="The Ultimate Guide to LinkedIn Sales Navigator" target="_blank" rel="noopener"  data-wpil-monitor-id="1180">"Smart Features"</a> to be toggled ON. Sometimes a core update toggles this off.</p>                    <div class="bg-white border rounded-lg p-3 inline-block font-mono text-sm text-gray-700">                        Settings > General > Smart features and personalization > [Check ON]n                    </div>                </div>                <!-- Step 3 -->                <div class="step-node">                    <h4 class="text-xl font-bold mb-2">3. Disable "Never Send to Spam" Filters</h4>                    <p class="text-gray-600">If you have a manual filter that says <em>"Never send it to Spam"</em> for a specific domain (like @amazon.com), Gmail will currently force that mail into <strong>Primary</strong> because it cannot decide between the Filter and the broken Category system.</p>                </div>                <!-- Step 4 -->                <div class="step-node">                    <h4 class="text-xl font-bold mb-2">4. Stop Filter Overrides</h4>                    <p class="text-gray-600 mb-4">Prevent Gmail from using past behavior to categorize your mail during the outage.</p>                    <div class="bg-white border rounded-lg p-3 inline-block font-mono text-sm text-gray-700">                        Settings > Inbox > Importance markers > Select "Don't use my past actions..."                    </div>                </div>                <!-- Step 5 -->                <div class="step-node">                    <h4 class="text-xl font-bold mb-2">5. The "Manual Training" Fix</h4>                    <p class="text-gray-600">Force the AI to re-learn. On Desktop, drag a promotional email from <strong>Primary</strong> to <strong>Promotions</strong>. When the box asks "Do this for future messages?", click <strong>YES</strong> immediately.</p>                </div>            </div>        </section>
-        <!-- Section 5: Advanced Workarounds -->        <section id="advanced-workarounds" class="mb-20">            <h2 class="text-3xl font-extrabold mb-8 flex items-center">                <span class="bg-yellow-100 text-yellow-600 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">V</span>                Advanced Workarounds (Manual Filtering)n            </h2>            <p class="mb-8">                If the automatic system is completely failing you, you can take control using Gmail's powerful search syntax. Use these strings to view a "Clean Inbox" that ignores the glitch.            </p>
-            <div class="code-box">                <div class="code-label">Search Operator</div>                label:inbox AND NOT category:social AND NOT category:promotions AND NOT category:updatesn            </div>            <p class="text-sm text-gray-500 italic mb-10">Copy and paste this into your Gmail search bar to hide all the clutter currently flooding your Primary tab.</p>
-            <h3 class="text-2xl font-bold mb-6 text-gray-800">Browser & App Fixes</h3>            <div class="grid md:grid-cols-2 gap-8">                <div class="p-6 rounded-2xl bg-white shadow-sm border border-gray-100">                    <h4 class="font-bold mb-2"><i class="fas fa-window-restore mr-2 text-blue-500"></i> Clear Cache/Cookies</h4>                    <p class="text-sm text-gray-600">Old metadata stored in your browser can cause the Inbox to display incorrectly. Clear your <strong>Site Data</strong> for mail.google.com and restart the browser.</p>                </div>                <div class="p-6 rounded-2xl bg-white shadow-sm border border-gray-100">                    <h4 class="font-bold mb-2"><i class="fas fa-mobile mr-2 text-green-500"></i> Gmail App Re-Sync</h4>                    <p class="text-sm text-gray-600">On mobile, go to <strong>Settings > [Account] > Usage > Sync Settings</strong>. Toggle sync OFF for 30 seconds, then back ON to force a fresh pull of category labels.</p>                </div>            </div>        </section>
-        <!-- Section 6: Conclusion -->        <section class="content-card bg-slate-900 text-white border-0 shadow-2xl relative overflow-hidden">            <div class="absolute top-0 right-0 p-10 opacity-10">                <i class="fas fa-envelope-open-text text-9xl"></i>            </div>            <h2 class="text-3xl font-bold mb-6">Conclusion: The Path Forward</h2>            <p class="mb-6 opacity-90">                The Gmail "Filtering Apocalypse" of January 2026 is a stark reminder of how much we rely on AI to organize our lives. While Google works on a permanent fix for Incident <strong>NNnDkY9CJ36annsfytjQ</strong>, the real takeaway is that the era of "Legacy Email" is over.            </p>            <p class="mb-8 opacity-90">                With the removal of Gmailify and POP3, users are being pushed toward a more secure, albeit less flexible, IMAP/OAuth future. For now, manual training and the search operators provided above are your best defense against the flood.            </p>                   </section>
-        <!-- FAQ Section -->        <section id="faqs" class="mb-20">            <h2 class="text-3xl font-extrabold mb-10 text-center">Frequently Asked Questions</h2>                        <div class="space-y-4">                <!-- FAQ 1 -->                <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden">                    <div class="p-5 font-bold text-gray-800 border-b bg-gray-50 flex justify-between items-center cursor-pointer">                        Why is my Gmail Primary inbox suddenly full of promotional emails?n                        <i class="fas fa-plus text-xs opacity-30"></i>                    </div>                    <div class="p-5 text-gray-600">                        This is due to a service disruption (Incident NNnDkY9CJ36annsfytjQ) where Gmail's AI categorization engine has stopped correctly tagging incoming mail with "Promotions" or "Social" labels, causing them to default to the Primary tab.                    </div>                </div>                <!-- FAQ 2 -->                <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden">                    <div class="p-5 font-bold text-gray-800 border-b bg-gray-50 flex justify-between items-center cursor-pointer">                        What does the "Gmail hasn't scanned this message for spam" warning mean?n                        <i class="fas fa-plus text-xs opacity-30"></i>                    </div>                    <div class="p-5 text-gray-600">                        During the current glitch, Google's high-speed scanning servers are timing out. When this happens, Gmail allows the email to pass through to your inbox but flags it with a warning to exercise caution because it hasn't verified the sender authentication (SPF/DKIM) or malware signatures.                    </div>                </div>                <!-- FAQ 3 -->                <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden">                    <div class="p-5 font-bold text-gray-800 border-b bg-gray-50 flex justify-between items-center cursor-pointer">                        Is the lack of filtering related to the January 2026 Gmailify shutdown?n                        <i class="fas fa-plus text-xs opacity-30"></i>                    </div>                    <div class="p-5 text-gray-600">                        Yes, potentially. Google officially killed Gmailify and legacy POP3 this month. If you are viewing Yahoo or Outlook mail through Gmail, those external emails will no longer be processed by Google's advanced spam AI, leading to an unfiltered mess in your inbox.                    </div>                </div>                <!-- FAQ 4 -->                <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden">                    <div class="p-5 font-bold text-gray-800 border-b bg-gray-50 flex justify-between items-center cursor-pointer">                        How do I "re-train" my Gmail filters after this glitch?n                        <i class="fas fa-plus text-xs opacity-30"></i>                    </div>                    <div class="p-5 text-gray-600">                        Once the service stabilizes, you can re-teach the algorithm by dragging and dropping a miscategorized email from the Primary tab to the Promotions tab. Click "Yes" when asked if you want to do this for all future messages from that sender.                    </div>                </div>            </div>        </section>
+        <!-- Table of Contents -->
+        <nav class="toc-box">
+            <h3 class="text-xl font-bold mb-6 flex items-center">
+                <i class="fas fa-stream mr-3 text-blue-500"></i> Detailed Guide Navigation
+            </h3>
+            <div class="grid md:grid-cols-2 gap-x-8 gap-y-2">
+                <a href="#understanding-outage" class="toc-link"><i class="fas fa-chevron-right"></i> Understanding the Jan 2026 Outage</a>
+                <a href="#turning-point" class="toc-link"><i class="fas fa-chevron-right"></i> 2026: The Year Gmail Changed</a>
+                <a href="#death-of-gmailify" class="toc-link"><i class="fas fa-chevron-right"></i> Deprecation of Legacy Features</a>
+                <a href="#retvec-ai" class="toc-link"><i class="fas fa-chevron-right"></i> RETVec AI & Security Rules</a>
+                <a href="#troubleshooting" class="toc-link"><i class="fas fa-chevron-right"></i> Troubleshooting Guide (Steps)</a>
+                <a href="#advanced-workarounds" class="toc-link"><i class="fas fa-chevron-right"></i> Advanced Search Operators</a>
+                <a href="#faqs" class="toc-link"><i class="fas fa-chevron-right"></i> Frequently Asked Questions</a>
+            </div>
+        </nav>
+
+        <!-- Section 2: Technical Deep Dive -->
+        <section id="understanding-outage" class="mb-20">
+            <h2 class="text-3xl font-extrabold mb-8 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">II</span>
+                Understanding the January 2026 Glitch
+            </h2>
+            
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                Google Incident <strong>NNnDkY9CJ36annsfytjQ</strong> is not a single bug, but a "perfect storm" of overlapping technical issues within the Gmail delivery pipeline. 
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Symptom 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-filter text-red-600"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Tab Bypass</h4>
+                    <p class="text-sm text-gray-500">Classification metadata is failing to attach to incoming SMTP headers, causing Gmail to default all mail to the Primary tab.</p>
+                </div>
+                <!-- Symptom 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-biohazard text-yellow-600"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Scanning Errors</h4>
+                    <p class="text-sm text-gray-500">The red banner warning "Gmail hasn't scanned this message..." appears on legitimate mail due to a timeout in the sandboxing layer.</p>
+                </div>
+                <!-- Symptom 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-hourglass-half text-blue-600"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">MTA Latency</h4>
+                    <p class="text-sm text-gray-500">Mail Transfer Agents (MTA) are experiencing massive backlogs, causing delivery delays ranging from 20 minutes to 4 hours.</p>
+                </div>
+            </div>
+
+            <div class="pro-tip mt-10">
+                <h4 class="font-bold text-blue-900 mb-2"><i class="fas fa-info-circle mr-2"></i> Why is this happening now?</h4>
+                <p class="text-blue-800 text-sm">
+                    Google recently migrated its entire spam-detection infrastructure to a decentralized processing model. On Jan 24th, a configuration error in the "Categorization Node" led to a failure in the logic that routes mail to Promotions and Social tabs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 3: The 2026 Turning Point -->
+        <section id="turning-point" class="mb-20">
+            <h2 class="text-3xl font-extrabold mb-8 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">III</span>
+                Why 2026 is a Major Turning Point
+            </h2>
+            <p class="mb-8">
+                If you think this is just another temporary glitch, you may be surprised. 2026 was designated by Google as the year of "Modern Gmail Architecture." This transition involves shutting down "insecure" legacy features that have existed since the early 2000s.
+            </p>
+
+            <h3 id="death-of-gmailify" class="text-2xl font-bold mb-6 text-gray-800">The Deprecation of Gmailify & POP3</h3>
+            <p class="mb-6">
+                As of January 1, 2026, <strong>Gmailify</strong> and legacy <strong>POP3 Fetching</strong> have been officially sunset. This is a critical factor in the current filtering crisis.
+            </p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Status (2025)</th>
+                            <th>Status (2026)</th>
+                            <th>User Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold">Gmailify (Yahoo/Outlook)</td>
+                            <td class="text-green-600">Active</td>
+                            <td class="text-red-600">Deprecated</td>
+                            <td>External mail no longer filtered by Google's AI.</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Legacy POP3</td>
+                            <td class="text-green-600">Standard</td>
+                            <td class="text-red-600">Disabled</td>
+                            <td>Syncing errors & filtering failures for older accounts.</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Basic Auth</td>
+                            <td class="text-yellow-600">Permitted</td>
+                            <td class="text-red-600">Blocked</td>
+                            <td>Requires mandatory OAuth 2.0; blocks many third-party apps.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 id="retvec-ai" class="text-2xl font-bold mt-12 mb-6 text-gray-800">The RETVec AI Algorithm</h3>
+            <p class="mb-6">
+                Gmail's new <strong>RETVec (Resilient Entirely-convolutional Text Vectorizer)</strong> is a massive upgrade over traditional spam filters. It is <a href="https://shaynly.com/mastering-ui-graphics-learning-resource/" title="Mastering UI Graphics: Enhancing User Experience Through Visual Design" target="_blank" rel="noopener"  data-wpil-monitor-id="1184">designed to "read" the visual</a> structure of an email rather than just looking for keywords like "SALE" or "OFFER.
+            </p>
+            <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl">
+                <h4 class="font-bold mb-4 text-gray-700">How RETVec Works:</h4>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span><strong>Visual Understanding:</strong> It detects text hidden within images or stylized characters (e.g., "v1agra" vs "viagra").</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span><strong>Contextual Layering:</strong> It analyzes the relationship between the sender's history and the recipient's response rate.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>
+                        <span class="text-red-600 font-medium">The Current Problem:</span>
+                        <span class="ml-2">During the Jan 2026 incident, RETVec's "Confidence Threshold" was reset to 0, meaning it treats every authenticated email as "High Importance" by default.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 4: Troubleshooting Guide -->
+        <section id="troubleshooting" class="mb-20">
+            <h2 class="text-3xl font-extrabold mb-12 flex items-center">
+                <span class="bg-green-100 text-green-600 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">IV</span>
+                Step-by-Step Troubleshooting Guide
+            </h2>
+
+            <div class="timeline-steps">
+                <!-- Step 1 -->
+                <div class="step-node">
+                    <h4 class="text-xl font-bold mb-2">1. Check Service Status</h4>
+                    <p class="text-gray-600">Before <a href="https://shaynly.com/how-to-enable-and-disable-macros-in-excel/" title="How to enable and disable macros in Excel" target="_blank" rel="noopener"  data-wpil-monitor-id="1182">changing settings</a>, verify if the glitch is still active in your region. Visit the <a href="#" class="text-blue-500 underline">Google Workspace Status Dashboard</a> and look for Incident <strong>#NNnDkY9CJ36annsfytjQ</strong>.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="step-node">
+                    <h4 class="text-xl font-bold mb-2">2. Enable Smart Features</h4>
+                    <p class="text-gray-600 mb-4">The AI categorization engine requires <a href="https://shaynly.com/linkedin-sales-navigator/" title="The Ultimate Guide to LinkedIn Sales Navigator" target="_blank" rel="noopener"  data-wpil-monitor-id="1180">"Smart Features"</a> to be toggled ON. Sometimes a core update toggles this off.</p>
+                    <div class="bg-white border rounded-lg p-3 inline-block font-mono text-sm text-gray-700">
+                        Settings > General > Smart features and personalization > [Check ON]
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="step-node">
+                    <h4 class="text-xl font-bold mb-2">3. Disable "Never Send to Spam" Filters</h4>
+                    <p class="text-gray-600">If you have a manual filter that says <em>"Never send it to Spam"</em> for a specific domain (like @amazon.com), Gmail will currently force that mail into <strong>Primary</strong> because it cannot decide between the Filter and the broken Category system.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="step-node">
+                    <h4 class="text-xl font-bold mb-2">4. Stop Filter Overrides</h4>
+                    <p class="text-gray-600 mb-4">Prevent Gmail from using past behavior to categorize your mail during the outage.</p>
+                    <div class="bg-white border rounded-lg p-3 inline-block font-mono text-sm text-gray-700">
+                        Settings > Inbox > Importance markers > Select "Don't use my past actions..."
+                    </div>
+                </div>
+                <!-- Step 5 -->
+                <div class="step-node">
+                    <h4 class="text-xl font-bold mb-2">5. The "Manual Training" Fix</h4>
+                    <p class="text-gray-600">Force the AI to re-learn. On Desktop, drag a promotional email from <strong>Primary</strong> to <strong>Promotions</strong>. When the box asks "Do this for future messages?", click <strong>YES</strong> immediately.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Advanced Workarounds -->
+        <section id="advanced-workarounds" class="mb-20">
+            <h2 class="text-3xl font-extrabold mb-8 flex items-center">
+                <span class="bg-yellow-100 text-yellow-600 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">V</span>
+                Advanced Workarounds (Manual Filtering)
+            </h2>
+            <p class="mb-8">
+                If the automatic system is completely failing you, you can take control using Gmail's powerful search syntax. Use these strings to view a "Clean Inbox" that ignores the glitch.
+            </p>
+
+            <div class="code-box">
+                <div class="code-label">Search Operator</div>
+                label:inbox AND NOT category:social AND NOT category:promotions AND NOT category:updates
+            </div>
+            <p class="text-sm text-gray-500 italic mb-10">Copy and paste this into your Gmail search bar to hide all the clutter currently flooding your Primary tab.</p>
+
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">Browser & App Fixes</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-6 rounded-2xl bg-white shadow-sm border border-gray-100">
+                    <h4 class="font-bold mb-2"><i class="fas fa-window-restore mr-2 text-blue-500"></i> Clear Cache/Cookies</h4>
+                    <p class="text-sm text-gray-600">Old metadata stored in your browser can cause the Inbox to display incorrectly. Clear your <strong>Site Data</strong> for mail.google.com and restart the browser.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-white shadow-sm border border-gray-100">
+                    <h4 class="font-bold mb-2"><i class="fas fa-mobile mr-2 text-green-500"></i> Gmail App Re-Sync</h4>
+                    <p class="text-sm text-gray-600">On mobile, go to <strong>Settings > [Account] > Usage > Sync Settings</strong>. Toggle sync OFF for 30 seconds, then back ON to force a fresh pull of category labels.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Conclusion -->
+        <section class="content-card bg-slate-900 text-white border-0 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-10 opacity-10">
+                <i class="fas fa-envelope-open-text text-9xl"></i>
+            </div>
+            <h2 class="text-3xl font-bold mb-6">Conclusion: The Path Forward</h2>
+            <p class="mb-6 opacity-90">
+                The Gmail "Filtering Apocalypse" of January 2026 is a stark reminder of how much we rely on AI to organize our lives. While Google works on a permanent fix for Incident <strong>NNnDkY9CJ36annsfytjQ</strong>, the real takeaway is that the era of "Legacy Email" is over.
+            </p>
+            <p class="mb-8 opacity-90">
+                With the removal of Gmailify and POP3, users are being pushed toward a more secure, albeit less flexible, IMAP/OAuth future. For now, manual training and the search operators provided above are your best defense against the flood.
+            </p>
+           
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faqs" class="mb-20">
+            <h2 class="text-3xl font-extrabold mb-10 text-center">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden">
+                    <div class="p-5 font-bold text-gray-800 border-b bg-gray-50 flex justify-between items-center cursor-pointer">
+                        Why is my Gmail Primary inbox suddenly full of promotional emails?
+                        <i class="fas fa-plus text-xs opacity-30"></i>
+                    </div>
+                    <div class="p-5 text-gray-600">
+                        This is due to a service disruption (Incident NNnDkY9CJ36annsfytjQ) where Gmail's AI categorization engine has stopped correctly tagging incoming mail with "Promotions" or "Social" labels, causing them to default to the Primary tab.
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden">
+                    <div class="p-5 font-bold text-gray-800 border-b bg-gray-50 flex justify-between items-center cursor-pointer">
+                        What does the "Gmail hasn't scanned this message for spam" warning mean?
+                        <i class="fas fa-plus text-xs opacity-30"></i>
+                    </div>
+                    <div class="p-5 text-gray-600">
+                        During the current glitch, Google's high-speed scanning servers are timing out. When this happens, Gmail allows the email to pass through to your inbox but flags it with a warning to exercise caution because it hasn't verified the sender authentication (SPF/DKIM) or malware signatures.
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden">
+                    <div class="p-5 font-bold text-gray-800 border-b bg-gray-50 flex justify-between items-center cursor-pointer">
+                        Is the lack of filtering related to the January 2026 Gmailify shutdown?
+                        <i class="fas fa-plus text-xs opacity-30"></i>
+                    </div>
+                    <div class="p-5 text-gray-600">
+                        Yes, potentially. Google officially killed Gmailify and legacy POP3 this month. If you are viewing Yahoo or Outlook mail through Gmail, those external emails will no longer be processed by Google's advanced spam AI, leading to an unfiltered mess in your inbox.
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden">
+                    <div class="p-5 font-bold text-gray-800 border-b bg-gray-50 flex justify-between items-center cursor-pointer">
+                        How do I "re-train" my Gmail filters after this glitch?
+                        <i class="fas fa-plus text-xs opacity-30"></i>
+                    </div>
+                    <div class="p-5 text-gray-600">
+                        Once the service stabilizes, you can re-teach the algorithm by dragging and dropping a miscategorized email from the Primary tab to the Promotions tab. Click "Yes" when asked if you want to do this for all future messages from that sender.
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
-    <!-- Footer -->    <footer class="bg-gray-100 border-t border-gray-200 py-16">        <div class="article-container text-center">            <h3 class="font-bold text-xl mb-4 text-gray-400">SHAYNLY TECH INSIGHTS</h3>                                 <div class="mt-8 text-sm text-gray-400">                &copy; 2026 <a href="https://shaynly.com/contact-us/" title="Contact US" target="_blank" rel="noopener"  data-wpil-monitor-id="1176">Shaynly</a> All technical reports verified by subject matter experts.            </div>        </div>    </footer>
-    <!-- Static Nature Script Comment -->    <!-- Note: This is a purely static HTML document. Interactive elements like accordions and search logic are simulated or follow standard browser behavior. No external scripts are required for visual rendering.n    -->    <script>        /* This script block is intentionally empty. The article is static. */n    </script>
 
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t border-gray-200 py-16">
+        <div class="article-container text-center">
+            <h3 class="font-bold text-xl mb-4 text-gray-400">SHAYNLY TECH INSIGHTS</h3>
+           
+          
+            <div class="mt-8 text-sm text-gray-400">
+                &copy; 2026 <a href="https://shaynly.com/contact-us/" title="Contact US" target="_blank" rel="noopener"  data-wpil-monitor-id="1176">Shaynly</a> All technical reports verified by subject matter experts.
+            </div>
         </div>
-      </article>
+    </footer>
 
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
-        </div>
+    <!-- Static Nature Script Comment -->
+    <!-- 
+        Note: This is a purely static HTML document. 
+        Interactive elements like accordions and search logic 
+        are simulated or follow standard browser behavior. 
+        No external scripts are required for visual rendering.
+    -->
+    <script>
+        /* This script block is intentionally empty. The article is static. */
+    </script>
 
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
-        </div>
-      </aside>
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
     </div>
-    
-  </main>
-
-  <!-- Footer -->
-  
-
-  <script src="/assets/js/main.js"></script>
-
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>

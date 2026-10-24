@@ -1,41 +1,451 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS Pattern Generator - Shaynly</title>
-  <meta name="description" content="PatternFlow | Advanced CSS Backgrounds n :root {n --primary: #6366f1;n --primary-hover: #4f46e5;n --secondary: #ec4899;n --bg-dark: #0f17">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PatternFlow | Advanced CSS Backgrounds</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary: #ec4899;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-input: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Layout - Mobile First */
+        .app-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Preview Section (Sticky on Desktop) */
+        .preview-section {
+            order: -1; /* Show first on mobile */
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-canvas {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+            transition: background 0.3s ease;
+            position: relative;
+        }
+        
+        .preview-badge {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            color: white;
+            pointer-events: none;
+        }
+
+        /* Controls Section */
+        .controls-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Pattern Grid */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Updated to 4 columns for more items */
+            gap: 0.75rem;
+        }
+
+        .pattern-btn {
+            background: var(--bg-input);
+            border: 2px solid transparent;
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 0.25rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .pattern-btn:hover {
+            background: #475569;
+        }
+
+        .pattern-btn.active {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .pattern-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            display: grid;
+            place-items: center;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .pattern-btn.active .pattern-icon {
+            color: var(--primary);
+            background: white;
+        }
+
+        .pattern-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        /* Inputs */
+        .control-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .label-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .value-display {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-family: monospace;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        /* Custom Range Slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: var(--bg-input);
+            border-radius: 99px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid var(--bg-card);
+            box-shadow: 0 0 0 2px var(--bg-input);
+            transition: transform 0.1s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        /* Color Pickers */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+
+        .color-wrapper {
+            position: relative;
+        }
+
+        input[type="color"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: none;
+            cursor: pointer;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+        }
+
+        /* Code Block */
+        .code-container {
+            background: #000;
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            position: relative;
+            margin-top: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #a5b4fc;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            resize: none;
+            height: 100px;
+            outline: none;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-input);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Presets */
+        .preset-scroll {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            scrollbar-width: none;
+        }
+        
+        .preset-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .preset-chip {
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            background: var(--bg-input);
+            color: var(--text-muted);
+            border: 1px solid transparent;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .preset-chip:hover {
+            color: white;
+            border-color: var(--border);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #10b981;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 99px;
+            font-weight: 500;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Desktop Optimization */
+        @media (min-width: 1024px) {
+            .main-content {
+                flex-direction: row;
+                align-items: flex-start;
+                padding: 2rem;
+            }
+
+            .controls-section {
+                width: 400px;
+                flex-shrink: 0;
+            }
+
+            .preview-section {
+                flex: 1;
+                order: 1;
+                height: calc(100vh - 8rem);
+                position: sticky;
+                top: 6rem;
+            }
+            
+            /* Responsive Grid for patterns */
+            .pattern-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+        
+        @media (max-width: 400px) {
+             .pattern-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+  <meta name="description" content="PatternFlow | Advanced CSS Backgrounds :root { --primary: #6366f1; --primary-hover: #4f46e5; --secondary: #ec4899; --bg-dark: #0f172a; --bg-card: #1e293b; ...">
   <link rel="canonical" href="https://shaynly.com/css-pattern-generator/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/css-pattern-generator/">
   <meta property="og:title" content="CSS Pattern Generator - Shaynly">
-  <meta property="og:description" content="PatternFlow | Advanced CSS Backgrounds n :root {n --primary: #6366f1;n --primary-hover: #4f46e5;n --secondary: #ec4899;n --bg-dark: #0f17">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2025/11/CSS-Pattern-Generator.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:description" content="PatternFlow | Advanced CSS Backgrounds :root { --primary: #6366f1; --primary-hover: #4f46e5; --secondary: #ec4899; --bg-dark: #0f172a; --bg-card: #1e293b; ...">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CSS Pattern Generator - Shaynly">
-  <meta name="twitter:description" content="PatternFlow | Advanced CSS Backgrounds n :root {n --primary: #6366f1;n --primary-hover: #4f46e5;n --secondary: #ec4899;n --bg-dark: #0f17">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2025/11/CSS-Pattern-Generator.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:description" content="PatternFlow | Advanced CSS Backgrounds :root { --primary: #6366f1; --primary-hover: #4f46e5; --secondary: #ec4899; --bg-dark: #0f172a; --bg-card: #1e293b; ...">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,51 +454,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "CSS Pattern Generator",
-  "name": "CSS Pattern Generator",
-  "description": "n n n n n n PatternFlow | Advanced CSS Backgrounds n n n n :root {
---primary: #6366f1;
---primary-hover: #4f46e5;
---secondary: #ec4899;
---bg-dark: #0f17",
-  "url": "https://shaynly.com/css-pattern-generator/",
-  "datePublished": "2025-11-08",
-  "dateModified": "2025-11-08",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2025/11/CSS-Pattern-Generator.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -107,302 +477,580 @@
     </div>
   </header>
 
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/tools/">Tools</a> <span>/</span> <span>CSS Pattern Generator</span>
+    <header>
+        <div class="brand">
+            <i class="fa-solid fa-layer-group"></i>
+            PatternFlow
         </div>
-        <a href="/category/tools/" class="cat-badge" style="text-decoration:none;">Tools</a>
-        <h1 class="article-title">CSS Pattern Generator</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2025-11-08</span>
-          <span>•</span>
-          <span>12 min read</span>
-        </div>
+        <a href="https://github.com" target="_blank" style="color: var(--text-muted); font-size: 1.25rem;">
+            <i class="fa-brands fa-github"></i>
+        </a>
+    </header>
 
-        <img src="/wp-content/uploads/2025/11/CSS-Pattern-Generator.png" alt="CSS Pattern Generator" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
+    <div class="app-wrapper">
+        <main class="main-content">
+            
+            <!-- Controls Sidebar -->
+            <div class="controls-section">
+                
+                <!-- Pattern Type -->
+                <div class="card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-shapes"></i> Pattern Style
+                    </div>
+                    <div class="pattern-grid" id="patternGrid">
+                        <!-- Standard -->
+                        <button class="pattern-btn active" data-pattern="stripes">
+                            <div class="pattern-icon"><i class="fa-solid fa-bars"></i></div>
+                            <span class="pattern-label">Stripes</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="dots">
+                            <div class="pattern-icon"><i class="fa-solid fa-braille"></i></div>
+                            <span class="pattern-label">Dots</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="grid">
+                            <div class="pattern-icon"><i class="fa-solid fa-border-all"></i></div>
+                            <span class="pattern-label">Grid</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="zigzag">
+                            <div class="pattern-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <span class="pattern-label">ZigZag</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="waves">
+                            <div class="pattern-icon"><i class="fa-solid fa-water"></i></div>
+                            <span class="pattern-label">Waves</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="checkers">
+                            <div class="pattern-icon"><i class="fa-solid fa-chess-board"></i></div>
+                            <span class="pattern-label">Checkers</span>
+                        </button>
+                        
+                        <!-- Premium New Patterns -->
+                        <button class="pattern-btn" data-pattern="cross">
+                            <div class="pattern-icon"><i class="fa-solid fa-plus"></i></div>
+                            <span class="pattern-label">Cross</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="diamonds">
+                            <div class="pattern-icon"><i class="fa-solid fa-gem"></i></div>
+                            <span class="pattern-label">Diamond</span>
+                        </button>
+                        <button class="pattern-btn" data-pattern="isometric">
+                            <div class="pattern-icon"><i class="fa-solid fa-cube"></i></div>
+                            <span class="pattern-label">Iso</span>
+                        </button>
+                         <button class="pattern-btn" data-pattern="carbon">
+                            <div class="pattern-icon"><i class="fa-solid fa-table-cells"></i></div>
+                            <span class="pattern-label">Carbon</span>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="article-content">
-          
-    
-    <div class="app-wrapper">        <main class="main-content">                        <!-- Controls Sidebar -->            <div class="controls-section">                                <!-- Pattern Type -->                <div class="card">                    <div class="section-title">                        <i class="fa-solid fa-shapes"></i> Pattern Stylen                    </div>                    <div class="pattern-grid" id="patternGrid">                        <!-- Standard -->                        <button class="pattern-btn active" data-pattern="stripes">                            <div class="pattern-icon"><i class="fa-solid fa-bars"></i></div>                            <span class="pattern-label">Stripes</span>                        </button>                        <button class="pattern-btn" data-pattern="dots">                            <div class="pattern-icon"><i class="fa-solid fa-braille"></i></div>                            <span class="pattern-label">Dots</span>                        </button>                        <button class="pattern-btn" data-pattern="grid">                            <div class="pattern-icon"><i class="fa-solid fa-border-all"></i></div>                            <span class="pattern-label">Grid</span>                        </button>                        <button class="pattern-btn" data-pattern="zigzag">                            <div class="pattern-icon"><i class="fa-solid fa-bolt"></i></div>                            <span class="pattern-label">ZigZag</span>                        </button>                        <button class="pattern-btn" data-pattern="waves">                            <div class="pattern-icon"><i class="fa-solid fa-water"></i></div>                            <span class="pattern-label">Waves</span>                        </button>                        <button class="pattern-btn" data-pattern="checkers">                            <div class="pattern-icon"><i class="fa-solid fa-chess-board"></i></div>                            <span class="pattern-label">Checkers</span>                        </button>                                                <!-- Premium New Patterns -->                        <button class="pattern-btn" data-pattern="cross">                            <div class="pattern-icon"><i class="fa-solid fa-plus"></i></div>                            <span class="pattern-label">Cross</span>                        </button>                        <button class="pattern-btn" data-pattern="diamonds">                            <div class="pattern-icon"><i class="fa-solid fa-gem"></i></div>                            <span class="pattern-label">Diamond</span>                        </button>                        <button class="pattern-btn" data-pattern="isometric">                            <div class="pattern-icon"><i class="fa-solid fa-cube"></i></div>                            <span class="pattern-label">Iso</span>                        </button>                         <button class="pattern-btn" data-pattern="carbon">                            <div class="pattern-icon"><i class="fa-solid fa-table-cells"></i></div>                            <span class="pattern-label">Carbo</span>                        </button>                    </div>                </div>
-                <!-- Colors -->                <div class="card">                    <div class="section-title">                        <i class="fa-solid fa-palette"></i> Paletten                    </div>                    <div class="color-grid">                        <div class="color-wrapper">                            <label class="label-row" for="color1">Primary</label>                            <input type="color" id="color1" value="#6366f1">                        </div>                        <div class="color-wrapper">                            <label class="label-row" for="color2">Secondary</label>                            <input type="color" id="color2" value="#818cf8">                        </div>                        <div class="color-wrapper">                            <label class="label-row" for="bgColor">Background</label>                            <input type="color" id="bgColor" value="#0f172a">                        </div>                    </div>                </div>
-                <!-- Sliders -->                <div class="card">                    <div class="section-title">                        <i class="fa-solid fa-sliders"></i> Configurationn                    </div>                                        <div class="control-group">                        <div class="label-row">                            <label>Pattern Size</label>                            <span class="value-display" id="sizeVal">40px</span>                        </div>                        <input type="range" id="size" min="10" max="200" value="40">                    </div>
-                    <div class="control-group">                        <div class="label-row">                            <label>Rotatio</label>                            <span class="value-display" id="angleVal">45°</span>                        </div>                        <input type="range" id="angle" min="0" max="360" value="45">                    </div>
-                    <div class="control-group">                        <div class="label-row">                            <label>Opacity</label>                            <span class="value-display" id="opacityVal">100%</span>                        </div>                        <input type="range" id="opacity" min="0" max="100" value="100">                    </div>                </div>
-                <!-- Export -->                <div class="card">                    <div class="section-title">                        <i class="fa-solid fa-code"></i> CSS Outputn                    </div>                    <div class="code-container">                        <textarea id="cssOutput" readonly></textarea>                    </div>                    <div class="btn-group">                        <button class="btn btn-primary" id="copyBtn">                            <i class="fa-regular fa-copy"></i> Copy CSS                        </button>                        <button class="btn btn-secondary" id="randomBtn">                            <i class="fa-solid fa-shuffle"></i> Randomizen                        </button>                    </div>                </div>            </div>
-            <!-- Preview Area -->            <div class="preview-section">                <div class="preview-canvas" id="previewCanvas">                    <div class="preview-badge" id="patternName">Stripes</div>                </div>                                <!-- Quick Presets Toolbar inside Preview -->                <div style="background: var(--bg-card); padding: 1rem; border-top: 1px solid var(--border);">                     <div class="section-title" style="margin-bottom: 0.5rem; font-size: 0.75rem;">Quick Presets</div>                     <div class="preset-scroll">                        <button class="preset-chip" data-preset="blueprint">Blueprint</button>                        <button class="preset-chip" data-preset="candy">Candy Cane</button>                        <button class="preset-chip" data-preset="cyber">Cyberpunk</button>                        <button class="preset-chip" data-preset="notebook">Notebook</button>                        <button class="preset-chip" data-preset="darkmode">Midnight</button>                        <button class="preset-chip" data-preset="luxury">Carbon Fiber</button>                        <button class="preset-chip" data-preset="swiss">Swiss Cross</button>                    </div>                </div>            </div>
-        </main>    </div>
-    <div class="toast" id="toast">        <i class="fa-solid fa-check-circle"></i> Copied to clipboard!    </div>
-    <script>        document.addEventListener('DOMContentLoaded', () => {
-// State
-const state = {
-pattern: 'stripes',
-color1: '#6366f1',
-color2: '#4338ca',
-bgColor: '#0f172a',
-size: 40,
-angle: 45,
-opacity: 50n            };
+                <!-- Colors -->
+                <div class="card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-palette"></i> Palette
+                    </div>
+                    <div class="color-grid">
+                        <div class="color-wrapper">
+                            <label class="label-row" for="color1">Primary</label>
+                            <input type="color" id="color1" value="#6366f1">
+                        </div>
+                        <div class="color-wrapper">
+                            <label class="label-row" for="color2">Secondary</label>
+                            <input type="color" id="color2" value="#818cf8">
+                        </div>
+                        <div class="color-wrapper">
+                            <label class="label-row" for="bgColor">Background</label>
+                            <input type="color" id="bgColor" value="#0f172a">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sliders -->
+                <div class="card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-sliders"></i> Configuration
+                    </div>
+                    
+                    <div class="control-group">
+                        <div class="label-row">
+                            <label>Pattern Size</label>
+                            <span class="value-display" id="sizeVal">40px</span>
+                        </div>
+                        <input type="range" id="size" min="10" max="200" value="40">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="label-row">
+                            <label>Rotation</label>
+                            <span class="value-display" id="angleVal">45°</span>
+                        </div>
+                        <input type="range" id="angle" min="0" max="360" value="45">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="label-row">
+                            <label>Opacity</label>
+                            <span class="value-display" id="opacityVal">100%</span>
+                        </div>
+                        <input type="range" id="opacity" min="0" max="100" value="100">
+                    </div>
+                </div>
+
+                <!-- Export -->
+                <div class="card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-code"></i> CSS Output
+                    </div>
+                    <div class="code-container">
+                        <textarea id="cssOutput" readonly></textarea>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="copyBtn">
+                            <i class="fa-regular fa-copy"></i> Copy CSS
+                        </button>
+                        <button class="btn btn-secondary" id="randomBtn">
+                            <i class="fa-solid fa-shuffle"></i> Randomize
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Area -->
+            <div class="preview-section">
+                <div class="preview-canvas" id="previewCanvas">
+                    <div class="preview-badge" id="patternName">Stripes</div>
+                </div>
+                
+                <!-- Quick Presets Toolbar inside Preview -->
+                <div style="background: var(--bg-card); padding: 1rem; border-top: 1px solid var(--border);">
+                     <div class="section-title" style="margin-bottom: 0.5rem; font-size: 0.75rem;">Quick Presets</div>
+                     <div class="preset-scroll">
+                        <button class="preset-chip" data-preset="blueprint">Blueprint</button>
+                        <button class="preset-chip" data-preset="candy">Candy Cane</button>
+                        <button class="preset-chip" data-preset="cyber">Cyberpunk</button>
+                        <button class="preset-chip" data-preset="notebook">Notebook</button>
+                        <button class="preset-chip" data-preset="darkmode">Midnight</button>
+                        <button class="preset-chip" data-preset="luxury">Carbon Fiber</button>
+                        <button class="preset-chip" data-preset="swiss">Swiss Cross</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-check-circle"></i> Copied to clipboard!
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // State
+            const state = {
+                pattern: 'stripes',
+                color1: '#6366f1',
+                color2: '#4338ca',
+                bgColor: '#0f172a',
+                size: 40,
+                angle: 45,
+                opacity: 50
+            };
+
             // Elements
-const els = {
-canvas: document.getElementById('previewCanvas'),
-output: document.getElementById('cssOutput'),
-patternBtns: document.querySelectorAll('.pattern-btn'),
-inputs: {
-color1: document.getElementById('color1'),
-color2: document.getElementById('color2'),
-bgColor: document.getElementById('bgColor'),
-size: document.getElementById('size'),
-angle: document.getElementById('angle'),
-opacity: document.getElementById('opacity')
-},
-displays: {
-size: document.getElementById('sizeVal'),
-angle: document.getElementById('angleVal'),
-opacity: document.getElementById('opacityVal'),
-name: document.getElementById('patternName')
-},
-toast: document.getElementById('toast'),
-copyBtn: document.getElementById('copyBtn'),
-randomBtn: document.getElementById('randomBtn'),
-presetBtns: document.querySelectorAll('.preset-chip')
-};
-            // Logicn            functio
-hexToRgba(hex, alphaPercent) {
-const r = parseInt(hex.slice(1, 3), 16);
-const g = parseInt(hex.slice(3, 5), 16);
-const b = parseInt(hex.slice(5, 7), 16);
-return `rgba(${r}, ${g}, ${b}, ${alphaPercent / 100})`;
-}
+            const els = {
+                canvas: document.getElementById('previewCanvas'),
+                output: document.getElementById('cssOutput'),
+                patternBtns: document.querySelectorAll('.pattern-btn'),
+                inputs: {
+                    color1: document.getElementById('color1'),
+                    color2: document.getElementById('color2'),
+                    bgColor: document.getElementById('bgColor'),
+                    size: document.getElementById('size'),
+                    angle: document.getElementById('angle'),
+                    opacity: document.getElementById('opacity')
+                },
+                displays: {
+                    size: document.getElementById('sizeVal'),
+                    angle: document.getElementById('angleVal'),
+                    opacity: document.getElementById('opacityVal'),
+                    name: document.getElementById('patternName')
+                },
+                toast: document.getElementById('toast'),
+                copyBtn: document.getElementById('copyBtn'),
+                randomBtn: document.getElementById('randomBtn'),
+                presetBtns: document.querySelectorAll('.preset-chip')
+            };
+
+            // Logic
+            function hexToRgba(hex, alphaPercent) {
+                const r = parseInt(hex.slice(1, 3), 16);
+                const g = parseInt(hex.slice(3, 5), 16);
+                const b = parseInt(hex.slice(5, 7), 16);
+                return `rgba(${r}, ${g}, ${b}, ${alphaPercent / 100})`;
+            }
+
             function generateCSS() {
-const c1 = hexToRgba(state.color1, state.opacity);
-const c2 = hexToRgba(state.color2, state.opacity);
-let grad = '';
-let bgPosition = '';
+                const c1 = hexToRgba(state.color1, state.opacity);
+                const c2 = hexToRgba(state.color2, state.opacity);
+                let grad = '';
+                let bgPosition = '';
+
                 switch (state.pattern) {
-case 'stripes':
-grad = `linear-gradient(${state.angle}deg, ${c2} 25%, ${c1} 25%, ${c1} 50%, ${c2} 50%, ${c2} 75%, ${c1} 75%, ${c1} 100%)`;
-break;
-case 'dots':
-const dotSize = state.size / 5;
-grad = `radial-gradient(${c1} ${dotSize}px, transparent ${dotSize + 1}px), radial-gradient(${c1} ${dotSize}px, transparent ${dotSize + 1}px)`;
-bgPosition = `0 0, ${state.size/2}px ${state.size/2}px`;
-break;
-case 'grid':
-grad = `linear-gradient(to right, ${c1} 1px, transparent 1px), linear-gradient(to bottom, ${c1} 1px, transparent 1px)`;
-break;
-case 'zigzag':
-grad = `linear-gradient(135deg, ${c1} 25%, transparent 25%) -${state.size/2}px 0,
-linear-gradient(225deg, ${c1} 25%, transparent 25%) -${state.size/2}px 0,
-linear-gradient(315deg, ${c1} 25%, transparent 25%),
-linear-gradient(45deg, ${c1} 25%, transparent 25%)`;
-break;
-case 'waves':
-grad = `radial-gradient(circle at 100% 50%, transparent 20%, ${c1} 21%, ${c1} 34%, transparent 35%, transparent),
-radial-gradient(circle at 0% 50%, transparent 20%, ${c1} 21%, ${c1} 34%, transparent 35%, transparent) 0 -${state.size/2}px`;
-break;
-case 'checkers':
-grad = `linear-gradient(45deg, ${c1} 25%, transparent 25%, transparent 75%, ${c1} 75%, ${c1}),
-linear-gradient(45deg, ${c1} 25%, transparent 25%, transparent 75%, ${c1} 75%, ${c1})`;
-bgPosition = `0 0, ${state.size/2}px ${state.size/2}px`;
-break;
-/* New Patterns */n                    case 'cross':
-grad = `linear-gradient(90deg, transparent 48%, ${c1} 48%, ${c1} 52%, transparent 52%), linear-gradient(transparent 48%, ${c1} 48%, ${c1} 52%, transparent 52%)`;
-break;
-case 'diamonds':
-grad = `linear-gradient(135deg, ${c1} 25%, transparent 25%) -${state.size/2}px 0,
-linear-gradient(225deg, ${c1} 25%, transparent 25%) -${state.size/2}px 0,
-linear-gradient(315deg, ${c1} 25%, transparent 25%),
-linear-gradient(45deg, ${c1} 25%, transparent 25%)`;
-// Tweaking logic for diamonds specifically
-grad = `linear-gradient(135deg, ${c2} 25%, transparent 25%) -${state.size/2}px 0, linear-gradient(225deg, ${c2} 25%, transparent 25%) -${state.size/2}px 0, linear-gradient(315deg, ${c2} 25%, transparent 25%), linear-gradient(45deg, ${c2} 25%, transparent 25%)`;
-break;
-case 'isometric':
-grad = `linear-gradient(30deg, ${c2} 12%, transparent 12.5%, transparent 87%, ${c2} 87.5%, ${c2}),
-linear-gradient(150deg, ${c2} 12%, transparent 12.5%, transparent 87%, ${c2} 87.5%, ${c2}),
-linear-gradient(30deg, ${c2} 12%, transparent 12.5%, transparent 87%, ${c2} 87.5%, ${c2}),
-linear-gradient(150deg, ${c2} 12%, transparent 12.5%, transparent 87%, ${c2} 87.5%, ${c2}),
-linear-gradient(60deg, ${c1} 25%, transparent 25.5%, transparent 75%, ${c1} 75%, ${c1}),
-linear-gradient(60deg, ${c1} 25%, transparent 25.5%, transparent 75%, ${c1} 75%, ${c1})`;
-bgPosition = `0 0, 0 0, ${state.size/2}px ${state.size/2}px, ${state.size/2}px ${state.size/2}px, 0 0, ${state.size/2}px ${state.size/2}px`;
-break;
-case 'carbon':
-// Simplified woven look
-grad = `linear-gradient(27deg, ${c1} 5px, transparent 5px) 0 5px,
-linear-gradient(207deg, ${c1} 5px, transparent 5px) 10px 0px,
-linear-gradient(27deg, ${c2} 5px, transparent 5px) 0px 10px,
-linear-gradient(207deg, ${c2} 5px, transparent 5px) 10px 5px,
-linear-gradient(90deg, ${c1} 10px, transparent 10px)`;
-break;
-}
+                    case 'stripes':
+                        grad = `linear-gradient(${state.angle}deg, ${c2} 25%, ${c1} 25%, ${c1} 50%, ${c2} 50%, ${c2} 75%, ${c1} 75%, ${c1} 100%)`;
+                        break;
+                    case 'dots':
+                        const dotSize = state.size / 5;
+                        grad = `radial-gradient(${c1} ${dotSize}px, transparent ${dotSize + 1}px), radial-gradient(${c1} ${dotSize}px, transparent ${dotSize + 1}px)`;
+                        bgPosition = `0 0, ${state.size/2}px ${state.size/2}px`;
+                        break;
+                    case 'grid':
+                        grad = `linear-gradient(to right, ${c1} 1px, transparent 1px), linear-gradient(to bottom, ${c1} 1px, transparent 1px)`;
+                        break;
+                    case 'zigzag':
+                        grad = `linear-gradient(135deg, ${c1} 25%, transparent 25%) -${state.size/2}px 0,
+                                linear-gradient(225deg, ${c1} 25%, transparent 25%) -${state.size/2}px 0,
+                                linear-gradient(315deg, ${c1} 25%, transparent 25%),
+                                linear-gradient(45deg, ${c1} 25%, transparent 25%)`;
+                        break;
+                    case 'waves':
+                         grad = `radial-gradient(circle at 100% 50%, transparent 20%, ${c1} 21%, ${c1} 34%, transparent 35%, transparent),
+                                 radial-gradient(circle at 0% 50%, transparent 20%, ${c1} 21%, ${c1} 34%, transparent 35%, transparent) 0 -${state.size/2}px`;
+                        break;
+                    case 'checkers':
+                        grad = `linear-gradient(45deg, ${c1} 25%, transparent 25%, transparent 75%, ${c1} 75%, ${c1}),
+                                linear-gradient(45deg, ${c1} 25%, transparent 25%, transparent 75%, ${c1} 75%, ${c1})`;
+                        bgPosition = `0 0, ${state.size/2}px ${state.size/2}px`;
+                        break;
+                    
+                    /* New Patterns */
+                    case 'cross':
+                         grad = `linear-gradient(90deg, transparent 48%, ${c1} 48%, ${c1} 52%, transparent 52%), linear-gradient(transparent 48%, ${c1} 48%, ${c1} 52%, transparent 52%)`;
+                         break;
+                    case 'diamonds':
+                        grad = `linear-gradient(135deg, ${c1} 25%, transparent 25%) -${state.size/2}px 0,
+                                linear-gradient(225deg, ${c1} 25%, transparent 25%) -${state.size/2}px 0,
+                                linear-gradient(315deg, ${c1} 25%, transparent 25%),
+                                linear-gradient(45deg, ${c1} 25%, transparent 25%)`;
+                         // Tweaking logic for diamonds specifically
+                         grad = `linear-gradient(135deg, ${c2} 25%, transparent 25%) -${state.size/2}px 0, linear-gradient(225deg, ${c2} 25%, transparent 25%) -${state.size/2}px 0, linear-gradient(315deg, ${c2} 25%, transparent 25%), linear-gradient(45deg, ${c2} 25%, transparent 25%)`;
+                         break;
+                    case 'isometric':
+                         grad = `linear-gradient(30deg, ${c2} 12%, transparent 12.5%, transparent 87%, ${c2} 87.5%, ${c2}),
+                                 linear-gradient(150deg, ${c2} 12%, transparent 12.5%, transparent 87%, ${c2} 87.5%, ${c2}),
+                                 linear-gradient(30deg, ${c2} 12%, transparent 12.5%, transparent 87%, ${c2} 87.5%, ${c2}),
+                                 linear-gradient(150deg, ${c2} 12%, transparent 12.5%, transparent 87%, ${c2} 87.5%, ${c2}),
+                                 linear-gradient(60deg, ${c1} 25%, transparent 25.5%, transparent 75%, ${c1} 75%, ${c1}),
+                                 linear-gradient(60deg, ${c1} 25%, transparent 25.5%, transparent 75%, ${c1} 75%, ${c1})`;
+                         bgPosition = `0 0, 0 0, ${state.size/2}px ${state.size/2}px, ${state.size/2}px ${state.size/2}px, 0 0, ${state.size/2}px ${state.size/2}px`;
+                         break;
+                    case 'carbon':
+                        // Simplified woven look
+                        grad = `linear-gradient(27deg, ${c1} 5px, transparent 5px) 0 5px,
+                                linear-gradient(207deg, ${c1} 5px, transparent 5px) 10px 0px,
+                                linear-gradient(27deg, ${c2} 5px, transparent 5px) 0px 10px,
+                                linear-gradient(207deg, ${c2} 5px, transparent 5px) 10px 5px,
+                                linear-gradient(90deg, ${c1} 10px, transparent 10px)`;
+                        break;
+                }
+
                 let css = `background-color: ${state.bgColor};
 background-image: ${grad};
 background-size: ${state.size}px ${state.size}px;`;
+
                 if (bgPosition) {
-css += `\nbackground-position: ${bgPosition};`;
-}
+                    css += `\nbackground-position: ${bgPosition};`;
+                }
+
                 return css;
-}
+            }
+
             function updateUI() {
-const css = generateCSS();
-// Update Preview
-els.canvas.style.cssText = css;
-// Update Code
-els.output.value = css;
+                const css = generateCSS();
+                
+                // Update Preview
+                els.canvas.style.cssText = css;
+                
+                // Update Code
+                els.output.value = css;
+
                 // Update Labels
-els.displays.size.textContent = `${state.size}px`;
-els.displays.angle.textContent = `${state.angle}°`;
-els.displays.opacity.textContent = `${state.opacity}%`;
-els.displays.name.textContent = state.pattern.charAt(0).toUpperCase() + state.pattern.slice(1);
+                els.displays.size.textContent = `${state.size}px`;
+                els.displays.angle.textContent = `${state.angle}°`;
+                els.displays.opacity.textContent = `${state.opacity}%`;
+                els.displays.name.textContent = state.pattern.charAt(0).toUpperCase() + state.pattern.slice(1);
+
                 // Update Inputs (for bidirectional syncing)
-els.inputs.color1.value = state.color1;
-els.inputs.color2.value = state.color2;
-els.inputs.bgColor.value = state.bgColor;
-els.inputs.size.value = state.size;
-els.inputs.angle.value = state.angle;
-els.inputs.opacity.value = state.opacity;
-                // Update Pattern Buttonsn                els.patternBtns.forEach(bt
-=> {
-if (btn.dataset.pattern === state.pattern) {
-btn.classList.add('active');
-} else {
-btn.classList.remove('active');
-}
-});
-}
-            // Event Listenersn // Pattern Selectionn            els.patternBtns.forEach(bt
-=> {
-btn.addEventListener('click', () => {
-state.pattern = btn.dataset.pattern;
-updateUI();
-});
-});
+                els.inputs.color1.value = state.color1;
+                els.inputs.color2.value = state.color2;
+                els.inputs.bgColor.value = state.bgColor;
+                els.inputs.size.value = state.size;
+                els.inputs.angle.value = state.angle;
+                els.inputs.opacity.value = state.opacity;
+
+                // Update Pattern Buttons
+                els.patternBtns.forEach(btn => {
+                    if (btn.dataset.pattern === state.pattern) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+
+            // Event Listeners
+            
+            // Pattern Selection
+            els.patternBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    state.pattern = btn.dataset.pattern;
+                    updateUI();
+                });
+            });
+
             // Inputs
-Object.keys(els.inputs).forEach(key => {
-els.inputs[key].addEventListener('input', (e) => {
-state[key] = e.target.type === 'range' ? parseInt(e.target.value) : e.target.value;
-updateUI();
-});
-});
+            Object.keys(els.inputs).forEach(key => {
+                els.inputs[key].addEventListener('input', (e) => {
+                    state[key] = e.target.type === 'range' ? parseInt(e.target.value) : e.target.value;
+                    updateUI();
+                });
+            });
+
             // Copy
-els.copyBtn.addEventListener('click', () => {
-els.output.select();
-document.execCommand('copy');
-els.toast.classList.add('show');
-setTimeout(() => els.toast.classList.remove('show'), 2000);
-});
+            els.copyBtn.addEventListener('click', () => {
+                els.output.select();
+                document.execCommand('copy');
+                
+                els.toast.classList.add('show');
+                setTimeout(() => els.toast.classList.remove('show'), 2000);
+            });
+
             // Randomize
-els.randomBtn.addEventListener('click', () => {
-const patterns = ['stripes', 'dots', 'grid', 'zigzag', 'waves', 'checkers', 'cross', 'diamonds', 'isometric', 'carbon'];
-state.pattern = patterns[Math.floor(Math.random() * patterns.length)];
-state.size = Math.floor(Math.random() * 90) + 10;
-state.angle = Math.floor(Math.random() * 360);
-state.opacity = Math.floor(Math.random() * 80) + 20;
-// Random pastel-ish colors
-const randomColor = () => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
-state.color1 = randomColor();
-state.color2 = randomColor();
-updateUI();
-});
+            els.randomBtn.addEventListener('click', () => {
+                const patterns = ['stripes', 'dots', 'grid', 'zigzag', 'waves', 'checkers', 'cross', 'diamonds', 'isometric', 'carbon'];
+                state.pattern = patterns[Math.floor(Math.random() * patterns.length)];
+                state.size = Math.floor(Math.random() * 90) + 10;
+                state.angle = Math.floor(Math.random() * 360);
+                state.opacity = Math.floor(Math.random() * 80) + 20;
+                
+                // Random pastel-ish colors
+                const randomColor = () => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+                state.color1 = randomColor();
+                state.color2 = randomColor();
+                
+                updateUI();
+            });
+
             // Presets
-const presets = {
-blueprint: { p: 'grid', c1: '#3b82f6', c2: '#3b82f6', bg: '#1e3a8a', s: 20, a: 0, o: 30 },
-candy: { p: 'stripes', c1: '#ef4444', c2: '#ffffff', bg: '#fecaca', s: 40, a: 45, o: 100 },
-cyber: { p: 'grid', c1: '#ec4899', c2: '#ec4899', bg: '#000000', s: 30, a: 0, o: 80 },
-notebook: { p: 'stripes', c1: '#94a3b8', c2: '#94a3b8', bg: '#ffffff', s: 25, a: 0, o: 20 },
-darkmode: { p: 'dots', c1: '#475569', c2: '#475569', bg: '#0f172a', s: 20, a: 0, o: 20 },
-luxury: { p: 'carbon', c1: '#333333', c2: '#000000', bg: '#1a1a1a', s: 20, a: 45, o: 80 },
-swiss: { p: 'cross', c1: '#ffffff', c2: '#ffffff', bg: '#ef4444', s: 50, a: 0, o: 40 }
-};
+            const presets = {
+                blueprint: { p: 'grid', c1: '#3b82f6', c2: '#3b82f6', bg: '#1e3a8a', s: 20, a: 0, o: 30 },
+                candy: { p: 'stripes', c1: '#ef4444', c2: '#ffffff', bg: '#fecaca', s: 40, a: 45, o: 100 },
+                cyber: { p: 'grid', c1: '#ec4899', c2: '#ec4899', bg: '#000000', s: 30, a: 0, o: 80 },
+                notebook: { p: 'stripes', c1: '#94a3b8', c2: '#94a3b8', bg: '#ffffff', s: 25, a: 0, o: 20 },
+                darkmode: { p: 'dots', c1: '#475569', c2: '#475569', bg: '#0f172a', s: 20, a: 0, o: 20 },
+                luxury: { p: 'carbon', c1: '#333333', c2: '#000000', bg: '#1a1a1a', s: 20, a: 45, o: 80 },
+                swiss: { p: 'cross', c1: '#ffffff', c2: '#ffffff', bg: '#ef4444', s: 50, a: 0, o: 40 }
+            };
+
             els.presetBtns.forEach(btn => {
-btn.addEventListener('click', () => {
-const data = presets[btn.dataset.preset];
-if(data) {
-state.pattern = data.p;
-state.color1 = data.c1;
-state.color2 = data.c2;
-state.bgColor = data.bg;
-state.size = data.s;
-state.angle = data.a;
-state.opacity = data.o;
-updateUI();
-}
-});
-});
+                btn.addEventListener('click', () => {
+                    const data = presets[btn.dataset.preset];
+                    if(data) {
+                        state.pattern = data.p;
+                        state.color1 = data.c1;
+                        state.color2 = data.c2;
+                        state.bgColor = data.bg;
+                        state.size = data.s;
+                        state.angle = data.a;
+                        state.opacity = data.o;
+                        updateUI();
+                    }
+                });
+            });
+
             // Init
-updateUI();
-});
-</script>
-<p class="has-base-color has-text-color has-link-color">The CSS Pattern Generator is an interactive web tool designed to help web designers, developers, and site <a href="https://shaynly.com/marketing-email-signature-designer/" title="Marketing Email Signature Designer" target="_blank" rel="noopener" data-wpil-monitor-id="1120">owners create</a> customizable repeating background patterns for websites with ease. By leveraging a user-friendly control panel and live preview, users can <a href="https://shaynly.com/css-background-animation-generator/" title="CSS Background Animation Generator: Create Stunning Animated Backgrounds for Your Website" target="_blank" rel="noopener" data-wpil-monitor-id="1114">generate visually stunning CSS backgrounds</a> tailored to their brand and design goals.</p>
-<h2 class="wp-block-heading has-base-color has-text-color has-link-color">What Is the CSS Pattern Generator?</h2>
-<p class="has-base-color has-text-color has-link-color">This tool offers a comprehensive interface for crafting CSS patterns such as stripes, dots, grids, zigzag, waves, and diagonal shapes. It allows users to adjust colors, pattern type, size, angle, opacity, blend mode, and intensity—all in real time. The built-in presets (like Ocean Waves, Sunset Stripes, Forest Grid, Candy Dots) enable instant creation of thematic backgrounds without manual coding.</p>
-<h2 class="wp-block-heading has-base-color has-text-color has-link-color">Key Features </h2>
-<ul class="wp-block-list"><li class="has-base-color has-text-color has-link-color"><strong>No coding required</strong>: Easily <a href="https://shaynly.com/random-css-animation-generator/" title="Random CSS Animation Generator" target="_blank" rel="noopener" data-wpil-monitor-id="1126">generate professional CSS</a> patterns with simple sliders and color pickers.</li>
-<li class="has-base-color has-text-color has-link-color"><strong>Live preview</strong>: Instantly see changes, enabling rapid design iteration before export.</li>
-<li class="has-base-color has-text-color has-link-color"><strong>Highly customizable</strong>: Choose from multiple pattern types and tweak every aspect such as colors, size, angle, and blending for unique results.</li>
-<li class="has-base-color has-text-color has-link-color"><strong>Export functionality</strong>: One-click export CSS code, copy to clipboard, or download for immediate use in projects.</li>
-<li class="has-base-color has-text-color has-link-color"><strong>Preset library</strong>: Save time with ready-to-use design themes suited for different website moods and industries.</li></ul>
-<p class="has-base-color has-text-color has-link-color">Using this tool saves designers countless hours and empowers non-coders to create custom backgrounds, making your website visually appealing, brand-aligned, and likely to retain visitor attention.</p>
-<h2 class="wp-block-heading has-base-color has-text-color has-link-color">Why Use CSS Patterns for SEO?</h2>
-<ul class="wp-block-list"><li class="has-base-color has-text-color has-link-color"><strong>Faster load times</strong>: CSS-based backgrounds load quickly compared to images, improving page speed, a key <a href="https://shaynly.com/linkedin-seo-checklist/" title="LinkedIn SEO Checklist" target="_blank" rel="noopener" data-wpil-monitor-id="1116">SEO ranking factor</a>.</li>
-<li class="has-base-color has-text-color has-link-color"><strong>No image files</strong>: Patterns are scalable and resolution-independent, ensuring crisp visuals on all screen sizes, which supports mobile friendliness.</li>
-<li class="has-base-color has-text-color has-link-color"><strong>Accessibility</strong>: Backgrounds can be modified for contrast and clarity, enhancing site accessibility and usability.</li>
-<li class="has-base-color has-text-color has-link-color"><strong>Brand consistency</strong>: Custom backgrounds help reinforce your <a href="https://shaynly.com/brand-protection-strategies/" title="Brand Protection Strategies for Digital Businesses: A Complete Guide" target="_blank" rel="noopener" data-wpil-monitor-id="1112">brand identity</a> and encourage longer visitor engagement—a metric Google uses for ranking.</li>
-<li class="has-base-color has-text-color has-link-color"><strong>Improved aesthetics</strong>: Visually engaging websites reduce bounce rates and facilitate better user journeys, indirectly <a href="https://shaynly.com/local-seo-audit/" title="Local SEO Audit: The Ultimate Guide to Boost Your Business Visibility in 2025" target="_blank" rel="noopener" data-wpil-monitor-id="1124">boosting SEO</a>.</li></ul>
-<h2 class="wp-block-heading has-base-color has-text-color has-link-color">How It Works</h2>
-<ul class="wp-block-list"><li class="has-base-color has-text-color has-link-color">Select the pattern type (stripes, dots, grid, etc.) through an intuitive panel.</li>
-<li class="has-base-color has-text-color has-link-color">Adjust primary, secondary, and background colors with real-time color pickers.</li>
-<li class="has-base-color has-text-color has-link-color">Change pattern size, angle, and opacity for the desired effect.</li>
-<li class="has-base-color has-text-color has-link-color">Enter advanced settings like blend mode and intensity for extra customization.</li>
-<li class="has-base-color has-text-color has-link-color">Instantly preview pattern changes and use preset themes for inspiration.</li>
-<li class="has-base-color has-text-color has-link-color">Export or copy the <a href="https://shaynly.com/css-button-style-generator/" title="CSS Button Style Generator: Create Custom Buttons Instantly" target="_blank" rel="noopener" data-wpil-monitor-id="1122">generated CSS</a> code to your project in one click.</li></ul>
-<h2 class="wp-block-heading has-base-color has-text-color has-link-color">Application Ideas</h2>
-<ul class="wp-block-list"><li class="has-base-color has-text-color has-link-color">Use unique patterns for landing pages, hero sections, or full backgrounds to draw visitor attention.</li>
-<li class="has-base-color has-text-color has-link-color"><a href="https://shaynly.com/mastering-ui-graphics-learning-resource/" title="Mastering UI Graphics: Enhancing User Experience Through Visual Design" target="_blank" rel="noopener" data-wpil-monitor-id="1118">Enhance user</a> interfaces, overlays, and banners with subtle or bold CSS patterns.</li>
-<li class="has-base-color has-text-color has-link-color">Designers can create “signature” backgrounds for clients, or webmasters can update seasonal themes in seconds.</li></ul>
-<h2 class="wp-block-heading has-base-color has-text-color has-link-color">Getting Started</h2>
-<p class="has-base-color has-text-color has-link-color">Simply select your preferred adjustments, preview the result, and export the CSS to integrate with any style sheet. Whether you need a quick brand refresh or want to experiment with advanced design, the Advanced CSS Pattern Generator delivers immediate results without technical complexity.</p>
-<hr class="wp-block-separator has-alpha-channel-opacity"/>
-<p class="has-base-color has-text-color has-link-color"><strong>Tip:</strong>&nbsp;Implementing CSS backgrounds generated with this tool can boost your website’s visual appeal while supporting faster load times and SEO best practices through lightweight, scalable code.</p>
-        </div>
-      </article>
+            updateUI();
+        });
+    </script>
 
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
-        </div>
-
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
-        </div>
-      </aside>
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
     </div>
-    
-  </main>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>
 
-  <!-- Footer -->
-  
 
-  <script src="/assets/js/main.js"></script>
 
+<p class="has-base-color has-text-color has-link-color">The CSS Pattern Generator is an interactive web tool designed to help web designers, developers, and site <a href="https://shaynly.com/marketing-email-signature-designer/" title="Marketing Email Signature Designer" target="_blank" rel="noopener" data-wpil-monitor-id="1120">owners create</a> customizable repeating background patterns for websites with ease. By leveraging a user-friendly control panel and live preview, users can <a href="https://shaynly.com/css-background-animation-generator/" title="CSS Background Animation Generator: Create Stunning Animated Backgrounds for Your Website" target="_blank" rel="noopener" data-wpil-monitor-id="1114">generate visually stunning CSS backgrounds</a> tailored to their brand and design goals.</p>
+
+
+
+<h2 class="wp-block-heading has-base-color has-text-color has-link-color">What Is the CSS Pattern Generator?</h2>
+
+
+
+<p class="has-base-color has-text-color has-link-color">This tool offers a comprehensive interface for crafting CSS patterns such as stripes, dots, grids, zigzag, waves, and diagonal shapes. It allows users to adjust colors, pattern type, size, angle, opacity, blend mode, and intensity—all in real time. The built-in presets (like Ocean Waves, Sunset Stripes, Forest Grid, Candy Dots) enable instant creation of thematic backgrounds without manual coding.</p>
+
+
+
+<h2 class="wp-block-heading has-base-color has-text-color has-link-color">Key Features </h2>
+
+
+
+<ul class="wp-block-list">
+<li class="has-base-color has-text-color has-link-color"><strong>No coding required</strong>: Easily <a href="https://shaynly.com/random-css-animation-generator/" title="Random CSS Animation Generator" target="_blank" rel="noopener" data-wpil-monitor-id="1126">generate professional CSS</a> patterns with simple sliders and color pickers.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color"><strong>Live preview</strong>: Instantly see changes, enabling rapid design iteration before export.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color"><strong>Highly customizable</strong>: Choose from multiple pattern types and tweak every aspect such as colors, size, angle, and blending for unique results.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color"><strong>Export functionality</strong>: One-click export CSS code, copy to clipboard, or download for immediate use in projects.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color"><strong>Preset library</strong>: Save time with ready-to-use design themes suited for different website moods and industries.</li>
+</ul>
+
+
+
+<p class="has-base-color has-text-color has-link-color">Using this tool saves designers countless hours and empowers non-coders to create custom backgrounds, making your website visually appealing, brand-aligned, and likely to retain visitor attention.</p>
+
+
+
+<h2 class="wp-block-heading has-base-color has-text-color has-link-color">Why Use CSS Patterns for SEO?</h2>
+
+
+
+<ul class="wp-block-list">
+<li class="has-base-color has-text-color has-link-color"><strong>Faster load times</strong>: CSS-based backgrounds load quickly compared to images, improving page speed, a key <a href="https://shaynly.com/linkedin-seo-checklist/" title="LinkedIn SEO Checklist" target="_blank" rel="noopener" data-wpil-monitor-id="1116">SEO ranking factor</a>.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color"><strong>No image files</strong>: Patterns are scalable and resolution-independent, ensuring crisp visuals on all screen sizes, which supports mobile friendliness.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color"><strong>Accessibility</strong>: Backgrounds can be modified for contrast and clarity, enhancing site accessibility and usability.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color"><strong>Brand consistency</strong>: Custom backgrounds help reinforce your <a href="https://shaynly.com/brand-protection-strategies/" title="Brand Protection Strategies for Digital Businesses: A Complete Guide" target="_blank" rel="noopener" data-wpil-monitor-id="1112">brand identity</a> and encourage longer visitor engagement—a metric Google uses for ranking.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color"><strong>Improved aesthetics</strong>: Visually engaging websites reduce bounce rates and facilitate better user journeys, indirectly <a href="https://shaynly.com/local-seo-audit/" title="Local SEO Audit: The Ultimate Guide to Boost Your Business Visibility in 2025" target="_blank" rel="noopener" data-wpil-monitor-id="1124">boosting SEO</a>.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading has-base-color has-text-color has-link-color">How It Works</h2>
+
+
+
+<ul class="wp-block-list">
+<li class="has-base-color has-text-color has-link-color">Select the pattern type (stripes, dots, grid, etc.) through an intuitive panel.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color">Adjust primary, secondary, and background colors with real-time color pickers.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color">Change pattern size, angle, and opacity for the desired effect.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color">Enter advanced settings like blend mode and intensity for extra customization.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color">Instantly preview pattern changes and use preset themes for inspiration.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color">Export or copy the <a href="https://shaynly.com/css-button-style-generator/" title="CSS Button Style Generator: Create Custom Buttons Instantly" target="_blank" rel="noopener" data-wpil-monitor-id="1122">generated CSS</a> code to your project in one click.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading has-base-color has-text-color has-link-color">Application Ideas</h2>
+
+
+
+<ul class="wp-block-list">
+<li class="has-base-color has-text-color has-link-color">Use unique patterns for landing pages, hero sections, or full backgrounds to draw visitor attention.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color"><a href="https://shaynly.com/mastering-ui-graphics-learning-resource/" title="Mastering UI Graphics: Enhancing User Experience Through Visual Design" target="_blank" rel="noopener" data-wpil-monitor-id="1118">Enhance user</a> interfaces, overlays, and banners with subtle or bold CSS patterns.</li>
+
+
+
+<li class="has-base-color has-text-color has-link-color">Designers can create “signature” backgrounds for clients, or webmasters can update seasonal themes in seconds.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading has-base-color has-text-color has-link-color">Getting Started</h2>
+
+
+
+<p class="has-base-color has-text-color has-link-color">Simply select your preferred adjustments, preview the result, and export the CSS to integrate with any style sheet. Whether you need a quick brand refresh or want to experiment with advanced design, the Advanced CSS Pattern Generator delivers immediate results without technical complexity.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p class="has-base-color has-text-color has-link-color"><strong>Tip:</strong>&nbsp;Implementing CSS backgrounds generated with this tool can boost your website’s visual appeal while supporting faster load times and SEO best practices through lightweight, scalable code.</p>

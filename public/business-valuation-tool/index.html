@@ -1,41 +1,158 @@
+<h2 class="wp-block-heading has-text-align-center">Business Valuation Tool</h2>
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Valuation Tool &amp; DCF Model (Free Tool) - Shaynly</title>
-  <meta name="description" content="Business Valuation Tool by Shaynly. Features DCF analysis, Market Multiples, Sensitivity Matrix, and Financial Health Checks.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- SEO METADATA -->
+    <meta name="description" content="Professional Business Valuation Calculator. Determine fair market value using DCF analysis, EBITDA Multiples, and Revenue Multiples. Includes expert guide on valuation drivers.">
+    <meta name="keywords" content="Business Valuation Calculator, DCF Analysis, EBITDA Multiples, WACC Calculator, Small Business Valuation, Exit Planning, Customer Concentration, Valuation Drivers">
+    <meta name="author" content="Shaynly.com">
+    <title>Business Valuation Calculator & DCF Model | Shaynly</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a',
+                        }
+                    },
+                    transitionProperty: {
+                        'width': 'width, max-width',
+                        'spacing': 'margin, padding',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- SEO Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Shaynly Business Valuation Tool",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": "DCF Calculator, Sensitivity Matrix, EBITDA Valuation, Revenue Multiples, Valuation Risk Analysis"
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How does customer concentration affect valuation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "High customer concentration (where one client accounts for >20% of revenue) is a major risk factor. Buyers typically apply a discount of 10-25% to the valuation to account for the risk of losing that key client."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is the difference between SDE and EBITDA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SDE (Seller's Discretionary Earnings) is used for smaller businesses ($5M revenue) where the owner operates the business. SDE includes the owner's salary; EBITDA does not."
+        }
+      }]
+    }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none; 
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px; width: 20px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            margin-top: -8px; 
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px;
+            background: #e2e8f0; border-radius: 2px;
+        }
+
+        /* Animations */
+        #mobileStickyResult {
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobileStickyResult.visible {
+            transform: translateY(0);
+        }
+
+        /* Container Transition */
+        #shaynly-valuation-widget {
+            transition: max-width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; }
+            #resultsArea { display: block !important; }
+            .print-break { page-break-before: always; }
+        }
+    </style>
+  <meta name="description" content="Professional Business Valuation Calculator. Determine fair market value using DCF analysis, EBITDA Multiples, and Revenue Multiples. Includes expert guide on valuation drivers.">
   <link rel="canonical" href="https://shaynly.com/business-valuation-tool/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/business-valuation-tool/">
-  <meta property="og:title" content="Business Valuation Tool &amp; DCF Model (Free Tool) - Shaynly">
-  <meta property="og:description" content="Business Valuation Tool by Shaynly. Features DCF analysis, Market Multiples, Sensitivity Matrix, and Financial Health Checks.">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2025/12/Professional-Business-Valuation-Tool.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:title" content="Business Valuation Tool &amp;amp; DCF Model (Free Tool) - Shaynly">
+  <meta property="og:description" content="Professional Business Valuation Calculator. Determine fair market value using DCF analysis, EBITDA Multiples, and Revenue Multiples. Includes expert guide on valuation drivers.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Business Valuation Tool &amp; DCF Model (Free Tool) - Shaynly">
-  <meta name="twitter:description" content="Business Valuation Tool by Shaynly. Features DCF analysis, Market Multiples, Sensitivity Matrix, and Financial Health Checks.">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2025/12/Professional-Business-Valuation-Tool.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:title" content="Business Valuation Tool &amp;amp; DCF Model (Free Tool) - Shaynly">
+  <meta name="twitter:description" content="Professional Business Valuation Calculator. Determine fair market value using DCF analysis, EBITDA Multiples, and Revenue Multiples. Includes expert guide on valuation drivers.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,47 +161,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Business Valuation Tool &amp; DCF Model (Free Tool)",
-  "name": "Business Valuation Tool &amp; DCF Model (Free Tool)",
-  "description": "Business Valuation Tool by Shaynly. Features DCF analysis, Market Multiples, Sensitivity Matrix, and Financial Health Checks.",
-  "url": "https://shaynly.com/business-valuation-tool/",
-  "datePublished": "2025-12-16",
-  "dateModified": "2025-12-16",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2025/12/Professional-Business-Valuation-Tool.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
-</head>
-<body>
+  <link rel="stylesheet" href="/assets/css/style.css">
 
-  <!-- Header -->
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col items-center justify-center py-8">
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -103,210 +184,615 @@
     </div>
   </header>
 
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/tools/">Tools</a> <span>/</span> <span>Business Valuation Tool &amp; DCF Model (Free Tool)</span>
-        </div>
-        <a href="/category/tools/" class="cat-badge" style="text-decoration:none;">Tools</a>
-        <h1 class="article-title">Business Valuation Tool &amp; DCF Model (Free Tool)</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2025-12-16</span>
-          <span>•</span>
-          <span>11 min read</span>
-        </div>
+<!-- WIDGET CONTAINER START -->
+<div id="shaynly-valuation-widget" class="w-full max-w-xl bg-white sm:rounded-3xl shadow-2xl overflow-hidden relative mx-auto transition-all duration-700 ease-in-out">
 
-        <img src="/wp-content/uploads/2025/12/Professional-Business-Valuation-Tool.png" alt="Business Valuation Tool &amp; DCF Model (Free Tool)" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
+    <!-- NAVBAR -->
+    <nav class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 no-print px-6">
+        <div class="h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 font-heading font-bold text-xl text-slate-900">
+                <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-200">
+                    <i class="ph-bold ph-chart-polar"></i>
+                </div>
+                <span>Shaynly</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-brand-600 transition px-3 py-2 rounded-lg hover:bg-slate-50">
+                    <i class="ph-bold ph-printer text-lg"></i>
+                    <span>Print Report</span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-        <div class="article-content">
-          <h2 class="wp-block-heading has-text-align-center">Business Valuation Tool</h2>
-<!-- WIDGET CONTAINER START --><div id="shaynly-valuation-widget" class="w-full max-w-xl bg-white sm:rounded-3xl shadow-2xl overflow-hidden relative mx-auto transition-all duration-700 ease-in-out">
-    <!-- NAVBAR -->    <nav class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 no-print px-6">        <div class="h-16 flex items-center justify-between">            <div class="flex items-center gap-2 font-heading font-bold text-xl text-slate-900">                <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-200">                    <i class="ph-bold ph-chart-polar"></i>                </div>                <span>Shaynly</span>            </div>            <div class="flex items-center gap-4">                <button onclick="window.print()" class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-brand-600 transition px-3 py-2 rounded-lg hover:bg-slate-50">                    <i class="ph-bold ph-printer text-lg"></i>                    <span>Print Report</span>                </button>            </div>        </div>    </nav>
-    <!-- MAIN GRID -->    <main id="mainGrid" class="px-4 md:px-8 py-8 lg:py-12 transition-all duration-500">                <!-- FLEX CONTAINER FOR LAYOUT SWITCH -->        <div id="layoutContainer" class="flex flex-col gap-8">
-            <!-- LEFT: INPUTS -->            <div id="inputSection" class="w-full transition-all duration-500 space-y-6 no-print">                                <!-- Header Card -->                <div class="bg-brand-900 rounded-2xl p-8 text-white shadow-xl shadow-brand-900/20 relative overflow-hidden">                    <div class="relative z-10">                        <h1 class="font-heading text-3xl font-bold mb-3">Valuation Engine</h1>                        <p class="text-brand-100 text-base leading-relaxed">Enter your financials below to triangulate your business value using 3 methodologies.</p>                    </div>                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-10 -mt-10"></div>                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-brand-500/20 rounded-full blur-2xl -ml-5 -mb-5"></div>                </div>
-                <!-- Input Form -->                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">                                        <div class="space-y-4">                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">                            <i class="ph-fill ph-coins"></i> Core Financialsn                        </h3>                                                <div class="group">                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Annual Revenue ($)</label>                            <input type="number" id="revenue" value="2000000" inputmode="numeric" placeholder="e.g. 2000000"n                                class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition font-mono text-slate-900 text-base shadow-sm">                        </div>
-                        <div class="group">                            <label class="flex justify-between text-sm font-semibold text-slate-700 mb-1.5">                                <span>EBITDA ($)</span>                                <span id="marginBadge" class="text-[10px] uppercase font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">Calc Margi</span>                            </label>                            <input type="number" id="ebitda" value="500000" inputmode="numeric"n                                class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition font-mono text-slate-900 text-base shadow-sm">                        </div>                    </div>
+    <!-- MAIN GRID -->
+    <main id="mainGrid" class="px-4 md:px-8 py-8 lg:py-12 transition-all duration-500">
+        
+        <!-- FLEX CONTAINER FOR LAYOUT SWITCH -->
+        <div id="layoutContainer" class="flex flex-col gap-8">
+
+            <!-- LEFT: INPUTS -->
+            <div id="inputSection" class="w-full transition-all duration-500 space-y-6 no-print">
+                
+                <!-- Header Card -->
+                <div class="bg-brand-900 rounded-2xl p-8 text-white shadow-xl shadow-brand-900/20 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h1 class="font-heading text-3xl font-bold mb-3">Valuation Engine</h1>
+                        <p class="text-brand-100 text-base leading-relaxed">Enter your financials below to triangulate your business value using 3 methodologies.</p>
+                    </div>
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-brand-500/20 rounded-full blur-2xl -ml-5 -mb-5"></div>
+                </div>
+
+                <!-- Input Form -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                            <i class="ph-fill ph-coins"></i> Core Financials
+                        </h3>
+                        
+                        <div class="group">
+                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Annual Revenue ($)</label>
+                            <input type="number" id="revenue" value="2000000" inputmode="numeric" placeholder="e.g. 2000000"
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition font-mono text-slate-900 text-base shadow-sm">
+                        </div>
+
+                        <div class="group">
+                            <label class="flex justify-between text-sm font-semibold text-slate-700 mb-1.5">
+                                <span>EBITDA ($)</span>
+                                <span id="marginBadge" class="text-[10px] uppercase font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">Calc Margin</span>
+                            </label>
+                            <input type="number" id="ebitda" value="500000" inputmode="numeric"
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition font-mono text-slate-900 text-base shadow-sm">
+                        </div>
+                    </div>
+
                     <div class="h-px bg-slate-100"></div>
-                    <div class="space-y-5">                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">                            <i class="ph-fill ph-sliders-horizontal"></i> Assumptionsn                        </h3>
-                        <div>                            <div class="flex justify-between mb-2">                                <label class="text-sm font-medium text-slate-700">Growth Rate</label>                                <span class="text-sm font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded" id="growthDisplay">10%</span>                            </div>                            <input type="range" id="growthRate" min="0" max="50" value="10" class="w-full">                        </div>
-                        <div>                            <div class="flex justify-between mb-2">                                <label class="text-sm font-medium text-slate-700">WACC (Risk)</label>                                <span class="text-sm font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded" id="waccDisplay">12%</span>                            </div>                            <input type="range" id="wacc" min="5" max="30" value="12" class="w-full">                        </div>
-                        <div class="grid grid-cols-2 gap-4">                            <div>                                <label class="block text-xs font-semibold text-slate-500 mb-1.5">Rev Multiple (x)</label>                                <input type="number" id="revMult" value="2.5" step="0.1" inputmode="decimal"n                                    class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-1 focus:ring-brand-500 outline-none">                            </div>                            <div>                                <label class="block text-xs font-semibold text-slate-500 mb-1.5">EBITDA Mult (x)</label>                                <input type="number" id="ebitdaMult" value="5.0" step="0.1" inputmode="decimal"n                                    class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-1 focus:ring-brand-500 outline-none">                            </div>                        </div>                                                 <div>                            <label class="block text-xs font-semibold text-slate-500 mb-1.5">Projection Period</label>                            <select id="years" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-1 focus:ring-brand-500 outline-none">                                <option value="3">3 Years</option>                                <option value="5" selected>5 Years</option>                                <option value="10">10 Years</option>                            </select>                        </div>                    </div>                                        <button onclick="calculateValuation()" class="w-full bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-200 transition-all transform active:scale-[0.99] flex items-center justify-center gap-2">                        <i class="ph-bold ph-calculator text-lg"></i>                        <span><a href="https://shaynly.com/patient-lifetime-value-calculator/" title="Patient Lifetime Value Calculator (PLV Calculator)" target="_blank" rel="noopener"  data-wpil-monitor-id="1100">Calculate Value</a></span>                    </button>
-                </div>            </div>
-            <!-- RIGHT: RESULTS (Initially Hidden) -->            <div id="resultsArea" class="hidden opacity-0 transition-opacity duration-700 space-y-6">                                <!-- 1. Hero Valuation Card -->                <div class="bg-white rounded-2xl p-1 shadow-md border border-slate-200">                    <div class="bg-slate-900 rounded-xl p-8 text-white relative overflow-hidden">                        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#6366f1 1px, transparent 1px); background-size: 20px 20px;"></div>                                                <div class="relative z-10 flex flex-col gap-6">                            <div>                                <div class="flex items-center gap-2 mb-3">                                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></span>                                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">Enterprise Value Estimate</p>                                </div>                                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold tracking-tight text-white mb-2 whitespace-nowrap" id="finalValuationRange">                                    $0 - $0                                </h2>                                <p class="text-slate-400 text-sm flex items-center gap-2">                                    <i class="ph-fill ph-info"></i> Range derived from <a href="https://shaynly.com/local-seo-analysis/" title="The Ultimate Guide to Local SEO Analysis: From Invisible to Invincible" target="_blank" rel="noopener"  data-wpil-monitor-id="1108">Market Multiples & DCF Analysis</a>                                </p>                            </div>                                                        <div class="flex flex-wrap gap-3">                                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10 text-xs text-white min-w-[120px]">                                    <span class="block text-slate-400 text-[10px] uppercase mb-1">EBITDA Margi</span>                                    <span class="font-bold text-base" id="marginResult">0%</span>                                </div>                                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10 text-xs text-white min-w-[120px]">                                    <span class="block text-slate-400 text-[10px] uppercase mb-1">Implied ROI</span>                                    <span class="font-bold text-base" id="roiResult">0%</span>                                </div>                            </div>                        </div>                    </div>                </div>
-                <!-- 2. Charts & Insights Grid -->                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">                                        <!-- Insights -->                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">                        <div class="flex items-center gap-2 mb-4">                            <div class="p-2 bg-indigo-50 text-brand-600 rounded-lg">                                <i class="ph-duotone ph-sparkle text-xl"></i>                            </div>                            <h3 class="font-bold text-slate-800">Strategic Analysis</h3>                        </div>                        <div id="aiInsight" class="text-sm text-slate-600 leading-relaxed bg-slate-50 p-5 rounded-xl border border-slate-100 flex-grow">                            <!-- JS fills this -->                        </div>                    </div>
-                    <!-- Valuation Bar Chart -->                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 min-h-[300px]">                        <div class="flex justify-between items-center mb-6">                            <h3 class="font-bold text-slate-700 text-sm">Methodology Spread</h3>                            <span class="text-xs text-slate-400">USD Millions</span>                        </div>                        <div class="relative w-full h-[220px]">                            <canvas id="valuationChart"></canvas>                        </div>                    </div>                </div>
-                <!-- 3. Sensitivity Matrix -->                <div id="sensitivitySection" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">                    <div class="p-6 border-b border-slate-100 flex flex-wrap gap-2 justify-between items-center">                        <div>                            <h3 class="font-bold text-slate-800">Sensitivity Matrix (DCF)</h3>                            <p class="text-xs text-slate-500">Value based on Growth vs. Risk.</p>                        </div>                        <div class="lg:hidden text-slate-400 text-xs flex items-center gap-1 bg-slate-50 px-2 py-1 rounded">                            <i class="ph-bold ph-arrows-left-right"></i> Scroll Tablen                        </div>                    </div>                                        <div class="overflow-x-auto custom-scroll">                        <table class="w-full text-sm text-center min-w-[600px]">                            <thead>                                <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">                                    <th class="p-4 text-left font-semibold text-slate-400">Growth \ WACC</th>                                    <th class="p-4 font-semibold text-indigo-400" id="th_wacc_minus">--%</th>                                    <th class="p-4 font-bold text-brand-600 bg-brand-50/50" id="th_wacc_base">--% (Base)</th>                                    <th class="p-4 font-semibold text-indigo-400" id="th_wacc_plus">--%</th>                                </tr>                            </thead>                            <tbody class="divide-y divide-slate-100 font-mono text-slate-600">                                <tr class="hover:bg-slate-50 transition"><td class="p-4 text-left font-medium text-slate-500 font-sans" id="td_growth_minus">--%</td><td class="p-4" id="cell_1_1">-</td><td class="p-4 bg-brand-50/20" id="cell_1_2">-</td><td class="p-4" id="cell_1_3">-</td></tr>                                <tr class="bg-brand-50/30 hover:bg-brand-50/60 transition"><td class="p-4 text-left font-bold text-brand-600 font-sans" id="td_growth_base">--%</td><td class="p-4" id="cell_2_1">-</td><td class="p-4 font-bold text-brand-700 text-base ring-2 ring-inset ring-brand-200 rounded" id="cell_2_2">-</td><td class="p-4" id="cell_2_3">-</td></tr>                                <tr class="hover:bg-slate-50 transition"><td class="p-4 text-left font-medium text-slate-500 font-sans" id="td_growth_plus">--%</td><td class="p-4" id="cell_3_1">-</td><td class="p-4 bg-brand-50/20" id="cell_3_2">-</td><td class="p-4" id="cell_3_3">-</td></tr>                            </tbody>                        </table>                    </div>                </div>
-                <!-- 4. Growth Chart -->                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 min-h-[350px]">                    <h3 class="font-bold text-slate-700 text-sm mb-4">5-Year Growth Trajectory</h3>                    <div class="relative w-full h-[280px]">                        <canvas id="growthChart"></canvas>                    </div>                </div>
+
+                    <div class="space-y-5">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                            <i class="ph-fill ph-sliders-horizontal"></i> Assumptions
+                        </h3>
+
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <label class="text-sm font-medium text-slate-700">Growth Rate</label>
+                                <span class="text-sm font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded" id="growthDisplay">10%</span>
+                            </div>
+                            <input type="range" id="growthRate" min="0" max="50" value="10" class="w-full">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <label class="text-sm font-medium text-slate-700">WACC (Risk)</label>
+                                <span class="text-sm font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded" id="waccDisplay">12%</span>
+                            </div>
+                            <input type="range" id="wacc" min="5" max="30" value="12" class="w-full">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1.5">Rev Multiple (x)</label>
+                                <input type="number" id="revMult" value="2.5" step="0.1" inputmode="decimal"
+                                    class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1.5">EBITDA Mult (x)</label>
+                                <input type="number" id="ebitdaMult" value="5.0" step="0.1" inputmode="decimal"
+                                    class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+                            </div>
+                        </div>
+                        
+                         <div>
+                            <label class="block text-xs font-semibold text-slate-500 mb-1.5">Projection Period</label>
+                            <select id="years" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+                                <option value="3">3 Years</option>
+                                <option value="5" selected>5 Years</option>
+                                <option value="10">10 Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button onclick="calculateValuation()" 
+                        class="w-full bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-200 transition-all transform active:scale-[0.99] flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-calculator text-lg"></i>
+                        <span><a href="https://shaynly.com/patient-lifetime-value-calculator/" title="Patient Lifetime Value Calculator (PLV Calculator)" target="_blank" rel="noopener"  data-wpil-monitor-id="1100">Calculate Value</a></span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- RIGHT: RESULTS (Initially Hidden) -->
+            <div id="resultsArea" class="hidden opacity-0 transition-opacity duration-700 space-y-6">
+                
+                <!-- 1. Hero Valuation Card -->
+                <div class="bg-white rounded-2xl p-1 shadow-md border border-slate-200">
+                    <div class="bg-slate-900 rounded-xl p-8 text-white relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#6366f1 1px, transparent 1px); background-size: 20px 20px;"></div>
+                        
+                        <div class="relative z-10 flex flex-col gap-6">
+                            <div>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></span>
+                                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">Enterprise Value Estimate</p>
+                                </div>
+                                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold tracking-tight text-white mb-2 whitespace-nowrap" id="finalValuationRange">
+                                    $0 - $0
+                                </h2>
+                                <p class="text-slate-400 text-sm flex items-center gap-2">
+                                    <i class="ph-fill ph-info"></i> Range derived from <a href="https://shaynly.com/local-seo-analysis/" title="The Ultimate Guide to Local SEO Analysis: From Invisible to Invincible" target="_blank" rel="noopener"  data-wpil-monitor-id="1108">Market Multiples & DCF Analysis</a>
+                                </p>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-3">
+                                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10 text-xs text-white min-w-[120px]">
+                                    <span class="block text-slate-400 text-[10px] uppercase mb-1">EBITDA Margin</span>
+                                    <span class="font-bold text-base" id="marginResult">0%</span>
+                                </div>
+                                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10 text-xs text-white min-w-[120px]">
+                                    <span class="block text-slate-400 text-[10px] uppercase mb-1">Implied ROI</span>
+                                    <span class="font-bold text-base" id="roiResult">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Charts & Insights Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Insights -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="p-2 bg-indigo-50 text-brand-600 rounded-lg">
+                                <i class="ph-duotone ph-sparkle text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-800">Strategic Analysis</h3>
+                        </div>
+                        <div id="aiInsight" class="text-sm text-slate-600 leading-relaxed bg-slate-50 p-5 rounded-xl border border-slate-100 flex-grow">
+                            <!-- JS fills this -->
+                        </div>
+                    </div>
+
+                    <!-- Valuation Bar Chart -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 min-h-[300px]">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-slate-700 text-sm">Methodology Spread</h3>
+                            <span class="text-xs text-slate-400">USD Millions</span>
+                        </div>
+                        <div class="relative w-full h-[220px]">
+                            <canvas id="valuationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Sensitivity Matrix -->
+                <div id="sensitivitySection" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 flex flex-wrap gap-2 justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-slate-800">Sensitivity Matrix (DCF)</h3>
+                            <p class="text-xs text-slate-500">Value based on Growth vs. Risk.</p>
+                        </div>
+                        <div class="lg:hidden text-slate-400 text-xs flex items-center gap-1 bg-slate-50 px-2 py-1 rounded">
+                            <i class="ph-bold ph-arrows-left-right"></i> Scroll Table
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="w-full text-sm text-center min-w-[600px]">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
+                                    <th class="p-4 text-left font-semibold text-slate-400">Growth \ WACC</th>
+                                    <th class="p-4 font-semibold text-indigo-400" id="th_wacc_minus">--%</th>
+                                    <th class="p-4 font-bold text-brand-600 bg-brand-50/50" id="th_wacc_base">--% (Base)</th>
+                                    <th class="p-4 font-semibold text-indigo-400" id="th_wacc_plus">--%</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-mono text-slate-600">
+                                <tr class="hover:bg-slate-50 transition"><td class="p-4 text-left font-medium text-slate-500 font-sans" id="td_growth_minus">--%</td><td class="p-4" id="cell_1_1">-</td><td class="p-4 bg-brand-50/20" id="cell_1_2">-</td><td class="p-4" id="cell_1_3">-</td></tr>
+                                <tr class="bg-brand-50/30 hover:bg-brand-50/60 transition"><td class="p-4 text-left font-bold text-brand-600 font-sans" id="td_growth_base">--%</td><td class="p-4" id="cell_2_1">-</td><td class="p-4 font-bold text-brand-700 text-base ring-2 ring-inset ring-brand-200 rounded" id="cell_2_2">-</td><td class="p-4" id="cell_2_3">-</td></tr>
+                                <tr class="hover:bg-slate-50 transition"><td class="p-4 text-left font-medium text-slate-500 font-sans" id="td_growth_plus">--%</td><td class="p-4" id="cell_3_1">-</td><td class="p-4 bg-brand-50/20" id="cell_3_2">-</td><td class="p-4" id="cell_3_3">-</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 4. Growth Chart -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 min-h-[350px]">
+                    <h3 class="font-bold text-slate-700 text-sm mb-4">5-Year Growth Trajectory</h3>
+                    <div class="relative w-full h-[280px]">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+
             </div> <!-- End Results Area -->
-        </div> <!-- End Layout Container -->    </main>
-    <!-- SEO CONTENT SECTION -->    <section class="bg-white border-t border-slate-200 mt-8 py-16 px-4 md:px-8 w-full max-w-[900px] mx-auto print-break">        <div class="max-w-3xl mx-auto text-slate-600 space-y-12">                        <div class="text-center">                <span class="text-brand-600 font-bold uppercase tracking-wider text-sm">Professional Guide</span>                <h2 class="font-heading text-3xl md:text-4xl font-bold text-slate-900 mt-2">The Ultimate Guide to Business Valuatio</h2>                <div class="w-20 h-1.5 bg-brand-500 mx-auto mt-6 rounded-full"></div>                                <!-- Table of Contents -->                <div class="mt-8 bg-slate-50 border border-slate-200 rounded-xl p-6 text-left max-w-lg mx-auto">                    <p class="font-bold text-slate-800 mb-3 text-sm uppercase">Table of Contents</p>                    <ul class="space-y-2 text-sm text-brand-600 font-medium">                        <li><a href="#methodology" class="hover:underline">1. The 3 Methods Used in This Tool</a></li>                        <li><a href="#silent-killers" class="hover:underline">2. The "Silent Killers" of Valuatio</a></li>                        <li><a href="#benchmarks" class="hover:underline">3. Industry Multiples Cheat Sheet</a></li>                        <li><a href="#math" class="hover:underline">4. The Mathematics (DCF Formula)</a></li>                        <li><a href="#faq" class="hover:underline">5. Frequently Asked Questions</a></li>                    </ul>                </div>            </div>                        <article class="prose prose-slate prose-lg max-w-none">                <p>Valuing a business is both an art and a science. Whether you are a founder preparing for an exit, an investor analyzing a deal, or a broker determining list price, knowing the fair <a href="https://shaynly.com/recurring-revenue-models/" title="The Architecture of Predictability: A Definitive Guide to Recurring Revenue Models" target="_blank" rel="noopener"  data-wpil-monitor-id="1110">market value of an asset</a> is critical. The <strong><a href="https://shaynly.com/brand-marketing/" title="The Ultimate Guide to Brand Marketing: Best Strategies with Examples" target="_blank" rel="noopener"  data-wpil-monitor-id="1098">Shaynly</a> Valuation Engine</strong> employs a triangulation strategy, combining market-based data with income-based projections to minimize error.</p>                                <div id="methodology" class="scroll-mt-24">                    <h3 class="text-slate-900 font-bold text-2xl mt-12 mb-6">1. The 3 Methods Used in This Tool</h3>                    <div class="grid md:grid-cols-2 gap-6 not-prose my-8">                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">                            <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2"><i class="ph-fill ph-chart-bar text-brand-600"></i> Market Multiples</h4>                            <p class="text-sm">This asks: "What did similar businesses sell for?" <br><strong>Revenue Multiples:</strong> For high-growth/low-profit firms (e.g., SaaS). <br><strong>EBITDA Multiples:</strong> For mature, profitable SMEs.</p>                        </div>                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">                            <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2"><i class="ph-fill ph-trend-up text-brand-600"></i> DCF Analysis</h4>                            <p class="text-sm">The <a href="https://www.investopedia.com/terms/d/dcf.asp" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline decoration-1 underline-offset-2 hover:text-brand-800">Discounted Cash Flow (DCF)</a> method projects future free cash flows and discounts them back to today's value using your WACC.</p>                        </div>                    </div>                </div>
-                <div id="silent-killers" class="scroll-mt-24">                    <h3 class="text-slate-900 font-bold text-2xl mt-12 mb-6">2. The "Silent Killers" of Valuatio</h3>                    <p>Numbers tell only half the story. Professional buyers will apply a "discount" to your valuation if these qualitative risks exist:</p>                    <ul class="list-none pl-0 space-y-4 not-prose">                        <li class="bg-red-50 border border-red-100 p-4 rounded-xl">                            <strong class="text-red-700 block mb-1">Customer Concentratio</strong>                            <span class="text-sm">If one client represents >20% of your revenue, your business is risky. Losing them means losing profit. Buyers may dock 10-20% off the final price.</span>                        </li>                        <li class="bg-orange-50 border border-orange-100 p-4 rounded-xl">                            <strong class="text-orange-700 block mb-1">Key Person Risk (The Owner Trap)</strong>                            <span class="text-sm">If the business cannot run for 4 weeks without you, you don't own a business; you own a job. This increases WACC and lowers value.</span>                        </li>                        <li class="bg-slate-50 border border-slate-200 p-4 rounded-xl">                            <strong class="text-slate-700 block mb-1">Legal & IP Exposure</strong>                            <span class="text-sm">Unsecured contracts, pending lawsuits, or lack of <a href="https://shaynly.com/report-trademark-infringement-on-google-ads/" title="Stop Brand Theft: Report Trademark Infringement on Google Ads" target="_blank" rel="noopener"  data-wpil-monitor-id="1104">trademark protectio</a> can kill a deal during due diligence, regardless of your EBITDA.</span>                        </li>                    </ul>                </div>
-                <div id="benchmarks" class="scroll-mt-24">                    <h3 class="text-slate-900 font-bold text-2xl mt-12 mb-6">3. Industry Multiples Cheat Sheet</h3>                    <p class="text-sm mb-4">Data trends adapted from <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline decoration-1 underline-offset-2 hover:text-brand-800">NYU Stern Valuation Data</a>.</p>                    <div class="not-prose overflow-x-auto">                        <table class="w-full text-left text-sm rounded-xl overflow-hidden shadow-sm border border-slate-200">                            <thead class="bg-slate-100 text-slate-700">                                <tr>                                    <th class="p-3 font-bold">Industry</th>                                    <th class="p-3 font-bold">Rev Mult</th>                                    <th class="p-3 font-bold">EBITDA Mult</th>                                </tr>                            </thead>                            <tbody class="divide-y divide-slate-100 bg-white">                                <tr><td class="p-3">SaaS / Software</td><td class="p-3">3x - 10x</td><td class="p-3">12x - 25x</td></tr>                                <tr><td class="p-3">E-Commerce</td><td class="p-3">0.8x - 2.5x</td><td class="p-3">3x - 6x</td></tr>                                <tr><td class="p-3">Services (Agency)</td><td class="p-3">0.9x - 1.5x</td><td class="p-3">3x - 5x</td></tr>                                <tr><td class="p-3">Manufacturing</td><td class="p-3">0.6x - 1.2x</td><td class="p-3">4x - 7x</td></tr>                            </tbody>                        </table>                    </div>                </div>
-                <div id="math" class="scroll-mt-24">                    <h3 class="text-slate-900 font-bold text-2xl mt-12 mb-6">4. The Mathematics (DCF Formula)</h3>                    <p>For those who want to see under the hood, here is the formula used by our tool to calculate the Discounted Cash Flow:</p>                    <div class="bg-slate-900 text-white p-6 rounded-xl font-mono text-center my-6 overflow-x-auto">                        DCF = [ CF1 / (1+r)^1 ] + [ CF2 / (1+r)^2 ] + ... + [ TV / (1+r)^n ]n                    </div>                    <ul class="text-sm space-y-1">                        <li><strong>CF:</strong> Cash Flow (EBITDA projected)</li>                        <li><strong>r:</strong> Discount Rate (WACC)</li>                        <li><strong>:</strong> Number of periods</li>                        <li><strong>TV:</strong> Terminal Value (Value of business beyond year n)</li>                    </ul>                </div>            </article>
-            <!-- FAQ Section -->            <div id="faq" class="border-t border-slate-200 pt-12 scroll-mt-24">                <h3 class="font-heading text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2"><i class="ph-duotone ph-question"></i> Frequently Asked Questions</h3>                <div class="space-y-4">                    <!-- FAQ 1 -->                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">                            <span>My business has negative EBITDA. How do I value it?</span>                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>                        </summary>                        <div class="text-slate-600 px-4 pb-4 text-sm">Use <strong>Revenue Multiples</strong> (common in startups) or the Liquidation Value method. Investors look at <a href="https://shaynly.com/business-growth-calculator/" title="Business Growth Calculator" target="_blank" rel="noopener"  data-wpil-monitor-id="1102">growth rate and path to profitability</a> rather than current earnings.</div>                    </details>                                        <!-- FAQ 2 -->                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">                            <span>Does "Enterprise Value" include cash and debt?</span>                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>                        </summary>                        <div class="text-slate-600 px-4 pb-4 text-sm">No. Enterprise Value (EV) is operations value. <em>Equity Value = EV + Cash - Debt.</em> This is what you actually take home.</div>                    </details>
-                    <!-- FAQ 3 -->                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">                            <span>What are "Add-Backs"?</span>                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>                        </summary>                        <div class="text-slate-600 px-4 pb-4 text-sm">Expenses a new owner won't have (e.g., personal car lease, one-time lawsuits, excessive owner salary). Adding these back increases EBITDA and valuation.</div>                    </details>
-                    <!-- FAQ 4 -->                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">                            <span>Is this tool accurate for pre-revenue startups?</span>                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>                        </summary>                        <div class="text-slate-600 px-4 pb-4 text-sm">No. Startups lack historical data. They are valued using qualitative methods like the <strong>Berkus Method</strong> or <strong>Risk Factor Summatio</strong> based on IP and team.</div>                    </details>
-                    <!-- FAQ 5 -->                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">                            <span>What is Terminal Value?</span>                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>                        </summary>                        <div class="text-slate-600 px-4 pb-4 text-sm">The estimated value of the business beyond the forecast period (e.g., after year 5), assuming it grows at a stable rate forever into perpetuity.</div>                    </details>
-                    <!-- FAQ 6 -->                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">                            <span>What is a Liquidity Discount?</span>                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>                        </summary>                        <div class="text-slate-600 px-4 pb-4 text-sm">Private companies are harder to sell than public stocks. Buyers often apply a 20-30% discount to the valuation to account for this illiquidity.</div>                    </details>
-                    <!-- FAQ 7 -->                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">                            <span>How often should I value my business?</span>                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>                        </summary>                        <div class="text-slate-600 px-4 pb-4 text-sm">Annually. Regular valuation helps you track growth, adjust strategy, and be prepared for unsolicited acquisition offers.</div>                    </details>
-                    <!-- FAQ 8 -->                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">                            <span>What is the "Rule of 40" in valuation?</span>                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>                        </summary>                        <div class="text-slate-600 px-4 pb-4 text-sm">Common in SaaS: Growth Rate % + Profit Margin % should equal 40% or higher. Companies meeting this rule command premium multiples.</div>                    </details>                </div>            </div>        </div>    </section>
-    <!-- MOBILE STICKY RESULT BAR -->    <div id="mobileStickyResult" class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] p-4 z-50 lg:hidden flex justify-between items-center">        <div>            <p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Estimated Value</p>            <p class="text-xl font-bold text-slate-900 font-heading" id="mobileValDisplay">-</p>        </div>        <a href="#resultsArea" class="bg-slate-900 text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-lg hover:bg-slate-800 transition">            See Detailsn        </a>    </div>
-    <footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm no-print w-full">        <p class="mb-2 font-semibold text-slate-200">&copy; Shaynly.com</p>        <p class="opacity-60">Financial <a href="https://shaynly.com/local-seo-services-cost-calculator/" title="local seo services cost calculator: Your Comprehensive Calculator" target="_blank" rel="noopener"  data-wpil-monitor-id="1106">calculations run locally</a>. No data is stored.</p>    </footer>
-</div><!-- WIDGET CONTAINER END -->
-    <!-- LOGIC -->    <script>        // Sync Inputs
-const sync = (id, displayId, suffix = '') => {
-const el = document.getElementById(id);
-const disp = document.getElementById(displayId);
-el.addEventListener('input', () => disp.innerText = el.value + suffix);
-};
-sync('growthRate', 'growthDisplay', '%');
-sync('wacc', 'waccDisplay', '%');
-        let charts = {};
-        function formatCurrency(num) {
-if (num >= 1000000000) return '$' + (num / 1000000000).toFixed(2) + 'B';
-if (num >= 1000000) return '$' + (num / 1000000).toFixed(2) + 'M';
-if (num >= 1000) return '$' + (num / 1000).toFixed(0) + 'K';
-return '$' + num.toFixed(0);
-}
-        function calculateValuation() {
-// 1. Layout Transition
-const widget = document.getElementById('shaynly-valuation-widget');
-const layoutContainer = document.getElementById('layoutContainer');
-const inputSection = document.getElementById('inputSection');
-const resultsArea = document.getElementById('resultsArea');
-            // Expand Container
-widget.classList.replace('max-w-xl', 'max-w-6xl');
-// Switch Layout: Mobile=Flex Col, Desktop=Grid
-layoutContainer.classList.replace('flex-col', 'grid');
-layoutContainer.classList.add('grid-cols-1', 'lg:grid-cols-12', 'items-start');
-// Adjust Inputs Column
-inputSection.classList.add('lg:col-span-4', 'lg:sticky', 'lg:top-24');
-            // Show Results Column
-resultsArea.classList.remove('hidden');
-resultsArea.classList.add('lg:col-span-8');
-            // 2. Get Values
-const revenue = parseFloat(document.getElementById('revenue').value) || 0;
-const ebitda = parseFloat(document.getElementById('ebitda').value) || 0;
-const revMult = parseFloat(document.getElementById('revMult').value) || 0;
-const ebitdaMult = parseFloat(document.getElementById('ebitdaMult').value) || 0;
-const growth = parseFloat(document.getElementById('growthRate').value) / 100;
-const wacc = parseFloat(document.getElementById('wacc').value) / 100;
-const years = parseInt(document.getElementById('years').value);
-            if (wacc <= 0.02) { alert("WACC must be > 2%"); return; }
-            const valRev = revenue * revMult;
-const valEbitda = ebitda * ebitdaMult;
-            function getDCF(g, w) {
-let dcfSum = 0;
-let cur = ebitda;
-for (let i = 1; i <= years; i++) {
-cur *= (1 + g);
-dcfSum += cur / Math.pow(1 + w, i);
-}
-const termGrowth = 0.025;
-if(w <= termGrowth) return 0;
-const termVal = (cur * (1 + termGrowth)) / (w - termGrowth);
-dcfSum += termVal / Math.pow(1 + w, years);
-return dcfSum;
-}
-            const valDCF = getDCF(growth, wacc);
-            const values = [valRev, valEbitda, valDCF].filter(v => v > 0);
-const minVal = Math.min(...values) || 0;
-const maxVal = Math.max(...values) || 0;
-const rangeStr = `${formatCurrency(minVal)} - ${formatCurrency(maxVal)}`;
-document.getElementById('finalValuationRange').innerText = rangeStr;
-document.getElementById('mobileValDisplay').innerText = rangeStr;
-// Reveal Results with delay for transition
-setTimeout(() => {
-resultsArea.classList.remove('opacity-0');
-document.getElementById('mobileStickyResult').classList.add('visible');
-}, 300);
-            const margin = revenue ? ((ebitda / revenue) * 100) : 0;
-const marginEl = document.getElementById('marginResult');
-marginEl.innerText = margin.toFixed(1) + '%';
-if(margin < 10) marginEl.parentElement.classList.add('bg-red-500/20', 'border-red-500/30');
-else if(margin > 20) marginEl.parentElement.classList.add('bg-green-500/20', 'border-green-500/30');
-            document.getElementById('marginBadge').innerText = margin.toFixed(1) + '% Margin';
-document.getElementById('roiResult').innerText = ebitdaMult ? (1/ebitdaMult * 100).toFixed(1) + '%' : '0%';
-            let insight = `<p class="mb-3 text-slate-800 font-medium">Analysis based on <span class="text-brand-600">${(growth*100).toFixed(0)}% growth</span> and <span class="text-brand-600">${(wacc*100).toFixed(0)}% WACC</span>:</p>`;
-if (valDCF > valEbitda * 1.25) {
-insight += `<div class="p-3 bg-green-50 border border-green-100 rounded-lg text-green-800 text-xs"><strong class="block mb-1 font-bold"><i class="ph-bold ph-trend-up"></i> High Growth Potential</strong> Your intrinsic value (DCF) is higher than market multiples. This suggests your future growth justifies a premium price.</div>`;
-} else if (valDCF < valEbitda * 0.8) {
-insight += `<div class="p-3 bg-orange-50 border border-orange-100 rounded-lg text-orange-800 text-xs"><strong class="block mb-1 font-bold"><i class="ph-bold ph-warning"></i> Valuation Gap</strong> Your DCF is lower than market multiples. Ensure your cash flow is strong enough to support market pricing.</div>`;
-} else {
-insight += `<div class="p-3 bg-blue-50 border border-blue-100 rounded-lg text-blue-800 text-xs"><strong class="block mb-1 font-bold"><i class="ph-bold ph-check-circle"></i> Balanced Valuatio</strong> Your DCF aligns with market multiples, indicating a realistic and defensible valuation.</div>`;
-}
-document.getElementById('aiInsight').innerHTML = insight;
-            const wBase = wacc * 100, gBase = growth * 100;
-document.getElementById('th_wacc_minus').innerText = (wBase - 1).toFixed(1) + '%';
-document.getElementById('th_wacc_base').innerText = wBase.toFixed(1) + '%';
-document.getElementById('th_wacc_plus').innerText = (wBase + 1).toFixed(1) + '%';
-document.getElementById('td_growth_minus').innerText = (gBase - 1).toFixed(1) + '%';
-document.getElementById('td_growth_base').innerText = gBase.toFixed(1) + '%';
-document.getElementById('td_growth_plus').innerText = (gBase + 1).toFixed(1) + '%';
-            const fill = (id, g, w) => document.getElementById(id).innerText = formatCurrency(getDCF(g, w));
-fill('cell_1_1', growth-0.01, wacc-0.01); fill('cell_1_2', growth-0.01, wacc); fill('cell_1_3', growth-0.01, wacc+0.01);
-fill('cell_2_1', growth, wacc-0.01);      fill('cell_2_2', growth, wacc);      fill('cell_2_3', growth, wacc+0.01);
-fill('cell_3_1', growth+0.01, wacc-0.01); fill('cell_3_2', growth+0.01, wacc); fill('cell_3_3', growth+0.01, wacc+0.01);
-            updateCharts(valRev, valEbitda, valDCF, revenue, ebitda, growth, years);
-}
-        function updateCharts(vRev, vEbitda, vDcf, rev, ebit, g, years) {
-if (charts.val) charts.val.destroy();
-if (charts.growth) charts.growth.destroy();
-            charts.val = new Chart(document.getElementById('valuationChart'), {
-type: 'bar',
-data: {
-labels: ['Revenue Mult', 'EBITDA Mult', 'DCF Model'],
-datasets: [{ label: 'Valuation', data: [vRev, vEbitda, vDcf], backgroundColor: ['#cbd5e1', '#cbd5e1', '#4f46e5'], borderRadius: 6, barPercentage: 0.6 }]n                },
-options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { callback: (val) => '$' + (val/1000000).toFixed(1) + 'M' }, grid: { borderDash: [2, 4] } }, x: { grid: { display: false } } } }
-});
-            let labels = [], dRev = [], dEbit = [], cRev = rev, cEbit = ebit;
-for(let i=0; i<=years; i++) { labels.push('Year ' + i); dRev.push(cRev); dEbit.push(cEbit); cRev *= (1+g); cEbit *= (1+g); }
-            charts.growth = new Chart(document.getElementById('growthChart'), {
-type: 'line',
-data: { labels: labels, datasets: [{ label: 'Revenue', data: dRev, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.05)', fill: true, tension: 0.4 }, { label: 'EBITDA', data: dEbit, borderColor: '#10b981', tension: 0.4 }] },
-options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, scales: { y: { ticks: { callback: (val) => '$' + (val/1000000).toFixed(1) + 'M' }, grid: { borderDash: [2, 4] } }, x: { grid: { display: false } } } }
-});
-}
-</script>
 
-        </div>
-      </article>
+        </div> <!-- End Layout Container -->
+    </main>
 
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
-        </div>
+    <!-- SEO CONTENT SECTION -->
+    <section class="bg-white border-t border-slate-200 mt-8 py-16 px-4 md:px-8 w-full max-w-[900px] mx-auto print-break">
+        <div class="max-w-3xl mx-auto text-slate-600 space-y-12">
+            
+            <div class="text-center">
+                <span class="text-brand-600 font-bold uppercase tracking-wider text-sm">Professional Guide</span>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-slate-900 mt-2">The Ultimate Guide to Business Valuation</h2>
+                <div class="w-20 h-1.5 bg-brand-500 mx-auto mt-6 rounded-full"></div>
+                
+                <!-- Table of Contents -->
+                <div class="mt-8 bg-slate-50 border border-slate-200 rounded-xl p-6 text-left max-w-lg mx-auto">
+                    <p class="font-bold text-slate-800 mb-3 text-sm uppercase">Table of Contents</p>
+                    <ul class="space-y-2 text-sm text-brand-600 font-medium">
+                        <li><a href="#methodology" class="hover:underline">1. The 3 Methods Used in This Tool</a></li>
+                        <li><a href="#silent-killers" class="hover:underline">2. The "Silent Killers" of Valuation</a></li>
+                        <li><a href="#benchmarks" class="hover:underline">3. Industry Multiples Cheat Sheet</a></li>
+                        <li><a href="#math" class="hover:underline">4. The Mathematics (DCF Formula)</a></li>
+                        <li><a href="#faq" class="hover:underline">5. Frequently Asked Questions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <article class="prose prose-slate prose-lg max-w-none">
+                <p>Valuing a business is both an art and a science. Whether you are a founder preparing for an exit, an investor analyzing a deal, or a broker determining list price, knowing the fair <a href="https://shaynly.com/recurring-revenue-models/" title="The Architecture of Predictability: A Definitive Guide to Recurring Revenue Models" target="_blank" rel="noopener"  data-wpil-monitor-id="1110">market value of an asset</a> is critical. The <strong><a href="https://shaynly.com/brand-marketing/" title="The Ultimate Guide to Brand Marketing: Best Strategies with Examples" target="_blank" rel="noopener"  data-wpil-monitor-id="1098">Shaynly</a> Valuation Engine</strong> employs a triangulation strategy, combining market-based data with income-based projections to minimize error.</p>
+                
+                <div id="methodology" class="scroll-mt-24">
+                    <h3 class="text-slate-900 font-bold text-2xl mt-12 mb-6">1. The 3 Methods Used in This Tool</h3>
+                    <div class="grid md:grid-cols-2 gap-6 not-prose my-8">
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2"><i class="ph-fill ph-chart-bar text-brand-600"></i> Market Multiples</h4>
+                            <p class="text-sm">This asks: "What did similar businesses sell for?" <br><strong>Revenue Multiples:</strong> For high-growth/low-profit firms (e.g., SaaS). <br><strong>EBITDA Multiples:</strong> For mature, profitable SMEs.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2"><i class="ph-fill ph-trend-up text-brand-600"></i> DCF Analysis</h4>
+                            <p class="text-sm">The <a href="https://www.investopedia.com/terms/d/dcf.asp" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline decoration-1 underline-offset-2 hover:text-brand-800">Discounted Cash Flow (DCF)</a> method projects future free cash flows and discounts them back to today's value using your WACC.</p>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
+                <div id="silent-killers" class="scroll-mt-24">
+                    <h3 class="text-slate-900 font-bold text-2xl mt-12 mb-6">2. The "Silent Killers" of Valuation</h3>
+                    <p>Numbers tell only half the story. Professional buyers will apply a "discount" to your valuation if these qualitative risks exist:</p>
+                    <ul class="list-none pl-0 space-y-4 not-prose">
+                        <li class="bg-red-50 border border-red-100 p-4 rounded-xl">
+                            <strong class="text-red-700 block mb-1">Customer Concentration</strong>
+                            <span class="text-sm">If one client represents >20% of your revenue, your business is risky. Losing them means losing profit. Buyers may dock 10-20% off the final price.</span>
+                        </li>
+                        <li class="bg-orange-50 border border-orange-100 p-4 rounded-xl">
+                            <strong class="text-orange-700 block mb-1">Key Person Risk (The Owner Trap)</strong>
+                            <span class="text-sm">If the business cannot run for 4 weeks without you, you don't own a business; you own a job. This increases WACC and lowers value.</span>
+                        </li>
+                        <li class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+                            <strong class="text-slate-700 block mb-1">Legal & IP Exposure</strong>
+                            <span class="text-sm">Unsecured contracts, pending lawsuits, or lack of <a href="https://shaynly.com/report-trademark-infringement-on-google-ads/" title="Stop Brand Theft: Report Trademark Infringement on Google Ads" target="_blank" rel="noopener"  data-wpil-monitor-id="1104">trademark protection</a> can kill a deal during due diligence, regardless of your EBITDA.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="benchmarks" class="scroll-mt-24">
+                    <h3 class="text-slate-900 font-bold text-2xl mt-12 mb-6">3. Industry Multiples Cheat Sheet</h3>
+                    <p class="text-sm mb-4">Data trends adapted from <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline decoration-1 underline-offset-2 hover:text-brand-800">NYU Stern Valuation Data</a>.</p>
+                    <div class="not-prose overflow-x-auto">
+                        <table class="w-full text-left text-sm rounded-xl overflow-hidden shadow-sm border border-slate-200">
+                            <thead class="bg-slate-100 text-slate-700">
+                                <tr>
+                                    <th class="p-3 font-bold">Industry</th>
+                                    <th class="p-3 font-bold">Rev Mult</th>
+                                    <th class="p-3 font-bold">EBITDA Mult</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 bg-white">
+                                <tr><td class="p-3">SaaS / Software</td><td class="p-3">3x - 10x</td><td class="p-3">12x - 25x</td></tr>
+                                <tr><td class="p-3">E-Commerce</td><td class="p-3">0.8x - 2.5x</td><td class="p-3">3x - 6x</td></tr>
+                                <tr><td class="p-3">Services (Agency)</td><td class="p-3">0.9x - 1.5x</td><td class="p-3">3x - 5x</td></tr>
+                                <tr><td class="p-3">Manufacturing</td><td class="p-3">0.6x - 1.2x</td><td class="p-3">4x - 7x</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="math" class="scroll-mt-24">
+                    <h3 class="text-slate-900 font-bold text-2xl mt-12 mb-6">4. The Mathematics (DCF Formula)</h3>
+                    <p>For those who want to see under the hood, here is the formula used by our tool to calculate the Discounted Cash Flow:</p>
+                    <div class="bg-slate-900 text-white p-6 rounded-xl font-mono text-center my-6 overflow-x-auto">
+                        DCF = [ CF1 / (1+r)^1 ] + [ CF2 / (1+r)^2 ] + ... + [ TV / (1+r)^n ]
+                    </div>
+                    <ul class="text-sm space-y-1">
+                        <li><strong>CF:</strong> Cash Flow (EBITDA projected)</li>
+                        <li><strong>r:</strong> Discount Rate (WACC)</li>
+                        <li><strong>n:</strong> Number of periods</li>
+                        <li><strong>TV:</strong> Terminal Value (Value of business beyond year n)</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- FAQ Section -->
+            <div id="faq" class="border-t border-slate-200 pt-12 scroll-mt-24">
+                <h3 class="font-heading text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2"><i class="ph-duotone ph-question"></i> Frequently Asked Questions</h3>
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">
+                            <span>My business has negative EBITDA. How do I value it?</span>
+                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>
+                        </summary>
+                        <div class="text-slate-600 px-4 pb-4 text-sm">Use <strong>Revenue Multiples</strong> (common in startups) or the Liquidation Value method. Investors look at <a href="https://shaynly.com/business-growth-calculator/" title="Business Growth Calculator" target="_blank" rel="noopener"  data-wpil-monitor-id="1102">growth rate and path to profitability</a> rather than current earnings.</div>
+                    </details>
+                    
+                    <!-- FAQ 2 -->
+                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">
+                            <span>Does "Enterprise Value" include cash and debt?</span>
+                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>
+                        </summary>
+                        <div class="text-slate-600 px-4 pb-4 text-sm">No. Enterprise Value (EV) is operations value. <em>Equity Value = EV + Cash - Debt.</em> This is what you actually take home.</div>
+                    </details>
+
+                    <!-- FAQ 3 -->
+                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">
+                            <span>What are "Add-Backs"?</span>
+                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>
+                        </summary>
+                        <div class="text-slate-600 px-4 pb-4 text-sm">Expenses a new owner won't have (e.g., personal car lease, one-time lawsuits, excessive owner salary). Adding these back increases EBITDA and valuation.</div>
+                    </details>
+
+                    <!-- FAQ 4 -->
+                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">
+                            <span>Is this tool accurate for pre-revenue startups?</span>
+                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>
+                        </summary>
+                        <div class="text-slate-600 px-4 pb-4 text-sm">No. Startups lack historical data. They are valued using qualitative methods like the <strong>Berkus Method</strong> or <strong>Risk Factor Summation</strong> based on IP and team.</div>
+                    </details>
+
+                    <!-- FAQ 5 -->
+                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">
+                            <span>What is Terminal Value?</span>
+                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>
+                        </summary>
+                        <div class="text-slate-600 px-4 pb-4 text-sm">The estimated value of the business beyond the forecast period (e.g., after year 5), assuming it grows at a stable rate forever into perpetuity.</div>
+                    </details>
+
+                    <!-- FAQ 6 -->
+                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">
+                            <span>What is a Liquidity Discount?</span>
+                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>
+                        </summary>
+                        <div class="text-slate-600 px-4 pb-4 text-sm">Private companies are harder to sell than public stocks. Buyers often apply a 20-30% discount to the valuation to account for this illiquidity.</div>
+                    </details>
+
+                    <!-- FAQ 7 -->
+                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">
+                            <span>How often should I value my business?</span>
+                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>
+                        </summary>
+                        <div class="text-slate-600 px-4 pb-4 text-sm">Annually. Regular valuation helps you track growth, adjust strategy, and be prepared for unsolicited acquisition offers.</div>
+                    </details>
+
+                    <!-- FAQ 8 -->
+                    <details class="group bg-slate-50 rounded-xl border border-slate-100 open:bg-white open:ring-1 open:ring-slate-200 transition">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-slate-800">
+                            <span>What is the "Rule of 40" in valuation?</span>
+                            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down"></i></span>
+                        </summary>
+                        <div class="text-slate-600 px-4 pb-4 text-sm">Common in SaaS: Growth Rate % + Profit Margin % should equal 40% or higher. Companies meeting this rule command premium multiples.</div>
+                    </details>
+                </div>
+            </div>
         </div>
-      </aside>
+    </section>
+
+    <!-- MOBILE STICKY RESULT BAR -->
+    <div id="mobileStickyResult" class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] p-4 z-50 lg:hidden flex justify-between items-center">
+        <div>
+            <p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Estimated Value</p>
+            <p class="text-xl font-bold text-slate-900 font-heading" id="mobileValDisplay">-</p>
+        </div>
+        <a href="#resultsArea" class="bg-slate-900 text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-lg hover:bg-slate-800 transition">
+            See Details
+        </a>
     </div>
+
     
-  </main>
 
-  <!-- Footer -->
-  
+</div>
+<!-- WIDGET CONTAINER END -->
 
-  <script src="/assets/js/main.js"></script>
+    <!-- LOGIC -->
+    <script>
+        // Sync Inputs
+        const sync = (id, displayId, suffix = '') => {
+            const el = document.getElementById(id);
+            const disp = document.getElementById(displayId);
+            el.addEventListener('input', () => disp.innerText = el.value + suffix);
+        };
+        sync('growthRate', 'growthDisplay', '%');
+        sync('wacc', 'waccDisplay', '%');
 
+        let charts = {};
+
+        function formatCurrency(num) {
+            if (num >= 1000000000) return '$' + (num / 1000000000).toFixed(2) + 'B';
+            if (num >= 1000000) return '$' + (num / 1000000).toFixed(2) + 'M';
+            if (num >= 1000) return '$' + (num / 1000).toFixed(0) + 'K';
+            return '$' + num.toFixed(0);
+        }
+
+        function calculateValuation() {
+            // 1. Layout Transition
+            const widget = document.getElementById('shaynly-valuation-widget');
+            const layoutContainer = document.getElementById('layoutContainer');
+            const inputSection = document.getElementById('inputSection');
+            const resultsArea = document.getElementById('resultsArea');
+
+            // Expand Container
+            widget.classList.replace('max-w-xl', 'max-w-6xl');
+            
+            // Switch Layout: Mobile=Flex Col, Desktop=Grid
+            layoutContainer.classList.replace('flex-col', 'grid');
+            layoutContainer.classList.add('grid-cols-1', 'lg:grid-cols-12', 'items-start');
+            
+            // Adjust Inputs Column
+            inputSection.classList.add('lg:col-span-4', 'lg:sticky', 'lg:top-24');
+
+            // Show Results Column
+            resultsArea.classList.remove('hidden');
+            resultsArea.classList.add('lg:col-span-8');
+
+            // 2. Get Values
+            const revenue = parseFloat(document.getElementById('revenue').value) || 0;
+            const ebitda = parseFloat(document.getElementById('ebitda').value) || 0;
+            const revMult = parseFloat(document.getElementById('revMult').value) || 0;
+            const ebitdaMult = parseFloat(document.getElementById('ebitdaMult').value) || 0;
+            const growth = parseFloat(document.getElementById('growthRate').value) / 100;
+            const wacc = parseFloat(document.getElementById('wacc').value) / 100;
+            const years = parseInt(document.getElementById('years').value);
+
+            if (wacc <= 0.02) { alert("WACC must be > 2%"); return; }
+
+            const valRev = revenue * revMult;
+            const valEbitda = ebitda * ebitdaMult;
+
+            function getDCF(g, w) {
+                let dcfSum = 0;
+                let cur = ebitda;
+                for (let i = 1; i <= years; i++) {
+                    cur *= (1 + g);
+                    dcfSum += cur / Math.pow(1 + w, i);
+                }
+                const termGrowth = 0.025;
+                if(w <= termGrowth) return 0;
+                const termVal = (cur * (1 + termGrowth)) / (w - termGrowth);
+                dcfSum += termVal / Math.pow(1 + w, years);
+                return dcfSum;
+            }
+
+            const valDCF = getDCF(growth, wacc);
+
+            const values = [valRev, valEbitda, valDCF].filter(v => v > 0);
+            const minVal = Math.min(...values) || 0;
+            const maxVal = Math.max(...values) || 0;
+            const rangeStr = `${formatCurrency(minVal)} - ${formatCurrency(maxVal)}`;
+            
+            document.getElementById('finalValuationRange').innerText = rangeStr;
+            document.getElementById('mobileValDisplay').innerText = rangeStr;
+            
+            // Reveal Results with delay for transition
+            setTimeout(() => {
+                resultsArea.classList.remove('opacity-0');
+                document.getElementById('mobileStickyResult').classList.add('visible');
+            }, 300);
+
+            const margin = revenue ? ((ebitda / revenue) * 100) : 0;
+            const marginEl = document.getElementById('marginResult');
+            marginEl.innerText = margin.toFixed(1) + '%';
+            
+            if(margin < 10) marginEl.parentElement.classList.add('bg-red-500/20', 'border-red-500/30');
+            else if(margin > 20) marginEl.parentElement.classList.add('bg-green-500/20', 'border-green-500/30');
+
+            document.getElementById('marginBadge').innerText = margin.toFixed(1) + '% Margin';
+            document.getElementById('roiResult').innerText = ebitdaMult ? (1/ebitdaMult * 100).toFixed(1) + '%' : '0%';
+
+            let insight = `<p class="mb-3 text-slate-800 font-medium">Analysis based on <span class="text-brand-600">${(growth*100).toFixed(0)}% growth</span> and <span class="text-brand-600">${(wacc*100).toFixed(0)}% WACC</span>:</p>`;
+            
+            if (valDCF > valEbitda * 1.25) {
+                insight += `<div class="p-3 bg-green-50 border border-green-100 rounded-lg text-green-800 text-xs"><strong class="block mb-1 font-bold"><i class="ph-bold ph-trend-up"></i> High Growth Potential</strong> Your intrinsic value (DCF) is higher than market multiples. This suggests your future growth justifies a premium price.</div>`;
+            } else if (valDCF < valEbitda * 0.8) {
+                insight += `<div class="p-3 bg-orange-50 border border-orange-100 rounded-lg text-orange-800 text-xs"><strong class="block mb-1 font-bold"><i class="ph-bold ph-warning"></i> Valuation Gap</strong> Your DCF is lower than market multiples. Ensure your cash flow is strong enough to support market pricing.</div>`;
+            } else {
+                insight += `<div class="p-3 bg-blue-50 border border-blue-100 rounded-lg text-blue-800 text-xs"><strong class="block mb-1 font-bold"><i class="ph-bold ph-check-circle"></i> Balanced Valuation</strong> Your DCF aligns with market multiples, indicating a realistic and defensible valuation.</div>`;
+            }
+            document.getElementById('aiInsight').innerHTML = insight;
+
+            const wBase = wacc * 100, gBase = growth * 100;
+            document.getElementById('th_wacc_minus').innerText = (wBase - 1).toFixed(1) + '%';
+            document.getElementById('th_wacc_base').innerText = wBase.toFixed(1) + '%';
+            document.getElementById('th_wacc_plus').innerText = (wBase + 1).toFixed(1) + '%';
+            document.getElementById('td_growth_minus').innerText = (gBase - 1).toFixed(1) + '%';
+            document.getElementById('td_growth_base').innerText = gBase.toFixed(1) + '%';
+            document.getElementById('td_growth_plus').innerText = (gBase + 1).toFixed(1) + '%';
+
+            const fill = (id, g, w) => document.getElementById(id).innerText = formatCurrency(getDCF(g, w));
+            fill('cell_1_1', growth-0.01, wacc-0.01); fill('cell_1_2', growth-0.01, wacc); fill('cell_1_3', growth-0.01, wacc+0.01);
+            fill('cell_2_1', growth, wacc-0.01);      fill('cell_2_2', growth, wacc);      fill('cell_2_3', growth, wacc+0.01);
+            fill('cell_3_1', growth+0.01, wacc-0.01); fill('cell_3_2', growth+0.01, wacc); fill('cell_3_3', growth+0.01, wacc+0.01);
+
+            updateCharts(valRev, valEbitda, valDCF, revenue, ebitda, growth, years);
+        }
+
+        function updateCharts(vRev, vEbitda, vDcf, rev, ebit, g, years) {
+            if (charts.val) charts.val.destroy();
+            if (charts.growth) charts.growth.destroy();
+
+            charts.val = new Chart(document.getElementById('valuationChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Revenue Mult', 'EBITDA Mult', 'DCF Model'],
+                    datasets: [{ label: 'Valuation', data: [vRev, vEbitda, vDcf], backgroundColor: ['#cbd5e1', '#cbd5e1', '#4f46e5'], borderRadius: 6, barPercentage: 0.6 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { callback: (val) => '$' + (val/1000000).toFixed(1) + 'M' }, grid: { borderDash: [2, 4] } }, x: { grid: { display: false } } } }
+            });
+
+            let labels = [], dRev = [], dEbit = [], cRev = rev, cEbit = ebit;
+            for(let i=0; i<=years; i++) { labels.push('Year ' + i); dRev.push(cRev); dEbit.push(cEbit); cRev *= (1+g); cEbit *= (1+g); }
+
+            charts.growth = new Chart(document.getElementById('growthChart'), {
+                type: 'line',
+                data: { labels: labels, datasets: [{ label: 'Revenue', data: dRev, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.05)', fill: true, tension: 0.4 }, { label: 'EBITDA', data: dEbit, borderColor: '#10b981', tension: 0.4 }] },
+                options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, scales: { y: { ticks: { callback: (val) => '$' + (val/1000000).toFixed(1) + 'M' }, grid: { borderDash: [2, 4] } }, x: { grid: { display: false } } } }
+            });
+        }
+    </script>
+
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>

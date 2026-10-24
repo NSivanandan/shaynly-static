@@ -1,41 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Healthcare Keyword Research: Comprehensive interactive Guide - Shaynly</title>
-  <meta name="description" content="Healthcare Keyword Research Guide: Premium Interactive Experience n :root {n --primary-blue: #0a427b; /* Deep Professional Blue */n --s">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Keyword Research Guide: Premium Interactive Experience</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0a427b; /* Deep Professional Blue */
+            --secondary-teal: #007b80; /* Calming Teal */
+            --accent-green: #28a745; /* Standard Green Accent */
+            --light-grey: #e9ecef;
+            --dark-text: #212529; /* Very Dark Grey */
+            --medium-text: #18230F; /* Standard Grey */
+            --light-text: #5409DA; /* Lighter Grey */
+            --background-light: #f8f9fa; /* Very Light Grey */
+            --background-medium: #443627; /* Slightly darker bg for contrast */
+            --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+            --border-radius: 10px; /* Slightly larger radius */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Body text font */
+            color: var(--medium-text);
+            background-color: var(--background-light);
+            line-height: 1.8; /* Improved readability */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif; /* Heading font */
+            font-weight: 700; /* Bolder headings */
+            color: var(--dark-text);
+        }
+
+        h1 { font-size: 2.8rem; margin-bottom: 0.75rem; }
+        h2 { font-size: 2.2rem; margin-bottom: 2rem; }
+        h3 { font-size: 1.8rem; margin-bottom: 1.2rem; }
+        h4 { font-size: 1.4rem; margin-bottom: 1rem; }
+
+        section {
+            margin-bottom: 5rem; /* More vertical rhythm */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem; /* More padding on sides */
+        }
+
+        .card {
+             background-color: White;
+             border-radius: var(--border-radius);
+             box-shadow: var(--card-shadow);
+             padding: 2.5rem; /* More padding */
+             transition: all 0.3s ease-in-out;
+        }
+         .card:hover {
+             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+         }
+
+
+        .timeline-container {
+            position: relative;
+            padding: 40px 0; /* More vertical space */
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px; /* Slightly narrower timeline column */
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--secondary-teal)); /* Gradient line */
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px); /* More dramatic animation */
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Custom easing */
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-teal); /* Teal dots */
+            border: 5px solid var(--background-light); /* Matches body background */
+            top: 25px; /* Adjust position */
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 0 3px rgba(0, 123, 128, 0.3); /* Subtle pulse effect shadow */
+            transition: all 0.3s ease-in-out;
+        }
+
+        .timeline-item:hover::after {
+             background: var(--primary-blue); /* Darker dot on hover */
+             transform: scale(1.1); /* Slight zoom */
+             box-shadow: 0 0 0 6px rgba(10, 66, 123, 0.4); /* More pronounced pulse */
+        }
+
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -10px; /* Adjust position */
+        }
+
+        .right::after {
+            left: -10px; /* Adjust position */
+        }
+
+         /* Connecting lines for desktop */
+         .timeline-item::before {
+             content: '';
+             position: absolute;
+             width: 50px;
+             height: 3px; /* Thicker connection line */
+             background: var(--secondary-teal);
+             top: 34px; /* Match dot position */
+             z-index: 1;
+         }
+
+        .left::before {
+             right: -50px;
+         }
+         .right::before {
+             left: -50px;
+         }
+
+
+        .content {
+            @extend .card; /* Inherit card styles */
+            padding: 2rem; /* Adjusted padding */
+            border-left: 6px solid var(--secondary-teal); /* Thicker, Teal border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+         .timeline-item.right .content {
+              border-left-color: var(--primary-blue); /* Dark blue border on right */
+         }
+
+         .content:hover {
+             transform: translateY(-8px); /* More pronounced lift */
+             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+         }
+
+
+        .step-card {
+            @extend .card; /* Inherit card styles */
+            border-left: 6px solid var(--primary-blue); /* Primary blue border */
+            position: relative;
+            padding-top: 3rem; /* Make space for step number */
+            overflow: hidden; /* Contain step number */
+        }
+
+        .step-number {
+            position: absolute;
+            top: 0; /* Position at the top edge */
+            left: 0; /* Position at the left edge */
+            background-color: var(--secondary-teal); /* Teal background */
+            color: White;
+            padding: 0.5rem 1rem; /* Padding */
+            font-size: 1.3rem; /* Larger font */
+            font-weight: bold;
+            z-index: 2;
+            border-bottom-right-radius: var(--border-radius); /* Rounded corner */
+            display: flex;
+            align-items: center;
+             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Small shadow */
+        }
+         .step-number i {
+             margin-right: 0.5rem;
+             font-size: 1.1em;
+         }
+
+
+         .step-card h4 {
+             margin-top: 0.5rem; /* Space below step number */
+             margin-bottom: 1.5rem; /* More space below title */
+             padding-left: 1rem; /* Align with step number text */
+         }
+
+        .accordion {
+            background-color: var(--background-light); /* Light grey background */
+            color: Blue;
+            cursor: pointer;
+            padding: 1.2rem 1.5rem; /* More padding */
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s ease, border-left-color 0.3s ease;
+            border-radius: var(--border-radius);
+            margin-bottom: 0.75rem; /* Space below */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid transparent; /* Default transparent border */
+            font-weight: 600; /* Bolder */
+        }
+
+         .accordion i {
+             transition: transform 0.3s ease;
+             color: var(--secondary-teal); /* Teal icon color */
+         }
+
+         .accordion.active i {
+             transform: rotate(180deg);
+             color: var(--primary-blue); /* Darker blue icon when active */
+         }
+
+        .accordion.active, .accordion:hover {
+            background-color: var(--background-medium); /* Slightly darker on hover/active */
+            border-left: 5px solid var(--secondary-teal); /* Teal highlight border */
+        }
+         .accordion.active {
+              border-left-color: var(--primary-blue); /* Darker blue when active */
+         }
+
+        .panel {
+            padding: 0 1.5rem; /* Match accordion padding */
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out; /* Smoother ease */
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+             margin-top: -0.75rem; /* Overlap slightly with accordion */
+            margin-bottom: 1.5rem; /* More space below closed panel */
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+        }
+
+         .panel-content {
+            padding: 1.5rem 0; /* Padding inside panel content */
+            border-top: 1px solid var(--light-grey); /* Light border */
+             color: var(--medium-text);
+         }
+         .panel-content p, .panel-content ul {
+             margin-bottom: 1em;
+         }
+         .panel-content ul {
+             list-style: disc;
+             padding-left: 30px; /* More padding for list */
+         }
+         .panel-content ul li {
+             margin-bottom: 0.75em; /* More space between list items */
+         }
+          .panel-content ul ul {
+              list-style: circle;
+              margin-top: 0.5em;
+              margin-bottom: 0.5em;
+              padding-left: 20px; /* Inner list padding */
+          }
+
+
+        .flow-chart {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .flow-node {
+            position: relative;
+            width: 100%;
+            max-width: 350px; /* Wider nodes */
+            padding: 1.2rem 1.8rem; /* More padding */
+            border-radius: var(--border-radius);
+            background: white;
+            box-shadow: var(--card-shadow);
+            margin: 15px 0; /* More space between nodes */
+            text-align: center;
+            z-index: 2;
+            border-left: 6px solid var(--secondary-teal); /* Teal border */
+            font-weight: 600;
+            color: var(--dark-text);
+            transition: all 0.3s ease-in-out;
+        }
+        .flow-node:hover {
+             transform: translateY(-8px);
+             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+             border-left-color: var(--primary-blue); /* Change border on hover */
+        }
+
+
+        .flow-node::after {
+            content: "";
+            position: absolute;
+            bottom: -25px; /* More space */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent; /* Larger arrow */
+            border-right: 12px solid transparent; /* Larger arrow */
+            border-top: 12px solid var(--light-grey); /* Arrow color */
+            z-index: 1;
+        }
+
+        .flow-node:last-child::after {
+            display: none;
+        }
+
+        .flow-connector {
+            width: 4px; /* Matches timeline line width */
+            height: 35px; /* More space */
+            background-color: var(--light-grey); /* Connector color */
+            margin: 0;
+            z-index: 1;
+        }
+
+        .key-concept-card {
+            @extend .card; /* Inherit card styles */
+            border-left: 6px solid var(--accent-green); /* Green border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            background-color: var(--background-light); /* Light background for emphasis */
+        }
+        .key-concept-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+        }
+         .key-concept-card h3 {
+             margin-bottom: 0.75rem; /* Space below title */
+             font-size: 1.5rem;
+             align-items: center;
+         }
+        .key-concept-card i {
+             color: var(--secondary-teal); /* Teal icon */
+             margin-right: 1rem; /* More space after icon */
+             font-size: 1.8rem; /* Larger icon */
+         }
+
+         .insight-box {
+             background-color: #e0f2f7; /* Very Light Blue */
+             border-left: 4px solid var(--secondary-teal); /* Teal border */
+             padding: 1rem 1.5rem; /* Padding */
+             border-radius: var(--border-radius);
+             margin-top: 1.5rem;
+             font-size: 0.95rem;
+             color: var(--dark-text);
+             line-height: 1.6;
+         }
+         .insight-box strong {
+             color: var(--primary-blue); /* Primary blue for strong text */
+         }
+
+         .challenge-item {
+             border-bottom: 1px solid var(--light-grey);
+             padding-bottom: 1.5rem;
+             margin-bottom: 1.5rem;
+         }
+         .challenge-item:last-child {
+             border-bottom: none;
+             padding-bottom: 0;
+             margin-bottom: 0;
+         }
+         .challenge-item h3 {
+             font-size: 1.3rem;
+             margin-bottom: 0.75rem;
+         }
+         .challenge-item p {
+             color: var(--medium-text);
+         }
+
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.5rem; }
+            h4 { font-size: 1.3rem; }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .timeline::after {
+                left: 20px; /* Move line to the left */
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 40px; /* Adjust padding */
+                padding-right: 10px; /* Adjust padding */
+            }
+
+            .timeline-item::after {
+                left: 12px; /* Align dot with line */
+                top: 20px; /* Adjust position */
+                 width: 14px; /* Smaller dot */
+                 height: 14px;
+                 border-width: 3px; /* Smaller border */
+            }
+             .timeline-item:hover::after {
+                 transform: scale(1.1);
+                 box-shadow: 0 0 0 4px rgba(0, 123, 128, 0.3);
+             }
+
+
+            .left::after, .right::after {
+                left: 12px; /* Ensure dots are on the left for both */
+            }
+
+            .right {
+                left: 0; /* Stack items */
+            }
+
+            /* Remove desktop connecting lines */
+             .timeline-item::before {
+                 display: none;
+             }
+
+            .content {
+                padding: 1.5rem; /* Adjust padding */
+                 border-left-width: 5px; /* Adjust border thickness */
+            }
+             .timeline-item.right .content {
+                  border-left-color: var(--primary-blue); /* Keep dark blue on left for stacked items */
+                  border-right: none; /* Remove right border */
+             }
+
+             .step-card {
+                 padding: 1.5rem; /* Adjust padding */
+                 padding-top: 2.5rem; /* Space for step number */
+                  border-left-width: 5px;
+             }
+
+             .step-number {
+                 font-size: 1.1rem;
+                 padding: 0.3rem 0.8rem;
+             }
+             .step-number i {
+                 margin-right: 0.3rem;
+                 font-size: 1em;
+             }
+
+             .step-card h4 {
+                 margin-top: 0.5rem;
+                 margin-bottom: 1rem;
+                 padding-left: 0.5rem; /* Adjust alignment */
+             }
+
+             .accordion {
+                  padding: 1rem 1.2rem; /* Adjust padding */
+                  border-left-width: 4px;
+                  margin-bottom: 0.5rem;
+             }
+             .panel {
+                 padding: 0 1.2rem; /* Adjust padding */
+                 margin-bottom: 1rem;
+             }
+             .panel-content {
+                 padding: 1rem 0;
+             }
+              .panel-content ul {
+                  padding-left: 25px;
+              }
+
+
+             .flow-node {
+                 max-width: 95%; /* Allow wider nodes on smaller screens */
+                 padding: 1rem 1.5rem;
+                  border-left-width: 5px;
+             }
+              .flow-node::after {
+                  bottom: -20px;
+                  border-left-width: 10px;
+                  border-right-width: 10px;
+                  border-top-width: 10px;
+              }
+              .flow-connector {
+                  height: 30px;
+              }
+
+             .key-concept-card {
+                 padding: 1.5rem;
+                  border-left-width: 5px;
+             }
+              .key-concept-card h3 {
+                  font-size: 1.3rem;
+              }
+             .key-concept-card i {
+                  margin-right: 0.5rem;
+                  font-size: 1.5rem;
+              }
+
+             .insight-box {
+                 padding: 1rem;
+                 border-left-width: 4px;
+             }
+              .challenge-item h3 {
+                  font-size: 1.2rem;
+              }
+        }
+    </style>
+  <meta name="description" content="Healthcare Keyword Research Guide: Premium Interactive Experience :root { --primary-blue: #0a427b; /* Deep Professional Blue */ --secondary-teal: #007b80; ...">
   <link rel="canonical" href="https://shaynly.com/healthcare-keyword-research-guide/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/healthcare-keyword-research-guide/">
   <meta property="og:title" content="Healthcare Keyword Research: Comprehensive interactive Guide - Shaynly">
-  <meta property="og:description" content="Healthcare Keyword Research Guide: Premium Interactive Experience n :root {n --primary-blue: #0a427b; /* Deep Professional Blue */n --s">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2025/05/Healthcare-Keyword-Research.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:description" content="Healthcare Keyword Research Guide: Premium Interactive Experience :root { --primary-blue: #0a427b; /* Deep Professional Blue */ --secondary-teal: #007b80; ...">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Healthcare Keyword Research: Comprehensive interactive Guide - Shaynly">
-  <meta name="twitter:description" content="Healthcare Keyword Research Guide: Premium Interactive Experience n :root {n --primary-blue: #0a427b; /* Deep Professional Blue */n --s">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2025/05/Healthcare-Keyword-Research.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:description" content="Healthcare Keyword Research Guide: Premium Interactive Experience :root { --primary-blue: #0a427b; /* Deep Professional Blue */ --secondary-teal: #007b80; ...">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,48 +552,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Healthcare Keyword Research: Comprehensive interactive Guide",
-  "name": "Healthcare Keyword Research: Comprehensive interactive Guide",
-  "description": "n n n n n n Healthcare Keyword Research Guide: Premium Interactive Experience n n n n n :root {
---primary-blue: #0a427b; /* Deep Professional Blue */n --s",
-  "url": "https://shaynly.com/healthcare-keyword-research-guide/",
-  "datePublished": "2025-05-15",
-  "dateModified": "2025-05-15",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2025/05/Healthcare-Keyword-Research.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -103,186 +574,776 @@
       </nav>
     </div>
   </header>
-
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/healthcare/">Healthcare</a> <span>/</span> <span>Healthcare Keyword Research: Comprehensive interactive Guide</span>
+    <header class="bg-white shadow-sm py-6">
+        <div class="container text-center">
+            <h1>Comprehensive Guide to Healthcare Keyword Research</h1>
+            <p class="text-gray-600 mt-1">Unlock Visibility & Connect with Patients Online</p>
         </div>
-        <a href="/category/healthcare/" class="cat-badge" style="text-decoration:none;">Healthcare</a>
-        <h1 class="article-title">Healthcare Keyword Research: Comprehensive interactive Guide</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2025-05-15</span>
-          <span>•</span>
-          <span>27 min read</span>
-        </div>
+    </header>
 
-        <img src="/wp-content/uploads/2025/05/Healthcare-Keyword-Research.png" alt="Healthcare Keyword Research: Comprehensive interactive Guide" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
+    <main class="py-10">
+        <section class="container">
+            <div class="card text-center">
+                <h2 class="mb-4">The Crucial Role of Keywords in Healthcare SEO</h2>
+                <p class="text-gray-700 mb-4">In the healthcare sector, effective online presence is vital. It's how patients find information on symptoms, research conditions, evaluate treatment options, and ultimately locate trusted providers. Keyword research is the diagnostic tool of SEO – it reveals the patient's needs, fears, and questions, allowing you to deliver the right content and services at the right time.</p>
+                <p class="text-gray-700">For healthcare websites (dealing with sensitive YMYL topics), authority and trust (E-E-A-T) are paramount. Strategic keyword targeting ensures your credible information reaches those who need it most. Follow this guide for a systematic approach to healthcare keyword research.</p>
+            </div>
+        </section>
 
-        <div class="article-content">
-          
-    
-    <main class="py-10">        <section class="container">            <div class="card text-center">                <h2 class="mb-4">The Crucial Role of Keywords in Healthcare SEO</h2>                <p class="text-gray-700 mb-4">In the healthcare sector, effective online presence is vital. It's how patients find information on symptoms, research conditions, evaluate treatment options, and ultimately locate trusted providers. Keyword research is the diagnostic tool of SEO – it reveals the patient's needs, fears, and questions, allowing you to deliver the right content and services at the right time.</p>                <p class="text-gray-700">For healthcare websites (dealing with sensitive YMYL topics), authority and trust (E-E-A-T) are paramount. Strategic keyword targeting ensures your credible information reaches those who need it most. Follow this guide for a systematic approach to healthcare keyword research.</p>            </div>        </section>
-        <!-- Step-by-Step Guide Section -->        <section class="container">             <h2 class="text-center">The Healthcare Keyword Research Process: Step-by-Step</h2>
-             <div class="flow-chart mb-12">                 <div class="flow-node">Phase 1: Understand Intent</div>                 <div class="flow-connector"></div>                 <div class="flow-node">Phase 2: Gather & Expand</div>                 <div class="flow-connector"></div>                 <div class="flow-node">Phase 3: Analyze Competitio</div>                 <div class="flow-connector"></div>                 <div class="flow-node">Phase 4: Structure & Prioritize</div>                  <div class="flow-connector"></div>                 <div class="flow-node">Phase 5: Content Development</div>                  <div class="flow-connector"></div>                 <div class="flow-node">Phase 6: Enhance & Engage</div>                  <div class="flow-connector"></div>                 <div class="flow-node">Phase 7: Local Focus</div>                  <div class="flow-connector"></div>                 <div class="flow-node">Phase 8: Monitor & Adapt</div>             </div>
+        <!-- Step-by-Step Guide Section -->
+        <section class="container">
+             <h2 class="text-center">The Healthcare Keyword Research Process: Step-by-Step</h2>
+
+             <div class="flow-chart mb-12">
+                 <div class="flow-node">Phase 1: Understand Intent</div>
+                 <div class="flow-connector"></div>
+                 <div class="flow-node">Phase 2: Gather & Expand</div>
+                 <div class="flow-connector"></div>
+                 <div class="flow-node">Phase 3: Analyze Competition</div>
+                 <div class="flow-connector"></div>
+                 <div class="flow-node">Phase 4: Structure & Prioritize</div>
+                  <div class="flow-connector"></div>
+                 <div class="flow-node">Phase 5: Content Development</div>
+                  <div class="flow-connector"></div>
+                 <div class="flow-node">Phase 6: Enhance & Engage</div>
+                  <div class="flow-connector"></div>
+                 <div class="flow-node">Phase 7: Local Focus</div>
+                  <div class="flow-connector"></div>
+                 <div class="flow-node">Phase 8: Monitor & Adapt</div>
+             </div>
+
             <div class="space-y-10"> 
-                <div class="step-card">                    <span class="step-number"><i class="fas fa-handshake"></i> Phase 1: Understand User Intent</span>                    <h4>Deciphering the Patient's Need Behind the Query</h4>                    <p class="text-gray-700 mb-6">This phase goes beyond identifying keywords; it's about understanding the motivation, context, and goal of the person typing into the search bar. In healthcare, this empathy is critical.</p>
-                    <button class="accordion">                         <span><i class="fas fa-lightbulb mr-3"></i> Step 1.1: Identify Core Health Topics & Services</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Start by listing the primary medical conditions you treat, the services you offer, the procedures you perform, and the specific populations you serve. This provides a foundational understanding of your expertise area.</p>                              <ul>                                 <li>Brainstorm broad categories (e.g., Cancer Care, Heart & Vascular, Pediatrics, Mental Health).</li>                                 <li>List specific conditions within categories (e.g., Breast Cancer, Heart Failure, Autism Spectrum Disorder, Depression).</li>                                 <li>Detail services and procedures (e.g., Chemotherapy, Cardiac Catheterization, Well-Child Visits, Cognitive Behavioral Therapy).</li>                                 <li>Consider your geographic focus (e.g., "Hospital in [City]", "Clinic near [Landmark]").</li>                             </ul>                             <div class="insight-box">                                 <strong>Insight:</strong> This step is about establishing the boundaries of your research and ensuring relevance to your organization's offerings.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-database mr-3"></i> Step 1.2: Analyze Raw Search Query Data</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Dive into data sources to see the actual language users employ when searching for topics related to your core areas.</p>                             <ul>                                 <li><strong><a href="https://shaynly.com/google-vs-perplexity/" title="Google vs Perplexity: The Complete Guide to the Future of Search" target="_blank" rel="noopener"  data-wpil-monitor-id="761">Google Search</a> Console:</strong> Your most valuable tool. Look at "Performance" reports to see the exact queries users are typing and how your site currently appears (or doesn't). Identify variations you weren't aware of.</li>                                 <li><strong>Keyword Research Tools:</strong> Use tools (Ahrefs, SEMrush, Moz Keyword Explorer, Google Keyword Planner) to enter your core topics and generate related keyword ideas, focusing initially on variations and suggestions.</li>                                 <li><strong>"People Also Ask" & "Related Searches":</strong> Manually search some of your core topics on Google and analyze the "People Also Ask" box and the "Related Searches" at the bottom of the results page. These are actual related queries Google identifies.</li>                             </ul>                             <div class="insight-box">                                 <strong>Actionable:</strong> Export raw search query data from GSC and compile initial lists from keyword tools. Look for patterns in how users phrase their queries.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-tags mr-3"></i> Step 1.3: Categorize Queries by Intent Type</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Review the collected queries and assign them to the primary intent categories. Many healthcare queries have nuances.</p>                             <ul>                                 <li><strong>Informational:</strong> Symptoms ("early signs of...", "what does ... feel like"), Causes ("why do i get..."), Treatments (general info - "options for treating..."), Prevention, Diagnosis info, General health facts.</li>                                 <li><strong>Navigational:</strong> Specific brand names ("[Hospital Name] website"), Physician names ("Dr. [Name] clinic"), Department names ("[Hospital Name] cardiology department").</li>                                 <li><strong>Commercial Investigation:</strong> Comparing providers ("best cancer centers in [State]"), Researching specific services/procedures costs ("cost of [procedure]", "insurance for [therapy]"), Doctor research ("find a doctor for...", "pediatrician reviews").</li>                                 <li><strong>Transactional:</strong> Appointment booking ("schedule appointment [specialist]", "book blood test online"), Finding location/contact ("urgent care near me open now", "[clinic name] phone number"), Patient portal login ("mychart login").</li>                             </ul>                             <div class="insight-box">                                 <strong>Insight:</strong> Some queries can have mixed intent (e.g., "knee pain treatment" could be informational or commercial investigation). Prioritize the *dominant* intent based on common user goals.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-binoculars mr-3"></i> Step 1.4: Analyze Search Engine Results Page (SERP) Intent</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Google's SERP is the best indicator of how the search engine interprets user intent for a given query.</p>                             <ul>                                 <li>For your most important keywords, perform searches and analyze the results page composition.</li>                                 <li>Look for:n                                     <ul>                                         <li>Are the top results mostly informational articles (Informational)?</li>                                         <li>Does a local pack appear prominently (implies local/navigational/transactional intent)?</li>                                         <li>Are there featured snippets answering a question (Informational)?</li>                                         <li>Are the results primarily service pages or directories (Commercial/Transactional)?</li>                                         <li>Are there video results (Informational/How-to)?</li>                                     </ul>                                 </li>                             </ul>                             <div class="insight-box">                                 <strong>Actionable:</strong> The SERP analysis validates your intent categorization. If <a href="https://shaynly.com/google-ai-agentic-search/" title="Google AI Agentic Search Has &#8220;Hijacked&#8221; Local Search 2026" target="_blank" rel="noopener"  data-wpil-monitor-id="1524">Google shows local</a> results for a term you thought was purely informational, you know local optimization is also needed for that term.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-users-cog mr-3"></i> Step 1.5: Consult Internal Experts & Patient Feedback</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Gather qualitative insights from staff who interact directly with patients and analyze patient feedback.</p>                             <ul>                                 <li><strong>Medical Staff:</strong> Doctors, nurses, therapists know the common questions, concerns, and misconceptions patients have about conditions and treatments. Their language is also valuable.</li>                                 <li><strong>Front Desk/Admissions:</strong> Understand common queries about appointments, insurance, and logistics (often transactional/navigational).</li>                                 <li><strong>Patient Feedback:</strong> Analyze common themes in surveys, online reviews (Google, Healthgrades, etc.), and website feedback forms. What are patients struggling to find or understand?</li>                             </ul>                             <div class="insight-box">                                 <strong>Insight:</strong> This step provides real-world context to the data, validating your intent assumptions and revealing important nuances in patient needs and language that tools might miss.                             </div>                         </div>                     </div>
-                     <button class="accordion">                         <span><i class="fas fa-sitemap mr-3"></i> Step 1.6: Document & Map Intent to Content Strategy</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Create a clear mapping:</p>                             <ul>                                 <li>Compile your refined list of keywords with their identified primary intent.</li>                                 <li>Map each keyword (or keyword group) and its intent to a specific type of content or page on your website (e.g., informational article, service page, physician bio, contact form, location page).</li>                                 <li>Identify content gaps where you lack the necessary page type to match the user's intent for important keywords.</li>                             </ul>                             <div class="insight-box">                                 <strong>Actionable:</strong> This mapping becomes your content plan. It ensures that for each targeted keyword, you have a relevant, intent-aligned page ready to rank and meet the user's need.                             </div>                         </div>                     </div>                </div>
-                 <div class="step-card">                    <span class="step-number"><i class="fas fa-compass"></i> Phase 2: Gather & Expand Keywords</span>                    <h4>Building a Comprehensive List of Potential Search Terms</h4>                     <p class="text-gray-700 mb-6">Now that you understand user intent, it's time to build out your keyword list systematically, using tools and techniques to find all relevant variations.</p>
-                    <button class="accordion">                         <span><i class="fas fa-seedling mr-3"></i> Step 2.1: Start with Seed Keywords (Revisited)</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Using the insights from Phase 1 (core topics, services, conditions, patient language), refine your initial list of broad seed keywords. These will be the starting points for your tool research.</p>                              <div class="insight-box">                                 <strong>Insight:</strong> Seed keywords aren't necessarily terms you'll target directly, but they unlock hundreds or thousands of related long-tail and specific keywords in research tools.                             </div>                         </div>                     </div>
-                     <button class="accordion">                         <span><i class="fas fa-tools mr-3"></i> Step 2.2: Leverage Keyword Research Tools for Expansio</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Enter your seed keywords into various tools to generate large lists of related terms. Focus on the keyword suggestions features.</p>                             <ul>                                 <li>Explore variations, synonyms, and related terms the tools provide.</li>                                 <li>Pay close attention to the "Questions" feature in tools, as these directly reveal informational intent queries.</li>                                 <li>Look for keywords grouped by topic or relevance.</li>                             </ul>                             <div class="insight-box">                                 <strong>Actionable:</strong> Don't filter too much at this stage. Collect a large, raw list. Filtering and prioritization come later.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-search-plus mr-3"></i> Step 2.3: Find Long-Tail Keywords & Patient Language Variations</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Specifically look for longer, more specific phrases (often 3+ words) that reveal clearer intent. Use the patient language insights from Phase 1.</p>                             <ul>                                 <li>Filter keyword lists in tools for queries containing question words (how, what, why, where).</li>                                 <li><a href="https://shaynly.com/how-to-add-your-website-to-google-search/" title="How to Add Your Website to Google Search: Complete 24-48 Hour Indexing Guide" target="_blank" rel="noopener"  data-wpil-monitor-id="1423">Search manually on Google</a> and use "People Also Ask," "Related Searches," and auto-suggest features.</li>                                 <li>Explore patient forums and communities to see how people naturally phrase questions and symptoms.</li>                             </ul>                             <div class="insight-box">                                 <strong>Insight:</strong> Long-tail keywords are often less competitive, easier to rank for, and attract users with higher conversion potential. They allow you to target niche needs effectively.                             </div>                         </div>                     </div>                 </div>
-                <div class="step-card">                    <span class="step-number"><i class="fas fa-users-gear"></i> Phase 3: Analyze Competitors</span>                    <h4>Benchmarking and Identifying Opportunities</h4>                     <p class="text-gray-700 mb-6">Understanding your competitive landscape is essential for finding keywords where you can realistically rank and identifying content opportunities.</p>
-                    <button class="accordion">                         <span><i class="fas fa-crosshairs mr-3"></i> Step 3.1: Identify Your True Competitors</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Think broadly:</p>                             <ul>                                 <li><strong>Direct Local:</strong> Other hospitals/clinics in your immediate service area.</li>                                 <li><strong>Direct Service:</strong> Organizations offering the *exact* same specialized service, even if slightly further away.</li>                                 <li><strong>Indirect (Informational):</strong> Large health portals (WebMD, Healthline), government sites (NIH, CDC), non-profits (ADA, AHA) that rank for informational keywords you target.</li>                             </ul>                             <div class="insight-box">                                 <strong>Insight:</strong> You're not just competing with other local providers; for informational keywords, you're competing with the biggest health websites in the world. Understand who ranks for the terms *you* care about.                             </div>                         </div>                     </div>
-                     <button class="accordion">                         <span><i class="fas fa-cogs mr-3"></i> Step 3.2: Analyze Competitor Keyword Performance</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Use SEO tools to:</p>                             <ul>                                 <li>See which keywords your top competitors rank for, especially those ranking on page 1.</li>                                 <li>Identify their top-performing pages (the pages driving the most organic traffic).</li>                                 <li>Estimate their organic traffic and visibility trends.</li>                                 <li>Look at the types of keywords they target (informational, local, etc.).</li>                             </ul>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-vector-square mr-3"></i> Step 3.3: Identify Keyword Gaps & Content Opportunities</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Compare competitor keyword lists to your own brainstormed list and your Phase 2 expanded list.</p>                             <ul>                                 <li><strong>Keyword Gaps:</strong> Find keywords where competitors rank well, but you don't rank at all. Are these relevant to you? Can you realistically compete?</li>                                 <li><strong>Content Gaps/Opportunities:</strong> Look at *what kind* of content your competitors use to rank. Can you create a more comprehensive, higher-E-E-A-T piece of content for the same topic? Can you target related long-tail keywords they've missed?</li>                             </ul>                              <div class="insight-box">                                 <strong>Actionable:</strong> Focus on "low-hanging fruit" – relevant keywords where competition is moderate, or where you can leverage your specific expertise (E-E-A-T) to create a superior ranking piece.                             </div>                         </div>                     </div>                 </div>
-                 <div class="step-card">                    <span class="step-number"><i class="fas fa-sort-amount-up"></i> Phase 4: Organize & Prioritize</span>                    <h4>Structuring Your Keywords for Actio</h4>                     <p class="text-gray-700 mb-6">With a large list of keywords and competitive insights, it's time to structure and prioritize to create a focused strategy.</p>
-                     <button class="accordion">                         <span><i class="fas fa-object-group mr-3"></i> Step 4.1: Group Keywords by Topic & Intent</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Cluster related keywords together. A keyword group represents a topic that can likely be covered by a single piece of content or a specific page on your site.</p>                             <ul>                                 <li>Group by Condition: "Diabetes Symptoms", "Diabetes Treatment Options", "Managing Blood Sugar".</li>                                 <li>Group by Service: "Physical Therapy for Back Pain", "Sports Injury Therapy", "Physical Therapy Near Me".</li>                                 <li>Refine groups based on user intent identified in Phase 1.</li>                             </ul>                              <div class="insight-box">                                 <strong>Insight:</strong> Well-organized keyword groups simplify content planning and ensure comprehensive coverage of topics, improving topical authority.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-tasks mr-3"></i> Step 4.2: Evaluate & Prioritize Based on Metrics</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>For each keyword or group, consider:</p>                             <ul>                                 <li><strong>Search Volume:</strong> Potential reach. (Use tool data, understand these are estimates).</li>                                 <li><strong>Keyword Difficulty/Competition:</strong> How hard is it to rank? (Use tool scores, analyze SERP strength).</li>                                 <li><strong>Relevance:</strong> How closely does it align with your services and expertise? (Your internal assessment).</li>                                 <li><strong>Business Value/Conversion Potential:</strong> How likely is a user searching this term to take a desired action (call, book, inquire)? (Often higher for transactional/commercial intent).</li>                             </ul>                             <div class="insight-box">                                 <strong>Actionable:</strong> Use a scoring system or simple High/Medium/Low assessment for each factor. Prioritize keywords that offer a good balance of volume, relevance, and realistic competition, with a strong emphasis on business value for transactional terms.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-balance-scale mr-3"></i> Step 4.3: Balance Short-Tail and Long-Tail</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Your final prioritized list should include a mix:</p>                             <ul>                                 <li><strong>Short-Tail/Head Terms:</strong> High volume, foundational (e.g., "diabetes"). Target with comprehensive pillar pages, aim for long-term authority.</li>                                 <li><strong>Long-Tail Keywords:</strong> Lower volume, high specificity, high intent (e.g., "how to manage type 2 diabetes with diet"). Target with detailed sub-pages, blog posts, or FAQ sections. Easier wins, higher conversion rates.</li>                             </ul>                              <div class="insight-box">                                 <strong>Insight:</strong> A robust <a href="https://shaynly.com/how-to-build-a-personal-brand-in-2025-ai-driven/" target="_blank" rel="noopener"  data-wpil-monitor-id="406">strategy builds</a> authority around broad topics with pillar content while capturing highly specific, ready-to-act users via long-tail terms.                             </div>                         </div>                     </div>                 </div>
-                 <div class="step-card">                    <span class="step-number"><i class="fas fa-file-medical"></i> Phase 5: Content Development</span>                    <h4>Creating Authoritative, Patient-Focused Content</h4>                     <p class="text-gray-700 mb-6">This is where your keyword research comes to life. Create content that is medically accurate, comprehensive, and directly addresses the user's intent, while building trust.</p>
-                    <button class="accordion">                         <span><i class="fas fa-highlighter mr-3"></i> Step 5.1: Outline Content Based on Keywords & Intent</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>For each keyword group or target page, create a detailed outline. Use keywords and related questions as headings and subheadings.</p>                             <ul>                                 <li>Example: For "Symptoms of Diabetes," sections might include "Early Warning Signs," "Common Symptoms," "Symptoms in Men vs. Women," "When to See a Doctor."</li>                             </ul>                             <div class="insight-box">                                 <strong>Actionable:</strong> Your outline ensures you cover all key aspects of the topic relevant to the user's search intent, improving content depth and relevance.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-edit mr-3"></i> Step 5.2: Write Accurate, Comprehensive, Engaging Content</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Write clearly, concisely, and with empathy. Use patient-friendly language where appropriate, while maintaining medical accuracy.</p>                             <ul>                                 <li>Address the user's query directly and early in the content.</li>                                 <li>Break down complex medical information into understandable terms.</li>                                 <li>Use formatting (bold text, lists, short paragraphs) for readability.</li>                             </ul>                         </div>                     </div>
-                     <button class="accordion">                         <span><i class="fas fa-user-shield mr-3"></i> Step 5.3: Demonstrate E-E-A-T Rigorously</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Crucial for YMYL healthcare content:</p>                             <ul>                                 <li><strong>Authorship:</strong> Ensure content is written or reviewed by <a href="https://shaynly.com/qualified-medicare-beneficiary-qmb/" target="_blank" rel="noopener"  data-wpil-monitor-id="408">qualified medical</a> professionals (MDs, RNs, PhDs, etc.). Clearly display author name and credentials.</li>                                 <li><strong>Citations:</strong> Link to authoritative sources like medical journals, research papers, government health organizations (NIH, WHO, CDC), and reputable medical institutions.</li>                                 <li><strong>Accuracy:</strong> Double-check all medical facts and statistics. Update content regularly.</li>                                 <li><strong>Trust Signals:</strong> Secure website (HTTPS), clear <a href="https://shaynly.com/privacy-policy/" target="_blank" rel="noopener"  data-wpil-monitor-id="402">privacy policy</a>, terms of service, and contact information.</li>                             </ul>                              <div class="insight-box">                                 <strong>Insight:</strong> Google rewards websites that demonstrate expertise and trustworthiness, especially in healthcare. Your authors and sources are as important as the content itself.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-wrench mr-3"></i> Step 5.4: Implement On-Page SEO</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Integrate your primary and secondary keywords naturally where they make sense:</p>                             <ul>                                 <li>**Title Tag:** Include primary keyword, be compelling (under ~60 characters).</li>                                 <li>**Meta Description:** Compelling summary with primary keyword, encourage clicks (~150-160 characters).</li>                                 <li>**H1 Heading:** Your main topic title, usually includes the primary keyword.</li>                                 <li>**H2/H3 Headings:** Use related keywords and questions as subheadings.</li>                                 <li>**Body Text:** Include keywords naturally throughout the content.</li>                                 <li>**Image Alt Text:** Describe images and include keywords where relevant.</li>                             </ul>                             <p>Ensure a descriptive URL. Use internal links to relevant pages on your site.</p>                         </div>                     </div>                 </div>
-                 <div class="step-card">                    <span class="step-number"><i class="fas fa-paint-brush"></i> Phase 6: Enhance & Engage</span>                    <h4>Improving User Experience and Content Impact</h4>                     <p class="text-gray-700 mb-6">Make your high-quality content even better with engaging elements that keep users on the page and help them understand complex information.</p>
-                     <button class="accordion">                         <span><i class="fas fa-chart-area mr-3"></i> Step 6.1: Integrate Rich Media</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Use visuals to illustrate points, break up text, and appeal to different learning styles:</p>                             <ul>                                 <li>Infographics explaining complex processes or statistics.</li>                                 <li>Medical diagrams or anatomical illustrations.</li>                                 <li>Short, informative videos (explaining a procedure, patient testimonial snippet).</li>                                 <li>High-quality images of your facility or staff (builds familiarity/trust).</li>                             </ul>                              <div class="insight-box">                                 <strong>Insight:</strong> Rich media improves engagement metrics, which can positively influence rankings. It also makes your content more shareable. Remember to optimize media file sizes and use descriptive alt text for accessibility and SEO.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-mouse-pointer mr-3"></i> Step 6.2: Add Interactive Elements</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                            <p>Interactive features can increase time on page and provide dynamic value:</p>                             <ul>                                 <li>Expandable FAQ sections or accordions (like these!).</li>                                 <li>Interactive body maps or symptom checkers (with clear disclaimers).</li>                                 <li>Simple quizzes or self-assessment tools (again, with strong medical disclaimers).</li>                                 <li>Calculators (e.g., <a href="https://shaynly.com/best-free-bmi-calculator/" target="_blank" rel="noopener"  data-wpil-monitor-id="404">BMI calculator</a>).</li>                             </ul>                         </div>                     </div>
-                     <button class="accordion">                         <span><i class="fas fa-mobile-alt mr-3"></i> Step 6.3: Ensure Mobile Responsiveness</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                            <p>A significant portion of healthcare searches happen on mobile. Your content and site structure must be fully responsive and provide an excellent user experience on all devices.</p>                             <div class="insight-box">                                 <strong>Actionable:</strong> Test your pages on various screen sizes and devices. Pay attention to load speed, readability, button sizes, and how interactive elements function on touch screens.                             </div>                         </div>                     </div>                 </div>
-                 <div class="step-card">                    <span class="step-number"><i class="fas fa-location-arrow"></i> Phase 7: Optimize for Local Search</span>                    <h4>Connecting with Patients in Your Service Area</h4>                     <p class="text-gray-700 mb-6">For physical healthcare providers, local SEO is paramount for capturing transactional and navigational searches from nearby patients.</p>
-                    <button class="accordion">                         <span><i class="fas fa-building mr-3"></i> Step 7.1: Master Your Google Business Profile</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Your GBP listing is often the first thing local patients see. Optimize it fully:</p>                             <ul>                                 <li>Claim and verify your listing(s).</li>                                 <li>Provide accurate Name, Address, Phone Number (NAP).</li>                                 <li>Select relevant categories (be specific!).</li>                                 <li>Write a compelling description with keywords and services.</li>                                 <li>Add hours, photos, services, and link to your website.</li>                                 <li>Use GBP Posts for updates.</li>                             </ul>                              <div class="insight-box">                                 <strong>Insight:</strong> GBP is critical for ranking in the local pack and on Google Maps, essential for "near me" searches.                             </div>                         </div>                     </div>
-                     <button class="accordion">                         <span><i class="fas fa-share-alt mr-3"></i> Step 7.2: Build and Manage Local Citations & Reviews</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <ul>                                 <li>Ensure NAP consistency across online directories (Yelp, Healthgrades, Vitals, Facebook, etc.).</li>                                 <li>Build citations on relevant local and healthcare-specific directories.</li>                                 <li>Actively encourage patients to leave reviews on GBP and other platforms.</li>                                 <li>Respond professionally and promptly to all reviews (positive and negative).</li>                             </ul>                              <div class="insight-box">                                 <strong>Actionable:</strong> Consistent NAP builds trust signals. Reviews are a major local ranking factor and build patient trust.                             </div>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-map-marked-alt mr-3"></i> Step 7.3: Implement On-Site Local SEO</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <ul>                                 <li>Include your NAP clearly on your website, ideally in the footer.</li>                                 <li>Create dedicated, keyword-optimized landing pages for each location you serve.</li>                                 <li>Target geo-modified keywords in your content and meta tags (e.g., "pediatric therapy in [City]", "find [Specialist] near [Zip Code]").</li>                                 <li>Embed Google Maps on your location pages.</li>                             </ul>                         </div>                     </div>                 </div>
-                 <div class="step-card">                    <span class="step-number"><i class="fas fa-chart-pie"></i> Phase 8: Track Performance & Refine</span>                    <h4>Continuous Monitoring and Adaptatio</h4>                     <p class="text-gray-700 mb-6">SEO is not a set-it-and-forget-it process. Monitor your keyword performance, traffic, and user behavior to identify what's working and where to improve.</p>
-                     <button class="accordion">                         <span><i class="fas fa-gauge-high mr-3"></i> Step 8.1: Monitor Key Performance Indicators (KPIs)</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Use Google Analytics, Google Search Console, and potentially third-party rank tracking tools to monitor:</p>                             <ul>                                 <li>Keyword rankings (overall and for specific terms).</li>                                 <li>Organic traffic (sessions, users, by landing page).</li>                                 <li>User behavior metrics (bounce rate, time on page, pages per session).</li>                                 <li>Conversion rates (appointment requests, contact form submissions, phone calls from the website).</li>                                 <li>Which keywords are driving traffic and conversions (GSC, GA).</li>                                 <li>Local search visibility (GBP insights, local pack rankings).</li>                             </ul>                         </div>                     </div>
-                     <button class="accordion">                         <span><i class="fas fa-redo-alt mr-3"></i> Step 8.2: Analyze Data and Identify Opportunities</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Regularly review your data (e.g., monthly or quarterly):</p>                             <ul>                                 <li>Which keywords are ranking well? Which are dropping?</li>                                 <li>Which content pages are attracting the most traffic/conversions? Which are underperforming?</li>                                 <li>Are there new queries appearing in GSC that you aren't targeting?</li>                                 <li>What is the user behavior on your key landing pages? (Are people staying and converting?).</li>                                 <li>Monitor competitor rankings for your target terms.</li>                             </ul>                         </div>                     </div>
-                    <button class="accordion">                         <span><i class="fas fa-tools mr-3"></i> Step 8.3: Refine Your Keyword & Content Strategy</span>                         <i class="fas fa-chevron-down"></i>                     </button>                     <div class="panel">                         <div class="panel-content">                             <p>Use your analysis to make informed decisions:</p>                             <ul>                                 <li>Target new keywords discovered in GSC or competitor analysis.</li>                                 <li>Update and improve content on underperforming pages.</li>                                 <li>Expand content around topics that are performing well.</li>                                 <li>Adjust your keyword prioritization based on new data.</li>                                 <li>Address any technical SEO issues identified (site speed, mobile usability).</li>                                 <li>Stay updated on <a href="https://shaynly.com/ucp-revolution-googles-universal-commerce-protocol/" title="The UCP Revolution: How Google&#8217;s Universal Commerce Protocol is Changing E-Commerce Forever" target="_blank" rel="noopener"  data-wpil-monitor-id="1577">Google algorithm changes</a> and healthcare industry news.</li>                             </ul>                             <div class="insight-box">                                 <strong>Insight:</strong> Healthcare SEO is a marathon, not a sprint. Consistent effort in monitoring and adapting your keyword and content strategy is key to long-term success and staying ahead in a competitive, ever-changing environment.                             </div>                         </div>                     </div>                 </div>            </div>        </section>
-        <!-- Key Concepts Section -->        <section class="container">            <h2 class="text-center">Essential Concepts for Healthcare SEO Success</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">                 <div class="key-concept-card">                    <h3 class="flex items-center"><i class="fas fa-heartbeat mr-3"></i> Patient-First Approach</h3>                    <p class="text-gray-700 text-sm">Your research and content must prioritize the needs, questions, and well-being of the patient above all else.</p>                </div>                 <div class="key-concept-card">                    <h3 class="flex items-center"><i class="fas fa-balance-scale-left mr-3"></i> E-E-A-T is Non-Negotiable</h3>                    <p class="text-gray-700 text-sm">Build and demonstrate Experience, Expertise, Authoritativeness, and Trustworthiness through authors, sources, and site quality.</p>                </div>                 <div class="key-concept-card">                    <h3 class="flex items-center"><i class="fas fa-search-location mr-3"></i> Local Search is Lifeblood</h3>                    <p class="text-gray-700 text-sm">Optimize aggressively for local searches ("near me," "[city] doctor") to capture ready-to-act patients.</p>                </div>                 <div class="key-concept-card">                    <h3 class="flex items-center"><i class="fas fa-comment-medical mr-3"></i> Embrace Patient Language</h3>                    <p class="text-gray-700 text-sm">Research and use the terms real patients use, not just medical jargon, especially for informational content.</p>                </div>                <div class="key-concept-card">                    <h3 class="flex items-center"><i class="fas fa-history mr-3"></i> Iteration & Improvement</h3>                    <p class="text-gray-700 text-sm">SEO is a continuous cycle of research, implementation, monitoring, and refinement.</p>                </div>                 <div class="key-concept-card">                    <h3 class="flex items-center"><i class="fas fa-handshake-alt mr-3"></i> Collaboration is Key</h3>                    <p class="text-gray-700 text-sm">Work closely with medical staff and patient-facing teams for invaluable insights.</p>                </div>            </div>        </section>
-        <!-- Conclusion Section -->        <section class="container">            <div class="card text-center">                <h2 class="mb-4">Empowering Health Through Visibility</h2>                <p class="text-gray-700 mb-4">Mastering healthcare keyword research is a powerful way for your organization to connect with individuals seeking health information and care. By systematically identifying and targeting the keywords patients use, creating authoritative and empathetic content, and maintaining a strong online presence, you not only improve search rankings but also fulfill a vital <a href="https://shaynly.com/phytochemicals-and-their-crucial-role-in-health/" target="_blank" rel="noopener"  data-wpil-monitor-id="410">role in guiding people toward better health</a> outcomes.</p>                <p class="text-gray-700">Approach this process with diligence, a patient-centric mindset, and a commitment to accuracy and trust. The impact of being easily discoverable online in the healthcare space is profound.</p>            </div>        </section>    </main>
+
+                <div class="step-card">
+                    <span class="step-number"><i class="fas fa-handshake"></i> Phase 1: Understand User Intent</span>
+                    <h4>Deciphering the Patient's Need Behind the Query</h4>
+                    <p class="text-gray-700 mb-6">This phase goes beyond identifying keywords; it's about understanding the motivation, context, and goal of the person typing into the search bar. In healthcare, this empathy is critical.</p>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-lightbulb mr-3"></i> Step 1.1: Identify Core Health Topics & Services</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Start by listing the primary medical conditions you treat, the services you offer, the procedures you perform, and the specific populations you serve. This provides a foundational understanding of your expertise area.</p>
+                              <ul>
+                                 <li>Brainstorm broad categories (e.g., Cancer Care, Heart & Vascular, Pediatrics, Mental Health).</li>
+                                 <li>List specific conditions within categories (e.g., Breast Cancer, Heart Failure, Autism Spectrum Disorder, Depression).</li>
+                                 <li>Detail services and procedures (e.g., Chemotherapy, Cardiac Catheterization, Well-Child Visits, Cognitive Behavioral Therapy).</li>
+                                 <li>Consider your geographic focus (e.g., "Hospital in [City]", "Clinic near [Landmark]").</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Insight:</strong> This step is about establishing the boundaries of your research and ensuring relevance to your organization's offerings.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-database mr-3"></i> Step 1.2: Analyze Raw Search Query Data</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Dive into data sources to see the actual language users employ when searching for topics related to your core areas.</p>
+                             <ul>
+                                 <li><strong><a href="https://shaynly.com/google-vs-perplexity/" title="Google vs Perplexity: The Complete Guide to the Future of Search" target="_blank" rel="noopener"  data-wpil-monitor-id="761">Google Search</a> Console:</strong> Your most valuable tool. Look at "Performance" reports to see the exact queries users are typing and how your site currently appears (or doesn't). Identify variations you weren't aware of.</li>
+                                 <li><strong>Keyword Research Tools:</strong> Use tools (Ahrefs, SEMrush, Moz Keyword Explorer, Google Keyword Planner) to enter your core topics and generate related keyword ideas, focusing initially on variations and suggestions.</li>
+                                 <li><strong>"People Also Ask" & "Related Searches":</strong> Manually search some of your core topics on Google and analyze the "People Also Ask" box and the "Related Searches" at the bottom of the results page. These are actual related queries Google identifies.</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Actionable:</strong> Export raw search query data from GSC and compile initial lists from keyword tools. Look for patterns in how users phrase their queries.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-tags mr-3"></i> Step 1.3: Categorize Queries by Intent Type</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Review the collected queries and assign them to the primary intent categories. Many healthcare queries have nuances.</p>
+                             <ul>
+                                 <li><strong>Informational:</strong> Symptoms ("early signs of...", "what does ... feel like"), Causes ("why do i get..."), Treatments (general info - "options for treating..."), Prevention, Diagnosis info, General health facts.</li>
+                                 <li><strong>Navigational:</strong> Specific brand names ("[Hospital Name] website"), Physician names ("Dr. [Name] clinic"), Department names ("[Hospital Name] cardiology department").</li>
+                                 <li><strong>Commercial Investigation:</strong> Comparing providers ("best cancer centers in [State]"), Researching specific services/procedures costs ("cost of [procedure]", "insurance for [therapy]"), Doctor research ("find a doctor for...", "pediatrician reviews").</li>
+                                 <li><strong>Transactional:</strong> Appointment booking ("schedule appointment [specialist]", "book blood test online"), Finding location/contact ("urgent care near me open now", "[clinic name] phone number"), Patient portal login ("mychart login").</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Insight:</strong> Some queries can have mixed intent (e.g., "knee pain treatment" could be informational or commercial investigation). Prioritize the *dominant* intent based on common user goals.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-binoculars mr-3"></i> Step 1.4: Analyze Search Engine Results Page (SERP) Intent</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Google's SERP is the best indicator of how the search engine interprets user intent for a given query.</p>
+                             <ul>
+                                 <li>For your most important keywords, perform searches and analyze the results page composition.</li>
+                                 <li>Look for:
+                                     <ul>
+                                         <li>Are the top results mostly informational articles (Informational)?</li>
+                                         <li>Does a local pack appear prominently (implies local/navigational/transactional intent)?</li>
+                                         <li>Are there featured snippets answering a question (Informational)?</li>
+                                         <li>Are the results primarily service pages or directories (Commercial/Transactional)?</li>
+                                         <li>Are there video results (Informational/How-to)?</li>
+                                     </ul>
+                                 </li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Actionable:</strong> The SERP analysis validates your intent categorization. If <a href="https://shaynly.com/google-ai-agentic-search/" title="Google AI Agentic Search Has &#8220;Hijacked&#8221; Local Search 2026" target="_blank" rel="noopener"  data-wpil-monitor-id="1524">Google shows local</a> results for a term you thought was purely informational, you know local optimization is also needed for that term.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-users-cog mr-3"></i> Step 1.5: Consult Internal Experts & Patient Feedback</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Gather qualitative insights from staff who interact directly with patients and analyze patient feedback.</p>
+                             <ul>
+                                 <li><strong>Medical Staff:</strong> Doctors, nurses, therapists know the common questions, concerns, and misconceptions patients have about conditions and treatments. Their language is also valuable.</li>
+                                 <li><strong>Front Desk/Admissions:</strong> Understand common queries about appointments, insurance, and logistics (often transactional/navigational).</li>
+                                 <li><strong>Patient Feedback:</strong> Analyze common themes in surveys, online reviews (Google, Healthgrades, etc.), and website feedback forms. What are patients struggling to find or understand?</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Insight:</strong> This step provides real-world context to the data, validating your intent assumptions and revealing important nuances in patient needs and language that tools might miss.
+                             </div>
+                         </div>
+                     </div>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-sitemap mr-3"></i> Step 1.6: Document & Map Intent to Content Strategy</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Create a clear mapping:</p>
+                             <ul>
+                                 <li>Compile your refined list of keywords with their identified primary intent.</li>
+                                 <li>Map each keyword (or keyword group) and its intent to a specific type of content or page on your website (e.g., informational article, service page, physician bio, contact form, location page).</li>
+                                 <li>Identify content gaps where you lack the necessary page type to match the user's intent for important keywords.</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Actionable:</strong> This mapping becomes your content plan. It ensures that for each targeted keyword, you have a relevant, intent-aligned page ready to rank and meet the user's need.
+                             </div>
+                         </div>
+                     </div>
+                </div>
+
+                 <div class="step-card">
+                    <span class="step-number"><i class="fas fa-compass"></i> Phase 2: Gather & Expand Keywords</span>
+                    <h4>Building a Comprehensive List of Potential Search Terms</h4>
+                     <p class="text-gray-700 mb-6">Now that you understand user intent, it's time to build out your keyword list systematically, using tools and techniques to find all relevant variations.</p>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-seedling mr-3"></i> Step 2.1: Start with Seed Keywords (Revisited)</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Using the insights from Phase 1 (core topics, services, conditions, patient language), refine your initial list of broad seed keywords. These will be the starting points for your tool research.</p>
+                              <div class="insight-box">
+                                 <strong>Insight:</strong> Seed keywords aren't necessarily terms you'll target directly, but they unlock hundreds or thousands of related long-tail and specific keywords in research tools.
+                             </div>
+                         </div>
+                     </div>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-tools mr-3"></i> Step 2.2: Leverage Keyword Research Tools for Expansion</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Enter your seed keywords into various tools to generate large lists of related terms. Focus on the keyword suggestions features.</p>
+                             <ul>
+                                 <li>Explore variations, synonyms, and related terms the tools provide.</li>
+                                 <li>Pay close attention to the "Questions" feature in tools, as these directly reveal informational intent queries.</li>
+                                 <li>Look for keywords grouped by topic or relevance.</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Actionable:</strong> Don't filter too much at this stage. Collect a large, raw list. Filtering and prioritization come later.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-search-plus mr-3"></i> Step 2.3: Find Long-Tail Keywords & Patient Language Variations</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Specifically look for longer, more specific phrases (often 3+ words) that reveal clearer intent. Use the patient language insights from Phase 1.</p>
+                             <ul>
+                                 <li>Filter keyword lists in tools for queries containing question words (how, what, why, where).</li>
+                                 <li><a href="https://shaynly.com/how-to-add-your-website-to-google-search/" title="How to Add Your Website to Google Search: Complete 24-48 Hour Indexing Guide" target="_blank" rel="noopener"  data-wpil-monitor-id="1423">Search manually on Google</a> and use "People Also Ask," "Related Searches," and auto-suggest features.</li>
+                                 <li>Explore patient forums and communities to see how people naturally phrase questions and symptoms.</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Insight:</strong> Long-tail keywords are often less competitive, easier to rank for, and attract users with higher conversion potential. They allow you to target niche needs effectively.
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                <div class="step-card">
+                    <span class="step-number"><i class="fas fa-users-gear"></i> Phase 3: Analyze Competitors</span>
+                    <h4>Benchmarking and Identifying Opportunities</h4>
+                     <p class="text-gray-700 mb-6">Understanding your competitive landscape is essential for finding keywords where you can realistically rank and identifying content opportunities.</p>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-crosshairs mr-3"></i> Step 3.1: Identify Your True Competitors</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Think broadly:</p>
+                             <ul>
+                                 <li><strong>Direct Local:</strong> Other hospitals/clinics in your immediate service area.</li>
+                                 <li><strong>Direct Service:</strong> Organizations offering the *exact* same specialized service, even if slightly further away.</li>
+                                 <li><strong>Indirect (Informational):</strong> Large health portals (WebMD, Healthline), government sites (NIH, CDC), non-profits (ADA, AHA) that rank for informational keywords you target.</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Insight:</strong> You're not just competing with other local providers; for informational keywords, you're competing with the biggest health websites in the world. Understand who ranks for the terms *you* care about.
+                             </div>
+                         </div>
+                     </div>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-cogs mr-3"></i> Step 3.2: Analyze Competitor Keyword Performance</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Use SEO tools to:</p>
+                             <ul>
+                                 <li>See which keywords your top competitors rank for, especially those ranking on page 1.</li>
+                                 <li>Identify their top-performing pages (the pages driving the most organic traffic).</li>
+                                 <li>Estimate their organic traffic and visibility trends.</li>
+                                 <li>Look at the types of keywords they target (informational, local, etc.).</li>
+                             </ul>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-vector-square mr-3"></i> Step 3.3: Identify Keyword Gaps & Content Opportunities</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Compare competitor keyword lists to your own brainstormed list and your Phase 2 expanded list.</p>
+                             <ul>
+                                 <li><strong>Keyword Gaps:</strong> Find keywords where competitors rank well, but you don't rank at all. Are these relevant to you? Can you realistically compete?</li>
+                                 <li><strong>Content Gaps/Opportunities:</strong> Look at *what kind* of content your competitors use to rank. Can you create a more comprehensive, higher-E-E-A-T piece of content for the same topic? Can you target related long-tail keywords they've missed?</li>
+                             </ul>
+                              <div class="insight-box">
+                                 <strong>Actionable:</strong> Focus on "low-hanging fruit" – relevant keywords where competition is moderate, or where you can leverage your specific expertise (E-E-A-T) to create a superior ranking piece.
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="step-card">
+                    <span class="step-number"><i class="fas fa-sort-amount-up"></i> Phase 4: Organize & Prioritize</span>
+                    <h4>Structuring Your Keywords for Action</h4>
+                     <p class="text-gray-700 mb-6">With a large list of keywords and competitive insights, it's time to structure and prioritize to create a focused strategy.</p>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-object-group mr-3"></i> Step 4.1: Group Keywords by Topic & Intent</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Cluster related keywords together. A keyword group represents a topic that can likely be covered by a single piece of content or a specific page on your site.</p>
+                             <ul>
+                                 <li>Group by Condition: "Diabetes Symptoms", "Diabetes Treatment Options", "Managing Blood Sugar".</li>
+                                 <li>Group by Service: "Physical Therapy for Back Pain", "Sports Injury Therapy", "Physical Therapy Near Me".</li>
+                                 <li>Refine groups based on user intent identified in Phase 1.</li>
+                             </ul>
+                              <div class="insight-box">
+                                 <strong>Insight:</strong> Well-organized keyword groups simplify content planning and ensure comprehensive coverage of topics, improving topical authority.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-tasks mr-3"></i> Step 4.2: Evaluate & Prioritize Based on Metrics</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>For each keyword or group, consider:</p>
+                             <ul>
+                                 <li><strong>Search Volume:</strong> Potential reach. (Use tool data, understand these are estimates).</li>
+                                 <li><strong>Keyword Difficulty/Competition:</strong> How hard is it to rank? (Use tool scores, analyze SERP strength).</li>
+                                 <li><strong>Relevance:</strong> How closely does it align with your services and expertise? (Your internal assessment).</li>
+                                 <li><strong>Business Value/Conversion Potential:</strong> How likely is a user searching this term to take a desired action (call, book, inquire)? (Often higher for transactional/commercial intent).</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Actionable:</strong> Use a scoring system or simple High/Medium/Low assessment for each factor. Prioritize keywords that offer a good balance of volume, relevance, and realistic competition, with a strong emphasis on business value for transactional terms.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-balance-scale mr-3"></i> Step 4.3: Balance Short-Tail and Long-Tail</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Your final prioritized list should include a mix:</p>
+                             <ul>
+                                 <li><strong>Short-Tail/Head Terms:</strong> High volume, foundational (e.g., "diabetes"). Target with comprehensive pillar pages, aim for long-term authority.</li>
+                                 <li><strong>Long-Tail Keywords:</strong> Lower volume, high specificity, high intent (e.g., "how to manage type 2 diabetes with diet"). Target with detailed sub-pages, blog posts, or FAQ sections. Easier wins, higher conversion rates.</li>
+                             </ul>
+                              <div class="insight-box">
+                                 <strong>Insight:</strong> A robust <a href="https://shaynly.com/how-to-build-a-personal-brand-in-2025-ai-driven/" target="_blank" rel="noopener"  data-wpil-monitor-id="406">strategy builds</a> authority around broad topics with pillar content while capturing highly specific, ready-to-act users via long-tail terms.
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="step-card">
+                    <span class="step-number"><i class="fas fa-file-medical"></i> Phase 5: Content Development</span>
+                    <h4>Creating Authoritative, Patient-Focused Content</h4>
+                     <p class="text-gray-700 mb-6">This is where your keyword research comes to life. Create content that is medically accurate, comprehensive, and directly addresses the user's intent, while building trust.</p>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-highlighter mr-3"></i> Step 5.1: Outline Content Based on Keywords & Intent</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>For each keyword group or target page, create a detailed outline. Use keywords and related questions as headings and subheadings.</p>
+                             <ul>
+                                 <li>Example: For "Symptoms of Diabetes," sections might include "Early Warning Signs," "Common Symptoms," "Symptoms in Men vs. Women," "When to See a Doctor."</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Actionable:</strong> Your outline ensures you cover all key aspects of the topic relevant to the user's search intent, improving content depth and relevance.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-edit mr-3"></i> Step 5.2: Write Accurate, Comprehensive, Engaging Content</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Write clearly, concisely, and with empathy. Use patient-friendly language where appropriate, while maintaining medical accuracy.</p>
+                             <ul>
+                                 <li>Address the user's query directly and early in the content.</li>
+                                 <li>Break down complex medical information into understandable terms.</li>
+                                 <li>Use formatting (bold text, lists, short paragraphs) for readability.</li>
+                             </ul>
+                         </div>
+                     </div>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-user-shield mr-3"></i> Step 5.3: Demonstrate E-E-A-T Rigorously</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Crucial for YMYL healthcare content:</p>
+                             <ul>
+                                 <li><strong>Authorship:</strong> Ensure content is written or reviewed by <a href="https://shaynly.com/qualified-medicare-beneficiary-qmb/" target="_blank" rel="noopener"  data-wpil-monitor-id="408">qualified medical</a> professionals (MDs, RNs, PhDs, etc.). Clearly display author name and credentials.</li>
+                                 <li><strong>Citations:</strong> Link to authoritative sources like medical journals, research papers, government health organizations (NIH, WHO, CDC), and reputable medical institutions.</li>
+                                 <li><strong>Accuracy:</strong> Double-check all medical facts and statistics. Update content regularly.</li>
+                                 <li><strong>Trust Signals:</strong> Secure website (HTTPS), clear <a href="https://shaynly.com/privacy-policy/" target="_blank" rel="noopener"  data-wpil-monitor-id="402">privacy policy</a>, terms of service, and contact information.</li>
+                             </ul>
+                              <div class="insight-box">
+                                 <strong>Insight:</strong> Google rewards websites that demonstrate expertise and trustworthiness, especially in healthcare. Your authors and sources are as important as the content itself.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-wrench mr-3"></i> Step 5.4: Implement On-Page SEO</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Integrate your primary and secondary keywords naturally where they make sense:</p>
+                             <ul>
+                                 <li>**Title Tag:** Include primary keyword, be compelling (under ~60 characters).</li>
+                                 <li>**Meta Description:** Compelling summary with primary keyword, encourage clicks (~150-160 characters).</li>
+                                 <li>**H1 Heading:** Your main topic title, usually includes the primary keyword.</li>
+                                 <li>**H2/H3 Headings:** Use related keywords and questions as subheadings.</li>
+                                 <li>**Body Text:** Include keywords naturally throughout the content.</li>
+                                 <li>**Image Alt Text:** Describe images and include keywords where relevant.</li>
+                             </ul>
+                             <p>Ensure a descriptive URL. Use internal links to relevant pages on your site.</p>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="step-card">
+                    <span class="step-number"><i class="fas fa-paint-brush"></i> Phase 6: Enhance & Engage</span>
+                    <h4>Improving User Experience and Content Impact</h4>
+                     <p class="text-gray-700 mb-6">Make your high-quality content even better with engaging elements that keep users on the page and help them understand complex information.</p>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-chart-area mr-3"></i> Step 6.1: Integrate Rich Media</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Use visuals to illustrate points, break up text, and appeal to different learning styles:</p>
+                             <ul>
+                                 <li>Infographics explaining complex processes or statistics.</li>
+                                 <li>Medical diagrams or anatomical illustrations.</li>
+                                 <li>Short, informative videos (explaining a procedure, patient testimonial snippet).</li>
+                                 <li>High-quality images of your facility or staff (builds familiarity/trust).</li>
+                             </ul>
+                              <div class="insight-box">
+                                 <strong>Insight:</strong> Rich media improves engagement metrics, which can positively influence rankings. It also makes your content more shareable. Remember to optimize media file sizes and use descriptive alt text for accessibility and SEO.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-mouse-pointer mr-3"></i> Step 6.2: Add Interactive Elements</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                            <p>Interactive features can increase time on page and provide dynamic value:</p>
+                             <ul>
+                                 <li>Expandable FAQ sections or accordions (like these!).</li>
+                                 <li>Interactive body maps or symptom checkers (with clear disclaimers).</li>
+                                 <li>Simple quizzes or self-assessment tools (again, with strong medical disclaimers).</li>
+                                 <li>Calculators (e.g., <a href="https://shaynly.com/best-free-bmi-calculator/" target="_blank" rel="noopener"  data-wpil-monitor-id="404">BMI calculator</a>).</li>
+                             </ul>
+                         </div>
+                     </div>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-mobile-alt mr-3"></i> Step 6.3: Ensure Mobile Responsiveness</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                            <p>A significant portion of healthcare searches happen on mobile. Your content and site structure must be fully responsive and provide an excellent user experience on all devices.</p>
+                             <div class="insight-box">
+                                 <strong>Actionable:</strong> Test your pages on various screen sizes and devices. Pay attention to load speed, readability, button sizes, and how interactive elements function on touch screens.
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="step-card">
+                    <span class="step-number"><i class="fas fa-location-arrow"></i> Phase 7: Optimize for Local Search</span>
+                    <h4>Connecting with Patients in Your Service Area</h4>
+                     <p class="text-gray-700 mb-6">For physical healthcare providers, local SEO is paramount for capturing transactional and navigational searches from nearby patients.</p>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-building mr-3"></i> Step 7.1: Master Your Google Business Profile</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Your GBP listing is often the first thing local patients see. Optimize it fully:</p>
+                             <ul>
+                                 <li>Claim and verify your listing(s).</li>
+                                 <li>Provide accurate Name, Address, Phone Number (NAP).</li>
+                                 <li>Select relevant categories (be specific!).</li>
+                                 <li>Write a compelling description with keywords and services.</li>
+                                 <li>Add hours, photos, services, and link to your website.</li>
+                                 <li>Use GBP Posts for updates.</li>
+                             </ul>
+                              <div class="insight-box">
+                                 <strong>Insight:</strong> GBP is critical for ranking in the local pack and on Google Maps, essential for "near me" searches.
+                             </div>
+                         </div>
+                     </div>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-share-alt mr-3"></i> Step 7.2: Build and Manage Local Citations & Reviews</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <ul>
+                                 <li>Ensure NAP consistency across online directories (Yelp, Healthgrades, Vitals, Facebook, etc.).</li>
+                                 <li>Build citations on relevant local and healthcare-specific directories.</li>
+                                 <li>Actively encourage patients to leave reviews on GBP and other platforms.</li>
+                                 <li>Respond professionally and promptly to all reviews (positive and negative).</li>
+                             </ul>
+                              <div class="insight-box">
+                                 <strong>Actionable:</strong> Consistent NAP builds trust signals. Reviews are a major local ranking factor and build patient trust.
+                             </div>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-map-marked-alt mr-3"></i> Step 7.3: Implement On-Site Local SEO</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <ul>
+                                 <li>Include your NAP clearly on your website, ideally in the footer.</li>
+                                 <li>Create dedicated, keyword-optimized landing pages for each location you serve.</li>
+                                 <li>Target geo-modified keywords in your content and meta tags (e.g., "pediatric therapy in [City]", "find [Specialist] near [Zip Code]").</li>
+                                 <li>Embed Google Maps on your location pages.</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="step-card">
+                    <span class="step-number"><i class="fas fa-chart-pie"></i> Phase 8: Track Performance & Refine</span>
+                    <h4>Continuous Monitoring and Adaptation</h4>
+                     <p class="text-gray-700 mb-6">SEO is not a set-it-and-forget-it process. Monitor your keyword performance, traffic, and user behavior to identify what's working and where to improve.</p>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-gauge-high mr-3"></i> Step 8.1: Monitor Key Performance Indicators (KPIs)</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Use Google Analytics, Google Search Console, and potentially third-party rank tracking tools to monitor:</p>
+                             <ul>
+                                 <li>Keyword rankings (overall and for specific terms).</li>
+                                 <li>Organic traffic (sessions, users, by landing page).</li>
+                                 <li>User behavior metrics (bounce rate, time on page, pages per session).</li>
+                                 <li>Conversion rates (appointment requests, contact form submissions, phone calls from the website).</li>
+                                 <li>Which keywords are driving traffic and conversions (GSC, GA).</li>
+                                 <li>Local search visibility (GBP insights, local pack rankings).</li>
+                             </ul>
+                         </div>
+                     </div>
+
+                     <button class="accordion">
+                         <span><i class="fas fa-redo-alt mr-3"></i> Step 8.2: Analyze Data and Identify Opportunities</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Regularly review your data (e.g., monthly or quarterly):</p>
+                             <ul>
+                                 <li>Which keywords are ranking well? Which are dropping?</li>
+                                 <li>Which content pages are attracting the most traffic/conversions? Which are underperforming?</li>
+                                 <li>Are there new queries appearing in GSC that you aren't targeting?</li>
+                                 <li>What is the user behavior on your key landing pages? (Are people staying and converting?).</li>
+                                 <li>Monitor competitor rankings for your target terms.</li>
+                             </ul>
+                         </div>
+                     </div>
+
+                    <button class="accordion">
+                         <span><i class="fas fa-tools mr-3"></i> Step 8.3: Refine Your Keyword & Content Strategy</span>
+                         <i class="fas fa-chevron-down"></i>
+                     </button>
+                     <div class="panel">
+                         <div class="panel-content">
+                             <p>Use your analysis to make informed decisions:</p>
+                             <ul>
+                                 <li>Target new keywords discovered in GSC or competitor analysis.</li>
+                                 <li>Update and improve content on underperforming pages.</li>
+                                 <li>Expand content around topics that are performing well.</li>
+                                 <li>Adjust your keyword prioritization based on new data.</li>
+                                 <li>Address any technical SEO issues identified (site speed, mobile usability).</li>
+                                 <li>Stay updated on <a href="https://shaynly.com/ucp-revolution-googles-universal-commerce-protocol/" title="The UCP Revolution: How Google&#8217;s Universal Commerce Protocol is Changing E-Commerce Forever" target="_blank" rel="noopener"  data-wpil-monitor-id="1577">Google algorithm changes</a> and healthcare industry news.</li>
+                             </ul>
+                             <div class="insight-box">
+                                 <strong>Insight:</strong> Healthcare SEO is a marathon, not a sprint. Consistent effort in monitoring and adapting your keyword and content strategy is key to long-term success and staying ahead in a competitive, ever-changing environment.
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Key Concepts Section -->
+        <section class="container">
+            <h2 class="text-center">Essential Concepts for Healthcare SEO Success</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                 <div class="key-concept-card">
+                    <h3 class="flex items-center"><i class="fas fa-heartbeat mr-3"></i> Patient-First Approach</h3>
+                    <p class="text-gray-700 text-sm">Your research and content must prioritize the needs, questions, and well-being of the patient above all else.</p>
+                </div>
+                 <div class="key-concept-card">
+                    <h3 class="flex items-center"><i class="fas fa-balance-scale-left mr-3"></i> E-E-A-T is Non-Negotiable</h3>
+                    <p class="text-gray-700 text-sm">Build and demonstrate Experience, Expertise, Authoritativeness, and Trustworthiness through authors, sources, and site quality.</p>
+                </div>
+                 <div class="key-concept-card">
+                    <h3 class="flex items-center"><i class="fas fa-search-location mr-3"></i> Local Search is Lifeblood</h3>
+                    <p class="text-gray-700 text-sm">Optimize aggressively for local searches ("near me," "[city] doctor") to capture ready-to-act patients.</p>
+                </div>
+                 <div class="key-concept-card">
+                    <h3 class="flex items-center"><i class="fas fa-comment-medical mr-3"></i> Embrace Patient Language</h3>
+                    <p class="text-gray-700 text-sm">Research and use the terms real patients use, not just medical jargon, especially for informational content.</p>
+                </div>
+                <div class="key-concept-card">
+                    <h3 class="flex items-center"><i class="fas fa-history mr-3"></i> Iteration & Improvement</h3>
+                    <p class="text-gray-700 text-sm">SEO is a continuous cycle of research, implementation, monitoring, and refinement.</p>
+                </div>
+                 <div class="key-concept-card">
+                    <h3 class="flex items-center"><i class="fas fa-handshake-alt mr-3"></i> Collaboration is Key</h3>
+                    <p class="text-gray-700 text-sm">Work closely with medical staff and patient-facing teams for invaluable insights.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section class="container">
+            <div class="card text-center">
+                <h2 class="mb-4">Empowering Health Through Visibility</h2>
+                <p class="text-gray-700 mb-4">Mastering healthcare keyword research is a powerful way for your organization to connect with individuals seeking health information and care. By systematically identifying and targeting the keywords patients use, creating authoritative and empathetic content, and maintaining a strong online presence, you not only improve search rankings but also fulfill a vital <a href="https://shaynly.com/phytochemicals-and-their-crucial-role-in-health/" target="_blank" rel="noopener"  data-wpil-monitor-id="410">role in guiding people toward better health</a> outcomes.</p>
+                <p class="text-gray-700">Approach this process with diligence, a patient-centric mindset, and a commitment to accuracy and trust. The impact of being easily discoverable online in the healthcare space is profound.</p>
+            </div>
+        </section>
+    </main>
+
    
-    <script>        // Make timeline items appear when they scroll into view
-document.addEventListener('DOMContentLoaded', function() {
-const timelineItems = document.querySelectorAll('.timeline-item');
+
+    <script>
+        // Make timeline items appear when they scroll into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+
             function checkInView() {
-timelineItems.forEach(item => {
-const rect = item.getBoundingClientRect();
-// Item is visible if its bottom is above the top of the viewport (scrolling up)
-// or its top is below 85% of the viewport height (scrolling down)
-const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-const isPastTop = rect.top < viewportHeight * 0.85; // Adjust trigger point
-const isAboveBottom = rect.bottom > 0;
+                timelineItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    // Item is visible if its bottom is above the top of the viewport (scrolling up)
+                    // or its top is below 85% of the viewport height (scrolling down)
+                     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+                    const isPastTop = rect.top < viewportHeight * 0.85; // Adjust trigger point
+                    const isAboveBottom = rect.bottom > 0;
+
                     if (isPastTop && isAboveBottom) {
-item.classList.add('visible');
-} else {
-// Optional: remove 'visible' class if scrolling out of view upwards
-// if (rect.bottom < 0 || rect.top > viewportHeight) {
-//     item.classList.remove('visible');
-// }
-}
-});
-}
+                        item.classList.add('visible');
+                    } else {
+                         // Optional: remove 'visible' class if scrolling out of view upwards
+                         // if (rect.bottom < 0 || rect.top > viewportHeight) {
+                         //     item.classList.remove('visible');
+                         // }
+                    }
+                });
+            }
+
             // Initial check
-checkInView();
+            checkInView();
+
             // Check on scroll
-window.addEventListener('scroll', checkInView);
-});
+            window.addEventListener('scroll', checkInView);
+        });
+
         // Accordion functionality
-document.addEventListener('DOMContentLoaded', function() {
-const accordions = document.getElementsByClassName("accordion");
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordions = document.getElementsByClassName("accordion");
+
             for (let i = 0; i < accordions.length; i++) {
-// Set initial state to closed
-accordions[i].classList.remove("active");
-accordions[i].querySelector("i").classList.remove("fa-chevron-up");
-accordions[i].querySelector("i").classList.add("fa-chevron-down");
-accordions[i].nextElementSibling.style.maxHeight = null;
+                 // Set initial state to closed
+                 accordions[i].classList.remove("active");
+                 accordions[i].querySelector("i").classList.remove("fa-chevron-up");
+                 accordions[i].querySelector("i").classList.add("fa-chevron-down");
+                 accordions[i].nextElementSibling.style.maxHeight = null;
+
+
                 accordions[i].addEventListener("click", function() {
-const parentStepCard = this.closest('.step-card');
-if (parentStepCard) {
-const siblingAccordions = parentStepCard.querySelectorAll('.accordion');
-siblingAccordions.forEach(sibling => {
-if (sibling !== this && sibling.classList.contains('active')) {
-sibling.classList.remove("active");
-const siblingIcon = sibling.querySelector("i");
-siblingIcon.classList.remove("fa-chevron-up");
-siblingIcon.classList.add("fa-chevron-down");
-sibling.nextElementSibling.style.maxHeight = null;
-}
-});
-}
+                    const parentStepCard = this.closest('.step-card');
+                    if (parentStepCard) {
+                        const siblingAccordions = parentStepCard.querySelectorAll('.accordion');
+                        siblingAccordions.forEach(sibling => {
+                            if (sibling !== this && sibling.classList.contains('active')) {
+                                sibling.classList.remove("active");
+                                const siblingIcon = sibling.querySelector("i");
+                                siblingIcon.classList.remove("fa-chevron-up");
+                                siblingIcon.classList.add("fa-chevron-down");
+                                sibling.nextElementSibling.style.maxHeight = null;
+                            }
+                        });
+                    }
+
                     // Toggle the clicked accordion
-this.classList.toggle("active");
+                    this.classList.toggle("active");
+
                     const icon = this.querySelector("i");
-icon.classList.toggle("fa-chevron-down");
-icon.classList.toggle("fa-chevron-up");
+                    icon.classList.toggle("fa-chevron-down");
+                    icon.classList.toggle("fa-chevron-up");
+
                     const panel = this.nextElementSibling;
-if (panel.style.maxHeight) {
-panel.style.maxHeight = null;
-} else {
-// Set max-height to scrollHeight plus a little buffer for smooth transitionn                        panel.style.maxHeight = panel.scrollHeight + 20 + "px"; // Added buffer
-}
-});
-}
-});
-         // Optional: Add smooth scroll for any potential internal links (e.g., i
-future expansion)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function (e) {
-e.preventDefault();
-const targetId = this.getAttribute('href');
-const targetElement = document.querySelector(targetId);
-if (targetElement) {
-targetElement.scrollIntoView({
-behavior: 'smooth',
-block: 'start'n                    });
-}
-});
-});
-</script>
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        // Set max-height to scrollHeight plus a little buffer for smooth transition
+                        panel.style.maxHeight = panel.scrollHeight + 20 + "px"; // Added buffer
+                    }
+                });
+            }
+        });
 
-        </div>
-      </article>
+         // Optional: Add smooth scroll for any potential internal links (e.g., in future expansion)
+         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
-        </div>
-
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
-        </div>
-      </aside>
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
     </div>
-    
-  </main>
-
-  <!-- Footer -->
-  
-
-  <script src="/assets/js/main.js"></script>
-
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>

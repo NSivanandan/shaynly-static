@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Logo Color Extractor - Shaynly</title>
-  <meta name="description" content="Logo Color Extractor n // Set up a custom color for the themen tailwind.config = { theme: { extend: { colors: {n 'primary': '#4f46e5',n">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Color Extractor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Set up a custom color for the theme
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5',
+                        'primary-dark': '#4338ca',
+                        'secondary': '#eef2ff',
+                        'accent': '#10b981',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+  <meta name="description" content="An in-depth guide to the Logo Color Extractor. Discover how this powerful tool works, its benefits for designers and developers, and how it uses color quantization to instantly generate a brand">
   <link rel="canonical" href="https://shaynly.com/logo-color-extractor/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/logo-color-extractor/">
   <meta property="og:title" content="The Logo Color Extractor - Shaynly">
-  <meta property="og:description" content="Logo Color Extractor n // Set up a custom color for the themen tailwind.config = { theme: { extend: { colors: {n 'primary': '#4f46e5',n">
-  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2025/10/THE-LOGO-COLOR-EXTRACTOR.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:description" content="An in-depth guide to the Logo Color Extractor. Discover how this powerful tool works, its benefits for designers and developers, and how it uses color quantization to instantly generate a brand">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Logo Color Extractor - Shaynly">
-  <meta name="twitter:description" content="Logo Color Extractor n // Set up a custom color for the themen tailwind.config = { theme: { extend: { colors: {n 'primary': '#4f46e5',n">
-  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2025/10/THE-LOGO-COLOR-EXTRACTOR.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="twitter:description" content="An in-depth guide to the Logo Color Extractor. Discover how this powerful tool works, its benefits for designers and developers, and how it uses color quantization to instantly generate a brand">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -44,53 +58,11 @@
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "The Logo Color Extractor",
-  "name": "The Logo Color Extractor",
-  "description": "n n n n n n Logo Color Extractor n n n // Set up a custom color for the theme
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-'primary': '#4f46e5',
-",
-  "url": "https://shaynly.com/logo-color-extractor/",
-  "datePublished": "2025-10-07",
-  "dateModified": "2025-10-07",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
-    }
-  },
-  "image": "https://shaynly.com/wp-content/uploads/2025/10/THE-LOGO-COLOR-EXTRACTOR.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
-</head>
-<body>
+  <link rel="stylesheet" href="/assets/css/style.css">
 
-  <!-- Header -->
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+  <!-- Global Shaynly Header -->
   <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
@@ -108,304 +80,792 @@ colors: {
       </nav>
     </div>
   </header>
+    <div class="bg-white p-8 rounded-2xl shadow-xl max-w-2xl w-full">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Logo Color Extractor</h1>
 
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="content-grid">
-      <article class="article-wrap">
-        <div class="breadcrumb">
-          <a href="/">Home</a> <span>/</span> <a href="/category/tools/">Tools</a> <span>/</span> <span>The Logo Color Extractor</span>
-        </div>
-        <a href="/category/tools/" class="cat-badge" style="text-decoration:none;">Tools</a>
-        <h1 class="article-title">The Logo Color Extractor</h1>
-        <div class="article-meta">
-          <span>By <strong>Sivanandan N</strong></span>
-          <span>•</span>
-          <span>2025-10-07</span>
-          <span>•</span>
-          <span>16 min read</span>
+        <!-- File Upload Section -->
+        <div class="mb-8 p-6 bg-secondary rounded-xl border-2 border-dashed border-gray-300 hover:border-primary transition-colors duration-300">
+            <label for="logo-upload" class="flex flex-col items-center cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+                <span class="text-gray-600 font-medium">Click to upload a logo</span>
+                <span class="text-sm text-gray-500">PNG, JPG, or SVG</span>
+            </label>
+            <input type="file" id="logo-upload" accept="image/png, image/jpeg, image/svg+xml" class="hidden">
         </div>
 
-        <img src="/wp-content/uploads/2025/10/THE-LOGO-COLOR-EXTRACTOR.png" alt="The Logo Color Extractor" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
-
-        <div class="article-content">
-          
-    <div class="bg-white p-8 rounded-2xl shadow-xl max-w-2xl w-full">        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Logo Color Extractor</h1>
-        <!-- File Upload Section -->        <div class="mb-8 p-6 bg-secondary rounded-xl border-2 border-dashed border-gray-300 hover:border-primary transition-colors duration-300">            <label for="logo-upload" class="flex flex-col items-center cursor-pointer">                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />                </svg>                <span class="text-gray-600 font-medium">Click to upload a logo</span>                <span class="text-sm text-gray-500">PNG, JPG, or SVG</span>            </label>            <input type="file" id="logo-upload" accept="image/png, image/jpeg, image/svg+xml" class="hidden">        </div>
-        <!-- Image Display and Canvas (Hidden) -->        <div id="image-container" class="relative rounded-xl overflow-hidden shadow-lg mb-8" style="display: none;">            <img id="uploaded-logo" class="w-full h-auto object-contain max-h-96" src="#" alt="Uploaded Logo" />            <div id="image-overlay" class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 text-white text-xl font-bold" style="display: none;">                Processing...            </div>        </div>        <canvas id="color-canvas" class="hidden"></canvas>
-        <!-- Color Palette Display Section -->        <div id="color-palette" class="grid grid-cols-1 sm:grid-cols-2 gap-4">            <p class="text-center text-gray-500 col-span-full" id="placeholder-text">Upload a logo to see its dominant colors here.</p>        </div>    </div>
-    <script>        // Get references to DOM elements
-const logoUpload = document.getElementById('logo-upload');
-const uploadedLogo = document.getElementById('uploaded-logo');
-const colorCanvas = document.getElementById('color-canvas');
-const imageContainer = document.getElementById('image-container');
-const imageOverlay = document.getElementById('image-overlay');
-const colorPalette = document.getElementById('color-palette');
-const placeholderText = document.getElementById('placeholder-text');
-        // Main event listener for file upload
-logoUpload.addEventListener('change', function(event) {
-const file = event.target.files[0];
-if (!file) return;
-            const reader = new FileReader();
-reader.onload = function(e) {
-uploadedLogo.src = e.target.result;
-imageContainer.style.display = 'block'; // Show image containern                imageOverlay.style.display = 'flex'; // Show processing overlayn                placeholderText.style.display = 'none'; // Hide placeholder text
-};
-reader.readAsDataURL(file);
-});
-        // Event listener for when the image has loaded
-uploadedLogo.onload = function() {
-// Get a 2D rendering context for the canvas
-const ctx = colorCanvas.getContext('2d');
-// Set canvas dimensions to match the image
-colorCanvas.width = uploadedLogo.naturalWidth;
-colorCanvas.height = uploadedLogo.naturalHeight;
-// Draw the image onto the canvas
-ctx.drawImage(uploadedLogo, 0, 0);
-            // Get the pixel data from the entire canvas
-const pixelData = ctx.getImageData(0, 0, colorCanvas.width, colorCanvas.height).data;
-            // Analyze and extract dominant colorsn            const dominantColors = getDominantColors(pixelData, 5); // Get top 5 colorsn // Display the extracted colors on the page
-displayColors(dominantColors);
-// Hide the processing overlay
-imageOverlay.style.display = 'none';
-};
-        /**n         * Analyzes pixel data to find the most frequent colors.n         * This uses a simple quantization method to group similar colors.n         * @param {Uint8ClampedArray} pixelData - The pixel data array from the canvas.n         * @param {
-umber} numColors - The number of dominant colors to return.n         * @returns {Array<string>} An array of dominant color strings (e.g., 'rgb(255, 0, 0)').n         */n        function getDominantColors(pixelData, numColors) {
-const colorMap = new Map();
-const step = 4; // We process 4 bytes at a time (R, G, B, A)
-// A simple color quantization: group colors into buckets by shifting bitsn            // This reduces the number of unique colors to count.
-const QUANTIZATION_BITS = 4;
-const SHIFT = 8 - QUANTIZATION_BITS;
-            for (let i = 0; i < pixelData.length; i += step) {
-const r = pixelData[i];
-const g = pixelData[i + 1];
-const b = pixelData[i + 2];
-const a = pixelData[i + 3];
-                // Skip transparent pixels
-if (a < 128) continue;
-                // Quantize the color to group similar shades
-const quantizedR = (r >> SHIFT);
-const quantizedG = (g >> SHIFT);
-const quantizedB = (b >> SHIFT);
-                // Create a unique key for the quantized color
-const colorKey = `${quantizedR}-${quantizedG}-${quantizedB}`;
-// Increment the count for this color key
-colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);
-}
-// Convert the map to a
-array and sort by count (descending)
-const sortedColors = Array.from(colorMap.entries()).sort((a, b) => b[1] - a[1]);
-            const dominantColors = sortedColors.slice(0, numColors).map(color => {
-const [r, g, b] = color[0].split('-').map(c => (parseInt(c) << SHIFT) + (1 << (SHIFT - 1)));
-return `rgb(${r}, ${g}, ${b})`;
-});
-            return dominantColors;
-}
-        /**n         * Clears the color palette and displays the new colors with their codes.n         * @param {Array<string>} colors - An array of 'rgb(...)' color strings.n         */n        function displayColors(colors) {
-// Clear previous results
-colorPalette.innerHTML = '';
-if (colors.length === 0) {
-colorPalette.innerHTML = '<p class="text-center text-gray-500 col-span-full">No dominant colors found. Please try another image.</p>';
-return;
-}
-            colors.forEach(rgbColor => {
-const hexColor = rgbToHex(rgbColor);
-                const colorBox = document.createElement('div');
-colorBox.className = 'flex flex-col items-center justify-center p-4 rounded-xl shadow-md transition-transform duration-200 hover:scale-105';
-colorBox.style.backgroundColor = rgbColor;
-                const colorName = document.createElement('div');
-colorName.className = 'text-white text-lg font-bold p-2 mb-2 rounded-lg bg-gray-900 bg-opacity-50 backdrop-blur-sm';
-colorName.textContent = rgbColor;
-                const hexButton = createCopyButton('HEX', hexColor);
-const rgbButton = createCopyButton('RGB', rgbColor);
-                colorBox.append(hexButton, rgbButton);
-colorPalette.appendChild(colorBox);
-});
-}
-/**n         * Helper function to create a styled copy button.n         * @param {string} label - The label for the button (e.g., 'HEX').n         * @param {string} value - The value to copy (e.g., '#FFFFFF').n         * @returns {HTMLButtonElement} A button element.n         */n        function createCopyButton(label, value) {
-const button = document.createElement('button');
-button.className = 'mt-2 px-4 py-2 bg-white text-gray-800 rounded-lg shadow-sm hover:bg-gray-200 transition-colors duration-200 text-sm font-medium';
-button.textContent = `Copy ${label}: ${value}`;
-button.onclick = () => {
-const textArea = document.createElement('textarea');
-textArea.value = value;
-document.body.appendChild(textArea);
-textArea.select();
-try {
-document.execCommand('copy');
-button.textContent = 'Copied!';
-setTimeout(() => {
-button.textContent = `Copy ${label}: ${value}`;
-}, 2000);
-} catch (err) {
-console.error('Failed to copy text: ', err);
-}
-document.body.removeChild(textArea);
-};
-return button;
-}
-        /**n         * Converts an RGB color string to its HEX equivalent.n         * @param {string} rgb - An RGB color string, e.g., 'rgb(255, 0, 0)'.n         * @returns {string} The HEX color string, e.g., '#FF0000'.n         */n        function rgbToHex(rgb) {
-const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-if (!parts) return '';
-const r = parseInt(parts[1], 10);
-const g = parseInt(parts[2], 10);
-const b = parseInt(parts[3], 10);
-return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
-}
-</script>
-    
-   
-    <main class="article-content">        <div class="container">            <p class="intro-text">Color is the silent ambassador of a brand. It evokes emotion, builds recognition, and sets the tone for every piece of marketing collateral. For designers, developers, and marketers, having quick and accurate access to a <a href="https://shaynly.com/brand-color-palette-generator/" title="Brand Color Palette generator" target="_blank" rel="noopener"  data-wpil-monitor-id="617">brand's core color palette</a> is not just a convenience—it's a necessity for maintaining brand consistency. The Logo Color Extractor is a powerful yet simple tool designed to eliminate guesswork and streamline this critical process. By uploading any logo, you can instantly identify and extract its most dominant colors, <a href="https://shaynly.com/branded-qr-code-generator/" title="Branded QR Code Generator: Best and Completely Free" target="_blank" rel="noopener"  data-wpil-monitor-id="627">complete with HEX and RGB codes</a> ready to be copied and used in your projects. This guide explores the "why" behind this tool, the technology that powers it, and the practical ways it can supercharge your creative workflow.</p>
-            <div class="toc-box">                <h3><i class="fas fa-palette"></i> Inside the Palette</h3>                <ul>                    <li><a href="#why-it-matters"><i class="fas fa-exclamation-circle"></i>The Problem: Inefficiency & Inconsistency</a></li>                    <li><a href="#how-it-works"><i class="fas fa-cogs"></i>How It Works: The Technology Explained</a></li>                    <li><a href="#use-cases"><i class="fas fa-users"></i>Who Is This For? Key Use Cases</a></li>                    <li><a href="#the-code"><i class="fas fa-code"></i>A Look Under the Hood: The JavaScript</a></li>                    <li><a href="#future"><i class="fas fa-infinity"></i>Future Possibilities</a></li>                    <li><a href="#faq"><i class="fas fa-question-circle"></i>Frequently Asked Questions</a></li>                </ul>            </div>
-            <section id="why-it-matters">                <h2><i class="fas fa-exclamation-circle"></i>The Problem: Brand Consistency is Hard Work</h2>                <p>Before a tool like this, the process of getting a brand's exact colors could be surprisingly tedious. It might involve:</p>                <ul>                    <li>Manually using an eyedropper tool in a design program like Photoshop or Figma.</li>                    <li>Sifting through brand guideline documents (if they even exist or are up-to-date).</li>                    <li>Inspecting <a href="https://shaynly.com/css-background-animation-generator/" title="CSS Background Animation Generator: Create Stunning Animated Backgrounds for Your Website" target="_blank" rel="noopener"  data-wpil-monitor-id="623">website CSS</a>, which can be time-consuming and may not include all logo colors.</li>                    <li>Simple guesswork, which leads to brand inconsistency and a less professional look.</li>                </ul>                <p>This tool solves that problem by providing a single, fast, and accurate source of truth for a logo's color palette, saving valuable time and ensuring perfect brand alignment across all projects.</p>            </section>                        <section id="how-it-works">                <h2><i class="fas fa-cogs"></i>How It Works: The Technology Explained</h2>                <p>The magic behind the Logo Color Extractor isn't magic at all—it's a clever, multi-step process that uses your browser's built-in capabilities to analyze image data. Here is a simplified breakdown of the journey from upload to palette.</p>                <div class="how-it-works-flow">                    <div class="flow-step">                        <div class="flow-icon"><i class="fas fa-upload"></i></div>                        <div class="flow-content">                            <h4>1. Image Upload & Display</h4>                            <p>You select an image file (PNG, JPG, or SVG). The browser's FileReader API reads the file and displays it on the page. This all happens locally on your <a href="https://shaynly.com/brand-protection-strategies/" title="Brand Protection Strategies for Digital Businesses: A Complete Guide" target="_blank" rel="noopener"  data-wpil-monitor-id="629">machine for complete</a> privacy.</p>                        </div>                    </div>                    <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>                    <div class="flow-step">                        <div class="flow-icon" style="background-color: var(--secondary-color);"><i class="fas fa-image"></i></div>                        <div class="flow-content">                            <h4>2. Canvas Rendering</h4>                            <p>Once the image is loaded, it's drawn onto a hidden <a href="https://shaynly.com/html5-video-element-enhancing-the-multimedia-experienc/" title="HTML5 Video Element: Enhancing the Multimedia Experience" target="_blank" rel="noopener"  data-wpil-monitor-id="631">HTML5 `<canvas>` element</a>. This canvas acts as a digital easel, giving our script pixel-level <a href="https://shaynly.com/mastering-html-tables/" title="Mastering HTML Tables: Building Structured and Accessible Data Displays" target="_blank" rel="noopener"  data-wpil-monitor-id="625">access to the image data</a>.</p>                        </div>                    </div>                    <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>                    <div class="flow-step">                        <div class="flow-icon" style="background-color: var(--accent-color); color: var(--primary-color);"><i class="fas fa-th"></i></div>                        <div class="flow-content">                            <h4>3. Pixel Data Extractio</h4>                            <p>The script uses the `getImageData()` function to read the entire canvas into a massive array of numbers. Each pixel is represented by four values: Red, Green, Blue, and Alpha (transparency).</p>                        </div>                    </div>                    <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>                    <div class="flow-step">                        <div class="flow-icon" style="background-color: #F5A623;"><i class="fas fa-sort-amount-down"></i></div>                        <div class="flow-content">                            <h4>4. Color Quantization & Analysis</h4>                            <p>To find the "dominant" colors, the script groups similar shades together (a process called quantization) and counts the frequency of each group. This prevents having thousands of slightly different shades of blue, for example. The most frequent color groups are identified as the dominant palette.</p>                        </div>                    </div>                    <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>                    <div class="flow-step">                        <div class="flow-icon" style="background-color: #4A90E2;"><i class="fas fa-palette"></i></div>                        <div class="flow-content">                            <h4>5. Palette Display</h4>                            <p>The top <a href="https://shaynly.com/color-contrast-checker/" title="Color Contrast Checker" target="_blank" rel="noopener"  data-wpil-monitor-id="633">colors are converted into user-friendly RGB</a> and HEX formats. They are then displayed as interactive color cards, complete with one-click copy functionality to streamline your workflow.</p>                        </div>                    </div>                </div>            </section>
-            <section id="use-cases">                <h2><i class="fas fa-users"></i>Who Is This For? Key Use Cases</h2>                <p>This tool is designed to be a daily-use utility for a wide range of creative and technical professionals.</p>                <div class="use-case-grid">                    <div class="use-case-card">                        <div class="use-case-header">                            <i class="fas fa-paint-brush"></i>                            <h4>For Graphic Designers</h4>                        </div>                        <div class="use-case-body">                            <p>Quickly grab a client's logo colors to start a new project—whether it's a <a href="https://shaynly.com/social-media-marketing-in-healthcare-dos-and-donts/" title="Social Media Marketing in Healthcare: Dos and Don&#8217;ts" target="_blank" rel="noopener"  data-wpil-monitor-id="621">social media</a> graphic, a presentation deck, or a website mockup—without needing to ask for brand guidelines. Ensures perfect color consistency from the very beginning.</p>                        </div>                    </div>                    <div class="use-case-card">                        <div class="use-case-header">                            <i class="fas fa-code"></i>                            <h4>For Web Developers</h4>                        </div>                        <div class="use-case-body">                            <p>Instantly get the exact HEX codes needed to style a website or application. Perfect for theming a UI, <a href="https://shaynly.com/css-button-style-generator/" title="CSS Button Style Generator: Create Custom Buttons Instantly" target="_blank" rel="noopener"  data-wpil-monitor-id="619">styling buttons</a>, and ensuring the front-end perfectly matches the company's branding, all with a simple copy-paste.</p>                        </div>                    </div>                    <div class="use-case-card">                        <div class="use-case-header">                            <i class="fas fa-bullhorn"></i>                            <h4>For Marketers & Social Media Managers</h4>                        </div>                        <div class="use-case-body">                            <p>Create on-brand content quickly. Grab a partner's logo colors for a co-branded campaign or ensure your own company's colors are used correctly in a Canva design, presentation, or email newsletter.</p>                        </div>                    </div>                </div>            </section>                        <section id="the-code">                <h2><i class="fas fa-code"></i>A Look Under the Hood: The JavaScript Logic</h2>                <h3>The `getDominantColors` Functio</h3>                <p>The core of the tool is the `getDominantColors` function. Its primary challenge is to analyze potentially millions of pixels and find the most common colors without being overwhelmed by tiny variations in shade. It achieves this through a clever technique called **color quantization**.</p>                <ul>                    <li><strong>The Problem:</strong> A typical logo might contain thousands of unique color values due to anti-aliasing (the smoothing of edges) and gradients. A simple frequency count would be meaningless.</li>                    <li><strong>The Solution:</strong> Instead of counting every unique color, we "quantize" them. The script reduces the color depth by right-shifting the bits of each RGB value. For example, it reduces the 256 possible values for red to just 16. This effectively groups similar colors (like `#0000FF` and `#0000FE`) into the same "bucket."</li>                    <li><strong>The Process:</strong> The function iterates through every pixel, ignores transparent ones, creates a unique key for the quantized color (`"15-10-5"`), and stores the count in a JavaScript `Map`. Finally, it sorts this map by count and returns the top results, converting them back to standard RGB values.</li>                </ul>            </section>
-            <section id="future">                <h2><i class="fas fa-infinity"></i>Future Possibilities & Enhancements</h2>                <p>This tool provides a powerful foundation. Future versions could be enhanced with even more advanced features to create a complete branding toolkit:</p>                <ul>                    <li><strong>Color Palette Export:</strong> Allow users to export the generated palette directly as an Adobe Swatch file (.ase), CSS variables, or a Tailwind CSS config.</li>                    <li><strong>Accessibility Checker:</strong> Automatically calculate the contrast ratio between the extracted colors to help designers create accessible, WCAG-compliant designs.</li>                    <li><strong>Palette Suggestions:</strong> Use color theory AI to suggest complementary, triadic, or analogous colors based on the dominant logo colors, helping to build out a full brand palette.</li>                    <li><strong>URL and Live Website Analysis:</strong> Allow users to paste a website URL to extract logo colors and other key branding elements directly from a live site.</li>                </ul>            </section>
-            <section id="faq">                <h2><i class="fas fa-question-circle"></i>Frequently Asked Questions</h2>                <div class="faq-section">                    <div class="faq-item">                        <input type="checkbox" id="faq1">                        <label class="faq-question" for="faq1">Is my uploaded logo image safe and private?</label>                        <div class="faq-answer">                            <p>Yes, 100%. This tool operates entirely within your web browser. Your image is never uploaded to a server. All the processing, from reading the file to analyzing the pixels, is done locally on your computer using JavaScript. This makes it a completely private and secure tool.</p>                        </div>                    </div>                    <div class="faq-item">                        <input type="checkbox" id="faq2">                        <label class="faq-question" for="faq2">Why does the tool sometimes miss a very thin line or small detail?</label>                        <div class="faq-answer">                            <p>The tool is designed to find the most *dominant* colors by counting pixel frequency. If a color is only present in a very small number of pixels (like a thin accent line), it may not rank in the top 5 most frequent colors. The quantization process helps, but highly detailed or complex logos with many colors can sometimes obscure minor color details in favor of the larger, more dominant color blocks.</p>                        </div>                    </div>                    <div class="faq-item">                        <input type="checkbox" id="faq3">                        <label class="faq-question" for="faq3">Can I use this tool for images other than logos?</label>                        <div class="faq-answer">                            <p>Absolutely! While it's optimized for logos, you can upload any image—a photograph, an illustration, a piece of art—to extract its dominant color palette. It's a fantastic tool for creating mood boards, generating design inspiration from photos, or developing a color scheme for a project based on a source image.</p>                        </div>                    </div>                </div>            </section>
-        </div>    </main>
-    <footer class="main-footer">        <div class="container">            <p>&copy; 2026 Shaynly. All Rights Reserved. This tool is provided for educational and professional use.</p>        </div>    </footer>
-    <!-- This is a static HTML file. The script for the tool is included below.n    -->    <script>        // Get references to DOM elements
-const logoUpload = document.getElementById('logo-upload');
-const uploadedLogo = document.getElementById('uploaded-logo');
-const colorCanvas = document.getElementById('color-canvas');
-const imageContainer = document.getElementById('image-container');
-const imageOverlay = document.getElementById('image-overlay');
-const colorPalette = document.getElementById('color-palette');
-const placeholderText = document.getElementById('placeholder-text');
-        // Main event listener for file upload
-logoUpload.addEventListener('change', function(event) {
-const file = event.target.files[0];
-if (!file) return;
-            const reader = new FileReader();
-reader.onload = function(e) {
-uploadedLogo.src = e.target.result;
-imageContainer.style.display = 'block'; // Show image containern                imageOverlay.style.display = 'flex'; // Show processing overlayn                placeholderText.style.display = 'none'; // Hide placeholder text
-};
-reader.readAsDataURL(file);
-});
-        // Event listener for when the image has loaded
-uploadedLogo.onload = function() {
-// Get a 2D rendering context for the canvas
-const ctx = colorCanvas.getContext('2d');
-// Set canvas dimensions to match the image
-colorCanvas.width = uploadedLogo.naturalWidth;
-colorCanvas.height = uploadedLogo.naturalHeight;
-// Draw the image onto the canvas
-ctx.drawImage(uploadedLogo, 0, 0);
-            // Get the pixel data from the entire canvas
-const pixelData = ctx.getImageData(0, 0, colorCanvas.width, colorCanvas.height).data;
-            // Analyze and extract dominant colorsn            const dominantColors = getDominantColors(pixelData, 5); // Get top 5 colorsn // Display the extracted colors on the page
-displayColors(dominantColors);
-// Hide the processing overlay
-imageOverlay.style.display = 'none';
-};
-        function getDominantColors(pixelData, numColors) {
-const colorMap = new Map();
-const step = 4;
-const QUANTIZATION_BITS = 4;
-const SHIFT = 8 - QUANTIZATION_BITS;
-            for (let i = 0; i < pixelData.length; i += step) {
-const a = pixelData[i + 3];
-if (a < 128) continue;
-const r = pixelData[i];
-const g = pixelData[i + 1];
-const b = pixelData[i + 2];
-const quantizedR = (r >> SHIFT);
-const quantizedG = (g >> SHIFT);
-const quantizedB = (b >> SHIFT);
-const colorKey = `${quantizedR}-${quantizedG}-${quantizedB}`;
-colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);
-}
-const sortedColors = Array.from(colorMap.entries()).sort((a, b) => b[1] - a[1]);
-const dominantColors = sortedColors.slice(0, numColors).map(color => {
-const [r, g, b] = color[0].split('-').map(c => (parseInt(c) << SHIFT) + (1 << (SHIFT - 1)));
-return `rgb(${r}, ${g}, ${b})`;
-});
-            return dominantColors;
-}
-        function displayColors(colors) {
-colorPalette.innerHTML = '';
-if (colors.length === 0) {
-colorPalette.innerHTML = '<p class="text-center text-gray-500 col-span-full">No dominant colors found. Please try another image.</p>';
-return;
-}
-            colors.forEach(rgbColor => {
-const hexColor = rgbToHex(rgbColor);
-const colorCard = document.createElement('div');
-colorCard.className = 'flex flex-col items-center p-6 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105';
-colorCard.style.backgroundColor = rgbColor;
-                const colorInfo = document.createElement('div');
-colorInfo.className = 'w-full text-center p-3 rounded-lg bg-gray-900 bg-opacity-60 backdrop-blur-sm';
-const hexText = document.createElement('p');
-hexText.className = 'text-white font-bold text-lg';
-hexText.textContent = hexColor;
-                const rgbText = document.createElement('p');
-rgbText.className = 'text-gray-200 text-sm';
-rgbText.textContent = rgbColor;
-                colorInfo.append(hexText, rgbText);
-                const buttonContainer = document.createElement('div');
-buttonContainer.className = 'mt-4 flex gap-2';
-const hexButton = createCopyButton('HEX', hexColor);
-const rgbButton = createCopyButton('RGB', rgbColor);
-                buttonContainer.append(hexButton, rgbButton);
-colorCard.append(colorInfo, buttonContainer);
-colorPalette.appendChild(colorCard);
-});
-}
-function createCopyButton(label, value) {
-const button = document.createElement('button');
-button.className = 'px-3 py-1 bg-white text-gray-800 rounded-md shadow-sm hover:bg-gray-200 transition-colors duration-200 text-xs font-medium';
-button.textContent = `Copy ${label}`;
-button.onclick = () => {
-navigator.clipboard.writeText(value).then(() => {
-button.textContent = 'Copied!';
-setTimeout(() => {
-button.textContent = `Copy ${label}`;
-}, 2000);
-}).catch(err => console.error('Failed to copy text: ', err));
-};
-return button;
-}
-        function rgbToHex(rgb) {
-const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-if (!parts) return '';
-return '#' + [1, 2, 3].map(i => parseInt(parts[i]).toString(16).padStart(2, '0')).join('').toUpperCase();
-}
-</script>
-
+        <!-- Image Display and Canvas (Hidden) -->
+        <div id="image-container" class="relative rounded-xl overflow-hidden shadow-lg mb-8" style="display: none;">
+            <img id="uploaded-logo" class="w-full h-auto object-contain max-h-96" src="#" alt="Uploaded Logo" />
+            <div id="image-overlay" class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 text-white text-xl font-bold" style="display: none;">
+                Processing...
+            </div>
         </div>
-      </article>
+        <canvas id="color-canvas" class="hidden"></canvas>
 
-      <aside class="sidebar">
-        <div class="widget">
-          <h4 class="widget-title">Client Utilities</h4>
-          <ul class="widget-list">
-            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
-            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
-            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
-          </ul>
+        <!-- Color Palette Display Section -->
+        <div id="color-palette" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <p class="text-center text-gray-500 col-span-full" id="placeholder-text">Upload a logo to see its dominant colors here.</p>
         </div>
-
-        <div class="widget">
-          <h4 class="widget-title">Popular Topics</h4>
-          <ul class="widget-list">
-            <li><a href="/calculators/">Interactive Calculators</a></li>
-            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
-            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automatio</a></li>
-            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
-            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
-          </ul>
-        </div>
-      </aside>
     </div>
+
+    <script>
+        // Get references to DOM elements
+        const logoUpload = document.getElementById('logo-upload');
+        const uploadedLogo = document.getElementById('uploaded-logo');
+        const colorCanvas = document.getElementById('color-canvas');
+        const imageContainer = document.getElementById('image-container');
+        const imageOverlay = document.getElementById('image-overlay');
+        const colorPalette = document.getElementById('color-palette');
+        const placeholderText = document.getElementById('placeholder-text');
+
+        // Main event listener for file upload
+        logoUpload.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedLogo.src = e.target.result;
+                imageContainer.style.display = 'block'; // Show image container
+                imageOverlay.style.display = 'flex'; // Show processing overlay
+                placeholderText.style.display = 'none'; // Hide placeholder text
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Event listener for when the image has loaded
+        uploadedLogo.onload = function() {
+            // Get a 2D rendering context for the canvas
+            const ctx = colorCanvas.getContext('2d');
+            
+            // Set canvas dimensions to match the image
+            colorCanvas.width = uploadedLogo.naturalWidth;
+            colorCanvas.height = uploadedLogo.naturalHeight;
+            
+            // Draw the image onto the canvas
+            ctx.drawImage(uploadedLogo, 0, 0);
+
+            // Get the pixel data from the entire canvas
+            const pixelData = ctx.getImageData(0, 0, colorCanvas.width, colorCanvas.height).data;
+
+            // Analyze and extract dominant colors
+            const dominantColors = getDominantColors(pixelData, 5); // Get top 5 colors
+            
+            // Display the extracted colors on the page
+            displayColors(dominantColors);
+            
+            // Hide the processing overlay
+            imageOverlay.style.display = 'none';
+        };
+
+        /**
+         * Analyzes pixel data to find the most frequent colors.
+         * This uses a simple quantization method to group similar colors.
+         * @param {Uint8ClampedArray} pixelData - The pixel data array from the canvas.
+         * @param {number} numColors - The number of dominant colors to return.
+         * @returns {Array<string>} An array of dominant color strings (e.g., 'rgb(255, 0, 0)').
+         */
+        function getDominantColors(pixelData, numColors) {
+            const colorMap = new Map();
+            const step = 4; // We process 4 bytes at a time (R, G, B, A)
+            
+            // A simple color quantization: group colors into buckets by shifting bits
+            // This reduces the number of unique colors to count.
+            const QUANTIZATION_BITS = 4;
+            const SHIFT = 8 - QUANTIZATION_BITS;
+
+            for (let i = 0; i < pixelData.length; i += step) {
+                const r = pixelData[i];
+                const g = pixelData[i + 1];
+                const b = pixelData[i + 2];
+                const a = pixelData[i + 3];
+
+                // Skip transparent pixels
+                if (a < 128) continue;
+
+                // Quantize the color to group similar shades
+                const quantizedR = (r >> SHIFT);
+                const quantizedG = (g >> SHIFT);
+                const quantizedB = (b >> SHIFT);
+
+                // Create a unique key for the quantized color
+                const colorKey = `${quantizedR}-${quantizedG}-${quantizedB}`;
+                
+                // Increment the count for this color key
+                colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);
+            }
+            
+            // Convert the map to an array and sort by count (descending)
+            const sortedColors = Array.from(colorMap.entries()).sort((a, b) => b[1] - a[1]);
+
+            const dominantColors = sortedColors.slice(0, numColors).map(color => {
+                const [r, g, b] = color[0].split('-').map(c => (parseInt(c) << SHIFT) + (1 << (SHIFT - 1)));
+                return `rgb(${r}, ${g}, ${b})`;
+            });
+
+            return dominantColors;
+        }
+
+        /**
+         * Clears the color palette and displays the new colors with their codes.
+         * @param {Array<string>} colors - An array of 'rgb(...)' color strings.
+         */
+        function displayColors(colors) {
+            // Clear previous results
+            colorPalette.innerHTML = '';
+            
+            if (colors.length === 0) {
+                 colorPalette.innerHTML = '<p class="text-center text-gray-500 col-span-full">No dominant colors found. Please try another image.</p>';
+                 return;
+            }
+
+            colors.forEach(rgbColor => {
+                const hexColor = rgbToHex(rgbColor);
+
+                const colorBox = document.createElement('div');
+                colorBox.className = 'flex flex-col items-center justify-center p-4 rounded-xl shadow-md transition-transform duration-200 hover:scale-105';
+                colorBox.style.backgroundColor = rgbColor;
+
+                const colorName = document.createElement('div');
+                colorName.className = 'text-white text-lg font-bold p-2 mb-2 rounded-lg bg-gray-900 bg-opacity-50 backdrop-blur-sm';
+                colorName.textContent = rgbColor;
+
+                const hexButton = createCopyButton('HEX', hexColor);
+                const rgbButton = createCopyButton('RGB', rgbColor);
+
+                colorBox.append(hexButton, rgbButton);
+                colorPalette.appendChild(colorBox);
+            });
+        }
+        
+        /**
+         * Helper function to create a styled copy button.
+         * @param {string} label - The label for the button (e.g., 'HEX').
+         * @param {string} value - The value to copy (e.g., '#FFFFFF').
+         * @returns {HTMLButtonElement} A button element.
+         */
+        function createCopyButton(label, value) {
+            const button = document.createElement('button');
+            button.className = 'mt-2 px-4 py-2 bg-white text-gray-800 rounded-lg shadow-sm hover:bg-gray-200 transition-colors duration-200 text-sm font-medium';
+            button.textContent = `Copy ${label}: ${value}`;
+            button.onclick = () => {
+                const textArea = document.createElement('textarea');
+                textArea.value = value;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = `Copy ${label}: ${value}`;
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+                document.body.removeChild(textArea);
+            };
+            return button;
+        }
+
+        /**
+         * Converts an RGB color string to its HEX equivalent.
+         * @param {string} rgb - An RGB color string, e.g., 'rgb(255, 0, 0)'.
+         * @returns {string} The HEX color string, e.g., '#FF0000'.
+         */
+        function rgbToHex(rgb) {
+            const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            if (!parts) return '';
+            const r = parseInt(parts[1], 10);
+            const g = parseInt(parts[2], 10);
+            const b = parseInt(parts[3], 10);
+            return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+        }
+    </script>
+
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Color Extractor: Instantly Create Your Brand Palette</title>
+    <meta name="description" content="An in-depth guide to the Logo Color Extractor. Discover how this powerful tool works, its benefits for designers and developers, and how it uses color quantization to instantly generate a brand's dominant color palette from any logo.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4f46e5; /* The tool's primary color */
+            --secondary-color: #10b981; /* Accent Green */
+            --accent-color: #eef2ff; /* Light Lavender */
+            --dark-grey: #111827;
+            --medium-grey: #4B5564;
+            --light-grey: #F3F4F6;
+            --bg-color: #FFFFFF;
+            --text-color: var(--dark-grey);
+            --border-radius: 20px;
+            --shadow: 0 12px 35px rgba(79, 70, 229, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.9;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Hero Section --- */
+        .main-header {
+            background-color: var(--light-grey);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .main-header h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            letter-spacing: -1.5px;
+        }
+
+        .main-header .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: 850px;
+            margin: 0 auto;
+            color: var(--medium-grey);
+        }
+        
+        .tool-container {
+            transform: translateY(-80px);
+            margin-bottom: -80px;
+        }
+
+        /* --- Article Body --- */
+        .article-content { padding: 60px 0; }
+        h2, h3, h4 { font-weight: 600; color: var(--primary-color); margin-top: 2.5em; margin-bottom: 1em; line-height: 1.3; }
+        h2 { font-size: 2.8rem; text-align: center; position: relative; padding-bottom: 20px; margin-bottom: 50px; }
+        h2 i { color: var(--secondary-color); margin-right: 15px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 90px; height: 5px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 3px; }
+        h3 { font-size: 2rem; color: #4338ca; border-left: 4px solid var(--secondary-color); padding-left: 15px;}
+        h4 { font-size: 1.5rem; color: var(--medium-grey); }
+        p, li { font-size: 1.1rem; margin-bottom: 1em; color: var(--medium-grey); }
+        strong { font-weight: 600; color: var(--dark-grey); }
+
+        /* --- Table of Contents --- */
+        .toc-box { background: #fff; padding: 40px; border-radius: var(--border-radius); margin: 40px 0 60px 0; border: 1px solid #dee2e6; box-shadow: var(--shadow); }
+        .toc-box h3 { margin-top: 0; border-left: none; padding-left: 0; }
+        .toc-box ul { list-style: none; padding: 0; columns: 2; column-gap: 40px; }
+        .toc-box li { margin-bottom: 15px; }
+        .toc-box li a { font-weight: 500; color: var(--medium-grey); text-decoration: none; transition: var(--transition); display: flex; align-items: center;}
+        .toc-box li a i { color: var(--primary-color); margin-right: 12px; }
+        .toc-box li a:hover { color: var(--secondary-color); transform: translateX(5px); }
+        
+        /* Pattern: How it Works Flowchart */
+        .how-it-works-flow { margin: 60px 0; }
+        .flow-step { display: flex; align-items: center; gap: 30px; margin-bottom: 20px; }
+        .flow-icon { flex-shrink: 0; width: 80px; height: 80px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; }
+        .flow-content { background: #fff; padding: 30px; border-radius: var(--border-radius); box-shadow: var(--shadow); flex-grow: 1; border: 1px solid var(--light-grey); }
+        .flow-content h4 { margin: 0 0 5px 0; }
+        .flow-arrow { text-align: center; font-size: 2.5rem; color: var(--medium-grey); opacity: 0.3; margin: 0 0 20px 38px; }
+
+        /* Pattern: Use Case Cards */
+        .use-case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .use-case-card {
+            background: #fff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--light-grey);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .use-case-card:hover { transform: translateY(-5px); }
+        .use-case-header { background: var(--secondary-color); color: white; padding: 20px; display: flex; align-items: center; }
+        .use-case-header i { font-size: 1.8rem; margin-right: 15px; }
+        .use-case-header h4 { margin: 0; color: white; }
+        .use-case-body { padding: 25px; }
+
+        /* --- FAQ --- */
+        .faq-section { max-width: 900px; margin: 60px auto; }
+        .faq-item { margin-bottom: 15px; border-radius: var(--border-radius); overflow: hidden; background: #fff; box-shadow: var(--shadow); border: 1px solid var(--light-grey); }
+        .faq-item input { display: none; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 20px; cursor: pointer; font-weight: 600; font-size: 1.2rem; }
+        .faq-question::after { content: '\f055'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform 0.3s ease; color: var(--primary-color); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; padding: 0 20px; }
+        .faq-answer p, .faq-answer ul { padding: 20px 0; margin: 0; border-top: 1px solid var(--light-grey);}
+        .faq-item input:checked ~ .faq-question { color: var(--primary-color); }
+        .faq-item input:checked ~ .faq-question::after { transform: rotate(135deg); }
+        .faq-item input:checked ~ .faq-answer { max-height: 500px; }
+
+        /* --- Footer --- */
+        .main-footer { background-color: var(--dark-grey); color: #ced4da; padding: 40px 0; text-align: center; margin-top: 60px; }
+        .main-footer p { margin: 0; font-size: 0.9rem; }
+
+        @media (max-width: 992px) {
+            .toc-box ul { columns: 1; }
+        }
+        @media (max-width: 768px) {
+            .main-header h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            .flow-step { flex-direction: column; text-align: center; }
+            .flow-arrow { display: none; }
+        }
+    </style>
+  <meta name="description" content="An in-depth guide to the Logo Color Extractor. Discover how this powerful tool works, its benefits for designers and developers, and how it uses color quantization to instantly generate a brand">
+  <link rel="canonical" href="https://shaynly.com/logo-color-extractor/">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/logo-color-extractor/">
+  <meta property="og:title" content="The Logo Color Extractor - Shaynly">
+  <meta property="og:description" content="An in-depth guide to the Logo Color Extractor. Discover how this powerful tool works, its benefits for designers and developers, and how it uses color quantization to instantly generate a brand">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Logo Color Extractor - Shaynly">
+  <meta name="twitter:description" content="An in-depth guide to the Logo Color Extractor. Discover how this powerful tool works, its benefits for designers and developers, and how it uses color quantization to instantly generate a brand">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+<body>
+
     
-  </main>
 
-  <!-- Footer -->
-  
+   
 
-  <script src="/assets/js/main.js"></script>
+    <main class="article-content">
+        <div class="container">
+            <p class="intro-text">Color is the silent ambassador of a brand. It evokes emotion, builds recognition, and sets the tone for every piece of marketing collateral. For designers, developers, and marketers, having quick and accurate access to a <a href="https://shaynly.com/brand-color-palette-generator/" title="Brand Color Palette generator" target="_blank" rel="noopener"  data-wpil-monitor-id="617">brand's core color palette</a> is not just a convenience—it's a necessity for maintaining brand consistency. The Logo Color Extractor is a powerful yet simple tool designed to eliminate guesswork and streamline this critical process. By uploading any logo, you can instantly identify and extract its most dominant colors, <a href="https://shaynly.com/branded-qr-code-generator/" title="Branded QR Code Generator: Best and Completely Free" target="_blank" rel="noopener"  data-wpil-monitor-id="627">complete with HEX and RGB codes</a> ready to be copied and used in your projects. This guide explores the "why" behind this tool, the technology that powers it, and the practical ways it can supercharge your creative workflow.</p>
 
+            <div class="toc-box">
+                <h3><i class="fas fa-palette"></i> Inside the Palette</h3>
+                <ul>
+                    <li><a href="#why-it-matters"><i class="fas fa-exclamation-circle"></i>The Problem: Inefficiency & Inconsistency</a></li>
+                    <li><a href="#how-it-works"><i class="fas fa-cogs"></i>How It Works: The Technology Explained</a></li>
+                    <li><a href="#use-cases"><i class="fas fa-users"></i>Who Is This For? Key Use Cases</a></li>
+                    <li><a href="#the-code"><i class="fas fa-code"></i>A Look Under the Hood: The JavaScript</a></li>
+                    <li><a href="#future"><i class="fas fa-infinity"></i>Future Possibilities</a></li>
+                    <li><a href="#faq"><i class="fas fa-question-circle"></i>Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+
+            <section id="why-it-matters">
+                <h2><i class="fas fa-exclamation-circle"></i>The Problem: Brand Consistency is Hard Work</h2>
+                <p>Before a tool like this, the process of getting a brand's exact colors could be surprisingly tedious. It might involve:</p>
+                <ul>
+                    <li>Manually using an eyedropper tool in a design program like Photoshop or Figma.</li>
+                    <li>Sifting through brand guideline documents (if they even exist or are up-to-date).</li>
+                    <li>Inspecting <a href="https://shaynly.com/css-background-animation-generator/" title="CSS Background Animation Generator: Create Stunning Animated Backgrounds for Your Website" target="_blank" rel="noopener"  data-wpil-monitor-id="623">website CSS</a>, which can be time-consuming and may not include all logo colors.</li>
+                    <li>Simple guesswork, which leads to brand inconsistency and a less professional look.</li>
+                </ul>
+                <p>This tool solves that problem by providing a single, fast, and accurate source of truth for a logo's color palette, saving valuable time and ensuring perfect brand alignment across all projects.</p>
+            </section>
+            
+            <section id="how-it-works">
+                <h2><i class="fas fa-cogs"></i>How It Works: The Technology Explained</h2>
+                <p>The magic behind the Logo Color Extractor isn't magic at all—it's a clever, multi-step process that uses your browser's built-in capabilities to analyze image data. Here is a simplified breakdown of the journey from upload to palette.</p>
+                <div class="how-it-works-flow">
+                    <div class="flow-step">
+                        <div class="flow-icon"><i class="fas fa-upload"></i></div>
+                        <div class="flow-content">
+                            <h4>1. Image Upload & Display</h4>
+                            <p>You select an image file (PNG, JPG, or SVG). The browser's FileReader API reads the file and displays it on the page. This all happens locally on your <a href="https://shaynly.com/brand-protection-strategies/" title="Brand Protection Strategies for Digital Businesses: A Complete Guide" target="_blank" rel="noopener"  data-wpil-monitor-id="629">machine for complete</a> privacy.</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background-color: var(--secondary-color);"><i class="fas fa-image"></i></div>
+                        <div class="flow-content">
+                            <h4>2. Canvas Rendering</h4>
+                            <p>Once the image is loaded, it's drawn onto a hidden <a href="https://shaynly.com/html5-video-element-enhancing-the-multimedia-experienc/" title="HTML5 Video Element: Enhancing the Multimedia Experience" target="_blank" rel="noopener"  data-wpil-monitor-id="631">HTML5 `<canvas>` element</a>. This canvas acts as a digital easel, giving our script pixel-level <a href="https://shaynly.com/mastering-html-tables/" title="Mastering HTML Tables: Building Structured and Accessible Data Displays" target="_blank" rel="noopener"  data-wpil-monitor-id="625">access to the image data</a>.</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background-color: var(--accent-color); color: var(--primary-color);"><i class="fas fa-th"></i></div>
+                        <div class="flow-content">
+                            <h4>3. Pixel Data Extraction</h4>
+                            <p>The script uses the `getImageData()` function to read the entire canvas into a massive array of numbers. Each pixel is represented by four values: Red, Green, Blue, and Alpha (transparency).</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background-color: #F5A623;"><i class="fas fa-sort-amount-down"></i></div>
+                        <div class="flow-content">
+                            <h4>4. Color Quantization & Analysis</h4>
+                            <p>To find the "dominant" colors, the script groups similar shades together (a process called quantization) and counts the frequency of each group. This prevents having thousands of slightly different shades of blue, for example. The most frequent color groups are identified as the dominant palette.</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background-color: #4A90E2;"><i class="fas fa-palette"></i></div>
+                        <div class="flow-content">
+                            <h4>5. Palette Display</h4>
+                            <p>The top <a href="https://shaynly.com/color-contrast-checker/" title="Color Contrast Checker" target="_blank" rel="noopener"  data-wpil-monitor-id="633">colors are converted into user-friendly RGB</a> and HEX formats. They are then displayed as interactive color cards, complete with one-click copy functionality to streamline your workflow.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="use-cases">
+                <h2><i class="fas fa-users"></i>Who Is This For? Key Use Cases</h2>
+                <p>This tool is designed to be a daily-use utility for a wide range of creative and technical professionals.</p>
+                <div class="use-case-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-header">
+                            <i class="fas fa-paint-brush"></i>
+                            <h4>For Graphic Designers</h4>
+                        </div>
+                        <div class="use-case-body">
+                            <p>Quickly grab a client's logo colors to start a new project—whether it's a <a href="https://shaynly.com/social-media-marketing-in-healthcare-dos-and-donts/" title="Social Media Marketing in Healthcare: Dos and Don&#8217;ts" target="_blank" rel="noopener"  data-wpil-monitor-id="621">social media</a> graphic, a presentation deck, or a website mockup—without needing to ask for brand guidelines. Ensures perfect color consistency from the very beginning.</p>
+                        </div>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-header">
+                            <i class="fas fa-code"></i>
+                            <h4>For Web Developers</h4>
+                        </div>
+                        <div class="use-case-body">
+                            <p>Instantly get the exact HEX codes needed to style a website or application. Perfect for theming a UI, <a href="https://shaynly.com/css-button-style-generator/" title="CSS Button Style Generator: Create Custom Buttons Instantly" target="_blank" rel="noopener"  data-wpil-monitor-id="619">styling buttons</a>, and ensuring the front-end perfectly matches the company's branding, all with a simple copy-paste.</p>
+                        </div>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-header">
+                            <i class="fas fa-bullhorn"></i>
+                            <h4>For Marketers & Social Media Managers</h4>
+                        </div>
+                        <div class="use-case-body">
+                            <p>Create on-brand content quickly. Grab a partner's logo colors for a co-branded campaign or ensure your own company's colors are used correctly in a Canva design, presentation, or email newsletter.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="the-code">
+                <h2><i class="fas fa-code"></i>A Look Under the Hood: The JavaScript Logic</h2>
+                <h3>The `getDominantColors` Function</h3>
+                <p>The core of the tool is the `getDominantColors` function. Its primary challenge is to analyze potentially millions of pixels and find the most common colors without being overwhelmed by tiny variations in shade. It achieves this through a clever technique called **color quantization**.</p>
+                <ul>
+                    <li><strong>The Problem:</strong> A typical logo might contain thousands of unique color values due to anti-aliasing (the smoothing of edges) and gradients. A simple frequency count would be meaningless.</li>
+                    <li><strong>The Solution:</strong> Instead of counting every unique color, we "quantize" them. The script reduces the color depth by right-shifting the bits of each RGB value. For example, it reduces the 256 possible values for red to just 16. This effectively groups similar colors (like `#0000FF` and `#0000FE`) into the same "bucket."</li>
+                    <li><strong>The Process:</strong> The function iterates through every pixel, ignores transparent ones, creates a unique key for the quantized color (`"15-10-5"`), and stores the count in a JavaScript `Map`. Finally, it sorts this map by count and returns the top results, converting them back to standard RGB values.</li>
+                </ul>
+            </section>
+
+            <section id="future">
+                <h2><i class="fas fa-infinity"></i>Future Possibilities & Enhancements</h2>
+                <p>This tool provides a powerful foundation. Future versions could be enhanced with even more advanced features to create a complete branding toolkit:</p>
+                <ul>
+                    <li><strong>Color Palette Export:</strong> Allow users to export the generated palette directly as an Adobe Swatch file (.ase), CSS variables, or a Tailwind CSS config.</li>
+                    <li><strong>Accessibility Checker:</strong> Automatically calculate the contrast ratio between the extracted colors to help designers create accessible, WCAG-compliant designs.</li>
+                    <li><strong>Palette Suggestions:</strong> Use color theory AI to suggest complementary, triadic, or analogous colors based on the dominant logo colors, helping to build out a full brand palette.</li>
+                    <li><strong>URL and Live Website Analysis:</strong> Allow users to paste a website URL to extract logo colors and other key branding elements directly from a live site.</li>
+                </ul>
+            </section>
+
+            <section id="faq">
+                <h2><i class="fas fa-question-circle"></i>Frequently Asked Questions</h2>
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <input type="checkbox" id="faq1">
+                        <label class="faq-question" for="faq1">Is my uploaded logo image safe and private?</label>
+                        <div class="faq-answer">
+                            <p>Yes, 100%. This tool operates entirely within your web browser. Your image is never uploaded to a server. All the processing, from reading the file to analyzing the pixels, is done locally on your computer using JavaScript. This makes it a completely private and secure tool.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <input type="checkbox" id="faq2">
+                        <label class="faq-question" for="faq2">Why does the tool sometimes miss a very thin line or small detail?</label>
+                        <div class="faq-answer">
+                            <p>The tool is designed to find the most *dominant* colors by counting pixel frequency. If a color is only present in a very small number of pixels (like a thin accent line), it may not rank in the top 5 most frequent colors. The quantization process helps, but highly detailed or complex logos with many colors can sometimes obscure minor color details in favor of the larger, more dominant color blocks.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <input type="checkbox" id="faq3">
+                        <label class="faq-question" for="faq3">Can I use this tool for images other than logos?</label>
+                        <div class="faq-answer">
+                            <p>Absolutely! While it's optimized for logos, you can upload any image—a photograph, an illustration, a piece of art—to extract its dominant color palette. It's a fantastic tool for creating mood boards, generating design inspiration from photos, or developing a color scheme for a project based on a source image.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <!-- 
+      This is a static HTML file. The script for the tool is included below.
+    -->
+    <script>
+        // Get references to DOM elements
+        const logoUpload = document.getElementById('logo-upload');
+        const uploadedLogo = document.getElementById('uploaded-logo');
+        const colorCanvas = document.getElementById('color-canvas');
+        const imageContainer = document.getElementById('image-container');
+        const imageOverlay = document.getElementById('image-overlay');
+        const colorPalette = document.getElementById('color-palette');
+        const placeholderText = document.getElementById('placeholder-text');
+
+        // Main event listener for file upload
+        logoUpload.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedLogo.src = e.target.result;
+                imageContainer.style.display = 'block'; // Show image container
+                imageOverlay.style.display = 'flex'; // Show processing overlay
+                placeholderText.style.display = 'none'; // Hide placeholder text
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Event listener for when the image has loaded
+        uploadedLogo.onload = function() {
+            // Get a 2D rendering context for the canvas
+            const ctx = colorCanvas.getContext('2d');
+            
+            // Set canvas dimensions to match the image
+            colorCanvas.width = uploadedLogo.naturalWidth;
+            colorCanvas.height = uploadedLogo.naturalHeight;
+            
+            // Draw the image onto the canvas
+            ctx.drawImage(uploadedLogo, 0, 0);
+
+            // Get the pixel data from the entire canvas
+            const pixelData = ctx.getImageData(0, 0, colorCanvas.width, colorCanvas.height).data;
+
+            // Analyze and extract dominant colors
+            const dominantColors = getDominantColors(pixelData, 5); // Get top 5 colors
+            
+            // Display the extracted colors on the page
+            displayColors(dominantColors);
+            
+            // Hide the processing overlay
+            imageOverlay.style.display = 'none';
+        };
+
+        function getDominantColors(pixelData, numColors) {
+            const colorMap = new Map();
+            const step = 4;
+            const QUANTIZATION_BITS = 4;
+            const SHIFT = 8 - QUANTIZATION_BITS;
+
+            for (let i = 0; i < pixelData.length; i += step) {
+                const a = pixelData[i + 3];
+                if (a < 128) continue;
+                const r = pixelData[i];
+                const g = pixelData[i + 1];
+                const b = pixelData[i + 2];
+                const quantizedR = (r >> SHIFT);
+                const quantizedG = (g >> SHIFT);
+                const quantizedB = (b >> SHIFT);
+                const colorKey = `${quantizedR}-${quantizedG}-${quantizedB}`;
+                colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);
+            }
+            
+            const sortedColors = Array.from(colorMap.entries()).sort((a, b) => b[1] - a[1]);
+            const dominantColors = sortedColors.slice(0, numColors).map(color => {
+                const [r, g, b] = color[0].split('-').map(c => (parseInt(c) << SHIFT) + (1 << (SHIFT - 1)));
+                return `rgb(${r}, ${g}, ${b})`;
+            });
+
+            return dominantColors;
+        }
+
+        function displayColors(colors) {
+            colorPalette.innerHTML = '';
+            if (colors.length === 0) {
+                 colorPalette.innerHTML = '<p class="text-center text-gray-500 col-span-full">No dominant colors found. Please try another image.</p>';
+                 return;
+            }
+
+            colors.forEach(rgbColor => {
+                const hexColor = rgbToHex(rgbColor);
+                const colorCard = document.createElement('div');
+                colorCard.className = 'flex flex-col items-center p-6 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105';
+                colorCard.style.backgroundColor = rgbColor;
+
+                const colorInfo = document.createElement('div');
+                colorInfo.className = 'w-full text-center p-3 rounded-lg bg-gray-900 bg-opacity-60 backdrop-blur-sm';
+                
+                const hexText = document.createElement('p');
+                hexText.className = 'text-white font-bold text-lg';
+                hexText.textContent = hexColor;
+
+                const rgbText = document.createElement('p');
+                rgbText.className = 'text-gray-200 text-sm';
+                rgbText.textContent = rgbColor;
+
+                colorInfo.append(hexText, rgbText);
+
+                const buttonContainer = document.createElement('div');
+                buttonContainer.className = 'mt-4 flex gap-2';
+                
+                const hexButton = createCopyButton('HEX', hexColor);
+                const rgbButton = createCopyButton('RGB', rgbColor);
+
+                buttonContainer.append(hexButton, rgbButton);
+                colorCard.append(colorInfo, buttonContainer);
+                colorPalette.appendChild(colorCard);
+            });
+        }
+        
+        function createCopyButton(label, value) {
+            const button = document.createElement('button');
+            button.className = 'px-3 py-1 bg-white text-gray-800 rounded-md shadow-sm hover:bg-gray-200 transition-colors duration-200 text-xs font-medium';
+            button.textContent = `Copy ${label}`;
+            button.onclick = () => {
+                navigator.clipboard.writeText(value).then(() => {
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = `Copy ${label}`;
+                    }, 2000);
+                }).catch(err => console.error('Failed to copy text: ', err));
+            };
+            return button;
+        }
+
+        function rgbToHex(rgb) {
+            const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            if (!parts) return '';
+            return '#' + [1, 2, 3].map(i => parseInt(parts[i]).toString(16).padStart(2, '0')).join('').toUpperCase();
+        }
+    </script>
+
+  <!-- Global Shaynly Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
+      </div>
+      <div>
+        <h4>Article Categories</h4>
+        <ul>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
+          <li><a href="/category/business/">Business Strategy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
+          <li><a href="/site-map/">HTML Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>
