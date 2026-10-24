@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free CSS Animation Generator: Create Random Animations Online (Dark Theme) - Shaynly Toolkit</title>
+  <meta name="description" content="Generate unique CSS animations instantly with our free online tool. Customize transform, opacity, background color &amp; more. Copy the code and enhance your web projects! (Dark Theme)">
+  <link rel="canonical" href="https://shaynly.com/tools/random-css-animation-generator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/random-css-animation-generator.html">
+  <meta property="og:title" content="Free CSS Animation Generator: Create Random Animations Online (Dark Theme) - Shaynly Toolkit">
+  <meta property="og:description" content="Generate unique CSS animations instantly with our free online tool. Customize transform, opacity, background color &amp; more. Copy the code and enhance your web projects! (Dark Theme)">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free CSS Animation Generator: Create Random Animations Online (Dark Theme) - Shaynly Toolkit">
+  <meta name="twitter:description" content="Generate unique CSS animations instantly with our free online tool. Customize transform, opacity, background color &amp; more. Copy the code and enhance your web projects! (Dark Theme)">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 5px;
+    background-color: #121212; /* Dark background */
+    color: #EEEEEE; /* Light text */
+  }
+  .container {
+    max-width: 1200px;
+    margin: 10 auto;
+    background-color: #212121; /* Darker container */
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Increased shadow */
+  }
+  h1 {
+    text-align: center;
+    color: #BB86FC; /* Purple accent color */
+    margin-bottom: 30px;
+  }
+  .generator {
+    background-color: #303030; /* Dark generator */
+    border: 1px solid #424242;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .preview-container {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    background-color: #424242; /* Dark preview background */
+    border-radius: 8px;
+  }
+  .preview-element {
+    width: 50px;
+    height: 50px;
+    background-color: #64B5F6; /* Lighter blue */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #generateBtn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #BB86FC; /* Purple button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #generateBtn:hover {
+    background-color: #9C27B0; /* Darker purple */
+  }
+  .code-snippet {
+    background-color: #424242; /* Dark code background */
+    border: 1px solid #616161;
+    border-radius: 4px;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    margin-top: 20px;
+    font-size: 14px;
+    max-height: 300px;
+    overflow-y: auto;
+    color: #F0F0F0; /* Light code text */
+  }
+  .copy-btn {
+    display: block;
+    width: 100%;
+    background-color: #64B5F6; /* Light blue button */
+    color: #212121; /* Dark text */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  .copy-btn:hover {
+    background-color: #1E88E5; /* Darker blue */
+  }
+
+  /* Added Accessibility Styles */
+  #generateBtn:focus, .copy-btn:focus {
+    outline: 2px solid #03DAC5; /* Visual focus indicator - teal */
+    outline-offset: 2px;
+  }
+
+  /* Added Mobile Responsiveness */
+  @media (max-width: 600px) {
+    .container {
+      padding: 5px;
+    }
+    h1 {
+      font-size: 1.5em;
+    }
+    .preview-container {
+      width: 150px;
+      height: 150px;
+    }
+    .preview-element {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+</style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Free CSS Animation Generator: Create Random Animations Online (Dark Theme)</h1>
+      <p>Generate unique CSS animations instantly with our free online tool. Customize transform, opacity, background color &amp; more. Copy the code and enhance your web projects! (Dark Theme)</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+  <div class="container">
+    <h1>Free CSS Animation Generator: Create Random Animations Online (Dark Theme)</h1>
+    <p>Quickly generate unique CSS animations using our free online tool, now with a sleek dark theme! Customize transforms, opacity, and colors. Perfect for web designers and developers who prefer a dark UI.</p>
+
+    <div class="generator">
+      <div class="preview-container">
+        <div class="preview-element" id="previewElement"></div>
+      </div>
+      <button id="generateBtn" onclick="generateRandomAnimation()">Generate Random Animation</button>
+      <div class="code-snippet" id="animationCode" aria-live="polite"></div>
+      <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+
+      <p><strong>How to Use:</strong> Click "Generate Random Animation" to create a new CSS animation.  Copy the generated code and paste it into your stylesheet.  Apply the <code>.animated-element</code> class to the HTML element you want to animate. Enjoy the dark theme!</p>
+
+      <h2>Why Use a CSS Animation Generator?</h2>
+      <ul>
+        <li><strong>Saves Time:</strong> Instantly create complex animations without writing code from scratch.</li>
+        <li><strong>Sparks Creativity:</strong> Discover new animation possibilities and effects.</li>
+        <li><strong>Easy to Customize:</strong> Tweak the generated CSS to fit your specific design needs.</li>
+        <li><strong>Dark Theme Friendly:</strong> A visually comfortable experience for late-night coding sessions.</li> <!-- Added -->
+      </ul>
+    </div>
+
+  </div>
+
+  
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const properties = [
+      'transform',
+      'opacity',
+      'background-color',
+      'width',
+      'height',
+      'border-radius',
+      'top',
+      'left',
+      'rotate',
+      'scale',
+      'skew'
+    ];
+
+    const timingFunctions = [
+      'linear',
+      'ease',
+      'ease-in',
+      'ease-out',
+      'ease-in-out',
+      'cubic-bezier(0.1, 0.7, 1.0, 0.1)',
+      'steps(5, end)'
+    ];
+
+    function getRandomProperty() {
+      return properties[Math.floor(Math.random() * properties.length)];
+    }
+
+    function getRandomValue(property) {
+      switch (property) {
+        case 'transform':
+          const transformTypes = ['translate', 'rotate', 'scale', 'skew'];
+          const type = transformTypes[Math.floor(Math.random() * transformTypes.length)];
+          switch (type) {
+            case 'translate':
+              return `translate(${Math.floor(Math.random() * 100)}px, ${Math.floor(Math.random() * 100)}px)`;
+            case 'rotate':
+              return `rotate(${Math.floor(Math.random() * 360)}deg)`;
+            case 'scale':
+              return `scale(${(Math.random() * 2).toFixed(2)})`;
+            case 'skew':
+              return `skew(${Math.floor(Math.random() * 90)}deg, ${Math.floor(Math.random() * 90)}deg)`;
+          }
+        case 'opacity':
+          return Math.random().toFixed(2);
+        case 'background-color':
+          return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+        case 'width':
+        case 'height':
+          return `${Math.floor(Math.random() * 100)}px`;
+        case 'border-radius':
+          return `${Math.floor(Math.random() * 50)}%`;
+        case 'top':
+        case 'left':
+          return `${Math.floor(Math.random() * 150) - 75}px`;
+        case 'rotate':
+          return `${Math.floor(Math.random() * 360)}deg`;
+        case 'scale':
+          return (Math.random() * 2).toFixed(2);
+        case 'skew':
+          return `${Math.floor(Math.random() * 90)}deg`;
+        default:
+          return '0';
+      }
+    }
+
+    function generateRandomAnimation() {
+      const keyframes = [];
+      const steps = Math.floor(Math.random() * 3) + 2; // 2 to 4 steps
+
+      for (let i = 0; i < steps; i++) {
+        const percent = i === 0 ? 0 : i === steps - 1 ? 100 : Math.floor(Math.random() * 100);
+        const property = getRandomProperty();
+        const value = getRandomValue(property);
+        keyframes.push(`  ${percent}% { ${property}: ${value}; }`);
+      }
+
+      const animationName = 'randomAnimation' + Math.floor(Math.random() * 1000);
+      const duration = (Math.random() * 3 + 1).toFixed(1); // 1 to 4 seconds
+      const timingFunction = timingFunctions[Math.floor(Math.random() * timingFunctions.length)];
+      const iterationCount = Math.random() < 0.5 ? 'infinite' : Math.floor(Math.random() * 5) + 1;
+
+      const keyframesCSS = `@keyframes ${animationName} {\n${keyframes.join('\n')}\n}`;
+      const animationCSS = `animation: ${animationName} ${duration}s ${timingFunction} ${iterationCount};`;
+
+      const fullCSS = `${keyframesCSS}\n\n.animated-element {\n  ${animationCSS}\n}`;
+
+      document.getElementById('animationCode').textContent = fullCSS;
+
+      const previewElement = document.getElementById('previewElement');
+      previewElement.style.animation = '';
+      setTimeout(() => {
+        previewElement.style.animation = `${animationName} ${duration}s ${timingFunction} ${iterationCount}`;
+      }, 10);
+
+      const styleElement = document.createElement('style');
+      styleElement.textContent = keyframesCSS;
+      document.head.appendChild(styleElement);
+    }
+
+    function copyCode() {
+      const codeSnippet = document.getElementById('animationCode').textContent;
+      navigator.clipboard.writeText(codeSnippet).then(() => {
+        const copyBtn = document.querySelector('.copy-btn');
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.textContent = 'Copy Code';
+        }, 2000);
+      });
+    }
+
+    // Generate an initial random animation on page load
+    generateRandomAnimation();
+  </script>
+</body>
+</html>

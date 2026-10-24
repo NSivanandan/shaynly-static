@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Marketing Cost Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Estimate your monthly digital marketing investment for standard or premium services, based on ad spend, audience size, market competition, project duration, marketing goals, reporting depth, and selected channels like SEO, PPC, Social Media, and Content Marketing. Get a detailed breakdown of costs.">
+  <link rel="canonical" href="https://shaynly.com/tools/digital-marketing-cost-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/digital-marketing-cost-calculator.html">
+  <meta property="og:title" content="Digital Marketing Cost Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Estimate your monthly digital marketing investment for standard or premium services, based on ad spend, audience size, market competition, project duration, marketing goals, reporting depth, and selected channels like SEO, PPC, Social Media, and Content Marketing. Get a detailed breakdown of costs.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Digital Marketing Cost Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Estimate your monthly digital marketing investment for standard or premium services, based on ad spend, audience size, market competition, project duration, marketing goals, reporting depth, and selected channels like SEO, PPC, Social Media, and Content Marketing. Get a detailed breakdown of costs.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for range input thumbs */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #059669; /* Emerald-600 */
+            cursor: pointer;
+            border: 3px solid #A7F3D0; /* Emerald-200 */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s ease-in-out;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #047857; /* Emerald-700 */
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #059669; /* Emerald-600 */
+            cursor: pointer;
+            border: 3px solid #A7F3D0; /* Emerald-200 */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s ease-in-out;
+        }
+        input[type="range"]::-moz-range-thumb:hover {
+            background: #047857; /* Emerald-700 */
+        }
+
+        /* Tooltip styling */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #334155; /* Slate-700 */
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 10px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #334155 transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Marketing & SEO</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Digital Marketing Cost Calculator</h1>
+      <p>Estimate your monthly digital marketing investment for standard or premium services, based on ad spend, audience size, market competition, project duration, marketing goals, reporting depth, and selected channels like SEO, PPC, Social Media, and Content Marketing. Get a detailed breakdown of costs.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="calculator-container bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl w-full max-w-4xl border border-gray-200 transform hover:shadow-3xl transition-all duration-300 ease-in-out">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-center text-emerald-800 mb-8 pb-4 border-b-2 border-emerald-100">
+            Digital Marketing Cost Calculator
+        </h1>
+        
+        <div class="currency-switch mb-6 text-center">
+            <label for="countrySelect" class="block text-gray-700 text-sm font-medium mb-2">Select Currency:</label>
+            <select id="countrySelect" class="w-full sm:w-auto px-5 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="IN">India (INR)</option>
+                <option value="US">United States (USD)</option>
+                <option value="UK">United Kingdom (GBP)</option>
+                <option value="CA">Canada (CAD)</option>
+                <option value="AU">Australia (AUD)</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="serviceTier" class="block text-gray-700 text-sm font-medium mb-3">
+                Service Tier:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Choose the level of service and agency engagement. Higher tiers offer more dedicated resources and advanced strategies.</span>
+                </span>
+            </label>
+            <select id="serviceTier" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="standard">Standard (Foundational)</option>
+                <option value="premium">Premium (Growth-Oriented)</option>
+                <option value="enterprise">Enterprise (Comprehensive & Strategic)</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="adSpend" class="block text-gray-700 text-sm font-medium mb-3">
+                Monthly Ad Spend: <span id="adSpendValue" class="font-semibold text-emerald-600">$0 - $1,000</span>
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Your estimated monthly budget for paid advertising campaigns (e.g., Google Ads, Social Media Ads).</span>
+                </span>
+            </label>
+            <input type="range" id="adSpend" min="0" max="3" value="0" class="w-full h-2 bg-emerald-100 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-400">
+            <div class="flex justify-between text-xs text-gray-500 mt-2 px-1">
+                <span>$0-1K</span>
+                <span>$1K-5K</span>
+                <span>$5K-20K</span>
+                <span>$20K+</span>
+            </div>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="audienceSize" class="block text-gray-700 text-sm font-medium mb-3">
+                Target Audience Size:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">The geographical reach of your target customers. Broader audiences typically require more extensive campaigns.</span>
+                </span>
+            </label>
+            <select id="audienceSize" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="local">Local (City/Region)</option>
+                <option value="national">National (Country-wide)</option>
+                <option value="international">International (Multiple Countries)</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="competitionLevel" class="block text-gray-700 text-sm font-medium mb-3">
+                Market Competition Level: <span id="competitionLevelValue" class="font-semibold text-emerald-600">Medium</span>
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Estimate the level of competition in your digital market. Higher competition means more aggressive strategies are needed.</span>
+                </span>
+            </label>
+            <input type="range" id="competitionLevel" min="0" max="2" value="1" class="w-full h-2 bg-emerald-100 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-400">
+            <div class="flex justify-between text-xs text-gray-500 mt-2 px-1">
+                <span>Low</span>
+                <span>Medium</span>
+                <span>High</span>
+            </div>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="projectDuration" class="block text-gray-700 text-sm font-medium mb-3">
+                Project Duration:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Longer commitments often lead to more stable results and potential cost efficiencies.</span>
+                </span>
+            </label>
+            <select id="projectDuration" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="short">Short-term (1-3 Months)</option>
+                <option value="medium">Medium-term (4-6 Months)</option>
+                <option value="long">Long-term (7-12 Months)</option>
+                <option value="ongoing">Ongoing (12+ Months)</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="marketingGoal" class="block text-gray-700 text-sm font-medium mb-3">
+                Primary Marketing Goal:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Different goals require varied strategies and resource allocation.</span>
+                </span>
+            </label>
+            <select id="marketingGoal" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="awareness">Brand Awareness</option>
+                <option value="leads">Lead Generation</option>
+                <option value="sales">Direct Sales/Conversions</option>
+                <option value="engagement">Audience Engagement</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="marketingMaturity" class="block text-gray-700 text-sm font-medium mb-3">
+                Current Marketing Maturity:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Indicates your current digital marketing foundation. Less mature setups may require more initial foundational work.</span>
+                </span>
+            </label>
+            <select id="marketingMaturity" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="beginner">Beginner (No/Limited Digital Presence)</option>
+                <option value="intermediate">Intermediate (Some Digital Presence/Assets)</option>
+                <option value="advanced">Advanced (Established Digital Presence/Assets)</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="reportingDepth" class="block text-gray-700 text-sm font-medium mb-3">
+                Reporting & Analytics Depth:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">The level of detail and frequency of performance reports. More in-depth reporting provides richer insights.</span>
+                </span>
+            </label>
+            <select id="reportingDepth" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="basic">Basic (Monthly Overview)</option>
+                <option value="detailed">Detailed (Bi-weekly/Weekly, Custom Dashboards)</option>
+                <option value="advanced">Advanced (Real-time, Predictive Analytics, Strategic Insights)</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label class="block text-gray-700 text-sm font-medium mb-4">
+                Select Digital Marketing Channels:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Choose the specific marketing channels you wish to invest in. Each channel has distinct costs and benefits.</span>
+                </span>
+            </label>
+            <div class="services-container grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="seo" checked class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Search Engine Optimization (SEO)</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Improving organic search rankings and website visibility.</p>
+                </div>
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="ppc" class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Paid Per Click (PPC) Advertising</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Managing paid ad campaigns on search engines and other platforms.</p>
+                </div>
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="social_media" class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Social Media Marketing</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Strategies for engaging audiences and running ads on social platforms.</p>
+                </div>
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="content_marketing" class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Content Marketing</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Creating valuable content (blogs, videos, infographics) to attract and retain customers.</p>
+                </div>
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="email_marketing" class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Email Marketing</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Designing and executing email campaigns for lead nurturing and customer retention.</p>
+                </div>
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="web_dev_maintenance" class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Web Dev & Maintenance</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Website updates, landing page creation, and technical support for marketing efforts.</p>
+                </p>
+                </div>
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="analytics_reporting" class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Analytics & Reporting</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">In-depth data analysis, performance tracking, and comprehensive reporting.</p>
+                </div>
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="strategic_consulting" class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Strategic Consulting & Advisory</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Regular strategic sessions, market research, and high-level advisory.</p>
+                </div>
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="advanced_tools" class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Advanced Tools & Technology</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Access to enterprise-level SEO, analytics, and AI-driven optimization platforms.</p>
+                </div>
+                <div class="service-item bg-emerald-50 p-4 rounded-lg border border-emerald-200 hover:shadow-md hover:border-emerald-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="reputation_management" class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Brand Reputation Management</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Proactive monitoring and management of online brand perception.</p>
+                </div>
+
+                <div class="service-item bg-emerald-100 p-4 rounded-lg border border-emerald-300 col-span-full">
+                    <label class="flex items-center cursor-pointer font-bold text-emerald-800">
+                        <input type="checkbox" id="all" class="form-checkbox h-5 w-5 text-emerald-700 rounded focus:ring-emerald-500 cursor-pointer">
+                        <span class="ml-3">Select All Core Channels</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group mb-6">
+            <label class="block text-gray-700 text-sm font-medium mb-3">
+                Custom Services / Add-ons:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Add any additional services or specific costs not listed above, tailoring the estimate to your unique needs.</span>
+                </span>
+            </label>
+            <div id="customServicesContainer" class="space-y-3 mb-4">
+                </div>
+            <button id="addCustomService" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-4 rounded-lg transition duration-200 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                Add Custom Service
+            </button>
+        </div>
+
+        <div class="result-container bg-emerald-50 p-6 rounded-xl text-center mt-8 border border-emerald-200 shadow-lg relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50 opacity-50 z-0"></div>
+            <div class="relative z-10">
+                <div class="text-xl text-gray-700 font-medium mb-2">Estimated Monthly Investment:</div>
+                <div class="price-display text-6xl font-extrabold text-emerald-700 mb-4 animate-pulse-once" id="priceDisplay">₹0</div>
+                
+                <h3 class="text-lg font-bold text-gray-800 mb-3 border-b border-gray-200 pb-2">Understanding Your Estimate:</h3>
+                <div id="breakdown" class="text-gray-700 text-sm text-left mx-auto max-w-lg space-y-2 leading-relaxed">
+                    </div>
+
+                <div class="mt-6 p-4 bg-white rounded-lg shadow-inner border border-gray-100 text-left text-sm text-gray-600">
+                    <p class="font-semibold text-gray-800 mb-2">Important Considerations:</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>This calculator provides an *estimate* based on common digital marketing factors.</li>
+                        <li>Actual costs can vary significantly based on your specific goals, market dynamics, and chosen provider.</li>
+                        <li>Digital marketing is an ongoing investment that yields long-term brand growth and customer acquisition.</li>
+                    </ul>
+                </div>
+
+                <div class="mt-6">
+                    <p class="text-md text-gray-700 mb-3">Ready for a precise digital marketing strategy?</p>
+                    <a href="https://wa.me/919894446685" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50">
+                        Get a Custom Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <button id="resetButton" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-6 rounded-lg transition duration-200 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+                Reset Calculator
+            </button>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": "Digital Marketing Cost Calculator",
+      "description": "Estimate your monthly digital marketing investment for standard or premium services, based on ad spend, audience size, market competition, project duration, marketing goals, reporting depth, and selected channels like SEO, PPC, Social Media, and Content Marketing.",
+      "url": "YOUR_CALCULATOR_URL_HERE",
+      "mainEntity": {
+        "@type": "Calculator",
+        "name": "Digital Marketing Cost Calculator",
+        "description": "A tool to estimate the monthly cost of digital marketing services, including options for premium tiers, advanced reporting, and strategic consulting, considering factors like project duration and marketing goals.",
+        "potentialAction": {
+          "@type": "CalculateAction",
+          "name": "Calculate Digital Marketing Cost",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "YOUR_CALCULATOR_URL_HERE"
+          }
+        },
+        "about": {
+          "@type": "Service",
+          "name": "Digital Marketing Services",
+          "description": "Comprehensive digital marketing solutions including SEO, PPC, social media, content, email, web development, and analytics, with options for premium and enterprise-level engagement.",
+          "serviceType": "Digital Marketing",
+          "provider": {
+            "@type": "Organization",
+            "name": "Your Digital Marketing Agency Name"
+            // Add more provider details if available, e.g., "url", "logo"
+          }
+        }
+      }
+    }
+    </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        // Define base prices and multipliers for different countries, ad spend tiers, audience sizes, and marketing channels
+        const prices = {
+            IN: {
+                base: 18000,
+                serviceTier: { // New: Multipliers for different service tiers
+                    standard: 1.0,
+                    premium: 1.8, // 80% higher for premium
+                    enterprise: 2.5 // 150% higher for enterprise
+                },
+                adSpendMultipliers: [0.12, 0.28, 0.45, 0.7],
+                audienceSize: {
+                    local: 1,
+                    national: 1.6,
+                    international: 2.5
+                },
+                competition: [0.95, 1.05, 1.3],
+                projectDuration: {
+                    short: 1.25,
+                    medium: 1.0,
+                    long: 0.88,
+                    ongoing: 0.8
+                },
+                marketingGoal: {
+                    awareness: 1.05,
+                    leads: 1.35,
+                    sales: 1.6,
+                    engagement: 1.0
+                },
+                marketingMaturity: {
+                    beginner: 1.4,
+                    intermediate: 1.15,
+                    advanced: 1.0
+                },
+                reportingDepth: { // New: Multipliers for reporting depth
+                    basic: 1.0,
+                    detailed: 1.15,
+                    advanced: 1.3
+                },
+                channels: {
+                    seo: 0.35,
+                    ppc: 0.4,
+                    social_media: 0.28,
+                    content_marketing: 0.32,
+                    email_marketing: 0.22,
+                    web_dev_maintenance: 0.45,
+                    analytics_reporting: 0.18,
+                    strategic_consulting: 0.25, // New: Added as a channel
+                    advanced_tools: 0.20, // New: Added as a channel
+                    reputation_management: 0.30 // New: Added as a channel
+                },
+                currencySymbol: '₹',
+                currencyCode: 'INR',
+                channelDescriptions: {
+                    seo: "Optimizing your website for organic search rankings and overall online visibility.",
+                    ppc: "Managing paid advertising campaigns on platforms like Google Ads, Bing Ads, etc.",
+                    social_media: "Developing and executing strategies for engaging audiences and running ads on social media platforms.",
+                    content_marketing: "Creating valuable and relevant content (blogs, videos, infographics) to attract and retain customers.",
+                    email_marketing: "Designing, implementing, and managing email campaigns for lead nurturing and customer retention.",
+                    web_dev_maintenance: "Ongoing website updates, landing page creation, and technical support crucial for marketing efforts.",
+                    analytics_reporting: "In-depth data analysis, performance tracking, and comprehensive reporting to optimize campaigns.",
+                    strategic_consulting: "High-level strategic planning, market research, competitive analysis, and regular advisory sessions.",
+                    advanced_tools: "Access to and management of enterprise-level SEO, analytics, CRM, and AI-driven optimization platforms.",
+                    reputation_management: "Proactive monitoring, management, and enhancement of your online brand reputation across various platforms."
+                }
+            },
+            US: {
+                base: 2500,
+                serviceTier: {
+                    standard: 1.0,
+                    premium: 1.9,
+                    enterprise: 2.7
+                },
+                adSpendMultipliers: [0.15, 0.28, 0.4, 0.65],
+                audienceSize: {
+                    local: 1,
+                    national: 1.7,
+                    international: 2.8
+                },
+                competition: [0.95, 1.05, 1.35],
+                projectDuration: {
+                    short: 1.25,
+                    medium: 1.0,
+                    long: 0.88,
+                    ongoing: 0.8
+                },
+                marketingGoal: {
+                    awareness: 1.05,
+                    leads: 1.35,
+                    sales: 1.6,
+                    engagement: 1.0
+                },
+                marketingMaturity: {
+                    beginner: 1.4,
+                    intermediate: 1.15,
+                    advanced: 1.0
+                },
+                reportingDepth: {
+                    basic: 1.0,
+                    detailed: 1.18,
+                    advanced: 1.35
+                },
+                channels: {
+                    seo: 0.45,
+                    ppc: 0.5,
+                    social_media: 0.32,
+                    content_marketing: 0.38,
+                    email_marketing: 0.28,
+                    web_dev_maintenance: 0.55,
+                    analytics_reporting: 0.22,
+                    strategic_consulting: 0.30,
+                    advanced_tools: 0.25,
+                    reputation_management: 0.35
+                },
+                currencySymbol: '$',
+                currencyCode: 'USD',
+                channelDescriptions: {
+                    seo: "Optimizing your website for organic search rankings and overall online visibility.",
+                    ppc: "Managing paid advertising campaigns on platforms like Google Ads, Bing Ads, etc.",
+                    social_media: "Developing and executing strategies for engaging audiences and running ads on social media platforms.",
+                    content_marketing: "Creating valuable and relevant content (blogs, videos, infographics) to attract and retain customers.",
+                    email_marketing: "Designing, implementing, and managing email campaigns for lead nurturing and customer retention.",
+                    web_dev_maintenance: "Ongoing website updates, landing page creation, and technical support crucial for marketing efforts.",
+                    analytics_reporting: "In-depth data analysis, performance tracking, and comprehensive reporting to optimize campaigns.",
+                    strategic_consulting: "High-level strategic planning, market research, competitive analysis, and regular advisory sessions.",
+                    advanced_tools: "Access to and management of enterprise-level SEO, analytics, CRM, and AI-driven optimization platforms.",
+                    reputation_management: "Proactive monitoring, management, and enhancement of your online brand reputation across various platforms."
+                }
+            },
+            UK: {
+                base: 2000,
+                serviceTier: {
+                    standard: 1.0,
+                    premium: 1.85,
+                    enterprise: 2.6
+                },
+                adSpendMultipliers: [0.13, 0.26, 0.42, 0.68],
+                audienceSize: {
+                    local: 1,
+                    national: 1.65,
+                    international: 2.6
+                },
+                competition: [0.95, 1.05, 1.3],
+                projectDuration: {
+                    short: 1.25,
+                    medium: 1.0,
+                    long: 0.88,
+                    ongoing: 0.8
+                },
+                marketingGoal: {
+                    awareness: 1.05,
+                    leads: 1.35,
+                    sales: 1.6,
+                    engagement: 1.0
+                },
+                marketingMaturity: {
+                    beginner: 1.4,
+                    intermediate: 1.15,
+                    advanced: 1.0
+                },
+                reportingDepth: {
+                    basic: 1.0,
+                    detailed: 1.16,
+                    advanced: 1.32
+                },
+                channels: {
+                    seo: 0.4,
+                    ppc: 0.45,
+                    social_media: 0.3,
+                    content_marketing: 0.35,
+                    email_marketing: 0.25,
+                    web_dev_maintenance: 0.5,
+                    analytics_reporting: 0.2,
+                    strategic_consulting: 0.28,
+                    advanced_tools: 0.23,
+                    reputation_management: 0.32
+                },
+                currencySymbol: '£',
+                currencyCode: 'GBP',
+                channelDescriptions: {
+                    seo: "Optimizing your website for organic search rankings and overall online visibility.",
+                    ppc: "Managing paid advertising campaigns on platforms like Google Ads, Bing Ads, etc.",
+                    social_media: "Developing and executing strategies for engaging audiences and running ads on social media platforms.",
+                    content_marketing: "Creating valuable and relevant content (blogs, videos, infographics) to attract and retain customers.",
+                    email_marketing: "Designing, implementing, and managing email campaigns for lead nurturing and customer retention.",
+                    web_dev_maintenance: "Ongoing website updates, landing page creation, and technical support crucial for marketing efforts.",
+                    analytics_reporting: "In-depth data analysis, performance tracking, and comprehensive reporting to optimize campaigns.",
+                    strategic_consulting: "High-level strategic planning, market research, competitive analysis, and regular advisory sessions.",
+                    advanced_tools: "Access to and management of enterprise-level SEO, analytics, CRM, and AI-driven optimization platforms.",
+                    reputation_management: "Proactive monitoring, management, and enhancement of your online brand reputation across various platforms."
+                }
+            },
+            CA: {
+                base: 2200,
+                serviceTier: {
+                    standard: 1.0,
+                    premium: 1.75,
+                    enterprise: 2.4
+                },
+                adSpendMultipliers: [0.12, 0.25, 0.4, 0.6],
+                audienceSize: {
+                    local: 1,
+                    national: 1.55,
+                    international: 2.3
+                },
+                competition: [0.95, 1.05, 1.25],
+                projectDuration: {
+                    short: 1.25,
+                    medium: 1.0,
+                    long: 0.88,
+                    ongoing: 0.8
+                },
+                marketingGoal: {
+                    awareness: 1.05,
+                    leads: 1.35,
+                    sales: 1.6,
+                    engagement: 1.0
+                },
+                marketingMaturity: {
+                    beginner: 1.4,
+                    intermediate: 1.15,
+                    advanced: 1.0
+                },
+                reportingDepth: {
+                    basic: 1.0,
+                    detailed: 1.14,
+                    advanced: 1.28
+                },
+                channels: {
+                    seo: 0.38,
+                    ppc: 0.42,
+                    social_media: 0.29,
+                    content_marketing: 0.31,
+                    email_marketing: 0.23,
+                    web_dev_maintenance: 0.48,
+                    analytics_reporting: 0.19,
+                    strategic_consulting: 0.26,
+                    advanced_tools: 0.21,
+                    reputation_management: 0.29
+                },
+                currencySymbol: 'C$',
+                currencyCode: 'CAD',
+                channelDescriptions: {
+                    seo: "Optimizing your website for organic search rankings and overall online visibility.",
+                    ppc: "Managing paid advertising campaigns on platforms like Google Ads, Bing Ads, etc.",
+                    social_media: "Developing and executing strategies for engaging audiences and running ads on social media platforms.",
+                    content_marketing: "Creating valuable and relevant content (blogs, videos, infographics) to attract and retain customers.",
+                    email_marketing: "Designing, implementing, and managing email campaigns for lead nurturing and customer retention.",
+                    web_dev_maintenance: "Ongoing website updates, landing page creation, and technical support crucial for marketing efforts.",
+                    analytics_reporting: "In-depth data analysis, performance tracking, and comprehensive reporting to optimize campaigns.",
+                    strategic_consulting: "High-level strategic planning, market research, competitive analysis, and regular advisory sessions.",
+                    advanced_tools: "Access to and management of enterprise-level SEO, analytics, CRM, and AI-driven optimization platforms.",
+                    reputation_management: "Proactive monitoring, management, and enhancement of your online brand reputation across various platforms."
+                }
+            },
+            AU: {
+                base: 2300,
+                serviceTier: {
+                    standard: 1.0,
+                    premium: 1.8,
+                    enterprise: 2.5
+                },
+                adSpendMultipliers: [0.13, 0.26, 0.41, 0.62],
+                audienceSize: {
+                    local: 1,
+                    national: 1.58,
+                    international: 2.4
+                },
+                competition: [0.95, 1.05, 1.28],
+                projectDuration: {
+                    short: 1.25,
+                    medium: 1.0,
+                    long: 0.88,
+                    ongoing: 0.8
+                },
+                marketingGoal: {
+                    awareness: 1.05,
+                    leads: 1.35,
+                    sales: 1.6,
+                    engagement: 1.0
+                },
+                marketingMaturity: {
+                    beginner: 1.4,
+                    intermediate: 1.15,
+                    advanced: 1.0
+                },
+                reportingDepth: {
+                    basic: 1.0,
+                    detailed: 1.15,
+                    advanced: 1.3
+                },
+                channels: {
+                    seo: 0.39,
+                    ppc: 0.43,
+                    social_media: 0.3,
+                    content_marketing: 0.33,
+                    email_marketing: 0.24,
+                    web_dev_maintenance: 0.49,
+                    analytics_reporting: 0.2,
+                    strategic_consulting: 0.27,
+                    advanced_tools: 0.22,
+                    reputation_management: 0.31
+                },
+                currencySymbol: 'A$',
+                currencyCode: 'AUD',
+                channelDescriptions: {
+                    seo: "Optimizing your website for organic search rankings and overall online visibility.",
+                    ppc: "Managing paid advertising campaigns on platforms like Google Ads, Bing Ads, etc.",
+                    social_media: "Developing and executing strategies for engaging audiences and running ads on social media platforms.",
+                    content_marketing: "Creating valuable and relevant content (blogs, videos, infographics) to attract and retain customers.",
+                    email_marketing: "Designing, implementing, and managing email campaigns for lead nurturing and customer retention.",
+                    web_dev_maintenance: "Ongoing website updates, landing page creation, and technical support crucial for marketing efforts.",
+                    analytics_reporting: "In-depth data analysis, performance tracking, and comprehensive reporting to optimize campaigns.",
+                    strategic_consulting: "High-level strategic planning, market research, competitive analysis, and regular advisory sessions.",
+                    advanced_tools: "Access to and management of enterprise-level SEO, analytics, CRM, and AI-driven optimization platforms.",
+                    reputation_management: "Proactive monitoring, management, and enhancement of your online brand reputation across various platforms."
+                }
+            }
+        };
+
+        // Get DOM elements
+        const countrySelect = document.getElementById('countrySelect');
+        const serviceTierSelect = document.getElementById('serviceTier'); // New
+        const adSpendInput = document.getElementById('adSpend');
+        const adSpendValueDisplay = document.getElementById('adSpendValue');
+        const audienceSizeSelect = document.getElementById('audienceSize');
+        const competitionLevelInput = document.getElementById('competitionLevel');
+        const competitionLevelValueDisplay = document.getElementById('competitionLevelValue');
+        const projectDurationSelect = document.getElementById('projectDuration');
+        const marketingGoalSelect = document.getElementById('marketingGoal');
+        const marketingMaturitySelect = document.getElementById('marketingMaturity');
+        const reportingDepthSelect = document.getElementById('reportingDepth'); // New
+        const channelCheckboxes = document.querySelectorAll('.services-container input[type="checkbox"]');
+        const allChannelsCheckbox = document.getElementById('all');
+        const customServicesContainer = document.getElementById('customServicesContainer');
+        const addCustomServiceButton = document.getElementById('addCustomService');
+        const priceDisplay = document.getElementById('priceDisplay');
+        const breakdownDisplay = document.getElementById('breakdown');
+        const resetButton = document.getElementById('resetButton');
+
+        let customServiceCount = 0; // To keep track of custom service inputs
+
+        // Function to format currency
+        function formatCurrency(amount, symbol) {
+            return `${symbol}${Math.round(amount).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+        }
+
+        // Function to get ad spend range text
+        function getAdSpendRangeText(value, symbol) {
+            const ranges = [
+                `${symbol}0 - ${symbol}1,000`,
+                `${symbol}1,000 - ${symbol}5,000`,
+                `${symbol}5,000 - ${symbol}20,000`,
+                `${symbol}20,000+`
+            ];
+            return ranges[value];
+        }
+
+        // Function to calculate the estimated cost
+        function calculateCost() {
+            const country = countrySelect.value;
+            const currentCountryPrices = prices[country];
+            const currencySymbol = currentCountryPrices.currencySymbol;
+            const currencyCode = currentCountryPrices.currencyCode;
+
+            let totalCost = 0;
+            let breakdownItems = []; // Use an array to build the breakdown for easier formatting
+
+            // 1. Base Price
+            let currentBasePrice = currentCountryPrices.base;
+            totalCost += currentBasePrice;
+            breakdownItems.push(`<div><strong>Base Investment:</strong> ${formatCurrency(currentBasePrice, currencySymbol)} <span class="text-gray-500 text-xs">- The foundational monthly fee for essential strategy and management.</span></div>`);
+
+            // New: 2. Service Tier Multiplier
+            const serviceTier = serviceTierSelect.value;
+            const serviceTierMultiplier = currentCountryPrices.serviceTier[serviceTier];
+            const serviceTierAdjust = currentBasePrice * (serviceTierMultiplier - 1);
+            totalCost += serviceTierAdjust;
+            const tierDisplayName = serviceTier.charAt(0).toUpperCase() + serviceTier.slice(1);
+            if (serviceTierAdjust > 0) {
+                breakdownItems.push(`<div><strong>Service Tier (${tierDisplayName}):</strong> +${formatCurrency(serviceTierAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Higher service tiers provide more dedicated account management, advanced strategic planning, and priority support.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Service Tier (${tierDisplayName}):</strong> ${formatCurrency(serviceTierAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Standard level of service and engagement.</span></div>`);
+            }
+
+
+            // 3. Ad Spend Multiplier
+            const adSpendIndex = parseInt(adSpendInput.value);
+            const adSpendMultiplier = currentCountryPrices.adSpendMultipliers[adSpendIndex];
+            const adSpendText = getAdSpendRangeText(adSpendIndex, currencySymbol);
+            adSpendValueDisplay.textContent = adSpendText; // Update display
+
+            const adSpendAdjust = currentBasePrice * adSpendMultiplier;
+            totalCost += adSpendAdjust;
+            breakdownItems.push(`<div><strong>Ad Spend Management (${adSpendText}):</strong> +${formatCurrency(adSpendAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Reflects the overhead for managing your paid advertising budget. Higher budgets require more intensive management and optimization.</span></div>`);
+
+            // 4. Target Audience Size Multiplier
+            const audienceSize = audienceSizeSelect.value;
+            const audienceMultiplier = currentCountryPrices.audienceSize[audienceSize];
+            const audienceAdjust = currentBasePrice * (audienceMultiplier - 1); // Only add the *additional* cost
+            totalCost += audienceAdjust;
+            const audienceName = audienceSize.charAt(0).toUpperCase() + audienceSize.slice(1);
+            if (audienceAdjust > 0) {
+                 breakdownItems.push(`<div><strong>Audience Reach (${audienceName}):</strong> +${formatCurrency(audienceAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Expanding your target audience geographically increases the complexity and reach of campaigns, impacting resource allocation.</span></div>`);
+            } else {
+                 breakdownItems.push(`<div><strong>Audience Reach (Local):</strong> ${formatCurrency(audienceAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Focus on a localized audience.</span></div>`);
+            }
+           
+            // 5. Competition Level Multiplier
+            const competitionLevelIndex = parseInt(competitionLevelInput.value);
+            const competitionLevelText = ['Low', 'Medium', 'High'][competitionLevelIndex];
+            competitionLevelValueDisplay.textContent = competitionLevelText; // Update display
+            const competitionMultiplier = currentCountryPrices.competition[competitionLevelIndex];
+            const competitionAdjust = currentBasePrice * (competitionMultiplier - 1); // Only add the *additional* cost
+            totalCost += competitionAdjust;
+            if (competitionAdjust > 0) {
+                breakdownItems.push(`<div><strong>Market Competition (${competitionLevelText}):</strong> +${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Operating in highly competitive digital markets necessitates more aggressive strategies, continuous monitoring and optimization to stand out.</span></div>`);
+            } else if (competitionAdjust < 0) {
+                breakdownItems.push(`<div><strong>Market Competition (${competitionLevelText}):</strong> ${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Lower competition may allow for more cost-effective strategies.</span></div>`);
+            } else {
+                 breakdownItems.push(`<div><strong>Market Competition (${competitionLevelText}):</strong> ${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- This represents a standard level of market competition.</span></div>`);
+            }
+
+            // 6. Project Duration Multiplier
+            const projectDuration = projectDurationSelect.value;
+            const projectDurationMultiplier = currentCountryPrices.projectDuration[projectDuration];
+            const projectDurationAdjust = currentBasePrice * (projectDurationMultiplier - 1);
+            totalCost += projectDurationAdjust;
+            const durationDisplayName = projectDuration.charAt(0).toUpperCase() + projectDuration.slice(1) + '-term';
+            if (projectDurationAdjust > 0) {
+                breakdownItems.push(`<div><strong>Project Duration (${durationDisplayName}):</strong> +${formatCurrency(projectDurationAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Shorter projects may incur higher initial setup costs due to the need for rapid foundational work and less time for long-term optimization gains.</span></div>`);
+            } else if (projectDurationAdjust < 0) {
+                breakdownItems.push(`<div><strong>Project Duration (${durationDisplayName}):</strong> ${formatCurrency(projectDurationAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Longer commitments often provide cost efficiencies due to sustained efforts, deeper insights, and better long-term results.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Project Duration (${durationDisplayName}):</strong> ${formatCurrency(projectDurationAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Standard duration impact.</span></div>`);
+            }
+
+            // 7. Marketing Goal Multiplier
+            const marketingGoal = marketingGoalSelect.value;
+            const marketingGoalMultiplier = currentCountryPrices.marketingGoal[marketingGoal];
+            const marketingGoalAdjust = currentBasePrice * (marketingGoalMultiplier - 1);
+            totalCost += marketingGoalAdjust;
+            const goalDisplayName = marketingGoal.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            if (marketingGoalAdjust > 0) {
+                breakdownItems.push(`<div><strong>Primary Marketing Goal (${goalDisplayName}):</strong> +${formatCurrency(marketingGoalAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Goals like direct sales or lead generation typically require more aggressive, data-driven strategies, and continuous optimization to achieve measurable ROI, demanding higher resource allocation.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Primary Marketing Goal (${goalDisplayName}):</strong> ${formatCurrency(marketingGoalAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Standard effort for this goal.</span></div>`);
+            }
+
+            // 8. Marketing Maturity Multiplier
+            const marketingMaturity = marketingMaturitySelect.value;
+            const marketingMaturityMultiplier = currentCountryPrices.marketingMaturity[marketingMaturity];
+            const marketingMaturityAdjust = currentBasePrice * (marketingMaturityMultiplier - 1);
+            totalCost += marketingMaturityAdjust;
+            const maturityDisplayName = marketingMaturity.charAt(0).toUpperCase() + marketingMaturity.slice(1);
+            if (marketingMaturityAdjust > 0) {
+                breakdownItems.push(`<div><strong>Marketing Maturity (${maturityDisplayName}):</strong> +${formatCurrency(marketingMaturityAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Businesses with less established digital presences or assets (e.g., no website, poor SEO) may require more foundational setup work, including audits, content creation, and technical fixes, increasing initial investment.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Marketing Maturity (${maturityDisplayName}):</strong> ${formatCurrency(marketingMaturityAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Established digital presence requires less foundational work, allowing for more direct campaign execution.</span></div>`);
+            }
+
+            // New: 9. Reporting Depth Multiplier
+            const reportingDepth = reportingDepthSelect.value;
+            const reportingDepthMultiplier = currentCountryPrices.reportingDepth[reportingDepth];
+            const reportingDepthAdjust = currentBasePrice * (reportingDepthMultiplier - 1);
+            totalCost += reportingDepthAdjust;
+            const depthDisplayName = reportingDepth.charAt(0).toUpperCase() + reportingDepth.slice(1);
+            if (reportingDepthAdjust > 0) {
+                breakdownItems.push(`<div><strong>Reporting & Analytics Depth (${depthDisplayName}):</strong> +${formatCurrency(reportingDepthAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- More frequent and detailed reporting, custom dashboards, and advanced analytics require significant additional time and expertise.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Reporting & Analytics Depth (${depthDisplayName}):</strong> ${formatCurrency(reportingDepthAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Standard reporting frequency and detail.</span></div>`);
+            }
+
+
+            // 10. Selected Channels (now includes premium services)
+            let channelsCost = 0;
+            let selectedChannelsDetails = [];
+            channelCheckboxes.forEach(checkbox => {
+                if (checkbox.checked && checkbox.id !== 'all') {
+                    const channelId = checkbox.id;
+                    const channelMultiplier = currentCountryPrices.channels[channelId];
+                    if (channelMultiplier) { // Ensure multiplier exists for the channel
+                        const channelPrice = currentBasePrice * channelMultiplier;
+                        channelsCost += channelPrice;
+                        const channelDisplayName = checkbox.parentElement.textContent.trim().replace('Select All Core Channels', '');
+                        const channelDescription = currentCountryPrices.channelDescriptions[channelId] || '';
+                        selectedChannelsDetails.push({ name: channelDisplayName, cost: channelPrice, description: channelDescription });
+                    }
+                }
+            });
+            totalCost += channelsCost;
+            if (selectedChannelsDetails.length > 0) {
+                breakdownItems.push(`<div><strong>Selected Digital Marketing Channels:</strong></div>`);
+                selectedChannelsDetails.forEach(channel => {
+                    breakdownItems.push(`<div class="ml-4">- ${channel.name}: ${formatCurrency(channel.cost, currencySymbol)} <span class="text-gray-500 text-xs">${channel.description}</span></div>`);
+                });
+            } else {
+                breakdownItems.push(`<div><strong>Selected Digital Marketing Channels:</strong> <span class="text-gray-500 text-xs">- No specific channels selected. Consider adding channels relevant to your marketing goals.</span></div>`);
+            }
+
+
+            // 11. Custom Services
+            let customServicesTotal = 0;
+            const customServiceInputs = customServicesContainer.querySelectorAll('.custom-service-item input[type="number"]');
+            let customServicesList = [];
+            customServiceInputs.forEach(input => {
+                const customValue = parseFloat(input.value) || 0;
+                if (customValue > 0) {
+                    customServicesTotal += customValue;
+                    const serviceNameInput = input.previousElementSibling;
+                    const serviceName = serviceNameInput ? serviceNameInput.value || 'Custom Service' : 'Custom Service';
+                    customServicesList.push(`- ${serviceName}: ${formatCurrency(customValue, currencySymbol)}`);
+                }
+            });
+            totalCost += customServicesTotal;
+            if (customServicesTotal > 0) {
+                 breakdownItems.push(`<div><strong>Custom Services / Add-ons:</strong> +${formatCurrency(customServicesTotal, currencySymbol)}</div>`);
+                 customServicesList.forEach(item => breakdownItems.push(`<div class="ml-4">${item}</div>`));
+            }
+
+
+            // Display total cost
+            priceDisplay.textContent = formatCurrency(totalCost, currencySymbol);
+            
+            // Display breakdown
+            breakdownDisplay.innerHTML = breakdownItems.join('');
+        }
+
+        // Function to add a new custom service input field
+        function addCustomServiceInput() {
+            customServiceCount++;
+            const div = document.createElement('div');
+            div.className = 'custom-service-item flex items-center space-x-2';
+            div.innerHTML = `
+                <input type="text" placeholder="Service Name (e.g., 'Influencer Outreach')" class="flex-grow px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:focus:ring-emerald-500 transition duration-200 ease-in-out text-sm">
+                <input type="number" placeholder="Cost" min="0" class="w-24 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:focus:ring-emerald-500 transition duration-200 ease-in-out text-sm">
+                <button class="remove-custom-service text-red-500 hover:text-red-700 p-1 rounded-full transition-colors duration-200" title="Remove Custom Service">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 01-2 0v6a1 1 0 112 0V8z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            `;
+            customServicesContainer.appendChild(div);
+
+            // Add event listeners to the new inputs and remove button
+            div.querySelector('input[type="text"]').addEventListener('input', calculateCost);
+            div.querySelector('input[type="number"]').addEventListener('input', calculateCost);
+            div.querySelector('.remove-custom-service').addEventListener('click', function() {
+                div.remove();
+                calculateCost();
+            });
+        }
+
+        // Function to reset all inputs to their default values
+        function resetCalculator() {
+            countrySelect.value = 'IN';
+            serviceTierSelect.value = 'standard'; // Default
+            adSpendInput.value = '0'; // Default to first ad spend tier
+            audienceSizeSelect.value = 'local';
+            competitionLevelInput.value = '1'; // Medium
+            projectDurationSelect.value = 'medium'; // Default
+            marketingGoalSelect.value = 'awareness'; // Default
+            marketingMaturitySelect.value = 'intermediate'; // Default
+            reportingDepthSelect.value = 'basic'; // Default
+
+            channelCheckboxes.forEach(checkbox => {
+                if (checkbox.id === 'seo') {
+                    checkbox.checked = true; // Default checked
+                } else {
+                    checkbox.checked = false;
+                }
+            });
+            allChannelsCheckbox.checked = false; // Uncheck "All Channels"
+
+            customServicesContainer.innerHTML = ''; // Clear custom services
+            customServiceCount = 0;
+
+            calculateCost(); // Recalculate after reset
+        }
+
+        // Event Listeners
+        countrySelect.addEventListener('change', calculateCost);
+        serviceTierSelect.addEventListener('change', calculateCost); // New
+        adSpendInput.addEventListener('input', calculateCost);
+        audienceSizeSelect.addEventListener('change', calculateCost);
+        competitionLevelInput.addEventListener('input', calculateCost);
+        projectDurationSelect.addEventListener('change', calculateCost);
+        marketingGoalSelect.addEventListener('change', calculateCost);
+        marketingMaturitySelect.addEventListener('change', calculateCost);
+        reportingDepthSelect.addEventListener('change', calculateCost); // New
+
+        channelCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.id === 'all') {
+                    channelCheckboxes.forEach(cb => {
+                        if (cb.id !== 'all') { // Don't uncheck 'all' itself
+                            cb.checked = this.checked;
+                        }
+                    });
+                } else {
+                    // If any service is unchecked, uncheck "All Channels"
+                    if (!this.checked) {
+                        allChannelsCheckbox.checked = false;
+                    } else {
+                        // If all other services are checked, check "All Channels"
+                        const allOthersChecked = Array.from(channelCheckboxes).filter(cb => cb.id !== 'all').every(cb => cb.checked);
+                        if (allOthersChecked) {
+                            allChannelsCheckbox.checked = true;
+                        }
+                    }
+                }
+                calculateCost();
+            });
+        });
+
+        addCustomServiceButton.addEventListener('click', addCustomServiceInput);
+        resetButton.addEventListener('click', resetCalculator);
+
+        // Initial calculation on page load
+        calculateCost();
+    </script>
+</body>
+</html>

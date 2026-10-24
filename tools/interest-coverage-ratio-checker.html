@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interest Coverage Ratio Checker - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Interest Coverage Ratio Checker for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/interest-coverage-ratio-checker.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/interest-coverage-ratio-checker.html">
+  <meta property="og:title" content="Interest Coverage Ratio Checker - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Interest Coverage Ratio Checker for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Interest Coverage Ratio Checker - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Interest Coverage Ratio Checker for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom tooltip styling for explanations */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 250px;
+            background-color: #334155;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #334155 transparent transparent transparent;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Interest Coverage Ratio Checker</h1>
+      <p>Free interactive Interest Coverage Ratio Checker for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Interest Coverage Ratio Checker</h1>
+        <p class="text-center text-gray-600 mb-8">
+            Evaluate a company's financial health using key coverage and leverage ratios.
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <label for="ebit" class="block text-sm font-medium text-gray-700">
+                    Earnings Before Interest and Taxes (EBIT)
+                    <span class="tooltip text-indigo-500 cursor-help ml-1">?
+                        <span class="tooltiptext">EBIT measures a company's profitability from core operations before accounting for interest expenses and taxes.</span>
+                    </span>
+                </label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm">$</span>
+                    </div>
+                    <input type="number" id="ebit" class="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 transition-colors duration-200" placeholder="e.g., 500,000" />
+                </div>
+            </div>
+            
+            <div>
+                <label for="da" class="block text-sm font-medium text-gray-700">
+                    Depreciation & Amortization (D&A)
+                    <span class="tooltip text-indigo-500 cursor-help ml-1">?
+                        <span class="tooltiptext">D&A are non-cash expenses that account for the reduction in value of a company's assets over time.</span>
+                    </span>
+                </label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm">$</span>
+                    </div>
+                    <input type="number" id="da" class="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 transition-colors duration-200" placeholder="e.g., 100,000" />
+                </div>
+            </div>
+
+            <div class="md:col-span-2">
+                <label for="interestExpense" class="block text-sm font-medium text-gray-700">
+                    Interest Expense
+                    <span class="tooltip text-indigo-500 cursor-help ml-1">?
+                        <span class="tooltiptext">The cost of borrowing money, typically from banks or bondholders.</span>
+                    </span>
+                </label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm">$</span>
+                    </div>
+                    <input type="number" id="interestExpense" class="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 transition-colors duration-200" placeholder="e.g., 50,000" />
+                </div>
+            </div>
+            
+            <div class="md:col-span-2">
+                <label for="totalDebt" class="block text-sm font-medium text-gray-700">
+                    Total Debt
+                    <span class="tooltip text-indigo-500 cursor-help ml-1">?
+                        <span class="tooltiptext">The total amount of a company's financial obligations, including short-term and long-term debt.</span>
+                    </span>
+                </label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm">$</span>
+                    </div>
+                    <input type="number" id="totalDebt" class="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 transition-colors duration-200" placeholder="e.g., 1,000,000" />
+                </div>
+            </div>
+        </div>
+        
+        <div id="results" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Financial Health Assessment</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- EBIT Ratio Results -->
+                <div class="p-6 bg-indigo-50 rounded-xl text-center">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Interest Coverage Ratio (EBIT)</h3>
+                    <p id="ebitRatioValue" class="text-5xl font-extrabold text-indigo-800 tracking-tight">0.00x</p>
+                </div>
+                
+                <!-- EBITDA Ratio Results -->
+                <div class="p-6 bg-purple-50 rounded-xl text-center">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">EBITDA Coverage Ratio</h3>
+                    <p id="ebitdaRatioValue" class="text-5xl font-extrabold text-purple-800 tracking-tight">0.00x</p>
+                </div>
+            </div>
+
+            <!-- Visualization of Ratios -->
+            <div class="p-6 bg-gray-50 rounded-xl mb-8">
+                <h3 class="text-lg font-semibold text-gray-700 mb-4 text-center">Coverage Ratio Visualization</h3>
+                <canvas id="ratioChart"></canvas>
+            </div>
+
+            <!-- Detailed Risk Assessment -->
+            <div class="p-6 bg-gray-50 rounded-xl">
+                <h3 class="text-lg font-semibold text-gray-700 mb-4 text-center">Detailed Risk Assessment</h3>
+                
+                <!-- EBIT Assessment -->
+                <div id="ebit-assessment" class="p-4 rounded-md transition-colors duration-200">
+                    <div class="font-semibold text-gray-700">Interest Coverage Ratio (EBIT) Status</div>
+                    <div id="ebit-status" class="mt-1 font-bold text-lg"></div>
+                </div>
+                
+                <!-- EBITDA Assessment -->
+                <div id="ebitda-assessment" class="p-4 rounded-md transition-colors duration-200 mt-4">
+                    <div class="font-semibold text-gray-700">EBITDA Coverage Ratio Status</div>
+                    <div id="ebitda-status" class="mt-1 font-bold text-lg"></div>
+                </div>
+
+                <!-- Debt-to-EBITDA Assessment -->
+                <div id="debt-to-ebitda-assessment" class="p-4 rounded-md transition-colors duration-200 mt-4">
+                    <div class="font-semibold text-gray-700">Debt-to-EBITDA Ratio</div>
+                    <div id="debt-to-ebitda-status" class="mt-1 font-bold text-lg"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="error-message" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm hidden">
+            <span class="font-bold">Error:</span> Please enter valid numbers, and ensure Interest Expense is not zero.
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ebitInput = document.getElementById('ebit');
+            const daInput = document.getElementById('da');
+            const interestExpenseInput = document.getElementById('interestExpense');
+            const totalDebtInput = document.getElementById('totalDebt');
+            const resultsDiv = document.getElementById('results');
+            const ebitRatioValueSpan = document.getElementById('ebitRatioValue');
+            const ebitdaRatioValueSpan = document.getElementById('ebitdaRatioValue');
+            const ebitAssessmentDiv = document.getElementById('ebit-assessment');
+            const ebitStatusDiv = document.getElementById('ebit-status');
+            const ebitdaAssessmentDiv = document.getElementById('ebitda-assessment');
+            const ebitdaStatusDiv = document.getElementById('ebitda-status');
+            const debtToEbitdaAssessmentDiv = document.getElementById('debt-to-ebitda-assessment');
+            const debtToEbitdaStatusDiv = document.getElementById('debt-to-ebitda-status');
+            const errorMessageDiv = document.getElementById('error-message');
+
+            const allInputs = [ebitInput, daInput, interestExpenseInput, totalDebtInput];
+
+            let ratioChartInstance = null;
+
+            function updateDashboard() {
+                const ebit = parseFloat(ebitInput.value);
+                const da = parseFloat(daInput.value);
+                const interestExpense = parseFloat(interestExpenseInput.value);
+                const totalDebt = parseFloat(totalDebtInput.value);
+
+                // Hide previous results and errors
+                resultsDiv.classList.add('hidden');
+                errorMessageDiv.classList.add('hidden');
+
+                // Basic validation
+                if (isNaN(ebit) || isNaN(da) || isNaN(interestExpense) || interestExpense <= 0 || isNaN(totalDebt)) {
+                    if (ebitInput.value || daInput.value || interestExpenseInput.value || totalDebtInput.value) {
+                         errorMessageDiv.classList.remove('hidden');
+                    }
+                    if (ratioChartInstance) ratioChartInstance.destroy(); // Destroy chart if inputs are invalid
+                    return;
+                }
+
+                // Calculate the ratios
+                const ebitda = ebit + da;
+                const ebitRatio = ebit / interestExpense;
+                const ebitdaRatio = ebitda / interestExpense;
+                const debtToEbitdaRatio = ebitda > 0 ? totalDebt / ebitda : Infinity;
+
+                // Determine risk assessment and update the UI
+                function updateAssessment(ratio, ratioValueSpan, statusDiv, assessmentDiv) {
+                    let assessmentText = '';
+                    let assessmentColorClass = '';
+                    if (ratioValueSpan === ebitRatioValueSpan) { // Logic for EBIT ratio
+                        if (ratio > 5.0) {
+                            assessmentText = 'Very Healthy (> 5.0x)';
+                            assessmentColorClass = 'bg-green-100 text-green-700';
+                        } else if (ratio > 3.0) {
+                            assessmentText = 'Healthy (3.0x - 5.0x)';
+                            assessmentColorClass = 'bg-lime-100 text-lime-700';
+                        } else if (ratio >= 1.5) {
+                            assessmentText = 'Adequate (1.5x - 3.0x)';
+                            assessmentColorClass = 'bg-yellow-100 text-yellow-700';
+                        } else {
+                            assessmentText = 'High Risk (< 1.5x)';
+                            assessmentColorClass = 'bg-red-100 text-red-700';
+                        }
+                    } else if (ratioValueSpan === ebitdaRatioValueSpan) { // Logic for EBITDA ratio
+                        if (ratio > 3.0) {
+                            assessmentText = 'Very Healthy (> 3.0x)';
+                            assessmentColorClass = 'bg-green-100 text-green-700';
+                        } else if (ratio > 2.0) {
+                            assessmentText = 'Healthy (2.0x - 3.0x)';
+                            assessmentColorClass = 'bg-lime-100 text-lime-700';
+                        } else if (ratio >= 1.0) {
+                            assessmentText = 'Adequate (1.0x - 2.0x)';
+                            assessmentColorClass = 'bg-yellow-100 text-yellow-700';
+                        } else {
+                            assessmentText = 'High Risk (< 1.0x)';
+                            assessmentColorClass = 'bg-red-100 text-red-700';
+                        }
+                    }
+
+                    ratioValueSpan.textContent = `${ratio.toFixed(2)}x`;
+                    statusDiv.textContent = assessmentText;
+                    assessmentDiv.className = `p-4 rounded-md transition-colors duration-200 ${assessmentColorClass}`;
+                }
+                
+                function updateDebtToEbitdaAssessment(ratio) {
+                    let assessmentText = '';
+                    let assessmentColorClass = '';
+                    if (ratio < 2.0) {
+                        assessmentText = 'Very Healthy (< 2.0x)';
+                        assessmentColorClass = 'bg-green-100 text-green-700';
+                    } else if (ratio < 4.0) {
+                        assessmentText = 'Adequate (2.0x - 4.0x)';
+                        assessmentColorClass = 'bg-yellow-100 text-yellow-700';
+                    } else {
+                        assessmentText = 'High Risk (> 4.0x)';
+                        assessmentColorClass = 'bg-red-100 text-red-700';
+                    }
+                    debtToEbitdaStatusDiv.textContent = `${ratio.toFixed(2)}x: ${assessmentText}`;
+                    debtToEbitdaAssessmentDiv.className = `p-4 rounded-md transition-colors duration-200 mt-4 ${assessmentColorClass}`;
+                }
+
+                // Display results
+                updateAssessment(ebitRatio, ebitRatioValueSpan, ebitStatusDiv, ebitAssessmentDiv);
+                updateAssessment(ebitdaRatio, ebitdaRatioValueSpan, ebitdaStatusDiv, ebitdaAssessmentDiv);
+                updateDebtToEbitdaAssessment(debtToEbitdaRatio);
+                resultsDiv.classList.remove('hidden');
+
+                // Update chart
+                updateChart(ebitRatio, ebitdaRatio);
+            }
+
+            function updateChart(ebitRatio, ebitdaRatio) {
+                if (ratioChartInstance) ratioChartInstance.destroy();
+
+                const ctx = document.getElementById('ratioChart').getContext('2d');
+                ratioChartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Interest Coverage (EBIT)', 'EBITDA Coverage'],
+                        datasets: [{
+                            label: 'Coverage Ratio',
+                            data: [ebitRatio, ebitdaRatio],
+                            backgroundColor: [
+                                '#4f46e5', // Indigo-600
+                                '#8b5cf6', // Purple-500
+                            ],
+                            borderColor: [
+                                '#4f46e5',
+                                '#8b5cf6',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                            title: {
+                                display: false,
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Ratio (x)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Add event listeners for real-time updates
+            allInputs.forEach(input => {
+                input.addEventListener('input', updateDashboard);
+            });
+        });
+    </script>
+</body>
+</html>

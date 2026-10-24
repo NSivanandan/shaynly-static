@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Signature - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Email Signature for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/marketing-email-signature-designer.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/marketing-email-signature-designer.html">
+  <meta property="og:title" content="Email Signature - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Email Signature for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Email Signature - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Email Signature for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .signature-tool {
+            max-width: 850px;
+            margin: 0 auto 30px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #e0e0e0;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            text-align: center;
+            color: #00d4ff;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b0b0ff;
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="color"], input[type="number"], select, input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1em;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+            outline: none;
+        }
+
+        input[type="color"] {
+            height: 40px;
+            padding: 2px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, #00d4ff, #007bff);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.5);
+        }
+
+        #preview {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #fff;
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, color 0.3s;
+            display: none;
+        }
+
+        #preview-toggle {
+            margin-top: 10px;
+            display: inline-block;
+            background: #555;
+            width: auto;
+            padding: 10px 20px;
+        }
+
+        #preview-toggle:hover {
+            background: #666;
+        }
+
+        .export-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .export-buttons button {
+            width: 48%;
+            background: #ff4b5c;
+        }
+
+        .export-buttons button:first-child {
+            background: linear-gradient(90deg, #00d4ff, #007bff);
+        }
+
+        .export-buttons button:hover {
+            background: #e63946;
+        }
+
+        .export-buttons button:first-child:hover {
+            background: linear-gradient(90deg, #007bff, #00d4ff);
+        }
+
+        .social-icons i {
+            font-size: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .disclaimer {
+            font-size: 0.8em;
+            color: inherit;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .signature-tool {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            input, select, button {
+                font-size: 0.9em;
+            }
+
+            .export-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .export-buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Productivity & Management</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Email Signature</h1>
+      <p>Free interactive Email Signature for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      ${signatureHtml}
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const preview = document.getElementById('preview');
+            let logoDataUrl = '';
+            let isDarkPreview = false;
+
+            function escapeHtml(text) {
+                return text.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
+            }
+
+            function loadGoogleFonts(font) {
+                const existingLinks = document.querySelectorAll('link[data-font]');
+                existingLinks.forEach(link => link.remove());
+                if (['Roboto', 'Lato', 'Open Sans', 'Montserrat', 'Poppins'].includes(font)) {
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.setAttribute('data-font', 'true');
+                    link.href = `https://fonts.googleapis.com/css2?family=${font.replace(' ', '+')}:wght@400;500;700&display=swap`;
+                    document.head.appendChild(link);
+                }
+            }
+
+            document.getElementById('logo').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        logoDataUrl = event.target.result;
+                        generateSignature();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            function generateSignature() {
+                const template = document.getElementById('template').value;
+                const name = escapeHtml(document.getElementById('name').value || 'John Doe');
+                const title = escapeHtml(document.getElementById('title').value || 'Marketing Manager');
+                const company = escapeHtml(document.getElementById('company').value || 'Acme Corp');
+                const phone = escapeHtml(document.getElementById('phone').value || '');
+                const email = escapeHtml(document.getElementById('email').value || 'john@example.com');
+                const website = document.getElementById('website').value || 'https://example.com';
+                const logoWidth = document.getElementById('logo-width').value || '100';
+                const fontFamily = document.getElementById('font-family').value;
+                const fontWeight = document.getElementById('font-weight').value;
+                const fontSize = document.getElementById('font-size').value;
+                const textColor = document.getElementById('text-color').value;
+                const linkColor = document.getElementById('link-color').value;
+                const borderColor = document.getElementById('border-color').value;
+                const bgColor = document.getElementById('bg-color').value;
+                const disclaimer = escapeHtml(document.getElementById('disclaimer').value || '');
+
+                loadGoogleFonts(fontFamily);
+
+                const socialLinks = [
+                    { name: 'LinkedIn', url: document.getElementById('linkedin').value, icon: '<i class="fa-brands fa-linkedin" style="color: ' + linkColor + '; font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>' },
+                    { name: 'Twitter', url: document.getElementById('twitter').value, icon: '<i class="fa-brands fa-twitter" style="color: ' + linkColor + '; font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>' },
+                    { name: 'Facebook', url: document.getElementById('facebook').value, icon: '<i class="fa-brands fa-facebook" style="color: ' + linkColor + '; font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>' },
+                    { name: 'Instagram', url: document.getElementById('instagram').value, icon: '<i class="fa-brands fa-instagram" style="color: ' + linkColor + '; font-size: 20px; vertical-align: middle; margin-right: 5px;"></i>' }
+                ].filter(link => link.url);
+
+                let signatureHtml = '';
+
+                if (template === 'Classic') {
+                    signatureHtml = `
+                        <table style="font-family: ${fontFamily}, sans-serif; font-size: ${fontSize}px; color: ${textColor}; background: ${bgColor}; font-weight: ${fontWeight};">
+                            <tr>
+                                ${logoDataUrl ? `<td style="padding-right: 15px;"><img src="${logoDataUrl}" alt="Logo" style="width: ${logoWidth}px; height: auto;"></td>` : ''}
+                                <td>
+                                    <strong>${name}</strong><br>
+                                    ${title}, ${company}<br>
+                                    ${phone ? `<a href="tel:${phone}" style="color: ${linkColor}; text-decoration: none;">${phone}</a> | ` : ''}
+                                    <a href="mailto:${email}" style="color: ${linkColor}; text-decoration: none;">${email}</a> |
+                                    <a href="${website}" style="color: ${linkColor}; text-decoration: none;">${website}</a><br>
+                                    ${socialLinks.map(link => `<a href="${link.url}" style="color: ${linkColor}; text-decoration: none;">${link.icon}${link.name}</a>`).join(' | ')}
+                                    ${disclaimer ? `<div class="disclaimer">${disclaimer}</div>` : ''}
+                                </td>
+                            </tr>
+                        </table>
+                    `;
+                } else if (template === 'Modern') {
+                    signatureHtml = `
+                        <div style="text-align: center; font-family: ${fontFamily}, sans-serif; font-size: ${fontSize}px; color: ${textColor}; background: ${bgColor}; font-weight: ${fontWeight};">
+                            ${logoDataUrl ? `<img src="${logoDataUrl}" alt="Logo" style="width: ${logoWidth}px; height: auto; display: block; margin: 0 auto 10px;"><br>` : ''}
+                            <strong>${name}</strong><br>
+                            ${title}, ${company}<br>
+                            ${phone ? `<a href="tel:${phone}" style="color: ${linkColor}; text-decoration: none;">${phone}</a> | ` : ''}
+                            <a href="mailto:${email}" style="color: ${linkColor}; text-decoration: none;">${email}</a> |
+                            <a href="${website}" style="color: ${linkColor}; text-decoration: none;">${website}</a><br>
+                            ${socialLinks.map(link => `<a href="${link.url}" style="color: ${linkColor}; text-decoration: none;">${link.icon}${link.name}</a>`).join(' | ')}
+                            ${disclaimer ? `<div class="disclaimer">${disclaimer}</div>` : ''}
+                        </div>
+                    `;
+                } else if (template === 'Minimalist') {
+                    signatureHtml = `
+                        <div style="font-family: ${fontFamily}, sans-serif; font-size: ${fontSize}px; color: ${textColor}; background: ${bgColor}; font-weight: ${fontWeight};">
+                            <strong>${name}</strong><br>
+                            ${title}, ${company}<br>
+                            <a href="${website}" style="color: ${linkColor}; text-decoration: none;">${website}</a>
+                            ${disclaimer ? `<div class="disclaimer">${disclaimer}</div>` : ''}
+                        </div>
+                    `;
+                } else if (template === 'Corporate') {
+                    signatureHtml = `
+                        <table style="font-family: ${fontFamily}, sans-serif; font-size: ${fontSize}px; color: ${textColor}; background: ${bgColor}; font-weight: ${fontWeight}; border-bottom: 2px solid ${borderColor};">
+                            <tr>
+                                ${logoDataUrl ? `<td style="padding-right: 15px;"><img src="${logoDataUrl}" alt="Logo" style="width: ${logoWidth}px; height: auto;"></td>` : ''}
+                                <td>
+                                    <strong style="font-size: ${parseInt(fontSize) + 2}px;">${name}</strong><br>
+                                    <span>${title}</span><br>
+                                    <span>${company}</span><br>
+                                    <a href="tel:${phone}" style="color: ${linkColor}; text-decoration: none;">${phone}</a> |
+                                    <a href="mailto:${email}" style="color: ${linkColor}; text-decoration: none;">${email}</a><br>
+                                    ${socialLinks.map(link => `<a href="${link.url}" style="color: ${linkColor}; text-decoration: none;">${link.icon}${link.name}</a>`).join(' | ')}
+                                    ${disclaimer ? `<div class="disclaimer">${disclaimer}</div>` : ''}
+                                </td>
+                            </tr>
+                        </table>
+                    `;
+                } else if (template === 'Creative') {
+                    signatureHtml = `
+                        <div style="font-family: ${fontFamily}, sans-serif; font-size: ${fontSize}px; color: ${textColor}; background: ${bgColor}; font-weight: ${fontWeight}; text-align: left;">
+                            ${logoDataUrl ? `<img src="${logoDataUrl}" alt="Logo" style="width: ${logoWidth}px; height: auto; display: block; margin-bottom: 10px;">` : ''}
+                            <strong style="font-size: ${parseInt(fontSize) + 4}px; display: block;">${name}</strong>
+                            <span style="font-style: italic;">${title}</span><br>
+                            <span>${company}</span><br>
+                            <a href="mailto:${email}" style="color: ${linkColor}; text-decoration: none;">${email}</a> |
+                            <a href="${website}" style="color: ${linkColor}; text-decoration: none;">${website}</a><br>
+                            ${socialLinks.map(link => `<a href="${link.url}" style="color: ${linkColor}; text-decoration: none;">${link.icon}${link.name}</a>`).join(' | ')}
+                            ${disclaimer ? `<div class="disclaimer">${disclaimer}</div>` : ''}
+                        </div>
+                    `;
+                } else if (template === 'Bold') {
+                    signatureHtml = `
+                        <div style="font-family: ${fontFamily}, sans-serif; font-size: ${fontSize}px; color: ${textColor}; background: ${bgColor}; font-weight: ${fontWeight}; border: 3px solid ${borderColor}; padding: 15px;">
+                            ${logoDataUrl ? `<img src="${logoDataUrl}" alt="Logo" style="width: ${logoWidth}px; height: auto; display: block; margin-bottom: 10px;">` : ''}
+                            <strong style="font-size: ${parseInt(fontSize) + 6}px; text-transform: uppercase;">${name}</strong><br>
+                            ${title}, ${company}<br>
+                            ${phone ? `<a href="tel:${phone}" style="color: ${linkColor}; text-decoration: none;">${phone}</a> | ` : ''}
+                            <a href="mailto:${email}" style="color: ${linkColor}; text-decoration: none;">${email}</a><br>
+                            ${socialLinks.map(link => `<a href="${link.url}" style="color: ${linkColor}; text-decoration: none;">${link.icon}${link.name}</a>`).join(' | ')}
+                            ${disclaimer ? `<div class="disclaimer">${disclaimer}</div>` : ''}
+                        </div>
+                    `;
+                } else if (template === 'Elegant') {
+                    signatureHtml = `
+                        <div style="font-family: ${fontFamily}, sans-serif; font-size: ${fontSize}px; color: ${textColor}; background: ${bgColor}; font-weight: ${fontWeight}; text-align: center; border-top: 1px solid ${borderColor}; border-bottom: 1px solid ${borderColor}; padding: 10px;">
+                            ${logoDataUrl ? `<img src="${logoDataUrl}" alt="Logo" style="width: ${logoWidth}px; height: auto; display: block; margin: 0 auto 10px;">` : ''}
+                            <strong style="font-size: ${parseInt(fontSize) + 2}px;">${name}</strong><br>
+                            <span style="font-style: italic;">${title}</span><br>
+                            <span>${company}</span><br>
+                            <a href="mailto:${email}" style="color: ${linkColor}; text-decoration: none;">${email}</a> |
+                            <a href="${website}" style="color: ${linkColor}; text-decoration: none;">${website}</a><br>
+                            ${socialLinks.map(link => `<a href="${link.url}" style="color: ${linkColor}; text-decoration: none;">${link.icon}${link.name}</a>`).join(' | ')}
+                            ${disclaimer ? `<div class="disclaimer">${disclaimer}</div>` : ''}
+                        </div>
+                    `;
+                }
+
+                preview.innerHTML = signatureHtml;
+                preview.style.display = 'block';
+                document.getElementById('copy-html').style.display = 'inline-block';
+                document.getElementById('download-html').style.display = 'inline-block';
+                return signatureHtml;
+            }
+
+            document.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('input', function() {
+                    setTimeout(generateSignature, 100); // Delay for font loading stability
+                });
+            });
+
+            document.getElementById('generate').addEventListener('click', generateSignature);
+
+            document.getElementById('preview-toggle').addEventListener('click', function() {
+                isDarkPreview = !isDarkPreview;
+                preview.style.background = isDarkPreview ? '#333' : '#fff';
+                preview.style.color = isDarkPreview ? '#fff' : '#000';
+            });
+
+            document.getElementById('copy-html').addEventListener('click', function() {
+                const signatureHtml = generateSignature();
+                if (signatureHtml) {
+                    navigator.clipboard.writeText(signatureHtml).then(() => alert('HTML copied to clipboard!'));
+                } else {
+                    alert('Please generate a signature first!');
+                }
+            });
+
+            document.getElementById('download-html').addEventListener('click', function() {
+                const signatureHtml = generateSignature();
+                if (signatureHtml) {
+                    const fullHtml = `<!DOCTYPE html><html><head><title>Email Signature</title><meta charset="UTF-8"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head><body>${signatureHtml}</body></html>`;
+                    const blob = new Blob([fullHtml], { type: 'text/html' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'email-signature.html';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                } else {
+                    alert('Please generate a signature first!');
+                }
+            });
+
+            // Initial call with default values
+            generateSignature();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced PTO Accrual Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced PTO Accrual Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/pto-accrual-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/pto-accrual-calculator.html">
+  <meta property="og:title" content="Advanced PTO Accrual Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced PTO Accrual Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced PTO Accrual Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced PTO Accrual Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .bg-gradient-blue {
+            background-image: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced PTO Accrual Calculator</h1>
+      <p>Free interactive Advanced PTO Accrual Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-4xl">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2 text-center">🗓️  PTO Accrual Calculator</h1>
+        <p class="text-gray-600 mb-8 text-center">
+            Get an insightful breakdown of an employee's paid time off, including earned, taken, and available hours.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Input Section -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-bold text-gray-700 border-b pb-2">Employee & Policy Details</h2>
+
+                <!-- Hire Date -->
+                <div>
+                    <label for="hire-date" class="block text-sm font-medium text-gray-700">Hire Date</label>
+                    <input type="date" id="hire-date" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                </div>
+                
+                <!-- Accrual Policy -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="text-md font-semibold text-gray-700 mb-2">Accrual Policy</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-2">
+                        <div>
+                            <label for="annual-pto-days" class="block text-xs font-medium text-gray-500">Annual PTO Days</label>
+                            <input type="number" id="annual-pto-days" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="15">
+                        </div>
+                        <div>
+                            <label for="hours-per-workday" class="block text-xs font-medium text-gray-500">Hours per Workday</label>
+                            <input type="number" id="hours-per-workday" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="8">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="accrual-frequency" class="block text-xs font-medium text-gray-500">Accrual Frequency</label>
+                        <select id="accrual-frequency" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                            <option value="bi-weekly">Bi-weekly (26 times/year)</option>
+                            <option value="weekly">Weekly (52 times/year)</option>
+                            <option value="monthly">Monthly (12 times/year)</option>
+                            <option value="annually">Annually (1 time/year)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- PTO Taken & Rollover -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="text-md font-semibold text-gray-700 mb-2">Current & Future Status</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="pto-taken" class="block text-xs font-medium text-gray-500">PTO Taken (Hours)</label>
+                            <input type="number" id="pto-taken" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="0">
+                        </div>
+                        <div>
+                            <label for="rollover-hours" class="block text-xs font-medium text-gray-500">Rollover Hours</label>
+                            <input type="number" id="rollover-hours" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="0">
+                        </div>
+                        <div class="col-span-2">
+                             <label for="future-date" class="block text-xs font-medium text-gray-500">Projected Date for Balance</label>
+                            <input type="date" id="future-date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Details -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="text-md font-semibold text-gray-700 mb-2">Financial Details</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <label for="hourly-rate" class="block text-xs font-medium text-gray-500">Employee Hourly Rate ($)</label>
+                            <input type="number" id="hourly-rate" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="30">
+                        </div>
+                        <div>
+                            <label for="pto-policy" class="block text-xs font-medium text-gray-500">PTO Policy</label>
+                            <select id="pto-policy" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                                <option value="rollover">Rollover</option>
+                                <option value="use-it-or-lose-it">Use-it-or-lose-it</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maximum Accrual -->
+                <div>
+                    <label for="max-accrual" class="block text-sm font-medium text-gray-700">Maximum Accrual (Hours)</label>
+                    <input type="number" id="max-accrual" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="120">
+                    <p class="text-xs text-gray-400 mt-1">PTO will not exceed this limit.</p>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-bold text-gray-700 border-b pb-2">Results & Insights</h2>
+
+                <!-- Tenure & Payout -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                     <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <p class="text-sm font-semibold text-gray-500 mb-1">Employee Tenure</p>
+                        <p id="result-tenure" class="text-lg font-bold text-gray-800">0 years, 0 months, 0 days</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <p class="text-sm font-semibold text-gray-500 mb-1">Estimated PTO Payout</p>
+                        <p id="result-payout-value" class="text-lg font-bold text-teal-600">$0.00</p>
+                    </div>
+                </div>
+
+                <!-- Visual Breakdown -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center">
+                    <h3 class="text-lg font-bold text-gray-700 mb-4">PTO Balance Breakdown</h3>
+                    <canvas id="accrualChart" class="w-full max-w-xs"></canvas>
+                </div>
+                
+                <!-- Total Earned PTO Card -->
+                <div class="bg-gradient-blue text-white p-6 rounded-lg shadow-lg">
+                    <p class="text-sm font-semibold mb-2">Current Available PTO</p>
+                    <p id="result-available-pto" class="text-4xl font-bold">0.00 hours</p>
+                    <p id="available-pto-days" class="text-sm mt-2 text-blue-200 font-medium"></p>
+                </div>
+
+                <!-- Future Projection Card -->
+                <div class="bg-gray-50 text-gray-800 p-6 rounded-lg shadow-lg text-center">
+                    <p id="projection-label" class="text-sm font-semibold mb-2 text-gray-500">Projected PTO on 2024-01-01</p>
+                    <p id="result-projected-pto" class="text-4xl font-bold">0.00 hours</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = {
+                hireDate: document.getElementById('hire-date'),
+                annualPtoDays: document.getElementById('annual-pto-days'),
+                hoursPerWorkday: document.getElementById('hours-per-workday'),
+                accrualFrequency: document.getElementById('accrual-frequency'),
+                ptoTaken: document.getElementById('pto-taken'),
+                rolloverHours: document.getElementById('rollover-hours'),
+                maxAccrual: document.getElementById('max-accrual'),
+                futureDate: document.getElementById('future-date'),
+                hourlyRate: document.getElementById('hourly-rate'),
+                ptoPolicy: document.getElementById('pto-policy')
+            };
+
+            const results = {
+                tenure: document.getElementById('result-tenure'),
+                availablePto: document.getElementById('result-available-pto'),
+                availablePtoDays: document.getElementById('available-pto-days'),
+                payoutValue: document.getElementById('result-payout-value'),
+                projectedPto: document.getElementById('result-projected-pto'),
+                projectionLabel: document.getElementById('projection-label'),
+                chartCanvas: document.getElementById('accrualChart')
+            };
+
+            let accrualChart;
+
+            const formatCurrency = (value) => {
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).format(value);
+            };
+
+            // This function calculates the total accrued hours up to a specific date
+            const calculateAccruedHours = (startDate, endDate, annualPtoHours, accrualFrequency) => {
+                const msPerDay = 1000 * 60 * 60 * 24;
+                const accrualPeriodsPerYear = {
+                    'weekly': 52,
+                    'bi-weekly': 26,
+                    'monthly': 12,
+                    'annually': 1
+                };
+                
+                const accrualRate = annualPtoHours / accrualPeriodsPerYear[accrualFrequency];
+
+                let accrualPeriods = 0;
+                
+                // Calculate accrual periods based on frequency
+                if (accrualFrequency === 'monthly') {
+                    const years = endDate.getFullYear() - startDate.getFullYear();
+                    const months = endDate.getMonth() - startDate.getMonth();
+                    accrualPeriods = (years * 12) + months;
+                    if (endDate.getDate() >= startDate.getDate()) {
+                        accrualPeriods++;
+                    }
+                } else if (accrualFrequency === 'annually') {
+                    const years = endDate.getFullYear() - startDate.getFullYear();
+                    if (endDate.getMonth() > startDate.getMonth() || (endDate.getMonth() === startDate.getMonth() && endDate.getDate() >= startDate.getDate())) {
+                        accrualPeriods = years;
+                    } else {
+                        accrualPeriods = years - 1;
+                    }
+                } else { // Weekly and Bi-weekly
+                    const timeDifference = endDate.getTime() - startDate.getTime();
+                    const msPerAccrualPeriod = {
+                        'weekly': 7 * msPerDay,
+                        'bi-weekly': 14 * msPerDay,
+                    };
+                    accrualPeriods = Math.floor(timeDifference / msPerAccrualPeriod[accrualFrequency]);
+                }
+                
+                return accrualRate * accrualPeriods;
+            };
+
+            const updateCalculator = () => {
+                const hireDate = new Date(inputs.hireDate.value);
+                const today = new Date();
+                const futureDate = inputs.futureDate.value ? new Date(inputs.futureDate.value) : null;
+                const annualPtoDays = parseFloat(inputs.annualPtoDays.value) || 0;
+                const hoursPerWorkday = parseFloat(inputs.hoursPerWorkday.value) || 8;
+                const ptoTaken = parseFloat(inputs.ptoTaken.value) || 0;
+                const rolloverHours = parseFloat(inputs.rolloverHours.value) || 0;
+                const maxAccrual = parseFloat(inputs.maxAccrual.value) || Infinity;
+                const hourlyRate = parseFloat(inputs.hourlyRate.value) || 0;
+                const ptoPolicy = inputs.ptoPolicy.value;
+                const accrualFrequency = inputs.accrualFrequency.value;
+
+                if (!inputs.hireDate.value) {
+                    results.tenure.textContent = 'Please enter a hire date.';
+                    results.availablePto.textContent = '0.00 hours';
+                    results.availablePtoDays.textContent = '';
+                    results.payoutValue.textContent = formatCurrency(0);
+                    if (accrualChart) accrualChart.destroy();
+                    return;
+                }
+
+                // Calculate tenure
+                let years = today.getFullYear() - hireDate.getFullYear();
+                let months = today.getMonth() - hireDate.getMonth();
+                let days = today.getDate() - hireDate.getDate();
+
+                if (days < 0) {
+                    months--;
+                    const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                    days = today.getDate() + lastMonth.getDate() - hireDate.getDate();
+                }
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+                results.tenure.textContent = `${years} years, ${months} months, ${days} days`;
+
+                // Calculate current PTO
+                const annualPtoHours = annualPtoDays * hoursPerWorkday;
+                let totalEarnedPto;
+                if (ptoPolicy === 'rollover') {
+                    totalEarnedPto = calculateAccruedHours(hireDate, today, annualPtoHours, accrualFrequency) + rolloverHours;
+                } else { // Use-it-or-lose-it
+                    const startOfCurrentYear = new Date(today.getFullYear(), 0, 1);
+                    totalEarnedPto = calculateAccruedHours(startOfCurrentYear, today, annualPtoHours, accrualFrequency) + rolloverHours;
+                }
+
+                // Apply max accrual limit
+                if (totalEarnedPto > maxAccrual) {
+                    totalEarnedPto = maxAccrual;
+                }
+
+                const currentAvailablePto = Math.max(0, totalEarnedPto - ptoTaken);
+                results.availablePto.textContent = `${currentAvailablePto.toFixed(2)} hours`;
+                results.availablePtoDays.textContent = `(${ (currentAvailablePto / hoursPerWorkday).toFixed(1)} days)`;
+                results.payoutValue.textContent = formatCurrency(currentAvailablePto * hourlyRate);
+
+                // Calculate future projection if a future date is provided
+                if (futureDate && futureDate > today) {
+                    results.projectionLabel.textContent = `Projected PTO on ${futureDate.toISOString().split('T')[0]}`;
+                    let futureEarnedPto;
+                    if (ptoPolicy === 'rollover') {
+                         futureEarnedPto = calculateAccruedHours(hireDate, futureDate, annualPtoHours, accrualFrequency) + rolloverHours;
+                    } else { // Use-it-or-lose-it
+                        const startOfFutureYear = new Date(futureDate.getFullYear(), 0, 1);
+                        futureEarnedPto = calculateAccruedHours(startOfFutureYear, futureDate, annualPtoHours, accrualFrequency) + rolloverHours;
+                    }
+                   
+                    if (futureEarnedPto > maxAccrual) {
+                        futureEarnedPto = maxAccrual;
+                    }
+                    const futureAvailablePto = Math.max(0, futureEarnedPto - ptoTaken);
+                    results.projectedPto.textContent = `${futureAvailablePto.toFixed(2)} hours`;
+                } else {
+                    results.projectionLabel.textContent = `Projected PTO on (select a future date)`;
+                    results.projectedPto.textContent = 'N/A';
+                }
+
+                // Update or create the chart
+                createOrUpdateChart(totalEarnedPto, ptoTaken, currentAvailablePto, maxAccrual);
+            };
+
+            const createOrUpdateChart = (earned, taken, available, max) => {
+                const remainingToMax = Math.max(0, max - earned);
+                const data = {
+                    labels: ['Accrued', 'Taken', 'Remaining to Cap'],
+                    datasets: [{
+                        data: [earned, taken, remainingToMax],
+                        backgroundColor: ['#3b82f6', '#f59e0b', '#d1d5db'],
+                        hoverBackgroundColor: ['#1d4ed8', '#d97706', '#9ca3af'],
+                    }]
+                };
+                
+                const config = {
+                    type: 'doughnut',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        family: 'Inter',
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed;
+                                        return `${label}: ${value.toFixed(2)} hours`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+
+                if (accrualChart) {
+                    accrualChart.data = data;
+                    accrualChart.update();
+                } else {
+                    accrualChart = new Chart(results.chartCanvas, config);
+                }
+            };
+
+            // Set a default hire date and future date to today's date
+            const today = new Date().toISOString().split('T')[0];
+            inputs.hireDate.value = today;
+            const oneMonthLater = new Date();
+            oneMonthLater.setDate(oneMonthLater.getDate() + 30);
+            inputs.futureDate.value = oneMonthLater.toISOString().split('T')[0];
+
+            // Add event listeners to all input fields
+            for (const key in inputs) {
+                if (inputs.hasOwnProperty(key)) {
+                    inputs[key].addEventListener('input', updateCalculator);
+                }
+            }
+
+            // Initial calculation on page load
+            updateCalculator();
+        });
+    </script>
+</body>
+</html>

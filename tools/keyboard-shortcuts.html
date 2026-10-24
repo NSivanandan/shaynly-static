@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Keyboard Shortcut Reference - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Ultimate Keyboard Shortcut Reference for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/keyboard-shortcuts.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/keyboard-shortcuts.html">
+  <meta property="og:title" content="Ultimate Keyboard Shortcut Reference - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Ultimate Keyboard Shortcut Reference for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ultimate Keyboard Shortcut Reference - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Ultimate Keyboard Shortcut Reference for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #4A40E5;
+            --accent: #FF6B8B;
+            --light: #F8F9FE;
+            --dark: #2A2A3C;
+            --success: #4CC9F0;
+            --warning: #FFD166;
+            --danger: #EF476F;
+            --gray: #adb5bd;
+            --card-bg: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .dark-mode {
+            --primary: #8A85FF;
+            --secondary: #6158FF;
+            --light: #1E1E2E;
+            --dark: #F0F0F5;
+            --card-bg: #2A2A3C;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: var(--transition);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236C63FF' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 20px auto 30px;
+            color: var(--dark);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            color: var(--primary);
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .controls::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-box {
+            padding: 18px 18px 18px 55px;
+            width: 100%;
+            border: 2px solid transparent;
+            border-radius: var(--radius);
+            font-size: 16px;
+            background: var(--light);
+            color: var(--dark);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .search-box:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 14px 22px;
+            background-color: var(--light);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-btn {
+            padding: 14px;
+            background-color: var(--light);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            color: var(--dark);
+            box-shadow: var(--shadow);
+        }
+
+        .view-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .shortcuts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .shortcuts-container.list-view {
+            grid-template-columns: 1fr;
+        }
+
+        .shortcut-category {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .shortcut-category::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .shortcut-category:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .category-icon {
+            font-size: 1.8rem;
+            opacity: 0.8;
+        }
+
+        .shortcut-list {
+            padding: 25px;
+        }
+
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .shortcut-item:hover {
+            background-color: rgba(108, 99, 255, 0.05);
+            border-radius: 12px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .shortcut-item:last-child {
+            border-bottom: none;
+        }
+
+        .command {
+            flex: 2;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .command-icon {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .keys {
+            flex: 1;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .key {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 2px;
+            background: linear-gradient(135deg, var(--light) 0%, #e6e6e6 100%);
+            border: 1px solid var(--gray);
+            border-radius: 10px;
+            font-family: 'Poppins', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: var(--dark);
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .dark-mode .key {
+            background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%);
+            color: var(--dark);
+            border-color: #444;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px;
+            font-size: 1.2rem;
+            color: var(--gray);
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .no-results i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--dark);
+            font-size: 0.9rem;
+            padding: 25px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--success);
+            color: white;
+            padding: 18px 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--dark);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+            }
+            
+            .search-container {
+                width: 100%;
+            }
+            
+            .shortcuts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation for keys */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .key:hover {
+            animation: pulse 0.5s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Productivity & Management</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Ultimate Keyboard Shortcut Reference</h1>
+      <p>Free interactive Ultimate Keyboard Shortcut Reference for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-keyboard"></i> Ultimate Shortcut Master</h1>
+            <p class="description">Boost your productivity with these powerful keyboard shortcuts. Search, filter, and customize your experience.</p>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <i class="fas fa-code stat-icon"></i>
+                <div class="stat-value" id="totalShortcuts">0</div>
+                <div class="stat-label">Total Shortcuts</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-layer-group stat-icon"></i>
+                <div class="stat-value" id="totalCategories">0</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-star stat-icon"></i>
+                <div class="stat-value" id="favoriteCount">0</div>
+                <div class="stat-label">Favorites</div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-box" placeholder="Search shortcuts..." id="searchInput">
+            </div>
+            
+            <div class="filter-buttons" id="filterButtons">
+                <!-- Filter buttons will be generated by JavaScript -->
+            </div>
+            
+            <div class="view-options">
+                <button class="view-btn active" id="gridView" title="Grid View">
+                    <i class="fas fa-th"></i>
+                </button>
+                <button class="view-btn" id="listView" title="List View">
+                    <i class="fas fa-list"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="shortcuts-container" id="shortcutsContainer">
+            <!-- Shortcuts will be generated by JavaScript -->
+        </div>
+        
+        <footer>
+            <p>Made with <i class="fas fa-heart" style="color: var(--accent);"></i> for productivity enthusiasts | Click on any shortcut to copy it</p>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Shortcut copied to clipboard!</span>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        // Enhanced keyboard shortcut data with icons
+        const shortcutData = [
+            {
+                category: "General",
+                icon: "fas fa-star",
+                shortcuts: [
+                    { command: "Copy", keys: ["Ctrl", "C"], icon: "fas fa-copy" },
+                    { command: "Cut", keys: ["Ctrl", "X"], icon: "fas fa-cut" },
+                    { command: "Paste", keys: ["Ctrl", "V"], icon: "fas fa-paste" },
+                    { command: "Undo", keys: ["Ctrl", "Z"], icon: "fas fa-undo" },
+                    { command: "Redo", keys: ["Ctrl", "Y"], icon: "fas fa-redo" },
+                    { command: "Select All", keys: ["Ctrl", "A"], icon: "fas fa-object-group" },
+                    { command: "Find", keys: ["Ctrl", "F"], icon: "fas fa-search" },
+                    { command: "Print", keys: ["Ctrl", "P"], icon: "fas fa-print" },
+                    { command: "Save", keys: ["Ctrl", "S"], icon: "fas fa-save" },
+                    { command: "Open", keys: ["Ctrl", "O"], icon: "fas fa-folder-open" }
+                ]
+            },
+            {
+                category: "Navigation",
+                icon: "fas fa-directions",
+                shortcuts: [
+                    { command: "Go to beginning of line", keys: ["Home"], icon: "fas fa-angle-double-left" },
+                    { command: "Go to end of line", keys: ["End"], icon: "fas fa-angle-double-right" },
+                    { command: "Move up one page", keys: ["Page Up"], icon: "fas fa-arrow-up" },
+                    { command: "Move down one page", keys: ["Page Down"], icon: "fas fa-arrow-down" },
+                    { command: "Go to previous word", keys: ["Ctrl", "←"], icon: "fas fa-arrow-left" },
+                    { command: "Go to next word", keys: ["Ctrl", "→"], icon: "fas fa-arrow-right" },
+                    { command: "Go to top of document", keys: ["Ctrl", "Home"], icon: "fas fa-angle-double-up" },
+                    { command: "Go to bottom of document", keys: ["Ctrl", "End"], icon: "fas fa-angle-double-down" }
+                ]
+            },
+            {
+                category: "Text Editing",
+                icon: "fas fa-edit",
+                shortcuts: [
+                    { command: "Bold text", keys: ["Ctrl", "B"], icon: "fas fa-bold" },
+                    { command: "Italic text", keys: ["Ctrl", "I"], icon: "fas fa-italic" },
+                    { command: "Underline text", keys: ["Ctrl", "U"], icon: "fas fa-underline" },
+                    { command: "Align left", keys: ["Ctrl", "L"], icon: "fas fa-align-left" },
+                    { command: "Align center", keys: ["Ctrl", "E"], icon: "fas fa-align-center" },
+                    { command: "Align right", keys: ["Ctrl", "R"], icon: "fas fa-align-right" },
+                    { command: "Increase font size", keys: ["Ctrl", "Shift", ">"], icon: "fas fa-search-plus" },
+                    { command: "Decrease font size", keys: ["Ctrl", "Shift", "<"], icon: "fas fa-search-minus" }
+                ]
+            },
+            {
+                category: "Browser",
+                icon: "fas fa-globe",
+                shortcuts: [
+                    { command: "New tab", keys: ["Ctrl", "T"], icon: "fas fa-plus-square" },
+                    { command: "Close tab", keys: ["Ctrl", "W"], icon: "fas fa-times" },
+                    { command: "Reopen closed tab", keys: ["Ctrl", "Shift", "T"], icon: "fas fa-window-restore" },
+                    { command: "Next tab", keys: ["Ctrl", "Tab"], icon: "fas fa-arrow-right" },
+                    { command: "Previous tab", keys: ["Ctrl", "Shift", "Tab"], icon: "fas fa-arrow-left" },
+                    { command: "Refresh page", keys: ["F5"], icon: "fas fa-sync" },
+                    { command: "Hard refresh", keys: ["Ctrl", "F5"], icon: "fas fa-sync-alt" },
+                    { command: "Developer tools", keys: ["F12"], icon: "fas fa-tools" },
+                    { command: "Address bar", keys: ["Ctrl", "L"], icon: "fas fa-bars" },
+                    { command: "Bookmarks", keys: ["Ctrl", "Shift", "O"], icon: "fas fa-bookmark" }
+                ]
+            },
+            {
+                category: "Windows",
+                icon: "fab fa-windows",
+                shortcuts: [
+                    { command: "Lock computer", keys: ["Win", "L"], icon: "fas fa-lock" },
+                    { command: "Task Manager", keys: ["Ctrl", "Shift", "Esc"], icon: "fas fa-tasks" },
+                    { command: "Run dialog", keys: ["Win", "R"], icon: "fas fa-running" },
+                    { command: "File Explorer", keys: ["Win", "E"], icon: "fas fa-folder" },
+                    { command: "Settings", keys: ["Win", "I"], icon: "fas fa-cog" },
+                    { command: "Action Center", keys: ["Win", "A"], icon: "fas fa-bell" },
+                    { command: "Project to a screen", keys: ["Win", "P"], icon: "fas fa-desktop" },
+                    { command: "Minimize all windows", keys: ["Win", "M"], icon: "fas fa-window-minimize" },
+                    { command: "Restore minimized windows", keys: ["Win", "Shift", "M"], icon: "fas fa-window-restore" },
+                    { command: "Snap window left", keys: ["Win", "←"], icon: "fas fa-arrow-left" },
+                    { command: "Snap window right", keys: ["Win", "→"], icon: "fas fa-arrow-right" }
+                ]
+            },
+            {
+                category: "macOS",
+                icon: "fab fa-apple",
+                shortcuts: [
+                    { command: "Copy", keys: ["⌘", "C"], icon: "fas fa-copy" },
+                    { command: "Paste", keys: ["⌘", "V"], icon: "fas fa-paste" },
+                    { command: "Cut", keys: ["⌘", "X"], icon: "fas fa-cut" },
+                    { command: "Undo", keys: ["⌘", "Z"], icon: "fas fa-undo" },
+                    { command: "Redo", keys: ["⌘", "Shift", "Z"], icon: "fas fa-redo" },
+                    { command: "Find", keys: ["⌘", "F"], icon: "fas fa-search" },
+                    { command: "Hide current app", keys: ["⌘", "H"], icon: "fas fa-eye-slash" },
+                    { command: "Quit app", keys: ["⌘", "Q"], icon: "fas fa-times-circle" },
+                    { command: "Force quit app", keys: ["⌘", "Option", "Esc"], icon: "fas fa-ban" },
+                    { command: "Take screenshot", keys: ["⌘", "Shift", "3"], icon: "fas fa-camera" },
+                    { command: "Take selective screenshot", keys: ["⌘", "Shift", "4"], icon: "fas fa-crop-alt" }
+                ]
+            },
+            {
+                category: "Visual Studio Code",
+                icon: "fas fa-code",
+                shortcuts: [
+                    { command: "Toggle sidebar", keys: ["Ctrl", "B"], icon: "fas fa-bars" },
+                    { command: "Integrated terminal", keys: ["Ctrl", "`"], icon: "fas fa-terminal" },
+                    { command: "Command palette", keys: ["Ctrl", "Shift", "P"], icon: "fas fa-code" },
+                    { command: "Quick open", keys: ["Ctrl", "P"], icon: "fas fa-folder-open" },
+                    { command: "New terminal", keys: ["Ctrl", "Shift", "`"], icon: "fas fa-plus" },
+                    { command: "Comment line", keys: ["Ctrl", "/"], icon: "fas fa-comment" },
+                    { command: "Format document", keys: ["Shift", "Alt", "F"], icon: "fas fa-indent" },
+                    { command: "Rename symbol", keys: ["F2"], icon: "fas fa-tag" },
+                    { command: "Find references", keys: ["Shift", "F12"], icon: "fas fa-book" }
+                ]
+            },
+            {
+                category: "Adobe Photoshop",
+                icon: "fas fa-paint-brush",
+                shortcuts: [
+                    { command: "New layer", keys: ["Ctrl", "Shift", "N"], icon: "fas fa-layer-group" },
+                    { command: "Merge layers", keys: ["Ctrl", "E"], icon: "fas fa-object-group" },
+                    { command: "Free transform", keys: ["Ctrl", "T"], icon: "fas fa-expand-arrows-alt" },
+                    { command: "Deselect", keys: ["Ctrl", "D"], icon: "fas fa-times-circle" },
+                    { command: "Fill layer", keys: ["Shift", "F5"], icon: "fas fa-fill" },
+                    { command: "Brush tool", keys: ["B"], icon: "fas fa-paint-brush" },
+                    { command: "Eraser tool", keys: ["E"], icon: "fas fa-eraser" },
+                    { command: "Zoom in", keys: ["Ctrl", "+"], icon: "fas fa-search-plus" },
+                    { command: "Zoom out", keys: ["Ctrl", "-"], icon: "fas fa-search-minus" }
+                ]
+            }
+        ];
+
+        // DOM elements
+        const shortcutsContainer = document.getElementById('shortcutsContainer');
+        const filterButtons = document.getElementById('filterButtons');
+        const searchInput = document.getElementById('searchInput');
+        const themeToggle = document.getElementById('themeToggle');
+        const toast = document.getElementById('toast');
+        const gridViewBtn = document.getElementById('gridView');
+        const listViewBtn = document.getElementById('listView');
+        const totalShortcutsEl = document.getElementById('totalShortcuts');
+        const totalCategoriesEl = document.getElementById('totalCategories');
+        const favoriteCountEl = document.getElementById('favoriteCount');
+
+        // Initialize the page
+        function init() {
+            renderFilterButtons();
+            renderShortcuts(shortcutData);
+            setupEventListeners();
+            updateStats();
+            
+            // Check for saved theme preference
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Update statistics
+        function updateStats() {
+            let totalShortcuts = 0;
+            shortcutData.forEach(category => {
+                totalShortcuts += category.shortcuts.length;
+            });
+            
+            totalShortcutsEl.textContent = totalShortcuts;
+            totalCategoriesEl.textContent = shortcutData.length;
+            
+            // Initialize favorites count
+            favoriteCountEl.textContent = '0';
+        }
+
+        // Render filter buttons
+        function renderFilterButtons() {
+            // Add "All" button
+            const allButton = document.createElement('button');
+            allButton.classList.add('filter-btn', 'active');
+            allButton.innerHTML = '<i class="fas fa-layer-group"></i> All';
+            allButton.dataset.category = 'all';
+            filterButtons.appendChild(allButton);
+
+            // Add category buttons
+            shortcutData.forEach(category => {
+                const button = document.createElement('button');
+                button.classList.add('filter-btn');
+                button.innerHTML = `<i class="${category.icon}"></i> ${category.category}`;
+                button.dataset.category = category.category;
+                filterButtons.appendChild(button);
+            });
+        }
+
+        // Render shortcuts based on data
+        function renderShortcuts(data) {
+            shortcutsContainer.innerHTML = '';
+            
+            if (data.length === 0) {
+                shortcutsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <p>No shortcuts found. Try a different search term.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            data.forEach(category => {
+                const categoryElement = document.createElement('div');
+                categoryElement.classList.add('shortcut-category');
+                
+                const categoryHeader = document.createElement('div');
+                categoryHeader.classList.add('category-header');
+                categoryHeader.innerHTML = `
+                    <span>${category.category}</span>
+                    <i class="${category.icon} category-icon"></i>
+                `;
+                
+                const shortcutList = document.createElement('div');
+                shortcutList.classList.add('shortcut-list');
+                
+                category.shortcuts.forEach(shortcut => {
+                    const shortcutItem = document.createElement('div');
+                    shortcutItem.classList.add('shortcut-item');
+                    
+                    const commandElement = document.createElement('div');
+                    commandElement.classList.add('command');
+                    commandElement.innerHTML = `
+                        <i class="${shortcut.icon || 'fas fa-terminal'} command-icon"></i>
+                        <span>${shortcut.command}</span>
+                    `;
+                    
+                    const keysElement = document.createElement('div');
+                    keysElement.classList.add('keys');
+                    
+                    shortcut.keys.forEach(key => {
+                        const keyElement = document.createElement('span');
+                        keyElement.classList.add('key');
+                        keyElement.textContent = key;
+                        keysElement.appendChild(keyElement);
+                    });
+                    
+                    shortcutItem.appendChild(commandElement);
+                    shortcutItem.appendChild(keysElement);
+                    shortcutList.appendChild(shortcutItem);
+                    
+                    // Add click to copy functionality
+                    shortcutItem.addEventListener('click', () => {
+                        const keysText = shortcut.keys.join(' + ');
+                        navigator.clipboard.writeText(keysText).then(() => {
+                            showToast();
+                        });
+                    });
+                });
+                
+                categoryElement.appendChild(categoryHeader);
+                categoryElement.appendChild(shortcutList);
+                shortcutsContainer.appendChild(categoryElement);
+            });
+        }
+
+        // Show toast notification
+        function showToast() {
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Filter shortcuts based on category
+        function filterShortcuts(category) {
+            if (category === 'all') {
+                renderShortcuts(shortcutData);
+                return;
+            }
+            
+            const filteredData = shortcutData.filter(item => item.category === category);
+            renderShortcuts(filteredData);
+        }
+
+        // Search shortcuts
+        function searchShortcuts(query) {
+            const lowerCaseQuery = query.toLowerCase().trim();
+            
+            if (!lowerCaseQuery) {
+                // If search is empty, show all
+                const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+                filterShortcuts(activeCategory);
+                return;
+            }
+            
+            const searchResults = [];
+            
+            shortcutData.forEach(category => {
+                const matchingShortcuts = category.shortcuts.filter(shortcut => {
+                    return shortcut.command.toLowerCase().includes(lowerCaseQuery) || 
+                           shortcut.keys.join(' ').toLowerCase().includes(lowerCaseQuery);
+                });
+                
+                if (matchingShortcuts.length > 0) {
+                    searchResults.push({
+                        category: category.category,
+                        icon: category.icon,
+                        shortcuts: matchingShortcuts
+                    });
+                }
+            });
+            
+            renderShortcuts(searchResults);
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Toggle view
+        function toggleView(view) {
+            if (view === 'grid') {
+                shortcutsContainer.classList.remove('list-view');
+                gridViewBtn.classList.add('active');
+                listViewBtn.classList.remove('active');
+            } else {
+                shortcutsContainer.classList.add('list-view');
+                listViewBtn.classList.add('active');
+                gridViewBtn.classList.remove('active');
+            }
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Filter button clicks
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+                    filterShortcuts(button.dataset.category);
+                });
+            });
+            
+            // Search input
+            searchInput.addEventListener('input', () => {
+                searchShortcuts(searchInput.value);
+            });
+            
+            // Theme toggle
+            themeToggle.addEventListener('click', toggleTheme);
+            
+            // View toggle
+            gridViewBtn.addEventListener('click', () => toggleView('grid'));
+            listViewBtn.addEventListener('click', () => toggleView('list'));
+        }
+
+        // Initialize the app
+        init();
+    </script>
+</body>
+</html>

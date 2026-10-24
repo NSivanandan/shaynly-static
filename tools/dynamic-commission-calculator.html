@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Dynamic Commission Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Dynamic Commission Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/dynamic-commission-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/dynamic-commission-calculator.html">
+  <meta property="og:title" content="Advanced Dynamic Commission Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Dynamic Commission Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Dynamic Commission Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Dynamic Commission Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .tier-table-row:hover {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Dynamic Commission Calculator</h1>
+      <p>Free interactive Advanced Dynamic Commission Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-2xl text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">💰  Dynamic Commission Calculator</h1>
+        <p class="text-gray-500 mb-6">Create your own tiered commission structure and calculate payouts.</p>
+
+        <!-- Tier Management Section -->
+        <div class="bg-gray-50 rounded-xl p-6 mb-8 text-left shadow-md">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Manage Commission Tiers</h2>
+
+            <!-- Tier Input Form -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div>
+                    <label for="tier-limit" class="block text-sm font-medium text-gray-700 mb-1">Sales Limit ($)</label>
+                    <input type="number" id="tier-limit" placeholder="e.g., 50000" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                </div>
+                <div>
+                    <label for="tier-rate" class="block text-sm font-medium text-gray-700 mb-1">Rate (%)</label>
+                    <input type="number" id="tier-rate" placeholder="e.g., 7.5" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                </div>
+                <div class="flex items-end">
+                    <button id="add-tier-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg shadow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                        Add Tier
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tiers Display Table -->
+            <div class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sales Limit</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rate</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tiers-table-body" class="bg-white divide-y divide-gray-200">
+                        <!-- Tiers will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="text-sm text-gray-500 mt-2">Tiers must be sorted in ascending order by sales limit.</p>
+        </div>
+
+        <!-- Sales Input & Calculation Section -->
+        <div class="space-y-4 mb-8">
+            <div>
+                <label for="sales-amount" class="sr-only">Sales Amount</label>
+                <input type="number" id="sales-amount" placeholder="Enter total sales amount (e.g., 75000)" class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" min="0">
+            </div>
+            <button id="calculate-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Calculate Payout
+            </button>
+        </div>
+
+        <!-- Result Display Area -->
+        <div id="result-container" class="mt-8 border-2 border-dashed border-gray-300 rounded-lg p-6 bg-gray-50 flex flex-col items-center justify-center min-h-[150px] transition-all duration-300 hidden">
+            <p class="text-gray-400">Your total calculated payout is:</p>
+            <p id="payout-amount" class="text-5xl font-bold text-green-600 mt-2">$0.00</p>
+            <div id="breakdown-details" class="w-full mt-6 text-sm text-gray-600 space-y-2 text-left">
+                <!-- Breakdown will be dynamically added here -->
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Custom Modal for Alerts (to replace alert()) -->
+    <div id="alert-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Error</h3>
+            <p id="alert-message" class="text-gray-700 mb-4"></p>
+            <button id="alert-close-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+                OK
+            </button>
+        </div>
+    </div>
+    
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get references to all necessary DOM elements
+            const tierLimitInput = document.getElementById('tier-limit');
+            const tierRateInput = document.getElementById('tier-rate');
+            const addTierBtn = document.getElementById('add-tier-btn');
+            const tiersTableBody = document.getElementById('tiers-table-body');
+            const salesAmountInput = document.getElementById('sales-amount');
+            const calculateBtn = document.getElementById('calculate-btn');
+            const resultContainer = document.getElementById('result-container');
+            const payoutAmountText = document.getElementById('payout-amount');
+            const breakdownDetails = document.getElementById('breakdown-details');
+            const alertModal = document.getElementById('alert-modal');
+            const alertMessage = document.getElementById('alert-message');
+            const alertCloseBtn = document.getElementById('alert-close-btn');
+
+            let tiers = [
+                { limit: 10000, rate: 5 },
+                { limit: 50000, rate: 7.5 },
+                { limit: Infinity, rate: 10 }
+            ];
+
+            // Function to display a custom alert modal
+            const showAlert = (message) => {
+                alertMessage.textContent = message;
+                alertModal.classList.remove('hidden');
+            };
+
+            // Function to render the tiers table
+            const renderTiers = () => {
+                tiersTableBody.innerHTML = '';
+                // Sort tiers by limit in ascending order before rendering
+                tiers.sort((a, b) => a.limit - b.limit);
+
+                tiers.forEach((tier, index) => {
+                    const prevLimit = index > 0 ? tiers[index-1].limit + 1 : 0;
+                    const row = document.createElement('tr');
+                    row.classList.add('tier-table-row');
+                    
+                    // FIXED: Added a check for index > 0 to prevent the error when the only tier is 'Infinity'
+                    const limitText = tier.limit === Infinity ? (index > 0 ? `>$${tiers[index-1].limit.toLocaleString()}` : `All sales`) : `$${prevLimit.toLocaleString()} - $${tier.limit.toLocaleString()}`;
+                    const rateText = `${tier.rate}%`;
+
+                    row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${limitText}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${rateText}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <button data-index="${index}" class="remove-tier-btn text-red-600 hover:text-red-900 transition-colors">Remove</button>
+                        </td>
+                    `;
+                    tiersTableBody.appendChild(row);
+                });
+
+                // Attach remove event listeners
+                document.querySelectorAll('.remove-tier-btn').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const indexToRemove = parseInt(event.target.getAttribute('data-index'));
+                        tiers.splice(indexToRemove, 1);
+                        renderTiers();
+                    });
+                });
+            };
+
+            // Function to add a new tier
+            const addTier = () => {
+                const limit = parseFloat(tierLimitInput.value);
+                const rate = parseFloat(tierRateInput.value);
+
+                if (isNaN(limit) || isNaN(rate) || limit <= 0 || rate <= 0) {
+                    showAlert("Please enter valid positive numbers for both sales limit and rate.");
+                    return;
+                }
+                
+                // FIXED: Added a check to prevent adding a tier with Infinity if one already exists.
+                if (limit === Infinity && tiers.some(tier => tier.limit === Infinity)) {
+                    showAlert("An 'Infinity' tier already exists. Please remove it first to add a new one.");
+                    return;
+                }
+                
+                // Check if a tier with this limit already exists
+                if (tiers.some(tier => tier.limit === limit)) {
+                    showAlert(`A tier with the sales limit of $${limit} already exists. Please remove it first or enter a different limit.`);
+                    return;
+                }
+                
+                // Add the new tier to the array
+                tiers.push({ limit, rate });
+
+                // Render the updated table and clear the input fields
+                renderTiers();
+                tierLimitInput.value = '';
+                tierRateInput.value = '';
+            };
+
+            // Main function to calculate the commission
+            const calculateCommission = () => {
+                let sales = parseFloat(salesAmountInput.value);
+
+                // Validation
+                if (isNaN(sales) || sales < 0) {
+                    showAlert("Please enter a valid positive sales amount.");
+                    resultContainer.classList.add('hidden');
+                    return;
+                }
+
+                if (tiers.length === 0) {
+                    showAlert("Please add at least one commission tier.");
+                    return;
+                }
+
+                let totalCommission = 0;
+                let remainingSales = sales;
+                breakdownDetails.innerHTML = '';
+                
+                // Sort tiers by limit in ascending order for calculation
+                tiers.sort((a, b) => a.limit - b.limit);
+
+                // Loop through the tiers to calculate the commission
+                for (let i = 0; i < tiers.length; i++) {
+                    const tier = tiers[i];
+                    const prevLimit = i > 0 ? tiers[i-1].limit : 0;
+                    
+                    const tierSalesAmount = Math.max(0, Math.min(remainingSales, tier.limit - prevLimit));
+
+                    if (tierSalesAmount > 0) {
+                        const tierCommission = tierSalesAmount * (tier.rate / 100);
+                        totalCommission += tierCommission;
+                        remainingSales -= tierSalesAmount;
+                        
+                        // Add breakdown item
+                        const breakdownItem = document.createElement('p');
+                        breakdownItem.innerHTML = `<span class="font-bold">${tier.rate}% on $${tierSalesAmount.toFixed(2)}</span>: $${tierCommission.toFixed(2)}`;
+                        breakdownDetails.appendChild(breakdownItem);
+                    }
+                    
+                    if (remainingSales <= 0) {
+                        break;
+                    }
+                }
+
+                // Display the result
+                payoutAmountText.textContent = `$${totalCommission.toFixed(2)}`;
+                resultContainer.classList.remove('hidden');
+            };
+            
+            // Event listeners
+            addTierBtn.addEventListener('click', addTier);
+            calculateBtn.addEventListener('click', calculateCommission);
+            salesAmountInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    calculateCommission();
+                }
+            });
+            tierLimitInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    addTier();
+                }
+            });
+            tierRateInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    addTier();
+                }
+            });
+            alertCloseBtn.addEventListener('click', () => {
+                alertModal.classList.add('hidden');
+            });
+            
+            // Initial render of default tiers
+            renderTiers();
+        });
+    </script>
+</body>
+</html>

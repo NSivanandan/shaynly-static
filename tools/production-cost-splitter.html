@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Production Cost Splitter - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Production Cost Splitter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/production-cost-splitter.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/production-cost-splitter.html">
+  <meta property="og:title" content="Advanced Production Cost Splitter - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Production Cost Splitter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Production Cost Splitter - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Production Cost Splitter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Productivity & Management</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Production Cost Splitter</h1>
+      <p>Free interactive Advanced Production Cost Splitter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-6xl">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-2"> Production Cost Splitter</h1>
+        <p class="text-center text-gray-500 mb-6">
+            Compare two production scenarios with multi-currency support and detailed profitability and break-even analysis.
+        </p>
+
+        <!-- Global Settings -->
+        <div class="mb-6 flex items-center justify-center">
+            <label for="currencySelector" class="block text-sm font-medium text-gray-700 mr-2">Select Currency:</label>
+            <select id="currencySelector" class="mt-1 block px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                <option value="USD">USD ($)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="GBP">GBP (£)</option>
+                <option value="JPY">JPY (¥)</option>
+                <option value="INR">INR (₹)</option>
+            </select>
+        </div>
+
+        <!-- Scenario Inputs Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Scenario 1 Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 1</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="rawMaterialCost1" class="block text-sm font-medium text-gray-700">Raw Material Cost</label>
+                        <input type="number" id="rawMaterialCost1" value="5000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Cost of all raw materials used.</p>
+                    </div>
+                    <div>
+                        <label for="directLaborCost1" class="block text-sm font-medium text-gray-700">Direct Labor Cost</label>
+                        <input type="number" id="directLaborCost1" value="3000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Wages for direct production employees.</p>
+                    </div>
+                    <div>
+                        <label for="overheadCost1" class="block text-sm font-medium text-gray-700">Manufacturing Overhead</label>
+                        <input type="number" id="overheadCost1" value="2000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Indirect costs like rent and utilities.</p>
+                    </div>
+                    <div class="pt-4">
+                        <label for="unitsProduced1" class="block text-sm font-medium text-gray-700">Units Produced</label>
+                        <input type="number" id="unitsProduced1" value="1000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Total number of units manufactured.</p>
+                    </div>
+                    <div class="pt-4">
+                        <label for="sellingPrice1" class="block text-sm font-medium text-gray-700">Selling Price per Unit</label>
+                        <input type="number" id="sellingPrice1" value="15" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">The price at which each unit is sold.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Scenario 2 Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 2</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="rawMaterialCost2" class="block text-sm font-medium text-gray-700">Raw Material Cost</label>
+                        <input type="number" id="rawMaterialCost2" value="5500" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Cost of all raw materials used.</p>
+                    </div>
+                    <div>
+                        <label for="directLaborCost2" class="block text-sm font-medium text-gray-700">Direct Labor Cost</label>
+                        <input type="number" id="directLaborCost2" value="3000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Wages for direct production employees.</p>
+                    </div>
+                    <div>
+                        <label for="overheadCost2" class="block text-sm font-medium text-gray-700">Manufacturing Overhead</label>
+                        <input type="number" id="overheadCost2" value="2100" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Indirect costs like rent and utilities.</p>
+                    </div>
+                    <div class="pt-4">
+                        <label for="unitsProduced2" class="block text-sm font-medium text-gray-700">Units Produced</label>
+                        <input type="number" id="unitsProduced2" value="1100" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Total number of units manufactured.</p>
+                    </div>
+                    <div class="pt-4">
+                        <label for="sellingPrice2" class="block text-sm font-medium text-gray-700">Selling Price per Unit</label>
+                        <input type="number" id="sellingPrice2" value="14.50" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">The price at which each unit is sold.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="calculateBtn" class="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+            Calculate and Compare
+        </button>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="mt-4 p-3 bg-red-100 text-red-700 rounded-md hidden">
+        </div>
+
+        <!-- Results Display -->
+        <div id="results" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Production Cost & Profitability Comparison</h2>
+            
+            <!-- Comparison Table -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-gray-800 text-center mb-4">Key Metrics Summary</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg shadow-md">
+                        <thead>
+                            <tr class="bg-indigo-600 text-white">
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider rounded-tl-lg">Metric</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">Scenario 1</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider rounded-tr-lg">Scenario 2</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">Total Production Cost</td>
+                                <td id="totalCostTable1" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right"></td>
+                                <td id="totalCostTable2" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right"></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">Cost Per Unit</td>
+                                <td id="costPerUnitTable1" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right"></td>
+                                <td id="costPerUnitTable2" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right"></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">Gross Margin</td>
+                                <td id="grossMarginTable1" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right"></td>
+                                <td id="grossMarginTable2" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right"></td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">Break-Even Units</td>
+                                <td id="breakEvenUnitsTable1" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right"></td>
+                                <td id="breakEvenUnitsTable2" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right"></td>
+                            </tr>
+                             <tr class="bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 rounded-bl-lg">Break-Even Revenue</td>
+                                <td id="breakEvenRevenueTable1" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right"></td>
+                                <td id="breakEvenRevenueTable2" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right rounded-br-lg"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Scenario 1 Results -->
+                <div class="bg-indigo-50 p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">Scenario 1</h3>
+                    <p class="text-sm font-semibold">Total Production Cost: <span id="totalCost1" class="font-extrabold"></span></p>
+                    <p class="text-sm font-semibold mt-2">Cost Per Unit: <span id="costPerUnit1" class="font-extrabold"></span></p>
+                    <p class="text-xs mt-4">Raw Material Cost/Unit: <span id="rawMaterialPerUnit1" class="font-bold"></span></p>
+                    <p class="text-xs">Direct Labor Cost/Unit: <span id="laborPerUnit1" class="font-bold"></span></p>
+                    <p class="text-xs">Overhead Cost/Unit: <span id="overheadPerUnit1" class="font-bold"></span></p>
+                    <div class="w-full max-w-xs mx-auto mt-4">
+                        <canvas id="chart1"></canvas>
+                    </div>
+                    <div class="mt-6 border-t border-indigo-200 pt-4">
+                        <h4 class="text-lg font-bold text-indigo-800 mb-2">Profitability</h4>
+                        <p class="text-sm font-semibold">Total Revenue: <span id="totalRevenue1" class="font-extrabold"></span></p>
+                        <p class="text-sm font-semibold mt-1">Gross Profit: <span id="grossProfit1" class="font-extrabold"></span></p>
+                        <p class="text-sm font-semibold mt-1">Gross Margin: <span id="grossMargin1" class="font-extrabold"></span></p>
+                    </div>
+                    <div class="mt-6 border-t border-indigo-200 pt-4">
+                        <h4 class="text-lg font-bold text-indigo-800 mb-2">Break-Even Analysis</h4>
+                        <p class="text-sm font-semibold">Break-Even Units: <span id="breakEvenUnits1" class="font-extrabold"></span></p>
+                        <p class="text-sm font-semibold mt-1">Break-Even Revenue: <span id="breakEvenRevenue1" class="font-extrabold"></span></p>
+                    </div>
+                </div>
+                <!-- Scenario 2 Results -->
+                <div class="bg-indigo-50 p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">Scenario 2</h3>
+                    <p class="text-sm font-semibold">Total Production Cost: <span id="totalCost2" class="font-extrabold"></span></p>
+                    <p class="text-sm font-semibold mt-2">Cost Per Unit: <span id="costPerUnit2" class="font-extrabold"></span></p>
+                    <p class="text-xs mt-4">Raw Material Cost/Unit: <span id="rawMaterialPerUnit2" class="font-bold"></span></p>
+                    <p class="text-xs">Direct Labor Cost/Unit: <span id="laborPerUnit2" class="font-bold"></span></p>
+                    <p class="text-xs">Overhead Cost/Unit: <span id="overheadPerUnit2" class="font-bold"></span></p>
+                    <div class="w-full max-w-xs mx-auto mt-4">
+                        <canvas id="chart2"></canvas>
+                    </div>
+                    <div class="mt-6 border-t border-indigo-200 pt-4">
+                        <h4 class="text-lg font-bold text-indigo-800 mb-2">Profitability</h4>
+                        <p class="text-sm font-semibold">Total Revenue: <span id="totalRevenue2" class="font-extrabold"></span></p>
+                        <p class="text-sm font-semibold mt-1">Gross Profit: <span id="grossProfit2" class="font-extrabold"></span></p>
+                        <p class="text-sm font-semibold mt-1">Gross Margin: <span id="grossMargin2" class="font-extrabold"></span></p>
+                    </div>
+                    <div class="mt-6 border-t border-indigo-200 pt-4">
+                        <h4 class="text-lg font-bold text-indigo-800 mb-2">Break-Even Analysis</h4>
+                        <p class="text-sm font-semibold">Break-Even Units: <span id="breakEvenUnits2" class="font-extrabold"></span></p>
+                        <p class="text-sm font-semibold mt-1">Break-Even Revenue: <span id="breakEvenRevenue2" class="font-extrabold"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        const inputs = [
+            'rawMaterialCost1', 'directLaborCost1', 'overheadCost1', 'unitsProduced1', 'sellingPrice1',
+            'rawMaterialCost2', 'directLaborCost2', 'overheadCost2', 'unitsProduced2', 'sellingPrice2'
+        ];
+        const calculateBtn = document.getElementById('calculateBtn');
+        const resultsDiv = document.getElementById('results');
+        const errorDiv = document.getElementById('errorMsg');
+        const currencySelector = document.getElementById('currencySelector');
+
+        let chart1, chart2;
+        let formatter;
+
+        // Initialize formatter based on the default currency
+        function updateFormatter() {
+            const currencyCode = currencySelector.value;
+            formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: currencyCode });
+        }
+        updateFormatter();
+
+        calculateBtn.addEventListener('click', calculateAndDisplayCosts);
+        currencySelector.addEventListener('change', calculateAndDisplayCosts);
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', () => {
+                resultsDiv.classList.add('hidden');
+                errorDiv.classList.add('hidden');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', calculateAndDisplayCosts);
+
+        function calculateAndDisplayCosts() {
+            // Update formatter with the selected currency before any calculations
+            updateFormatter();
+
+            resultsDiv.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+
+            const rawMaterialCost1 = parseFloat(document.getElementById('rawMaterialCost1').value);
+            const directLaborCost1 = parseFloat(document.getElementById('directLaborCost1').value);
+            const overheadCost1 = parseFloat(document.getElementById('overheadCost1').value);
+            const unitsProduced1 = parseFloat(document.getElementById('unitsProduced1').value);
+            const sellingPrice1 = parseFloat(document.getElementById('sellingPrice1').value);
+
+            const rawMaterialCost2 = parseFloat(document.getElementById('rawMaterialCost2').value);
+            const directLaborCost2 = parseFloat(document.getElementById('directLaborCost2').value);
+            const overheadCost2 = parseFloat(document.getElementById('overheadCost2').value);
+            const unitsProduced2 = parseFloat(document.getElementById('unitsProduced2').value);
+            const sellingPrice2 = parseFloat(document.getElementById('sellingPrice2').value);
+
+            // --- Input Validation ---
+            if (isNaN(rawMaterialCost1) || isNaN(directLaborCost1) || isNaN(overheadCost1) || isNaN(unitsProduced1) || isNaN(sellingPrice1) ||
+                isNaN(rawMaterialCost2) || isNaN(directLaborCost2) || isNaN(overheadCost2) || isNaN(unitsProduced2) || isNaN(sellingPrice2)) {
+                showError('Please enter valid numbers for all inputs.');
+                return;
+            }
+            if (rawMaterialCost1 < 0 || directLaborCost1 < 0 || overheadCost1 < 0 || unitsProduced1 <= 0 ||
+                rawMaterialCost2 < 0 || directLaborCost2 < 0 || overheadCost2 < 0 || unitsProduced2 <= 0) {
+                 showError('All costs must be non-negative, and units produced must be greater than zero.');
+                 return;
+            }
+            if (sellingPrice1 <= 0 || sellingPrice2 <= 0) {
+                 showError('Selling price must be greater than zero.');
+                 return;
+            }
+            
+            errorDiv.classList.add('hidden');
+            resultsDiv.classList.remove('hidden');
+            
+            // --- Calculation for Scenario 1 ---
+            const totalCost1 = rawMaterialCost1 + directLaborCost1 + overheadCost1;
+            const costPerUnit1 = totalCost1 / unitsProduced1;
+            const rawMaterialPerUnit1 = rawMaterialCost1 / unitsProduced1;
+            const laborPerUnit1 = directLaborCost1 / unitsProduced1;
+            const overheadPerUnit1 = overheadCost1 / unitsProduced1;
+            const totalRevenue1 = sellingPrice1 * unitsProduced1;
+            const grossProfit1 = totalRevenue1 - totalCost1;
+            const grossMargin1 = ((grossProfit1 / totalRevenue1) * 100).toFixed(2);
+            
+            // Break-Even Analysis (Assuming Overhead is the fixed cost)
+            const contributionMarginPerUnit1 = sellingPrice1 - (rawMaterialPerUnit1 + laborPerUnit1);
+            let breakEvenUnits1, breakEvenRevenue1;
+            if (contributionMarginPerUnit1 > 0) {
+                breakEvenUnits1 = overheadCost1 / contributionMarginPerUnit1;
+                breakEvenRevenue1 = breakEvenUnits1 * sellingPrice1;
+            } else {
+                breakEvenUnits1 = Infinity;
+                breakEvenRevenue1 = Infinity;
+            }
+
+            document.getElementById('totalCost1').textContent = formatter.format(totalCost1);
+            document.getElementById('costPerUnit1').textContent = formatter.format(costPerUnit1);
+            document.getElementById('rawMaterialPerUnit1').textContent = formatter.format(rawMaterialPerUnit1);
+            document.getElementById('laborPerUnit1').textContent = formatter.format(laborPerUnit1);
+            document.getElementById('overheadPerUnit1').textContent = formatter.format(overheadPerUnit1);
+            document.getElementById('totalRevenue1').textContent = formatter.format(totalRevenue1);
+            document.getElementById('grossProfit1').textContent = formatter.format(grossProfit1);
+            document.getElementById('grossMargin1').textContent = grossMargin1 + '%';
+            document.getElementById('breakEvenUnits1').textContent = isFinite(breakEvenUnits1) ? breakEvenUnits1.toFixed(2) : 'N/A';
+            document.getElementById('breakEvenRevenue1').textContent = isFinite(breakEvenRevenue1) ? formatter.format(breakEvenRevenue1) : 'N/A';
+
+            // --- Calculation for Scenario 2 ---
+            const totalCost2 = rawMaterialCost2 + directLaborCost2 + overheadCost2;
+            const costPerUnit2 = totalCost2 / unitsProduced2;
+            const rawMaterialPerUnit2 = rawMaterialCost2 / unitsProduced2;
+            const laborPerUnit2 = directLaborCost2 / unitsProduced2;
+            const overheadPerUnit2 = overheadCost2 / unitsProduced2;
+            const totalRevenue2 = sellingPrice2 * unitsProduced2;
+            const grossProfit2 = totalRevenue2 - totalCost2;
+            const grossMargin2 = ((grossProfit2 / totalRevenue2) * 100).toFixed(2);
+
+            // Break-Even Analysis (Assuming Overhead is the fixed cost)
+            const contributionMarginPerUnit2 = sellingPrice2 - (rawMaterialPerUnit2 + laborPerUnit2);
+            let breakEvenUnits2, breakEvenRevenue2;
+            if (contributionMarginPerUnit2 > 0) {
+                breakEvenUnits2 = overheadCost2 / contributionMarginPerUnit2;
+                breakEvenRevenue2 = breakEvenUnits2 * sellingPrice2;
+            } else {
+                breakEvenUnits2 = Infinity;
+                breakEvenRevenue2 = Infinity;
+            }
+            
+            document.getElementById('totalCost2').textContent = formatter.format(totalCost2);
+            document.getElementById('costPerUnit2').textContent = formatter.format(costPerUnit2);
+            document.getElementById('rawMaterialPerUnit2').textContent = formatter.format(rawMaterialPerUnit2);
+            document.getElementById('laborPerUnit2').textContent = formatter.format(laborPerUnit2);
+            document.getElementById('overheadPerUnit2').textContent = formatter.format(overheadPerUnit2);
+            document.getElementById('totalRevenue2').textContent = formatter.format(totalRevenue2);
+            document.getElementById('grossProfit2').textContent = formatter.format(grossProfit2);
+            document.getElementById('grossMargin2').textContent = grossMargin2 + '%';
+            document.getElementById('breakEvenUnits2').textContent = isFinite(breakEvenUnits2) ? breakEvenUnits2.toFixed(2) : 'N/A';
+            document.getElementById('breakEvenRevenue2').textContent = isFinite(breakEvenRevenue2) ? formatter.format(breakEvenRevenue2) : 'N/A';
+
+            // Update Comparison Table
+            document.getElementById('totalCostTable1').textContent = formatter.format(totalCost1);
+            document.getElementById('totalCostTable2').textContent = formatter.format(totalCost2);
+            document.getElementById('costPerUnitTable1').textContent = formatter.format(costPerUnit1);
+            document.getElementById('costPerUnitTable2').textContent = formatter.format(costPerUnit2);
+            document.getElementById('grossMarginTable1').textContent = grossMargin1 + '%';
+            document.getElementById('grossMarginTable2').textContent = grossMargin2 + '%';
+            document.getElementById('breakEvenUnitsTable1').textContent = isFinite(breakEvenUnits1) ? breakEvenUnits1.toFixed(2) : 'N/A';
+            document.getElementById('breakEvenUnitsTable2').textContent = isFinite(breakEvenUnits2) ? breakEvenUnits2.toFixed(2) : 'N/A';
+            document.getElementById('breakEvenRevenueTable1').textContent = isFinite(breakEvenRevenue1) ? formatter.format(breakEvenRevenue1) : 'N/A';
+            document.getElementById('breakEvenRevenueTable2').textContent = isFinite(breakEvenRevenue2) ? formatter.format(breakEvenRevenue2) : 'N/A';
+
+            // Generate pie charts
+            generatePieChart(
+                document.getElementById('chart1').getContext('2d'),
+                [rawMaterialCost1, directLaborCost1, overheadCost1],
+                'chart1'
+            );
+            generatePieChart(
+                document.getElementById('chart2').getContext('2d'),
+                [rawMaterialCost2, directLaborCost2, overheadCost2],
+                'chart2'
+            );
+        }
+
+        function generatePieChart(ctx, data, chartId) {
+            if (chartId === 'chart1' && chart1) {
+                chart1.destroy();
+            } else if (chartId === 'chart2' && chart2) {
+                chart2.destroy();
+            }
+
+            const chartData = {
+                labels: ['Raw Materials', 'Direct Labor', 'Overhead'],
+                datasets: [{
+                    data: data,
+                    backgroundColor: [
+                        '#4f46e5', // Indigo-600
+                        '#3b82f6', // Blue-500
+                        '#10b981'  // Emerald-500
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+
+            const chartConfig = {
+                type: 'pie',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    const total = tooltipItem.dataset.data.reduce((acc, val) => acc + val, 0);
+                                    const percentage = (tooltipItem.raw / total * 100).toFixed(2);
+                                    return `${tooltipItem.label}: ${formatter.format(tooltipItem.raw)} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            
+            if (chartId === 'chart1') {
+                chart1 = new Chart(ctx, chartConfig);
+            } else {
+                chart2 = new Chart(ctx, chartConfig);
+            }
+        }
+
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

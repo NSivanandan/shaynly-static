@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meraki Business Loans - Loan Eligibility Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Use our Loan Eligibility Calculator to estimate your qualification for various business loan options. Input your business details and get instant results.">
+  <link rel="canonical" href="https://shaynly.com/tools/business-loans-eligibility-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/business-loans-eligibility-calculator.html">
+  <meta property="og:title" content="Meraki Business Loans - Loan Eligibility Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Use our Loan Eligibility Calculator to estimate your qualification for various business loan options. Input your business details and get instant results.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Meraki Business Loans - Loan Eligibility Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Use our Loan Eligibility Calculator to estimate your qualification for various business loan options. Input your business details and get instant results.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    h1 {
+        color: #0066cc;
+        text-align: center;
+    }
+    .calculator {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+    input, select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    button {
+        background-color: #0066cc;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #0052a3;
+    }
+    #result {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e6f3ff;
+        border-radius: 4px;
+    }
+</style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Meraki Business Loans - Loan Eligibility Calculator</h1>
+      <p>Use our Loan Eligibility Calculator to estimate your qualification for various business loan options. Input your business details and get instant results.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <h1>Business Loans Eligibility Calculator</h1>
+    <div class="calculator">
+        <form id="loanEligibilityForm">
+            <label for="businessType">Business Type:</label>
+            <select id="businessType" required>
+                <option value="">Select Business Type</option>
+                <option value="startup">Startup</option>
+                <option value="smallBusiness">Small Business</option>
+                <option value="mediumBusiness">Medium Business</option>
+                <option value="largeCorporation">Large Corporation</option>
+            </select>
+
+            <label for="turnover">Annual Turnover (in USD):</label>
+            <input type="number" id="turnover" required min="0">
+
+            <label for="creditScore">Credit Score:</label>
+            <input type="number" id="creditScore" required min="300" max="850">
+
+            <label for="yearsInBusiness">Years in Business:</label>
+            <input type="number" id="yearsInBusiness" required min="0">
+
+            <button type="submit">Calculate Eligibility</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        document.getElementById('loanEligibilityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const businessType = document.getElementById('businessType').value;
+            const turnover = parseFloat(document.getElementById('turnover').value);
+            const creditScore = parseInt(document.getElementById('creditScore').value);
+            const yearsInBusiness = parseInt(document.getElementById('yearsInBusiness').value);
+
+            let eligibility = 'Not Eligible';
+            let loanProducts = [];
+
+            if (creditScore >= 650 && turnover >= 100000 && yearsInBusiness >= 2) {
+                eligibility = 'Eligible';
+                
+                if (businessType === 'startup' && turnover < 500000) {
+                    loanProducts.push('Startup Boost Loan');
+                }
+                if (businessType === 'smallBusiness' || businessType === 'mediumBusiness') {
+                    loanProducts.push('Business Growth Loan');
+                    if (turnover >= 1000000) {
+                        loanProducts.push('Equipment Financing');
+                    }
+                }
+                if (businessType === 'largeCorporation' || turnover >= 5000000) {
+                    loanProducts.push('Corporate Expansion Loan');
+                    loanProducts.push('Commercial Real Estate Loan');
+                }
+                if (creditScore >= 700 && yearsInBusiness >= 5) {
+                    loanProducts.push('Premium Business Line of Credit');
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h3>Loan Eligibility Result:</h3>
+                <p><strong>Status:</strong> ${eligibility}</p>
+                ${eligibility === 'Eligible' ? `
+                    <p><strong>Potential Loan Products:</strong></p>
+                    <ul>
+                        ${loanProducts.map(product => `<li>${product}</li>`).join('')}
+                    </ul>
+                    <p>Please note that final loan approval and terms are subject to a comprehensive review of your business financials and credit history.</p>
+                ` : `
+                    <p>We're sorry, but based on the information provided, you may not be eligible for our current loan products. However, we encourage you to improve your credit score and business financials, and check back with us in the future.</p>
+                `}
+            `;
+        });
+    </script>
+</body>
+</html>

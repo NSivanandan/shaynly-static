@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Color Code Converter - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Premium Color Code Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/color-code-converter.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/color-code-converter.html">
+  <meta property="og:title" content="Premium Color Code Converter - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Premium Color Code Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium Color Code Converter - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Premium Color Code Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        :root {
+            --primary: #4a6cf7;
+            --primary-dark: #3a5ce5;
+            --dark: #1d2b3a;
+            --darker: #131a24;
+            --light: #f5f8ff;
+            --card-bg: #ffffff;
+            --card-dark: #242e3d;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text: #1d2b3a;
+            --bg: #f5f8ff;
+        }
+
+        .dark-mode {
+            --text: #f5f8ff;
+            --bg: #1d2b3a;
+            --card-bg: #242e3d;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px var(--shadow);
+            overflow: hidden;
+        }
+
+        header {
+            background: var(--primary);
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            color: white;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 28px;
+            color: white;
+        }
+
+        .subtitle {
+            opacity: 0.9;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .color-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .color-preview {
+            height: 200px;
+            border-radius: 12px;
+            background: var(--primary);
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .color-info {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+        .color-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .action-btn {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .converter-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .converter-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: var(--text);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h2 i {
+            color: var(--primary);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text);
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--bg);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            color: var(--text);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.3);
+        }
+
+        .color-inputs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .convert-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .convert-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .copy-btn {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .copy-btn:hover {
+            background: #ddd;
+        }
+
+        .palette-section {
+            margin-top: 20px;
+        }
+
+        .palette-title {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .palette-color {
+            height: 60px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .palette-color:hover {
+            transform: scale(1.05);
+        }
+
+        .palette-color::after {
+            content: attr(data-value);
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .palette-color:hover::after {
+            opacity: 1;
+        }
+
+        .contrast-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contrast-box {
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .contrast-value {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: white;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            background: var(--bg);
+            padding: 5px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .color-history {
+            margin-top: 20px;
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+        }
+
+        .history-color {
+            height: 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .history-color:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Premium Color Code Converter</h1>
+      <p>Free interactive Premium Color Code Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-palette"></i></div>
+                <div>
+                    <h1>Premium Color Converter</h1>
+                    <p class="subtitle">Convert between color formats with professional tools</p>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i> Dark Mode
+            </button>
+        </header>
+        
+        <div class="main-content">
+            <div class="color-section">
+                <div class="color-preview" id="colorPreview">
+                    <div class="color-info" id="colorInfo">#4a6cf7</div>
+                </div>
+                
+                <div class="color-actions">
+                    <button class="action-btn" onclick="randomColor()">
+                        <i class="fas fa-dice"></i> Random
+                    </button>
+                    <button class="action-btn" onclick="addToFavorites()">
+                        <i class="fas fa-heart"></i> Favorite
+                    </button>
+                    <button class="action-btn" onclick="copyAllFormats()">
+                        <i class="fas fa-copy"></i> Copy All
+                    </button>
+                    <button class="action-btn" onclick="resetColor()">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                </div>
+                
+                <div class="converter-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-tachometer-alt"></i> Color Contrast</h2>
+                    </div>
+                    <div class="contrast-section">
+                        <div class="contrast-box" style="background: #ffffff;" id="contrastLight">
+                            <div class="contrast-value" id="contrastLightValue">4.5:1</div>
+                        </div>
+                        <div class="contrast-box" style="background: #000000;" id="contrastDark">
+                            <div class="contrast-value" id="contrastDarkValue">3.2:1</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="converter-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-swatchbook"></i> Color Palettes</h2>
+                    </div>
+                    <div class="palette-grid" id="paletteGrid">
+                        <div class="palette-color" style="background: #4a6cf7;" data-value="#4a6cf7"></div>
+                        <div class="palette-color" style="background: #6a8af8;" data-value="#6a8af8"></div>
+                        <div class="palette-color" style="background: #8aa9f9;" data-value="#8aa9f9"></div>
+                        <div class="palette-color" style="background: #abc7fb;" data-value="#abc7fb"></div>
+                        <div class="palette-color" style="background: #cbd6fc;" data-value="#cbd6fc"></div>
+                    </div>
+                </div>
+
+                <div class="converter-card color-history">
+                    <div class="card-header">
+                        <h2><i class="fas fa-history"></i> Recent Colors</h2>
+                    </div>
+                    <div class="history-grid" id="historyGrid">
+                        <!-- Recent colors will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="converter-section">
+                <div class="tabs">
+                    <div class="tab active" onclick="changeTab(0)">HEX</div>
+                    <div class="tab" onclick="changeTab(1)">RGB</div>
+                    <div class="tab" onclick="changeTab(2)">HSL</div>
+                    <div class="tab" onclick="changeTab(3)">CMYK</div>
+                    <div class="tab" onclick="changeTab(4)">HSV</div>
+                </div>
+                
+                <div class="converter-card">
+                    <h2><i class="fas fa-barcode"></i> HEX Color</h2>
+                    <div class="input-group">
+                        <label for="hex">HEX Code</label>
+                        <input type="text" id="hex" value="#4a6cf7" placeholder="#4a6cf7">
+                    </div>
+                    <div class="actions">
+                        <button class="convert-btn" onclick="convertFromHex()">
+                            <i class="fas fa-sync-alt"></i> Convert
+                        </button>
+                        <button class="copy-btn" onclick="copyHex()">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="converter-card">
+                    <h2><i class="fas fa-sliders-h"></i> RGB Color</h2>
+                    <div class="color-inputs">
+                        <div class="input-group">
+                            <label for="r">Red</label>
+                            <input type="number" id="r" min="0" max="255" value="74">
+                        </div>
+                        <div class="input-group">
+                            <label for="g">Green</label>
+                            <input type="number" id="g" min="0" max="255" value="108">
+                        </div>
+                        <div class="input-group">
+                            <label for="b">Blue</label>
+                            <input type="number" id="b" min="0" max="255" value="247">
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="convert-btn" onclick="convertFromRgb()">
+                            <i class="fas fa-sync-alt"></i> Convert
+                        </button>
+                        <button class="copy-btn" onclick="copyRgb()">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="converter-card">
+                    <h2><i class="fas fa-sliders-h"></i> HSL Color</h2>
+                    <div class="color-inputs">
+                        <div class="input-group">
+                            <label for="h">Hue</label>
+                            <input type="number" id="h" min="0" max="359" value="232">
+                        </div>
+                        <div class="input-group">
+                            <label for="s">Saturation</label>
+                            <input type="number" id="s" min="0" max="100" value="90">
+                        </div>
+                        <div class="input-group">
+                            <label for="l">Lightness</label>
+                            <input type="number" id="l" min="0" max="100" value="63">
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="convert-btn" onclick="convertFromHsl()">
+                            <i class="fas fa-sync-alt"></i> Convert
+                        </button>
+                        <button class="copy-btn" onclick="copyHsl()">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+
+                <div class="converter-card">
+                    <h2><i class="fas fa-info-circle"></i> Color Information</h2>
+                    <div class="input-group">
+                        <label for="colorName">Color Name</label>
+                        <input type="text" id="colorName" value="Royal Blue" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="colorHarmony">Color Harmony</label>
+                        <input type="text" id="colorHarmony" value="Triadic" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Color code copied to clipboard!</span>
+    </div>
+    
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        // DOM elements
+        const hexInput = document.getElementById('hex');
+        const rInput = document.getElementById('r');
+        const gInput = document.getElementById('g');
+        const bInput = document.getElementById('b');
+        const hInput = document.getElementById('h');
+        const sInput = document.getElementById('s');
+        const lInput = document.getElementById('l');
+        const colorPreview = document.getElementById('colorPreview');
+        const colorInfo = document.getElementById('colorInfo');
+        const toast = document.getElementById('toast');
+        const contrastLightValue = document.getElementById('contrastLightValue');
+        const contrastDarkValue = document.getElementById('contrastDarkValue');
+        const paletteGrid = document.getElementById('paletteGrid');
+        const historyGrid = document.getElementById('historyGrid');
+        const themeToggle = document.getElementById('themeToggle');
+        const colorName = document.getElementById('colorName');
+        const colorHarmony = document.getElementById('colorHarmony');
+
+        // Current color state
+        let currentColor = {
+            hex: '#4a6cf7',
+            rgb: {r: 74, g: 108, b: 247},
+            hsl: {h: 232, s: 90, l: 63}
+        };
+
+        // Color history
+        let colorHistory = [];
+
+        // Theme state
+        let isDarkMode = false;
+
+        // Convert from HEX to other formats
+        function convertFromHex() {
+            let hex = hexInput.value.replace('#', '');
+            
+            // Validate hex
+            if (!/^[0-9A-F]{6}$/i.test(hex)) {
+                showToast('Invalid HEX code');
+                return;
+            }
+            
+            // Convert to RGB
+            let r = parseInt(hex.substring(0, 2), 16);
+            let g = parseInt(hex.substring(2, 4), 16);
+            let b = parseInt(hex.substring(4, 6), 16);
+            
+            // Update RGB inputs
+            rInput.value = r;
+            gInput.value = g;
+            bInput.value = b;
+            
+            // Convert to HSL
+            let hsl = rgbToHsl(r, g, b);
+            hInput.value = Math.round(hsl[0]);
+            sInput.value = Math.round(hsl[1]);
+            lInput.value = Math.round(hsl[2]);
+            
+            // Update current color
+            currentColor = {
+                hex: '#' + hex,
+                rgb: {r, g, b},
+                hsl: {h: hsl[0], s: hsl[1], l: hsl[2]}
+            };
+            
+            // Update UI
+            updateColorPreview();
+            updateContrast();
+            generatePalette();
+            addToHistory();
+            updateColorInfo();
+        }
+        
+        // Convert from RGB to other formats
+        function convertFromRgb() {
+            let r = parseInt(rInput.value);
+            let g = parseInt(gInput.value);
+            let b = parseInt(bInput.value);
+            
+            // Validate RGB
+            if (isNaN(r) || isNaN(g) || isNaN(b) || r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+                showToast('RGB values must be between 0 and 255');
+                return;
+            }
+            
+            // Convert to HEX
+            let hex = '#' + ((1 << 24) + (r << 16) + (g << 12) + (b << 8)).toString(16).slice(1, 7);
+            hexInput.value = hex;
+            
+            // Convert to HSL
+            let hsl = rgbToHsl(r, g, b);
+            hInput.value = Math.round(hsl[0]);
+            sInput.value = Math.round(hsl[1]);
+            lInput.value = Math.round(hsl[2]);
+            
+            // Update current color
+            currentColor = {
+                hex,
+                rgb: {r, g, b},
+                hsl: {h: hsl[0], s: hsl[1], l: hsl[2]}
+            };
+            
+            // Update UI
+            updateColorPreview();
+            updateContrast();
+            generatePalette();
+            addToHistory();
+            updateColorInfo();
+        }
+        
+        // Convert from HSL to other formats
+        function convertFromHsl() {
+            let h = parseInt(hInput.value);
+            let s = parseInt(sInput.value);
+            let l = parseInt(lInput.value);
+            
+            // Validate HSL
+            if (isNaN(h) || isNaN(s) || isNaN(l) || h < 0 || h > 359 || s < 0 || s > 100 || l < 0 || l > 100) {
+                showToast('Hue must be 0-359, Saturation and Lightness must be 0-100');
+                return;
+            }
+            
+            // Convert to RGB
+            let rgb = hslToRgb(h, s, l);
+            rInput.value = rgb[0];
+            gInput.value = rgb[1];
+            bInput.value = rgb[2];
+            
+            // Convert to HEX
+            let hex = '#' + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 12) + (rgb[2] << 8)).toString(16).slice(1, 7);
+            hexInput.value = hex;
+            
+            // Update current color
+            currentColor = {
+                hex,
+                rgb: {r: rgb[0], g: rgb[1], b: rgb[2]},
+                hsl: {h, s, l}
+            };
+            
+            // Update UI
+            updateColorPreview();
+            updateContrast();
+            generatePalette();
+            addToHistory();
+            updateColorInfo();
+        }
+        
+        // Convert RGB to HSL
+        function rgbToHsl(r, g, b) {
+            r /= 255;
+            g /= 255;
+            b /= 255;
+            
+            let max = Math.max(r, g, b);
+            let min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+            
+            if (max === min) {
+                h = s = 0; // achromatic
+            } else {
+                let d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                }
+                
+                h /= 6;
+            }
+            
+            return [h * 360, s * 100, l * 100];
+        }
+        
+        // Convert HSL to RGB
+        function hslToRgb(h, s, l) {
+            h /= 360;
+            s /= 100;
+            l /= 100;
+            
+            let r, g, b;
+            
+            if (s === 0) {
+                r = g = b = l; // achromatic
+            } else {
+                const hue2rgb = (p, q, t) => {
+                    if (t < 0) t += 1;
+                    if (t > 1) t -= 1;
+                    if (t < 1/6) return p + (q - p) * 6 * t;
+                    if (t < 1/2) return q;
+                    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                    return p;
+                };
+                
+                let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+                let p = 2 * l - q;
+                
+                r = hue2rgb(p, q, h + 1/3);
+                g = hue2rgb(p, q, h);
+                b = hue2rgb(p, q, h - 1/3);
+            }
+            
+            return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+        }
+        
+        // Update color preview
+        function updateColorPreview() {
+            let r = currentColor.rgb.r;
+            let g = currentColor.rgb.g;
+            let b = currentColor.rgb.b;
+            colorPreview.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            colorInfo.textContent = currentColor.hex;
+        }
+        
+        // Calculate contrast ratio
+        function calculateContrast(r, g, b) {
+            // Calculate relative luminance
+            const getLuminance = (val) => {
+                val = val / 255;
+                return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4);
+            };
+            
+            const luminance = 0.2126 * getLuminance(r) + 0.7152 * getLuminance(g) + 0.0722 * getLuminance(b);
+            
+            // Calculate contrast against white and black
+            const contrastWithWhite = (luminance + 0.05) / (1.0 + 0.05);
+            const contrastWithBlack = (0.05 + 0.05) / (luminance + 0.05);
+            
+            return {
+                white: (1.0 / contrastWithWhite).toFixed(2),
+                black: (1.0 / contrastWithBlack).toFixed(2)
+            };
+        }
+        
+        // Update contrast display
+        function updateContrast() {
+            const contrast = calculateContrast(currentColor.rgb.r, currentColor.rgb.g, currentColor.rgb.b);
+            contrastLightValue.textContent = `${contrast.white}:1`;
+            contrastDarkValue.textContent = `${contrast.black}:1`;
+        }
+        
+        // Generate color palette
+        function generatePalette() {
+            const baseR = currentColor.rgb.r;
+            const baseG = currentColor.rgb.g;
+            const baseB = currentColor.rgb.b;
+            
+            // Clear existing palette
+            paletteGrid.innerHTML = '';
+            
+            // Generate 5 shades
+            for (let i = 0; i < 5; i++) {
+                const factor = 0.8 - (i * 0.2);
+                const r = Math.min(255, Math.max(0, Math.round(baseR * factor)));
+                const g = Math.min(255, Math.max(0, Math.round(baseG * factor)));
+                const b = Math.min(255, Math.max(0, Math.round(baseB * factor)));
+                
+                const colorElement = document.createElement('div');
+                colorElement.className = 'palette-color';
+                colorElement.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                colorElement.setAttribute('data-value', `#${((1 << 24) + (r << 16) + (g << 12) + (b << 8)).toString(16).slice(1, 7)}`);
+                
+                colorElement.addEventListener('click', () => {
+                    hexInput.value = colorElement.getAttribute('data-value');
+                    convertFromHex();
+                });
+                
+                paletteGrid.appendChild(colorElement);
+            }
+        }
+        
+        // Add to color history
+        function addToHistory() {
+            // Add current color to history
+            colorHistory.unshift(currentColor.hex);
+            
+            // Keep only the last 8 colors
+            if (colorHistory.length > 8) {
+                colorHistory.pop();
+            }
+            
+            // Update history display
+            updateHistoryDisplay();
+        }
+        
+        // Update history display
+        function updateHistoryDisplay() {
+            // Clear existing history
+            historyGrid.innerHTML = '';
+            
+            // Add colors to history
+            colorHistory.forEach(color => {
+                const colorElement = document.createElement('div');
+                colorElement.className = 'history-color';
+                colorElement.style.backgroundColor = color;
+                colorElement.setAttribute('data-value', color);
+                
+                colorElement.addEventListener('click', () => {
+                    hexInput.value = color;
+                    convertFromHex();
+                });
+                
+                historyGrid.appendChild(colorElement);
+            });
+        }
+        
+        // Update color information
+        function updateColorInfo() {
+            // This is a simplified version - in a real app you would use a color naming library
+            const color = currentColor.hex.toLowerCase();
+            
+            // Simple color name mapping
+            const colorMap = {
+                '#4a6cf7': 'Royal Blue',
+                '#ff0000': 'Red',
+                '#00ff00': 'Green',
+                '#0000ff': 'Blue',
+                '#ffff00': 'Yellow',
+                '#ff00ff': 'Magenta',
+                '#00ffff': 'Cyan',
+                '#ffa500': 'Orange',
+                '#800080': 'Purple',
+                '#ffc0cb': 'Pink'
+            };
+            
+            colorName.value = colorMap[color] || 'Custom Color';
+            
+            // Simple harmony detection
+            const r = currentColor.rgb.r;
+            const g = currentColor.rgb.g;
+            const b = currentColor.rgb.b;
+            
+            if (r === g && g === b) {
+                colorHarmony.value = 'Monochromatic';
+            } else if (r > 200 && g < 100 && b < 100) {
+                colorHarmony.value = 'Warm';
+            } else if (r < 100 && g < 100 && b > 200) {
+                colorHarmony.value = 'Cool';
+            } else {
+                colorHarmony.value = 'Balanced';
+            }
+        }
+        
+        // Copy functions
+        function copyHex() {
+            navigator.clipboard.writeText(hexInput.value);
+            showToast('HEX code copied to clipboard!');
+        }
+        
+        function copyRgb() {
+            let rgbText = `rgb(${rInput.value}, ${gInput.value}, ${bInput.value})`;
+            navigator.clipboard.writeText(rgbText);
+            showToast('RGB code copied to clipboard!');
+        }
+        
+        function copyHsl() {
+            let hslText = `hsl(${hInput.value}, ${sInput.value}%, ${lInput.value}%)`;
+            navigator.clipboard.writeText(hslText);
+            showToast('HSL code copied to clipboard!');
+        }
+        
+        function copyAllFormats() {
+            const text = `HEX: ${hexInput.value}\nRGB: rgb(${rInput.value}, ${gInput.value}, ${bInput.value})\nHSL: hsl(${hInput.value}, ${sInput.value}%, ${lInput.value}%)`;
+            navigator.clipboard.writeText(text);
+            showToast('All color formats copied to clipboard!');
+        }
+        
+        // Show toast notification
+        function showToast(message) {
+            toast.querySelector('span').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Generate random color
+        function randomColor() {
+            const randomHex = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+            hexInput.value = randomHex;
+            convertFromHex();
+        }
+        
+        // Add to favorites
+        function addToFavorites() {
+            showToast('Color added to favorites!');
+            // In a real application, this would save to local storage
+        }
+        
+        // Reset to default color
+        function resetColor() {
+            hexInput.value = '#4a6cf7';
+            convertFromHex();
+            showToast('Color reset to default');
+        }
+        
+        // Change tab
+        function changeTab(tabIndex) {
+            document.querySelectorAll('.tab').forEach((tab, index) => {
+                if (index === tabIndex) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // In a complete implementation, this would show different color format options
+            showToast(`Switched to ${['HEX', 'RGB', 'HSL', 'CMYK', 'HSV'][tabIndex]} mode`);
+        }
+        
+        // Toggle theme
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            }
+        }
+        
+        // Initialize with default color
+        convertFromHex();
+        
+        // Add event listeners for real-time conversion
+        hexInput.addEventListener('input', convertFromHex);
+        rInput.addEventListener('input', convertFromRgb);
+        gInput.addEventListener('input', convertFromRgb);
+        bInput.addEventListener('input', convertFromRgb);
+        hInput.addEventListener('input', convertFromHsl);
+        sInput.addEventListener('input', convertFromHsl);
+        lInput.addEventListener('input', convertFromHsl);
+        
+        // Add event listener for theme toggle
+        themeToggle.addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html>

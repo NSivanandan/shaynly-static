@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Business Credit Card Payoff Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Business Credit Card Payoff Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/business-credit-card-payoff-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/business-credit-card-payoff-calculator.html">
+  <meta property="og:title" content="Advanced Business Credit Card Payoff Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Business Credit Card Payoff Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Business Credit Card Payoff Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Business Credit Card Payoff Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Business Credit Card Payoff Calculator</h1>
+      <p>Free interactive Advanced Business Credit Card Payoff Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-2"> Business Credit Card Payoff Calculator</h1>
+        <p class="text-center text-gray-500 mb-6">
+            Compare payoff scenarios and see a detailed amortization schedule.
+        </p>
+
+        <!-- Input Fields -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Account Details</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="currentBalance" class="block text-sm font-medium text-gray-700">Current Balance ($)</label>
+                        <input type="number" id="currentBalance" placeholder="e.g., 10000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="apr" class="block text-sm font-medium text-gray-700">Annual Percentage Rate (APR) (%)</label>
+                        <input type="number" id="apr" placeholder="e.g., 18" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Payment Scenarios</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="monthlyPayment" class="block text-sm font-medium text-gray-700">Standard Monthly Payment ($)</label>
+                        <input type="number" id="monthlyPayment" placeholder="e.g., 500" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="acceleratedPayment" class="block text-sm font-medium text-gray-700">Accelerated Monthly Payment ($)</label>
+                        <input type="number" id="acceleratedPayment" placeholder="e.g., 700" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="calculateBtn" class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+            Compare Payoff Scenarios
+        </button>
+
+        <!-- Result Display -->
+        <div id="results" class="mt-8 p-6 bg-indigo-50 text-indigo-900 rounded-lg hidden">
+            <h2 class="text-xl font-bold text-indigo-800 mb-4">Comparison Summary</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Standard Plan -->
+                <div class="bg-white p-4 rounded-md shadow-sm">
+                    <h3 class="text-lg font-semibold text-indigo-700 mb-2">Standard Payment</h3>
+                    <p class="text-sm">Time to Payoff: <span id="standardTime" class="font-bold"></span></p>
+                    <p class="text-sm">Total Interest Paid: <span id="standardInterest" class="font-bold"></span></p>
+                    <p class="text-sm">Total Amount Paid: <span id="standardTotal" class="font-bold"></span></p>
+                </div>
+                <!-- Accelerated Plan -->
+                <div class="bg-white p-4 rounded-md shadow-sm">
+                    <h3 class="text-lg font-semibold text-indigo-700 mb-2">Accelerated Payment</h3>
+                    <p class="text-sm">Time to Payoff: <span id="acceleratedTime" class="font-bold"></span></p>
+                    <p class="text-sm">Total Interest Paid: <span id="acceleratedInterest" class="font-bold"></span></p>
+                    <p class="text-sm">Total Amount Paid: <span id="acceleratedTotal" class="font-bold"></span></p>
+                </div>
+            </div>
+            <!-- Savings Summary -->
+            <div id="savingsSummary" class="mt-6 p-4 bg-green-100 text-green-800 rounded-md text-center font-bold text-lg hidden"></div>
+        </div>
+        
+        <!-- Amortization Schedule Table -->
+        <div id="amortizationSchedule" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Amortization Schedule (Accelerated Plan)</h2>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Month</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Starting Balance</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Interest Paid</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Principal Paid</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ending Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Table rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="mt-4 p-3 bg-red-100 text-red-700 rounded-md hidden">
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+        document.getElementById('calculateBtn').addEventListener('click', calculatePayoff);
+
+        function calculatePayoff() {
+            // Get input values
+            const currentBalance = parseFloat(document.getElementById('currentBalance').value);
+            const apr = parseFloat(document.getElementById('apr').value);
+            const monthlyPayment = parseFloat(document.getElementById('monthlyPayment').value);
+            const acceleratedPayment = parseFloat(document.getElementById('acceleratedPayment').value);
+
+            // Get display elements
+            const resultsDiv = document.getElementById('results');
+            const savingsSummary = document.getElementById('savingsSummary');
+            const amortizationSchedule = document.getElementById('amortizationSchedule');
+            const errorDiv = document.getElementById('errorMsg');
+            
+            // Hide previous results and errors
+            resultsDiv.classList.add('hidden');
+            savingsSummary.classList.add('hidden');
+            amortizationSchedule.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+
+            // --- Input Validation ---
+            if (isNaN(currentBalance) || isNaN(apr) || isNaN(monthlyPayment)) {
+                showError('Please fill in all required fields with valid numbers.');
+                return;
+            }
+
+            if (currentBalance <= 0 || apr < 0 || monthlyPayment <= 0) {
+                 showError('Balance and monthly payment must be positive. APR must be non-negative.');
+                return;
+            }
+
+            const monthlyRate = apr / 100 / 12;
+            const minPayment = currentBalance * monthlyRate;
+
+            if (monthlyPayment <= minPayment) {
+                showError('The standard monthly payment is not enough to cover the interest. Please increase your payment amount.');
+                return;
+            }
+
+            if (!isNaN(acceleratedPayment) && acceleratedPayment <= minPayment && currentBalance > 0) {
+                showError('The accelerated monthly payment is not enough to cover the interest. Please increase your payment amount.');
+                return;
+            }
+
+            // --- Calculation for both scenarios ---
+            const standardResult = calculate(currentBalance, apr, monthlyPayment);
+            let acceleratedResult = null;
+            if (!isNaN(acceleratedPayment) && acceleratedPayment > 0) {
+                acceleratedResult = calculate(currentBalance, apr, acceleratedPayment);
+            }
+
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
+            // --- Display standard results ---
+            document.getElementById('standardTime').textContent = formatPayoffTime(standardResult.months);
+            document.getElementById('standardInterest').textContent = formatter.format(standardResult.totalInterest);
+            document.getElementById('standardTotal').textContent = formatter.format(standardResult.totalPaid);
+
+            // --- Display accelerated results (if applicable) ---
+            if (acceleratedResult) {
+                document.getElementById('acceleratedTime').textContent = formatPayoffTime(acceleratedResult.months);
+                document.getElementById('acceleratedInterest').textContent = formatter.format(acceleratedResult.totalInterest);
+                document.getElementById('acceleratedTotal').textContent = formatter.format(acceleratedResult.totalPaid);
+                
+                // Show savings summary
+                const timeSaved = standardResult.months - acceleratedResult.months;
+                const interestSaved = standardResult.totalInterest - acceleratedResult.totalInterest;
+                
+                savingsSummary.textContent = `By paying ${formatter.format(acceleratedPayment - monthlyPayment)} extra each month, you can save ${formatPayoffTime(timeSaved)} and a total of ${formatter.format(interestSaved)} in interest!`;
+                savingsSummary.classList.remove('hidden');
+
+                // Generate amortization schedule for accelerated plan
+                generateAmortizationSchedule(currentBalance, apr, acceleratedPayment);
+                amortizationSchedule.classList.remove('hidden');
+            } else {
+                 document.getElementById('acceleratedTime').textContent = "N/A";
+                 document.getElementById('acceleratedInterest').textContent = "N/A";
+                 document.getElementById('acceleratedTotal').textContent = "N/A";
+            }
+            
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Core calculation logic
+        function calculate(balance, apr, payment) {
+            let totalInterest = 0;
+            let months = 0;
+            const monthlyRate = apr / 100 / 12;
+
+            while (balance > 0 && months < 300) { // Safety break at 25 years
+                const interestThisMonth = balance * monthlyRate;
+                totalInterest += interestThisMonth;
+                
+                // The balance decreases by the payment minus the interest
+                const principalPaid = payment - interestThisMonth;
+                balance -= principalPaid;
+                
+                months++;
+            }
+            
+            return {
+                months: months,
+                totalInterest: totalInterest,
+                totalPaid: balance <= 0 ? (balance + payment) + (payment * (months-1)) + totalInterest : 0 // Correct total paid calculation
+            };
+        }
+
+        // Helper function to format payoff time
+        function formatPayoffTime(months) {
+            const years = Math.floor(months / 12);
+            const remainingMonths = months % 12;
+            let timeString = '';
+            if (years > 0) {
+                timeString += `${years} year${years > 1 ? 's' : ''}`;
+                if (remainingMonths > 0) {
+                    timeString += ` and `;
+                }
+            }
+            if (remainingMonths > 0) {
+                timeString += `${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
+            }
+            return timeString || '0 months';
+        }
+
+        // Function to generate the amortization schedule table
+        function generateAmortizationSchedule(balance, apr, payment) {
+            const scheduleBody = document.getElementById('scheduleBody');
+            scheduleBody.innerHTML = ''; // Clear previous table
+            
+            let currentBalance = balance;
+            const monthlyRate = apr / 100 / 12;
+            let month = 1;
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
+            while (currentBalance > 0 && month <= 300) {
+                const interestThisMonth = currentBalance * monthlyRate;
+                let principalPaid = payment - interestThisMonth;
+
+                // Handle the final payment
+                if (currentBalance < payment) {
+                    principalPaid = currentBalance;
+                    payment = currentBalance + interestThisMonth;
+                    currentBalance = 0;
+                } else {
+                    currentBalance -= principalPaid;
+                }
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${month}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatter.format(balance)}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatter.format(payment)}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatter.format(interestThisMonth)}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatter.format(principalPaid)}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatter.format(currentBalance)}</td>
+                `;
+                scheduleBody.appendChild(row);
+
+                balance = currentBalance; // Set balance for next loop
+                month++;
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMsg');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

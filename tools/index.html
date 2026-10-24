@@ -3,371 +3,1435 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shaynly Toolkit - Free Private Client-Side Tools & Calculators</title>
-  <meta name="description" content="Explore 22 free client-side brand, sales, marketing, and developer tools. Fast, private, runs 100% in your browser with zero data uploads.">
+  <title>Shaynly Toolkit - 108 Free Business, Marketing & Developer Tools</title>
+  <meta name="description" content="Explore 108 free client-side business calculators, SEO checklists, developer generators, and financial models. 100% private with zero data tracking.">
   <link rel="canonical" href="https://shaynly.com/tools/">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/tools/">
-  <meta property="og:title" content="Shaynly Toolkit - Free Private Client-Side Tools & Calculators">
-  <meta property="og:description" content="Explore 22 free client-side brand, sales, marketing, and developer tools. Fast, private, runs 100% in your browser with zero data uploads.">
+  <meta property="og:title" content="Shaynly Toolkit - 108 Free Interactive Tools">
+  <meta property="og:description" content="Explore 108 free client-side business calculators, SEO checklists, developer generators, and financial models.">
   <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
 
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shaynly Toolkit - Free Private Client-Side Tools & Calculators">
-  <meta name="twitter:description" content="Explore 22 free client-side brand, sales, marketing, and developer tools. Fast, private, runs 100% in your browser with zero data uploads.">
-  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
-
-  <!-- Google AdSense -->
+  <!-- AdSense & GA4 -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
-
-  <!-- Google tag (gtag.js) GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+    gtag('config', 'G-SW10LSENP0');
   </script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "headline": "Shaynly Toolkit - 22 Private Browser Tools",
-  "name": "Shaynly Toolkit - 22 Private Browser Tools",
-  "description": "Explore 22 free client-side brand, sales, marketing, and developer tools. Fast, private, runs 100% in your browser with zero data uploads.",
-  "url": "https://shaynly.com/tools/",
-  "datePublished": "2026-10-24",
-  "dateModified": "2026-10-24",
-  "author": {
-    "@type": "Person",
-    "name": "Sivanandan N",
-    "jobTitle": "Founder & Strategic Marketer",
-    "url": "https://shaynly.com/about-us/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shaynly",
-    "url": "https://shaynly.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://shaynly.com/assets/images/logo.png"
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .toolkit-hero {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%);
+      padding: 4rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
     }
-  },
-  "image": "https://shaynly.com/assets/images/shaynly-og.png",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-lead",
-      ".article-content p:first-of-type"
-    ]
-  }
-}
-  </script>
+    .toolkit-hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .toolkit-hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    .search-input-wrap {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.25rem 1rem 3rem;
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+    .search-icon {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2.5rem 0 3rem;
+    }
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border-color: var(--primary-light);
+    }
+    .tool-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--surface-light);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+    .tool-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .tool-card-title a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .tool-card-title a:hover {
+      color: var(--primary);
+    }
+    .tool-card-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header class="header">
-    <div class="header-wrap">
-      <a href="/" class="logo-area">
-        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
-        <span class="logo-text">Shaynly</span>
-        <span class="logo-tag">Business &amp; Tools</span>
+    <div class="container header-content">
+      <a href="/" class="logo">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo">
+        <span>Shaynly</span>
       </a>
       <nav class="nav-links">
         <a href="/">Home</a>
-        <a href="/tools/">Toolkit (22 Tools)</a>
-        <a href="/calculators/">Calculators</a>
-        <a href="/about-us/">About</a>
-        <a href="/contact-us/">Contact</a>
-        <a href="/tools/" class="nav-btn">Free Tools</a>
+        <a href="/tools/" class="active">Tools (108)</a>
+        <a href="/site-map/">Site Directory</a>
       </nav>
     </div>
   </header>
 
-  <!-- Main Body -->
-  <main class="container">
-    
-    <div class="hero">
-      <h1>Shaynly Client-Side Toolkit</h1>
-      <p>Brand, sales, marketing, and developer utilities that run 100% inside your browser. No files uploaded; your data remains private on your device.</p>
-    </div>
-
-    <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-      <h2 style="font-size: 24px; font-weight: 800; color: var(--slate-900);">Available Utilities (22 Tools)</h2>
-      <input type="text" id="searchQuery" onkeyup="filterPosts()" placeholder="Search tools..." style="padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border); font-size: 14px; width: 260px;">
-    </div>
-
-    <div class="cards-grid">
+  <section class="toolkit-hero">
+    <div class="container">
+      <span class="tool-badge" style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:0.8rem;margin-bottom:1rem;">100% Client-Side & Private</span>
+      <h1>Shaynly Interactive Toolkit</h1>
+      <p>Instant access to 108 business calculators, SEO audit checklists, developer utilities, and startup financial models. Zero data uploads—runs entirely inside your browser.</p>
       
-        <a class="card" href="/tools/audit.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Audit</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/bizcard.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Bizcard</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/brand-profile.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Brand Profile</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/brandkit.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Brandkit</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/calendar.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Calendar</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/commission.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Commission</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/gst.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Gst</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/imagetool.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Imagetool</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/invoice.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Invoice</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/keywords.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Keywords</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/metrics.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Metrics</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/proposal.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Proposal</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/qr-studio.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Qr Studio</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/rate.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Rate</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/readiness.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Readiness</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/robots-llms.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Robots Llms</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/schema.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Schema</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/serp.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Serp</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/signature.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Signature</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/tracker.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Tracker</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/utm.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Utm</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
-        <a class="card" href="/tools/whatsapp.html">
-          <span class="card-cat">Client Utility</span>
-          <h2 class="card-title">Whatsapp</h2>
-          <p class="card-desc">Fast, secure client-side utility running entirely inside your browser. Offline-capable.</p>
-          <div class="card-footer">
-            <span>Browser Tool</span>
-            <span style="color:var(--primary);font-weight:700;">Open Tool →</span>
-          </div>
-        </a>
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="toolSearch" class="search-input" placeholder="Search calculators, SEO tools, generators, financial models...">
+      </div>
     </div>
-    
+  </section>
+
+  <main class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Tools (108)</button> <button class="filter-btn" data-filter="Business & Finance">Business & Finance (40)</button> <button class="filter-btn" data-filter="Design & Development">Design & Development (20)</button> <button class="filter-btn" data-filter="Marketing & SEO">Marketing & SEO (25)</button> <button class="filter-btn" data-filter="Productivity & Management">Productivity & Management (23)</button>
+    </div>
+
+    <!-- AdSense Slot -->
+    <div style="margin-bottom:2.5rem;text-align:center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="tools-grid" id="toolsGrid">
+      
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/accounts-receivable-aging-calculator.html">Accounts Receivable Aging Calculator</a></h3>
+          <p class="tool-card-desc">Analyze the age of your outstanding invoices with our advanced Accounts Receivable Aging Calculator. Get detailed insights, visualize data, and improve your cash flow.</p>
+          <div class="tool-card-action">
+            <a href="/tools/accounts-receivable-aging-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/adsense-revenue-calculator.html">Advanced AdSense Revenue Calculator</a></h3>
+          <p class="tool-card-desc">Estimate your potential AdSense earnings with our advanced calculator. Factor in niche, GEO, CTR, CPC, fill rate, viewability, and explore</p>
+          <div class="tool-card-action">
+            <a href="/tools/adsense-revenue-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/barcode-qr-code-generator.html">Advanced Barcode &amp; QR Code Generator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Barcode &amp; QR Code Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/barcode-qr-code-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/breakeven-calculator.html">Advanced Breakeven &amp; Margin of Safety Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Breakeven &amp; Margin of Safety Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/breakeven-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/business-compound-interest-calculator.html">Advanced Business Compound Interest Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Business Compound Interest Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/business-compound-interest-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/business-credit-card-payoff-calculator.html">Advanced Business Credit Card Payoff Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Business Credit Card Payoff Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/business-credit-card-payoff-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/business-dti-dscr-calculator.html">Advanced Business DTI and DSCR Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Business DTI and DSCR Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/business-dti-dscr-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/business-loan-comparison-calculator.html">Advanced Business Loan Comparison Calculator</a></h3>
+          <p class="tool-card-desc">Compare different business loan options with our advanced calculator. Input loan amount, interest rate, term, and fees to see EMIs, total repayment, APR, and more.</p>
+          <div class="tool-card-action">
+            <a href="/tools/business-loan-comparison-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/business-valuation-tool.html">Advanced Business Valuation Tool</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Business Valuation Tool for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/business-valuation-tool.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/css-pattern-generator.html">Advanced CSS Pattern Generator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced CSS Pattern Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/css-pattern-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/crowdfunding-calculator.html">Advanced Crowdfunding Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Crowdfunding Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/crowdfunding-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/dynamic-commission-calculator.html">Advanced Dynamic Commission Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Dynamic Commission Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/dynamic-commission-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/dynamic-pricing-simulator.html">Advanced Dynamic Pricing Simulator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Dynamic Pricing Simulator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/dynamic-pricing-simulator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/economic-order-quantity-eoq-finder.html">Advanced EOQ Finder</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced EOQ Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/economic-order-quantity-eoq-finder.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/equipment-roi-calculator.html">Advanced Equipment ROI Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Equipment ROI Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/equipment-roi-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/financial-goal-planner.html">Advanced Financial Goal Planner &amp; Investment Calculator</a></h3>
+          <p class="tool-card-desc">Plan and visualize your financial future with this advanced goal planner. Set savings targets, see growth on a dynamic chart, and get personalized insights to reach your goals faster.</p>
+          <div class="tool-card-action">
+            <a href="/tools/financial-goal-planner.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/image-format-converter.html">Advanced Image Format Converter</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Image Format Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/image-format-converter.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/inventory-holding-cost-calculator.html">Advanced Inventory Holding Cost Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Inventory Holding Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/inventory-holding-cost-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/lease-vs-buy-analyzer.html">Advanced Lease vs. Buy Analyzer</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Lease vs. Buy Analyzer for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/lease-vs-buy-analyzer.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/loan-emi-calculator.html">Advanced Loan EMI Calculator with Comparison</a></h3>
+          <p class="tool-card-desc">Calculate your loan EMI with our advanced Loan EMI Calculator. Compare different loan types, see amortization schedules, and visualize your loan breakdown.</p>
+          <div class="tool-card-action">
+            <a href="/tools/loan-emi-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/local-seo-cost-calculator.html">Advanced Local SEO Cost Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Local SEO Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/local-seo-cost-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/markdown-to-html-converter.html">Advanced Markdown to HTML Converter</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Markdown to HTML Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/markdown-to-html-converter.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/marketing-roi-analyzer.html">Advanced Marketing ROI Analyzer</a></h3>
+          <p class="tool-card-desc">Unlock powerful insights with Shaynly</p>
+          <div class="tool-card-action">
+            <a href="/tools/marketing-roi-analyzer.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/pto-accrual-calculator.html">Advanced PTO Accrual Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced PTO Accrual Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/pto-accrual-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/patient-lifetime-value-calculator.html">Advanced Patient Lifetime Value (PLV) Calculator with PDF Download</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Patient Lifetime Value (PLV) Calculator with PDF Download for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/patient-lifetime-value-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/production-cost-splitter.html">Advanced Production Cost Splitter</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Production Cost Splitter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/production-cost-splitter.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/reorder-point-calculator.html">Advanced Reorder Point Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Reorder Point Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/reorder-point-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/saas-metrics-dashboard.html">Advanced SaaS Metrics Dashboard</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced SaaS Metrics Dashboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/saas-metrics-dashboard.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/sitemap-generator.html">Advanced Sitemap Generator</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Sitemap Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/sitemap-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/timezone-overlap-finder.html">Advanced Timezone Overlap Finder</a></h3>
+          <p class="tool-card-desc">Free interactive Advanced Timezone Overlap Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/timezone-overlap-finder.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/youtube-seo-checklist.html">Advanced YouTube SEO Checklist</a></h3>
+          <p class="tool-card-desc">A comprehensive, interactive checklist for mastering the YouTube algorithm. Optimize your videos and channel for maximum search visibility, reach, and engagement with this standalone tool.</p>
+          <div class="tool-card-action">
+            <a href="/tools/youtube-seo-checklist.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/appointment-scheduling-efficiency-calculator.html">Appointment Scheduling Efficiency Calculator</a></h3>
+          <p class="tool-card-desc">Maximize your appointment scheduling efficiency with our advanced calculator. Get insights, visualize data, and receive AI-powered recommendations to improve your business operations.</p>
+          <div class="tool-card-action">
+            <a href="/tools/appointment-scheduling-efficiency-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/b2b-marketing-budget-calculator.html">B2B Marketing Budget Calculator</a></h3>
+          <p class="tool-card-desc">Estimate your B2B marketing budget as a percentage of revenue based on annual revenue, industry, growth stage, marketing goals, competition, sales cycle length, and selected channels.</p>
+          <div class="tool-card-action">
+            <a href="/tools/b2b-marketing-budget-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/brand-color-palette-generator.html">Brand Color Palette Generator</a></h3>
+          <p class="tool-card-desc">Free interactive Brand Color Palette Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/brand-color-palette-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/brandkit.html">Brand Kit Generator</a></h3>
+          <p class="tool-card-desc">Design brand color palettes, typography pairings, and token exports.</p>
+          <div class="tool-card-action">
+            <a href="/tools/brandkit.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/brand-profile.html">Brand Voice &amp; Tone Guide</a></h3>
+          <p class="tool-card-desc">Document positioning, value propositions, and core messaging.</p>
+          <div class="tool-card-action">
+            <a href="/tools/brand-profile.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/branded-qr-code-generator.html">Branded QR Code Generator</a></h3>
+          <p class="tool-card-desc">Free interactive Branded QR Code Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/branded-qr-code-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/bizcard.html">Business Card Designer</a></h3>
+          <p class="tool-card-desc">Print-ready 300 dpi cards with bleed and contact QR codes.</p>
+          <div class="tool-card-action">
+            <a href="/tools/bizcard.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/business-card-generator-pro.html">Business Card Generator Pro</a></h3>
+          <p class="tool-card-desc">Free interactive Business Card Generator Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/business-card-generator-pro.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/business-growth-calculator.html">Business Growth Calculator</a></h3>
+          <p class="tool-card-desc">Estimate your business growth potential with our advanced calculator. Consider market size, competition, and investment to plan your future success.</p>
+          <div class="tool-card-action">
+            <a href="/tools/business-growth-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/button-style-generator.html">Button Style Generator</a></h3>
+          <p class="tool-card-desc">Free interactive Button Style Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/button-style-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/tracker.html">Client Lead Tracker</a></h3>
+          <p class="tool-card-desc">Kanban board pipeline for client stages and deal values.</p>
+          <div class="tool-card-action">
+            <a href="/tools/tracker.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/imagetool.html">Client-Side Image Converter</a></h3>
+          <p class="tool-card-desc">Convert and compress PNG, JPEG, and WebP images locally.</p>
+          <div class="tool-card-action">
+            <a href="/tools/imagetool.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/color-palette-memory.html">Color Palette Memory</a></h3>
+          <p class="tool-card-desc">Free interactive Color Palette Memory for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/color-palette-memory.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/brand-protection-assessment-tool.html">Comprehensive Brand Protection Assessment Tool</a></h3>
+          <p class="tool-card-desc">Comprehensive brand protection assessment tool. Get your brand protection score and personalized recommendations for any industry.</p>
+          <div class="tool-card-action">
+            <a href="/tools/brand-protection-assessment-tool.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/calendar.html">Content Calendar Planner</a></h3>
+          <p class="tool-card-desc">Weekly visual scheduler with tag management.</p>
+          <div class="tool-card-action">
+            <a href="/tools/calendar.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/creative-text-animation-effects.html">Creative Text Animation Effects</a></h3>
+          <p class="tool-card-desc">Explore a variety of creative and customizable text animation effects with live previews. Perfect for web designers and developers. Dark Theme Included!</p>
+          <div class="tool-card-action">
+            <a href="/tools/creative-text-animation-effects.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/digital-marketing-cost-calculator.html">Digital Marketing Cost Calculator</a></h3>
+          <p class="tool-card-desc">Estimate your monthly digital marketing investment for standard or premium services, based on ad spend, audience size, market competition, project duration, marketing goals, reporting depth, and selected channels like SEO, PPC, Social Media, and Content Marketing. Get a detailed breakdown of costs.</p>
+          <div class="tool-card-action">
+            <a href="/tools/digital-marketing-cost-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/readiness.html">Digital Marketing Maturity Audit</a></h3>
+          <p class="tool-card-desc">Score your funnel, automation, and analytics readiness.</p>
+          <div class="tool-card-action">
+            <a href="/tools/readiness.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/startup-burn-rate-runway-calculator.html">Dynamic Burn Rate Runway Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Dynamic Burn Rate Runway Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/startup-burn-rate-runway-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/marketing-email-signature-designer.html">Email Signature</a></h3>
+          <p class="tool-card-desc">Free interactive Email Signature for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/marketing-email-signature-designer.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/signature.html">Email Signature Designer</a></h3>
+          <p class="tool-card-desc">Gmail and Outlook safe table signature designer.</p>
+          <div class="tool-card-action">
+            <a href="/tools/signature.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/faq-schema-generator.html">FAQ Schema Generator</a></h3>
+          <p class="tool-card-desc">Free interactive FAQ Schema Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/faq-schema-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/facebook-seo-checklist.html">Facebook SEO &amp; Visibility Checklist</a></h3>
+          <p class="tool-card-desc">A comprehensive, interactive checklist for mastering Facebook</p>
+          <div class="tool-card-action">
+            <a href="/tools/facebook-seo-checklist.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/favicon-generator.html">Favicon Factory Pro</a></h3>
+          <p class="tool-card-desc">Free interactive Favicon Factory Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/favicon-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/flashcard-master.html">Flashcard Master Pro</a></h3>
+          <p class="tool-card-desc">Free interactive Flashcard Master Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/flashcard-master.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/font-pairing-generator.html">Font Pairing Generator</a></h3>
+          <p class="tool-card-desc">Free interactive Font Pairing Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/font-pairing-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/random-css-animation-generator.html">Free CSS Animation Generator: Create Random Animations Online (Dark Theme)</a></h3>
+          <p class="tool-card-desc">Generate unique CSS animations instantly with our free online tool. Customize transform, opacity, background color &amp; more. Copy the code and enhance your web projects! (Dark Theme)</p>
+          <div class="tool-card-action">
+            <a href="/tools/random-css-animation-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/rate.html">Freelance Rate Calculator</a></h3>
+          <p class="tool-card-desc">Target income calculator with billable utilization rates.</p>
+          <div class="tool-card-action">
+            <a href="/tools/rate.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/gst.html">GST Calculator</a></h3>
+          <p class="tool-card-desc">Calculate forward and reverse GST tax rates for Indian businesses.</p>
+          <div class="tool-card-action">
+            <a href="/tools/gst.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/global-shipping-cost-comparator.html">Global Shipping Cost Comparator (Simulated)</a></h3>
+          <p class="tool-card-desc">Free interactive Global Shipping Cost Comparator (Simulated) for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/global-shipping-cost-comparator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/healthcare-practice-efficiency-calculator.html">Healthcare Practice Efficiency Calculator</a></h3>
+          <p class="tool-card-desc">Free interactive Healthcare Practice Efficiency Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/healthcare-practice-efficiency-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/employee-cost-estimator.html">Insightful Employee Cost Estimator</a></h3>
+          <p class="tool-card-desc">Free interactive Insightful Employee Cost Estimator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/employee-cost-estimator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/instagram-grid-planner.html">Instagram Grid Planner</a></h3>
+          <p class="tool-card-desc">Free interactive Instagram Grid Planner for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/instagram-grid-planner.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/instagram-seo-checklist.html">Instagram SEO &amp; Growth Checklist</a></h3>
+          <p class="tool-card-desc">A comprehensive, interactive checklist for mastering Instagram</p>
+          <div class="tool-card-action">
+            <a href="/tools/instagram-seo-checklist.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/interest-coverage-ratio-checker.html">Interest Coverage Ratio Checker</a></h3>
+          <p class="tool-card-desc">Free interactive Interest Coverage Ratio Checker for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/interest-coverage-ratio-checker.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/inventory-age-tracker.html">Inventory Age Tracker</a></h3>
+          <p class="tool-card-desc">Free interactive Inventory Age Tracker for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/inventory-age-tracker.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/invoice.html">Invoice Generator</a></h3>
+          <p class="tool-card-desc">Client-side PDF invoice builder with automatic tax calculation and print styles.</p>
+          <div class="tool-card-action">
+            <a href="/tools/invoice.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/json-formatter.html">JSON Formatter Pro</a></h3>
+          <p class="tool-card-desc">Free interactive JSON Formatter Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/json-formatter.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/schema.html">JSON-LD Schema Builder</a></h3>
+          <p class="tool-card-desc">Generate valid FAQ, Article, Product, and Organization schema markup.</p>
+          <div class="tool-card-action">
+            <a href="/tools/schema.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/keywords.html">Keyword Permutation Mixer</a></h3>
+          <p class="tool-card-desc">Broad, phrase, and exact match keyword list generator.</p>
+          <div class="tool-card-action">
+            <a href="/tools/keywords.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/linkedin-seo-mastery-checklist.html">LinkedIn SEO Mastery Checklist</a></h3>
+          <p class="tool-card-desc">Free interactive LinkedIn SEO Mastery Checklist for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/linkedin-seo-mastery-checklist.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/live-code-editor.html">Live Code Editor</a></h3>
+          <p class="tool-card-desc">Free interactive Live Code Editor for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/live-code-editor.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/loan-prepayment-calculator.html">Loan Prepayment Calculator</a></h3>
+          <p class="tool-card-desc">Meraki Biz Loans Prepayment Calculator: Discover how much you can save on interest by prepaying your loan. Optimize your business finances with our advanced tool.</p>
+          <div class="tool-card-action">
+            <a href="/tools/loan-prepayment-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/logo-color-extractor.html">Logo Color Extractor</a></h3>
+          <p class="tool-card-desc">Free interactive Logo Color Extractor for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/logo-color-extractor.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/metrics.html">Marketing ROI &amp; CAC Calculator</a></h3>
+          <p class="tool-card-desc">Evaluate ad spend, customer acquisition costs, and payback periods.</p>
+          <div class="tool-card-action">
+            <a href="/tools/metrics.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/business-loans-eligibility-calculator.html">Meraki Business Loans - Loan Eligibility Calculator</a></h3>
+          <p class="tool-card-desc">Use our Loan Eligibility Calculator to estimate your qualification for various business loan options. Input your business details and get instant results.</p>
+          <div class="tool-card-action">
+            <a href="/tools/business-loans-eligibility-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/audit.html">On-Page SEO Checklist</a></h3>
+          <p class="tool-card-desc">40-point technical, on-page, and speed audit checklist.</p>
+          <div class="tool-card-action">
+            <a href="/tools/audit.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/overtime-cost-predictor.html">Overtime Cost Predictor</a></h3>
+          <p class="tool-card-desc">Free interactive Overtime Cost Predictor for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/overtime-cost-predictor.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/pinterest-seo-discoverability-checklist.html">Pinterest SEO &amp; Discoverability Checklist</a></h3>
+          <p class="tool-card-desc">A complete, interactive checklist for mastering Pinterest</p>
+          <div class="tool-card-action">
+            <a href="/tools/pinterest-seo-discoverability-checklist.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/css-box-shadow-generator.html">Premium CSS Box Shadow Generator</a></h3>
+          <p class="tool-card-desc">Free interactive Premium CSS Box Shadow Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/css-box-shadow-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/css-clip-path-maker.html">Premium CSS Clip-Path Maker</a></h3>
+          <p class="tool-card-desc">Free interactive Premium CSS Clip-Path Maker for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/css-clip-path-maker.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/color-code-converter.html">Premium Color Code Converter</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Color Code Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/color-code-converter.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/digital-whiteboard.html">Premium Digital Whiteboard</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Digital Whiteboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/digital-whiteboard.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/personal-finance-dashboard.html">Premium Finance Dashboard</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Finance Dashboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/personal-finance-dashboard.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/habit-tracker.html">Premium Habit Tracker</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Habit Tracker for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/habit-tracker.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Design & Development">
+          <div class="tool-card-head">
+            <span class="tool-badge">Design & Development</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/image-to-css-filter-converter.html">Premium Image to CSS Filter Converter</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Image to CSS Filter Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/image-to-css-filter-converter.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/meme-template-generator.html">Premium Meme Template Generator - Pro Edition</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Meme Template Generator - Pro Edition for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/meme-template-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/pomodoro-timer-productivity-tracker.html">Premium Pomodoro Timer</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Pomodoro Timer for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/pomodoro-timer-productivity-tracker.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/project-plan-generator.html">Premium Project Plan Generator</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Project Plan Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/project-plan-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/resume-builder.html">Premium Resume Builder</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Resume Builder for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/resume-builder.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/size-converter.html">Premium Size Converter Pro</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Size Converter Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/size-converter.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/time-zone-converter.html">Premium Time Zone Converter</a></h3>
+          <p class="tool-card-desc">Free interactive Premium Time Zone Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/time-zone-converter.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/proposal.html">Proposal &amp; Estimate Builder</a></h3>
+          <p class="tool-card-desc">Professional client estimates with itemized schedules.</p>
+          <div class="tool-card-action">
+            <a href="/tools/proposal.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/qr-studio.html">QR Code Studio</a></h3>
+          <p class="tool-card-desc">Generate custom high-resolution vector and PNG QR codes with logos.</p>
+          <div class="tool-card-action">
+            <a href="/tools/qr-studio.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/retail-business-loan-calculator.html">Retail Business Loan Calculator</a></h3>
+          <p class="tool-card-desc">Meraki Biz Loans Retail Business Loan Calculator - Estimate your loan requirements based on inventory costs, sales projections, and operating expenses.</p>
+          <div class="tool-card-action">
+            <a href="/tools/retail-business-loan-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/robots-llms.html">Robots &amp; LLMs Generator</a></h3>
+          <p class="tool-card-desc">Create standard robots.txt and llms.txt files for search engines and AI bots.</p>
+          <div class="tool-card-action">
+            <a href="/tools/robots-llms.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/serp.html">SERP Snippet Preview</a></h3>
+          <p class="tool-card-desc">Preview title tags and meta descriptions in Google mobile &amp; desktop.</p>
+          <div class="tool-card-action">
+            <a href="/tools/serp.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/commission.html">Sales Commission Calculator</a></h3>
+          <p class="tool-card-desc">Multi-tier sliding scale commission and bonus simulator.</p>
+          <div class="tool-card-action">
+            <a href="/tools/commission.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/smart-investment-calculator.html">Smart Investment Calculator</a></h3>
+          <p class="tool-card-desc">Experience our smart investment calculator to forecast potential returns and strategize for a prosperous financial future. Sleek, powerful, and user-friendly.</p>
+          <div class="tool-card-action">
+            <a href="/tools/smart-investment-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/twitter-x-seo-visibility-checklist.html">Twitter (X) SEO &amp; Visibility Checklist</a></h3>
+          <p class="tool-card-desc">A comprehensive, interactive checklist for mastering the Twitter (X) algorithm. Optimize your profile and content for maximum reach, discoverability, and engagement with this standalone tool.</p>
+          <div class="tool-card-action">
+            <a href="/tools/twitter-x-seo-visibility-checklist.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/typing-speed-test.html">TypeMaster Pro</a></h3>
+          <p class="tool-card-desc">Free interactive TypeMaster Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/typing-speed-test.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/utm.html">UTM Campaign Builder</a></h3>
+          <p class="tool-card-desc">Build error-free Google Analytics tracking links with custom parameters.</p>
+          <div class="tool-card-action">
+            <a href="/tools/utm.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/google-my-business-profile-local-seo-checklist.html">Ultimate Google Business Profile (Local SEO) Checklist</a></h3>
+          <p class="tool-card-desc">A comprehensive, interactive checklist for mastering Google Business Profile (GBP) and Local SEO. Optimize your listing for the Map Pack and dominate local search with this standalone tool.</p>
+          <div class="tool-card-action">
+            <a href="/tools/google-my-business-profile-local-seo-checklist.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/keyboard-shortcuts.html">Ultimate Keyboard Shortcut Reference</a></h3>
+          <p class="tool-card-desc">Free interactive Ultimate Keyboard Shortcut Reference for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/keyboard-shortcuts.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Marketing & SEO">
+          <div class="tool-card-head">
+            <span class="tool-badge">Marketing & SEO</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/whatsapp.html">WhatsApp Direct Link Generator</a></h3>
+          <p class="tool-card-desc">Generate instant chat links with prefilled customer messages.</p>
+          <div class="tool-card-action">
+            <a href="/tools/whatsapp.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Business & Finance">
+          <div class="tool-card-head">
+            <span class="tool-badge">Business & Finance</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/working-capital-loan-calculator.html">Working Capital Loan Calculator</a></h3>
+          <p class="tool-card-desc">Estimate your business</p>
+          <div class="tool-card-action">
+            <a href="/tools/working-capital-loan-calculator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="tool-card" data-category="Productivity & Management">
+          <div class="tool-card-head">
+            <span class="tool-badge">Productivity & Management</span>
+          </div>
+          <h3 class="tool-card-title"><a href="/tools/branded-bill-generator.html">branded-bill-generator</a></h3>
+          <p class="tool-card-desc">Free interactive branded-bill-generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+          <div class="tool-card-action">
+            <a href="/tools/branded-bill-generator.html" class="btn btn-outline" style="font-size:0.85rem;padding:6px 14px;">Open Tool &rarr;</a>
+          </div>
+        </div>
+        
+    </div>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="footer-wrap">
-      <div>
-        <h4>About Shaynly</h4>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
-        </p>
-        <p style="font-size: 13px; color: #64748b;">
-          Published &amp; Managed by Sivanandan N.
-        </p>
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Professional business marketing and management platform.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/sitemap.xml">XML Sitemap</a>
       </div>
-      <div>
-        <h4>Browser Utilities</h4>
-        <ul>
-          <li><a href="/tools/">All 22 Client Tools</a></li>
-          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
-          <li><a href="/tools/gst.html">GST Calculator</a></li>
-          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
-          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
-          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Core Resources</h4>
-        <ul>
-          <li><a href="/calculators/">All Calculators</a></li>
-          <li><a href="/about-us/">About Shaynly</a></li>
-          <li><a href="/contact-us/">Contact &amp; Feedback</a></li>
-          <li><a href="/privacy-policy/">Privacy Policy</a></li>
-          <li><a href="/terms-and-conditions-of-use/">Terms &amp; Conditions</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
-          <li><a href="/site-map/">HTML Site Directory</a></li>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/llms.txt">AI Index (llms.txt)</a></li>
-          <li><a href="/feed.xml">RSS Syndication Feed</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2026 Shaynly. All rights reserved. • High-performance static architecture deployed on Cloudflare Pages.
     </div>
   </footer>
 
-  <script src="/assets/js/main.js"></script>
+  <script>
+    const searchInput = document.getElementById('toolSearch');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const toolCards = document.querySelectorAll('.tool-card');
+
+    function filterTools() {
+      const query = searchInput.value.toLowerCase().trim();
+      const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+      toolCards.forEach(card => {
+        const title = card.querySelector('.tool-card-title').textContent.toLowerCase();
+        const desc = card.querySelector('.tool-card-desc').textContent.toLowerCase();
+        const cat = card.dataset.category;
+
+        const matchesQuery = !query || title.includes(query) || desc.includes(query);
+        const matchesCategory = activeFilter === 'all' || cat === activeFilter;
+
+        if (matchesQuery && matchesCategory) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', filterTools);
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterTools();
+      });
+    });
+  </script>
 </body>
 </html>

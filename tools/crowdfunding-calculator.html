@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Crowdfunding Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Crowdfunding Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/crowdfunding-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/crowdfunding-calculator.html">
+  <meta property="og:title" content="Advanced Crowdfunding Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Crowdfunding Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Crowdfunding Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Crowdfunding Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-input-group > input {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Crowdfunding Calculator</h1>
+      <p>Free interactive Advanced Crowdfunding Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-2"> Crowdfunding Calculator</h1>
+        <p class="text-center text-gray-500 mb-6">
+            Estimate your net funds, including reward costs and tiered fees.
+        </p>
+
+        <!-- General Inputs -->
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4">Campaign & Fee Inputs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label for="goalAmount" class="block text-sm font-medium text-gray-700">Campaign Goal Amount ($)</label>
+                    <input type="number" id="goalAmount" placeholder="e.g., 5000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="platformFee" class="block text-sm font-medium text-gray-700">Platform Fee (%)</label>
+                    <input type="number" id="platformFee" placeholder="e.g., 5" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="processingFee" class="block text-sm font-medium text-gray-700">Payment Processing Fee (%)</label>
+                    <input type="number" id="processingFee" placeholder="e.g., 3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="transactionFee" class="block text-sm font-medium text-gray-700">Transaction Fee per Donation ($)</label>
+                    <input type="number" id="transactionFee" placeholder="e.g., 0.20" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+            </div>
+        </div>
+
+        <!-- Reward Tier Inputs -->
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4">Reward Tiers</h2>
+            <div id="rewardTiers" class="space-y-4">
+                <!-- Tier 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 tier-input-group">
+                    <div>
+                        <label for="tier-1-amount" class="block text-sm font-medium text-gray-700">Pledge Amount ($)</label>
+                        <input type="number" id="tier-1-amount" placeholder="e.g., 25" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="tier-1-cost" class="block text-sm font-medium text-gray-700">Reward Cost ($)</label>
+                        <input type="number" id="tier-1-cost" placeholder="e.g., 10" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="tier-1-backers" class="block text-sm font-medium text-gray-700">Backers (%)</label>
+                        <input type="number" id="tier-1-backers" placeholder="e.g., 40" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                </div>
+                <!-- Tier 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 tier-input-group">
+                    <div>
+                        <label for="tier-2-amount" class="block text-sm font-medium text-gray-700">Pledge Amount ($)</label>
+                        <input type="number" id="tier-2-amount" placeholder="e.g., 50" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="tier-2-cost" class="block text-sm font-medium text-gray-700">Reward Cost ($)</label>
+                        <input type="number" id="tier-2-cost" placeholder="e.g., 20" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="tier-2-backers" class="block text-sm font-medium text-gray-700">Backers (%)</label>
+                        <input type="number" id="tier-2-backers" placeholder="e.g., 30" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                </div>
+                <!-- Tier 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 tier-input-group">
+                    <div>
+                        <label for="tier-3-amount" class="block text-sm font-medium text-gray-700">Pledge Amount ($)</label>
+                        <input type="number" id="tier-3-amount" placeholder="e.g., 100" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="tier-3-cost" class="block text-sm font-medium text-gray-700">Reward Cost ($)</label>
+                        <input type="number" id="tier-3-cost" placeholder="e.g., 40" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="tier-3-backers" class="block text-sm font-medium text-gray-700">Backers (%)</label>
+                        <input type="number" id="tier-3-backers" placeholder="e.g., 20" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="calculateBtn" class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+            Calculate Net Funds
+        </button>
+
+        <!-- Result Display -->
+        <div id="results" class="mt-8 p-6 bg-indigo-50 text-indigo-900 rounded-lg hidden">
+            <h2 class="text-xl font-bold text-indigo-800 mb-2">Calculation Results</h2>
+            <div class="space-y-2">
+                <div>
+                    <p class="text-lg font-semibold">Total Funds Raised:</p>
+                    <p id="raisedFunds" class="text-3xl font-extrabold text-indigo-900"></p>
+                </div>
+                <div>
+                    <p class="text-lg font-semibold">Total Fees:</p>
+                    <p id="totalFees" class="text-xl font-bold text-red-600"></p>
+                    <p id="platformFees" class="text-sm text-gray-600"></p>
+                    <p id="processingFees" class="text-sm text-gray-600"></p>
+                </div>
+                <div>
+                    <p class="text-lg font-semibold">Total Reward Costs (COGS):</p>
+                    <p id="totalCogs" class="text-xl font-bold text-red-600"></p>
+                </div>
+                <div>
+                    <p class="text-lg font-semibold">Net Funds Received:</p>
+                    <p id="netFunds" class="text-3xl font-extrabold text-green-700"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="mt-4 p-3 bg-red-100 text-red-700 rounded-md hidden">
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+        document.getElementById('calculateBtn').addEventListener('click', calculate);
+
+        function calculate() {
+            // Get general input values
+            const goalAmount = parseFloat(document.getElementById('goalAmount').value);
+            const platformFeeRate = parseFloat(document.getElementById('platformFee').value);
+            const processingFeeRate = parseFloat(document.getElementById('processingFee').value);
+            const transactionFee = parseFloat(document.getElementById('transactionFee').value);
+
+            // Get display elements
+            const resultsDiv = document.getElementById('results');
+            const errorDiv = document.getElementById('errorMsg');
+            
+            // Hide previous results and errors
+            resultsDiv.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+
+            // --- Input Validation ---
+            if (isNaN(goalAmount) || isNaN(platformFeeRate) || isNaN(processingFeeRate) || isNaN(transactionFee)) {
+                showError('Please fill in all general input fields with valid numbers.');
+                return;
+            }
+
+            if (goalAmount <= 0) {
+                 showError('Campaign Goal Amount must be positive.');
+                return;
+            }
+
+            if (platformFeeRate < 0 || processingFeeRate < 0 || transactionFee < 0) {
+                 showError('Fees must be non-negative.');
+                return;
+            }
+
+            // --- Reward Tier Processing ---
+            const tiers = [];
+            let totalBackerPercentage = 0;
+            const tierInputs = document.querySelectorAll('.tier-input-group');
+            
+            tierInputs.forEach((group, index) => {
+                const amount = parseFloat(document.getElementById(`tier-${index + 1}-amount`).value);
+                const cost = parseFloat(document.getElementById(`tier-${index + 1}-cost`).value);
+                const backers = parseFloat(document.getElementById(`tier-${index + 1}-backers`).value);
+
+                if (!isNaN(amount) && !isNaN(cost) && !isNaN(backers) && backers > 0) {
+                    tiers.push({ amount, cost, backers });
+                    totalBackerPercentage += backers;
+                }
+            });
+
+            if (tiers.length === 0) {
+                showError('Please enter at least one valid reward tier.');
+                return;
+            }
+
+            if (totalBackerPercentage > 100) {
+                showError('The total percentage of backers across all tiers cannot exceed 100%.');
+                return;
+            }
+
+            // --- Calculation ---
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            
+            const totalDonations = goalAmount;
+            
+            // Calculate number of backers per tier and total COGS
+            let totalCogs = 0;
+            let totalNumBackers = 0;
+            
+            tiers.forEach(tier => {
+                const tierFunds = totalDonations * (tier.backers / 100);
+                const numBackers = tierFunds / tier.amount;
+                
+                totalCogs += numBackers * tier.cost;
+                totalNumBackers += numBackers;
+            });
+            
+            // Calculate fees
+            const platformFees = totalDonations * (platformFeeRate / 100);
+            const processingFees = (totalDonations * (processingFeeRate / 100)) + (totalNumBackers * transactionFee);
+            const totalFees = platformFees + processingFees;
+            
+            // Calculate net funds
+            const netFunds = totalDonations - totalFees - totalCogs;
+
+            // --- Display Results ---
+            document.getElementById('raisedFunds').textContent = formatter.format(totalDonations);
+            document.getElementById('totalFees').textContent = formatter.format(totalFees);
+            document.getElementById('platformFees').textContent = `Platform Fees: ${formatter.format(platformFees)}`;
+            document.getElementById('processingFees').textContent = `Processing Fees: ${formatter.format(processingFees)}`;
+            document.getElementById('totalCogs').textContent = formatter.format(totalCogs);
+            document.getElementById('netFunds').textContent = formatter.format(netFunds);
+            
+            resultsDiv.classList.remove('hidden');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMsg');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

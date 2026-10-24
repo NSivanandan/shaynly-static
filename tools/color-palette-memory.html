@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Palette Memory - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Color Palette Memory for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/color-palette-memory.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/color-palette-memory.html">
+  <meta property="og:title" content="Color Palette Memory - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Color Palette Memory for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Color Palette Memory - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Color Palette Memory for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        /* Custom CSS for the game's aesthetic */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0F172A; /* Deep space blue background */
+            color: #E2E8F0; /* Off-white text */
+        }
+        .container {
+            max-width: 800px;
+            background: #1E293B;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        .color-palette-slot {
+            width: 100%;
+            padding-top: 100%; /* Creates a square aspect ratio */
+            background-color: #334155;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease-in-out;
+            border: 3px solid transparent;
+        }
+        .color-palette-slot.flashing {
+            transform: scale(1.05);
+            border-color: #60A5FA;
+        }
+        .color-grid-button {
+            width: 100%;
+            padding-top: 100%;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease-in-out;
+            border: 3px solid transparent;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .color-grid-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .color-grid-button:active {
+            transform: scale(0.95);
+        }
+        .color-grid-button.selected {
+            border-color: #10B981; /* Green border for selected */
+            transform: scale(1.05);
+        }
+        .color-grid-button.correct {
+            border-color: #10B981;
+        }
+        .color-grid-button.wrong {
+            border-color: #EF4444; /* Red border for wrong */
+        }
+        .start-button {
+            transition: all 0.2s ease-in-out;
+            background: linear-gradient(90deg, #3B82F6, #60A5FA);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        .start-button:disabled {
+            background: #4B5563;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .message-box {
+            background-color: #1F2937;
+            border: 2px solid #374151;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal {
+            background-color: #1F2937;
+            border-radius: 1rem;
+        }
+        .toggle-switch {
+            position: relative;
+            width: 48px;
+            height: 24px;
+            background-color: #4B5563;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: #E5E7EB;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        .toggle-switch.on {
+            background-color: #10B981;
+        }
+        .toggle-switch.on::before {
+            transform: translateX(24px);
+        }
+        .difficulty-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #3B82F6;
+            border: 2px solid #E2E8F0;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .difficulty-slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #3B82F6;
+            border: 2px solid #E2E8F0;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Color Palette Memory</h1>
+      <p>Free interactive Color Palette Memory for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container mx-auto flex flex-col items-center">
+        <h1 class="text-4xl font-bold mb-2 text-center">Color Palette Memory</h1>
+        <p class="text-gray-400 mb-6 text-center">Remember the sequence and recreate it!</p>
+
+        <!-- Score and High Score Display -->
+        <div class="flex justify-between w-full p-4 mb-4 rounded-lg bg-gray-800 text-lg font-bold">
+            <span id="score-display">Score: 0</span>
+            <span id="high-score-display">High Score: 0</span>
+        </div>
+        <div class="flex justify-between w-full p-4 mb-4 rounded-lg bg-gray-800 text-lg font-bold">
+             <span id="level-display">Level: 1</span>
+        </div>
+
+        <!-- Game Info and Message Box -->
+        <div class="message-box w-full p-4 mb-6 rounded-lg text-center">
+            <h2 id="status-message" class="text-2xl font-bold">Press Start to begin.</h2>
+        </div>
+
+        <!-- Main Palette Display Area -->
+        <div id="palette-display" class="w-full grid grid-cols-5 gap-4 mb-8">
+            <div class="color-palette-slot" id="palette-0"></div>
+            <div class="color-palette-slot" id="palette-1"></div>
+            <div class="color-palette-slot" id="palette-2"></div>
+            <div class="color-palette-slot" id="palette-3"></div>
+            <div class="color-palette-slot" id="palette-4"></div>
+        </div>
+
+        <!-- Player Reconstruction Area -->
+        <div id="player-palette" class="w-full grid grid-cols-5 gap-4 mb-8">
+            <!-- Slots for player's choices will be here -->
+        </div>
+
+        <!-- Controls -->
+        <div class="w-full flex flex-col md:flex-row items-center justify-between mb-8 space-y-4 md:space-y-0 md:space-x-4">
+            <!-- Difficulty Slider -->
+            <div class="w-full md:w-1/2 flex flex-col items-center">
+                <label for="difficulty-slider" class="text-lg font-bold mb-2">Display Time</label>
+                <input type="range" id="difficulty-slider" min="2000" max="8000" value="5000" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer">
+                <span id="difficulty-value" class="text-sm mt-2 text-gray-400">5 seconds</span>
+            </div>
+            <!-- Game Modes and Mute Controls -->
+            <div class="w-full md:w-1/2 flex flex-col items-center space-y-4">
+                <!-- Survival Mode Toggle -->
+                <div class="flex items-center space-x-2">
+                    <label class="text-lg font-bold">Survival Mode</label>
+                    <div id="survival-toggle" class="toggle-switch"></div>
+                </div>
+                <!-- Reverse Mode Toggle -->
+                <div class="flex items-center space-x-2">
+                    <label class="text-lg font-bold">Reverse Mode</label>
+                    <div id="reverse-toggle" class="toggle-switch"></div>
+                </div>
+                <!-- Mute Toggle -->
+                <div class="flex items-center space-x-2">
+                    <button id="mute-button" class="text-2xl p-2 rounded-full bg-gray-600 hover:bg-gray-500 transition-colors">
+                        <span id="mute-icon">🔊</span>
+                    </button>
+                    <span class="text-lg font-bold">Mute</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Selection Grid -->
+        <div id="color-grid" class="w-full grid grid-cols-4 gap-4 hidden">
+            <!-- Color buttons dynamically generated here -->
+        </div>
+
+        <!-- Start Game Button -->
+        <button id="start-button" class="start-button w-full mt-8 px-8 py-4 rounded-full text-lg font-bold">
+            Start Game
+        </button>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="game-over-modal" class="fixed inset-0 hidden items-center justify-center modal-overlay opacity-0 z-50">
+        <div class="modal p-8 text-center">
+            <h3 class="text-3xl font-bold mb-4" id="modal-title">Game Over!</h3>
+            <p class="text-lg mb-2" id="modal-score">Your Score: 0</p>
+            <p class="text-lg mb-6" id="modal-highscore">High Score: 0</p>
+            <button id="restart-button" class="start-button px-8 py-3 rounded-full text-lg font-bold">
+                Play Again
+            </button>
+        </div>
+    </div>
+
+    <!-- Firebase Imports -->
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/tone@14.7.58/build/Tone.min.js"></script>
+<script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- Firebase Initialization and Auth ---
+        let app, db, auth, userId;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let isAuthReady = false;
+        
+        async function initFirebase() {
+            try {
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        isAuthReady = true;
+                        console.log("Firebase initialized and user signed in:", userId);
+                        await loadHighScore();
+                    }
+                });
+            } catch (error) {
+                console.error("Firebase initialization or authentication failed:", error);
+                isAuthReady = true;
+                loadHighScore();
+            }
+        }
+
+        // --- Game State Variables ---
+        const allColors = [
+            '#FEE2E2', '#FECACA', '#FDE68A', '#FCD34D',
+            '#BEF264', '#86EFAC', '#4ADE80', '#34D399',
+            '#22D3EE', '#0EA5E9', '#3B82F6', '#60A5FA',
+            '#C084FC', '#F472B6', '#FB7185', '#F87171'
+        ];
+        let gamePalette = [];
+        let playerPalette = [];
+        let level = 1;
+        let score = 0;
+        let highScore = 0;
+        let isDisplaying = false;
+        let isPicking = false;
+        let displayDuration = 5000;
+        let survivalMode = false;
+        let reverseMode = false;
+        let isMuted = false;
+
+        // --- DOM Element References ---
+        const paletteDisplay = document.getElementById('palette-display');
+        const playerPaletteDisplay = document.getElementById('player-palette');
+        const colorGrid = document.getElementById('color-grid');
+        const startButton = document.getElementById('start-button');
+        const statusMessage = document.getElementById('status-message');
+        const scoreDisplay = document.getElementById('score-display');
+        const highScoreDisplay = document.getElementById('high-score-display');
+        const levelDisplay = document.getElementById('level-display');
+        const difficultySlider = document.getElementById('difficulty-slider');
+        const difficultyValueDisplay = document.getElementById('difficulty-value');
+        const survivalToggle = document.getElementById('survival-toggle');
+        const reverseToggle = document.getElementById('reverse-toggle');
+        const muteButton = document.getElementById('mute-button');
+        const muteIcon = document.getElementById('mute-icon');
+        const modalOverlay = document.getElementById('game-over-modal');
+        const modalScore = document.getElementById('modal-score');
+        const modalHighscore = document.getElementById('modal-highscore');
+        const restartButton = document.getElementById('restart-button');
+
+        // --- Sound Synthesizers ---
+        const synth = new Tone.Synth().toDestination();
+        const successSynth = new Tone.MembraneSynth().toDestination();
+        const errorSynth = new Tone.NoiseSynth({
+            "volume": -10,
+            "envelope": {
+                "attack": 0.001,
+                "decay": 0.2,
+                "sustain": 0
+            }
+        }).toDestination();
+        
+        // --- Event Listeners ---
+        startButton.addEventListener('click', startGame);
+        restartButton.addEventListener('click', startGame);
+        difficultySlider.addEventListener('input', updateDifficulty);
+        survivalToggle.addEventListener('click', () => {
+            survivalMode = !survivalMode;
+            survivalToggle.classList.toggle('on', survivalMode);
+        });
+        reverseToggle.addEventListener('click', () => {
+            reverseMode = !reverseMode;
+            reverseToggle.classList.toggle('on', reverseMode);
+        });
+        muteButton.addEventListener('click', toggleMute);
+
+        // --- Game Initialization ---
+        function createColorGrid() {
+            colorGrid.innerHTML = '';
+            allColors.forEach(color => {
+                const button = document.createElement('button');
+                button.classList.add('color-grid-button');
+                button.style.backgroundColor = color;
+                button.dataset.color = color;
+                button.addEventListener('click', handleColorClick);
+                colorGrid.appendChild(button);
+            });
+        }
+
+        function createPlayerPaletteSlots() {
+            playerPaletteDisplay.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const slot = document.createElement('div');
+                slot.classList.add('color-palette-slot', 'border-gray-500');
+                playerPaletteDisplay.appendChild(slot);
+            }
+        }
+
+        createColorGrid();
+        createPlayerPaletteSlots();
+        updateDisplay();
+        initFirebase();
+        updateDifficulty();
+
+        function updateDifficulty() {
+            displayDuration = parseInt(difficultySlider.value);
+            difficultyValueDisplay.textContent = `${(displayDuration / 1000).toFixed(0)} seconds`;
+        }
+        
+        function playSound(synth, note) {
+            if (!isMuted) {
+                if (note) {
+                    synth.triggerAttackRelease(note, "8n");
+                } else {
+                    synth.triggerAttackRelease(); // For noise synth
+                }
+            }
+        }
+        
+        function toggleMute() {
+            isMuted = !isMuted;
+            muteIcon.textContent = isMuted ? '🔇' : '🔊';
+        }
+
+        // --- Firebase Data Functions ---
+        async function loadHighScore() {
+            if (!isAuthReady || !userId) {
+                console.log("Not authorized, using local high score.");
+                highScoreDisplay.textContent = `High Score: 0`;
+                return;
+            }
+            try {
+                const highscoreDocRef = doc(db, `artifacts/${appId}/users/${userId}/highscores/color-palette`);
+                const docSnap = await getDoc(highscoreDocRef);
+                if (docSnap.exists()) {
+                    highScore = docSnap.data().score || 0;
+                    highScoreDisplay.textContent = `High Score: ${highScore}`;
+                } else {
+                    highScore = 0;
+                    console.log("No high score found. Starting at 0.");
+                }
+            } catch (error) {
+                console.error("Error loading high score:", error);
+            }
+        }
+
+        async function saveHighScore() {
+            if (!isAuthReady || !userId) {
+                console.log("Not authorized, cannot save high score.");
+                return;
+            }
+            try {
+                if (score > highScore) {
+                    highScore = score;
+                    const highscoreDocRef = doc(db, `artifacts/${appId}/users/${userId}/highscores/color-palette`);
+                    await setDoc(highscoreDocRef, { score: highScore });
+                    highScoreDisplay.textContent = `High Score: ${highScore}`;
+                    console.log("New high score saved:", highScore);
+                }
+            } catch (error) {
+                console.error("Error saving high score:", error);
+            }
+        }
+
+        // --- Core Game Functions ---
+        function updateDisplay() {
+            scoreDisplay.textContent = `Score: ${score}`;
+            levelDisplay.textContent = `Level: ${level}`;
+            highScoreDisplay.textContent = `High Score: ${highScore}`;
+        }
+
+        function startGame() {
+            // Hide modal if it's visible
+            modalOverlay.classList.remove('flex');
+            modalOverlay.classList.add('hidden');
+            modalOverlay.style.opacity = '0';
+
+            // Reset game state
+            gamePalette = [];
+            playerPalette = [];
+            level = 1;
+            score = 0;
+            isDisplaying = false;
+            isPicking = false;
+            startButton.disabled = true;
+            colorGrid.classList.add('hidden');
+            
+            // Clear and reset player palette
+            const playerSlots = playerPaletteDisplay.querySelectorAll('.color-palette-slot');
+            playerSlots.forEach(slot => {
+                slot.style.backgroundColor = '';
+                slot.classList.remove('selected', 'correct', 'wrong');
+                slot.style.borderColor = '#334155';
+            });
+
+            // Clear and reset display palette
+            const paletteSlots = paletteDisplay.querySelectorAll('.color-palette-slot');
+            paletteSlots.forEach(slot => {
+                slot.style.backgroundColor = '';
+                slot.classList.remove('flashing');
+                slot.style.borderColor = '#334155';
+            });
+            
+            updateDisplay();
+            statusMessage.textContent = 'Get ready...';
+            
+            setTimeout(nextRound, 1500);
+        }
+
+        function nextRound() {
+            statusMessage.textContent = 'Watch the palette!';
+            generatePalette();
+            displayPalette();
+        }
+
+        function generatePalette() {
+            gamePalette = [];
+            for (let i = 0; i < 5; i++) {
+                let newColor;
+                do {
+                    newColor = allColors[Math.floor(Math.random() * allColors.length)];
+                } while (gamePalette.length > 0 && newColor === gamePalette[gamePalette.length - 1]);
+                gamePalette.push(newColor);
+            }
+        }
+
+        async function displayPalette() {
+            isDisplaying = true;
+            isPicking = false;
+            const paletteSlots = paletteDisplay.querySelectorAll('.color-palette-slot');
+            paletteSlots.forEach((slot, index) => {
+                slot.style.backgroundColor = gamePalette[index];
+                slot.style.borderColor = gamePalette[index];
+                slot.classList.remove('flashing');
+            });
+
+            let currentDisplayDuration = displayDuration;
+            if (survivalMode) {
+                currentDisplayDuration = Math.max(1000, displayDuration - (level * 200));
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            for (const color of gamePalette) {
+                const index = gamePalette.indexOf(color);
+                const slot = paletteDisplay.children[index];
+                slot.classList.add('flashing');
+                // Play a tone for each color
+                playSound(synth, `C${3 + index}`);
+                await new Promise(resolve => setTimeout(resolve, currentDisplayDuration / 5));
+                slot.classList.remove('flashing');
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+            
+            isDisplaying = false;
+            startPlayerTurn();
+        }
+        
+        function startPlayerTurn() {
+            isPicking = true;
+            statusMessage.textContent = 'Your turn!';
+            colorGrid.classList.remove('hidden');
+            playerPalette = [];
+            
+            // Reset player palette slots for input
+            const playerSlots = playerPaletteDisplay.querySelectorAll('.color-palette-slot');
+            playerSlots.forEach(slot => {
+                slot.style.backgroundColor = '';
+                slot.style.borderColor = '#334155';
+            });
+        }
+
+        function handleColorClick(event) {
+            if (!isPicking) return;
+
+            const clickedColor = event.target.dataset.color;
+            playerPalette.push(clickedColor);
+
+            const playerSlots = playerPaletteDisplay.querySelectorAll('.color-palette-slot');
+            const currentSlot = playerSlots[playerPalette.length - 1];
+            currentSlot.style.backgroundColor = clickedColor;
+            currentSlot.style.borderColor = clickedColor;
+
+            const isCorrect = checkPlayerChoice();
+
+            if (isCorrect) {
+                currentSlot.classList.add('correct');
+                playSound(successSynth, "C3");
+                if (playerPalette.length === gamePalette.length) {
+                    statusMessage.textContent = 'Correct! Next level...';
+                    isPicking = false;
+                    score++;
+                    level++;
+                    updateDisplay();
+                    
+                    setTimeout(() => {
+                        const allSlots = document.querySelectorAll('.color-palette-slot');
+                        allSlots.forEach(slot => {
+                            slot.classList.remove('correct');
+                            slot.style.backgroundColor = '';
+                            slot.style.borderColor = '#334155';
+                        });
+                        nextRound();
+                    }, 1500);
+                }
+            } else {
+                currentSlot.classList.add('wrong');
+                playSound(errorSynth);
+                gameOver();
+            }
+        }
+
+        function checkPlayerChoice() {
+            const sequenceToCheck = reverseMode ? [...gamePalette].reverse() : gamePalette;
+            const lastPlayerChoice = playerPalette[playerPalette.length - 1];
+            const correspondingGameColor = sequenceToCheck[playerPalette.length - 1];
+            return lastPlayerChoice === correspondingGameColor;
+        }
+
+        async function gameOver() {
+            isPicking = false;
+            statusMessage.textContent = 'Game Over!';
+            startButton.disabled = false;
+            colorGrid.classList.add('hidden');
+            
+            await saveHighScore();
+            showGameOverModal();
+        }
+        
+        function showGameOverModal() {
+            modalScore.textContent = `Your Score: ${score}`;
+            modalHighscore.textContent = `High Score: ${highScore}`;
+            modalOverlay.classList.remove('hidden');
+            modalOverlay.classList.add('flex');
+            setTimeout(() => {
+                modalOverlay.style.opacity = '1';
+            }, 10);
+        }
+    </script>
+</body>
+</html>

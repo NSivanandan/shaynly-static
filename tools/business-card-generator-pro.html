@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Card Generator Pro - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Business Card Generator Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/business-card-generator-pro.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/business-card-generator-pro.html">
+  <meta property="og:title" content="Business Card Generator Pro - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Business Card Generator Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Business Card Generator Pro - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Business Card Generator Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        :root {
+            --primary-bg: rgba(18, 18, 18, 0.9); /* Slightly increased opacity */
+            --secondary-bg: rgba(30, 30, 30, 0.8); /* Slightly increased opacity */
+            --text-primary: rgba(255, 255, 255, 0.95); /* Slightly brighter */
+            --text-secondary: rgba(255, 255, 255, 0.75); /* Slightly brighter */
+            --accent: #00bfff; /* Deep Sky Blue */
+            --accent-hover: #87cefa; /* Light Sky Blue */
+            --error-color: #ff6b6b; /* Soft Red */
+            --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+            --control-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+             /* Added a subtle body background */
+                        padding: 10px; /* Add padding for small screens */
+        }
+
+        .bc-generator-container {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            border-radius: 12px; /* Slightly larger radius */
+            padding: 25px;
+            width: 100%;
+            max-width: 1250px; /* Slightly wider */
+            margin: 10px auto; /* Adjusted margin */
+            box-shadow: var(--control-shadow);
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+        }
+
+        .bc-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .bc-header h2 {
+            font-size: 2rem; /* Slightly larger */
+            margin-bottom: 10px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .bc-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .bc-main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Increased gap */
+        }
+
+        @media (min-width: 992px) { /* Adjusted breakpoint */
+            .bc-main {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        .bc-controls {
+            flex: 1;
+            background-color: var(--secondary-bg);
+            border-radius: 10px; /* Increased radius */
+            padding: 20px; /* Increased padding */
+            box-shadow: var(--control-shadow);
+        }
+
+        .bc-preview {
+            flex: 1.2; /* Give slightly more space to preview */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px; /* Add some top padding */
+        }
+
+        .bc-form-group {
+            margin-bottom: 18px; /* Increased margin */
+        }
+
+        .bc-form-group label {
+            display: block;
+            margin-bottom: 8px; /* Increased margin */
+            font-size: 0.95rem; /* Slightly larger */
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .bc-input, .bc-color-picker, .bc-range, #bc-logo {
+            width: 100%;
+            padding: 12px; /* Increased padding */
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px; /* Increased radius */
+            color: var(--text-primary);
+            font-size: 1rem; /* Increased font size */
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        #bc-logo { /* Style file input consistently */
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        #bc-logo::file-selector-button { /* Style the button inside file input */
+           background-color: var(--accent);
+           color: white;
+           border: none;
+           padding: 5px 10px;
+           border-radius: 4px;
+           cursor: pointer;
+           margin-right: 10px;
+           transition: background-color 0.2s ease;
+        }
+        #bc-logo::file-selector-button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .bc-color-picker {
+            height: 45px; /* Increased height */
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .bc-range {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .bc-input:focus, .bc-color-picker:focus, .bc-range:focus {
+            outline: none;
+            border-color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .bc-color-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Increased gap */
+            margin-top: 12px; /* Increased margin */
+        }
+
+        .bc-color-option {
+            width: 32px; /* Slightly larger */
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            border: 3px solid transparent; /* Thicker border */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .bc-color-option:hover {
+            transform: scale(1.15); /* Increased hover scale */
+        }
+
+        .bc-color-option.active {
+            border-color: var(--accent);
+            transform: scale(1.15);
+        }
+
+        .bc-card-preview-wrapper {
+             /* Add a wrapper for perspective */
+             perspective: 1000px;
+             margin-bottom: 25px; /* Increased margin */
+             width: 100%;
+             max-width: 350px; /* Standard business card aspect ratio approx */
+             aspect-ratio: 1.75 / 1; /* 3.5in / 2in */
+        }
+
+        .bc-card-preview {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transform-style: preserve-3d; /* For potential future flip effects */
+        }
+        .bc-card-preview:hover {
+             transform: scale(1.03) rotateY(2deg); /* Subtle hover effect */
+             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .bc-card-front {
+            width: 100%;
+            height: 100%;
+            padding: 15px;
+            display: flex; /* Base display, layouts will override */
+            color: white; /* Default text color, can be overridden */
+            position: relative;
+            z-index: 1;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Overlay for better text readability on complex backgrounds */
+        .bc-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Slightly darker overlay */
+            z-index: -1;
+            border-radius: inherit; /* Inherit border radius */
+            transition: background-color 0.3s ease;
+        }
+        /* Adjust overlay based on text color brightness? (Advanced) */
+
+        .bc-card-logo-img {
+            /* Common logo styles - specific positioning in layout classes */
+            max-width: 80px; /* Default max-width */
+            max-height: 40px; /* Default max-height */
+            object-fit: contain; /* Ensure logo isn't distorted */
+            display: block; /* Changed from none to block */
+            opacity: 0; /* Hide by default, fade in */
+            transition: opacity 0.3s ease, max-width 0.3s ease, max-height 0.3s ease;
+        }
+         .bc-card-logo-img[src] { /* Only show when src is set */
+             opacity: 1;
+         }
+
+        .bc-card-name {
+            font-size: 1.4rem; /* Adjusted size */
+            font-weight: 600; /* Slightly bolder */
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .bc-card-title {
+            font-size: 0.9rem;
+            margin-bottom: 12px; /* Increased spacing */
+            opacity: 0.85;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .bc-card-contact {
+            font-size: 0.8rem;
+            line-height: 1.6; /* Increased line height */
+            opacity: 0.9;
+        }
+         .bc-card-contact > div { /* Add spacing between contact lines */
+             margin-bottom: 3px;
+         }
+         .bc-card-contact > div:last-child {
+             margin-bottom: 0;
+         }
+
+        .bc-card-contact a {
+            color: inherit;
+            text-decoration: none; /* Remove underline by default */
+            transition: opacity 0.2s ease;
+        }
+         .bc-card-contact a:hover {
+             opacity: 0.8;
+             text-decoration: underline; /* Underline on hover */
+         }
+
+        
+
+        .bc-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px; /* Increased gap */
+            margin-top: 25px; /* Increased margin */
+            justify-content: center;
+            width: 100%;
+            max-width: 500px; /* Limit button container width */
+        }
+
+        .bc-button {
+            padding: 12px 18px; /* Increased padding */
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px; /* Increased radius */
+            cursor: pointer;
+            font-size: 0.95rem; /* Slightly larger font */
+            font-weight: 500;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Increased gap */
+            flex-grow: 1; /* Allow buttons to grow */
+            justify-content: center;
+            text-align: center;
+        }
+
+        .bc-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px); /* Add subtle lift */
+        }
+        .bc-button:active {
+            transform: translateY(0px); /* Press down effect */
+        }
+
+        .bc-button-icon {
+            width: 20px; /* Slightly larger icon */
+            height: 20px;
+        }
+
+        .bc-layouts {
+            display: flex;
+            gap: 12px; /* Increased gap */
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .bc-layout {
+            width: 65px; /* Increased size */
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px; /* Slightly larger radius */
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent; /* Thicker border */
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .bc-layout:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .bc-layout.active {
+            border-color: var(--accent);
+        }
+
+        /* Layout Preview Styles */
+        .bc-layout div { /* Common style for internal elements */
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 2px;
+        }
+        .bc-layout .logo-placeholder { background-color: rgba(var(--accent), 0.6); }
+        .bc-layout .text-placeholder { background-color: rgba(255, 255, 255, 0.3); }
+
+        /* Horizontal Layout Preview */
+        .bc-horizontal-layout .logo-placeholder { left: 8px; top: 10px; width: 15px; height: 20px; }
+        .bc-horizontal-layout .text-placeholder { right: 8px; top: 14px; width: 28px; height: 12px; }
+
+        /* Vertical Layout Preview */
+        .bc-vertical-layout .logo-placeholder { left: 25px; top: 5px; width: 15px; height: 10px; }
+        .bc-vertical-layout .text-placeholder { left: 15px; bottom: 5px; width: 35px; height: 15px; }
+
+        /* Modern Layout Preview */
+        .bc-modern-layout .sidebar-placeholder { left: 0px; top: 0; width: 20px; height: 100%; background-color: rgba(255, 255, 255, 0.2); border-radius: 0; }
+        .bc-modern-layout .logo-placeholder { left: 4px; top: 4px; width: 12px; height: 12px; }
+        .bc-modern-layout .text-placeholder { right: 5px; top: 10px; width: 30px; height: 20px; }
+
+        /* Classic Layout Preview */
+        .bc-classic-layout .logo-placeholder { left: 50%; transform: translateX(-50%); top: 5px; width: 15px; height: 10px; }
+        .bc-classic-layout .text-placeholder { left: 10px; bottom: 5px; width: 45px; height: 15px; }
+
+        /* Minimal Layout Preview */
+        .bc-minimal-layout .text-placeholder { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 40px; height: 15px; }
+
+
+        .bc-error {
+            color: var(--error-color);
+            font-size: 0.85rem; /* Slightly larger */
+            margin-top: 6px; /* Increased margin */
+            display: none; /* Hidden by default */
+            font-weight: 500;
+        }
+
+        .bc-loading {
+            display: none; /* Hidden by default */
+            margin: 25px auto; /* Increased margin */
+            width: 45px; /* Increased size */
+            height: 45px;
+            border: 4px solid rgba(255, 255, 255, 0.3); /* Thicker border */
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991px) { /* Matches main flex direction change */
+             .bc-preview { flex: 1; } /* Reset flex basis */
+        }
+        @media (max-width: 767px) {
+            .bc-header h2 { font-size: 1.6rem; }
+            .bc-header p { font-size: 0.9rem; }
+            .bc-generator-container { padding: 15px; }
+            .bc-controls { padding: 15px; }
+            .bc-buttons { flex-direction: column; width: 100%; max-width: none; }
+            .bc-button { width: 100%; }
+            .bc-card-preview-wrapper { max-width: 300px; } /* Adjust size */
+            .bc-card-name { font-size: 1.2rem; }
+            .bc-card-title { font-size: 0.8rem; }
+            .bc-card-contact { font-size: 0.75rem; }
+        }
+
+
+        /* --- Layout Specific Card Styles --- */
+
+        /* Base Structure (common elements) */
+        .bc-card-front .bc-card-logo-container,
+        .bc-card-front .bc-card-info,
+        .bc-card-front .bc-card-details { /* General containers */
+           display: flex;
+           flex-direction: column;
+        }
+
+        /* Horizontal Layout */
+        .bc-card-horizontal .bc-card-front {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px; /* More padding for horizontal */
+        }
+        .bc-card-horizontal .bc-card-logo-container {
+            flex-shrink: 0; /* Prevent logo container from shrinking */
+            margin-right: 15px;
+        }
+        .bc-card-horizontal .bc-card-logo-img { max-height: 50px; max-width: 90px; }
+        .bc-card-horizontal .bc-card-info {
+            text-align: right;
+            align-items: flex-end; /* Align text to the right */
+        }
+
+        /* Vertical Layout */
+        .bc-card-vertical .bc-card-front {
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            text-align: center;
+            padding: 15px;
+        }
+        .bc-card-vertical .bc-card-logo-container { margin-bottom: 10px; }
+        .bc-card-vertical .bc-card-logo-img { max-height: 45px; max-width: 85px; }
+        .bc-card-vertical .bc-card-info { width: 100%; } /* Allow info to take full width */
+
+        /* Modern Layout */
+        .bc-card-modern .bc-card-front {
+            padding: 0; /* Remove padding for full bleed */
+            flex-direction: row; /* Side-by-side */
+        }
+        .bc-card-modern .bc-card-sidebar {
+            width: 35%; /* Sidebar width */
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle sidebar background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+         .bc-card-modern .bc-card-logo-img { max-height: 60px; max-width: 100px; }
+        .bc-card-modern .bc-card-content {
+            width: 65%; /* Content width */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            padding: 15px 20px;
+            box-sizing: border-box;
+            position: relative; /* For watermark positioning */
+        }
+        .bc-card-modern .bc-card-name { font-size: 1.3rem; }
+        .bc-card-modern .bc-watermark { /* Reposition watermark */
+            bottom: 10px;
+            right: 20px;
+        }
+
+        /* Classic Layout */
+        .bc-card-classic .bc-card-front {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .bc-card-classic .bc-card-logo-container {
+             margin-bottom: 15px; /* Space below logo */
+        }
+        .bc-card-classic .bc-card-logo-img { max-height: 50px; max-width: 90px; }
+        .bc-card-classic .bc-card-info { width: 100%; }
+        .bc-card-classic .bc-card-name { font-size: 1.5rem; }
+        .bc-card-classic .bc-card-title { font-size: 1rem; margin-bottom: 15px; }
+
+        /* Minimal Layout */
+        .bc-card-minimal .bc-card-front {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .bc-card-minimal .bc-card-logo-container { display: none; } /* Hide logo section */
+        .bc-card-minimal .bc-card-info { width: 100%; }
+        .bc-card-minimal .bc-card-name { font-size: 1.6rem; margin-bottom: 8px; }
+        .bc-card-minimal .bc-card-title { font-size: 0.9rem; margin-bottom: 15px; }
+        .bc-card-minimal .bc-card-contact { font-size: 0.85rem; }
+        .bc-card-minimal .bc-card-front::before { background-color: rgba(0,0,0, 0.1); } /* Lighter overlay for minimal */
+
+
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Productivity & Management</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Business Card Generator Pro</h1>
+      <p>Free interactive Business Card Generator Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bc-generator-container">
+        <div class="bc-header">
+            <h2>Business Card Generator Pro</h2>
+            <p>Design and download your professional business card instantly</p>
+        </div>
+
+        <div class="bc-main">
+            <div class="bc-controls">
+                <div class="bc-form-group">
+                    <label for="bc-name">Full Name</label>
+                    <input type="text" id="bc-name" class="bc-input" placeholder="e.g., Sivanandan N" maxlength="30">
+                    <div class="bc-error" id="bc-name-error">Please enter your full name</div>
+                </div>
+
+                <div class="bc-form-group">
+                    <label for="bc-title">Job Title / Position</label>
+                    <input type="text" id="bc-title" class="bc-input" placeholder="e.g., Creative Director" maxlength="35">
+                </div>
+
+                <div class="bc-form-group">
+                    <label for="bc-company">Company Name (Optional)</label>
+                    <input type="text" id="bc-company" class="bc-input" placeholder="e.g., Business Marketing" maxlength="30">
+                </div>
+
+                <div class="bc-form-group">
+                    <label for="bc-email">Email Address</label>
+                    <input type="email" id="bc-email" class="bc-input" placeholder="e.g., sivanandan@shaynly.com" maxlength="40">
+                </div>
+
+                <div class="bc-form-group">
+                    <label for="bc-phone">Phone Number</label>
+                    <input type="tel" id="bc-phone" class="bc-input" placeholder="e.g., +1 234 567 890" maxlength="25">
+                </div>
+
+                <div class="bc-form-group">
+                    <label for="bc-website">Website (Optional)</label>
+                    <input type="text" id="bc-website" class="bc-input" placeholder="e.g., www.shaynly.com" maxlength="40">
+                </div>
+
+                <div class="bc-form-group">
+                    <label for="bc-logo">Upload Logo (Optional, < 1MB)</label>
+                    <input type="file" id="bc-logo" accept="image/png, image/jpeg, image/svg+xml">
+                </div>
+
+                <div class="bc-form-group">
+                    <label for="bc-logo-size">Logo Size (<span id="bc-logo-size-value">40</span>px)</label>
+                    <input type="range" id="bc-logo-size" class="bc-range" min="20" max="100" value="40">
+                </div>
+
+                <div class="bc-form-group">
+                    <label for="bc-bg-color">Background Color / Gradient</label>
+                    <input type="color" id="bc-bg-color" class="bc-color-picker" value="#000000"> <!-- Default to black for picker -->
+                    <div class="bc-color-options">
+                        <!-- Existing Palettes -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #1e3c72, #2a5298);" data-gradient="linear-gradient(135deg, #1e3c72, #2a5298)"></div>
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #4e54c8, #8f94fb);" data-gradient="linear-gradient(135deg, #4e54c8, #8f94fb)"></div>
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #2C3E50, #4CA1AF);" data-gradient="linear-gradient(135deg, #2C3E50, #4CA1AF)"></div>
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #734b6d, #42275a);" data-gradient="linear-gradient(135deg, #734b6d, #42275a)"></div>
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #333333, #dd1818);" data-gradient="linear-gradient(135deg, #333333, #dd1818)"></div>
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #11998e, #38ef7d);" data-gradient="linear-gradient(135deg, #11998e, #38ef7d)"></div>
+                        <div class="bc-color-option active" style="background: linear-gradient(135deg, #0F2027, #203A43, #2C5364);" data-gradient="linear-gradient(135deg, #0F2027, #203A43, #2C5364)"></div>
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #603813, #b29f94);" data-gradient="linear-gradient(135deg, #603813, #b29f94)"></div>
+                        <!-- Premium Palettes -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #141e30, #243b55);" data-gradient="linear-gradient(135deg, #141e30, #243b55)"></div> <!-- Deep Blue -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #3a6186, #89253e);" data-gradient="linear-gradient(135deg, #3a6186, #89253e)"></div> <!-- Faded Crimson -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #000000, #434343);" data-gradient="linear-gradient(135deg, #000000, #434343)"></div> <!-- Classic Black -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #DAA520, #8B4513);" data-gradient="linear-gradient(135deg, #DAA520, #8B4513)"></div> <!-- Gold & Brown -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #232526, #414345);" data-gradient="linear-gradient(135deg, #232526, #414345)"></div> <!-- Charcoal -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #4b6cb7, #182848);" data-gradient="linear-gradient(135deg, #4b6cb7, #182848)"></div> <!-- Royal Blue -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #525252, #3d72b4);" data-gradient="linear-gradient(135deg, #525252, #3d72b4)"></div> <!-- Steel Blue -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #cc2b5e, #753a88);" data-gradient="linear-gradient(135deg, #cc2b5e, #753a88)"></div> <!-- Purple/Pink -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #1f4037, #99f2c8);" data-gradient="linear-gradient(135deg, #1f4037, #99f2c8)"></div> <!-- Forest Green -->
+                        <div class="bc-color-option" style="background: linear-gradient(135deg, #ff5f6d, #ffc371);" data-gradient="linear-gradient(135deg, #ff5f6d, #ffc371)"></div> <!-- Coral/Orange -->
+                        <div class="bc-color-option" style="background: #ffffff;" data-gradient="#ffffff"></div> <!-- Plain White -->
+                        <div class="bc-color-option" style="background: #f5f5f5;" data-gradient="#f5f5f5"></div> <!-- Light Gray -->
+                    </div>
+                </div>
+
+                <div class="bc-form-group">
+                    <label for="bc-text-color">Text Color</label>
+                    <input type="color" id="bc-text-color" class="bc-color-picker" value="#ffffff">
+                </div>
+
+                <div class="bc-form-group">
+                    <label>Card Layout</label>
+                    <div class="bc-layouts">
+                        <div class="bc-layout bc-horizontal-layout active" data-layout="horizontal" title="Horizontal">
+                            <div class="logo-placeholder"></div><div class="text-placeholder"></div>
+                        </div>
+                        <div class="bc-layout bc-vertical-layout" data-layout="vertical" title="Vertical">
+                             <div class="logo-placeholder"></div><div class="text-placeholder"></div>
+                        </div>
+                        <div class="bc-layout bc-modern-layout" data-layout="modern" title="Modern">
+                             <div class="sidebar-placeholder"></div><div class="logo-placeholder"></div><div class="text-placeholder"></div>
+                        </div>
+                        <div class="bc-layout bc-classic-layout" data-layout="classic" title="Classic Centered">
+                             <div class="logo-placeholder"></div><div class="text-placeholder"></div>
+                        </div>
+                        <div class="bc-layout bc-minimal-layout" data-layout="minimal" title="Minimalist">
+                             <div class="text-placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bc-preview">
+                 <div class="bc-card-preview-wrapper">
+                    <div class="bc-card-preview bc-card-horizontal" id="cardPreviewContainer">
+                        <!-- Card Front will be dynamically generated here by JS -->
+                        <div class="bc-card-front" id="cardFront" style="background: linear-gradient(135deg, #0F2027, #203A43, #2C5364);">
+                           <!-- Initial Structure (will be replaced) -->
+                        </div>
+                    </div>
+                 </div>
+
+                <div class="bc-loading" id="bc-loading"></div>
+
+                <div class="bc-buttons">
+                    <button class="bc-button" id="bc-download-png">
+                        <svg class="bc-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download PNG
+                    </button>
+                    <button class="bc-button" id="bc-download-jpg">
+                        <svg class="bc-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download JPG
+                    </button>
+                    <button class="bc-button" id="bc-download-pdf">
+                        <svg class="bc-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Download PDF
+                    </button>
+                    <button class="bc-button" id="bc-share">
+                        <svg class="bc-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                        Share Tool
+                    </button>
+                    <button class="bc-button" id="bc-reset">
+                        <svg class="bc-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                        Reset All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dependencies -->
+    
+    
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if jsPDF is loaded
+            if (typeof window.jspdf === 'undefined') {
+                console.error('jsPDF library not loaded. PDF functionality will be disabled.');
+                // Optionally disable the PDF button
+                const pdfButton = document.getElementById('bc-download-pdf');
+                if (pdfButton) {
+                    pdfButton.disabled = true;
+                    pdfButton.style.opacity = 0.5;
+                    pdfButton.title = "PDF library failed to load";
+                }
+                //return; // Or continue without PDF functionality
+            }
+             const { jsPDF } = window.jspdf || {}; // Safely destructure
+
+             // --- Element Cache ---
+            const elements = {
+                nameInput: document.getElementById('bc-name'),
+                titleInput: document.getElementById('bc-title'),
+                companyInput: document.getElementById('bc-company'),
+                emailInput: document.getElementById('bc-email'),
+                phoneInput: document.getElementById('bc-phone'),
+                websiteInput: document.getElementById('bc-website'),
+                logoInput: document.getElementById('bc-logo'),
+                logoSizeInput: document.getElementById('bc-logo-size'),
+                logoSizeValue: document.getElementById('bc-logo-size-value'),
+                bgColorPicker: document.getElementById('bc-bg-color'),
+                textColorPicker: document.getElementById('bc-text-color'),
+                colorOptionsContainer: document.querySelector('.bc-color-options'),
+                layoutOptionsContainer: document.querySelector('.bc-layouts'),
+                cardPreviewContainer: document.getElementById('cardPreviewContainer'),
+                cardFront: document.getElementById('cardFront'), // The dynamically changing front face
+                downloadPngBtn: document.getElementById('bc-download-png'),
+                downloadJpgBtn: document.getElementById('bc-download-jpg'),
+                downloadPdfBtn: document.getElementById('bc-download-pdf'),
+                shareBtn: document.getElementById('bc-share'),
+                resetBtn: document.getElementById('bc-reset'),
+                loading: document.getElementById('bc-loading'),
+                nameError: document.getElementById('bc-name-error')
+            };
+
+            let logoSrc = ''; // Variable to store the base64 logo data
+            let currentLayout = 'horizontal'; // Track the current layout
+
+            // --- Placeholder Text (for comparison, not display) ---
+            // We won't display placeholders directly on the card, just check against empty values.
+
+            // --- Core Update Function ---
+            function updatePreview() {
+                // Get current values, providing empty string as default
+                const name = elements.nameInput.value.trim();
+                const title = elements.titleInput.value.trim();
+                const company = elements.companyInput.value.trim();
+                const email = elements.emailInput.value.trim();
+                const phone = elements.phoneInput.value.trim();
+                const website = elements.websiteInput.value.trim();
+                const textColor = elements.textColorPicker.value;
+                const logoSize = elements.logoSizeInput.value + 'px';
+
+                 // Find elements within the *current* card structure
+                const cardNameEl = elements.cardFront.querySelector('.bc-card-name');
+                const cardTitleEl = elements.cardFront.querySelector('.bc-card-title');
+                const cardEmailEl = elements.cardFront.querySelector('.bc-card-email');
+                const cardPhoneEl = elements.cardFront.querySelector('.bc-card-phone');
+                const cardWebsiteEl = elements.cardFront.querySelector('.bc-card-website');
+                const logoImgEl = elements.cardFront.querySelector('.bc-card-logo-img');
+                const watermarkEl = elements.cardFront.querySelector('.bc-watermark');
+
+                // Update Text Content
+                if (cardNameEl) cardNameEl.textContent = name;
+                if (cardTitleEl) {
+                    let titleText = title;
+                    if (title && company) {
+                        titleText += ` at ${company}`;
+                    } else if (company) {
+                        titleText = company;
+                    }
+                    cardTitleEl.textContent = titleText;
+                    cardTitleEl.style.display = titleText ? 'block' : 'none';
+                }
+                if (cardEmailEl) {
+                    cardEmailEl.textContent = email;
+                    cardEmailEl.style.display = email ? 'block' : 'none';
+                    if (email) cardEmailEl.innerHTML = `<a href="mailto:${email}">${email}</a>`; // Add mailto link
+                }
+                 if (cardPhoneEl) {
+                     cardPhoneEl.textContent = phone;
+                     cardPhoneEl.style.display = phone ? 'block' : 'none';
+                     if (phone) cardPhoneEl.innerHTML = `<a href="tel:${phone.replace(/\s+/g, '')}">${phone}</a>`; // Add tel link
+                 }
+                if (cardWebsiteEl) {
+                    cardWebsiteEl.textContent = website;
+                    cardWebsiteEl.style.display = website ? 'block' : 'none';
+                    if (website) {
+                         const url = website.startsWith('http') ? website : `https://${website}`;
+                         cardWebsiteEl.innerHTML = `<a href="${url}" target="_blank" rel="noopener noreferrer">${website}</a>`;
+                    }
+                }
+
+                // Update Logo
+                if (logoImgEl) {
+                    if (logoSrc) {
+                        logoImgEl.src = logoSrc;
+                        logoImgEl.style.maxWidth = logoSize;
+                        logoImgEl.style.maxHeight = logoSize;
+                         logoImgEl.style.removeProperty('display'); // Remove explicit display none
+                    } else {
+                        logoImgEl.src = ''; // Clear src if no logo
+                         logoImgEl.style.display = 'none'; // Hide if no src
+                    }
+                }
+
+                 // Update Text Color (apply to all relevant elements within the card front)
+                elements.cardFront.style.color = textColor;
+                elements.cardFront.querySelectorAll('a').forEach(a => a.style.color = 'inherit'); // Ensure links inherit color
+
+                // Update Watermark Color (if it exists in the current layout)
+                if(watermarkEl) {
+                    watermarkEl.style.color = textColor;
+                }
+            }
+
+
+            // --- Layout Application Function ---
+            function applyLayout(layout) {
+                currentLayout = layout;
+                elements.cardPreviewContainer.className = `bc-card-preview bc-card-${layout}`; // Update container class
+
+                // Build HTML structure for the selected layout
+                let frontHtml = '';
+                switch (layout) {
+                    case 'horizontal':
+                        frontHtml = `
+                            <div class="bc-card-logo-container"><img class="bc-card-logo-img" alt="Logo"></div>
+                            <div class="bc-card-info">
+                                <div class="bc-card-name"></div>
+                                <div class="bc-card-title"></div>
+                                <div class="bc-card-contact">
+                                    <div class="bc-card-email"></div>
+                                    <div class="bc-card-phone"></div>
+                                    <div class="bc-card-website"></div>
+                                </div>
+                            </div>
+                            `;
+                        break;
+                    case 'vertical':
+                        frontHtml = `
+                            <div class="bc-card-logo-container"><img class="bc-card-logo-img" alt="Logo"></div>
+                            <div class="bc-card-info">
+                                <div class="bc-card-name"></div>
+                                <div class="bc-card-title"></div>
+                                <div class="bc-card-contact">
+                                    <div class="bc-card-email"></div>
+                                    <div class="bc-card-phone"></div>
+                                    <div class="bc-card-website"></div>
+                                </div>
+                            </div>
+                            `;
+                        break;
+                    case 'modern':
+                        frontHtml = `
+                            <div class="bc-card-sidebar">
+                                <img class="bc-card-logo-img" alt="Logo">
+                            </div>
+                            <div class="bc-card-content">
+                                <div class="bc-card-name"></div>
+                                <div class="bc-card-title"></div>
+                                <div class="bc-card-contact">
+                                    <div class="bc-card-email"></div>
+                                    <div class="bc-card-phone"></div>
+                                    <div class="bc-card-website"></div>
+                                </div>
+                               `;
+                        break;
+                    case 'classic':
+                        frontHtml = `
+                            <div class="bc-card-logo-container"><img class="bc-card-logo-img" alt="Logo"></div>
+                            <div class="bc-card-info">
+                                <div class="bc-card-name"></div>
+                                <div class="bc-card-title"></div>
+                                <div class="bc-card-contact">
+                                    <div class="bc-card-email"></div>
+                                    <div class="bc-card-phone"></div>
+                                    <div class="bc-card-website"></div>
+                                </div>
+                            </div>
+                           `;
+                        break;
+                    case 'minimal':
+                         frontHtml = `
+                            <div class="bc-card-info">
+                                <div class="bc-card-name"></div>
+                                <div class="bc-card-title"></div>
+                                <div class="bc-card-contact">
+                                    <div class="bc-card-email"></div>
+                                    <div class="bc-card-phone"></div>
+                                    <div class="bc-card-website"></div>
+                                </div>
+                            </div>
+                            `;
+                        break;
+                    default: // Fallback to horizontal
+                         console.warn(`Unknown layout: ${layout}. Falling back to horizontal.`);
+                         applyLayout('horizontal'); // Recursive call with default
+                         return; // Prevent updatePreview call for this invalid state
+                }
+
+                elements.cardFront.innerHTML = frontHtml; // Set the new structure
+                updatePreview(); // Update content based on the new structure
+            }
+
+            // --- Event Listeners ---
+
+            // Inputs that trigger preview update
+            [elements.nameInput, elements.titleInput, elements.companyInput, elements.emailInput, elements.phoneInput, elements.websiteInput, elements.textColorPicker].forEach(input => {
+                input.addEventListener('input', updatePreview);
+            });
+
+            // Background Color Picker
+            elements.bgColorPicker.addEventListener('input', () => {
+                 // Deselect any active gradient preset
+                const activeOption = elements.colorOptionsContainer.querySelector('.bc-color-option.active');
+                if (activeOption) activeOption.classList.remove('active');
+                // Apply solid color
+                elements.cardFront.style.background = elements.bgColorPicker.value;
+                // No need to call updatePreview() just for background
+            });
+
+            // Logo Size Slider
+            elements.logoSizeInput.addEventListener('input', () => {
+                elements.logoSizeValue.textContent = elements.logoSizeInput.value; // Update label
+                updatePreview(); // Re-run update to apply size change
+            });
+
+            // Logo File Input
+            elements.logoInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                     // Basic size check (e.g., 1MB)
+                     if (file.size > 1 * 1024 * 1024) {
+                         alert('Logo file is too large (max 1MB). Please choose a smaller file.');
+                         elements.logoInput.value = ''; // Clear the input
+                         logoSrc = '';
+                         updatePreview();
+                         return;
+                     }
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        logoSrc = e.target.result;
+                        updatePreview();
+                    };
+                     reader.onerror = function() {
+                         alert('Error reading the logo file.');
+                         logoSrc = '';
+                         updatePreview();
+                     }
+                    reader.readAsDataURL(file);
+                } else {
+                    logoSrc = '';
+                    updatePreview();
+                }
+            });
+
+            // Color Palette Options (Event Delegation)
+            elements.colorOptionsContainer.addEventListener('click', function(event) {
+                const target = event.target.closest('.bc-color-option'); // Find the clicked color option
+                if (!target) return; // Exit if click wasn't on a color option
+
+                // Remove active class from previously selected option
+                const currentActive = this.querySelector('.bc-color-option.active');
+                if (currentActive) {
+                    currentActive.classList.remove('active');
+                }
+
+                // Add active class to the clicked option
+                target.classList.add('active');
+
+                // Apply the background (gradient or solid color)
+                const gradient = target.getAttribute('data-gradient');
+                elements.cardFront.style.background = gradient;
+                // Reset the color picker to a neutral value if needed, or sync it (more complex)
+                // elements.bgColorPicker.value = '#000000'; // Example reset
+            });
+
+            // Layout Options (Event Delegation)
+            elements.layoutOptionsContainer.addEventListener('click', function(event) {
+                const target = event.target.closest('.bc-layout'); // Find the clicked layout option
+                if (!target) return; // Exit if click wasn't on a layout option
+
+                const newLayout = target.getAttribute('data-layout');
+                if (newLayout === currentLayout) return; // Do nothing if already active
+
+                 // Remove active class from previously selected option
+                const currentActive = this.querySelector('.bc-layout.active');
+                if (currentActive) {
+                    currentActive.classList.remove('active');
+                }
+
+                // Add active class to the clicked option
+                target.classList.add('active');
+
+                // Apply the new layout
+                applyLayout(newLayout);
+            });
+
+
+            // --- Download and Action Buttons ---
+
+            function showLoading() { elements.loading.style.display = 'block'; }
+            function hideLoading() { elements.loading.style.display = 'none'; }
+            function validateInput() {
+                 if (!elements.nameInput.value.trim()) {
+                    elements.nameError.style.display = 'block';
+                    elements.nameInput.focus();
+                    return false;
+                }
+                elements.nameError.style.display = 'none';
+                return true;
+            }
+
+            async function generateCanvas() {
+                // Temporarily remove hover effects for capture
+                 const originalTransform = elements.cardPreviewContainer.style.transform;
+                 const originalShadow = elements.cardPreviewContainer.style.boxShadow;
+                 elements.cardPreviewContainer.style.transform = 'none';
+                 elements.cardPreviewContainer.style.boxShadow = 'var(--card-shadow)'; // Keep base shadow
+
+                 // Ensure fonts and images are loaded - delay might be needed
+                 // A small delay can sometimes help ensure rendering is complete
+                 await new Promise(resolve => setTimeout(resolve, 150));
+
+                try {
+                     const canvas = await html2canvas(elements.cardPreviewContainer, {
+                         backgroundColor: null, // Use transparent background
+                         scale: 3, // Increase scale for higher resolution
+                         useCORS: true, // Important if logo is from external source (though unlikely here)
+                         logging: false // Disable console logs from html2canvas
+                     });
+                     return canvas;
+                } finally {
+                     // Restore original styles
+                     elements.cardPreviewContainer.style.transform = originalTransform;
+                     elements.cardPreviewContainer.style.boxShadow = originalShadow;
+                }
+            }
+
+
+            async function downloadImage(format = 'png') {
+                if (!validateInput()) return;
+                showLoading();
+
+                try {
+                    const canvas = await generateCanvas();
+                    const imageURL = format === 'png'
+                        ? canvas.toDataURL('image/png')
+                        : canvas.toDataURL('image/jpeg', 0.92); // Quality setting for JPG
+
+                    const downloadLink = document.createElement('a');
+                    const filename = `${elements.nameInput.value.trim().replace(/\s+/g, '-') || 'business'}-card-${currentLayout}.${format}`;
+                    downloadLink.href = imageURL;
+                    downloadLink.download = filename.toLowerCase();
+                    document.body.appendChild(downloadLink); // Required for Firefox
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink); // Clean up
+                } catch (error) {
+                    console.error(`Error generating ${format.toUpperCase()}:`, error);
+                    alert(`Error generating ${format.toUpperCase()}. Check console for details.`);
+                } finally {
+                    hideLoading();
+                }
+            }
+
+            async function downloadPDF() {
+                 if (!jsPDF) {
+                     alert('PDF generation library (jsPDF) failed to load. Cannot download PDF.');
+                     return;
+                 }
+                if (!validateInput()) return;
+                showLoading();
+
+                try {
+                    const canvas = await generateCanvas();
+                     const imgData = canvas.toDataURL('image/png'); // Use PNG for PDF embedding
+
+                    // Calculate PDF dimensions based on canvas (standard business card size ratio ~ 3.5 x 2 inches)
+                    // Let's use pixels from the scaled canvas directly for better quality pdf.
+                    const pdfWidth = canvas.width / 3; // Use original scale for dimensions
+                    const pdfHeight = canvas.height / 3;
+
+                     // Determine orientation based on dimensions
+                     const orientation = pdfWidth > pdfHeight ? 'landscape' : 'portrait';
+
+                    const pdf = new jsPDF({
+                        orientation: orientation,
+                        unit: 'px',
+                        format: [pdfWidth, pdfHeight] // Use exact dimensions
+                    });
+
+                    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+                    // Note: Adding PDF links accurately across dynamic layouts is complex.
+                    // This version focuses on generating the visual PDF correctly.
+
+                    const filename = `${elements.nameInput.value.trim().replace(/\s+/g, '-') || 'business'}-card-${currentLayout}.pdf`;
+                    pdf.save(filename.toLowerCase());
+
+                } catch (error) {
+                    console.error('Error generating PDF:', error);
+                    alert('Error generating PDF. Check console for details.');
+                } finally {
+                    hideLoading();
+                }
+            }
+
+            elements.downloadPngBtn.addEventListener('click', () => downloadImage('png'));
+            elements.downloadJpgBtn.addEventListener('click', () => downloadImage('jpg'));
+            elements.downloadPdfBtn.addEventListener('click', downloadPDF);
+
+            // Share Button (Shares the tool URL)
+            elements.shareBtn.addEventListener('click', function() {
+                const shareText = `Create your own professional business card with this cool online generator!`;
+                // Try to get the current page URL, fallback to a placeholder
+                const shareUrl = window.location.href || 'https://your-tool-domain.com/business-card-generator'; // *** Replace with your actual URL ***
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}"e=${encodeURIComponent(shareText)}`;
+                const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+
+                // Simple alert for now, or open a modal/popup
+                 alert(`Share this tool:\nTwitter: ${twitterUrl}\nFacebook: ${facebookUrl}\nLinkedIn: ${linkedinUrl}`);
+                 // Example of opening Twitter in a new tab:
+                 // window.open(twitterUrl, '_blank');
+            });
+
+            // Reset Button
+            elements.resetBtn.addEventListener('click', function() {
+                // Clear input fields
+                elements.nameInput.value = '';
+                elements.titleInput.value = '';
+                elements.companyInput.value = '';
+                elements.emailInput.value = '';
+                elements.phoneInput.value = '';
+                elements.websiteInput.value = '';
+                elements.logoInput.value = ''; // Clear file input
+
+                // Reset internal state
+                logoSrc = '';
+
+                // Reset sliders and pickers to defaults
+                elements.logoSizeInput.value = '40';
+                elements.logoSizeValue.textContent = '40';
+                elements.textColorPicker.value = '#ffffff'; // Default text color
+
+                 // Reset Color Palette selection (select the default one - 7th in this case)
+                 const defaultColorIndex = 6; // Index of the default dark blue gradient
+                 elements.colorOptionsContainer.querySelectorAll('.bc-color-option').forEach((option, index) => {
+                     option.classList.toggle('active', index === defaultColorIndex);
+                     if (index === defaultColorIndex) {
+                         elements.cardFront.style.background = option.getAttribute('data-gradient');
+                         // Sync color picker approximately (optional)
+                         // elements.bgColorPicker.value = '#1a2a3a'; // Approximate color
+                     }
+                 });
+
+
+                // Reset Layout selection (select the default one - horizontal)
+                 const defaultLayoutIndex = 0; // Index of horizontal layout
+                 elements.layoutOptionsContainer.querySelectorAll('.bc-layout').forEach((option, index) => {
+                      option.classList.toggle('active', index === defaultLayoutIndex);
+                 });
+                 // Apply the default layout structure and update preview
+                 applyLayout('horizontal');
+
+
+                // Hide errors
+                elements.nameError.style.display = 'none';
+
+                 // Optional: Scroll to top
+                 // window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // --- Initial Setup ---
+            applyLayout(currentLayout); // Apply the initial default layout ('horizontal')
+            // Set initial background from the default active color option
+            const initialActiveColor = elements.colorOptionsContainer.querySelector('.bc-color-option.active');
+             if (initialActiveColor) {
+                 elements.cardFront.style.background = initialActiveColor.getAttribute('data-gradient');
+             }
+
+        });
+    </script>
+</body>
+</html>

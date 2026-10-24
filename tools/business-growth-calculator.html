@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Growth Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Estimate your business growth potential with our advanced calculator. Consider market size, competition, and investment to plan your future success.">
+  <link rel="canonical" href="https://shaynly.com/tools/business-growth-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/business-growth-calculator.html">
+  <meta property="og:title" content="Business Growth Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Estimate your business growth potential with our advanced calculator. Consider market size, competition, and investment to plan your future success.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Business Growth Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Estimate your business growth potential with our advanced calculator. Consider market size, competition, and investment to plan your future success.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    h1 {
+        color: #2c3e50;
+        text-align: center;
+    }
+    .calculator {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #2980b9;
+    }
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+    }
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: help;
+    }
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+</style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Business Growth Calculator</h1>
+      <p>Estimate your business growth potential with our advanced calculator. Consider market size, competition, and investment to plan your future success.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <h1>Business Growth Calculator</h1>
+    <div class="calculator">
+        <label for="marketSize">Total Market Size ($)
+            <span class="tooltip">ⓘ
+                <span class="tooltiptext">The total addressable market for your product or service</span>
+            </span>
+        </label>
+        <input type="number" id="marketSize" min="0" step="1000">
+
+        <label for="marketShare">Current Market Share (%)
+            <span class="tooltip">ⓘ
+                <span class="tooltiptext">Your current percentage of the total market</span>
+            </span>
+        </label>
+        <input type="number" id="marketShare" min="0" max="100" step="0.1">
+
+        <label for="competitionLevel">Competition Level (1-10)
+            <span class="tooltip">ⓘ
+                <span class="tooltiptext">1 = Low competition, 10 = High competition</span>
+            </span>
+        </label>
+        <input type="number" id="competitionLevel" min="1" max="10" step="1">
+
+        <label for="investmentAmount">Planned Investment ($)
+            <span class="tooltip">ⓘ
+                <span class="tooltiptext">The amount you plan to invest in growth initiatives</span>
+            </span>
+        </label>
+        <input type="number" id="investmentAmount" min="0" step="1000">
+
+        <label for="growthRate">Industry Growth Rate (%)
+            <span class="tooltip">ⓘ
+                <span class="tooltiptext">The expected annual growth rate of your industry</span>
+            </span>
+        </label>
+        <input type="number" id="growthRate" min="-100" max="100" step="0.1">
+
+        <button onclick="calculateGrowth()">Calculate Growth Potential</button>
+
+        <div id="result"></div>
+    </div>
+
+    
+    <canvas id="growthChart" width="400" height="200"></canvas>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+        let growthChart;
+
+        function calculateGrowth() {
+            const marketSize = parseFloat(document.getElementById('marketSize').value);
+            const marketShare = parseFloat(document.getElementById('marketShare').value) / 100;
+            const competitionLevel = parseFloat(document.getElementById('competitionLevel').value);
+            const investmentAmount = parseFloat(document.getElementById('investmentAmount').value);
+            const growthRate = parseFloat(document.getElementById('growthRate').value) / 100;
+
+            if (isNaN(marketSize) || isNaN(marketShare) || isNaN(competitionLevel) || isNaN(investmentAmount) || isNaN(growthRate)) {
+                alert('Please fill in all fields with valid numbers.');
+                return;
+            }
+
+            const currentRevenue = marketSize * marketShare;
+            const competitionFactor = 1 - (competitionLevel / 10);
+            const investmentFactor = Math.log(investmentAmount + 1) / 10;
+            
+            const growthPotential = (currentRevenue * (1 + growthRate) * (1 + investmentFactor) * competitionFactor) - currentRevenue;
+            
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `Estimated Growth Potential: $${growthPotential.toFixed(2)}`;
+
+            updateChart(currentRevenue, growthPotential);
+        }
+
+        function updateChart(currentRevenue, growthPotential) {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            
+            if (growthChart) {
+                growthChart.destroy();
+            }
+
+            growthChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Current Revenue', 'Potential Revenue'],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [currentRevenue, currentRevenue + growthPotential],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(75, 192, 192, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(75, 192, 192, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Revenue ($)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

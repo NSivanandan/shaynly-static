@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Grid Planner - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Instagram Grid Planner for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/instagram-grid-planner.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/instagram-grid-planner.html">
+  <meta property="og:title" content="Instagram Grid Planner - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Instagram Grid Planner for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Instagram Grid Planner - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Instagram Grid Planner for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+        
+        #planner {
+            display: grid;
+            grid-template-columns: repeat(3, 120px);
+            grid-template-rows: repeat(3, 120px);
+            gap: 8px;
+            margin: 20px auto;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .placeholder {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            background: #fafafa;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .placeholder:hover {
+            border-color: #0095f6;
+            background: #f0f8ff;
+        }
+        
+        .placeholder input[type="file"] {
+            display: none;
+        }
+        
+        .placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        
+        .placeholder-text {
+            pointer-events: none;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .color-warning {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(255, 59, 48, 0.9);
+            color: white;
+            padding: 2px 6px;
+            font-size: 10px;
+            border-radius: 10px;
+            display: none;
+            z-index: 10;
+        }
+        
+        .remove-btn {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            display: none;
+            z-index: 10;
+        }
+        
+        .placeholder:hover .remove-btn {
+            display: block;
+        }
+        
+        #exportBtn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 25px;
+            border: none;
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+            color: white;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+        
+        #exportBtn:hover {
+            transform: translateY(-2px);
+        }
+        
+        #exportBtn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .instructions {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Marketing & SEO</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Instagram Grid Planner</h1>
+      <p>Free interactive Instagram Grid Planner for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container">
+        <h1>📸 Instagram Grid Planner</h1>
+        <div class="instructions">
+            Click on each square to upload an image. The tool will warn you about color clashing between adjacent images.
+        </div>
+        
+        <div id="planner"></div>
+        
+        <button id="exportBtn">Export Grid as PNG</button>
+    </div>
+
+    
+    
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.4.2/chroma.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<script>
+        const planner = document.getElementById('planner');
+        const exportBtn = document.getElementById('exportBtn');
+        
+        // Create 9 placeholders for 3x3 grid
+        for(let i = 0; i < 9; i++) {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'placeholder';
+            placeholder.dataset.index = i;
+            placeholder.innerHTML = `
+                <input type="file" accept="image/*"/>
+                <div class="placeholder-text">Click to<br>add image</div>
+                <button class="remove-btn">×</button>
+                <span class="color-warning">⚠️ Color clash!</span>
+            `;
+            planner.appendChild(placeholder);
+        }
+
+        // Add event listeners to placeholders
+        planner.querySelectorAll('.placeholder').forEach(placeholder => {
+            const fileInput = placeholder.querySelector('input[type="file"]');
+            const removeBtn = placeholder.querySelector('.remove-btn');
+            const placeholderText = placeholder.querySelector('.placeholder-text');
+            
+            // Click to select file
+            placeholder.addEventListener('click', (e) => {
+                if (e.target !== removeBtn) {
+                    fileInput.click();
+                }
+            });
+
+            // Handle file selection
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        let img = placeholder.querySelector('img');
+                        if (!img) {
+                            img = document.createElement('img');
+                            placeholder.appendChild(img);
+                        }
+                        img.src = e.target.result;
+                        placeholderText.style.display = 'none';
+                        
+                        // Check for color clashing after image loads
+                        img.onload = () => {
+                            setTimeout(checkColorClash, 100);
+                        };
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Remove image
+            removeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const img = placeholder.querySelector('img');
+                if (img) {
+                    img.remove();
+                    placeholderText.style.display = 'block';
+                    fileInput.value = '';
+                    checkColorClash();
+                }
+            });
+        });
+
+        function getDominantColor(img) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            
+            ctx.drawImage(img, 0, 0);
+            
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            
+            let r = 0, g = 0, b = 0;
+            const pixelCount = data.length / 4;
+            
+            for (let i = 0; i < data.length; i += 4) {
+                r += data[i];
+                g += data[i + 1];
+                b += data[i + 2];
+            }
+            
+            return [
+                Math.round(r / pixelCount),
+                Math.round(g / pixelCount),
+                Math.round(b / pixelCount)
+            ];
+        }
+
+        function checkColorClash() {
+            const placeholders = Array.from(document.querySelectorAll('.placeholder'));
+            
+            // Reset all warnings
+            placeholders.forEach(p => {
+                p.querySelector('.color-warning').style.display = 'none';
+            });
+
+            placeholders.forEach((placeholder, index) => {
+                const img = placeholder.querySelector('img');
+                if (!img) return;
+
+                try {
+                    const currentColor = chroma(getDominantColor(img));
+                    const warning = placeholder.querySelector('.color-warning');
+                    
+                    // Check adjacent cells (up, down, left, right)
+                    const adjacentIndices = [];
+                    const row = Math.floor(index / 3);
+                    const col = index % 3;
+                    
+                    // Up
+                    if (row > 0) adjacentIndices.push(index - 3);
+                    // Down
+                    if (row < 2) adjacentIndices.push(index + 3);
+                    // Left
+                    if (col > 0) adjacentIndices.push(index - 1);
+                    // Right
+                    if (col < 2) adjacentIndices.push(index + 1);
+                    
+                    let hasClash = false;
+                    adjacentIndices.forEach(adjIndex => {
+                        const adjPlaceholder = placeholders[adjIndex];
+                        const adjImg = adjPlaceholder?.querySelector('img');
+                        
+                        if (adjImg) {
+                            try {
+                                const adjColor = chroma(getDominantColor(adjImg));
+                                const distance = chroma.distance(currentColor, adjColor);
+                                
+                                // If colors are too similar (distance < threshold), it's a clash
+                                if (distance < 50) {
+                                    hasClash = true;
+                                }
+                            } catch (e) {
+                                console.warn('Error comparing colors:', e);
+                            }
+                        }
+                    });
+                    
+                    if (hasClash) {
+                        warning.style.display = 'block';
+                    }
+                } catch (e) {
+                    console.warn('Error checking color clash:', e);
+                }
+            });
+        }
+
+        // Export functionality
+        exportBtn.addEventListener('click', () => {
+            exportBtn.disabled = true;
+            exportBtn.textContent = 'Exporting...';
+            
+            // Hide remove buttons and warnings for export
+            const removeButtons = document.querySelectorAll('.remove-btn');
+            const warnings = document.querySelectorAll('.color-warning');
+            
+            removeButtons.forEach(btn => btn.style.display = 'none');
+            warnings.forEach(warn => warn.style.display = 'none');
+            
+            htmlToImage.toPng(planner, {
+                quality: 1.0,
+                pixelRatio: 2
+            })
+            .then(dataUrl => {
+                const link = document.createElement('a');
+                link.download = `instagram-grid-${Date.now()}.png`;
+                link.href = dataUrl;
+                link.click();
+            })
+            .catch(error => {
+                console.error('Export failed:', error);
+                alert('Export failed. Please try again.');
+            })
+            .finally(() => {
+                exportBtn.disabled = false;
+                exportBtn.textContent = 'Export Grid as PNG';
+                
+                // Restore button visibility
+                setTimeout(() => {
+                    removeButtons.forEach(btn => btn.style.display = '');
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

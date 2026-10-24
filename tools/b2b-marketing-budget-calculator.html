@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B Marketing Budget Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Estimate your B2B marketing budget as a percentage of revenue based on annual revenue, industry, growth stage, marketing goals, competition, sales cycle length, and selected channels.">
+  <link rel="canonical" href="https://shaynly.com/tools/b2b-marketing-budget-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/b2b-marketing-budget-calculator.html">
+  <meta property="og:title" content="B2B Marketing Budget Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Estimate your B2B marketing budget as a percentage of revenue based on annual revenue, industry, growth stage, marketing goals, competition, sales cycle length, and selected channels.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="B2B Marketing Budget Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Estimate your B2B marketing budget as a percentage of revenue based on annual revenue, industry, growth stage, marketing goals, competition, sales cycle length, and selected channels.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for range input thumbs */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2563EB; /* Blue-600 */
+            cursor: pointer;
+            border: 3px solid #BFDBFE; /* Blue-200 */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s ease-in-out;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #1D4ED8; /* Blue-700 */
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2563EB; /* Blue-600 */
+            cursor: pointer;
+            border: 3px solid #BFDBFE; /* Blue-200 */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s ease-in-out;
+        }
+        input[type="range"]::-moz-range-thumb:hover {
+            background: #1D4ED8; /* Blue-700 */
+        }
+
+        /* Tooltip styling */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #334155; /* Slate-700 */
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 10px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #334155 transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Marketing & SEO</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>B2B Marketing Budget Calculator</h1>
+      <p>Estimate your B2B marketing budget as a percentage of revenue based on annual revenue, industry, growth stage, marketing goals, competition, sales cycle length, and selected channels.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="calculator-container bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl w-full max-w-4xl border border-gray-200 transform hover:shadow-3xl transition-all duration-300 ease-in-out">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-center text-blue-800 mb-8 pb-4 border-b-2 border-blue-100">
+            B2B Marketing Budget Calculator
+        </h1>
+        
+        <div class="currency-switch mb-6 text-center">
+            <label for="countrySelect" class="block text-gray-700 text-sm font-medium mb-2">Select Currency:</label>
+            <select id="countrySelect" class="w-full sm:w-auto px-5 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="IN">India (INR)</option>
+                <option value="US">United States (USD)</option>
+                <option value="UK">United Kingdom (GBP)</option>
+                <option value="CA">Canada (CAD)</option>
+                <option value="AU">Australia (AUD)</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="annualRevenue" class="block text-gray-700 text-sm font-medium mb-3">
+                Annual Revenue: <span id="annualRevenueValue" class="font-semibold text-blue-600">₹1 Crore</span>
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Your company's approximate annual revenue. This is the base for calculating the marketing budget percentage.</span>
+                </span>
+            </label>
+            <input type="range" id="annualRevenue" min="0" max="4" value="0" class="w-full h-2 bg-blue-100 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <div class="flex justify-between text-xs text-gray-500 mt-2 px-1">
+                <span>< 1 Cr</span>
+                <span>1-5 Cr</span>
+                <span>5-25 Cr</span>
+                <span>25-100 Cr</span>
+                <span>> 100 Cr</span>
+            </div>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="industry" class="block text-gray-700 text-sm font-medium mb-3">
+                Industry:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Different B2B industries have varying typical marketing spend percentages based on market dynamics and sales cycles.</span>
+                </span>
+            </label>
+            <select id="industry" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="saas">SaaS / Software</option>
+                <option value="manufacturing">Manufacturing / Industrials</option>
+                <option value="professional_services">Professional Services (Consulting, Legal, Accounting)</option>
+                <option value="healthcare_tech">Healthcare Technology</option>
+                <option value="financial_services">Financial Services</option>
+                <option value="logistics">Logistics / Supply Chain</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="growthStage" class="block text-gray-700 text-sm font-medium mb-3">
+                Company Growth Stage:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Early-stage companies often invest a higher percentage of revenue into marketing for rapid growth and market penetration.</span>
+                </span>
+            </label>
+            <select id="growthStage" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="startup_growth">Startup / High Growth</option>
+                <option value="established">Established / Stable Growth</option>
+                <option value="mature">Mature / Market Leader</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="marketingGoal" class="block text-gray-700 text-sm font-medium mb-3">
+                Primary Marketing Goal:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Different B2B goals require varied marketing strategies and budget allocations. Lead generation and direct sales often demand higher investment.</span>
+                </span>
+            </label>
+            <select id="marketingGoal" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="lead_generation">Lead Generation</option>
+                <option value="brand_building">Brand Building & Awareness</option>
+                <option value="customer_retention">Customer Retention & Upselling</option>
+                <option value="market_expansion">Market Expansion / New Product Launch</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="competitionLevel" class="block text-gray-700 text-sm font-medium mb-3">
+                Market Competition Level: <span id="competitionLevelValue" class="font-semibold text-blue-600">Medium</span>
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Estimate the level of competition in your B2B market. Higher competition often requires more aggressive and sustained marketing efforts.</span>
+                </span>
+            </label>
+            <input type="range" id="competitionLevel" min="0" max="2" value="1" class="w-full h-2 bg-blue-100 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <div class="flex justify-between text-xs text-gray-500 mt-2 px-1">
+                <span>Low</span>
+                <span>Medium</span>
+                <span>High</span>
+            </div>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="salesCycle" class="block text-gray-700 text-sm font-medium mb-3">
+                Sales Cycle Length:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Longer B2B sales cycles typically require more extensive nurturing, content, and touchpoints, impacting marketing investment.</span>
+                </span>
+            </label>
+            <select id="salesCycle" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="short">Short (Weeks)</option>
+                <option value="medium">Medium (1-3 Months)</option>
+                <option value="long">Long (3+ Months)</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label class="block text-gray-700 text-sm font-medium mb-4">
+                Select Key Marketing Channels:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Choose the primary digital marketing channels you plan to utilize. Each channel contributes to the overall budget.</span>
+                </span>
+            </label>
+            <div class="services-container grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="service-item bg-blue-50 p-4 rounded-lg border border-blue-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="content_marketing" checked class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Content Marketing</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Blogs, whitepapers, case studies, and other thought leadership content.</p>
+                </div>
+                <div class="service-item bg-blue-50 p-4 rounded-lg border border-blue-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="seo" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Search Engine Optimization (SEO)</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Improving organic search rankings and website visibility for B2B keywords.</p>
+                </div>
+                <div class="service-item bg-blue-50 p-4 rounded-lg border border-blue-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="ppc" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Paid Per Click (PPC) Advertising</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Google Ads, Bing Ads, and LinkedIn Ads for lead generation and brand visibility.</p>
+                </div>
+                <div class="service-item bg-blue-50 p-4 rounded-lg border border-blue-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="abm" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Account-Based Marketing (ABM)</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Highly targeted campaigns for specific high-value accounts.</p>
+                </div>
+                <div class="service-item bg-blue-50 p-4 rounded-lg border border-blue-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="email_marketing" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Email Marketing</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Nurturing campaigns, newsletters, and personalized outreach.</p>
+                </div>
+                <div class="service-item bg-blue-50 p-4 rounded-lg border border-blue-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="crm_automation" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">CRM & Marketing Automation</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Setup and management of platforms like HubSpot, Salesforce Marketing Cloud.</p>
+                </div>
+                <div class="service-item bg-blue-50 p-4 rounded-lg border border-blue-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="webinars_events" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Webinars & Virtual Events</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Planning, promotion, and execution of online events for lead generation and thought leadership.</p>
+                </div>
+                <div class="service-item bg-blue-50 p-4 rounded-lg border border-blue-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="sales_enablement" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Sales Enablement Content</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Creating materials (decks, battlecards) to support sales conversations.</p>
+                </div>
+                <div class="service-item bg-blue-100 p-4 rounded-lg border border-blue-300 col-span-full">
+                    <label class="flex items-center cursor-pointer font-bold text-blue-800">
+                        <input type="checkbox" id="all" class="form-checkbox h-5 w-5 text-blue-700 rounded focus:ring-blue-500 cursor-pointer">
+                        <span class="ml-3">Select All Core Channels</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group mb-6">
+            <label class="block text-gray-700 text-sm font-medium mb-3">
+                Custom Budget Adjustments:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Add any additional fixed costs or desired percentage adjustments not covered by the above factors.</span>
+                </span>
+            </label>
+            <div id="customAdjustmentsContainer" class="space-y-3 mb-4">
+                </div>
+            <button id="addCustomAdjustment" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-4 rounded-lg transition duration-200 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                Add Custom Adjustment
+            </button>
+        </div>
+
+        <div class="result-container bg-blue-50 p-6 rounded-xl text-center mt-8 border border-blue-200 shadow-lg relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 opacity-50 z-0"></div>
+            <div class="relative z-10">
+                <div class="text-xl text-gray-700 font-medium mb-2">Estimated Annual Marketing Budget:</div>
+                <div class="price-display text-6xl font-extrabold text-blue-700 mb-2 animate-pulse-once" id="budgetDisplay">₹0</div>
+                <div class="text-2xl font-bold text-blue-600 mb-4" id="percentageDisplay">0% of Revenue</div>
+                
+                <h3 class="text-lg font-bold text-gray-800 mb-3 border-b border-gray-200 pb-2">Understanding Your Estimate:</h3>
+                <div id="breakdown" class="text-gray-700 text-sm text-left mx-auto max-w-lg space-y-2 leading-relaxed">
+                    </div>
+
+                <div class="mt-6 p-4 bg-white rounded-lg shadow-inner border border-gray-100 text-left text-sm text-gray-600">
+                    <p class="font-semibold text-gray-800 mb-2">Important Considerations for B2B Budgets:</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>This calculator provides an *estimated percentage* based on industry benchmarks and common B2B factors.</li>
+                        <li>Actual budget allocation should align with your specific business objectives, competitive landscape, and sales targets.</li>
+                        <li>B2B marketing is an investment in long-term relationship building and pipeline generation.</li>
+                        <li>Consider A/B testing and continuous optimization to maximize your marketing ROI.</li>
+                    </ul>
+                </div>
+
+                <div class="mt-6">
+                    <p class="text-md text-gray-700 mb-3">Ready to build a strategic B2B marketing plan?</p>
+                    <a href="https://wa.me/919894446685" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Get a Custom Strategy
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <button id="resetButton" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-6 rounded-lg transition duration-200 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+                Reset Calculator
+            </button>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": "B2B Marketing Budget Percentage of Revenue Calculator",
+      "description": "A tool to estimate the ideal B2B marketing budget as a percentage of your annual revenue, considering industry, growth stage, marketing goals, and chosen channels.",
+      "url": "YOUR_CALCULATOR_URL_HERE",
+      "mainEntity": {
+        "@type": "Calculator",
+        "name": "B2B Marketing Budget Percentage of Revenue Calculator",
+        "description": "Calculates an estimated B2B marketing budget as a percentage of annual revenue, providing insights into factors influencing marketing investment.",
+        "potentialAction": {
+          "@type": "CalculateAction",
+          "name": "Calculate B2B Marketing Budget",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "YOUR_CALCULATOR_URL_HERE"
+          }
+        },
+        "about": {
+          "@type": "Service",
+          "name": "B2B Marketing Strategy",
+          "description": "Strategic B2B marketing services focusing on lead generation, brand building, customer retention, and market expansion across various digital channels.",
+          "serviceType": "B2B Marketing",
+          "provider": {
+            "@type": "Organization",
+            "name": "Your B2B Marketing Agency Name"
+            // Add more provider details if available, e.g., "url", "logo"
+          }
+        }
+      }
+    }
+    </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        // Define base percentages and adjustments for different countries and factors
+        const prices = {
+            IN: {
+                basePercentage: 7, // Starting point for percentage of revenue
+                currencySymbol: '₹',
+                currencyCode: 'INR',
+                revenueRanges: [
+                    { label: "< ₹1 Crore", min: 0, max: 10000000, multiplier: 1.5 }, // Higher percentage for smaller revenues
+                    { label: "₹1-5 Crore", min: 10000001, max: 50000000, multiplier: 1.0 },
+                    { label: "₹5-25 Crore", min: 50000001, max: 250000000, multiplier: 0.8 },
+                    { label: "₹25-100 Crore", min: 250000001, max: 1000000000, multiplier: 0.7 },
+                    { label: "> ₹100 Crore", min: 1000000001, max: Infinity, multiplier: 0.6 } // Lower percentage for larger revenues
+                ],
+                industryAdjustments: { // Percentage points added/subtracted from basePercentage
+                    saas: 3, // SaaS often has higher marketing spend for growth
+                    manufacturing: -2,
+                    professional_services: 0,
+                    healthcare_tech: 1.5,
+                    financial_services: -1,
+                    logistics: -0.5
+                },
+                growthStageAdjustments: {
+                    startup_growth: 5, // Startups invest heavily in market penetration
+                    established: 0,
+                    mature: -2 // Mature companies focus on efficiency and retention
+                },
+                marketingGoalAdjustments: {
+                    lead_generation: 2.5, // High investment for direct lead gen
+                    brand_building: 1,
+                    customer_retention: -1, // Less new acquisition spend
+                    market_expansion: 2
+                },
+                competitionAdjustments: {
+                    low: -1,
+                    medium: 0,
+                    high: 2 // More spend needed to compete
+                },
+                salesCycleAdjustments: {
+                    short: -0.5,
+                    medium: 0,
+                    long: 1.5 // Longer cycles need more nurturing content/ABM
+                },
+                channelContributions: { // Percentage points added for each selected channel
+                    content_marketing: 1.5,
+                    seo: 1.2,
+                    ppc: 2.0,
+                    abm: 2.5,
+                    email_marketing: 0.8,
+                    crm_automation: 1.0,
+                    webinars_events: 1.3,
+                    sales_enablement: 1.0
+                },
+                channelDescriptions: {
+                    content_marketing: "Creating valuable content (blogs, whitepapers, case studies) to attract and nurture B2B leads.",
+                    seo: "Optimizing your website for organic search visibility to attract qualified B2B traffic.",
+                    ppc: "Managing paid advertising campaigns on search engines (Google Ads, Bing Ads) and professional networks (LinkedIn Ads) for lead generation.",
+                    abm: "Developing highly targeted campaigns to engage specific high-value accounts.",
+                    email_marketing: "Building and executing email nurturing sequences for B2B lead conversion and customer retention.",
+                    crm_automation: "Implementing and optimizing CRM and marketing automation platforms for efficient lead management and personalized communication.",
+                    webinars_events: "Planning and executing online webinars or industry events to generate leads and build thought leadership.",
+                    sales_enablement: "Creating tools, content, and training to empower sales teams and accelerate the sales cycle."
+                },
+                revenueDisplayRanges: [
+                    "₹1 Crore", "₹1-5 Crore", "₹5-25 Crore", "₹25-100 Crore", "₹100 Crore+"
+                ]
+            },
+            US: {
+                basePercentage: 8,
+                currencySymbol: '$',
+                currencyCode: 'USD',
+                revenueRanges: [
+                    { label: "< $1M", min: 0, max: 1000000, multiplier: 1.8 },
+                    { label: "$1M-5M", min: 1000001, max: 5000000, multiplier: 1.2 },
+                    { label: "$5M-25M", min: 5000001, max: 25000000, multiplier: 1.0 },
+                    { label: "$25M-100M", min: 25000001, max: 100000000, multiplier: 0.9 },
+                    { label: "> $100M", min: 100000001, max: Infinity, multiplier: 0.7 }
+                ],
+                industryAdjustments: {
+                    saas: 4,
+                    manufacturing: -1.5,
+                    professional_services: 0.5,
+                    healthcare_tech: 2,
+                    financial_services: -0.5,
+                    logistics: 0
+                },
+                growthStageAdjustments: {
+                    startup_growth: 6,
+                    established: 0.5,
+                    mature: -2.5
+                },
+                marketingGoalAdjustments: {
+                    lead_generation: 3,
+                    brand_building: 1.5,
+                    customer_retention: -0.5,
+                    market_expansion: 2.5
+                },
+                competitionAdjustments: {
+                    low: -1.5,
+                    medium: 0,
+                    high: 2.5
+                },
+                salesCycleAdjustments: {
+                    short: -0.8,
+                    medium: 0,
+                    long: 2
+                },
+                channelContributions: {
+                    content_marketing: 1.8,
+                    seo: 1.5,
+                    ppc: 2.5,
+                    abm: 3.0,
+                    email_marketing: 1.0,
+                    crm_automation: 1.2,
+                    webinars_events: 1.5,
+                    sales_enablement: 1.2
+                },
+                channelDescriptions: {
+                    content_marketing: "Creating valuable content (blogs, whitepapers, case studies) to attract and nurture B2B leads.",
+                    seo: "Optimizing your website for organic search visibility to attract qualified B2B traffic.",
+                    ppc: "Managing paid advertising campaigns on search engines (Google Ads, Bing Ads) and professional networks (LinkedIn Ads) for lead generation.",
+                    abm: "Developing highly targeted campaigns to engage specific high-value accounts.",
+                    email_marketing: "Building and executing email nurturing sequences for B2B lead conversion and customer retention.",
+                    crm_automation: "Implementing and optimizing CRM and marketing automation platforms for efficient lead management and personalized communication.",
+                    webinars_events: "Planning and executing online webinars or industry events to generate leads and build thought leadership.",
+                    sales_enablement: "Creating tools, content, and training to empower sales teams and accelerate the sales cycle."
+                },
+                revenueDisplayRanges: [
+                    "$1 Million", "$1-5 Million", "$5-25 Million", "$25-100 Million", "$100 Million+"
+                ]
+            },
+            UK: {
+                basePercentage: 7.5,
+                currencySymbol: '£',
+                currencyCode: 'GBP',
+                revenueRanges: [
+                    { label: "< £1M", min: 0, max: 1000000, multiplier: 1.7 },
+                    { label: "£1M-5M", min: 1000001, max: 5000000, multiplier: 1.1 },
+                    { label: "£5M-25M", min: 5000001, max: 25000000, multiplier: 0.9 },
+                    { label: "£25M-100M", min: 25000001, max: 100000000, multiplier: 0.8 },
+                    { label: "> £100M", min: 100000001, max: Infinity, multiplier: 0.65 }
+                ],
+                industryAdjustments: {
+                    saas: 3.5,
+                    manufacturing: -1.8,
+                    professional_services: 0.2,
+                    healthcare_tech: 1.8,
+                    financial_services: -0.8,
+                    logistics: -0.3
+                },
+                growthStageAdjustments: {
+                    startup_growth: 5.5,
+                    established: 0.3,
+                    mature: -2.3
+                },
+                marketingGoalAdjustments: {
+                    lead_generation: 2.8,
+                    brand_building: 1.3,
+                    customer_retention: -0.7,
+                    market_expansion: 2.3
+                },
+                competitionAdjustments: {
+                    low: -1.2,
+                    medium: 0,
+                    high: 2.2
+                },
+                salesCycleAdjustments: {
+                    short: -0.6,
+                    medium: 0,
+                    long: 1.8
+                },
+                channelContributions: {
+                    content_marketing: 1.6,
+                    seo: 1.3,
+                    ppc: 2.2,
+                    abm: 2.8,
+                    email_marketing: 0.9,
+                    crm_automation: 1.1,
+                    webinars_events: 1.4,
+                    sales_enablement: 1.1
+                },
+                channelDescriptions: {
+                    content_marketing: "Creating valuable content (blogs, whitepapers, case studies) to attract and nurture B2B leads.",
+                    seo: "Optimizing your website for organic search visibility to attract qualified B2B traffic.",
+                    ppc: "Managing paid advertising campaigns on search engines (Google Ads, Bing Ads) and professional networks (LinkedIn Ads) for lead generation.",
+                    abm: "Developing highly targeted campaigns to engage specific high-value accounts.",
+                    email_marketing: "Building and executing email nurturing sequences for B2B lead conversion and customer retention.",
+                    crm_automation: "Implementing and optimizing CRM and marketing automation platforms for efficient lead management and personalized communication.",
+                    webinars_events: "Planning and executing online webinars or industry events to generate leads and build thought leadership.",
+                    sales_enablement: "Creating tools, content, and training to empower sales teams and accelerate the sales cycle."
+                },
+                revenueDisplayRanges: [
+                    "£1 Million", "£1-5 Million", "£5-25 Million", "£25-100 Million", "£100 Million+"
+                ]
+            },
+            CA: {
+                basePercentage: 7.2,
+                currencySymbol: 'C$',
+                currencyCode: 'CAD',
+                revenueRanges: [
+                    { label: "< C$1M", min: 0, max: 1000000, multiplier: 1.6 },
+                    { label: "C$1M-5M", min: 1000001, max: 5000000, multiplier: 1.05 },
+                    { label: "C$5M-25M", min: 5000001, max: 25000000, multiplier: 0.85 },
+                    { label: "C$25M-100M", min: 25000001, max: 100000000, multiplier: 0.75 },
+                    { label: "> C$100M", min: 100000001, max: Infinity, multiplier: 0.62 }
+                ],
+                industryAdjustments: {
+                    saas: 3.2,
+                    manufacturing: -1.7,
+                    professional_services: 0.1,
+                    healthcare_tech: 1.6,
+                    financial_services: -0.7,
+                    logistics: -0.4
+                },
+                growthStageAdjustments: {
+                    startup_growth: 5.2,
+                    established: 0.2,
+                    mature: -2.1
+                },
+                marketingGoalAdjustments: {
+                    lead_generation: 2.7,
+                    brand_building: 1.2,
+                    customer_retention: -0.8,
+                    market_expansion: 2.1
+                },
+                competitionAdjustments: {
+                    low: -1.1,
+                    medium: 0,
+                    high: 2.1
+                },
+                salesCycleAdjustments: {
+                    short: -0.55,
+                    medium: 0,
+                    long: 1.6
+                },
+                channelContributions: {
+                    content_marketing: 1.55,
+                    seo: 1.25,
+                    ppc: 2.1,
+                    abm: 2.6,
+                    email_marketing: 0.85,
+                    crm_automation: 1.05,
+                    webinars_events: 1.35,
+                    sales_enablement: 1.05
+                },
+                channelDescriptions: {
+                    content_marketing: "Creating valuable content (blogs, whitepapers, case studies) to attract and nurture B2B leads.",
+                    seo: "Optimizing your website for organic search visibility to attract qualified B2B traffic.",
+                    ppc: "Managing paid advertising campaigns on search engines (Google Ads, Bing Ads) and professional networks (LinkedIn Ads) for lead generation.",
+                    abm: "Developing highly targeted campaigns to engage specific high-value accounts.",
+                    email_marketing: "Building and executing email nurturing sequences for B2B lead conversion and customer retention.",
+                    crm_automation: "Implementing and optimizing CRM and marketing automation platforms for efficient lead management and personalized communication.",
+                    webinars_events: "Planning and executing online webinars or industry events to generate leads and build thought leadership.",
+                    sales_enablement: "Creating tools, content, and training to empower sales teams and accelerate the sales cycle."
+                },
+                revenueDisplayRanges: [
+                    "C$1 Million", "C$1-5 Million", "C$5-25 Million", "C$25-100 Million", "C$100 Million+"
+                ]
+            },
+            AU: {
+                basePercentage: 7.8,
+                currencySymbol: 'A$',
+                currencyCode: 'AUD',
+                revenueRanges: [
+                    { label: "< A$1M", min: 0, max: 1000000, multiplier: 1.75 },
+                    { label: "A$1M-5M", min: 1000001, max: 5000000, multiplier: 1.15 },
+                    { label: "A$5M-25M", min: 5000001, max: 25000000, multiplier: 0.95 },
+                    { label: "A$25M-100M", min: 25000001, max: 100000000, multiplier: 0.85 },
+                    { label: "> A$100M", min: 100000001, max: Infinity, multiplier: 0.68 }
+                ],
+                industryAdjustments: {
+                    saas: 3.8,
+                    manufacturing: -1.6,
+                    professional_services: 0.3,
+                    healthcare_tech: 1.9,
+                    financial_services: -0.6,
+                    logistics: -0.2
+                },
+                growthStageAdjustments: {
+                    startup_growth: 5.8,
+                    established: 0.4,
+                    mature: -2.4
+                },
+                marketingGoalAdjustments: {
+                    lead_generation: 2.9,
+                    brand_building: 1.4,
+                    customer_retention: -0.6,
+                    market_expansion: 2.4
+                },
+                competitionAdjustments: {
+                    low: -1.3,
+                    medium: 0,
+                    high: 2.3
+                },
+                salesCycleAdjustments: {
+                    short: -0.7,
+                    medium: 0,
+                    long: 1.9
+                },
+                channelContributions: {
+                    content_marketing: 1.65,
+                    seo: 1.35,
+                    ppc: 2.3,
+                    abm: 2.9,
+                    email_marketing: 0.95,
+                    crm_automation: 1.15,
+                    webinars_events: 1.45,
+                    sales_enablement: 1.15
+                },
+                channelDescriptions: {
+                    content_marketing: "Creating valuable content (blogs, whitepapers, case studies) to attract and nurture B2B leads.",
+                    seo: "Optimizing your website for organic search visibility to attract qualified B2B traffic.",
+                    ppc: "Managing paid advertising campaigns on search engines (Google Ads, Bing Ads) and professional networks (LinkedIn Ads) for lead generation.",
+                    abm: "Developing highly targeted campaigns to engage specific high-value accounts.",
+                    email_marketing: "Building and executing email nurturing sequences for B2B lead conversion and customer retention.",
+                    crm_automation: "Implementing and optimizing CRM and marketing automation platforms for efficient lead management and personalized communication.",
+                    webinars_events: "Planning and executing online webinars or industry events to generate leads and build thought leadership.",
+                    sales_enablement: "Creating tools, content, and training to empower sales teams and accelerate the sales cycle."
+                },
+                revenueDisplayRanges: [
+                    "A$1 Million", "A$1-5 Million", "A$5-25 Million", "A$25-100 Million", "A$100 Million+"
+                ]
+            }
+        };
+
+        // Get DOM elements
+        const countrySelect = document.getElementById('countrySelect');
+        const annualRevenueInput = document.getElementById('annualRevenue');
+        const annualRevenueValueDisplay = document.getElementById('annualRevenueValue');
+        const industrySelect = document.getElementById('industry');
+        const growthStageSelect = document.getElementById('growthStage');
+        const marketingGoalSelect = document.getElementById('marketingGoal');
+        const competitionLevelInput = document.getElementById('competitionLevel');
+        const competitionLevelValueDisplay = document.getElementById('competitionLevelValue');
+        const salesCycleSelect = document.getElementById('salesCycle');
+        const channelCheckboxes = document.querySelectorAll('.services-container input[type="checkbox"]');
+        const allChannelsCheckbox = document.getElementById('all');
+        const customAdjustmentsContainer = document.getElementById('customAdjustmentsContainer');
+        const addCustomAdjustmentButton = document.getElementById('addCustomAdjustment');
+        const budgetDisplay = document.getElementById('budgetDisplay');
+        const percentageDisplay = document.getElementById('percentageDisplay');
+        const breakdownDisplay = document.getElementById('breakdown');
+        const resetButton = document.getElementById('resetButton');
+
+        let customAdjustmentCount = 0; // To keep track of custom adjustment inputs
+
+        // Function to format currency
+        function formatCurrency(amount, symbol) {
+            return `${symbol}${Math.round(amount).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+        }
+
+        // Function to calculate the estimated budget
+        function calculateBudget() {
+            const country = countrySelect.value;
+            const currentCountryPrices = prices[country];
+            const currencySymbol = currentCountryPrices.currencySymbol;
+            const currencyCode = currentCountryPrices.currencyCode;
+
+            let estimatedPercentage = currentCountryPrices.basePercentage;
+            let breakdownItems = [];
+
+            // Get selected annual revenue
+            const revenueIndex = parseInt(annualRevenueInput.value);
+            // Defensive check for selectedRevenueRange and its multiplier
+            const selectedRevenueRange = currentCountryPrices.revenueRanges[revenueIndex];
+            let actualMultiplier = 1.0; // Default multiplier
+            let actualRevenueDisplayValue = '';
+
+            if (selectedRevenueRange && typeof selectedRevenueRange.multiplier === 'number') {
+                actualMultiplier = selectedRevenueRange.multiplier;
+                actualRevenueDisplayValue = currentCountryPrices.revenueDisplayRanges[revenueIndex];
+            } else {
+                console.warn('Warning: Could not determine valid revenue range or multiplier. Using defaults.', { selectedRevenueRange, revenueIndex, country });
+                actualRevenueDisplayValue = currentCountryPrices.revenueDisplayRanges[0]; // Fallback to first range display
+            }
+            annualRevenueValueDisplay.textContent = actualRevenueDisplayValue;
+
+            // Adjust base percentage based on revenue size (smaller companies often spend higher % for growth)
+            estimatedPercentage *= actualMultiplier;
+            breakdownItems.push(`<div><strong>Base Percentage (${currentCountryPrices.basePercentage}%):</strong> <span class="text-gray-500 text-xs">- The typical starting point for B2B marketing investment.</span></div>`);
+            breakdownItems.push(`<div><strong>Revenue Scale Adjustment (${actualRevenueDisplayValue}):</strong> ${actualMultiplier.toFixed(2)}x <span class="text-gray-500 text-xs">- Smaller companies often invest a higher percentage of revenue for aggressive growth, while larger enterprises may have lower percentages due to economies of scale.</span></div>`);
+
+
+            // Industry Adjustment
+            const industry = industrySelect.value;
+            const industryAdjustment = currentCountryPrices.industryAdjustments[industry] ?? 0; // Defensive check
+            estimatedPercentage += industryAdjustment;
+            const industryName = industry.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            if (industryAdjustment !== 0) {
+                breakdownItems.push(`<div><strong>Industry Impact (${industryName}):</strong> ${industryAdjustment > 0 ? '+' : ''}${industryAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Industries like SaaS often require higher marketing investment due to competitive landscapes and rapid innovation cycles.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Industry Impact (General):</strong> ${industryAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Standard industry marketing investment.</span></div>`);
+            }
+
+            // Growth Stage Adjustment
+            const growthStage = growthStageSelect.value;
+            const growthStageAdjustment = currentCountryPrices.growthStageAdjustments[growthStage] ?? 0; // Defensive check
+            estimatedPercentage += growthStageAdjustment;
+            const stageName = growthStage.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            if (growthStageAdjustment !== 0) {
+                breakdownItems.push(`<div><strong>Growth Stage (${stageName}):</strong> ${growthStageAdjustment > 0 ? '+' : ''}${growthStageAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Startups and high-growth companies typically allocate a larger percentage to marketing for rapid market penetration and customer acquisition.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Growth Stage (${stageName}):</strong> ${growthStageAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Established companies maintain a balanced marketing investment.</span></div>`);
+            }
+
+            // Marketing Goal Adjustment
+            const marketingGoal = marketingGoalSelect.value;
+            const marketingGoalAdjustment = currentCountryPrices.marketingGoalAdjustments[marketingGoal] ?? 0; // Defensive check
+            estimatedPercentage += marketingGoalAdjustment;
+            const goalName = marketingGoal.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            if (marketingGoalAdjustment !== 0) {
+                breakdownItems.push(`<div><strong>Primary Goal (${goalName}):</strong> ${marketingGoalAdjustment > 0 ? '+' : ''}${marketingGoalAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Goals like lead generation and direct sales often require more aggressive, performance-driven campaigns and higher budgets.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Primary Goal (${goalName}):</strong> ${marketingGoalAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Standard investment for this goal.</span></div>`);
+            }
+
+            // Competition Level Adjustment
+            const competitionLevelIndex = parseInt(competitionLevelInput.value);
+            const competitionLevelText = ['Low', 'Medium', 'High'][competitionLevelIndex];
+            competitionLevelValueDisplay.textContent = competitionLevelText;
+            const competitionAdjustment = currentCountryPrices.competitionAdjustments[competitionLevelIndex] ?? 0; // Defensive check
+            estimatedPercentage += competitionAdjustment;
+            if (competitionAdjustment !== 0) {
+                breakdownItems.push(`<div><strong>Market Competition (${competitionLevelText}):</strong> ${competitionAdjustment > 0 ? '+' : ''}${competitionAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Highly competitive markets demand more significant investment to achieve visibility and market share.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Market Competition (${competitionLevelText}):</strong> ${competitionAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Standard investment for this competition level.</span></div>`);
+            }
+
+            // Sales Cycle Length Adjustment
+            const salesCycle = salesCycleSelect.value;
+            const salesCycleAdjustment = currentCountryPrices.salesCycleAdjustments[salesCycle] ?? 0; // Defensive check
+            estimatedPercentage += salesCycleAdjustment;
+            const cycleName = salesCycle.charAt(0).toUpperCase() + salesCycle.slice(1);
+            if (salesCycleAdjustment !== 0) {
+                breakdownItems.push(`<div><strong>Sales Cycle Length (${cycleName}):</strong> ${salesCycleAdjustment > 0 ? '+' : ''}${salesCycleAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Longer B2B sales cycles necessitate more prolonged nurturing, extensive content, and consistent touchpoints, increasing marketing costs.</span></div>`);
+            } else {
+                breakdownItems.push(`<div><strong>Sales Cycle Length (${cycleName}):</strong> ${salesCycleAdjustment.toFixed(1)}% <span class="text-gray-500 text-xs">- Standard investment for this sales cycle length.</span></div>`);
+            }
+
+            // Channel Contributions
+            let channelsPercentageContribution = 0;
+            let selectedChannelsDetails = [];
+            channelCheckboxes.forEach(checkbox => {
+                if (checkbox.checked && checkbox.id !== 'all') {
+                    const channelId = checkbox.id;
+                    const channelContribution = currentCountryPrices.channelContributions[channelId] ?? 0; // Defensive check
+                    if (channelContribution !== 0) { // Only add if it's a valid number
+                        channelsPercentageContribution += channelContribution;
+                        const channelDisplayName = checkbox.parentElement.textContent.trim().replace('Select All Core Channels', '');
+                        const channelDescription = currentCountryPrices.channelDescriptions[channelId] || '';
+                        selectedChannelsDetails.push({ name: channelDisplayName, contribution: channelContribution, description: channelDescription });
+                    }
+                }
+            });
+            estimatedPercentage += channelsPercentageContribution;
+            if (selectedChannelsDetails.length > 0) {
+                breakdownItems.push(`<div><strong>Selected Marketing Channels:</strong></div>`);
+                selectedChannelsDetails.forEach(channel => {
+                    breakdownItems.push(`<div class="ml-4">- ${channel.name}: +${channel.contribution.toFixed(1)}% <span class="text-gray-500 text-xs">${channel.description}</span></div>`);
+                });
+            } else {
+                breakdownItems.push(`<div><strong>Selected Marketing Channels:</strong> <span class="text-gray-500 text-xs">- No specific channels selected. Consider adding channels relevant to your marketing goals.</span></div>`);
+            }
+
+            // Custom Adjustments
+            let customPercentageAdjustments = 0;
+            let customFixedAdjustments = 0;
+            const customAdjustmentInputs = customAdjustmentsContainer.querySelectorAll('.custom-adjustment-item input[type="number"]');
+            let customAdjustmentsList = [];
+            customAdjustmentInputs.forEach(input => {
+                const customValue = parseFloat(input.value) || 0;
+                const type = input.dataset.type; // 'percentage' or 'fixed'
+                const nameInput = input.previousElementSibling;
+                const name = nameInput ? nameInput.value || 'Custom Adjustment' : 'Custom Adjustment';
+
+                if (type === 'percentage') {
+                    customPercentageAdjustments += customValue;
+                    if (customValue !== 0) {
+                        customAdjustmentsList.push(`- ${name}: ${customValue > 0 ? '+' : ''}${customValue.toFixed(1)}%`);
+                    }
+                } else if (type === 'fixed') {
+                    customFixedAdjustments += customValue;
+                    if (customValue !== 0) {
+                        customAdjustmentsList.push(`- ${name}: ${customValue > 0 ? '+' : ''}${formatCurrency(customValue, currencySymbol)}`);
+                    }
+                }
+            });
+            estimatedPercentage += customPercentageAdjustments;
+            if (customAdjustmentsList.length > 0) {
+                breakdownItems.push(`<div><strong>Custom Budget Adjustments:</strong></div>`);
+                customAdjustmentsList.forEach(item => breakdownItems.push(`<div class="ml-4">${item}</div>`));
+            }
+
+
+            // Ensure percentage is not negative
+            estimatedPercentage = Math.max(0, estimatedPercentage);
+
+            // Calculate total budget based on percentage and revenue
+            const selectedRevenueMin = selectedRevenueRange.min;
+            const selectedRevenueMax = selectedRevenueRange.max === Infinity ? selectedRevenueMin * 2 : selectedRevenueRange.max; 
+            
+            let approximateRevenueForCalc;
+            if (selectedRevenueRange.max === Infinity) {
+                approximateRevenueForCalc = selectedRevenueRange.min * 1.5; 
+            } else {
+                approximateRevenueForCalc = (selectedRevenueRange.min + selectedRevenueRange.max) / 2;
+            }
+
+            let estimatedBudget = (approximateRevenueForCalc * (estimatedPercentage / 100)) + customFixedAdjustments;
+
+
+            // Display results
+            percentageDisplay.textContent = `${estimatedPercentage.toFixed(1)}% of Revenue`;
+            budgetDisplay.textContent = formatCurrency(estimatedBudget, currencySymbol);
+            
+            // Display breakdown
+            breakdownDisplay.innerHTML = breakdownItems.join('');
+        }
+
+        // Function to add a new custom adjustment input field
+        function addCustomAdjustmentInput() {
+            customAdjustmentCount++;
+            const div = document.createElement('div');
+            div.className = 'custom-adjustment-item flex items-center space-x-2';
+            div.innerHTML = `
+                <input type="text" placeholder="Adjustment Name (e.g., 'New Market Entry')" class="flex-grow px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out text-sm">
+                <input type="number" placeholder="Value" min="0" class="w-24 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out text-sm">
+                <select data-type="percentage" class="w-24 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out text-sm">
+                    <option value="percentage">%</option>
+                    <option value="fixed">Fixed</option>
+                </select>
+                <button class="remove-custom-adjustment text-red-500 hover:text-red-700 p-1 rounded-full transition-colors duration-200" title="Remove Custom Adjustment">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 01-2 0v6a1 1 0 112 0V8z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            `;
+            customAdjustmentsContainer.appendChild(div);
+
+            // Add event listeners to the new inputs and remove button
+            div.querySelector('input[type="text"]').addEventListener('input', calculateBudget);
+            div.querySelector('input[type="number"]').addEventListener('input', calculateBudget);
+            div.querySelector('select').addEventListener('change', function() {
+                div.querySelector('input[type="number"]').dataset.type = this.value; // Update data-type
+                calculateBudget();
+            });
+            div.querySelector('.remove-custom-adjustment').addEventListener('click', function() {
+                div.remove();
+                calculateBudget();
+            });
+        }
+
+        // Function to reset all inputs to their default values
+        function resetCalculator() {
+            countrySelect.value = 'IN';
+            annualRevenueInput.value = '0';
+            industrySelect.value = 'saas';
+            growthStageSelect.value = 'startup_growth';
+            marketingGoalSelect.value = 'lead_generation';
+            competitionLevelInput.value = '1'; // Medium
+            salesCycleSelect.value = 'medium';
+
+            channelCheckboxes.forEach(checkbox => {
+                if (checkbox.id === 'content_marketing') { // Default checked channel
+                    checkbox.checked = true;
+                } else {
+                    checkbox.checked = false;
+                }
+            });
+            allChannelsCheckbox.checked = false; // Uncheck "All Channels"
+
+            customAdjustmentsContainer.innerHTML = ''; // Clear custom adjustments
+            customAdjustmentCount = 0;
+
+            calculateBudget(); // Recalculate after reset
+        }
+
+        // Event Listeners
+        countrySelect.addEventListener('change', calculateBudget);
+        annualRevenueInput.addEventListener('input', calculateBudget);
+        industrySelect.addEventListener('change', calculateBudget);
+        growthStageSelect.addEventListener('change', calculateBudget);
+        marketingGoalSelect.addEventListener('change', calculateBudget);
+        competitionLevelInput.addEventListener('input', calculateBudget);
+        salesCycleSelect.addEventListener('change', calculateBudget);
+
+        channelCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.id === 'all') {
+                    channelCheckboxes.forEach(cb => {
+                        if (cb.id !== 'all') {
+                            cb.checked = this.checked;
+                        }
+                    });
+                } else {
+                    if (!this.checked) {
+                        allChannelsCheckbox.checked = false;
+                    } else {
+                        const allOthersChecked = Array.from(channelCheckboxes).filter(cb => cb.id !== 'all').every(cb => cb.checked);
+                        if (allOthersChecked) {
+                            allChannelsCheckbox.checked = true;
+                        }
+                    }
+                }
+                calculateBudget();
+            });
+        });
+
+        addCustomAdjustmentButton.addEventListener('click', addCustomAdjustmentInput);
+        resetButton.addEventListener('click', resetCalculator);
+
+        // Initial calculation on page load
+        calculateBudget();
+    </script>
+</body>
+</html>

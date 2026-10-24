@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Patient Lifetime Value (PLV) Calculator with PDF Download - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Patient Lifetime Value (PLV) Calculator with PDF Download for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/patient-lifetime-value-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/patient-lifetime-value-calculator.html">
+  <meta property="og:title" content="Advanced Patient Lifetime Value (PLV) Calculator with PDF Download - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Patient Lifetime Value (PLV) Calculator with PDF Download for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Patient Lifetime Value (PLV) Calculator with PDF Download - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Patient Lifetime Value (PLV) Calculator with PDF Download for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        /* --- Global Styles & Premium Look (Mostly unchanged) --- */
+        :root {
+            --plv-primary-color: #3a506b; /* Dark Slate Blue */
+            --plv-secondary-color: #4dbfbf; /* Medium Aquamarine */
+            --plv-accent-color: #1abc9c; /* Turquoise */
+            --plv-background-color: #f7f9fc; /* Very Light Grey */
+            --plv-widget-bg: #ffffff;
+            --plv-text-color: #34495e; /* Wet Asphalt */
+            --plv-input-bg: #ffffff;
+            --plv-border-color: #dfe6e9; /* Light Grey */
+            --plv-shadow-color: rgba(99, 110, 114, 0.15);
+            --plv-error-color: #e74c3c; /* Alizarin Red */
+            --plv-success-color: #2ecc71; /* Emerald Green */
+            --plv-light-accent-bg: rgba(26, 188, 156, 0.08);
+            --plv-light-primary-bg: rgba(58, 80, 107, 0.1);
+            --plv-light-secondary-bg: rgba(77, 191, 191, 0.05);
+            --plv-light-secondary-border: rgba(77, 191, 191, 0.2);
+        }
+
+        /* --- Base Styles (Unchanged) --- */
+        .plv-calculator-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; background-color: var(--plv-background-color); color: var(--plv-text-color); line-height: 1.6; margin: 0; padding: 0; display: flex; justify-content: center; padding: 25px 10px; box-sizing: border-box; }
+        #plv-calculator-container * { box-sizing: border-box; }
+        #plv-calculator-container { background: var(--plv-widget-bg); padding: 25px 30px; border-radius: 12px; box-shadow: 0 8px 25px var(--plv-shadow-color); max-width: 780px; width: 100%; margin: 0 auto; transition: all 0.3s ease-in-out; border: 1px solid var(--plv-border-color); overflow: hidden; }
+        .plv-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--plv-border-color); }
+        .plv-header h1 { color: var(--plv-primary-color); font-size: clamp(1.7rem, 4vw, 2.2rem); margin-bottom: 8px; font-weight: 600; }
+        .plv-header p { color: var(--plv-text-color); font-size: clamp(0.95rem, 2.5vw, 1.1rem); opacity: 0.9; }
+        #plv-form .plv-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-bottom: 30px; }
+        .plv-form-group { display: flex; flex-direction: column; position: relative; }
+        .plv-form-group label { font-weight: 600; margin-bottom: 8px; color: var(--plv-primary-color); display: flex; align-items: center; font-size: 0.95rem; gap: 6px; }
+        .plv-info-icon { display: inline-flex; justify-content: center; align-items: center; width: 18px; height: 18px; background-color: var(--plv-secondary-color); color: white; border-radius: 50%; font-size: 11px; font-weight: bold; cursor: help; position: relative; }
+        .plv-tooltip { visibility: hidden; width: 230px; background-color: var(--plv-primary-color); color: #fff; text-align: left; border-radius: 6px; padding: 10px 12px; position: absolute; z-index: 10; bottom: 130%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease, visibility 0.3s ease; font-size: 0.85em; font-weight: normal; line-height: 1.4; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .plv-tooltip::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: var(--plv-primary-color) transparent transparent transparent; }
+        .plv-info-icon:hover .plv-tooltip, .plv-info-icon:focus .plv-tooltip { visibility: visible; opacity: 1; }
+        .plv-form-group input[type="number"] { padding: 12px 15px; border: 1px solid var(--plv-border-color); border-radius: 6px; font-size: 1rem; background-color: var(--plv-input-bg); transition: border-color 0.3s ease, box-shadow 0.3s ease; width: 100%; appearance: textfield; color: var(--plv-text-color); }
+        .plv-form-group input[type=number]::-webkit-outer-spin-button, .plv-form-group input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .plv-form-group input[type=number] { -moz-appearance: textfield; }
+        .plv-form-group input[type="number"]:focus { outline: none; border-color: var(--plv-secondary-color); box-shadow: 0 0 0 3px rgba(77, 191, 191, 0.25); }
+        .plv-input-hint { position: relative; }
+        .plv-input-hint-symbol { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #bdc3c7; pointer-events: none; font-size: 0.95em; }
+        .plv-input-hint input[type="number"] { padding-right: 35px; }
+        .plv-button-container { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
+        .plv-primary-button { display: block; width: 100%; padding: 14px 20px; background-image: linear-gradient(to right, var(--plv-secondary-color), var(--plv-accent-color)); color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease; box-shadow: 0 4px 15px rgba(26, 188, 156, 0.3); }
+        .plv-primary-button:hover { opacity: 0.9; box-shadow: 0 6px 20px rgba(26, 188, 156, 0.4); transform: translateY(-2px); }
+        .plv-primary-button:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 10px rgba(26, 188, 156, 0.3); }
+        .plv-secondary-button { display: block; width: 100%; padding: 12px 20px; background-color: var(--plv-widget-bg); color: var(--plv-primary-color); border: 1px solid var(--plv-border-color); border-radius: 8px; font-size: 1.0em; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; position: relative; overflow: hidden; }
+        .plv-secondary-button:hover { background-color: #f8f9fa; border-color: #ced4da; }
+        .plv-secondary-button:active { background-color: #e9ecef; }
+        .plv-secondary-button.plv-loading::after { content: ''; display: block; width: 18px; height: 18px; border: 2px solid rgba(58, 80, 107, 0.3); border-top-color: var(--plv-primary-color); border-radius: 50%; position: absolute; left: 20px; top: 50%; margin-top: -9px; animation: plvSpinner 0.8s linear infinite; }
+        .plv-secondary-button.plv-loading span { visibility: hidden; }
+        @keyframes plvSpinner { to { transform: rotate(360deg); } }
+        #plv-results-container { margin-top: 40px; display: none; /* Container starts hidden */ }
+        /* #plv-pdf-content is the area captured by html2canvas */
+        #plv-pdf-content { padding: 25px 30px; background-color: #fdfefe; border-radius: 8px; border: 1px solid var(--plv-border-color); animation: plvFadeIn 0.6s ease-out; }
+        #plv-pdf-content h2 { color: var(--plv-primary-color); text-align: center; margin: 0 0 25px 0; font-size: clamp(1.5rem, 3.5vw, 1.8rem); font-weight: 600; border-bottom: 1px solid var(--plv-border-color); padding-bottom: 15px; }
+        .plv-results-display { margin-bottom: 30px; }
+        .plv-result-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px dashed var(--plv-border-color); font-size: 1.05em; gap: 10px; }
+        .plv-result-item:last-of-type { border-bottom: none; }
+        .plv-result-item strong { color: var(--plv-primary-color); flex-basis: 60%; min-width: 180px; font-weight: 500; }
+        .plv-result-value { font-weight: 700; font-size: 1.15em; color: var(--plv-accent-color); background-color: var(--plv-light-accent-bg); padding: 6px 12px; border-radius: 6px; text-align: right; flex-grow: 1; min-width: 100px; }
+        .plv-total-plv-item { border-top: 2px solid var(--plv-primary-color); margin-top: 10px; padding-top: 20px; border-bottom: none; }
+        .plv-total-plv-item .plv-result-value { font-size: 1.4em; color: var(--plv-primary-color); background-color: var(--plv-light-primary-bg); }
+        .plv-insights { margin-top: 30px; padding: 25px; background-color: var(--plv-light-secondary-bg); border: 1px solid var(--plv-light-secondary-border); border-left: 4px solid var(--plv-secondary-color); border-radius: 8px; }
+        .plv-insights h3 { color: var(--plv-primary-color); margin: 0 0 20px 0; font-size: clamp(1.3rem, 3vw, 1.5rem); font-weight: 600; }
+        .plv-insights ul { list-style-type: none; padding-left: 5px; margin: 0; }
+        .plv-insights li { margin-bottom: 16px; padding-left: 30px; position: relative; color: var(--plv-text-color); font-size: 0.95rem; line-height: 1.5; }
+        .plv-insights li:last-child { margin-bottom: 0; }
+        .plv-insights li::before { content: '💡'; position: absolute; left: 0; top: 0px; font-size: 1.3em; color: var(--plv-secondary-color); }
+        .plv-insights li strong { color: var(--plv-primary-color); font-weight: 600; }
+        .plv-error-message { color: var(--plv-error-color); background-color: rgba(231, 76, 60, 0.08); border: 1px solid rgba(231, 76, 60, 0.3); padding: 12px 18px; border-radius: 6px; margin-top: 20px; text-align: center; display: none; animation: plvFadeIn 0.3s ease-in-out; font-weight: 500; }
+        #plv-download-pdf-button { display: none; }
+        .plv-promotion-link-container { /* Container for the link, appears below the captured area */
+            margin-top: 10px; /* Space between PDF content and this link in the UI */
+            padding: 10px 30px; /* Match content padding */
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--plv-text-color);
+            display: none; /* Hidden until results shown */
+        }
+         .plv-promotion-link-container a { color: var(--plv-primary-color); font-weight: 600; text-decoration: none; }
+         .plv-promotion-link-container a:hover { text-decoration: underline; }
+        @keyframes plvFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { /* ... responsive styles ... */ }
+        @media (max-width: 600px) { /* ... responsive styles ... */ }
+        /* Print specific styles can be removed if direct PDF download is the only goal */
+        /* @media print { ... } */
+
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Patient Lifetime Value (PLV) Calculator with PDF Download</h1>
+      <p>Free interactive Advanced Patient Lifetime Value (PLV) Calculator with PDF Download for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+
+    <div id="plv-calculator-container">
+        <div class="plv-header">
+            <h1>Advanced Patient Lifetime Value Calculator</h1>
+            <p>Estimate the total profit value a patient brings to your practice, including referrals.</p>
+        </div>
+
+        <form id="plv-form" novalidate>
+             <div class="plv-form-grid">
+                <!-- Input fields (no changes) -->
+                <div class="plv-form-group"><label for="plv-arpv">Average Revenue per Visit <span class="plv-info-icon" tabindex="0">? <span class="plv-tooltip">Avg. revenue per visit.</span></span></label><div class="plv-input-hint"><input type="number" id="plv-arpv" placeholder="e.g., 150" required min="0" step="0.01"><span class="plv-input-hint-symbol">$</span></div></div>
+                <div class="plv-form-group"><label for="plv-avy">Average Visits per Year <span class="plv-info-icon" tabindex="0">? <span class="plv-tooltip">Avg. visits annually.</span></span></label><input type="number" id="plv-avy" placeholder="e.g., 4" required min="0" step="0.1"></div>
+                <div class="plv-form-group"><label for="plv-apl">Avg Patient Lifespan (Years) <span class="plv-info-icon" tabindex="0">? <span class="plv-tooltip">Avg. years patient stays.</span></span></label><input type="number" id="plv-apl" placeholder="e.g., 7" required min="0" step="0.1"></div>
+                <div class="plv-form-group"><label for="plv-margin">Gross Profit Margin <span class="plv-info-icon" tabindex="0">? <span class="plv-tooltip">Profit margin before overhead (%).</span></span></label><div class="plv-input-hint"><input type="number" id="plv-margin" placeholder="e.g., 60" required min="0" max="100" step="0.1"><span class="plv-input-hint-symbol">%</span></div></div>
+                <div class="plv-form-group"><label for="plv-referrals">Avg Referrals / Patient (Lifetime) <span class="plv-info-icon" tabindex="0">? <span class="plv-tooltip">Avg. new patients referred by one patient over their lifespan.</span></span></label><input type="number" id="plv-referrals" placeholder="e.g., 0.5" required min="0" step="0.1"></div>
+                <div class="plv-form-group"><label for="plv-conversion">Referral Conversion Rate <span class="plv-info-icon" tabindex="0">? <span class="plv-tooltip">% of referrals who become paying patients.</span></span></label><div class="plv-input-hint"><input type="number" id="plv-conversion" placeholder="e.g., 50" required min="0" max="100" step="0.1"><span class="plv-input-hint-symbol">%</span></div></div>
+            </div>
+
+            <div class="plv-button-container">
+                 <button type="submit" class="plv-primary-button">Calculate PLV & Get Insights</button>
+                 <button type="button" id="plv-download-pdf-button" class="plv-secondary-button">
+                     <span>Download Results as PDF</span>
+                 </button>
+            </div>
+             <div id="plv-error-message" class="plv-error-message"></div>
+        </form>
+
+        <!-- Container for results area -->
+        <div id="plv-results-container">
+            <!-- This inner div is captured for the PDF -->
+            <div id="plv-pdf-content">
+                <h2>Calculation Results & Insights</h2>
+                <div class="plv-results-display">
+                    <div class="plv-result-item"><strong>Direct Gross Revenue PLV:</strong><span id="plv-gross-plv-result" class="plv-result-value">$0.00</span></div>
+                    <div class="plv-result-item"><strong>Direct Profit PLV (Core Value):</strong><span id="plv-profit-plv-result" class="plv-result-value">$0.00</span></div>
+                    <div class="plv-result-item"><strong>Est. Profit Value from Referrals:</strong><span id="plv-referral-value-result" class="plv-result-value">$0.00</span></div>
+                    <div class="plv-result-item plv-total-plv-item"><strong>Total Estimated Profit PLV:</strong><span id="plv-total-plv-result" class="plv-result-value">$0.00</span></div>
+                </div>
+                <div class="plv-insights">
+                    <h3>Strategic Insights & Recommendations</h3>
+                    <ul id="plv-insights-list">
+                         <li>Enter your practice data above to <a href="https://shaynly.com/accounts-receivable-aging-calculator/" target="_blank" rel="noopener"  data-wpil-monitor-id="177">calculate the PLV and receive</a> tailored insights.</li>
+                    </ul>
+                </div>
+                 <!-- NOTE: The promo link is NOT inside plv-pdf-content -->
+            </div>
+
+            <!-- Promotion link - shown in UI, added manually to PDF -->
+            <div class="plv-promotion-link-container">
+                Unlock your practice's potential. Learn more about growth <a href="https://shaynly.com/brand-protection-strategies/" target="_blank" rel="noopener"  data-wpil-monitor-id="159">strategies</a> at
+                <a href="https://shaynly.com" target="_blank" rel="noopener noreferrer" id="plv-promo-link-html">shaynly.com</a>.
+            </div>
+        </div>
+
+
+    </div> <!-- End #plv-calculator-container -->
+
+    
+
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+        (function() {
+            const { jsPDF } = window.jspdf; // Ensure jsPDF is available
+
+            const container = document.getElementById('plv-calculator-container');
+            if (!container) { console.error("PLV Calculator container not found."); return; }
+
+            const plvForm = container.querySelector('#plv-form');
+            const resultsContainer = container.querySelector('#plv-results-container'); // The outer container
+            const elementToCapture = container.querySelector('#plv-pdf-content'); // The inner content for PDF
+            const promoLinkContainer = container.querySelector('.plv-promotion-link-container'); // The link container below
+            const errorMessage = container.querySelector('#plv-error-message');
+            const downloadBtn = container.querySelector('#plv-download-pdf-button');
+            const downloadBtnText = downloadBtn.querySelector('span');
+
+            // Input & Result References (IDs must match HTML)
+            const arpvInput = container.querySelector('#plv-arpv'); const avyInput = container.querySelector('#plv-avy'); const aplInput = container.querySelector('#plv-apl'); const marginInput = container.querySelector('#plv-margin'); const referralsInput = container.querySelector('#plv-referrals'); const conversionInput = container.querySelector('#plv-conversion');
+            const grossPlvResultEl = container.querySelector('#plv-gross-plv-result'); const profitPlvResultEl = container.querySelector('#plv-profit-plv-result'); const referralValueResultEl = container.querySelector('#plv-referral-value-result'); const totalPlvResultEl = container.querySelector('#plv-total-plv-result'); const insightsListEl = container.querySelector('#plv-insights-list');
+
+            // --- Helper Functions ---
+            function formatCurrency(value) { if (isNaN(value) || !isFinite(value)) return "$0.00"; return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+            function showLoading(button, buttonTextElement) { button.disabled = true; button.classList.add('plv-loading'); if (buttonTextElement) buttonTextElement.style.visibility = 'hidden'; }
+            function hideLoading(button, buttonTextElement) { button.disabled = false; button.classList.remove('plv-loading'); if (buttonTextElement) buttonTextElement.style.visibility = 'visible'; }
+
+            // --- Input Listeners ---
+            const allInputs = container.querySelectorAll('#plv-form input[type="number"]');
+            allInputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    if (errorMessage.style.display !== 'none') { errorMessage.style.display = 'none'; errorMessage.textContent = ''; }
+                    // Hide the entire results container if inputs change
+                    if (resultsContainer.style.display !== 'none') {
+                        resultsContainer.style.display = 'none';
+                        downloadBtn.style.display = 'none';
+                        promoLinkContainer.style.display = 'none'; // Also hide the separate link container
+                    }
+                });
+            });
+
+            // --- Form Submission Logic ---
+            plvForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Reset state
+                resultsContainer.style.display = 'none'; // Hide outer container
+                errorMessage.style.display = 'none'; errorMessage.textContent = '';
+                downloadBtn.style.display = 'none';
+                promoLinkContainer.style.display = 'none';
+
+                // Validation (same as before)
+                let isValid = true; const errors = []; const arpv = parseFloat(arpvInput.value); const avy = parseFloat(avyInput.value); const apl = parseFloat(aplInput.value); const marginPercent = parseFloat(marginInput.value); const referrals = parseFloat(referralsInput.value); const conversionPercent = parseFloat(conversionInput.value);
+                if (isNaN(arpv) || arpv < 0) { errors.push("Avg Revenue"); isValid = false; } if (isNaN(avy) || avy < 0) { errors.push("Avg Visits"); isValid = false; } if (isNaN(apl) || apl < 0) { errors.push("Avg Lifespan"); isValid = false; } if (isNaN(marginPercent) || marginPercent < 0 || marginPercent > 100) { errors.push("Margin (0-100)"); isValid = false; } if (isNaN(referrals) || referrals < 0) { errors.push("Avg Referrals"); isValid = false; } if (isNaN(conversionPercent) || conversionPercent < 0 || conversionPercent > 100) { errors.push("Conversion (0-100)"); isValid = false; }
+                if (!isValid) { errorMessage.innerHTML = `Invalid inputs for: <br><strong>${errors.join(', ')}</strong>.`; errorMessage.style.display = 'block'; return; }
+
+                // Calculation (same as before)
+                const margin = marginPercent / 100; const conversionRate = conversionPercent / 100; const grossDirectPLV = arpv * avy * apl; const profitDirectPLV = grossDirectPLV * margin; const referralValue = referrals * conversionRate * profitDirectPLV; const totalPLV = profitDirectPLV + referralValue;
+
+                // Display Results (same as before)
+                grossPlvResultEl.textContent = formatCurrency(grossDirectPLV); profitPlvResultEl.textContent = formatCurrency(profitDirectPLV); referralValueResultEl.textContent = formatCurrency(referralValue); totalPlvResultEl.textContent = formatCurrency(totalPLV);
+
+                // Generate Insights (same detailed function as before)
+                generateInsights({ arpv, avy, apl, marginPercent, referrals, conversionPercent, profitDirectPLV, referralValue, totalPLV, grossDirectPLV });
+
+                // Show Results Container, Button, and Promo Link
+                resultsContainer.style.display = 'block'; // Show the outer container
+                downloadBtn.style.display = 'block';
+                promoLinkContainer.style.display = 'block'; // Show the link container in the UI
+            });
+
+            // --- PDF Download Button Listener ---
+            downloadBtn.addEventListener('click', () => {
+                if (typeof html2canvas === 'undefined' || typeof jsPDF === 'undefined') { alert('PDF generation libraries could not be loaded. Please check your internet connection and try again.'); return; }
+
+                const pdfFilename = 'Patient-PLV-Results-Insights.pdf';
+                const promoTextLine1 = "Unlock your practice's potential. Learn more about growth strategies at";
+                const promoLinkText = "shaynly.com";
+                const promoLinkUrl = "https://shaynly.com";
+
+                showLoading(downloadBtn, downloadBtnText);
+
+                // Capture only the #plv-pdf-content div
+                html2canvas(elementToCapture, { scale: 2, useCORS: true, logging: false }).then(canvas => {
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+                    const margin = 15; // Page margin in mm
+                    const contentWidth = pdfWidth - (margin * 2);
+
+                    const imgProps = pdf.getImageProperties(canvas);
+                    const imgHeight = (imgProps.height * contentWidth) / imgProps.width;
+                    let heightLeft = imgHeight;
+                    let currentYPosition = margin; // Start position for image
+
+                    // Add captured content image (with pagination)
+                    pdf.addImage(canvas, 'PNG', margin, currentYPosition, contentWidth, imgHeight);
+                    heightLeft -= (pdfHeight - (margin * 2)); // Remaining height calculation
+
+                    while (heightLeft > 0) {
+                        currentYPosition = heightLeft - imgHeight - margin; // Adjust position for next slice
+                        pdf.addPage();
+                        pdf.addImage(canvas, 'PNG', margin, currentYPosition, contentWidth, imgHeight);
+                        heightLeft -= (pdfHeight - (margin * 2));
+                    }
+
+                    // --- Add the clickable link MANUALLY ---
+                    currentYPosition = pdf.internal.pageSize.getHeight() - heightLeft - margin + 5; // Calculate Y position after the image content (+5mm buffer)
+
+                    // Check if space is enough for the link on the current page, otherwise add a new page
+                    const requiredLinkSpace = 15; // Estimated space needed for the link text (mm)
+                    if (currentYPosition + requiredLinkSpace > pdfHeight - margin) {
+                        pdf.addPage();
+                        currentYPosition = margin; // Reset Y position for the new page
+                    } else {
+                        currentYPosition += 5; // Add a bit more space if on the same page
+                         // Draw a separator line before the link
+                        pdf.setDrawColor(200, 200, 200); // Light grey line
+                        pdf.line(margin, currentYPosition - 2, pdfWidth - margin, currentYPosition - 2);
+                         currentYPosition += 5; // Space after line
+                    }
+
+
+                    // Set link text style
+                    pdf.setFontSize(9);
+                    pdf.setTextColor(52, 73, 94); // Match --plv-text-color approx
+
+                    // Add first line of text (not linked)
+                    pdf.text(promoTextLine1, pdfWidth / 2, currentYPosition, { align: 'center' });
+                    currentYPosition += 4; // Move down slightly for the link
+
+                    // Add the second line WITH the link
+                    pdf.setTextColor(58, 80, 107); // Match --plv-primary-color approx for link
+                    pdf.textWithLink(promoLinkText, pdfWidth / 2, currentYPosition, { url: promoLinkUrl, align: 'center' });
+
+                    // Save the PDF
+                    pdf.save(pdfFilename);
+                    hideLoading(downloadBtn, downloadBtnText);
+
+                }).catch(error => {
+                    console.error('Error generating PDF:', error);
+                    alert('Sorry, an error occurred while generating the PDF. Please try again.');
+                    hideLoading(downloadBtn, downloadBtnText);
+                });
+            });
+
+            // --- DETAILED Insights Generation Function (Keep the detailed one) ---
+            function generateInsights(data) {
+                insightsListEl.innerHTML = ''; // Clear previous insights
+                let insights = [];
+                const { arpv, avy, apl, marginPercent, referrals, conversionPercent, profitDirectPLV, referralValue, totalPLV, grossDirectPLV } = data;
+                // ... (Keep the extensive insights logic from the previous version) ...
+                // --- Overall Assessment ---
+                if (totalPLV <= 0) { insights.push(`The <strong>Total Estimated PLV (${formatCurrency(totalPLV)})</strong> is currently zero or negative. Review data inputs (revenue/margin) or underlying business model challenges.`); }
+                else { insights.push(`Your <strong>Total Estimated Profit PLV is ${formatCurrency(totalPLV)}</strong>. This average profit per patient informs decisions on acquisition costs, retention, and service development.`); insights.push(`Use PLV to assess marketing ROI: ensure Patient Acquisition Cost (CAC) is significantly lower than PLV for sustainable growth.`); }
+                // --- Contribution Analysis ---
+                if (totalPLV > 0) { const directProfitPercentage = ((profitDirectPLV / totalPLV) * 100).toFixed(1); const referralProfitPercentage = ((referralValue / totalPLV) * 100).toFixed(1); insights.push(`Direct services contribute <strong>${formatCurrency(profitDirectPLV)} (${directProfitPercentage}%)</strong> to total PLV, while referrals add <strong>${formatCurrency(referralValue)} (${referralProfitPercentage}%)</strong>.`); if (referralValue > profitDirectPLV && profitDirectPLV > 0) { insights.push(`<strong>Referral value exceeds direct profit!</strong> Indicates a strong referral engine. Ensure referral tracking/conversion is robust.`); } else if (referralValue > 0 && referralValue < (profitDirectPLV * 0.2)) { insights.push(`Referral contribution (${referralProfitPercentage}%) is minor compared to direct profit. Boosting referral generation (${referrals}/patient) or conversion (${conversionPercent}%) could significantly increase PLV.`); } else if (referralValue <= 0 && referrals > 0) { insights.push(`Referrals occur (${referrals}/patient), but low conversion (${conversionPercent}%) limits profit impact. Improve onboarding for referred patients.`); } else if (referralValue <= 0 && referrals <= 0) { insights.push(`No referral value calculated. A structured patient referral program could unlock a significant new value stream.`); } }
+                // --- Input-Specific Deep Dive ---
+                let arpvInsight = `With an <strong>Avg. Revenue per Visit of ${formatCurrency(arpv)}</strong>: `; if (arpv < 100) arpvInsight += `This seems low. Consider service bundling, higher-value procedures, or pricing adjustments.`; else if (arpv > 300) arpvInsight += `This is strong! Ensure consistency and explore further optimization without impacting volume/satisfaction.`; else arpvInsight += `Solid base. Evaluate targeted service offerings or efficiency improvements for incremental gains.`; insights.push(arpvInsight);
+                let avyInsight = `At <strong>${avy} Avg. Visits per Year</strong>: `; if (avy < 2.5) avyInsight += `Opportunity to improve patient engagement. Focus on recall systems, education on care needs, and relationship building.`; else if (avy > 6) avyInsight += `High patient frequency. Ensure capacity handles volume efficiently and maintains service quality.`; else avyInsight += `Healthy engagement level. Maintain effective communication and recall strategies.`; insights.push(avyInsight);
+                let aplInsight = `An <strong>Avg. Patient Lifespan of ${apl} years</strong>: `; if (apl < 4) aplInsight += `Relatively short. Prioritize retention: enhance patient experience, improve communication, loyalty programs, address churn reasons.`; else if (apl > 10) aplInsight += `Excellent loyalty! Nurture these relationships and leverage for testimonials/referrals.`; else aplInsight += `Good foundation. Continuously monitor satisfaction and proactively address issues.`; insights.push(aplInsight);
+                let marginInsight = `Your <strong>Gross Profit Margin is ${marginPercent}%</strong>: `; if (marginPercent < 40) marginInsight += `Tight margin. Analyze direct costs (supplies, labs, labor) for savings, or evaluate fee adjustments.`; else if (marginPercent > 75) marginInsight += `Very strong margin! Ensure cost controls remain effective and pricing reflects value.`; else marginInsight += `Supports healthy profitability. Regularly review costs and revenue streams.`; insights.push(marginInsight);
+                // --- Interaction Insights ---
+                if (apl < 5 && avy < 3) { insights.push(`<strong>Low Lifespan & Visits:</strong> Severely limits PLV. Dual focus on immediate engagement (visits) AND long-term retention (lifespan) is critical.`); } if (apl > 8 && arpv < 120) { insights.push(`<strong>High Lifespan, Low Revenue/Visit:</strong> Retaining patients well, but may under-monetize visits. Explore increasing value delivered/captured per appointment.`); } if (marginPercent < 50 && totalPLV > 0) { insights.push(`<strong>Margin Impact:</strong> Improving the profit margin from ${marginPercent}% would directly amplify the value of every patient interaction and referral.`); }
+                // --- Concluding Remark ---
+                insights.push(`Use this PLV as a benchmark. Track metrics over time and measure the impact of initiatives targeting revenue, visits, lifespan, margin, or referrals.`);
+                // Add insights to the list
+                insights.forEach(insightText => { const li = document.createElement('li'); li.innerHTML = insightText; insightsListEl.appendChild(li); });
+            }
+
+        })(); // End IIFE
+    </script>
+</body>
+</html>

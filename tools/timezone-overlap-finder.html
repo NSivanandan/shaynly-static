@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Timezone Overlap Finder - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Timezone Overlap Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/timezone-overlap-finder.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/timezone-overlap-finder.html">
+  <meta property="og:title" content="Advanced Timezone Overlap Finder - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Timezone Overlap Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Timezone Overlap Finder - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Timezone Overlap Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(24, 1fr);
+            height: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #d1d5db;
+        }
+        .timeline-hour {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+        }
+        .timeline-hour:hover {
+            transform: scaleY(1.1);
+        }
+        .timeline-hour:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -110%) scale(1);
+        }
+        .tooltip {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translate(-50%, -100%) scale(0.9);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            z-index: 20;
+            pointer-events: none;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .current-time-marker {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #ef4444; /* Red for current time */
+            z-index: 10;
+            border-radius: 9999px;
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+            transition: left 60s linear;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Productivity & Management</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Timezone Overlap Finder</h1>
+      <p>Free interactive Advanced Timezone Overlap Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-6xl">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2"> Timezone Overlap Finder 🌐</h1>
+        <p class="text-center text-gray-500 mb-8">Find the most productive meeting times for your global team.</p>
+
+        <!-- Configuration Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Timezone Selection -->
+            <div>
+                <label for="timezone-select" class="block text-sm font-medium text-gray-700 mb-2">Add a Location</label>
+                <div class="flex space-x-2">
+                    <select id="timezone-select" class="flex-grow px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                        <option value="" disabled selected>Select a timezone...</option>
+                    </select>
+                    <button id="add-timezone-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Add
+                    </button>
+                </div>
+            </div>
+            <!-- Workday Filter -->
+            <div class="flex items-end justify-start md:justify-end">
+                <div class="flex items-center">
+                    <input type="checkbox" id="workday-filter" class="h-5 w-5 rounded text-blue-600 border-gray-300 focus:ring-blue-500">
+                    <label for="workday-filter" class="ml-2 block text-sm font-medium text-gray-700">Filter for weekdays (Mon-Fri)</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Selected Locations and Work Hour Customization -->
+        <div id="locations-container" class="space-y-4 mb-8">
+            <p id="no-locations-message" class="text-center text-gray-400 italic">No locations added. Use the dropdown above to get started.</p>
+        </div>
+
+        <!-- Overlap Timeline and Summary -->
+        <div class="mt-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Overlapping Work Hours</h2>
+            <!-- Timeline Legend -->
+            <div class="flex justify-center space-x-6 mb-4 text-sm text-gray-600">
+                <div class="flex items-center">
+                    <span class="w-4 h-4 rounded-full bg-blue-500 mr-2"></span>
+                    <span>All Working</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="w-4 h-4 rounded-full bg-green-400 mr-2"></span>
+                    <span>Some Working</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="w-4 h-4 rounded-full bg-gray-300 mr-2"></span>
+                    <span>No Work</span>
+                </div>
+            </div>
+
+            <div id="timeline-wrapper" class="relative">
+                <div id="timeline" class="timeline"></div>
+                <div id="hour-labels" class="flex justify-between mt-2 text-sm text-gray-500">
+                    <span>12 AM</span>
+                    <span>6 AM</span>
+                    <span>12 PM</span>
+                    <span>6 PM</span>
+                    <span>12 AM</span>
+                </div>
+            </div>
+            
+            <!-- Summary of Overlap -->
+            <div id="summary-container" class="mt-6 p-4 bg-gray-50 rounded-xl shadow-inner">
+                <p class="font-semibold text-gray-800">Common Working Time:</p>
+                <p id="overlap-summary" class="text-lg text-blue-600 font-mono mt-1"></p>
+                <p id="meeting-recommendation" class="text-md text-gray-700 mt-2 italic"></p>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timezoneSelect = document.getElementById('timezone-select');
+            const addTimezoneBtn = document.getElementById('add-timezone-btn');
+            const locationsContainer = document.getElementById('locations-container');
+            const timelineWrapper = document.getElementById('timeline-wrapper');
+            const timeline = document.getElementById('timeline');
+            const overlapSummaryEl = document.getElementById('overlap-summary');
+            const meetingRecommendationEl = document.getElementById('meeting-recommendation');
+            const noLocationsMessage = document.getElementById('no-locations-message');
+            const workdayFilter = document.getElementById('workday-filter');
+
+            // More extensive list of timezones with labels
+            const allTimezones = [
+                { value: 'America/New_York', label: 'New York, USA (EST)' },
+                { value: 'America/Los_Angeles', label: 'Los Angeles, USA (PST)' },
+                { value: 'Europe/London', label: 'London, UK (GMT)' },
+                { value: 'Europe/Berlin', label: 'Berlin, Germany (CET)' },
+                { value: 'Asia/Tokyo', label: 'Tokyo, Japan (JST)' },
+                { value: 'Asia/Dubai', label: 'Dubai, UAE (GST)' },
+                { value: 'Australia/Sydney', label: 'Sydney, Australia (AEST)' },
+                { value: 'Asia/Kolkata', label: 'Kolkata, India (IST)' },
+                { value: 'America/Sao_Paulo', label: 'São Paulo, Brazil (BRT)' },
+                { value: 'Africa/Cairo', label: 'Cairo, Egypt (EET)' },
+                { value: 'Europe/Paris', label: 'Paris, France (CET)' },
+                { value: 'Asia/Singapore', label: 'Singapore (SGT)' },
+                { value: 'America/Denver', label: 'Denver, USA (MST)' },
+                { value: 'America/Mexico_City', label: 'Mexico City, Mexico (CDT)' },
+                { value: 'Africa/Johannesburg', label: 'Johannesburg, South Africa (SAST)' },
+                { value: 'Asia/Shanghai', label: 'Shanghai, China (CST)' }
+            ];
+
+            // Populate the timezone dropdown
+            allTimezones.forEach(tz => {
+                const option = document.createElement('option');
+                option.value = tz.value;
+                option.textContent = tz.label;
+                timezoneSelect.appendChild(option);
+            });
+
+            let selectedTimezones = []; // Stores objects with value, label, start, and end hours
+
+            // Helper function to update the entire UI
+            const updateUI = () => {
+                renderLocations();
+                renderTimeline();
+                renderOverlapSummary();
+            };
+
+            // Function to add a new location
+            const addTimezone = () => {
+                const newTzValue = timezoneSelect.value;
+                if (newTzValue && !selectedTimezones.some(tz => tz.value === newTzValue)) {
+                    const timezoneInfo = allTimezones.find(tz => tz.value === newTzValue);
+                    selectedTimezones.push({
+                        value: timezoneInfo.value,
+                        label: timezoneInfo.label,
+                        start: 9, // Default start hour
+                        end: 17,  // Default end hour
+                    });
+                    updateUI();
+                    noLocationsMessage.classList.add('hidden');
+                }
+            };
+
+            // Function to remove a location
+            const removeTimezone = (value) => {
+                const index = selectedTimezones.findIndex(tz => tz.value === value);
+                if (index > -1) {
+                    selectedTimezones.splice(index, 1);
+                }
+                updateUI();
+                if (selectedTimezones.length === 0) {
+                    noLocationsMessage.classList.remove('hidden');
+                }
+            };
+
+            // Function to render the list of selected locations
+            const renderLocations = () => {
+                locationsContainer.innerHTML = '';
+                selectedTimezones.forEach(tz => {
+                    const locationDiv = document.createElement('div');
+                    locationDiv.className = 'flex flex-col sm:flex-row items-center justify-between bg-gray-50 p-4 rounded-lg shadow-sm space-y-2 sm:space-y-0';
+                    locationDiv.dataset.timezone = tz.value;
+
+                    const now = new Date();
+                    const localTime = now.toLocaleTimeString('en-US', {
+                        timeZone: tz.value,
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        hour12: true
+                    });
+
+                    locationDiv.innerHTML = `
+                        <div class="flex-grow">
+                            <p class="font-semibold text-gray-800">${tz.label}</p>
+                            <p class="text-sm text-gray-600">${localTime}</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-600">Work Hours:</span>
+                            <select class="w-16 px-2 py-1 bg-white border border-gray-300 rounded-lg shadow-sm" data-type="start" data-timezone="${tz.value}"></select>
+                            <span>-</span>
+                            <select class="w-16 px-2 py-1 bg-white border border-gray-300 rounded-lg shadow-sm" data-type="end" data-timezone="${tz.value}"></select>
+                            <button class="remove-btn text-red-500 hover:text-red-700 transition-colors" data-timezone="${tz.value}" aria-label="Remove ${tz.label}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                    `;
+
+                    const startSelect = locationDiv.querySelector('select[data-type="start"]');
+                    const endSelect = locationDiv.querySelector('select[data-type="end"]');
+                    for (let i = 0; i < 24; i++) {
+                        const startOption = document.createElement('option');
+                        startOption.value = i;
+                        startOption.textContent = `${i.toString().padStart(2, '0')}:00`;
+                        startSelect.appendChild(startOption);
+
+                        const endOption = document.createElement('option');
+                        endOption.value = i;
+                        endOption.textContent = `${i.toString().padStart(2, '0')}:00`;
+                        endSelect.appendChild(endOption);
+                    }
+                    startSelect.value = tz.start;
+                    endSelect.value = tz.end;
+
+                    startSelect.addEventListener('change', (e) => {
+                        tz.start = parseInt(e.target.value, 10);
+                        updateUI();
+                    });
+                    endSelect.addEventListener('change', (e) => {
+                        tz.end = parseInt(e.target.value, 10);
+                        updateUI();
+                    });
+
+                    locationDiv.querySelector('.remove-btn').addEventListener('click', (e) => {
+                        removeTimezone(e.currentTarget.dataset.timezone);
+                    });
+
+                    locationsContainer.appendChild(locationDiv);
+                });
+            };
+
+            // Function to render the timeline and tooltips
+            const renderTimeline = () => {
+                timeline.innerHTML = '';
+                const workHourCounts = new Array(24).fill(0);
+                const tooltipData = new Array(24).fill([]);
+                const now = new Date();
+                const currentDay = now.getDay();
+                const isWeekday = currentDay >= 1 && currentDay <= 5;
+                const shouldFilterWeekends = workdayFilter.checked;
+
+                if (selectedTimezones.length > 0) {
+                    selectedTimezones.forEach(tz => {
+                        const localDate = new Date(now.toLocaleString("en-US", { timeZone: tz.value }));
+                        const utcDate = new Date(now.toLocaleString("en-US", { timeZone: "UTC" }));
+                        const offsetMinutes = (localDate.getTime() - utcDate.getTime()) / (1000 * 60);
+                        const offsetHours = offsetMinutes / 60;
+                        const localDay = localDate.getDay();
+                        const tzIsWeekday = localDay >= 1 && localDay <= 5;
+                        
+                        if (shouldFilterWeekends && !tzIsWeekday) {
+                            // Skip if filtering for weekdays and it's a weekend in this timezone
+                            return;
+                        }
+
+                        let utcStartHour = Math.floor((tz.start - offsetHours + 24) % 24);
+                        let utcEndHour = Math.floor((tz.end - offsetHours + 24) % 24);
+
+                        const workingHoursArray = [];
+                        if (utcStartHour <= utcEndHour) {
+                            for (let h = utcStartHour; h < utcEndHour; h++) {
+                                workingHoursArray.push(h);
+                            }
+                        } else {
+                            for (let h = utcStartHour; h < 24; h++) {
+                                workingHoursArray.push(h);
+                            }
+                            for (let h = 0; h < utcEndHour; h++) {
+                                workingHoursArray.push(h);
+                            }
+                        }
+
+                        workingHoursArray.forEach(h => {
+                            workHourCounts[h]++;
+                            if (!tooltipData[h]) tooltipData[h] = [];
+                            const localHour = Math.floor((h + offsetHours + 24) % 24);
+                            const localTime = new Date();
+                            localTime.setUTCHours(h);
+                            const localTimeString = localTime.toLocaleString('en-US', {
+                                timeZone: tz.value,
+                                hour: 'numeric',
+                                minute: 'numeric',
+                                hour12: true
+                            });
+                            tooltipData[h].push(`${tz.label}: ${localTimeString}`);
+                        });
+                    });
+                }
+                
+                for (let i = 0; i < 24; i++) {
+                    const hourDiv = document.createElement('div');
+                    hourDiv.classList.add('timeline-hour');
+
+                    let backgroundColor = '#e5e7eb'; // Default gray
+                    if (selectedTimezones.length > 0) {
+                        if (workHourCounts[i] === selectedTimezones.length) {
+                            backgroundColor = '#3b82f6'; // Full overlap
+                        } else if (workHourCounts[i] > 0) {
+                            backgroundColor = '#10b981'; // Partial overlap
+                        }
+                    }
+                    hourDiv.style.backgroundColor = backgroundColor;
+
+                    const tooltipContent = document.createElement('div');
+                    tooltipContent.classList.add('tooltip');
+                    tooltipContent.textContent = `${i}:00 - ${i + 1}:00 UTC\n\n` + (tooltipData[i].join('\n') || 'No one is working');
+                    hourDiv.appendChild(tooltipContent);
+                    timeline.appendChild(hourDiv);
+                }
+
+                // Add or update the current time marker
+                let marker = timelineWrapper.querySelector('.current-time-marker');
+                if (!marker) {
+                    marker = document.createElement('div');
+                    marker.classList.add('current-time-marker');
+                    timelineWrapper.appendChild(marker);
+                }
+                const nowUTC = new Date();
+                const currentHour = nowUTC.getUTCHours();
+                const currentMinute = nowUTC.getUTCMinutes();
+                const position = ((currentHour * 60 + currentMinute) / (24 * 60)) * 100;
+                marker.style.left = `${position}%`;
+            };
+
+            // Function to render the overlap summary and meeting recommendation
+            const renderOverlapSummary = () => {
+                const workHourCounts = new Array(24).fill(0);
+                const now = new Date();
+                const shouldFilterWeekends = workdayFilter.checked;
+
+                if (selectedTimezones.length > 0) {
+                    selectedTimezones.forEach(tz => {
+                        const localDate = new Date(now.toLocaleString("en-US", { timeZone: tz.value }));
+                        const utcDate = new Date(now.toLocaleString("en-US", { timeZone: "UTC" }));
+                        const offsetMinutes = (localDate.getTime() - utcDate.getTime()) / (1000 * 60);
+                        const offsetHours = offsetMinutes / 60;
+                        const localDay = localDate.getDay();
+                        const tzIsWeekday = localDay >= 1 && localDay <= 5;
+                        
+                        if (shouldFilterWeekends && !tzIsWeekday) {
+                            return;
+                        }
+
+                        let utcStartHour = Math.floor((tz.start - offsetHours + 24) % 24);
+                        let utcEndHour = Math.floor((tz.end - offsetHours + 24) % 24);
+                        
+                        if (utcStartHour <= utcEndHour) {
+                            for (let h = utcStartHour; h < utcEndHour; h++) {
+                                workHourCounts[h]++;
+                            }
+                        } else {
+                            for (let h = utcStartHour; h < 24; h++) {
+                                workHourCounts[h]++;
+                            }
+                            for (let h = 0; h < utcEndHour; h++) {
+                                workHourCounts[h]++;
+                            }
+                        }
+                    });
+                }
+                
+                let commonOverlap = [];
+                let startOverlap = -1;
+                for (let i = 0; i < 24; i++) {
+                    if (workHourCounts[i] === selectedTimezones.length && selectedTimezones.length > 0) {
+                        if (startOverlap === -1) {
+                            startOverlap = i;
+                        }
+                    } else {
+                        if (startOverlap !== -1) {
+                            commonOverlap.push({ start: startOverlap, end: i });
+                            startOverlap = -1;
+                        }
+                    }
+                }
+                if (startOverlap !== -1) {
+                    commonOverlap.push({ start: startOverlap, end: 24 });
+                }
+
+                let longestOverlap = null;
+                if (commonOverlap.length > 0) {
+                    longestOverlap = commonOverlap.reduce((prev, current) => {
+                        const prevDuration = prev.end - prev.start;
+                        const currentDuration = current.end - current.start;
+                        return (currentDuration > prevDuration) ? current : prev;
+                    });
+                }
+
+                const summaryText = commonOverlap.length > 0
+                    ? commonOverlap.map(o => `${o.start}:00 - ${o.end}:00 UTC`).join(', ')
+                    : 'No common work hours found.';
+                
+                overlapSummaryEl.textContent = summaryText;
+
+                if (longestOverlap) {
+                    meetingRecommendationEl.textContent = `The best time for a meeting is between ${longestOverlap.start}:00 and ${longestOverlap.end}:00 UTC.`;
+                } else {
+                    meetingRecommendationEl.textContent = '';
+                }
+            };
+
+            // Event listeners
+            addTimezoneBtn.addEventListener('click', addTimezone);
+            workdayFilter.addEventListener('change', updateUI);
+            
+            // Initial render and a timer to keep things updated
+            updateUI();
+            setInterval(() => {
+                const locationTimeElements = locationsContainer.querySelectorAll('p.text-sm');
+                locationTimeElements.forEach(el => {
+                    const tzValue = el.closest('[data-timezone]').dataset.timezone;
+                    const now = new Date();
+                    el.textContent = now.toLocaleTimeString('en-US', {
+                        timeZone: tzValue,
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        hour12: true
+                    });
+                });
+                renderTimeline(); // Re-render to move the red marker
+            }, 60000); // Update every minute
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favicon Factory Pro - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Favicon Factory Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/favicon-generator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/favicon-generator.html">
+  <meta property="og:title" content="Favicon Factory Pro - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Favicon Factory Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Favicon Factory Pro - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Favicon Factory Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #7209b7;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --dark: #1a1a2e;
+            --light: #ffffff;
+            --gray: #7f8c8d;
+            --background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            --panel-bg: rgba(255, 255, 255, 0.08);
+            --panel-border: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+        }
+
+        body {
+            background: var(--background);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 1px solid var(--panel-border);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin-top: 40px;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            transform: rotate(30deg);
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--success), var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .generator-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 992px) {
+            .generator-container {
+                flex-direction: row;
+            }
+        }
+
+        .editor-section, .preview-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .editor-panel {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            flex-grow: 1;
+            text-align: left;
+            position: relative;
+            border: 2px solid var(--panel-border);
+            min-height: 400px;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--panel-border);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .btn-upload {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-upload:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #image-upload {
+            display: none;
+        }
+
+        .options-panel {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            text-align: left;
+            border: 1px solid var(--panel-border);
+        }
+
+        .options-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .option-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-item label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        input[type="color"] {
+            width: 100%;
+            height: 40px;
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--primary);
+        }
+
+        input[type="text"], input[type="number"] {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 10px;
+            color: var(--text-primary);
+            width: 100%;
+        }
+
+        select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 10px;
+            color: var(--text-primary);
+            width: 100%;
+            cursor: pointer;
+        }
+
+        select option {
+            background: var(--dark);
+        }
+
+        .preview-panel {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            flex-grow: 1;
+            text-align: center;
+            position: relative;
+            border: 2px solid var(--panel-border);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .favicon-preview {
+            width: 128px;
+            height: 128px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom: 25px;
+            border: 1px solid var(--panel-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .size-previews {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .size-preview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .size-box {
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid var(--panel-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .size-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, var(--success), #2a9d8f);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(45deg, var(--warning), #e76f51);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 1px solid var(--panel-border);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .status-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-bar {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab.active {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.selected {
+            border-color: white;
+            transform: scale(1.1);
+        }
+
+        .canvas-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Favicon Factory Pro</h1>
+      <p>Free interactive Favicon Factory Pro for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="container">
+        <h1>Favicon Factory Pro</h1>
+        <p class="subtitle">Create beautiful, professional favicons for your website</p>
+        
+        <div class="generator-container">
+            <div class="editor-section">
+                <div class="section-header">
+                    <div class="section-title">Design</div>
+                </div>
+                
+                <div class="editor-panel">
+                    <div class="tab-container">
+                        <div class="tab active" data-tab="upload">Upload Image</div>
+                        <div class="tab" data-tab="text">Text Icon</div>
+                        <div class="tab" data-tab="shape">Shape Icon</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="upload-tab">
+                        <div class="upload-area" id="upload-area">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <div class="upload-text">Drag & drop your image here or click to browse</div>
+                            <button class="btn-upload">Select Image</button>
+                            <input type="file" id="image-upload" accept="image/*">
+                        </div>
+                        
+                        <div class="options-panel">
+                            <div class="options-title">Image Options</div>
+                            <div class="options-grid">
+                                <div class="option-item">
+                                    <label for="image-size">Icon Size</label>
+                                    <input type="range" id="image-size" min="0.1" max="1" step="0.1" value="0.8">
+                                </div>
+                                <div class="option-item">
+                                    <label for="image-opacity">Opacity</label>
+                                    <input type="range" id="image-opacity" min="0.1" max="1" step="0.1" value="1">
+                                </div>
+                                <div class="option-item">
+                                    <label for="image-rotation">Rotation</label>
+                                    <input type="range" id="image-rotation" min="0" max="360" step="1" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="text-tab">
+                        <div class="options-panel">
+                            <div class="options-title">Text Options</div>
+                            <div class="options-grid">
+                                <div class="option-item">
+                                    <label for="text-content">Text</label>
+                                    <input type="text" id="text-content" value="FA" maxlength="3" placeholder="Enter text">
+                                </div>
+                                <div class="option-item">
+                                    <label for="text-font">Font</label>
+                                    <select id="text-font">
+                                        <option value="Arial">Arial</option>
+                                        <option value="Verdana">Verdana</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Times New Roman">Times New Roman</option>
+                                        <option value="Courier New">Courier New</option>
+                                        <option value="Impact">Impact</option>
+                                    </select>
+                                </div>
+                                <div class="option-item">
+                                    <label for="text-size">Font Size</label>
+                                    <input type="range" id="text-size" min="20" max="100" step="1" value="60">
+                                </div>
+                                <div class="option-item">
+                                    <label for="text-color">Text Color</label>
+                                    <input type="color" id="text-color" value="#ffffff">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="options-panel">
+                            <div class="options-title">Background</div>
+                            <div class="options-grid">
+                                <div class="option-item">
+                                    <label for="bg-type">Background Type</label>
+                                    <select id="bg-type">
+                                        <option value="solid">Solid Color</option>
+                                        <option value="gradient">Gradient</option>
+                                        <option value="transparent">Transparent</option>
+                                    </select>
+                                </div>
+                                <div class="option-item">
+                                    <label for="bg-color">Background Color</label>
+                                    <input type="color" id="bg-color" value="#4361ee">
+                                </div>
+                                <div class="option-item">
+                                    <label for="bg-color2">Gradient Color</label>
+                                    <input type="color" id="bg-color2" value="#7209b7" disabled>
+                                </div>
+                            </div>
+                            
+                            <div class="color-palette">
+                                <div class="color-option selected" style="background-color: #4361ee;" data-color="#4361ee"></div>
+                                <div class="color-option" style="background-color: #7209b7;" data-color="#7209b7"></div>
+                                <div class="color-option" style="background-color: #f72585;" data-color="#f72585"></div>
+                                <div class="color-option" style="background-color: #4cc9f0;" data-color="#4cc9f0"></div>
+                                <div class="color-option" style="background-color: #2a9d8f;" data-color="#2a9d8f"></div>
+                                <div class="color-option" style="background-color: #e9c46a;" data-color="#e9c46a"></div>
+                                <div class="color-option" style="background-color: #14213d;" data-color="#14213d"></div>
+                                <div class="color-option" style="background-color: #000000;" data-color="#000000"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="shape-tab">
+                        <div class="options-panel">
+                            <div class="options-title">Shape Options</div>
+                            <div class="options-grid">
+                                <div class="option-item">
+                                    <label for="shape-type">Shape</label>
+                                    <select id="shape-type">
+                                        <option value="circle">Circle</option>
+                                        <option value="square">Square</option>
+                                        <option value="rounded">Rounded Square</option>
+                                        <option value="triangle">Triangle</option>
+                                        <option value="hexagon">Hexagon</option>
+                                    </select>
+                                </div>
+                                <div class="option-item">
+                                    <label for="shape-color">Shape Color</label>
+                                    <input type="color" id="shape-color" value="#4361ee">
+                                </div>
+                                <div class="option-item">
+                                    <label for="shape-border">Border Width</label>
+                                    <input type="range" id="shape-border" min="0" max="10" step="1" value="0">
+                                </div>
+                                <div class="option-item">
+                                    <label for="shape-border-color">Border Color</label>
+                                    <input type="color" id="shape-border-color" value="#ffffff">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="options-panel">
+                            <div class="options-title">Add Text to Shape</div>
+                            <div class="options-grid">
+                                <div class="option-item">
+                                    <label for="shape-text">Text</label>
+                                    <input type="text" id="shape-text" value="F" maxlength="2" placeholder="Enter text">
+                                </div>
+                                <div class="option-item">
+                                    <label for="shape-text-color">Text Color</label>
+                                    <input type="color" id="shape-text-color" value="#ffffff">
+                                </div>
+                                <div class="option-item">
+                                    <label for="shape-text-size">Text Size</label>
+                                    <input type="range" id="shape-text-size" min="20" max="80" step="1" value="40">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <div class="section-header">
+                    <div class="section-title">Preview</div>
+                </div>
+                
+                <div class="preview-panel">
+                    <div class="favicon-preview" id="favicon-preview">FA</div>
+                    
+                    <div class="size-previews">
+                        <div class="size-preview">
+                            <div class="size-box" id="size-16">16</div>
+                            <div class="size-label">16×16</div>
+                        </div>
+                        <div class="size-preview">
+                            <div class="size-box" id="size-32">32</div>
+                            <div class="size-label">32×32</div>
+                        </div>
+                        <div class="size-preview">
+                            <div class="size-box" id="size-48">48</div>
+                            <div class="size-label">48×48</div>
+                        </div>
+                        <div class="size-preview">
+                            <div class="size-box" id="size-64">64</div>
+                            <div class="size-label">64×64</div>
+                        </div>
+                    </div>
+                    
+                    <div class="browser-preview" style="margin-top: 20px;">
+                        <div style="display: flex; align-items: center; background: #2c2c2c; padding: 8px; border-radius: 8px; width: 300px;">
+                            <div class="size-box" id="browser-tab" style="width: 16px; height: 16px; margin-right: 10px;"></div>
+                            <div style="color: white; font-size: 14px;">Your Website</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-primary" id="generate-btn">
+                <i class="fas fa-cog"></i> Generate Favicon
+            </button>
+            <button class="btn btn-success" id="download-png">
+                <i class="fas fa-download"></i> Download PNG
+            </button>
+            <button class="btn btn-success" id="download-ico">
+                <i class="fas fa-download"></i> Download ICO
+            </button>
+            <button class="btn btn-secondary" id="download-all">
+                <i class="fas fa-file-archive"></i> Download All Sizes
+            </button>
+        </div>
+        
+        <div class="status-bar">
+            <div class="status-item">
+                <span>Format:</span>
+                <span class="status-value">PNG & ICO</span>
+            </div>
+            <div class="status-item">
+                <span>Current Size:</span>
+                <span class="status-value">128×128 px</span>
+            </div>
+            <div class="status-item">
+                <span>Export Sizes:</span>
+                <span class="status-value">16×16, 32×32, 48×48, 64×64</span>
+            </div>
+        </div>
+
+        <!-- Hidden canvas for generating favicons -->
+        <div class="canvas-container">
+            <canvas id="favicon-canvas" width="128" height="128"></canvas>
+            <canvas id="size-16-canvas" width="16" height="16"></canvas>
+            <canvas id="size-32-canvas" width="32" height="32"></canvas>
+            <canvas id="size-48-canvas" width="48" height="48"></canvas>
+            <canvas id="size-64-canvas" width="64" height="64"></canvas>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Favicon Factory Pro &copy; 2023 | Create professional favicons for your website</p>
+    </footer>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const themeToggle = document.getElementById('theme-toggle');
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const uploadArea = document.getElementById('upload-area');
+            const imageUpload = document.getElementById('image-upload');
+            const generateBtn = document.getElementById('generate-btn');
+            const downloadPng = document.getElementById('download-png');
+            const downloadIco = document.getElementById('download-ico');
+            const downloadAll = document.getElementById('download-all');
+            const faviconPreview = document.getElementById('favicon-preview');
+            const colorOptions = document.querySelectorAll('.color-option');
+            const canvas = document.getElementById('favicon-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Canvas elements for different sizes
+            const canvas16 = document.getElementById('size-16-canvas');
+            const ctx16 = canvas16.getContext('2d');
+            const canvas32 = document.getElementById('size-32-canvas');
+            const ctx32 = canvas32.getContext('2d');
+            const canvas48 = document.getElementById('size-48-canvas');
+            const ctx48 = canvas48.getContext('2d');
+            const canvas64 = document.getElementById('size-64-canvas');
+            const ctx64 = canvas64.getContext('2d');
+            
+            // Current favicon data
+            let currentFaviconData = null;
+            let uploadedImage = null;
+
+            // Tab switching
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show active tab content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${tabId}-tab`) {
+                            content.classList.add('active');
+                        }
+                    });
+                    
+                    // Update preview
+                    updatePreview();
+                });
+            });
+            
+            // Image upload
+            uploadArea.addEventListener('click', () => {
+                imageUpload.click();
+            });
+            
+            imageUpload.addEventListener('change', function(e) {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        uploadedImage = new Image();
+                        uploadedImage.onload = function() {
+                            updatePreview();
+                        };
+                        uploadedImage.src = e.target.result;
+                    };
+                    
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+            
+            // Color selection
+            colorOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const color = option.getAttribute('data-color');
+                    
+                    // Update selected color
+                    colorOptions.forEach(o => o.classList.remove('selected'));
+                    option.classList.add('selected');
+                    
+                    // Update background color input
+                    document.getElementById('bg-color').value = color;
+                    
+                    // Update preview
+                    updatePreview();
+                });
+            });
+            
+            // Background type change
+            document.getElementById('bg-type').addEventListener('change', function() {
+                const gradientColor = document.getElementById('bg-color2');
+                gradientColor.disabled = this.value !== 'gradient';
+                updatePreview();
+            });
+            
+            // Update preview when any option changes
+            const allOptions = document.querySelectorAll('input, select, textarea');
+            allOptions.forEach(option => {
+                option.addEventListener('input', updatePreview);
+            });
+            
+            // Generate favicon
+            generateBtn.addEventListener('click', generateFavicon);
+            
+            // Download handlers
+            downloadPng.addEventListener('click', () => downloadFavicon('png'));
+            downloadIco.addEventListener('click', () => downloadFavicon('ico'));
+            downloadAll.addEventListener('click', downloadAllSizes);
+            
+            // Theme toggle
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-theme');
+                if (document.body.classList.contains('light-theme')) {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                    document.documentElement.style.setProperty('--background', 'linear-gradient(135deg, #fdbb2d, #f9d423, #f9f586)');
+                    document.documentElement.style.setProperty('--panel-bg', 'rgba(255, 255, 255, 0.7)');
+                    document.documentElement.style.setProperty('--panel-border', 'rgba(255, 255, 255, 0.8)');
+                    document.documentElement.style.setProperty('--text-primary', '#2c3e50');
+                    document.documentElement.style.setProperty('--text-secondary', '#7f8c8d');
+                    document.documentElement.style.setProperty('--dark', '#2c3e50');
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                    document.documentElement.style.setProperty('--background', 'linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)');
+                    document.documentElement.style.setProperty('--panel-bg', 'rgba(255, 255, 255, 0.08)');
+                    document.documentElement.style.setProperty('--panel-border', 'rgba(255, 255, 255, 0.15)');
+                    document.documentElement.style.setProperty('--text-primary', '#ffffff');
+                    document.documentElement.style.setProperty('--text-secondary', '#b0b0b0');
+                    document.documentElement.style.setProperty('--dark', '#1a1a2e');
+                }
+            });
+            
+            // Function to update preview
+            function updatePreview() {
+                const activeTab = document.querySelector('.tab.active').getAttribute('data-tab');
+                
+                if (activeTab === 'upload' && uploadedImage) {
+                    // Draw uploaded image on canvas
+                    drawImageOnCanvas();
+                } else if (activeTab === 'text') {
+                    // Draw text-based favicon on canvas
+                    drawTextOnCanvas();
+                } else if (activeTab === 'shape') {
+                    // Draw shape-based favicon on canvas
+                    drawShapeOnCanvas();
+                }
+                
+                // Update size previews
+                updateSizePreviews();
+            }
+            
+            // Function to draw image on canvas
+            function drawImageOnCanvas() {
+                if (!uploadedImage) return;
+                
+                const size = parseFloat(document.getElementById('image-size').value);
+                const opacity = parseFloat(document.getElementById('image-opacity').value);
+                const rotation = parseFloat(document.getElementById('image-rotation').value);
+                
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Save context
+                ctx.save();
+                
+                // Move to center of canvas
+                ctx.translate(canvas.width / 2, canvas.height / 2);
+                
+                // Apply rotation
+                ctx.rotate(rotation * Math.PI / 180);
+                
+                // Calculate scaled dimensions
+                const scaledWidth = uploadedImage.width * size;
+                const scaledHeight = uploadedImage.height * size;
+                
+                // Draw image centered
+                ctx.globalAlpha = opacity;
+                ctx.drawImage(
+                    uploadedImage, 
+                    -scaledWidth / 2, 
+                    -scaledHeight / 2, 
+                    scaledWidth, 
+                    scaledHeight
+                );
+                
+                // Restore context
+                ctx.restore();
+                
+                // Update preview
+                updateCanvasPreview();
+            }
+            
+            // Function to draw text on canvas
+            function drawTextOnCanvas() {
+                const text = document.getElementById('text-content').value || 'FA';
+                const font = document.getElementById('text-font').value;
+                const fontSize = parseInt(document.getElementById('text-size').value);
+                const textColor = document.getElementById('text-color').value;
+                const bgType = document.getElementById('bg-type').value;
+                const bgColor = document.getElementById('bg-color').value;
+                const bgColor2 = document.getElementById('bg-color2').value;
+                
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw background
+                if (bgType === 'solid') {
+                    ctx.fillStyle = bgColor;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                } else if (bgType === 'gradient') {
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, bgColor);
+                    gradient.addColorStop(1, bgColor2);
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+                // For transparent, we don't draw a background
+                
+                // Draw text
+                ctx.font = `bold ${fontSize}px ${font}`;
+                ctx.fillStyle = textColor;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+                
+                // Update preview
+                updateCanvasPreview();
+            }
+            
+            // Function to draw shape on canvas
+            function drawShapeOnCanvas() {
+                const shape = document.getElementById('shape-type').value;
+                const shapeColor = document.getElementById('shape-color').value;
+                const borderWidth = parseInt(document.getElementById('shape-border').value);
+                const borderColor = document.getElementById('shape-border-color').value;
+                const text = document.getElementById('shape-text').value;
+                const textColor = document.getElementById('shape-text-color').value;
+                const textSize = parseInt(document.getElementById('shape-text-size').value);
+                
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw shape
+                ctx.fillStyle = shapeColor;
+                ctx.strokeStyle = borderColor;
+                ctx.lineWidth = borderWidth;
+                
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const size = Math.min(canvas.width, canvas.height) * 0.8;
+                
+                if (shape === 'circle') {
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, size / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                    if (borderWidth > 0) ctx.stroke();
+                } else if (shape === 'square') {
+                    const x = centerX - size / 2;
+                    const y = centerY - size / 2;
+                    ctx.fillRect(x, y, size, size);
+                    if (borderWidth > 0) ctx.strokeRect(x, y, size, size);
+                } else if (shape === 'rounded') {
+                    const x = centerX - size / 2;
+                    const y = centerY - size / 2;
+                    const radius = size / 4;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(x + radius, y);
+                    ctx.lineTo(x + size - radius, y);
+                    ctx.quadraticCurveTo(x + size, y, x + size, y + radius);
+                    ctx.lineTo(x + size, y + size - radius);
+                    ctx.quadraticCurveTo(x + size, y + size, x + size - radius, y + size);
+                    ctx.lineTo(x + radius, y + size);
+                    ctx.quadraticCurveTo(x, y + size, x, y + size - radius);
+                    ctx.lineTo(x, y + radius);
+                    ctx.quadraticCurveTo(x, y, x + radius, y);
+                    ctx.closePath();
+                    ctx.fill();
+                    if (borderWidth > 0) ctx.stroke();
+                } else if (shape === 'triangle') {
+                    ctx.beginPath();
+                    ctx.moveTo(centerX, centerY - size / 2);
+                    ctx.lineTo(centerX + size / 2, centerY + size / 2);
+                    ctx.lineTo(centerX - size / 2, centerY + size / 2);
+                    ctx.closePath();
+                    ctx.fill();
+                    if (borderWidth > 0) ctx.stroke();
+                } else if (shape === 'hexagon') {
+                    ctx.beginPath();
+                    for (let i = 0; i < 6; i++) {
+                        const angle = (Math.PI / 3) * i;
+                        const x = centerX + size / 2 * Math.cos(angle);
+                        const y = centerY + size / 2 * Math.sin(angle);
+                        if (i === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+                    if (borderWidth > 0) ctx.stroke();
+                }
+                
+                // Draw text if provided
+                if (text) {
+                    ctx.font = `bold ${textSize}px Arial`;
+                    ctx.fillStyle = textColor;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(text, centerX, centerY);
+                }
+                
+                // Update preview
+                updateCanvasPreview();
+            }
+            
+            // Function to update canvas preview
+            function updateCanvasPreview() {
+                // Update main preview
+                faviconPreview.style.backgroundImage = `url(${canvas.toDataURL()})`;
+                faviconPreview.textContent = '';
+                
+                // Update size previews
+                updateSizePreviews();
+            }
+            
+            // Function to update size previews
+            function updateSizePreviews() {
+                // Resize canvas to different sizes and update previews
+                resizeCanvasTo(canvas, canvas16, 16, 16);
+                resizeCanvasTo(canvas, canvas32, 32, 32);
+                resizeCanvasTo(canvas, canvas48, 48, 48);
+                resizeCanvasTo(canvas, canvas64, 64, 64);
+                
+                // Update preview boxes
+                document.getElementById('size-16').style.backgroundImage = `url(${canvas16.toDataURL()})`;
+                document.getElementById('size-32').style.backgroundImage = `url(${canvas32.toDataURL()})`;
+                document.getElementById('size-48').style.backgroundImage = `url(${canvas48.toDataURL()})`;
+                document.getElementById('size-64').style.backgroundImage = `url(${canvas64.toDataURL()})`;
+                document.getElementById('browser-tab').style.backgroundImage = `url(${canvas16.toDataURL()})`;
+                
+                // Clear text content from preview boxes
+                document.querySelectorAll('.size-box').forEach(box => {
+                    box.textContent = '';
+                });
+            }
+            
+            // Function to resize canvas
+            function resizeCanvasTo(sourceCanvas, targetCanvas, width, height) {
+                const targetCtx = targetCanvas.getContext('2d');
+                targetCtx.clearRect(0, 0, width, height);
+                targetCtx.drawImage(sourceCanvas, 0, 0, width, height);
+            }
+            
+            // Function to generate favicon
+            function generateFavicon() {
+                updatePreview();
+                
+                // Store current favicon data
+                currentFaviconData = canvas.toDataURL();
+                
+                alert('Favicon generated successfully! Use the download buttons to export.');
+            }
+            
+            // Function to download favicon
+            function downloadFavicon(format) {
+                if (!currentFaviconData) {
+                    alert('Please generate a favicon first!');
+                    return;
+                }
+                
+                if (format === 'png') {
+                    // Download as PNG
+                    const link = document.createElement('a');
+                    link.download = 'favicon.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                } else if (format === 'ico') {
+                    // For ICO format, we would need a more complex solution
+                    // This is a simplified version that just uses the 16x16 PNG
+                    const link = document.createElement('a');
+                    link.download = 'favicon.ico';
+                    link.href = canvas16.toDataURL();
+                    link.click();
+                }
+            }
+            
+            // Function to download all sizes
+            function downloadAllSizes() {
+                if (!currentFaviconData) {
+                    alert('Please generate a favicon first!');
+                    return;
+                }
+                
+                // Create a zip file with all sizes
+                const zip = new JSZip();
+                
+                // Add different sizes to zip
+                zip.file("favicon-16x16.png", canvas16.toDataURL().split(',')[1], {base64: true});
+                zip.file("favicon-32x32.png", canvas32.toDataURL().split(',')[1], {base64: true});
+                zip.file("favicon-48x48.png", canvas48.toDataURL().split(',')[1], {base64: true});
+                zip.file("favicon-64x64.png", canvas64.toDataURL().split(',')[1], {base64: true});
+                
+                // Generate zip file
+                zip.generateAsync({type:"blob"}).then(function(content) {
+                    saveAs(content, "favicons.zip");
+                });
+            }
+            
+            // Initialize with a text-based favicon
+            updatePreview();
+        });
+    </script>
+</body>
+</html>

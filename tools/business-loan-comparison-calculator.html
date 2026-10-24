@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Business Loan Comparison Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Compare different business loan options with our advanced calculator. Input loan amount, interest rate, term, and fees to see EMIs, total repayment, APR, and more.">
+  <link rel="canonical" href="https://shaynly.com/tools/business-loan-comparison-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/business-loan-comparison-calculator.html">
+  <meta property="og:title" content="Advanced Business Loan Comparison Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Compare different business loan options with our advanced calculator. Input loan amount, interest rate, term, and fees to see EMIs, total repayment, APR, and more.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Business Loan Comparison Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Compare different business loan options with our advanced calculator. Input loan amount, interest rate, term, and fees to see EMIs, total repayment, APR, and more.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .calculator {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Business Loan Comparison Calculator</h1>
+      <p>Compare different business loan options with our advanced calculator. Input loan amount, interest rate, term, and fees to see EMIs, total repayment, APR, and more.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Advanced Business Loan Comparison Calculator</h1>
+        <div class="calculator">
+            <div id="loanInputs">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="loanAmount1" class="form-label">Loan Amount ($):</label>
+                        <input type="number" class="form-control" id="loanAmount1" min="1000" step="1000" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="interestRate1" class="form-label">Interest Rate (% per year):</label>
+                        <input type="number" class="form-control" id="interestRate1" min="0.1" step="0.1" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="loanTerm1" class="form-label">Loan Term (months):</label>
+                        <input type="number" class="form-control" id="loanTerm1" min="1" step="1" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="originationFee1" class="form-label">Origination Fee (%):</label>
+                        <input type="number" class="form-control" id="originationFee1" min="0" step="0.1" value="0">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-secondary mb-3" onclick="addLoanOption()">Add Another Loan Option</button>
+            <button class="btn btn-primary" onclick="calculateLoans()">Compare Loans</button>
+        </div>
+        <div id="results"></div>
+        <div class="chart-container mt-4">
+            <canvas id="comparisonChart"></canvas>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        let loanOptionCount = 1;
+        let comparisonChart;
+
+        function addLoanOption() {
+            loanOptionCount++;
+            const newLoanOption = `
+                <h3 class="mt-4">Loan Option ${loanOptionCount}</h3>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="loanAmount${loanOptionCount}" class="form-label">Loan Amount ($):</label>
+                        <input type="number" class="form-control" id="loanAmount${loanOptionCount}" min="1000" step="1000" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="interestRate${loanOptionCount}" class="form-label">Interest Rate (% per year):</label>
+                        <input type="number" class="form-control" id="interestRate${loanOptionCount}" min="0.1" step="0.1" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="loanTerm${loanOptionCount}" class="form-label">Loan Term (months):</label>
+                        <input type="number" class="form-control" id="loanTerm${loanOptionCount}" min="1" step="1" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="originationFee${loanOptionCount}" class="form-label">Origination Fee (%):</label>
+                        <input type="number" class="form-control" id="originationFee${loanOptionCount}" min="0" step="0.1" value="0">
+                    </div>
+                </div>
+            `;
+            document.getElementById('loanInputs').insertAdjacentHTML('beforeend', newLoanOption);
+        }
+
+        function calculateLoans() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h2 class="mt-4">Comparison Results</h2>';
+            let comparisonTable = `
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Loan Option</th>
+                                <th>Monthly EMI</th>
+                                <th>Total Repayment</th>
+                                <th>Total Interest</th>
+                                <th>APR</th>
+                                <th>Cost per $1000</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            let chartData = {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Monthly EMI',
+                        data: [],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Total Repayment',
+                        data: [],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            };
+
+            for (let i = 1; i <= loanOptionCount; i++) {
+                const loanAmount = parseFloat(document.getElementById(`loanAmount${i}`).value);
+                const interestRate = parseFloat(document.getElementById(`interestRate${i}`).value) / 100 / 12; // Monthly interest rate
+                const loanTerm = parseInt(document.getElementById(`loanTerm${i}`).value);
+                const originationFee = parseFloat(document.getElementById(`originationFee${i}`).value) / 100;
+
+                if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm) || isNaN(originationFee)) {
+                    alert('Please fill in all fields with valid numbers.');
+                    return;
+                }
+
+                const monthlyEMI = (loanAmount * interestRate * Math.pow(1 + interestRate, loanTerm)) / (Math.pow(1 + interestRate, loanTerm) - 1);
+                const totalRepayment = monthlyEMI * loanTerm;
+                const totalInterest = totalRepayment - loanAmount;
+                const originationFeeAmount = loanAmount * originationFee;
+                
+                // Calculate APR
+                const fees = originationFeeAmount;
+                const apr = (((Math.pow((1 + ((totalRepayment + fees - loanAmount) / loanAmount)), (1 / (loanTerm / 12)))) - 1) * 12) * 100;
+                
+                // Calculate cost per $1000 borrowed
+                const costPer1000 = (totalRepayment - loanAmount) / (loanAmount / 1000);
+
+                comparisonTable += `
+                    <tr>
+                        <td>Loan Option ${i}</td>
+                        <td>$${monthlyEMI.toFixed(2)}</td>
+                        <td>$${totalRepayment.toFixed(2)}</td>
+                        <td>$${totalInterest.toFixed(2)}</td>
+                        <td>${apr.toFixed(2)}%</td>
+                        <td>$${costPer1000.toFixed(2)}</td>
+                    </tr>
+                `;
+
+                chartData.labels.push(`Loan ${i}`);
+                chartData.datasets[0].data.push(monthlyEMI);
+                chartData.datasets[1].data.push(totalRepayment);
+            }
+
+            comparisonTable += '</tbody></table></div>';
+            results.innerHTML += comparisonTable;
+
+            // Create or update chart
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+            if (comparisonChart) {
+                comparisonChart.destroy();
+            }
+            comparisonChart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Amount ($)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Loan Comparison Chart'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Add insights
+            const insights = document.createElement('div');
+            insights.className = 'mt-4';
+            insights.innerHTML = '<h3>Loan Insights</h3>';
+            
+            // Find the loan with the lowest monthly EMI
+            const lowestEMI = Math.min(...chartData.datasets[0].data);
+            const lowestEMIIndex = chartData.datasets[0].data.indexOf(lowestEMI);
+            insights.innerHTML += `<p>The loan with the lowest monthly EMI is Loan ${lowestEMIIndex + 1} at $${lowestEMI.toFixed(2)} per month.</p>`;
+
+            // Find the loan with the lowest total repayment
+            const lowestRepayment = Math.min(...chartData.datasets[1].data);
+            const lowestRepaymentIndex = chartData.datasets[1].data.indexOf(lowestRepayment);
+            insights.innerHTML += `<p>The loan with the lowest total repayment is Loan ${lowestRepaymentIndex + 1} at $${lowestRepayment.toFixed(2)}.</p>`;
+
+            // Add a general advice
+            insights.innerHTML += '<p>Remember, while a lower monthly EMI might seem attractive, it\'s important to consider the total cost of the loan over its entire term. The loan with the lowest total repayment might save you money in the long run, even if it has higher monthly payments.</p>';
+
+            results.appendChild(insights);
+        }
+    </script>
+</body>
+</html>

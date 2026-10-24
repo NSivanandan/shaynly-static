@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Dynamic Pricing Simulator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Dynamic Pricing Simulator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/dynamic-pricing-simulator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/dynamic-pricing-simulator.html">
+  <meta property="og:title" content="Advanced Dynamic Pricing Simulator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Dynamic Pricing Simulator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Dynamic Pricing Simulator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Dynamic Pricing Simulator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Dynamic Pricing Simulator</h1>
+      <p>Free interactive Advanced Dynamic Pricing Simulator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-6xl">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-2"> Dynamic Pricing Simulator</h1>
+        <p class="text-center text-gray-500 mb-6">
+            Compare two pricing scenarios and find the optimal price point for each.
+        </p>
+
+        <!-- Scenario Inputs Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Scenario 1 Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 1</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="costPerUnit1" class="block text-sm font-medium text-gray-700">Cost per Unit ($)</label>
+                        <input type="number" id="costPerUnit1" value="50" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="fixedCosts1" class="block text-sm font-medium text-gray-700">Total Fixed Costs ($)</label>
+                        <input type="number" id="fixedCosts1" value="10000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="originalPrice1" class="block text-sm font-medium text-gray-700">Original Price ($)</label>
+                        <input type="number" id="originalPrice1" value="100" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="originalVolume1" class="block text-sm font-medium text-gray-700">Original Sales Volume (Units)</label>
+                        <input type="number" id="originalVolume1" value="200" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                     <div>
+                        <label for="priceElasticity1" class="block text-sm font-medium text-gray-700">Price Elasticity of Demand</label>
+                        <input type="number" id="priceElasticity1" value="-1.5" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                </div>
+            </div>
+            <!-- Scenario 2 Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 2</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="costPerUnit2" class="block text-sm font-medium text-gray-700">Cost per Unit ($)</label>
+                        <input type="number" id="costPerUnit2" value="50" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="fixedCosts2" class="block text-sm font-medium text-gray-700">Total Fixed Costs ($)</label>
+                        <input type="number" id="fixedCosts2" value="12000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="originalPrice2" class="block text-sm font-medium text-gray-700">Original Price ($)</label>
+                        <input type="number" id="originalPrice2" value="100" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="originalVolume2" class="block text-sm font-medium text-gray-700">Original Sales Volume (Units)</label>
+                        <input type="number" id="originalVolume2" value="200" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="priceElasticity2" class="block text-sm font-medium text-gray-700">Price Elasticity of Demand</label>
+                        <input type="number" id="priceElasticity2" value="-1.8" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Price Adjustment Slider -->
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+            <h2 class="text-xl font-bold text-indigo-700 mb-4">Adjust Price for Comparison</h2>
+            <div class="flex items-center space-x-4">
+                <input type="range" id="priceSlider" min="1" max="200" value="100" class="flex-grow">
+                <span id="currentPriceDisplay" class="text-2xl font-bold text-indigo-800">$100</span>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="mt-4 p-3 bg-red-100 text-red-700 rounded-md hidden">
+        </div>
+
+        <!-- Results Display -->
+        <div id="results" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-4">Comparison & Optimal Price</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Scenario 1 Metrics -->
+                <div class="bg-white p-4 rounded-md shadow-sm">
+                    <h3 class="text-lg font-semibold text-indigo-700 mb-2">Scenario 1</h3>
+                    <p class="text-sm">New Volume: <span id="newVolume1" class="font-bold"></span></p>
+                    <p class="text-sm">New Profit: <span id="newProfit1" class="font-bold"></span></p>
+                    <p class="text-sm">Profit Margin: <span id="newMargin1" class="font-bold"></span></p>
+                    <p class="text-sm">Break-Even Point: <span id="newBreakeven1" class="font-bold"></span></p>
+                </div>
+                <!-- Scenario 2 Metrics -->
+                <div class="bg-white p-4 rounded-md shadow-sm">
+                    <h3 class="text-lg font-semibold text-indigo-700 mb-2">Scenario 2</h3>
+                    <p class="text-sm">New Volume: <span id="newVolume2" class="font-bold"></span></p>
+                    <p class="text-sm">New Profit: <span id="newProfit2" class="font-bold"></span></p>
+                    <p class="text-sm">Profit Margin: <span id="newMargin2" class="font-bold"></span></p>
+                    <p class="text-sm">Break-Even Point: <span id="newBreakeven2" class="font-bold"></span></p>
+                </div>
+            </div>
+
+            <!-- Optimal Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 <div class="bg-green-100 p-4 rounded-md shadow-sm">
+                    <h3 class="text-lg font-semibold text-green-800 mb-2">Optimal for Scenario 1</h3>
+                    <p class="text-sm">Price: <span id="optimalPrice1" class="font-bold"></span></p>
+                    <p class="text-sm">Max Profit: <span id="optimalProfit1" class="font-bold"></span></p>
+                    <p class="text-sm">Sales Volume: <span id="optimalVolume1" class="font-bold"></span></p>
+                </div>
+                 <div class="bg-green-100 p-4 rounded-md shadow-sm">
+                    <h3 class="text-lg font-semibold text-green-800 mb-2">Optimal for Scenario 2</h3>
+                    <p class="text-sm">Price: <span id="optimalPrice2" class="font-bold"></span></p>
+                    <p class="text-sm">Max Profit: <span id="optimalProfit2" class="font-bold"></span></p>
+                    <p class="text-sm">Sales Volume: <span id="optimalVolume2" class="font-bold"></span></p>
+                </div>
+            </div>
+            
+            <!-- Profit Curve Chart -->
+            <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Profit Curve Comparison</h2>
+                <canvas id="profitChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        const inputs = ['costPerUnit1', 'fixedCosts1', 'originalPrice1', 'originalVolume1', 'priceElasticity1', 'costPerUnit2', 'fixedCosts2', 'originalPrice2', 'originalVolume2', 'priceElasticity2'];
+        const priceSlider = document.getElementById('priceSlider');
+        const currentPriceDisplay = document.getElementById('currentPriceDisplay');
+        const resultsDiv = document.getElementById('results');
+        const errorDiv = document.getElementById('errorMsg');
+        
+        let myChart; // To store the chart instance
+
+        // Add event listeners to all input fields and the slider
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', updateCalculator);
+        });
+        priceSlider.addEventListener('input', updateCalculator);
+
+        // Initial calculation on page load
+        document.addEventListener('DOMContentLoaded', updateCalculator);
+
+        function updateCalculator() {
+            // Get all input values for both scenarios
+            const costPerUnit1 = parseFloat(document.getElementById('costPerUnit1').value);
+            const fixedCosts1 = parseFloat(document.getElementById('fixedCosts1').value);
+            const originalPrice1 = parseFloat(document.getElementById('originalPrice1').value);
+            const originalVolume1 = parseFloat(document.getElementById('originalVolume1').value);
+            const priceElasticity1 = parseFloat(document.getElementById('priceElasticity1').value);
+
+            const costPerUnit2 = parseFloat(document.getElementById('costPerUnit2').value);
+            const fixedCosts2 = parseFloat(document.getElementById('fixedCosts2').value);
+            const originalPrice2 = parseFloat(document.getElementById('originalPrice2').value);
+            const originalVolume2 = parseFloat(document.getElementById('originalVolume2').value);
+            const priceElasticity2 = parseFloat(document.getElementById('priceElasticity2').value);
+            
+            const newPrice = parseFloat(priceSlider.value);
+
+            // Display the new price from the slider
+            currentPriceDisplay.textContent = `$${newPrice.toFixed(2)}`;
+
+            // --- Input Validation ---
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            
+            // Validate Scenario 1
+            if (isNaN(costPerUnit1) || isNaN(fixedCosts1) || isNaN(originalPrice1) || isNaN(originalVolume1) || isNaN(priceElasticity1) ||
+                costPerUnit1 <= 0 || originalPrice1 <= 0 || originalVolume1 <= 0 || priceElasticity1 > 0 || costPerUnit1 >= originalPrice1) {
+                 showError('Please ensure all Scenario 1 inputs are valid and follow business rules.');
+                 resultsDiv.classList.add('hidden');
+                 return;
+            }
+            // Validate Scenario 2
+            if (isNaN(costPerUnit2) || isNaN(fixedCosts2) || isNaN(originalPrice2) || isNaN(originalVolume2) || isNaN(priceElasticity2) ||
+                costPerUnit2 <= 0 || originalPrice2 <= 0 || originalVolume2 <= 0 || priceElasticity2 > 0 || costPerUnit2 >= originalPrice2) {
+                 showError('Please ensure all Scenario 2 inputs are valid and follow business rules.');
+                 resultsDiv.classList.add('hidden');
+                 return;
+            }
+            
+            // Hide errors and show results
+            errorDiv.classList.add('hidden');
+            resultsDiv.classList.remove('hidden');
+
+            // --- Calculations for Scenario 1 ---
+            const percentChangeInPrice1 = (newPrice - originalPrice1) / originalPrice1;
+            const percentChangeInVolume1 = priceElasticity1 * percentChangeInPrice1;
+            const newVolume1 = originalVolume1 * (1 + percentChangeInVolume1);
+
+            const newProfit1 = (newPrice - costPerUnit1) * newVolume1 - fixedCosts1;
+            const newMargin1 = (newProfit1 / (newPrice * newVolume1)) * 100;
+            const newBreakeven1 = fixedCosts1 / (newPrice - costPerUnit1);
+            
+            // --- Calculations for Scenario 2 ---
+            const percentChangeInPrice2 = (newPrice - originalPrice2) / originalPrice2;
+            const percentChangeInVolume2 = priceElasticity2 * percentChangeInPrice2;
+            const newVolume2 = originalVolume2 * (1 + percentChangeInVolume2);
+
+            const newProfit2 = (newPrice - costPerUnit2) * newVolume2 - fixedCosts2;
+            const newMargin2 = (newProfit2 / (newPrice * newVolume2)) * 100;
+            const newBreakeven2 = fixedCosts2 / (newPrice - costPerUnit2);
+            
+            // --- Display Results ---
+            
+            document.getElementById('newVolume1').textContent = `${Math.round(newVolume1)} units`;
+            document.getElementById('newProfit1').textContent = formatter.format(newProfit1);
+            document.getElementById('newMargin1').textContent = `${newMargin1.toFixed(2)}%`;
+            if (newPrice > costPerUnit1) {
+                document.getElementById('newBreakeven1').textContent = `${Math.ceil(newBreakeven1)} units`;
+            } else {
+                 document.getElementById('newBreakeven1').textContent = 'Cannot break even';
+            }
+
+            document.getElementById('newVolume2').textContent = `${Math.round(newVolume2)} units`;
+            document.getElementById('newProfit2').textContent = formatter.format(newProfit2);
+            document.getElementById('newMargin2').textContent = `${newMargin2.toFixed(2)}%`;
+            if (newPrice > costPerUnit2) {
+                document.getElementById('newBreakeven2').textContent = `${Math.ceil(newBreakeven2)} units`;
+            } else {
+                 document.getElementById('newBreakeven2').textContent = 'Cannot break even';
+            }
+
+            // --- Generate Chart Data and Display ---
+            generateChart(
+                costPerUnit1, fixedCosts1, originalPrice1, originalVolume1, priceElasticity1,
+                costPerUnit2, fixedCosts2, originalPrice2, originalVolume2, priceElasticity2
+            );
+        }
+
+        let chart;
+        function generateChart(costPerUnit1, fixedCosts1, originalPrice1, originalVolume1, priceElasticity1, costPerUnit2, fixedCosts2, originalPrice2, originalVolume2, priceElasticity2) {
+            const chartData1 = [];
+            const chartData2 = [];
+            let maxProfit1 = -Infinity;
+            let optimalPrice1 = 0;
+            let optimalVolume1 = 0;
+            
+            let maxProfit2 = -Infinity;
+            let optimalPrice2 = 0;
+            let optimalVolume2 = 0;
+            
+            const priceRange = Array.from({length: 200}, (_, i) => i + 1);
+
+            priceRange.forEach(price => {
+                // Calculate for Scenario 1
+                const percentChangeInPrice1 = (price - originalPrice1) / originalPrice1;
+                const percentChangeInVolume1 = priceElasticity1 * percentChangeInPrice1;
+                const volume1 = originalVolume1 * (1 + percentChangeInVolume1);
+                const profit1 = (price - costPerUnit1) * volume1 - fixedCosts1;
+                chartData1.push(profit1);
+                
+                if (profit1 > maxProfit1) {
+                    maxProfit1 = profit1;
+                    optimalPrice1 = price;
+                    optimalVolume1 = volume1;
+                }
+
+                // Calculate for Scenario 2
+                const percentChangeInPrice2 = (price - originalPrice2) / originalPrice2;
+                const percentChangeInVolume2 = priceElasticity2 * percentChangeInPrice2;
+                const volume2 = originalVolume2 * (1 + percentChangeInVolume2);
+                const profit2 = (price - costPerUnit2) * volume2 - fixedCosts2;
+                chartData2.push(profit2);
+                
+                if (profit2 > maxProfit2) {
+                    maxProfit2 = profit2;
+                    optimalPrice2 = price;
+                    optimalVolume2 = volume2;
+                }
+            });
+
+            // Update optimal metrics
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            document.getElementById('optimalPrice1').textContent = formatter.format(optimalPrice1);
+            document.getElementById('optimalProfit1').textContent = formatter.format(maxProfit1);
+            document.getElementById('optimalVolume1').textContent = `${Math.ceil(optimalVolume1)} units`;
+
+            document.getElementById('optimalPrice2').textContent = formatter.format(optimalPrice2);
+            document.getElementById('optimalProfit2').textContent = formatter.format(maxProfit2);
+            document.getElementById('optimalVolume2').textContent = `${Math.ceil(optimalVolume2)} units`;
+            
+            const ctx = document.getElementById('profitChart').getContext('2d');
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: priceRange,
+                    datasets: [
+                        {
+                            label: 'Scenario 1 Profit ($)',
+                            data: chartData1,
+                            borderColor: 'rgb(79, 70, 229)',
+                            backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Scenario 2 Profit ($)',
+                            data: chartData2,
+                            borderColor: 'rgb(234, 88, 12)',
+                            backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Price ($)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Profit ($)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMsg');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium CSS Clip-Path Maker - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Premium CSS Clip-Path Maker for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/css-clip-path-maker.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/css-clip-path-maker.html">
+  <meta property="og:title" content="Premium CSS Clip-Path Maker - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Premium CSS Clip-Path Maker for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium CSS Clip-Path Maker - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Premium CSS Clip-Path Maker for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .app-container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 25px;
+            gap: 25px;
+        }
+        
+        .controls {
+            flex: 1;
+            min-width: 320px;
+            background: #f9fafc;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .preview {
+            flex: 2;
+            min-width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .control-group {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeef2;
+        }
+        
+        .control-group:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: #6a11cb;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            margin: 18px 0 12px;
+            color: #34495e;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            margin: 10px 0;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: #e0e0e0;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #6a11cb;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        input[type="color"] {
+            width: 100%;
+            height: 45px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: white;
+            font-size: 1rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .range-value {
+            display: inline-block;
+            width: 60px;
+            text-align: right;
+            font-weight: 600;
+            color: #6a11cb;
+        }
+        
+        .preview-area {
+            flex: 1;
+            min-height: 350px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #f5f7fa 25%, #e4e8f0 25%, #e4e8f0 50%, #f5f7fa 50%, #f5f7fa 75%, #e4e8f0 75%, #e4e8f0);
+            background-size: 20px 20px;
+        }
+        
+        .shape-preview {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .export-box {
+            background: #f9fafc;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: monospace;
+            resize: vertical;
+            font-size: 0.95rem;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 14px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        button.secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        button.secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        .shape-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .shape-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .shape-option:hover {
+            border-color: #6a11cb;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .shape-option.active {
+            border-color: #6a11cb;
+            background: rgba(106, 17, 203, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .shape-thumb {
+            width: 100%;
+            height: 70px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        .point-controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .point-control {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            border-top: 1px solid #eaeef2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #6a11cb;
+        }
+        
+        @media (max-width: 992px) {
+            .app-container {
+                flex-direction: column;
+            }
+            
+            .shape-options {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .shape-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .point-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .preset-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .preset-btn {
+            padding: 8px 15px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        
+        .preset-btn:hover {
+            background: #d0d0d0;
+            transform: translateY(-2px);
+        }
+        
+        .coordinate-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .coordinate-inputs input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .coordinate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .coordinate-title {
+            font-weight: 600;
+        }
+        
+        .delete-point {
+            color: #ff4757;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .add-point-btn {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .add-point-btn:hover {
+            background: #e0e0e0;
+        }
+        
+        .shape-info {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #6a11cb;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Premium CSS Clip-Path Maker</h1>
+      <p>Free interactive Premium CSS Clip-Path Maker for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cut"></i> Premium Clip-Path Maker</h1>
+            <p class="subtitle">Create stunning CSS clip-path shapes with our visual editor</p>
+        </header>
+        
+        <div class="app-container">
+            <div class="controls">
+                <div class="control-group">
+                    <h2><i class="fas fa-shapes"></i> Shape Type</h2>
+                    <div class="shape-options">
+                        <div class="shape-option active" data-shape="polygon">
+                            <div class="shape-thumb">Polygon</div>
+                            <span>Polygon</span>
+                        </div>
+                        <div class="shape-option" data-shape="circle">
+                            <div class="shape-thumb">Circle</div>
+                            <span>Circle</span>
+                        </div>
+                        <div class="shape-option" data-shape="ellipse">
+                            <div class="shape-thumb">Ellipse</div>
+                            <span>Ellipse</span>
+                        </div>
+                        <div class="shape-option" data-shape="inset">
+                            <div class="shape-thumb">Inset</div>
+                            <span>Inset</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h2><i class="fas fa-palette"></i> Appearance</h2>
+                    <label for="bgColor">Shape Color</label>
+                    <input type="color" id="bgColor" value="#6a11cb">
+                    
+                    <label for="bgImage">Background Image</label>
+                    <select id="bgImage">
+                        <option value="none">None</option>
+                        <option value="gradient">Gradient</option>
+                        <option value="texture">Texture</option>
+                        <option value="pattern">Pattern</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <h2><i class="fas fa-sliders-h"></i> Shape Settings</h2>
+                    
+                    <div id="polygonControls">
+                        <h3>Polygon Points</h3>
+                        <div id="pointControlsContainer">
+                            <!-- Point controls will be generated here -->
+                        </div>
+                        <button class="add-point-btn" id="addPointBtn"><i class="fas fa-plus"></i> Add Point</button>
+                    </div>
+                    
+                    <div id="circleControls" style="display: none;">
+                        <label for="circleSize">Circle Size <span class="range-value" id="circleSizeValue">50</span>%</label>
+                        <input type="range" id="circleSize" min="10" max="100" value="50">
+                        
+                        <label for="circlePositionX">Position X <span class="range-value" id="circlePosXValue">50</span>%</label>
+                        <input type="range" id="circlePositionX" min="0" max="100" value="50">
+                        
+                        <label for="circlePositionY">Position Y <span class="range-value" id="circlePosYValue">50</span>%</label>
+                        <input type="range" id="circlePositionY" min="0" max="100" value="50">
+                    </div>
+                    
+                    <div id="ellipseControls" style="display: none;">
+                        <label for="ellipseRadiusX">Radius X <span class="range-value" id="ellipseRadiusXValue">50</span>%</label>
+                        <input type="range" id="ellipseRadiusX" min="10" max="100" value="50">
+                        
+                        <label for="ellipseRadiusY">Radius Y <span class="range-value" id="ellipseRadiusYValue">50</span>%</label>
+                        <input type="range" id="ellipseRadiusY" min="10" max="100" value="50">
+                        
+                        <label for="ellipsePositionX">Position X <span class="range-value" id="ellipsePosXValue">50</span>%</label>
+                        <input type="range" id="ellipsePositionX" min="0" max="100" value="50">
+                        
+                        <label for="ellipsePositionY">Position Y <span class="range-value" id="ellipsePosYValue">50</span>%</label>
+                        <input type="range" id="ellipsePositionY" min="0" max="100" value="50">
+                    </div>
+                    
+                    <div id="insetControls" style="display: none;">
+                        <label for="insetTop">Top <span class="range-value" id="insetTopValue">10</span>%</label>
+                        <input type="range" id="insetTop" min="0" max="50" value="10">
+                        
+                        <label for="insetRight">Right <span class="range-value" id="insetRightValue">10</span>%</label>
+                        <input type="range" id="insetRight" min="0" max="50" value="10">
+                        
+                        <label for="insetBottom">Bottom <span class="range-value" id="insetBottomValue">10</span>%</label>
+                        <input type="range" id="insetBottom" min="0" max="50" value="10">
+                        
+                        <label for="insetLeft">Left <span class="range-value" id="insetLeftValue">10</span>%</label>
+                        <input type="range" id="insetLeft" min="0" max="50" value="10">
+                        
+                        <label for="insetRound">Border Radius <span class="range-value" id="insetRoundValue">0</span>px</label>
+                        <input type="range" id="insetRound" min="0" max="50" value="0">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h2><i class="fas fa-magic"></i> Presets</h2>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-preset="talk-bubble">Talk Bubble</button>
+                        <button class="preset-btn" data-preset="star">Star</button>
+                        <button class="preset-btn" data-preset="cross">Cross</button>
+                        <button class="preset-btn" data-preset="arrow">Arrow</button>
+                    </div>
+                </div>
+                
+                <button id="exportBtn"><i class="fas fa-code"></i> Export CSS</button>
+            </div>
+            
+            <div class="preview">
+                <div class="preview-area">
+                    <div class="shape-preview" id="shapePreview">
+                        <div>Your Clip-Path Shape</div>
+                    </div>
+                </div>
+                
+                <div class="export-box">
+                    <h2><i class="fas fa-file-export"></i> CSS Code</h2>
+                    <textarea id="cssOutput" readonly></textarea>
+                    <div class="button-group">
+                        <button id="copyBtn"><i class="fas fa-copy"></i> Copy to Clipboard</button>
+                        <button class="secondary" id="downloadBtn"><i class="fas fa-download"></i> Download CSS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Premium Clip-Path Maker &copy; 2023 | Create stunning CSS shapes with ease</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-codepen"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast">CSS copied to clipboard!</div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const shapeOptions = document.querySelectorAll('.shape-option');
+            const bgColorInput = document.getElementById('bgColor');
+            const bgImageInput = document.getElementById('bgImage');
+            const shapePreview = document.getElementById('shapePreview');
+            const cssOutput = document.getElementById('cssOutput');
+            const exportBtn = document.getElementById('exportBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const toast = document.getElementById('toast');
+            const addPointBtn = document.getElementById('addPointBtn');
+            const pointControlsContainer = document.getElementById('pointControlsContainer');
+            
+            // Shape type controls
+            const polygonControls = document.getElementById('polygonControls');
+            const circleControls = document.getElementById('circleControls');
+            const ellipseControls = document.getElementById('ellipseControls');
+            const insetControls = document.getElementById('insetControls');
+            
+            // Circle controls
+            const circleSizeInput = document.getElementById('circleSize');
+            const circleSizeValue = document.getElementById('circleSizeValue');
+            const circlePosXInput = document.getElementById('circlePositionX');
+            const circlePosXValue = document.getElementById('circlePosXValue');
+            const circlePosYInput = document.getElementById('circlePositionY');
+            const circlePosYValue = document.getElementById('circlePosYValue');
+            
+            // Ellipse controls
+            const ellipseRadiusXInput = document.getElementById('ellipseRadiusX');
+            const ellipseRadiusXValue = document.getElementById('ellipseRadiusXValue');
+            const ellipseRadiusYInput = document.getElementById('ellipseRadiusY');
+            const ellipseRadiusYValue = document.getElementById('ellipseRadiusYValue');
+            const ellipsePosXInput = document.getElementById('ellipsePositionX');
+            const ellipsePosXValue = document.getElementById('ellipsePosXValue');
+            const ellipsePosYInput = document.getElementById('ellipsePositionY');
+            const ellipsePosYValue = document.getElementById('ellipsePosYValue');
+            
+            // Inset controls
+            const insetTopInput = document.getElementById('insetTop');
+            const insetTopValue = document.getElementById('insetTopValue');
+            const insetRightInput = document.getElementById('insetRight');
+            const insetRightValue = document.getElementById('insetRightValue');
+            const insetBottomInput = document.getElementById('insetBottom');
+            const insetBottomValue = document.getElementById('insetBottomValue');
+            const insetLeftInput = document.getElementById('insetLeft');
+            const insetLeftValue = document.getElementById('insetLeftValue');
+            const insetRoundInput = document.getElementById('insetRound');
+            const insetRoundValue = document.getElementById('insetRoundValue');
+            
+            // Preset buttons
+            const presetButtons = document.querySelectorAll('.preset-btn');
+            
+            // Current settings
+            let currentShape = 'polygon';
+            let currentBgColor = '#6a11cb';
+            let currentBgImage = 'none';
+            let points = [
+                { x: 50, y: 0 },
+                { x: 100, y: 50 },
+                { x: 50, y: 100 },
+                { x: 0, y: 50 }
+            ];
+            
+            // Initialize
+            updatePointControls();
+            updateShape();
+            
+            // Event Listeners
+            shapeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    shapeOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    currentShape = this.getAttribute('data-shape');
+                    
+                    // Show/hide appropriate controls
+                    polygonControls.style.display = currentShape === 'polygon' ? 'block' : 'none';
+                    circleControls.style.display = currentShape === 'circle' ? 'block' : 'none';
+                    ellipseControls.style.display = currentShape === 'ellipse' ? 'block' : 'none';
+                    insetControls.style.display = currentShape === 'inset' ? 'block' : 'none';
+                    
+                    updateShape();
+                });
+            });
+            
+            bgColorInput.addEventListener('input', function() {
+                currentBgColor = this.value;
+                updateShape();
+            });
+            
+            bgImageInput.addEventListener('change', function() {
+                currentBgImage = this.value;
+                updateShape();
+            });
+            
+            // Circle controls
+            circleSizeInput.addEventListener('input', function() {
+                circleSizeValue.textContent = this.value;
+                updateShape();
+            });
+            
+            circlePosXInput.addEventListener('input', function() {
+                circlePosXValue.textContent = this.value;
+                updateShape();
+            });
+            
+            circlePosYInput.addEventListener('input', function() {
+                circlePosYValue.textContent = this.value;
+                updateShape();
+            });
+            
+            // Ellipse controls
+            ellipseRadiusXInput.addEventListener('input', function() {
+                ellipseRadiusXValue.textContent = this.value;
+                updateShape();
+            });
+            
+            ellipseRadiusYInput.addEventListener('input', function() {
+                ellipseRadiusYValue.textContent = this.value;
+                updateShape();
+            });
+            
+            ellipsePosXInput.addEventListener('input', function() {
+                ellipsePosXValue.textContent = this.value;
+                updateShape();
+            });
+            
+            ellipsePosYInput.addEventListener('input', function() {
+                ellipsePosYValue.textContent = this.value;
+                updateShape();
+            });
+            
+            // Inset controls
+            insetTopInput.addEventListener('input', function() {
+                insetTopValue.textContent = this.value;
+                updateShape();
+            });
+            
+            insetRightInput.addEventListener('input', function() {
+                insetRightValue.textContent = this.value;
+                updateShape();
+            });
+            
+            insetBottomInput.addEventListener('input', function() {
+                insetBottomValue.textContent = this.value;
+                updateShape();
+            });
+            
+            insetLeftInput.addEventListener('input', function() {
+                insetLeftValue.textContent = this.value;
+                updateShape();
+            });
+            
+            insetRoundInput.addEventListener('input', function() {
+                insetRoundValue.textContent = this.value;
+                updateShape();
+            });
+            
+            addPointBtn.addEventListener('click', function() {
+                points.push({ x: 50, y: 50 });
+                updatePointControls();
+                updateShape();
+            });
+            
+            exportBtn.addEventListener('click', generateCSS);
+            
+            copyBtn.addEventListener('click', function() {
+                cssOutput.select();
+                document.execCommand('copy');
+                showToast('CSS copied to clipboard!');
+            });
+            
+            downloadBtn.addEventListener('click', function() {
+                const css = cssOutput.value;
+                if (!css) return;
+                
+                const blob = new Blob([css], { type: 'text/css' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'clip-path.css';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showToast('CSS file downloaded!');
+            });
+            
+            presetButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const preset = this.getAttribute('data-preset');
+                    applyPreset(preset);
+                });
+            });
+            
+            // Functions
+            function updatePointControls() {
+                pointControlsContainer.innerHTML = '';
+                
+                points.forEach((point, index) => {
+                    const pointControl = document.createElement('div');
+                    pointControl.className = 'point-control';
+                    pointControl.innerHTML = `
+                        <div class="coordinate-header">
+                            <span class="coordinate-title">Point ${index + 1}</span>
+                            <span class="delete-point" data-index="${index}"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="coordinate-inputs">
+                            <div>
+                                <label>X <span class="range-value">${point.x}%</span></label>
+                                <input type="range" class="point-x" min="0" max="100" value="${point.x}" data-index="${index}">
+                            </div>
+                            <div>
+                                <label>Y <span class="range-value">${point.y}%</span></label>
+                                <input type="range" class="point-y" min="0" max="100" value="${point.y}" data-index="${index}">
+                            </div>
+                        </div>
+                    `;
+                    
+                    pointControlsContainer.appendChild(pointControl);
+                    
+                    // Add event listeners for the new inputs
+                    const xInput = pointControl.querySelector('.point-x');
+                    const yInput = pointControl.querySelector('.point-y');
+                    const deleteBtn = pointControl.querySelector('.delete-point');
+                    
+                    xInput.addEventListener('input', function() {
+                        const idx = parseInt(this.getAttribute('data-index'));
+                        points[idx].x = parseInt(this.value);
+                        this.parentElement.querySelector('.range-value').textContent = `${this.value}%`;
+                        updateShape();
+                    });
+                    
+                    yInput.addEventListener('input', function() {
+                        const idx = parseInt(this.getAttribute('data-index'));
+                        points[idx].y = parseInt(this.value);
+                        this.parentElement.querySelector('.range-value').textContent = `${this.value}%`;
+                        updateShape();
+                    });
+                    
+                    deleteBtn.addEventListener('click', function() {
+                        if (points.length <= 3) {
+                            showToast('A polygon needs at least 3 points');
+                            return;
+                        }
+                        
+                        const idx = parseInt(this.getAttribute('data-index'));
+                        points.splice(idx, 1);
+                        updatePointControls();
+                        updateShape();
+                    });
+                });
+            }
+            
+            function updateShape() {
+                let clipPathValue = '';
+                
+                switch(currentShape) {
+                    case 'polygon':
+                        const polygonPoints = points.map(point => `${point.x}% ${point.y}%`).join(', ');
+                        clipPathValue = `polygon(${polygonPoints})`;
+                        break;
+                    case 'circle':
+                        const circleSize = circleSizeInput.value;
+                        const circlePosX = circlePosXInput.value;
+                        const circlePosY = circlePosYInput.value;
+                        clipPathValue = `circle(${circleSize}% at ${circlePosX}% ${circlePosY}%)`;
+                        break;
+                    case 'ellipse':
+                        const ellipseRadiusX = ellipseRadiusXInput.value;
+                        const ellipseRadiusY = ellipseRadiusYInput.value;
+                        const ellipsePosX = ellipsePosXInput.value;
+                        const ellipsePosY = ellipsePosYInput.value;
+                        clipPathValue = `ellipse(${ellipseRadiusX}% ${ellipseRadiusY}% at ${ellipsePosX}% ${ellipsePosY}%)`;
+                        break;
+                    case 'inset':
+                        const insetTop = insetTopInput.value;
+                        const insetRight = insetRightInput.value;
+                        const insetBottom = insetBottomInput.value;
+                        const insetLeft = insetLeftInput.value;
+                        const insetRound = insetRoundInput.value;
+                        clipPathValue = `inset(${insetTop}% ${insetRight}% ${insetBottom}% ${insetLeft}% round ${insetRound}px)`;
+                        break;
+                }
+                
+                // Update preview
+                shapePreview.style.clipPath = clipPathValue;
+                shapePreview.style.backgroundColor = currentBgColor;
+                
+                // Update background image
+                switch(currentBgImage) {
+                    case 'gradient':
+                        shapePreview.style.backgroundImage = 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)';
+                        break;
+                    case 'texture':
+                        shapePreview.style.backgroundImage = 'url(https://images.unsplash.com/photo-1550684376-efcbd6e3f031?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80)';
+                        shapePreview.style.backgroundSize = 'cover';
+                        break;
+                    case 'pattern':
+                        shapePreview.style.backgroundImage = 'url(https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80)';
+                        shapePreview.style.backgroundSize = 'cover';
+                        break;
+                    default:
+                        shapePreview.style.backgroundImage = 'none';
+                }
+            }
+            
+            function generateCSS() {
+                let clipPathValue = '';
+                
+                switch(currentShape) {
+                    case 'polygon':
+                        const polygonPoints = points.map(point => `${point.x}% ${point.y}%`).join(', ');
+                        clipPathValue = `polygon(${polygonPoints})`;
+                        break;
+                    case 'circle':
+                        const circleSize = circleSizeInput.value;
+                        const circlePosX = circlePosXInput.value;
+                        const circlePosY = circlePosYInput.value;
+                        clipPathValue = `circle(${circleSize}% at ${circlePosX}% ${circlePosY}%)`;
+                        break;
+                    case 'ellipse':
+                        const ellipseRadiusX = ellipseRadiusXInput.value;
+                        const ellipseRadiusY = ellipseRadiusYInput.value;
+                        const ellipsePosX = ellipsePosXInput.value;
+                        const ellipsePosY = ellipsePosYInput.value;
+                        clipPathValue = `ellipse(${ellipseRadiusX}% ${ellipseRadiusY}% at ${ellipsePosX}% ${ellipsePosY}%)`;
+                        break;
+                    case 'inset':
+                        const insetTop = insetTopInput.value;
+                        const insetRight = insetRightInput.value;
+                        const insetBottom = insetBottomInput.value;
+                        const insetLeft = insetLeftInput.value;
+                        const insetRound = insetRoundInput.value;
+                        clipPathValue = `inset(${insetTop}% ${insetRight}% ${insetBottom}% ${insetLeft}% round ${insetRound}px)`;
+                        break;
+                }
+                
+                const cssCode = `clip-path: ${clipPathValue};
+-webkit-clip-path: ${clipPathValue};
+background-color: ${currentBgColor};`;
+                
+                cssOutput.value = cssCode;
+            }
+            
+            function showToast(message) {
+                toast.textContent = message;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+            
+            function applyPreset(preset) {
+                switch(preset) {
+                    case 'talk-bubble':
+                        currentShape = 'polygon';
+                        shapeOptions.forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.shape-option[data-shape="polygon"]').classList.add('active');
+                        polygonControls.style.display = 'block';
+                        circleControls.style.display = 'none';
+                        ellipseControls.style.display = 'none';
+                        insetControls.style.display = 'none';
+                        
+                        points = [
+                            { x: 0, y: 0 },
+                            { x: 100, y: 0 },
+                            { x: 100, y: 70 },
+                            { x: 60, y: 70 },
+                            { x: 60, y: 100 },
+                            { x: 40, y: 70 },
+                            { x: 0, y: 70 }
+                        ];
+                        updatePointControls();
+                        break;
+                    case 'star':
+                        currentShape = 'polygon';
+                        shapeOptions.forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.shape-option[data-shape="polygon"]').classList.add('active');
+                        polygonControls.style.display = 'block';
+                        circleControls.style.display = 'none';
+                        ellipseControls.style.display = 'none';
+                        insetControls.style.display = 'none';
+                        
+                        points = [
+                            { x: 50, y: 0 },
+                            { x: 61, y: 35 },
+                            { x: 98, y: 35 },
+                            { x: 68, y: 57 },
+                            { x: 79, y: 91 },
+                            { x: 50, y: 70 },
+                            { x: 21, y: 91 },
+                            { x: 32, y: 57 },
+                            { x: 2, y: 35 },
+                            { x: 39, y: 35 }
+                        ];
+                        updatePointControls();
+                        break;
+                    case 'cross':
+                        currentShape = 'polygon';
+                        shapeOptions.forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.shape-option[data-shape="polygon"]').classList.add('active');
+                        polygonControls.style.display = 'block';
+                        circleControls.style.display = 'none';
+                        ellipseControls.style.display = 'none';
+                        insetControls.style.display = 'none';
+                        
+                        points = [
+                            { x: 20, y: 0 },
+                            { x: 80, y: 0 },
+                            { x: 80, y: 20 },
+                            { x: 100, y: 20 },
+                            { x: 100, y: 80 },
+                            { x: 80, y: 80 },
+                            { x: 80, y: 100 },
+                            { x: 20, y: 100 },
+                            { x: 20, y: 80 },
+                            { x: 0, y: 80 },
+                            { x: 0, y: 20 },
+                            { x: 20, y: 20 }
+                        ];
+                        updatePointControls();
+                        break;
+                    case 'arrow':
+                        currentShape = 'polygon';
+                        shapeOptions.forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.shape-option[data-shape="polygon"]').classList.add('active');
+                        polygonControls.style.display = 'block';
+                        circleControls.style.display = 'none';
+                        ellipseControls.style.display = 'none';
+                        insetControls.style.display = 'none';
+                        
+                        points = [
+                            { x: 0, y: 40 },
+                            { x: 60, y: 40 },
+                            { x: 60, y: 0 },
+                            { x: 100, y: 50 },
+                            { x: 60, y: 100 },
+                            { x: 60, y: 60 },
+                            { x: 0, y: 60 }
+                        ];
+                        updatePointControls();
+                        break;
+                }
+                
+                updateShape();
+                generateCSS();
+            }
+        });
+    </script>
+</body>
+</html>

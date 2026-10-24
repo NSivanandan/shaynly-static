@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>branded-bill-generator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive branded-bill-generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/branded-bill-generator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/branded-bill-generator.html">
+  <meta property="og:title" content="branded-bill-generator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive branded-bill-generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="branded-bill-generator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive branded-bill-generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        :root {
+            --accent-color: #6366f1;
+        }
+
+        .bill-generator {
+            padding: 10px;
+            background: rgba(25, 25, 35, 0.95);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            margin: 20px 0;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .config-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .preview-section {
+            flex: 2;
+            min-width: 300px;
+            background: rgba(35, 35, 45, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #a0a0c0;
+            font-size: 0.9em;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(45, 45, 55, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .brand-color-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .invoice-preview {
+            background: rgba(30, 30, 40, 0.9);
+            padding: 25px;
+            border-radius: 12px;
+            min-height: 800px;
+        }
+
+        .invoice-header {
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--accent-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #logoPreview {
+            max-width: 180px;
+            max-height: 100px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .client-info {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(45, 45, 55, 0.4);
+            border-radius: 8px;
+        }
+
+        .invoice-item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .total-section {
+            margin-top: 25px;
+            padding: 15px;
+            background: var(--accent-color);
+            border-radius: 8px;
+            text-align: right;
+        }
+
+        .download-btn,
+        button:not(#addItemBtn) {
+            background: var(--accent-color);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        #addItemBtn {
+            background: var(--accent-color);
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .download-btn:hover,
+        button:not(#addItemBtn):hover,
+        #addItemBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        #pdfLoading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        @media (max-width: 480px) {
+            .invoice-item {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Productivity & Management</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>branded-bill-generator</h1>
+      <p>Free interactive branded-bill-generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      <div class="branded-bill-generator">
+    
+
+    <div id="pdfLoading">⏳ Generating PDF... Please wait</div>
+
+    <div class="bill-generator">
+        <div class="config-section">
+            <h2 style="color: var(--accent-color); margin-bottom: 30px;">🎨 Brand Configuration</h2>
+
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" id="companyName" placeholder="Enter company name">
+            </div>
+
+            <div class="form-group">
+                <label>Upload Logo (300x100px)</label>
+                <input type="file" id="logoUpload" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label>Brand Color</label>
+                <input type="color" id="brandColor" value="#6366f1">
+                <div class="brand-color-preview" id="colorPreview"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Currency</label>
+                <select id="currency">
+                    <option value="$" data-decimals="2">USD ($)</option>
+                    <option value="€" data-decimals="2">EUR (€)</option>
+                    <option value="£" data-decimals="2">GBP (£)</option>
+                    <option value="¥" data-decimals="0">JPY (¥)</option>
+                    <option value="₹" data-decimals="2">INR (₹)</option>
+                    <option value="A$" data-decimals="2">AUD (A$)</option>
+                    <option value="C$" data-decimals="2">CAD (C$)</option>
+                </select>
+            </div>
+
+            <h2 style="color: var(--accent-color); margin: 40px 0 25px;">📄 Invoice Details</h2>
+
+            <div class="form-group">
+                <label>Client Information</label>
+                <input type="text" id="clientName" placeholder="Client name">
+                <input type="email" id="clientEmail" placeholder="Client email" style="margin-top: 10px;">
+            </div>
+
+            <div class="form-group">
+                <label>Invoice Items</label>
+                <div id="itemsContainer">
+                    <div class="invoice-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                        <input type="text" placeholder="Description" class="item-desc">
+                        <input type="number" placeholder="Qty" class="item-qty" min="0" value="1">
+                        <input type="number" placeholder="Price" class="item-price" min="0" step="0.01">
+                    </div>
+                </div>
+                <button id="addItemBtn" onclick="addNewItem()">+ Add Item</button>
+            </div>
+
+            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div>
+                    <label>Tax Rate (%)</label>
+                    <input type="number" id="taxRate" value="10" min="0">
+                </div>
+                <div>
+                    <label>Discount (%)</label>
+                    <input type="number" id="discount" value="0" min="0">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Due Date</label>
+                <input type="date" id="dueDate">
+            </div>
+
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="notes" rows="3" placeholder="Add payment terms or special notes..."></textarea>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2 style="color: var(--accent-color); margin: 0;">📋 Invoice Preview</h2>
+                <button onclick="togglePreviewMode()">🌓 Dark/Light Mode</button>
+            </div>
+
+            <div class="invoice-preview" id="invoicePreview">
+                <div class="invoice-header">
+                    <img id="logoPreview" alt="Company Logo" style="display: none;">
+                    <div>
+                        <P id="previewCompanyName">Your Company</P>
+                        <p style="opacity: 0.8;">Invoice #<span id="invoiceNumber">001</span></p>
+                    </div>
+                </div>
+
+                <div class="client-info">
+                    <p><strong>Bill To:</strong> <span id="previewClientName">Client Name</span></p>
+                    <p style="margin-top: 8px;"><strong>Due Date:</strong> <span id="previewDueDate">DD/MM/YYYY</span></p>
+                </div>
+
+                <div class="invoice-items" id="previewItems" style="margin: 25px 0;">
+                    <div class="invoice-item-row" style="font-weight: bold; border-bottom: 2px solid var(--accent-color);">
+                        <span>Description</span>
+                        <span>Amount</span>
+                    </div>
+                </div>
+
+                <div class="total-section">
+                    <div style="margin-bottom: 12px;">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <span>Tax (<span id="taxPercentage">0</span>%):</span>
+                        <span id="taxAmount">$0.00</span>
+                    </div>
+                    <div>
+                        <span>Discount (<span id="discountPercentage">0</span>%):</span>
+                        <span id="discountAmount">$0.00</span>
+                    </div>
+                    <div style="margin-top: 20px; font-size: 1.3em;">
+                        <span>Total:</span>
+                        <span id="previewTotal">$0.00</span>
+                    </div>
+                </div>
+
+                <div id="previewNotes" style="margin-top: 30px; opacity: 0.8; font-size: 0.9em;"></div>
+            </div>
+
+            <button class="download-btn" onclick="generatePDF()">💾 Download Invoice</button>
+        </div>
+    </div>
+
+    
+
+    <!-- External Libraries -->
+    
+    
+</div>
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        let isDarkMode = true;
+        let invoiceCounter = Number(localStorage.getItem('invoiceCounter')) || 1;
+        let logoLoaded = false;
+
+        // Initialize brand color
+        let brandColor = '#6366f1';
+        document.documentElement.style.setProperty('--accent-color', brandColor);
+        document.getElementById('colorPreview').style.backgroundColor = brandColor;
+
+        // Real-time updates
+        document.addEventListener('input', updatePreview);
+
+        // Logo handling
+        document.getElementById('logoUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = () => {
+                        logoLoaded = true;
+                        document.getElementById('logoPreview').style.display = 'block';
+                        document.getElementById('logoPreview').src = e.target.result;
+                        updatePreview();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Add invoice items
+        function addNewItem() {
+            const newItem = document.createElement('div');
+            newItem.className = 'invoice-item';
+            newItem.style.display = 'grid';
+            newItem.style.gridTemplateColumns = '2fr 1fr 1fr';
+            newItem.style.gap = '10px';
+            newItem.style.marginBottom = '10px';
+            newItem.innerHTML = `
+                <input type="text" placeholder="Description" class="item-desc">
+                <input type="number" placeholder="Qty" class="item-qty" min="0" value="1">
+                <input type="number" placeholder="Price" class="item-price" min="0" step="0.01">
+            `;
+            document.getElementById('itemsContainer').appendChild(newItem);
+            updatePreview();
+        }
+
+        // Get currency details
+        function getCurrency() {
+            const select = document.getElementById('currency');
+            const symbol = select.value;
+            const decimals = parseInt(select.options[select.selectedIndex].getAttribute('data-decimals'), 10);
+            return { symbol, decimals };
+        }
+
+        // Update preview calculations
+        function updatePreview() {
+            // Brand color
+            brandColor = document.getElementById('brandColor').value;
+            document.documentElement.style.setProperty('--accent-color', brandColor);
+            document.getElementById('colorPreview').style.backgroundColor = brandColor;
+
+            // Invoice number
+            document.getElementById('invoiceNumber').textContent = invoiceCounter.toString().padStart(3, '0');
+
+            // Company info
+            const companyName = document.getElementById('companyName').value || 'Your Company';
+            document.getElementById('previewCompanyName').textContent = companyName;
+            document.getElementById('previewCompanyName').style.color = brandColor; // Ensure visibility
+
+            // Client info
+            document.getElementById('previewClientName').textContent =
+                document.getElementById('clientName').value || 'Client Name';
+
+            // Get currency details
+            const currency = getCurrency();
+
+            // Items calculation
+            let subtotal = 0;
+            let itemsHTML = '';
+            const items = Array.from(document.querySelectorAll('.invoice-item'));
+
+            items.forEach(item => {
+                const desc = item.querySelector('.item-desc').value || 'Item';
+                const qty = parseFloat(item.querySelector('.item-qty').value) || 0;
+                const price = parseFloat(item.querySelector('.item-price').value) || 0;
+                const total = qty * price;
+                subtotal += total;
+
+                itemsHTML += `
+                    <div class="invoice-item-row">
+                        <span>${desc}</span>
+                        <span>${qty} × ${currency.symbol}${price.toFixed(currency.decimals)} = ${currency.symbol}${total.toFixed(currency.decimals)}</span>
+                    </div>
+                `;
+            });
+
+            // Tax and discount
+            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+            const discount = parseFloat(document.getElementById('discount').value) || 0;
+            const taxAmount = subtotal * (taxRate / 100);
+            const discountAmount = subtotal * (discount / 100);
+            const total = subtotal + taxAmount - discountAmount;
+
+            // Update display with correct decimals
+            document.getElementById('subtotal').textContent = `${currency.symbol}${subtotal.toFixed(currency.decimals)}`;
+            document.getElementById('taxPercentage').textContent = taxRate;
+            document.getElementById('taxAmount').textContent = `${currency.symbol}${taxAmount.toFixed(currency.decimals)}`;
+            document.getElementById('discountPercentage').textContent = discount;
+            document.getElementById('discountAmount').textContent = `${currency.symbol}${discountAmount.toFixed(currency.decimals)}`;
+            document.getElementById('previewTotal').textContent = `${currency.symbol}${total.toFixed(currency.decimals)}`;
+            document.getElementById('previewItems').innerHTML = `
+                <div class="invoice-item-row" style="font-weight: bold; border-bottom: 2px solid var(--accent-color);">
+                    <span>Description</span>
+                    <span>Amount</span>
+                </div>
+                ${itemsHTML}
+            `;
+
+            // Additional fields
+            document.getElementById('previewDueDate').textContent =
+                document.getElementById('dueDate').value ?
+                new Date(document.getElementById('dueDate').value).toLocaleDateString() :
+                'Not specified';
+
+            document.getElementById('previewNotes').innerHTML =
+                document.getElementById('notes').value.replace(/\n/g, '<br>');
+        }
+
+        // PDF Generation
+        async function generatePDF() {
+            document.getElementById('pdfLoading').style.display = 'block';
+
+            try {
+                // Ensure the preview is fully updated before generating PDF
+                updatePreview();
+                await new Promise(resolve => setTimeout(resolve, 100)); // Small delay to ensure DOM updates
+
+                // Force logo load if pending
+                if (document.getElementById('logoUpload').files.length > 0 && !logoLoaded) {
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+
+                const element = document.getElementById('invoicePreview');
+                const scale = 2;
+
+                const canvas = await html2canvas(element, {
+                    scale: scale,
+                    useCORS: true,
+                    logging: false,
+                    onclone: (clonedDoc) => {
+                        // Ensure logo visibility
+                        const clonedLogo = clonedDoc.getElementById('logoPreview');
+                        if (document.getElementById('logoUpload').files.length > 0) {
+                            clonedLogo.src = document.getElementById('logoPreview').src;
+                            clonedLogo.style.display = 'block';
+                        }
+
+                        // Inject company name and styles into cloned document
+                        const clonedCompanyName = clonedDoc.getElementById('previewCompanyName');
+                        clonedCompanyName.textContent = document.getElementById('previewCompanyName').textContent;
+                        clonedCompanyName.style.color = brandColor; // Use brand color directly
+                        clonedCompanyName.style.visibility = 'visible'; // Ensure visibility
+
+                        // Apply accent color to cloned document
+                        clonedDoc.documentElement.style.setProperty('--accent-color', brandColor);
+                        clonedDoc.querySelectorAll('[style*="var(--accent-color)"]').forEach(el => {
+                            const style = el.getAttribute('style');
+                            el.setAttribute('style', style.replace('var(--accent-color)', brandColor));
+                        });
+                    }
+                });
+
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const imgWidth = pageWidth - 20;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                pdf.addImage(canvas, 'PNG', 10, 10, imgWidth, imgHeight);
+                pdf.save(`invoice_${invoiceCounter.toString().padStart(3, '0')}.pdf`);
+
+                // Update invoice counter
+                invoiceCounter++;
+                localStorage.setItem('invoiceCounter', invoiceCounter);
+                updatePreview();
+            } catch (error) {
+                alert('Error generating PDF: ' + error.message);
+            } finally {
+                document.getElementById('pdfLoading').style.display = 'none';
+            }
+        }
+
+        // Helper functions
+        function togglePreviewMode() {
+            isDarkMode = !isDarkMode;
+            const previewSection = document.querySelector('.preview-section');
+            const invoicePreview = document.querySelector('.invoice-preview');
+            previewSection.style.background = isDarkMode ? 'rgba(35, 35, 45, 0.9)' : 'rgba(255, 255, 255, 0.95)';
+            previewSection.style.color = isDarkMode ? 'white' : '#333';
+            invoicePreview.style.background = isDarkMode ? 'rgba(30, 30, 40, 0.9)' : '#ffffff';
+            invoicePreview.style.color = isDarkMode ? 'white' : '#333';
+        }
+
+        // Initial setup
+        updatePreview();
+    </script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>

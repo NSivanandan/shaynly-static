@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Inventory Holding Cost Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Inventory Holding Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/inventory-holding-cost-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/inventory-holding-cost-calculator.html">
+  <meta property="og:title" content="Advanced Inventory Holding Cost Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Inventory Holding Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Inventory Holding Cost Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Inventory Holding Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Inventory Holding Cost Calculator</h1>
+      <p>Free interactive Advanced Inventory Holding Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-6xl">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-2"> Inventory Holding Cost Calculator</h1>
+        <p class="text-center text-gray-500 mb-6">
+            Compare scenarios and analyze the breakdown of your annual inventory carrying costs.
+        </p>
+
+        <!-- Scenario Inputs Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Scenario 1 Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 1</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="avgInventoryValue1" class="block text-sm font-medium text-gray-700">Average Inventory Value ($)</label>
+                        <input type="number" id="avgInventoryValue1" value="50000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Total value of your average inventory on hand.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="storageCost1" class="block text-sm font-medium text-gray-700">Storage Costs (%)</label>
+                            <input type="number" id="storageCost1" value="10" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div>
+                            <label for="capitalCost1" class="block text-sm font-medium text-gray-700">Capital Costs (%)</label>
+                            <input type="number" id="capitalCost1" value="8" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div>
+                            <label for="insuranceCost1" class="block text-sm font-medium text-gray-700">Insurance Costs (%)</label>
+                            <input type="number" id="insuranceCost1" value="2" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div>
+                            <label for="taxesCost1" class="block text-sm font-medium text-gray-700">Taxes (%)</label>
+                            <input type="number" id="taxesCost1" value="1" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="obsolescenceCost1" class="block text-sm font-medium text-gray-700">Obsolescence/Shrinkage Costs (%)</label>
+                            <input type="number" id="obsolescenceCost1" value="4" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Scenario 2 Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 2</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="avgInventoryValue2" class="block text-sm font-medium text-gray-700">Average Inventory Value ($)</label>
+                        <input type="number" id="avgInventoryValue2" value="60000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Total value of your average inventory on hand.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="storageCost2" class="block text-sm font-medium text-gray-700">Storage Costs (%)</label>
+                            <input type="number" id="storageCost2" value="12" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div>
+                            <label for="capitalCost2" class="block text-sm font-medium text-gray-700">Capital Costs (%)</label>
+                            <input type="number" id="capitalCost2" value="9" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div>
+                            <label for="insuranceCost2" class="block text-sm font-medium text-gray-700">Insurance Costs (%)</label>
+                            <input type="number" id="insuranceCost2" value="2.5" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div>
+                            <label for="taxesCost2" class="block text-sm font-medium text-gray-700">Taxes (%)</label>
+                            <input type="number" id="taxesCost2" value="1.5" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="obsolescenceCost2" class="block text-sm font-medium text-gray-700">Obsolescence/Shrinkage Costs (%)</label>
+                            <input type="number" id="obsolescenceCost2" value="3" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="calculateBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+            Compare Scenarios
+        </button>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="mt-4 p-3 bg-red-100 text-red-700 rounded-md hidden">
+        </div>
+
+        <!-- Results Display -->
+        <div id="results" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Annual Holding Costs Comparison</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Scenario 1 Results -->
+                <div class="bg-indigo-50 p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">Scenario 1</h3>
+                    <p class="text-sm font-semibold">Total Holding Cost Rate</p>
+                    <p id="totalCostPercentage1" class="text-3xl font-bold text-indigo-700 mb-4"></p>
+                    <p class="text-sm font-semibold">Annual Carrying Cost</p>
+                    <p id="annualCarryingCost1" class="text-3xl font-bold text-indigo-700 mb-4"></p>
+                    <div class="w-full max-w-xs mx-auto">
+                        <canvas id="chart1"></canvas>
+                    </div>
+                </div>
+                <!-- Scenario 2 Results -->
+                <div class="bg-indigo-50 p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">Scenario 2</h3>
+                    <p class="text-sm font-semibold">Total Holding Cost Rate</p>
+                    <p id="totalCostPercentage2" class="text-3xl font-bold text-indigo-700 mb-4"></p>
+                    <p class="text-sm font-semibold">Annual Carrying Cost</p>
+                    <p id="annualCarryingCost2" class="text-3xl font-bold text-indigo-700 mb-4"></p>
+                    <div class="w-full max-w-xs mx-auto">
+                        <canvas id="chart2"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        const inputs = [
+            'avgInventoryValue1', 'storageCost1', 'capitalCost1', 'insuranceCost1', 'taxesCost1', 'obsolescenceCost1',
+            'avgInventoryValue2', 'storageCost2', 'capitalCost2', 'insuranceCost2', 'taxesCost2', 'obsolescenceCost2'
+        ];
+        const calculateBtn = document.getElementById('calculateBtn');
+        const resultsDiv = document.getElementById('results');
+        const errorDiv = document.getElementById('errorMsg');
+        
+        let chart1, chart2; // Chart.js instances
+
+        calculateBtn.addEventListener('click', () => {
+            calculateAndDisplayCosts();
+        });
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', calculateAndDisplayCosts);
+        });
+
+        // Initial calculation on page load
+        document.addEventListener('DOMContentLoaded', calculateAndDisplayCosts);
+
+        function calculateAndDisplayCosts() {
+            // Hide previous results and errors
+            resultsDiv.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+
+            const avgInventoryValue1 = parseFloat(document.getElementById('avgInventoryValue1').value);
+            const storageCost1 = parseFloat(document.getElementById('storageCost1').value);
+            const capitalCost1 = parseFloat(document.getElementById('capitalCost1').value);
+            const insuranceCost1 = parseFloat(document.getElementById('insuranceCost1').value);
+            const taxesCost1 = parseFloat(document.getElementById('taxesCost1').value);
+            const obsolescenceCost1 = parseFloat(document.getElementById('obsolescenceCost1').value);
+
+            const avgInventoryValue2 = parseFloat(document.getElementById('avgInventoryValue2').value);
+            const storageCost2 = parseFloat(document.getElementById('storageCost2').value);
+            const capitalCost2 = parseFloat(document.getElementById('capitalCost2').value);
+            const insuranceCost2 = parseFloat(document.getElementById('insuranceCost2').value);
+            const taxesCost2 = parseFloat(document.getElementById('taxesCost2').value);
+            const obsolescenceCost2 = parseFloat(document.getElementById('obsolescenceCost2').value);
+            
+            // --- Input Validation ---
+            if (isNaN(avgInventoryValue1) || isNaN(storageCost1) || isNaN(capitalCost1) || isNaN(insuranceCost1) || isNaN(taxesCost1) || isNaN(obsolescenceCost1) ||
+                isNaN(avgInventoryValue2) || isNaN(storageCost2) || isNaN(capitalCost2) || isNaN(insuranceCost2) || isNaN(taxesCost2) || isNaN(obsolescenceCost2)) {
+                showError('Please enter valid numbers for all inputs in both scenarios.');
+                return;
+            }
+            if (avgInventoryValue1 <= 0 || avgInventoryValue2 <= 0) {
+                 showError('Average inventory value must be greater than zero for both scenarios.');
+                 return;
+            }
+
+            // Hide errors and show results
+            errorDiv.classList.add('hidden');
+            resultsDiv.classList.remove('hidden');
+
+            // --- Calculations for Scenario 1 ---
+            const totalCostPercentage1 = storageCost1 + capitalCost1 + insuranceCost1 + taxesCost1 + obsolescenceCost1;
+            const annualCarryingCost1 = avgInventoryValue1 * (totalCostPercentage1 / 100);
+
+            // --- Calculations for Scenario 2 ---
+            const totalCostPercentage2 = storageCost2 + capitalCost2 + insuranceCost2 + taxesCost2 + obsolescenceCost2;
+            const annualCarryingCost2 = avgInventoryValue2 * (totalCostPercentage2 / 100);
+            
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            
+            // --- Display Results ---
+            document.getElementById('totalCostPercentage1').textContent = `${totalCostPercentage1.toFixed(2)}%`;
+            document.getElementById('annualCarryingCost1').textContent = formatter.format(annualCarryingCost1);
+            
+            document.getElementById('totalCostPercentage2').textContent = `${totalCostPercentage2.toFixed(2)}%`;
+            document.getElementById('annualCarryingCost2').textContent = formatter.format(annualCarryingCost2);
+            
+            // Generate charts
+            generatePieChart(
+                document.getElementById('chart1').getContext('2d'),
+                [storageCost1, capitalCost1, insuranceCost1, taxesCost1, obsolescenceCost1],
+                'chart1'
+            );
+            generatePieChart(
+                document.getElementById('chart2').getContext('2d'),
+                [storageCost2, capitalCost2, insuranceCost2, taxesCost2, obsolescenceCost2],
+                'chart2'
+            );
+        }
+
+        function generatePieChart(ctx, data, chartId) {
+            let chartInstance;
+            if (chartId === 'chart1' && chart1) {
+                chartInstance = chart1;
+                chart1.destroy();
+            } else if (chartId === 'chart2' && chart2) {
+                chartInstance = chart2;
+                chart2.destroy();
+            }
+
+            const chartData = {
+                labels: ['Storage', 'Capital', 'Insurance', 'Taxes', 'Obsolescence'],
+                datasets: [{
+                    data: data,
+                    backgroundColor: [
+                        '#4f46e5', // Indigo-600
+                        '#3b82f6', // Blue-500
+                        '#10b981', // Emerald-500
+                        '#f97316', // Orange-500
+                        '#f43f5e'  // Rose-500
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+
+            const chartConfig = {
+                type: 'pie',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return `${tooltipItem.label}: ${tooltipItem.raw.toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            
+            if (chartId === 'chart1') {
+                chart1 = new Chart(ctx, chartConfig);
+            } else {
+                chart2 = new Chart(ctx, chartConfig);
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMsg');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

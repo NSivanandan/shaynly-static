@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branded QR Code Generator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Branded QR Code Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/branded-qr-code-generator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/branded-qr-code-generator.html">
+  <meta property="og:title" content="Branded QR Code Generator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Branded QR Code Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Branded QR Code Generator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Branded QR Code Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        .qr-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 550px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 auto;
+            color: #e0e0e0;
+        }
+
+        .qr-container h2 {
+            text-align: center;
+            color: #00d4ff;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b0b0ff;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="color"],
+        .form-group input[type="file"],
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1em;
+            transition: border 0.3s;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="color"]:focus,
+        .form-group input[type="file"]:focus,
+        .form-group select:focus {
+            border-color: #00d4ff;
+            outline: none;
+        }
+
+        .form-group input[type="color"] {
+            padding: 2px;
+            height: 45px;
+        }
+
+        .form-group input[type="range"] {
+            width: 100%;
+            accent-color: #00d4ff;
+        }
+
+        .qr-container button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, #00d4ff, #007bff);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .qr-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        #qr-result {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        #qr-result img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        #download-btn {
+            display: none;
+            margin-top: 15px;
+            background: #ff4b5c;
+        }
+
+        #download-btn:hover {
+            background: #e63946;
+        }
+
+        @media (max-width: 480px) {
+            .qr-container {
+                padding: 20px;
+            }
+
+            .qr-container h2 {
+                font-size: 1.4em;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="color"],
+            .form-group input[type="file"],
+            .form-group select,
+            .qr-container button {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Branded QR Code Generator</h1>
+      <p>Free interactive Branded QR Code Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      <div class="qr-container">
+    
+
+    <h2>Branded QR Code Generator</h2>
+    <div class="form-group">
+        <label for="url">Enter URL</label>
+        <input type="text" id="url" placeholder="https://yourwebsite.com" required>
+    </div>
+    <div class="form-group">
+        <label for="fg-color">Foreground Color</label>
+        <input type="color" id="fg-color" value="#00d4ff">
+    </div>
+    <div class="form-group">
+        <label for="bg-color">Background Color</label>
+        <input type="color" id="bg-color" value="#ffffff">
+    </div>
+    <div class="form-group">
+        <label for="size">QR Code Size</label>
+        <input type="range" id="size" min="100" max="300" value="200">
+    </div>
+    <div class="form-group">
+        <label for="shape">Dot Shape</label>
+        <select id="shape">
+            <option value="square">Square</option>
+            <option value="rounded">Rounded</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="logo">Upload Logo (optional, any size)</label>
+        <input type="file" id="logo" accept="image/*">
+    </div>
+    <button onclick="generateQR()">Generate QR Code</button>
+    <div id="qr-result"></div>
+    <button id="download-btn" onclick="downloadQR()">Download QR Code</button>
+
+    
+    
+</div>
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+        function generateQR() {
+            const url = document.getElementById('url').value;
+            const fgColor = document.getElementById('fg-color').value;
+            const bgColor = document.getElementById('bg-color').value;
+            const size = document.getElementById('size').value;
+            const shape = document.getElementById('shape').value;
+            const logo = document.getElementById('logo').files[0];
+            const qrResult = document.getElementById('qr-result');
+            const downloadBtn = document.getElementById('download-btn');
+
+            // Validate URL
+            if (!url || !/^(http|https):\/\/[^ "]+$/.test(url)) {
+                alert('Please enter a valid URL (e.g., https://example.com)');
+                return;
+            }
+
+            // Clear previous QR code
+            qrResult.innerHTML = '';
+            downloadBtn.style.display = 'none';
+
+            // Generate QR code with custom shape
+            const qrCode = new QRCode(qrResult, {
+                text: url,
+                width: parseInt(size),
+                height: parseInt(size),
+                colorDark: fgColor,
+                colorLight: bgColor,
+                correctLevel: QRCode.CorrectLevel.H,
+                dotScale: shape === 'rounded' ? 0.8 : 1.0 // Rounded dots
+            });
+
+            // Add logo if uploaded
+            if (logo) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = new Image();
+                    img.onload = function () {
+                        setTimeout(() => {
+                            const canvas = qrResult.querySelector('canvas');
+                            const ctx = canvas.getContext('2d');
+                            // Dynamically scale logo to 25% of QR size, with a max of 50px
+                            const logoSize = Math.min(size * 0.25, 50);
+                            // Preserve aspect ratio
+                            const aspectRatio = img.width / img.height;
+                            let logoWidth = logoSize;
+                            let logoHeight = logoSize / aspectRatio;
+                            if (logoHeight > logoSize) {
+                                logoHeight = logoSize;
+                                logoWidth = logoSize * aspectRatio;
+                            }
+                            const x = (canvas.width - logoWidth) / 2;
+                            const y = (canvas.height - logoHeight) / 2;
+                            ctx.drawImage(img, x, y, logoWidth, logoHeight);
+                            const qrImg = document.createElement('img');
+                            qrImg.src = canvas.toDataURL('image/png');
+                            qrResult.innerHTML = '';
+                            qrResult.appendChild(qrImg);
+                            downloadBtn.style.display = 'block';
+                            downloadBtn.setAttribute('data-url', qrImg.src);
+                        }, 100);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(logo);
+            } else {
+                setTimeout(() => {
+                    const canvas = qrResult.querySelector('canvas');
+                    const qrImg = document.createElement('img');
+                    qrImg.src = canvas.toDataURL('image/png');
+                    qrResult.innerHTML = '';
+                    qrResult.appendChild(qrImg);
+                    downloadBtn.style.display = 'block';
+                    downloadBtn.setAttribute('data-url', qrImg.src);
+                }, 100);
+            }
+        }
+
+        function downloadQR() {
+            const downloadBtn = document.getElementById('download-btn');
+            const qrImgSrc = downloadBtn.getAttribute('data-url');
+            const link = document.createElement('a');
+            link.href = qrImgSrc;
+            link.download = 'branded-qr-code.png';
+            link.click();
+        }
+    </script>
+</body>
+</html>

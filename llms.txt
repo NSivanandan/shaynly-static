@@ -9,7 +9,8 @@
 - XML Sitemap: https://shaynly.com/sitemap.xml
 - AdSense Publisher ID: pub-2218316924082551
 
-## Client-Side Web Utilities (22 Tools)
+## Client-Side Web Utilities
+- [Tools Hub](https://shaynly.com/tools/): Central directory of all interactive business, SEO, and development tools.
 - [Invoice Generator](https://shaynly.com/tools/invoice.html): Client-side PDF invoice builder with tax calculation.
 - [GST Calculator](https://shaynly.com/tools/gst.html): Indian GST forward and reverse rate calculation.
 - [QR Studio](https://shaynly.com/tools/qr-studio.html): High-resolution vector QR code generation.
@@ -17,6 +18,12 @@
 - [UTM Campaign Builder](https://shaynly.com/tools/utm.html): Analytics campaign parameter string builder.
 - [Robots & LLMs Generator](https://shaynly.com/tools/robots-llms.html): robots.txt and llms.txt standard builder.
 - [Schema Generator](https://shaynly.com/tools/schema.html): JSON-LD structured data generator.
+- [YouTube SEO Checklist](https://shaynly.com/tools/youtube-seo-checklist.html): Algorithm optimization checklist for video creators.
+- [LinkedIn SEO Checklist](https://shaynly.com/tools/linkedin-seo-mastery-checklist.html): Profile and article search optimization checklist.
+- [Startup Burn Rate Runway Calculator](https://shaynly.com/tools/startup-burn-rate-runway-calculator.html): Cash runway and hiring plan simulator.
+- [Breakeven Calculator](https://shaynly.com/tools/breakeven-calculator.html): Operating unit margin and breakeven volume calculator.
+- [SaaS Metrics Dashboard](https://shaynly.com/tools/saas-metrics-dashboard.html): ARR, MRR, churn, and LTV calculation model.
+- [Interactive Resume Builder](https://shaynly.com/tools/resume-builder.html): Clean client-side professional resume generator.
 
 ## Key Strategic Categories
 - Artificial Intelligence & Automation

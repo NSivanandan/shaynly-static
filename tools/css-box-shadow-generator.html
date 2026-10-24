@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium CSS Box Shadow Generator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Premium CSS Box Shadow Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/css-box-shadow-generator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/css-box-shadow-generator.html">
+  <meta property="og:title" content="Premium CSS Box Shadow Generator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Premium CSS Box Shadow Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium CSS Box Shadow Generator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Premium CSS Box Shadow Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #1a2a6c;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .controls {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .control {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            border-radius: 4px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            border-radius: 50%;
+            border: 2px solid #1a2a6c;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="number"] {
+            width: 70px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        input[type="color"] {
+            -webkit-appearance: none;
+            width: 70px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: none;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #1a2a6c;
+        }
+
+        .preview {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        #preview-element {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .output {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .code-container {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        #css-code {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #b21f1f;
+        }
+
+        .presets {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .preset-btn {
+            padding: 10px 15px;
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .preset-btn:hover {
+            background: #b21f1f;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Premium CSS Box Shadow Generator</h1>
+      <p>Free interactive Premium CSS Box Shadow Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container">
+        <header>
+            <h1>CSS Box Shadow Generator</h1>
+            <p class="tagline">Create beautiful shadows with real-time preview and code generation</p>
+        </header>
+
+        <div class="main-content">
+            <div class="controls">
+                <div class="control-group">
+                    <h2>Shadow Properties</h2>
+                    
+                    <div class="control">
+                        <label for="h-offset">Horizontal Offset (px)</label>
+                        <div class="slider-container">
+                            <input type="range" id="h-offset" min="-50" max="50" value="10">
+                            <input type="number" id="h-offset-value" min="-50" max="50" value="10">
+                        </div>
+                    </div>
+                    
+                    <div class="control">
+                        <label for="v-offset">Vertical Offset (px)</label>
+                        <div class="slider-container">
+                            <input type="range" id="v-offset" min="-50" max="50" value="10">
+                            <input type="number" id="v-offset-value" min="-50" max="50" value="10">
+                        </div>
+                    </div>
+                    
+                    <div class="control">
+                        <label for="blur">Blur Radius (px)</label>
+                        <div class="slider-container">
+                            <input type="range" id="blur" min="0" max="100" value="15">
+                            <input type="number" id="blur-value" min="0" max="100" value="15">
+                        </div>
+                    </div>
+                    
+                    <div class="control">
+                        <label for="spread">Spread Radius (px)</label>
+                        <div class="slider-container">
+                            <input type="range" id="spread" min="-50" max="50" value="0">
+                            <input type="number" id="spread-value" min="-50" max="50" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="control">
+                        <label for="shadow-color">Shadow Color</label>
+                        <input type="color" id="shadow-color" value="#000000">
+                    </div>
+                    
+                    <div class="control">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="inset">
+                            <label for="inset">Inset Shadow</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h2>Preset Shadows</h2>
+                    <div class="presets">
+                        <button class="preset-btn" data-preset="soft">Soft</button>
+                        <button class="preset-btn" data-preset="medium">Medium</button>
+                        <button class="preset-btn" data-preset="hard">Hard</button>
+                        <button class="preset-btn" data-preset="float">Floating</button>
+                        <button class="preset-btn" data-preset="neon">Neon Glow</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview">
+                <div id="preview-element">
+                    Preview Element
+                </div>
+            </div>
+        </div>
+        
+        <div class="output">
+            <h2>CSS Code</h2>
+            <div class="code-container">
+                <code id="css-code">box-shadow: 10px 10px 15px 0px #000000;</code>
+                <button class="copy-btn" id="copy-btn">Copy Code</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Created with ❤️ | Premium CSS Box Shadow Generator | Shaynly.com</p>
+    </footer>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get DOM elements
+            const hOffsetSlider = document.getElementById('h-offset');
+            const hOffsetValue = document.getElementById('h-offset-value');
+            const vOffsetSlider = document.getElementById('v-offset');
+            const vOffsetValue = document.getElementById('v-offset-value');
+            const blurSlider = document.getElementById('blur');
+            const blurValue = document.getElementById('blur-value');
+            const spreadSlider = document.getElementById('spread');
+            const spreadValue = document.getElementById('spread-value');
+            const shadowColor = document.getElementById('shadow-color');
+            const insetCheckbox = document.getElementById('inset');
+            const previewElement = document.getElementById('preview-element');
+            const cssCode = document.getElementById('css-code');
+            const copyBtn = document.getElementById('copy-btn');
+            const presetButtons = document.querySelectorAll('.preset-btn');
+            
+            // Update shadow function
+            function updateShadow() {
+                const hOffset = hOffsetSlider.value;
+                const vOffset = vOffsetSlider.value;
+                const blur = blurSlider.value;
+                const spread = spreadSlider.value;
+                const color = shadowColor.value;
+                const inset = insetCheckbox.checked ? 'inset ' : '';
+                
+                const boxShadow = `${inset}${hOffset}px ${vOffset}px ${blur}px ${spread}px ${color}`;
+                
+                // Apply to preview element
+                previewElement.style.boxShadow = boxShadow;
+                
+                // Update code display
+                cssCode.textContent = `box-shadow: ${boxShadow};`;
+            }
+            
+            // Sync slider and number inputs
+            function syncInputs(slider, number) {
+                slider.addEventListener('input', function() {
+                    number.value = slider.value;
+                    updateShadow();
+                });
+                
+                number.addEventListener('input', function() {
+                    if (number.value > parseInt(number.max)) number.value = number.max;
+                    if (number.value < parseInt(number.min)) number.value = number.min;
+                    slider.value = number.value;
+                    updateShadow();
+                });
+            }
+            
+            // Set up event listeners
+            syncInputs(hOffsetSlider, hOffsetValue);
+            syncInputs(vOffsetSlider, vOffsetValue);
+            syncInputs(blurSlider, blurValue);
+            syncInputs(spreadSlider, spreadValue);
+            
+            shadowColor.addEventListener('input', updateShadow);
+            insetCheckbox.addEventListener('change', updateShadow);
+            
+            // Copy code functionality
+            copyBtn.addEventListener('click', function() {
+                const textArea = document.createElement('textarea');
+                textArea.value = cssCode.textContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // Provide visual feedback
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            });
+            
+            // Preset shadows
+            const presets = {
+                soft: { h: 3, v: 3, blur: 10, spread: 0, color: '#00000020' },
+                medium: { h: 5, v: 5, blur: 15, spread: 0, color: '#00000040' },
+                hard: { h: 10, v: 10, blur: 0, spread: 0, color: '#00000060' },
+                float: { h: 0, v: 10, blur: 20, spread: 0, color: '#00000030' },
+                neon: { h: 0, v: 0, blur: 20, spread: 0, color: '#ff00ff', inset: false }
+            };
+            
+            presetButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const preset = presets[this.dataset.preset];
+                    
+                    hOffsetSlider.value = preset.h;
+                    hOffsetValue.value = preset.h;
+                    
+                    vOffsetSlider.value = preset.v;
+                    vOffsetValue.value = preset.v;
+                    
+                    blurSlider.value = preset.blur;
+                    blurValue.value = preset.blur;
+                    
+                    spreadSlider.value = preset.spread;
+                    spreadValue.value = preset.spread;
+                    
+                    shadowColor.value = preset.color;
+                    
+                    if (preset.inset !== undefined) {
+                        insetCheckbox.checked = preset.inset;
+                    }
+                    
+                    updateShadow();
+                });
+            });
+            
+            // Initialize shadow
+            updateShadow();
+        });
+    </script>
+</body>
+</html>

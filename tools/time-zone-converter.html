@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Time Zone Converter - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Premium Time Zone Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/time-zone-converter.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/time-zone-converter.html">
+  <meta property="og:title" content="Premium Time Zone Converter - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Premium Time Zone Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium Time Zone Converter - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Premium Time Zone Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --text: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text);
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+        }
+        
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-weight: 600;
+            font-size: 28px;
+        }
+        
+        .converter-container {
+            padding: 30px;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .input-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .datetime-inputs {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .date-input, .time-input {
+            flex: 1;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .result-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            border-left: 4px solid var(--success);
+            display: none;
+        }
+        
+        .result-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .result-title {
+            font-size: 18px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .result-time {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .result-date {
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 600px) {
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .input-box {
+                min-width: 100%;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Productivity & Management</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Premium Time Zone Converter</h1>
+      <p>Free interactive Premium Time Zone Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container">
+        <header>
+            <h1>Premium Time Zone Converter</h1>
+        </header>
+        
+        <div class="converter-container">
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="from-timezone">From Time Zone</label>
+                    <select id="from-timezone"></select>
+                    
+                    <div class="datetime-inputs">
+                        <div class="date-input">
+                            <label for="from-date">Date</label>
+                            <input type="date" id="from-date">
+                        </div>
+                        <div class="time-input">
+                            <label for="from-time">Time</label>
+                            <input type="time" id="from-time">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="input-box">
+                    <label for="to-timezone">To Time Zone</label>
+                    <select id="to-timezone"></select>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="convert-btn">
+                    <span>Convert Time</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="result-container" id="result-container">
+                <div class="result-title">Converted Time</div>
+                <div class="result-time" id="result-time"></div>
+                <div class="result-date" id="result-date"></div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Premium Time Zone Converter © <a href="https://shaynly.com/">Shaynly</a> | All time zones supported</p>
+        </footer>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate timezone dropdowns
+            const timezones = [
+                "UTC", "Europe/London", "Europe/Paris", "Europe/Berlin", "Europe/Moscow",
+                "America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles",
+                "Asia/Tokyo", "Asia/Shanghai", "Asia/Kolkata", "Australia/Sydney",
+                "Pacific/Auckland", "Africa/Cairo", "Africa/Johannesburg", "America/Sao_Paulo"
+            ].sort();
+            
+            const fromTimezone = document.getElementById('from-timezone');
+            const toTimezone = document.getElementById('to-timezone');
+            
+            timezones.forEach(tz => {
+                const option1 = document.createElement('option');
+                option1.value = tz;
+                option1.textContent = tz.replace('_', ' ');
+                fromTimezone.appendChild(option1);
+                
+                const option2 = document.createElement('option');
+                option2.value = tz;
+                option2.textContent = tz.replace('_', ' ');
+                toTimezone.appendChild(option2);
+            });
+            
+            // Set default values
+            const now = new Date();
+            document.getElementById('from-date').valueAsDate = now;
+            document.getElementById('from-time').value = now.toTimeString().substr(0, 5);
+            
+            // Set local timezone as default "from" timezone
+            try {
+                const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if (timezones.includes(localTz)) {
+                    fromTimezone.value = localTz;
+                } else {
+                    fromTimezone.value = "UTC";
+                }
+            } catch (e) {
+                fromTimezone.value = "UTC";
+            }
+            
+            // Set a common destination timezone
+            toTimezone.value = "Europe/London";
+            
+            // Conversion function
+            document.getElementById('convert-btn').addEventListener('click', function() {
+                convertTime();
+            });
+            
+            function convertTime() {
+                const fromTz = fromTimezone.value;
+                const toTz = toTimezone.value;
+                const dateStr = document.getElementById('from-date').value;
+                const timeStr = document.getElementById('from-time').value;
+                
+                if (!dateStr || !timeStr) {
+                    alert('Please select both date and time');
+                    return;
+                }
+                
+                // Create date object in the from timezone
+                const [year, month, day] = dateStr.split('-');
+                const [hours, minutes] = timeStr.split(':');
+                
+                // Create ISO string representing the datetime in from timezone
+                const dateTimeStr = `${year}-${month}-${day}T${hours}:${minutes}:00`;
+                
+                // Convert to target timezone
+                try {
+                    const fromDate = new Date(dateTimeStr + 'Z'); // Treat as UTC initially
+                    
+                    // Format for the target timezone
+                    const options = {
+                        timeZone: toTz,
+                        hour12: false,
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    };
+                    
+                    const formatter = new Intl.DateTimeFormat('en-US', options);
+                    const parts = formatter.formatToParts(fromDate);
+                    
+                    let weekday, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr;
+                    
+                    parts.forEach(part => {
+                        switch(part.type) {
+                            case 'weekday': weekday = part.value; break;
+                            case 'year': yearStr = part.value; break;
+                            case 'month': monthStr = part.value; break;
+                            case 'day': dayStr = part.value; break;
+                            case 'hour': hourStr = part.value; break;
+                            case 'minute': minuteStr = part.value; break;
+                            case 'second': secondStr = part.value; break;
+                        }
+                    });
+                    
+                    // Update result display
+                    document.getElementById('result-time').textContent = `${hourStr}:${minuteStr}:${secondStr}`;
+                    document.getElementById('result-date').textContent = `${weekday}, ${monthStr} ${dayStr}, ${yearStr} (${toTz.replace('_', ' ')})`;
+                    
+                    // Show result container
+                    document.getElementById('result-container').classList.add('active');
+                } catch (error) {
+                    alert('Error converting time: ' + error.message);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

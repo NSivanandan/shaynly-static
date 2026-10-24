@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced EOQ Finder - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced EOQ Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/economic-order-quantity-eoq-finder.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/economic-order-quantity-eoq-finder.html">
+  <meta property="og:title" content="Advanced EOQ Finder - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced EOQ Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced EOQ Finder - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced EOQ Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced EOQ Finder</h1>
+      <p>Free interactive Advanced EOQ Finder for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-6xl">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-2"> Economic Order Quantity (EOQ) Finder</h1>
+        <p class="text-center text-gray-500 mb-6">
+            Compare two scenarios and visualize the optimal order quantity.
+        </p>
+
+        <!-- Scenario Inputs Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Scenario 1 Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 1</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="annualDemand1" class="block text-sm font-medium text-gray-700">Annual Demand (D)</label>
+                        <input type="number" id="annualDemand1" value="10000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Total units demanded per year.</p>
+                    </div>
+                    <div>
+                        <label for="orderingCost1" class="block text-sm font-medium text-gray-700">Ordering Cost per Order (S) ($)</label>
+                        <input type="number" id="orderingCost1" value="10" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Cost to place a single order.</p>
+                    </div>
+                    <div>
+                        <label for="holdingCost1" class="block text-sm font-medium text-gray-700">Annual Holding Cost per Unit (H) ($)</label>
+                        <input type="number" id="holdingCost1" value="2" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Cost to hold one unit for one year.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Scenario 2 Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 2</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="annualDemand2" class="block text-sm font-medium text-gray-700">Annual Demand (D)</label>
+                        <input type="number" id="annualDemand2" value="12000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Total units demanded per year.</p>
+                    </div>
+                    <div>
+                        <label for="orderingCost2" class="block text-sm font-medium text-gray-700">Ordering Cost per Order (S) ($)</label>
+                        <input type="number" id="orderingCost2" value="12" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Cost to place a single order.</p>
+                    </div>
+                    <div>
+                        <label for="holdingCost2" class="block text-sm font-medium text-gray-700">Annual Holding Cost per Unit (H) ($)</label>
+                        <input type="number" id="holdingCost2" value="2.5" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                        <p class="text-xs text-gray-500 mt-1">Cost to hold one unit for one year.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <button id="calculateBtn" class="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+            Calculate and Compare
+        </button>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="mt-4 p-3 bg-red-100 text-red-700 rounded-md hidden">
+        </div>
+
+        <!-- Results Display -->
+        <div id="results" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Comparison Summary</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Scenario 1 Results -->
+                <div class="bg-indigo-50 p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">Scenario 1 Results</h3>
+                    <p class="text-sm font-semibold">Optimal Order Quantity (EOQ)</p>
+                    <p id="eoqResult1" class="text-3xl font-bold text-indigo-700 mb-4"></p>
+                    <p class="text-sm">Number of Orders per Year: <span id="ordersPerYear1" class="font-bold"></span></p>
+                    <p class="text-sm">Total Ordering Cost: <span id="totalOrderingCost1" class="font-bold"></span></p>
+                    <p class="text-sm">Total Holding Cost: <span id="totalHoldingCost1" class="font-bold"></span></p>
+                    <p class="text-sm font-semibold mt-2">Total Inventory Cost</p>
+                    <p id="totalInventoryCost1" class="text-2xl font-extrabold text-indigo-700"></p>
+                </div>
+                <!-- Scenario 2 Results -->
+                <div class="bg-indigo-50 p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">Scenario 2 Results</h3>
+                    <p class="text-sm font-semibold">Optimal Order Quantity (EOQ)</p>
+                    <p id="eoqResult2" class="text-3xl font-bold text-indigo-700 mb-4"></p>
+                    <p class="text-sm">Number of Orders per Year: <span id="ordersPerYear2" class="font-bold"></span></p>
+                    <p class="text-sm">Total Ordering Cost: <span id="totalOrderingCost2" class="font-bold"></span></p>
+                    <p class="text-sm">Total Holding Cost: <span id="totalHoldingCost2" class="font-bold"></span></p>
+                    <p class="text-sm font-semibold mt-2">Total Inventory Cost</p>
+                    <p id="totalInventoryCost2" class="text-2xl font-extrabold text-indigo-700"></p>
+                </div>
+            </div>
+
+            <!-- Cost Curve Chart -->
+            <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Total Inventory Cost Curve</h2>
+                <canvas id="costChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        const inputs = ['annualDemand1', 'orderingCost1', 'holdingCost1', 'annualDemand2', 'orderingCost2', 'holdingCost2'];
+        const calculateBtn = document.getElementById('calculateBtn');
+        const resultsDiv = document.getElementById('results');
+        const errorDiv = document.getElementById('errorMsg');
+        
+        let costChart;
+
+        calculateBtn.addEventListener('click', calculateEOQ);
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', () => {
+                resultsDiv.classList.add('hidden');
+                errorDiv.classList.add('hidden');
+            });
+        });
+
+        function calculateEOQ() {
+            // Get input values for Scenario 1
+            const annualDemand1 = parseFloat(document.getElementById('annualDemand1').value);
+            const orderingCost1 = parseFloat(document.getElementById('orderingCost1').value);
+            const holdingCost1 = parseFloat(document.getElementById('holdingCost1').value);
+            
+            // Get input values for Scenario 2
+            const annualDemand2 = parseFloat(document.getElementById('annualDemand2').value);
+            const orderingCost2 = parseFloat(document.getElementById('orderingCost2').value);
+            const holdingCost2 = parseFloat(document.getElementById('holdingCost2').value);
+
+            // --- Input Validation ---
+            if (isNaN(annualDemand1) || isNaN(orderingCost1) || isNaN(holdingCost1) ||
+                isNaN(annualDemand2) || isNaN(orderingCost2) || isNaN(holdingCost2)) {
+                showError('Please enter valid numbers for all inputs in both scenarios.');
+                return;
+            }
+            if (annualDemand1 <= 0 || orderingCost1 <= 0 || holdingCost1 <= 0 ||
+                annualDemand2 <= 0 || orderingCost2 <= 0 || holdingCost2 <= 0) {
+                 showError('All values must be greater than zero for both scenarios.');
+                 return;
+            }
+            
+            errorDiv.classList.add('hidden');
+            resultsDiv.classList.remove('hidden');
+
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            
+            // --- Calculation for Scenario 1 ---
+            const eoq1 = Math.sqrt((2 * annualDemand1 * orderingCost1) / holdingCost1);
+            const ordersPerYear1 = annualDemand1 / eoq1;
+            const totalOrderingCost1 = ordersPerYear1 * orderingCost1;
+            const totalHoldingCost1 = (eoq1 / 2) * holdingCost1;
+            const totalInventoryCost1 = totalOrderingCost1 + totalHoldingCost1;
+            
+            document.getElementById('eoqResult1').textContent = `${Math.round(eoq1)} units`;
+            document.getElementById('ordersPerYear1').textContent = `${ordersPerYear1.toFixed(2)}`;
+            document.getElementById('totalOrderingCost1').textContent = formatter.format(totalOrderingCost1);
+            document.getElementById('totalHoldingCost1').textContent = formatter.format(totalHoldingCost1);
+            document.getElementById('totalInventoryCost1').textContent = formatter.format(totalInventoryCost1);
+
+            // --- Calculation for Scenario 2 ---
+            const eoq2 = Math.sqrt((2 * annualDemand2 * orderingCost2) / holdingCost2);
+            const ordersPerYear2 = annualDemand2 / eoq2;
+            const totalOrderingCost2 = ordersPerYear2 * orderingCost2;
+            const totalHoldingCost2 = (eoq2 / 2) * holdingCost2;
+            const totalInventoryCost2 = totalOrderingCost2 + totalHoldingCost2;
+            
+            document.getElementById('eoqResult2').textContent = `${Math.round(eoq2)} units`;
+            document.getElementById('ordersPerYear2').textContent = `${ordersPerYear2.toFixed(2)}`;
+            document.getElementById('totalOrderingCost2').textContent = formatter.format(totalOrderingCost2);
+            document.getElementById('totalHoldingCost2').textContent = formatter.format(totalHoldingCost2);
+            document.getElementById('totalInventoryCost2').textContent = formatter.format(totalInventoryCost2);
+
+            // --- Generate Chart ---
+            generateChart(
+                annualDemand1, orderingCost1, holdingCost1, Math.round(eoq1),
+                annualDemand2, orderingCost2, holdingCost2, Math.round(eoq2)
+            );
+        }
+
+        function generateChart(D1, S1, H1, eoq1, D2, S2, H2, eoq2) {
+            const maxEOQ = Math.max(eoq1, eoq2) * 2;
+            const labels = Array.from({ length: maxEOQ }, (_, i) => i + 1);
+            
+            const orderingCosts1 = labels.map(Q => (D1 / Q) * S1);
+            const holdingCosts1 = labels.map(Q => (Q / 2) * H1);
+            const totalCosts1 = orderingCosts1.map((cost, i) => cost + holdingCosts1[i]);
+            
+            const orderingCosts2 = labels.map(Q => (D2 / Q) * S2);
+            const holdingCosts2 = labels.map(Q => (Q / 2) * H2);
+            const totalCosts2 = orderingCosts2.map((cost, i) => cost + holdingCosts2[i]);
+
+            const ctx = document.getElementById('costChart').getContext('2d');
+            if (costChart) {
+                costChart.destroy();
+            }
+
+            costChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Total Cost - Scenario 1',
+                            data: totalCosts1,
+                            borderColor: 'rgb(79, 70, 229)',
+                            backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Total Cost - Scenario 2',
+                            data: totalCosts2,
+                            borderColor: 'rgb(234, 88, 12)',
+                            backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        // These datasets are for marking the EOQ on the x-axis
+                        {
+                            label: `EOQ 1 (${eoq1})`,
+                            data: [{ x: eoq1, y: 0 }, { x: eoq1, y: 1000000 }], // Arbitrary large value to draw a line
+                            borderColor: 'rgb(79, 70, 229)',
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            showLine: true
+                        },
+                        {
+                            label: `EOQ 2 (${eoq2})`,
+                            data: [{ x: eoq2, y: 0 }, { x: eoq2, y: 1000000 }],
+                            borderColor: 'rgb(234, 88, 12)',
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            showLine: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                filter: function(item, chart) {
+                                    // Hide the EOQ labels from the main legend
+                                    return !item.text.startsWith('EOQ');
+                                }
+                            }
+                        },
+                        title: {
+                            display: false
+                        },
+                        tooltip: {
+                             mode: 'index',
+                             intersect: false,
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Order Quantity (Q)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Annual Cost ($)'
+                            },
+                             min: 0
+                        }
+                    }
+                }
+            });
+        }
+
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+            resultsDiv.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

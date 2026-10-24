@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Local SEO Cost Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Local SEO Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/local-seo-cost-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/local-seo-cost-calculator.html">
+  <meta property="og:title" content="Advanced Local SEO Cost Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Local SEO Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Local SEO Cost Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Local SEO Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for range input thumbs */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4F46E5; /* Indigo-600 */
+            cursor: pointer;
+            border: 3px solid #C7D2FE; /* Indigo-200 */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s ease-in-out;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #4338CA; /* Indigo-700 */
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4F46E5; /* Indigo-600 */
+            cursor: pointer;
+            border: 3px solid #C7D2FE; /* Indigo-200 */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s ease-in-out;
+        }
+        input[type="range"]::-moz-range-thumb:hover {
+            background: #4338CA; /* Indigo-700 */
+        }
+
+        /* Tooltip styling */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #334155; /* Slate-700 */
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 10px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #334155 transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Marketing & SEO</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Local SEO Cost Calculator</h1>
+      <p>Free interactive Advanced Local SEO Cost Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="calculator-container bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl w-full max-w-4xl border border-gray-200 transform hover:shadow-3xl transition-all duration-300 ease-in-out">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-center text-indigo-800 mb-8 pb-4 border-b-2 border-indigo-100">
+            Local SEO Cost Calculator
+        </h1>
+        
+        <div class="currency-switch mb-6 text-center">
+            <label for="countrySelect" class="block text-gray-700 text-sm font-medium mb-2">Select Currency:</label>
+            <select id="countrySelect" class="w-full sm:w-auto px-5 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="IN">India (INR)</option>
+                <option value="US">United States (USD)</option>
+                <option value="UK">United Kingdom (GBP)</option>
+                <option value="CA">Canada (CAD)</option>
+                <option value="AU">Australia (AUD)</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="numLocations" class="block text-gray-700 text-sm font-medium mb-3">
+                Number of Locations: <span id="numLocationsValue" class="font-semibold text-indigo-600">1</span>
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Enter the exact number of business locations. More locations typically increase the scope and cost.</span>
+                </span>
+            </label>
+            <input type="range" id="numLocations" min="1" max="50" value="1" class="w-full h-2 bg-indigo-100 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-400">
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="industry" class="block text-gray-700 text-sm font-medium mb-3">
+                Industry:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Select your primary business category. More competitive industries often require greater SEO investment.</span>
+                </span>
+            </label>
+            <select id="industry" class="w-full px-5 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 ease-in-out shadow-sm appearance-none bg-white">
+                <option value="general">General</option>
+                <option value="realestate">Real Estate</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="retail">Retail</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="professional">Professional Services</option>
+                <option value="automotive">Automotive</option>
+                <option value="home_services">Home Services</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-6">
+            <label for="competitionLevel" class="block text-gray-700 text-sm font-medium mb-3">
+                Local Competition Level: <span id="competitionLevelValue" class="font-semibold text-indigo-600">Medium</span>
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Estimate the level of competition in your local market. Higher competition means more effort and resources are needed to rank.</span>
+                </span>
+            </label>
+            <input type="range" id="competitionLevel" min="0" max="2" value="1" class="w-full h-2 bg-indigo-100 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-400">
+            <div class="flex justify-between text-xs text-gray-500 mt-2 px-1">
+                <span>Low</span>
+                <span>Medium</span>
+                <span>High</span>
+            </div>
+        </div>
+
+        <div class="input-group mb-6">
+            <label class="block text-gray-700 text-sm font-medium mb-4">
+                Select Services:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Choose the specific local SEO services you require. Each service targets different aspects of online visibility.</span>
+                </span>
+            </label>
+            <div class="services-container grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="service-item bg-indigo-50 p-4 rounded-lg border border-indigo-200 hover:shadow-md hover:border-indigo-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="onpage" checked class="form-checkbox h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">On-Page SEO</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1"><a href="https://shaynly.com/query-relaxation-and-scoping-as-part-of-semantic-search/" target="_blank" rel="noopener"  data-wpil-monitor-id="426">Optimizing website content and structure for local search</a> relevance.</p>
+                </div>
+                <div class="service-item bg-indigo-50 p-4 rounded-lg border border-indigo-200 hover:shadow-md hover:border-indigo-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="gmb" class="form-checkbox h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Google My Business Optimization</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Managing and enhancing your GMB profile to maximize local presence.</p>
+                </div>
+                <div class="service-item bg-indigo-50 p-4 rounded-lg border border-indigo-200 hover:shadow-md hover:border-indigo-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="citation" class="form-checkbox h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Citation Building</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Ensuring consistent business listings across diverse online directories.</p>
+                </div>
+                <div class="service-item bg-indigo-50 p-4 rounded-lg border border-indigo-200 hover:shadow-md hover:border-indigo-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="reviews" class="form-checkbox h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Review Management</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Strategies for attracting, managing, and responding to customer reviews.</p>
+                </div>
+                <div class="service-item bg-indigo-50 p-4 rounded-lg border border-indigo-200 hover:shadow-md hover:border-indigo-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="localads" class="form-checkbox h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Local PPC Ads</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Running geo-targeted paid advertising campaigns for immediate local visibility.</p>
+                </div>
+                <div class="service-item bg-indigo-50 p-4 rounded-lg border border-indigo-200 hover:shadow-md hover:border-indigo-300 transition-all duration-200 ease-in-out">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="content_marketing" class="form-checkbox h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500 cursor-pointer">
+                        <span class="ml-3 text-gray-800 font-medium">Local Content Marketing</span>
+                    </label>
+                    <p class="text-gray-600 text-sm mt-1">Creating localized content like blog posts, landing pages, and city-specific guides.</p>
+                </div>
+                <div class="service-item bg-indigo-100 p-4 rounded-lg border border-indigo-300 col-span-full">
+                    <label class="flex items-center cursor-pointer font-bold text-indigo-800">
+                        <input type="checkbox" id="all" class="form-checkbox h-5 w-5 text-indigo-700 rounded focus:ring-indigo-500 cursor-pointer">
+                        <span class="ml-3">Select All Core Services</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group mb-6">
+            <label class="block text-gray-700 text-sm font-medium mb-3">
+                Custom Services / Add-ons:
+                <span class="tooltip-container">
+                    <span class="text-gray-500 text-xs ml-2">ℹ️</span>
+                    <span class="tooltip-text">Add any additional services or specific costs not listed above, tailoring the estimate to your unique needs.</span>
+                </span>
+            </label>
+            <div id="customServicesContainer" class="space-y-3 mb-4">
+                </div>
+            <button id="addCustomService" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-4 rounded-lg transition duration-200 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                Add Custom Service
+            </button>
+        </div>
+
+        <div class="result-container bg-indigo-50 p-6 rounded-xl text-center mt-8 border border-indigo-200 shadow-lg relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50 opacity-50 z-0"></div>
+            <div class="relative z-10">
+                <div class="text-xl text-gray-700 font-medium mb-2">Estimated Monthly Investment:</div>
+                <div class="price-display text-6xl font-extrabold text-indigo-700 mb-4 animate-pulse-once" id="priceDisplay">₹0</div>
+                
+                <h3 class="text-lg font-bold text-gray-800 mb-3 border-b border-gray-200 pb-2">Understanding Your Estimate:</h3>
+                <div id="breakdown" class="text-gray-700 text-sm text-left mx-auto max-w-lg space-y-2 leading-relaxed">
+                    </div>
+
+                <div class="mt-6 p-4 bg-white rounded-lg shadow-inner border border-gray-100 text-left text-sm text-gray-600">
+                    <p class="font-semibold text-gray-800 mb-2">Important Considerations:</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>This calculator provides an *estimate* based on common industry factors.</li>
+                        <li>Actual costs can vary significantly based on your specific goals, market nuances, and chosen provider.</li>
+                        <li>Investing in local SEO is a long-term strategy for sustained growth and visibility.</li>
+                    </ul>
+                </div>
+
+                <div class="mt-6">
+                    <p class="text-md text-gray-700 mb-3">Ready for a precise strategy tailored to your business?</p>
+                    <a href="https://wa.me/919894446685" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+                        Get a Custom Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <button id="resetButton" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-6 rounded-lg transition duration-200 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+                Reset Calculator
+            </button>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+        // Define base prices and multipliers for different countries, business sizes, industries, and services
+        const prices = {
+            IN: {
+                base: 5000,
+                locationMultiplier: 0.05, // 5% increase per additional location
+                industry: {
+                    general: 1,
+                    realestate: 1.5,
+                    healthcare: 1.6,
+                    retail: 1.4,
+                    restaurant: 1.5,
+                    professional: 1.3,
+                    automotive: 1.45,
+                    home_services: 1.35
+                },
+                competition: [0.9, 1, 1.2], // Low, Medium, High competition multipliers
+                services: {
+                    onpage: 0.3,
+                    gmb: 0.25,
+                    citation: 0.2,
+                    reviews: 0.15,
+                    localads: 0.4,
+                    content_marketing: 0.35
+                },
+                currencySymbol: '₹',
+                currencyCode: 'INR',
+                serviceDescriptions: {
+                    onpage: "Optimizing your website's content and technical elements for local search relevance.",
+                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+                    citation: "Building consistent business listings across various online directories to improve local search authority.",
+                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."
+                }
+            },
+            US: {
+                base: 500,
+                locationMultiplier: 0.08, // 8% increase per additional location
+                industry: {
+                    general: 1,
+                    realestate: 1.6,
+                    healthcare: 1.7,
+                    retail: 1.5,
+                    restaurant: 1.6,
+                    professional: 1.4,
+                    automotive: 1.55,
+                    home_services: 1.45
+                },
+                competition: [0.9, 1, 1.3],
+                services: {
+                    onpage: 0.4,
+                    gmb: 0.3,
+                    citation: 0.25,
+                    reviews: 0.2,
+                    localads: 0.5,
+                    content_marketing: 0.45
+                },
+                currencySymbol: '$',
+                currencyCode: 'USD',
+                serviceDescriptions: {
+                    onpage: "Optimizing your website's content and technical elements for local search relevance.",
+                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+                    citation: "Building consistent business listings across various online directories to improve local search authority.",
+                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."
+                }
+            },
+            UK: {
+                base: 400,
+                locationMultiplier: 0.07,
+                industry: {
+                    general: 1,
+                    realestate: 1.55,
+                    healthcare: 1.65,
+                    retail: 1.45,
+                    restaurant: 1.55,
+                    professional: 1.35,
+                    automotive: 1.5,
+                    home_services: 1.4
+                },
+                competition: [0.9, 1, 1.25],
+                services: {
+                    onpage: 0.35,
+                    gmb: 0.28,
+                    citation: 0.22,
+                    reviews: 0.18,
+                    localads: 0.45,
+                    content_marketing: 0.4
+                },
+                currencySymbol: '£',
+                currencyCode: 'GBP',
+                serviceDescriptions: {
+                    onpage: "Optimizing your website's content and technical elements for local search relevance.",
+                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+                    citation: "Building consistent business listings across various online directories to improve local search authority.",
+                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."
+                }
+            },
+            CA: {
+                base: 600,
+                locationMultiplier: 0.06,
+                industry: {
+                    general: 1,
+                    realestate: 1.5,
+                    healthcare: 1.6,
+                    retail: 1.4,
+                    restaurant: 1.5,
+                    professional: 1.3,
+                    automotive: 1.45,
+                    home_services: 1.35
+                },
+                competition: [0.9, 1, 1.2],
+                services: {
+                    onpage: 0.32,
+                    gmb: 0.27,
+                    citation: 0.21,
+                    reviews: 0.16,
+                    localads: 0.42,
+                    content_marketing: 0.37
+                },
+                currencySymbol: 'C$',
+                currencyCode: 'CAD',
+                serviceDescriptions: {
+                    onpage: "Optimizing your website's content and technical elements for local search relevance.",
+                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+                    citation: "Building consistent business listings across various online directories to improve local search authority.",
+                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."
+                }
+            },
+            AU: {
+                base: 650,
+                locationMultiplier: 0.065,
+                industry: {
+                    general: 1,
+                    realestate: 1.52,
+                    healthcare: 1.62,
+                    retail: 1.42,
+                    restaurant: 1.52,
+                    professional: 1.32,
+                    automotive: 1.47,
+                    home_services: 1.37
+                },
+                competition: [0.9, 1, 1.22],
+                services: {
+                    onpage: 0.33,
+                    gmb: 0.28,
+                    citation: 0.22,
+                    reviews: 0.17,
+                    localads: 0.43,
+                    content_marketing: 0.38
+                },
+                currencySymbol: 'A$',
+                currencyCode: 'AUD',
+                serviceDescriptions: {
+                    onpage: "Optimizing your website's content and technical elements for local search relevance.",
+                    gmb: "Enhancing your Google My Business profile for maximum visibility in local search and map results.",
+                    citation: "Building consistent business listings across various online directories to improve local search authority.",
+                    reviews: "Strategies for generating, monitoring, and effectively responding to customer reviews.",
+                    localads: "Managing targeted paid advertising campaigns to reach local customers on platforms like Google Ads.",
+                    content_marketing: "Creating localized content (e.g., blog posts, city guides) to attract and engage local audiences."
+                }
+            }
+        };
+
+        // Get DOM elements
+        const countrySelect = document.getElementById('countrySelect');
+        const numLocationsInput = document.getElementById('numLocations');
+        const numLocationsValueDisplay = document.getElementById('numLocationsValue');
+        const industrySelect = document.getElementById('industry');
+        const competitionLevelInput = document.getElementById('competitionLevel');
+        const competitionLevelValueDisplay = document.getElementById('competitionLevelValue');
+        const serviceCheckboxes = document.querySelectorAll('.services-container input[type="checkbox"]');
+        const allServicesCheckbox = document.getElementById('all');
+        const customServicesContainer = document.getElementById('customServicesContainer');
+        const addCustomServiceButton = document.getElementById('addCustomService');
+        const priceDisplay = document.getElementById('priceDisplay');
+        const breakdownDisplay = document.getElementById('breakdown');
+        const resetButton = document.getElementById('resetButton');
+
+        let customServiceCount = 0; // To keep track of custom service inputs
+
+        // Function to format currency
+        function formatCurrency(amount, symbol) {
+            return `${symbol}${Math.round(amount).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+        }
+
+        // Function to calculate the estimated cost
+        function calculateCost() {
+            const country = countrySelect.value;
+            const currentCountryPrices = prices[country];
+            const currencySymbol = currentCountryPrices.currencySymbol;
+            const currencyCode = currentCountryPrices.currencyCode;
+
+            let totalCost = 0;
+            let breakdownItems = []; // Use an array to build the breakdown for easier formatting
+
+            // 1. Base Price
+            let currentBasePrice = currentCountryPrices.base;
+            totalCost += currentBasePrice;
+            breakdownItems.push(`<div><strong>Base Investment:</strong> ${formatCurrency(currentBasePrice, currencySymbol)} <span class="text-gray-500 text-xs">- The foundational monthly fee for essential strategy and management.</span></div>`);
+
+            // 2. Number of Locations Multiplier
+            const numLocations = parseInt(numLocationsInput.value);
+            numLocationsValueDisplay.textContent = numLocations; // Update display
+            if (numLocations > 1) {
+                const locationAdjust = currentBasePrice * currentCountryPrices.locationMultiplier * (numLocations - 1);
+                totalCost += locationAdjust;
+                breakdownItems.push(`<div><strong>Additional Locations (${numLocations} locations):</strong> +${formatCurrency(locationAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Each additional location requires unique optimization efforts for Google My Business, local citations, and localized content strategies.</span></div>`);
+            }
+
+            // 3. Industry Multiplier
+            const industry = industrySelect.value;
+            const industryMultiplier = currentCountryPrices.industry[industry];
+            const industryAdjust = currentBasePrice * (industryMultiplier - 1); // Only add the *additional* cost
+            totalCost += industryAdjust;
+            const industryName = industry.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            if (industryAdjust > 0) {
+                 breakdownItems.push(`<div><strong>Industry Complexity (${industryName}):</strong> +${formatCurrency(industryAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Certain industries (e.g., healthcare, legal, real estate) are inherently more competitive or complex in local SEO, demanding specialized strategies and more intensive effort.</span></div>`);
+            } else {
+                 breakdownItems.push(`<div><strong>Industry Complexity (General):</strong> ${formatCurrency(industryAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- This indicates a standard level of industry competition.</span></div>`);
+            }
+           
+
+            // 4. Competition Level Multiplier
+            const competitionLevelIndex = parseInt(competitionLevelInput.value);
+            const competitionLevelText = ['Low', 'Medium', 'High'][competitionLevelIndex];
+            competitionLevelValueDisplay.textContent = competitionLevelText; // Update display
+            const competitionMultiplier = currentCountryPrices.competition[competitionLevelIndex];
+            const competitionAdjust = currentBasePrice * (competitionMultiplier - 1); // Only add the *additional* cost
+            totalCost += competitionAdjust;
+            if (competitionAdjust > 0) {
+                breakdownItems.push(`<div><strong>Local Competition (${competitionLevelText}):</strong> +${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Higher local competition demands more aggressive and sustained SEO efforts to achieve prominent rankings and outmaneuver competitors.</span></div>`);
+            } else if (competitionAdjust < 0) {
+                breakdownItems.push(`<div><strong>Local Competition (${competitionLevelText}):</strong> ${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- Lower competition may allow for more cost-effective strategies.</span></div>`);
+            } else {
+                 breakdownItems.push(`<div><strong>Local Competition (${competitionLevelText}):</strong> ${formatCurrency(competitionAdjust, currencySymbol)} <span class="text-gray-500 text-xs">- This represents a standard level of local competition.</span></div>`);
+            }
+
+            // 5. Selected Services
+            let servicesCost = 0;
+            let selectedServicesDetails = [];
+            serviceCheckboxes.forEach(checkbox => {
+                if (checkbox.checked && checkbox.id !== 'all') {
+                    const serviceId = checkbox.id;
+                    const serviceMultiplier = currentCountryPrices.services[serviceId];
+                    if (serviceMultiplier) { // Ensure multiplier exists for the service
+                        const servicePrice = currentBasePrice * serviceMultiplier;
+                        servicesCost += servicePrice;
+                        const serviceDisplayName = checkbox.parentElement.textContent.trim().replace('Select All Core Services', '');
+                        const serviceDescription = currentCountryPrices.serviceDescriptions[serviceId] || '';
+                        selectedServicesDetails.push({ name: serviceDisplayName, cost: servicePrice, description: serviceDescription });
+                    }
+                }
+            });
+            totalCost += servicesCost;
+            if (selectedServicesDetails.length > 0) {
+                breakdownItems.push(`<div><strong>Selected Services:</strong></div>`);
+                selectedServicesDetails.forEach(service => {
+                    breakdownItems.push(`<div class="ml-4">- ${service.name}: ${formatCurrency(service.cost, currencySymbol)} <span class="text-gray-500 text-xs">${service.description}</span></div>`);
+                });
+            } else {
+                breakdownItems.push(`<div><strong>Selected Services:</strong> <span class="text-gray-500 text-xs">- No specific core services selected. Consider adding services relevant to your goals.</span></div>`);
+            }
+
+
+            // 6. Custom Services
+            let customServicesTotal = 0;
+            const customServiceInputs = customServicesContainer.querySelectorAll('.custom-service-item input[type="number"]');
+            let customServicesList = [];
+            customServiceInputs.forEach(input => {
+                const customValue = parseFloat(input.value) || 0;
+                if (customValue > 0) {
+                    customServicesTotal += customValue;
+                    const serviceNameInput = input.previousElementSibling;
+                    const serviceName = serviceNameInput ? serviceNameInput.value || 'Custom Service' : 'Custom Service';
+                    customServicesList.push(`- ${serviceName}: ${formatCurrency(customValue, currencySymbol)}`);
+                }
+            });
+            totalCost += customServicesTotal;
+            if (customServicesTotal > 0) {
+                 breakdownItems.push(`<div><strong>Custom Services / Add-ons:</strong> +${formatCurrency(customServicesTotal, currencySymbol)}</div>`);
+                 customServicesList.forEach(item => breakdownItems.push(`<div class="ml-4">${item}</div>`));
+            }
+
+
+            // Display total cost
+            priceDisplay.textContent = formatCurrency(totalCost, currencySymbol);
+            
+            // Display breakdown
+            breakdownDisplay.innerHTML = breakdownItems.join('');
+        }
+
+        // Function to add a new custom service input field
+        function addCustomServiceInput() {
+            customServiceCount++;
+            const div = document.createElement('div');
+            div.className = 'custom-service-item flex items-center space-x-2';
+            div.innerHTML = `
+                <input type="text" placeholder="Service Name (e.g., 'Local Link Building')" class="flex-grow px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 ease-in-out text-sm">
+                <input type="number" placeholder="Cost" min="0" class="w-24 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 ease-in-out text-sm">
+                <button class="remove-custom-service text-red-500 hover:text-red-700 p-1 rounded-full transition-colors duration-200" title="Remove Custom Service">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 01-2 0v6a1 1 0 112 0V8z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            `;
+            customServicesContainer.appendChild(div);
+
+            // Add event listeners to the new inputs and remove button
+            div.querySelector('input[type="text"]').addEventListener('input', calculateCost);
+            div.querySelector('input[type="number"]').addEventListener('input', calculateCost);
+            div.querySelector('.remove-custom-service').addEventListener('click', function() {
+                div.remove();
+                calculateCost();
+            });
+        }
+
+        // Function to reset all inputs to their default values
+        function resetCalculator() {
+            countrySelect.value = 'IN';
+            numLocationsInput.value = '1';
+            industrySelect.value = 'general';
+            competitionLevelInput.value = '1'; // Medium
+
+            serviceCheckboxes.forEach(checkbox => {
+                if (checkbox.id === 'onpage') {
+                    checkbox.checked = true; // Default checked
+                } else {
+                    checkbox.checked = false;
+                }
+            });
+            allServicesCheckbox.checked = false; // Uncheck "All Services"
+
+            customServicesContainer.innerHTML = ''; // Clear custom services
+            customServiceCount = 0;
+
+            calculateCost(); // Recalculate after reset
+        }
+
+        // Event Listeners
+        countrySelect.addEventListener('change', calculateCost);
+        numLocationsInput.addEventListener('input', calculateCost); // Use 'input' for real-time updates from slider
+        industrySelect.addEventListener('change', calculateCost);
+        competitionLevelInput.addEventListener('input', calculateCost); // Use 'input' for real-time updates from slider
+
+        serviceCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.id === 'all') {
+                    serviceCheckboxes.forEach(cb => {
+                        if (cb.id !== 'all') { // Don't uncheck 'all' itself
+                            cb.checked = this.checked;
+                        }
+                    });
+                } else {
+                    // If any service is unchecked, uncheck "All Services"
+                    if (!this.checked) {
+                        allServicesCheckbox.checked = false;
+                    } else {
+                        // If all other services are checked, check "All Services"
+                        const allOthersChecked = Array.from(serviceCheckboxes).filter(cb => cb.id !== 'all').every(cb => cb.checked);
+                        if (allOthersChecked) {
+                            allServicesCheckbox.checked = true;
+                        }
+                    }
+                }
+                calculateCost();
+            });
+        });
+
+        addCustomServiceButton.addEventListener('click', addCustomServiceInput);
+        resetButton.addEventListener('click', resetCalculator);
+
+        // Initial calculation on page load
+        calculateCost();
+    </script>
+</body>
+</html>

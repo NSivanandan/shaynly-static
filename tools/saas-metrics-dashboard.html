@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced SaaS Metrics Dashboard - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced SaaS Metrics Dashboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/saas-metrics-dashboard.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/saas-metrics-dashboard.html">
+  <meta property="og:title" content="Advanced SaaS Metrics Dashboard - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced SaaS Metrics Dashboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced SaaS Metrics Dashboard - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced SaaS Metrics Dashboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced SaaS Metrics Dashboard</h1>
+      <p>Free interactive Advanced SaaS Metrics Dashboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+  <div class="max-w-7xl mx-auto">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight"> SaaS Metrics Dashboard</h1>
+      <p class="mt-2 text-lg text-gray-600 max-w-xl mx-auto">
+        Analyze your core SaaS metrics, including <strong>Gross Margin</strong>, <strong>Net MRR Churn</strong>, and <strong>CAC Payback Period</strong>, with a dynamic 12-month projection.
+      </p>
+    </header>
+
+    <main class="grid lg:grid-cols-3 gap-8">
+      <!-- Input Panel -->
+      <div class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-xl space-y-6">
+        <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down h-6 w-6 text-indigo-500 mr-2 transform rotate-90"><path d="m6 9 6 6 6-6"/></svg>
+          Enter Your Data
+        </h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">New Customers This Month</label>
+            <input type="number" id="newCustomers" value="100" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Average Revenue per User (ARPU)</label>
+            <input type="number" id="averageRevenuePerUser" value="50" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Total Customers at Start of Month</label>
+            <input type="number" id="totalCustomersStart" value="1000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Churned Customers This Month</label>
+            <input type="number" id="churnedCustomers" value="20" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Total Marketing Spend</label>
+            <input type="number" id="marketingSpend" value="10000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Total Sales Spend</label>
+            <input type="number" id="salesSpend" value="5000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Gross Margin %</label>
+            <input type="number" id="grossMarginPercentage" value="80" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Expansion MRR Rate %</label>
+            <input type="number" id="expansionMrrRate" value="5" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Customer Acquisition Growth Rate % (Monthly)</label>
+            <input type="number" id="customerAcquisitionGrowthRate" value="5" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Churn Rate Reduction per Month %</label>
+            <input type="number" id="churnRateReductionPerMonth" value="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200 p-2"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics & Charts -->
+      <div class="lg:col-span-2 space-y-8">
+        <!-- Calculated Metrics -->
+        <div class="bg-white p-6 rounded-2xl shadow-xl">
+          <h2 class="text-2xl font-bold text-gray-800 flex items-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw h-6 w-6 text-indigo-500 mr-2"><path d="M2 12s3-7 10-7 10 7 10 7"/><path d="M2 12s3 7 10 7 10-7 10-7"/><path d="M12 19V5"/></svg>
+            Key Metrics
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-indigo-50 p-4 rounded-xl text-center">
+              <h3 class="text-sm font-semibold text-gray-500">Monthly Recurring Revenue (MRR)</h3>
+              <p id="mrr" class="mt-1 text-2xl font-bold text-indigo-700">$0.00</p>
+            </div>
+            <div class="bg-emerald-50 p-4 rounded-xl text-center">
+              <h3 class="text-sm font-semibold text-gray-500">Customer Acquisition Cost (CAC)</h3>
+              <p id="cac" class="mt-1 text-2xl font-bold text-emerald-700">$0.00</p>
+            </div>
+            <div class="bg-red-50 p-4 rounded-xl text-center">
+              <h3 class="text-sm font-semibold text-gray-500">Churn Rate</h3>
+              <p id="churnRate" class="mt-1 text-2xl font-bold text-red-700">0.00%</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-xl text-center">
+              <h3 class="text-sm font-semibold text-gray-500">CAC Payback Period</h3>
+              <p id="cacPaybackPeriod" class="mt-1 text-2xl font-bold text-purple-700">0.00 Months</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-xl text-center col-span-2 sm:col-span-1 md:col-span-2">
+              <h3 class="text-sm font-semibold text-gray-500">Customer Lifetime Value (LTV)</h3>
+              <p id="ltv" class="mt-1 text-2xl font-bold text-amber-700">$0.00</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-xl text-center col-span-2 sm:col-span-1 md:col-span-2">
+              <h3 class="text-sm font-semibold text-gray-500">LTV:CAC Ratio</h3>
+              <p id="ltvToCacRatio" class="mt-1 text-2xl font-bold text-slate-700">0.00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MRR Breakdown Chart -->
+        <div class="bg-white p-6 rounded-2xl shadow-xl">
+          <canvas id="mrrChart"></canvas>
+        </div>
+        <!-- CAC Payback Period Chart -->
+        <div class="bg-white p-6 rounded-2xl shadow-xl">
+          <canvas id="paybackChart"></canvas>
+        </div>
+        <!-- LTV:CAC Ratio Chart -->
+        <div class="bg-white p-6 rounded-2xl shadow-xl">
+          <canvas id="ratioChart"></canvas>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    // Get all the DOM elements we need to interact with
+    const inputIds = [
+      'newCustomers', 'averageRevenuePerUser', 'totalCustomersStart', 'churnedCustomers',
+      'marketingSpend', 'salesSpend', 'grossMarginPercentage', 'expansionMrrRate',
+      'customerAcquisitionGrowthRate', 'churnRateReductionPerMonth'
+    ];
+    const inputs = {};
+    inputIds.forEach(id => inputs[id] = document.getElementById(id));
+
+    const metrics = {
+      mrr: document.getElementById('mrr'),
+      cac: document.getElementById('cac'),
+      churnRate: document.getElementById('churnRate'),
+      cacPaybackPeriod: document.getElementById('cacPaybackPeriod'),
+      ltv: document.getElementById('ltv'),
+      ltvToCacRatio: document.getElementById('ltvToCacRatio')
+    };
+
+    let mrrChartInstance = null;
+    let ratioChartInstance = null;
+    let paybackChartInstance = null;
+
+    const colors = {
+      newMrr: '#4f46e5',
+      expansionMrr: '#10b981',
+      churnMrr: '#ef4444',
+      ltv: '#f59e0b',
+      cac: '#3b82f6',
+      payback: '#a855f7',
+    };
+
+    // Main function to perform all calculations and update the UI
+    function updateDashboard() {
+      // Get values from inputs
+      const newCustomers = parseInt(inputs.newCustomers.value, 10);
+      const averageRevenuePerUser = parseFloat(inputs.averageRevenuePerUser.value);
+      const totalCustomersStart = parseInt(inputs.totalCustomersStart.value, 10);
+      const churnedCustomers = parseInt(inputs.churnedCustomers.value, 10);
+      const marketingSpend = parseFloat(inputs.marketingSpend.value);
+      const salesSpend = parseFloat(inputs.salesSpend.value);
+      const grossMarginPercentage = parseFloat(inputs.grossMarginPercentage.value);
+      const expansionMrrRate = parseFloat(inputs.expansionMrrRate.value);
+      const customerAcquisitionGrowthRate = parseFloat(inputs.customerAcquisitionGrowthRate.value);
+      const churnRateReductionPerMonth = parseFloat(inputs.churnRateReductionPerMonth.value);
+      
+      // Basic validations
+      if (totalCustomersStart <= 0 || newCustomers <= 0 || averageRevenuePerUser <= 0) {
+        // Reset all metrics to 0
+        for (const key in metrics) {
+          if (metrics.hasOwnProperty(key)) {
+            metrics[key].textContent = 'N/A';
+          }
+        }
+        return;
+      }
+
+      // MRR Calculations
+      const calculatedNewMrr = newCustomers * averageRevenuePerUser;
+      const previousMrr = totalCustomersStart * averageRevenuePerUser;
+      const calculatedExpansionMrr = previousMrr * (expansionMrrRate / 100);
+      const calculatedContractionMrr = churnedCustomers * averageRevenuePerUser;
+      const calculatedNetNewMrr = calculatedNewMrr + calculatedExpansionMrr - calculatedContractionMrr;
+      const calculatedMrr = previousMrr + calculatedNetNewMrr;
+      
+      metrics.mrr.textContent = `$${calculatedMrr.toFixed(2)}`;
+
+      // Churn Rate Calculations
+      const calculatedChurnRate = (churnedCustomers / totalCustomersStart) * 100;
+      metrics.churnRate.textContent = `${calculatedChurnRate.toFixed(2)}%`;
+      
+      // CAC Calculation
+      const totalSpend = marketingSpend + salesSpend;
+      const calculatedCac = totalSpend / newCustomers;
+      metrics.cac.textContent = `$${calculatedCac.toFixed(2)}`;
+
+      // CAC Payback Period Calculation (in months)
+      const grossProfitPerCustomer = averageRevenuePerUser * (grossMarginPercentage / 100);
+      let paybackPeriod = 0;
+      if (grossProfitPerCustomer > 0) {
+          paybackPeriod = calculatedCac / grossProfitPerCustomer;
+      } else {
+          paybackPeriod = Infinity;
+      }
+      metrics.cacPaybackPeriod.textContent = `${paybackPeriod === Infinity ? '∞' : paybackPeriod.toFixed(2)} Months`;
+
+      // LTV Calculation (using a more advanced formula with net MRR churn rate)
+      const netMrrChurnRateDecimal = ((churnedCustomers * averageRevenuePerUser) - calculatedExpansionMrr) / previousMrr;
+      let calculatedLtv = 0;
+      if (netMrrChurnRateDecimal < 1) { // LTV is finite if net churn is less than 100%
+          calculatedLtv = grossProfitPerCustomer / netMrrChurnRateDecimal;
+      } else {
+          calculatedLtv = Infinity;
+      }
+      metrics.ltv.textContent = calculatedLtv === Infinity ? '∞' : `$${calculatedLtv.toFixed(2)}`;
+
+      // LTV:CAC Ratio Calculation
+      let calculatedRatio = 0;
+      if (calculatedCac > 0) {
+        calculatedRatio = calculatedLtv / calculatedCac;
+      } else {
+        calculatedRatio = Infinity;
+      }
+      metrics.ltvToCacRatio.textContent = calculatedRatio === Infinity ? '∞' : calculatedRatio.toFixed(2);
+      
+      // Generate and update charts
+      updateCharts();
+    }
+
+    // Function to generate data for the charts over a 12-month period
+    function generateChartData() {
+        const months = Array.from({ length: 12 }, (_, i) => `Month ${i + 1}`);
+        const newMrrData = [];
+        const expansionMrrData = [];
+        const churnMrrData = [];
+        const ratioData = [];
+        const paybackData = [];
+        
+        // Get initial values from inputs at the start of the function
+        let currentNewCustomers = parseInt(inputs.newCustomers.value, 10);
+        let currentTotalCustomers = parseInt(inputs.totalCustomersStart.value, 10);
+        let currentChurnedCustomers = parseInt(inputs.churnedCustomers.value, 10);
+        const averageRevenuePerUser = parseFloat(inputs.averageRevenuePerUser.value);
+        let currentMarketingSpend = parseFloat(inputs.marketingSpend.value);
+        let currentSalesSpend = parseFloat(inputs.salesSpend.value);
+        let currentExpansionMrrRate = parseFloat(inputs.expansionMrrRate.value);
+        let currentGrossMarginPercentage = parseFloat(inputs.grossMarginPercentage.value);
+        
+        // Initial churn rate
+        let currentChurnRate = (currentChurnedCustomers / currentTotalCustomers) * 100;
+        const customerAcquisitionGrowthRate = parseFloat(inputs.customerAcquisitionGrowthRate.value);
+        const churnRateReductionPerMonth = parseFloat(inputs.churnRateReductionPerMonth.value);
+
+        for (let i = 0; i < 12; i++) {
+          const totalSpend = currentMarketingSpend + currentSalesSpend;
+          const monthlyCac = totalSpend / currentNewCustomers;
+          const grossProfitPerCustomer = averageRevenuePerUser * (currentGrossMarginPercentage / 100);
+          const monthlyPaybackPeriod = grossProfitPerCustomer > 0 ? monthlyCac / grossProfitPerCustomer : Infinity;
+
+          const previousMrr = currentTotalCustomers * averageRevenuePerUser;
+          const netMrrChurnRateDecimal = ((currentChurnedCustomers * averageRevenuePerUser) - (previousMrr * (currentExpansionMrrRate / 100))) / previousMrr;
+          const monthlyLtv = netMrrChurnRateDecimal < 1 ? grossProfitPerCustomer / netMrrChurnRateDecimal : Infinity;
+          const monthlyRatio = monthlyCac > 0 ? monthlyLtv / monthlyCac : Infinity;
+          
+          const monthlyNewMrr = currentNewCustomers * averageRevenuePerUser;
+          const monthlyExpansionMrr = previousMrr * (currentExpansionMrrRate / 100);
+          const monthlyChurnMrr = currentChurnedCustomers * averageRevenuePerUser;
+
+          newMrrData.push(monthlyNewMrr);
+          expansionMrrData.push(monthlyExpansionMrr);
+          churnMrrData.push(monthlyChurnMrr * -1);
+          ratioData.push(monthlyRatio);
+          paybackData.push(monthlyPaybackPeriod);
+
+          // Simple growth simulation for the next month
+          currentNewCustomers = Math.floor(currentNewCustomers * (1 + customerAcquisitionGrowthRate / 100));
+          const customersAfterChurn = Math.floor(currentTotalCustomers - currentChurnedCustomers);
+          currentTotalCustomers = Math.floor(customersAfterChurn + currentNewCustomers);
+          currentChurnRate = Math.max(0, currentChurnRate - churnRateReductionPerMonth);
+          currentChurnedCustomers = Math.floor(currentTotalCustomers * (currentChurnRate / 100));
+
+          currentMarketingSpend = Math.floor(currentMarketingSpend * (1 + customerAcquisitionGrowthRate / 100));
+          currentSalesSpend = Math.floor(currentSalesSpend * (1 + customerAcquisitionGrowthRate / 100));
+        }
+        return { months, newMrrData, expansionMrrData, churnMrrData, ratioData, paybackData };
+    }
+
+    function updateCharts() {
+      const { months, newMrrData, expansionMrrData, churnMrrData, ratioData, paybackData } = generateChartData();
+
+      // Destroy existing chart instances to prevent conflicts
+      if (mrrChartInstance) mrrChartInstance.destroy();
+      if (ratioChartInstance) ratioChartInstance.destroy();
+      if (paybackChartInstance) paybackChartInstance.destroy();
+
+      // MRR Breakdown Chart
+      const mrrCtx = document.getElementById('mrrChart').getContext('2d');
+      mrrChartInstance = new Chart(mrrCtx, {
+        type: 'bar',
+        data: {
+          labels: months,
+          datasets: [
+            {
+              label: 'New MRR',
+              data: newMrrData,
+              backgroundColor: colors.newMrr,
+              stack: 'MRR',
+            },
+            {
+              label: 'Expansion MRR',
+              data: expansionMrrData,
+              backgroundColor: colors.expansionMrr,
+              stack: 'MRR',
+            },
+            {
+              label: 'Churned MRR',
+              data: churnMrrData,
+              backgroundColor: colors.churnMrr,
+              stack: 'MRR',
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Month',
+                color: '#333',
+              },
+              grid: {
+                display: false,
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'MRR Change ($)',
+                color: '#333',
+              },
+              beginAtZero: true,
+            },
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'MRR Breakdown Over 12 Months',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#333',
+            },
+          },
+        },
+      });
+
+      // LTV:CAC Ratio Chart
+      const ratioCtx = document.getElementById('ratioChart').getContext('2d');
+      ratioChartInstance = new Chart(ratioCtx, {
+        type: 'line',
+        data: {
+          labels: months,
+          datasets: [
+            {
+              label: 'LTV:CAC Ratio',
+              data: ratioData,
+              borderColor: colors.ltv,
+              backgroundColor: colors.ltv,
+              tension: 0.3,
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Month',
+                color: '#333',
+              },
+              grid: {
+                display: false,
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Ratio',
+                color: '#333',
+              },
+              beginAtZero: true,
+            },
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'LTV:CAC Ratio Trend',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#333',
+            },
+          },
+        },
+      });
+
+      // CAC Payback Period Chart
+      const paybackCtx = document.getElementById('paybackChart').getContext('2d');
+      paybackChartInstance = new Chart(paybackCtx, {
+        type: 'line',
+        data: {
+          labels: months,
+          datasets: [
+            {
+              label: 'CAC Payback Period (Months)',
+              data: paybackData,
+              borderColor: colors.payback,
+              backgroundColor: colors.payback,
+              tension: 0.3,
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Month',
+                color: '#333',
+              },
+              grid: {
+                display: false,
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Months',
+                color: '#333',
+              },
+              beginAtZero: true,
+            },
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'CAC Payback Period Trend',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#333',
+            },
+          },
+        },
+      });
+    }
+
+    // Add event listeners to all input fields
+    document.addEventListener('DOMContentLoaded', () => {
+        inputIds.forEach(id => {
+            document.getElementById(id).addEventListener('input', updateDashboard);
+        });
+        updateDashboard();
+    });
+  </script>
+</body>
+</html>

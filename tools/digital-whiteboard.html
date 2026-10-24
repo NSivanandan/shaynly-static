@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Digital Whiteboard - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Premium Digital Whiteboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/digital-whiteboard.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/digital-whiteboard.html">
+  <meta property="og:title" content="Premium Digital Whiteboard - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Premium Digital Whiteboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium Digital Whiteboard - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Premium Digital Whiteboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #1e1e2e;
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c2c54, #474787);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 24px;
+            background: #ff5252;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo h1 {
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: #706fd3;
+        }
+        
+        .btn-primary:hover {
+            background: #5d5cb2;
+        }
+        
+        .btn-danger {
+            background: #ff5252;
+        }
+        
+        .btn-danger:hover {
+            background: #e04444;
+        }
+        
+        .btn-success {
+            background: #33d9b2;
+        }
+        
+        .btn-success:hover {
+            background: #2ac19d;
+        }
+        
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .toolbar {
+            width: 80px;
+            background: #2d2d44;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            gap: 20px;
+            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+            z-index: 5;
+        }
+        
+        .tool {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .tool:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .tool.active {
+            background: #706fd3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tool-icon {
+            font-size: 24px;
+        }
+        
+        .color-picker {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.active {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 3px white, 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .brush-size {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .size-option {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #aaa;
+            transition: all 0.2s ease;
+        }
+        
+        .size-option.active {
+            color: white;
+            transform: scale(1.2);
+        }
+        
+        .canvas-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: #141420;
+        }
+        
+        #whiteboard {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
+            background: #1c1c28;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .properties-panel {
+            width: 250px;
+            background: #2d2d44;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+            z-index: 5;
+        }
+        
+        .panel-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .panel-title {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: #aaa;
+        }
+        
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .slider-value {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: #3d3d5c;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #706fd3;
+            cursor: pointer;
+        }
+        
+        .footer {
+            background: #2d2d44;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .zoom-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .zoom-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .zoom-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: #2d2d44;
+            padding: 25px;
+            border-radius: 12px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .close-modal {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: white;
+        }
+        
+        .share-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .share-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .share-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .share-icon {
+            font-size: 20px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .download-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .format-option {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .format-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .properties-panel {
+                display: none;
+            }
+            
+            .toolbar {
+                width: 60px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .controls {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Productivity & Management</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Premium Digital Whiteboard</h1>
+      <p>Free interactive Premium Digital Whiteboard for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-palette"></i></div>
+            <h1>Premium Whiteboard</h1>
+        </div>
+        <div class="controls">
+            <button class="btn" id="save-btn"><i class="fas fa-save"></i> Save</button>
+            <button class="btn" id="load-btn"><i class="fas fa-folder-open"></i> Load</button>
+            <button class="btn btn-primary" id="undo-btn"><i class="fas fa-undo"></i> Undo</button>
+            <button class="btn btn-danger" id="clear-btn"><i class="fas fa-trash"></i> Clear</button>
+            <button class="btn btn-success" id="download-btn"><i class="fas fa-download"></i> Download</button>
+            <button class="btn btn-success" id="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <div class="toolbar">
+            <div class="tool active" data-tool="pen">
+                <div class="tool-icon"><i class="fas fa-pen"></i></div>
+            </div>
+            <div class="tool" data-tool="eraser">
+                <div class="tool-icon"><i class="fas fa-eraser"></i></div>
+            </div>
+            <div class="tool" data-tool="shape">
+                <div class="tool-icon"><i class="fas fa-square"></i></div>
+            </div>
+            <div class="tool" data-tool="text">
+                <div class="tool-icon"><i class="fas fa-font"></i></div>
+            </div>
+            
+            <div class="color-picker">
+                <div class="color-option active" style="background: #ffffff;" data-color="#ffffff"></div>
+                <div class="color-option" style="background: #ff5252;" data-color="#ff5252"></div>
+                <div class="color-option" style="background: #706fd3;" data-color="#706fd3"></div>
+                <div class="color-option" style="background: #33d9b2;" data-color="#33d9b2"></div>
+                <div class="color-option" style="background: #ffb142;" data-color="#ffb142"></div>
+            </div>
+            
+            <div class="brush-size">
+                <div class="size-option active" data-size="2">•</div>
+                <div class="size-option" data-size="5">•</div>
+                <div class="size-option" data-size="8">•</div>
+                <div class="size-option" data-size="12">•</div>
+            </div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="whiteboard"></canvas>
+        </div>
+        
+        <div class="properties-panel">
+            <div class="panel-section">
+                <h3 class="panel-title">Brush Properties</h3>
+                <div class="slider-container">
+                    <div class="slider-value">
+                        <span>Size</span>
+                        <span id="size-value">5px</span>
+                    </div>
+                    <input type="range" id="brush-size" min="1" max="50" value="5">
+                </div>
+                <div class="slider-container" style="margin-top: 15px;">
+                    <div class="slider-value">
+                        <span>Opacity</span>
+                        <span id="opacity-value">100%</span>
+                    </div>
+                    <input type="range" id="brush-opacity" min="1" max="100" value="100">
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <h3 class="panel-title">Canvas Options</h3>
+                <button class="btn" style="width: 100%; justify-content: center; margin-top: 10px;">
+                    Change Background
+                </button>
+                <button class="btn" style="width: 100%; justify-content: center; margin-top: 10px;">
+                    Grid Settings
+                </button>
+            </div>
+            
+            <div class="panel-section">
+                <h3 class="panel-title">Recent Colors</h3>
+                <div style="display: flex; gap: 8px; margin-top: 10px;">
+                    <div class="color-option" style="background: #ff9ff3;"></div>
+                    <div class="color-option" style="background: #feca57;"></div>
+                    <div class="color-option" style="background: #54a0ff;"></div>
+                    <div class="color-option" style="background: #00d2d3;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="status">
+            <span>Current Tool: Pen</span> | 
+            <span>Color: #FFFFFF</span> | 
+            <span>Size: 5px</span>
+        </div>
+        <div class="zoom-controls">
+            <div class="zoom-btn"><i class="fas fa-search-minus"></i></div>
+            <div class="zoom-btn">100%</div>
+            <div class="zoom-btn"><i class="fas fa-search-plus"></i></div>
+        </div>
+    </div>
+
+    <!-- Download Modal -->
+    <div id="download-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Download Your Creation</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="download-options">
+                <div class="format-option" data-format="png">
+                    <i class="fas fa-file-image"></i>
+                    <span>PNG Image (High Quality)</span>
+                </div>
+                <div class="format-option" data-format="jpg">
+                    <i class="fas fa-file-image"></i>
+                    <span>JPEG Image (Smaller File)</span>
+                </div>
+                <div class="format-option" data-format="pdf">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>PDF Document</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="share-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Share Your Creation</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="share-options">
+                <div class="share-option" data-method="link">
+                    <div class="share-icon"><i class="fas fa-link"></i></div>
+                    <div>
+                        <h3>Copy Link</h3>
+                        <p>Generate a shareable link to your drawing</p>
+                    </div>
+                </div>
+                <div class="share-option" data-method="email">
+                    <div class="share-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>Send your drawing via email</p>
+                    </div>
+                </div>
+                <div class="share-option" data-method="social">
+                    <div class="share-icon"><i class="fas fa-share-alt"></i></div>
+                    <div>
+                        <h3>Social Media</h3>
+                        <p>Share on social platforms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('whiteboard');
+            const ctx = canvas.getContext('2d');
+            const downloadModal = document.getElementById('download-modal');
+            const shareModal = document.getElementById('share-modal');
+            
+            // Set canvas to full window size
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+            
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            
+            // Drawing state
+            let isDrawing = false;
+            let lastX = 0;
+            let lastY = 0;
+            let currentTool = 'pen';
+            let currentColor = '#ffffff';
+            let currentSize = 5;
+            let currentOpacity = 1;
+            let drawingHistory = [];
+            let historyStep = -1;
+            
+            // Set initial canvas background
+            ctx.fillStyle = '#1c1c28';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            saveState();
+            
+            // Drawing functions
+            function startDrawing(e) {
+                isDrawing = true;
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+            
+            function draw(e) {
+                if (!isDrawing) return;
+                
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.strokeStyle = currentTool === 'eraser' ? '#1c1c28' : currentColor;
+                ctx.lineWidth = currentSize;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.globalAlpha = currentOpacity;
+                ctx.stroke();
+                
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+            
+            function stopDrawing() {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveState();
+                }
+            }
+            
+            function saveState() {
+                if (historyStep < drawingHistory.length - 1) {
+                    drawingHistory = drawingHistory.slice(0, historyStep + 1);
+                }
+                
+                drawingHistory.push(canvas.toDataURL());
+                historyStep++;
+            }
+            
+            function undo() {
+                if (historyStep > 0) {
+                    historyStep--;
+                    const img = new Image();
+                    img.onload = function() {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.drawImage(img, 0, 0);
+                    };
+                    img.src = drawingHistory[historyStep];
+                }
+            }
+            
+            function clearCanvas() {
+                if (confirm('Are you sure you want to clear the canvas?')) {
+                    ctx.fillStyle = '#1c1c28';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    saveState();
+                }
+            }
+            
+            // Download functions
+            function downloadCanvas(format) {
+                let mimeType, extension;
+                
+                switch(format) {
+                    case 'jpg':
+                        mimeType = 'image/jpeg';
+                        extension = 'jpg';
+                        break;
+                    case 'pdf':
+                        // For demo purposes, we'll use PNG for PDF too
+                        mimeType = 'image/png';
+                        extension = 'pdf';
+                        break;
+                    default:
+                        mimeType = 'image/png';
+                        extension = 'png';
+                }
+                
+                const dataURL = canvas.toDataURL(mimeType);
+                const link = document.createElement('a');
+                link.download = `whiteboard-drawing.${extension}`;
+                link.href = dataURL;
+                link.click();
+                
+                // Close modal after download
+                downloadModal.style.display = 'none';
+            }
+            
+            // Share functions
+            function shareCanvas(method) {
+                // Convert canvas to data URL
+                const dataURL = canvas.toDataURL('image/png');
+                
+                switch(method) {
+                    case 'link':
+                        // In a real app, you would upload the image and get a URL
+                        // For demo, we'll use a dummy URL and show alert
+                        const dummyLink = 'https://whiteboard.example.com/share/abc123';
+                        navigator.clipboard.writeText(dummyLink).then(() => {
+                            alert('Link copied to clipboard!');
+                        });
+                        break;
+                        
+                    case 'email':
+                        // For demo, show alert
+                        alert('Email sharing would open your email client with the image attached');
+                        break;
+                        
+                    case 'social':
+                        // For demo, show alert
+                        alert('Social sharing would open a dialog to share on various platforms');
+                        break;
+                }
+                
+                // Close modal after sharing
+                shareModal.style.display = 'none';
+            }
+            
+            // Event listeners for drawing
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            // Touch events for mobile devices
+            canvas.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent('mousedown', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            canvas.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent('mousemove', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            canvas.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                const mouseEvent = new MouseEvent('mouseup', {});
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            // Tool selection
+            document.querySelectorAll('.tool').forEach(tool => {
+                tool.addEventListener('click', function() {
+                    document.querySelectorAll('.tool').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTool = this.dataset.tool;
+                    updateStatus();
+                });
+            });
+            
+            // Color selection
+            document.querySelectorAll('.color-option').forEach(color => {
+                color.addEventListener('click', function() {
+                    document.querySelectorAll('.color-option').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    currentColor = this.dataset.color;
+                    updateStatus();
+                });
+            });
+            
+            // Brush size selection
+            document.querySelectorAll('.size-option').forEach(size => {
+                size.addEventListener('click', function() {
+                    document.querySelectorAll('.size-option').forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
+                    currentSize = parseInt(this.dataset.size);
+                    document.getElementById('brush-size').value = currentSize;
+                    document.getElementById('size-value').textContent = currentSize + 'px';
+                    updateStatus();
+                });
+            });
+            
+            // Brush size slider
+            const brushSizeSlider = document.getElementById('brush-size');
+            brushSizeSlider.addEventListener('input', function() {
+                currentSize = parseInt(this.value);
+                document.getElementById('size-value').textContent = currentSize + 'px';
+                
+                // Update size options UI
+                document.querySelectorAll('.size-option').forEach(option => {
+                    option.classList.remove('active');
+                    if (parseInt(option.dataset.size) === currentSize) {
+                        option.classList.add('active');
+                    }
+                });
+                
+                updateStatus();
+            });
+            
+            // Brush opacity slider
+            const brushOpacitySlider = document.getElementById('brush-opacity');
+            brushOpacitySlider.addEventListener('input', function() {
+                currentOpacity = parseInt(this.value) / 100;
+                document.getElementById('opacity-value').textContent = this.value + '%';
+            });
+            
+            // Button events
+            document.getElementById('undo-btn').addEventListener('click', undo);
+            document.getElementById('clear-btn').addEventListener('click', clearCanvas);
+            document.getElementById('download-btn').addEventListener('click', function() {
+                downloadModal.style.display = 'flex';
+            });
+            document.getElementById('share-btn').addEventListener('click', function() {
+                shareModal.style.display = 'flex';
+            });
+            
+            // Save and load functions (simulated for demo)
+            document.getElementById('save-btn').addEventListener('click', function() {
+                alert('Drawing saved! (This is a demo - in a real app, this would save your drawing)');
+            });
+            
+            document.getElementById('load-btn').addEventListener('click', function() {
+                alert('Load functionality would go here in a real application');
+            });
+            
+            // Modal close events
+            document.querySelectorAll('.close-modal').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    downloadModal.style.display = 'none';
+                    shareModal.style.display = 'none';
+                });
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === downloadModal) {
+                    downloadModal.style.display = 'none';
+                }
+                if (e.target === shareModal) {
+                    shareModal.style.display = 'none';
+                }
+            });
+            
+            // Download option events
+            document.querySelectorAll('.format-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    downloadCanvas(this.dataset.format);
+                });
+            });
+            
+            // Share option events
+            document.querySelectorAll('.share-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    shareCanvas(this.dataset.method);
+                });
+            });
+            
+            // Update status display
+            function updateStatus() {
+                const status = document.querySelector('.status');
+                status.innerHTML = `
+                    <span>Current Tool: ${currentTool.charAt(0).toUpperCase() + currentTool.slice(1)}</span> | 
+                    <span>Color: ${currentColor.toUpperCase()}</span> | 
+                    <span>Size: ${currentSize}px</span>
+                `;
+            }
+            
+            // Initialize
+            updateStatus();
+        });
+    </script>
+</body>
+</html>

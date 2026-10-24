@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare Practice Efficiency Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Healthcare Practice Efficiency Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/healthcare-practice-efficiency-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/healthcare-practice-efficiency-calculator.html">
+  <meta property="og:title" content="Healthcare Practice Efficiency Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Healthcare Practice Efficiency Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Healthcare Practice Efficiency Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Healthcare Practice Efficiency Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        /* --- Global Styles & Premium Look --- */
+        :root {
+            --hpec-primary-color: #2980b9; /* Belize Hole Blue */
+            --hpec-secondary-color: #8e44ad; /* Wisteria Purple */
+            --hpec-accent-color: #27ae60; /* Nephritis Green */
+            --hpec-background-color: #f8f9fa; /* Very Light Grey */
+            --hpec-widget-bg: #ffffff;
+            --hpec-text-color: #34495e; /* Wet Asphalt */
+            --hpec-input-bg: #ffffff;
+            --hpec-border-color: #dfe6e9; /* Light Grey */
+            --hpec-shadow-color: rgba(99, 110, 114, 0.15);
+            --hpec-error-color: #c0392b; /* Pomegranate Red */
+            --hpec-success-color: #27ae60; /* Nephritis Green */
+            --hpec-light-accent-bg: rgba(39, 174, 96, 0.08);
+            --hpec-light-primary-bg: rgba(41, 128, 185, 0.1);
+            --hpec-light-secondary-bg: rgba(142, 68, 173, 0.05);
+            --hpec-light-secondary-border: rgba(142, 68, 173, 0.2);
+        }
+
+        /* --- Base Styles --- */
+        .hpec-calculator-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; background-color: var(--hpec-background-color); color: var(--hpec-text-color); line-height: 1.6; margin: 0; padding: 0; display: flex; justify-content: center; padding: 25px 10px; box-sizing: border-box; }
+        #hpec-calculator-container * { box-sizing: border-box; }
+        #hpec-calculator-container { background: var(--hpec-widget-bg); padding: 25px 30px; border-radius: 12px; box-shadow: 0 8px 25px var(--hpec-shadow-color); max-width: 1200px; /* Wider for more inputs */ width: 100%; margin: 0 auto; transition: all 0.3s ease-in-out; border: 1px solid var(--hpec-border-color); overflow: hidden; }
+
+        /* --- Header --- */
+        .hpec-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--hpec-border-color); }
+        .hpec-header h1 { color: var(--hpec-primary-color); font-size: clamp(1.7rem, 4vw, 2.2rem); margin-bottom: 8px; font-weight: 600; }
+        .hpec-header p { color: var(--hpec-text-color); font-size: clamp(0.95rem, 2.5vw, 1.1rem); opacity: 0.9; }
+
+        /* --- Form Styling --- */
+        #hpec-form .hpec-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 30px; }
+        .hpec-form-group { display: flex; flex-direction: column; position: relative; }
+        .hpec-form-group label { font-weight: 600; margin-bottom: 8px; color: var(--hpec-primary-color); display: flex; align-items: center; font-size: 0.95rem; gap: 6px; }
+        .hpec-info-icon { display: inline-flex; justify-content: center; align-items: center; width: 18px; height: 18px; background-color: var(--hpec-secondary-color); color: white; border-radius: 50%; font-size: 11px; font-weight: bold; cursor: help; position: relative; }
+        .hpec-tooltip { visibility: hidden; width: 240px; background-color: var(--hpec-primary-color); color: #fff; text-align: left; border-radius: 6px; padding: 10px 12px; position: absolute; z-index: 10; bottom: 130%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease, visibility 0.3s ease; font-size: 0.85em; font-weight: normal; line-height: 1.4; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .hpec-tooltip::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: var(--hpec-primary-color) transparent transparent transparent; }
+        .hpec-info-icon:hover .hpec-tooltip, .hpec-info-icon:focus .hpec-tooltip { visibility: visible; opacity: 1; }
+        .hpec-form-group input[type="number"] { padding: 12px 15px; border: 1px solid var(--hpec-border-color); border-radius: 6px; font-size: 1rem; background-color: var(--hpec-input-bg); transition: border-color 0.3s ease, box-shadow 0.3s ease; width: 100%; appearance: textfield; color: var(--hpec-text-color); }
+        .hpec-form-group input[type=number]::-webkit-outer-spin-button, .hpec-form-group input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .hpec-form-group input[type=number] { -moz-appearance: textfield; }
+        .hpec-form-group input[type="number"]:focus { outline: none; border-color: var(--hpec-secondary-color); box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2); }
+        .hpec-input-hint { position: relative; }
+        .hpec-input-hint-symbol { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #bdc3c7; pointer-events: none; font-size: 0.9em; }
+        .hpec-input-hint input[type="number"] { padding-right: 40px; }
+
+        /* --- Button Styling --- */
+        .hpec-button-container { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
+        .hpec-primary-button { display: block; width: 100%; padding: 14px 20px; background-image: linear-gradient(to right, var(--hpec-secondary-color), var(--hpec-primary-color)); color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease; box-shadow: 0 4px 15px rgba(41, 128, 185, 0.3); }
+        .hpec-primary-button:hover { opacity: 0.9; box-shadow: 0 6px 20px rgba(41, 128, 185, 0.4); transform: translateY(-2px); }
+        .hpec-primary-button:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 10px rgba(41, 128, 185, 0.3); }
+        .hpec-secondary-button { display: block; width: 100%; padding: 12px 20px; background-color: var(--hpec-widget-bg); color: var(--hpec-primary-color); border: 1px solid var(--hpec-border-color); border-radius: 8px; font-size: 1.0em; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; position: relative; overflow: hidden; }
+        .hpec-secondary-button:hover { background-color: #f8f9fa; border-color: #ced4da; }
+        .hpec-secondary-button:active { background-color: #e9ecef; }
+        .hpec-secondary-button.hpec-loading::after { content: ''; display: block; width: 18px; height: 18px; border: 2px solid rgba(41, 128, 185, 0.3); border-top-color: var(--hpec-primary-color); border-radius: 50%; position: absolute; left: 20px; top: 50%; margin-top: -9px; animation: hpecSpinner 0.8s linear infinite; }
+        .hpec-secondary-button.hpec-loading span { visibility: hidden; }
+        @keyframes hpecSpinner { to { transform: rotate(360deg); } }
+
+        /* --- Results Area --- */
+        #hpec-results-container { margin-top: 40px; display: none; /* Container starts hidden */ }
+        #hpec-pdf-content { padding: 25px 30px; background-color: #fdfefe; border-radius: 8px; border: 1px solid var(--hpec-border-color); animation: hpecFadeIn 0.6s ease-out; }
+        #hpec-pdf-content h2 { color: var(--hpec-primary-color); text-align: center; margin: 0 0 25px 0; font-size: clamp(1.5rem, 3.5vw, 1.8rem); font-weight: 600; border-bottom: 1px solid var(--hpec-border-color); padding-bottom: 15px; }
+        .hpec-results-display { margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px 25px; } /* Grid for results */
+        .hpec-result-item { background-color: var(--hpec-light-primary-bg); padding: 12px 15px; border-radius: 6px; border-left: 4px solid var(--hpec-primary-color); transition: transform 0.2s ease; }
+        .hpec-result-item:hover { transform: translateY(-2px); }
+        .hpec-result-item strong { display: block; color: var(--hpec-primary-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; opacity: 0.9; }
+        .hpec-result-value { display: block; font-weight: 700; font-size: 1.4em; color: var(--hpec-text-color); }
+        /* Different accent for utilization % */
+        .hpec-result-item.utilization strong { color: var(--hpec-secondary-color); border-left-color: var(--hpec-secondary-color); }
+        .hpec-result-item.utilization { background-color: var(--hpec-light-secondary-bg); }
+        .hpec-result-item.utilization .hpec-result-value { color: var(--hpec-secondary-color); }
+         /* Different accent for wait time */
+        .hpec-result-item.wait-time strong { color: var(--hpec-error-color); border-left-color: var(--hpec-error-color); }
+        .hpec-result-item.wait-time { background-color: rgba(192, 57, 43, 0.05); }
+        .hpec-result-item.wait-time .hpec-result-value { color: var(--hpec-error-color); }
+
+        /* --- Insights Section --- */
+        .hpec-insights { margin-top: 30px; padding: 25px; background-color: #f1f8e9; /* Light green bg */ border: 1px solid #c5e1a5; border-left: 4px solid var(--hpec-accent-color); border-radius: 8px; }
+        .hpec-insights h3 { color: var(--hpec-accent-color); margin: 0 0 20px 0; font-size: clamp(1.3rem, 3vw, 1.5rem); font-weight: 600; }
+        .hpec-insights ul { list-style-type: none; padding-left: 5px; margin: 0; }
+        .hpec-insights li { margin-bottom: 16px; padding-left: 30px; position: relative; color: var(--hpec-text-color); font-size: 0.95rem; line-height: 1.5; }
+        .hpec-insights li:last-child { margin-bottom: 0; }
+        .hpec-insights li::before { content: '✅'; /* Checkmark */ position: absolute; left: 0; top: 0px; font-size: 1.3em; color: var(--hpec-accent-color); }
+        .hpec-insights li strong { color: var(--hpec-primary-color); font-weight: 600; }
+        .hpec-insights li .metric-value { /* Style for values within insights */
+            font-weight: bold;
+            color: var(--hpec-secondary-color);
+        }
+
+        /* --- Error Message --- */
+        .hpec-error-message { color: var(--hpec-error-color); background-color: rgba(192, 57, 43, 0.08); border: 1px solid rgba(192, 57, 43, 0.3); padding: 12px 18px; border-radius: 6px; margin-top: 20px; text-align: center; display: none; animation: hpecFadeIn 0.3s ease-in-out; font-weight: 500; }
+
+        /* --- PDF Download Elements --- */
+        #hpec-download-pdf-button { display: none; }
+        .hpec-promotion-link-container { margin-top: 10px; padding: 10px 30px; text-align: center; font-size: 0.9rem; color: var(--hpec-text-color); display: none; /* Hidden until results shown */ }
+        .hpec-promotion-link-container a { color: var(--hpec-primary-color); font-weight: 600; text-decoration: none; }
+        .hpec-promotion-link-container a:hover { text-decoration: underline; }
+
+        /* --- Animation & Responsive --- */
+        @keyframes hpecFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+             #hpec-calculator-container { padding: 20px; } .hpec-header h1 { font-size: 1.8rem; } .hpec-header p { font-size: 1rem; } #hpec-form .hpec-form-grid { gap: 20px; }
+             .hpec-results-display { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; } /* Adjust result grid */
+             .hpec-result-value { font-size: 1.3em; }
+        }
+        @media (max-width: 600px) {
+            #hpec-calculator-container { padding: 20px 15px; } .hpec-header h1 { font-size: 1.6rem; } .hpec-header p { font-size: 0.9rem; }
+            #hpec-form .hpec-form-grid { grid-template-columns: 1fr; gap: 18px; }
+            .hpec-results-display { grid-template-columns: 1fr; } /* Stack results */
+            .hpec-result-value { font-size: 1.2em; }
+            #hpec-pdf-content { padding: 20px 15px; } .hpec-insights { padding: 20px 15px; } .hpec-insights ul { padding-left: 0px; } .hpec-insights li { padding-left: 25px; font-size: 0.9rem; } .hpec-insights li::before { left: 0px; font-size: 1.2em; } .hpec-button-container { gap: 12px; }
+        }
+
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Healthcare Practice Efficiency Calculator</h1>
+      <p>Free interactive Healthcare Practice Efficiency Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+
+    <div id="hpec-calculator-container">
+        <div class="hpec-header">
+            <h1>Healthcare Practice Efficiency Calculator</h1>
+            <p>Analyze key operational metrics for your medical practice.</p>
+        </div>
+
+        <form id="hpec-form" novalidate>
+             <div class="hpec-form-grid">
+                 <!-- Patient Flow -->
+                 <div class="hpec-form-group">
+                    <label for="hpec-patients-seen">Total Patients Seen (Per Day) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Total number of unique patient encounters in one typical operating day.</span></span></label>
+                    <input type="number" id="hpec-patients-seen" placeholder="e.g., 80" required min="0" step="1">
+                </div>
+                 <div class="hpec-form-group">
+                    <label for="hpec-operating-hours">Total Operating Hours (Per Day) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Total hours the <a href="https://shaynly.com/patient-acquisition-strategies/" target="_blank" rel="noopener"  data-wpil-monitor-id="191">practice is open and seeing patients</a> in a day (e.g., 8).</span></span></label>
+                    <input type="number" id="hpec-operating-hours" placeholder="e.g., 8" required min="0" step="0.1">
+                </div>
+                 <div class="hpec-form-group">
+                    <label for="hpec-avg-wait-time">Average Patient Wait Time (Mins) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Average time from patient check-in until seen by the provider (in minutes).</span></span></label>
+                     <div class="hpec-input-hint"><input type="number" id="hpec-avg-wait-time" placeholder="e.g., 25" required min="0" step="1"><span class="hpec-input-hint-symbol">min</span></div>
+                </div>
+
+                <!-- Provider Productivity -->
+                <div class="hpec-form-group">
+                    <label for="hpec-num-providers">Number of Providers (Working) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Number of physicians, PAs, NPs, etc., actively seeing patients during the measured day.</span></span></label>
+                    <input type="number" id="hpec-num-providers" placeholder="e.g., 4" required min="1" step="1">
+                </div>
+                <div class="hpec-form-group">
+                    <label for="hpec-provider-hours">Total Provider Hours Worked (Day) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Sum of hours worked by *all* providers seeing patients that day (e.g., 4 providers * 8 hours = 32).</span></span></label>
+                    <input type="number" id="hpec-provider-hours" placeholder="e.g., 32" required min="0" step="0.1">
+                </div>
+                 <div class="hpec-form-group">
+                    <label for="hpec-total-revenue">Total Revenue Generated (Day, Optional) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Total practice revenue collected or billed for the measured day (optional, for revenue/hr calc). Enter 0 if not providing.</span></span></label>
+                     <div class="hpec-input-hint"><input type="number" id="hpec-total-revenue" placeholder="e.g., 12000" required min="0" step="0.01"><span class="hpec-input-hint-symbol">$</span></div>
+                </div>
+
+                <!-- Resource Utilization -->
+                 <div class="hpec-form-group">
+                    <label for="hpec-num-rooms">Number of Exam Rooms <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Total number of active exam/treatment rooms available.</span></span></label>
+                    <input type="number" id="hpec-num-rooms" placeholder="e.g., 10" required min="1" step="1">
+                </div>
+                 <div class="hpec-form-group">
+                    <label for="hpec-room-time">Avg. Room Time per Patient (Mins) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Average total time a room is occupied per patient (visit time + prep/cleaning).</span></span></label>
+                     <div class="hpec-input-hint"><input type="number" id="hpec-room-time" placeholder="e.g., 45" required min="0" step="1"><span class="hpec-input-hint-symbol">min</span></div>
+                </div>
+                 <div class="hpec-form-group">
+                    <label for="hpec-appt-slots">Total Appointment Slots (Day) <span class="hpec-info-icon" tabindex="0">? <span class="hpec-tooltip">Total number of patient appointment slots available across all providers for the day.</span></span></label>
+                    <input type="number" id="hpec-appt-slots" placeholder="e.g., 96" required min="0" step="1">
+                </div>
+            </div>
+
+            <div class="hpec-button-container">
+                 <button type="submit" class="hpec-primary-button">Calculate Efficiency Metrics</button>
+                 <button type="button" id="hpec-download-pdf-button" class="hpec-secondary-button">
+                     <span>Download Report as PDF</span>
+                 </button>
+            </div>
+             <div id="hpec-error-message" class="hpec-error-message"></div>
+        </form>
+
+        <!-- Container for results area -->
+        <div id="hpec-results-container">
+            <!-- This inner div is captured for the PDF -->
+            <div id="hpec-pdf-content">
+                <h2>Practice Efficiency Report</h2>
+                <div class="hpec-results-display">
+                    <!-- Results will be populated here -->
+                    <div class="hpec-result-item"><strong>Patient Throughput:</strong><span id="hpec-throughput-result" class="hpec-result-value">-</span></div>
+                    <div class="hpec-result-item wait-time"><strong>Avg. Patient Wait Time:</strong><span id="hpec-wait-time-result" class="hpec-result-value">-</span></div>
+                    <div class="hpec-result-item"><strong>Patients per Provider Hour:</strong><span id="hpec-pts-per-provider-hr-result" class="hpec-result-value">-</span></div>
+                    <div class="hpec-result-item"><strong>Revenue per Provider Hour:</strong><span id="hpec-rev-per-provider-hr-result" class="hpec-result-value">-</span></div>
+                    <div class="hpec-result-item utilization"><strong>Exam Room Utilization:</strong><span id="hpec-room-util-result" class="hpec-result-value">-</span></div>
+                    <div class="hpec-result-item utilization"><strong>Appt. Slot Utilization:</strong><span id="hpec-slot-util-result" class="hpec-result-value">-</span></div>
+                </div>
+                <div class="hpec-insights">
+                    <h3>Efficiency Insights & Recommendations</h3>
+                    <ul id="hpec-insights-list">
+                         <li>Enter your practice data above to calculate efficiency metrics and receive tailored insights.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Promotion link - shown in UI, added manually to PDF -->
+            <div class="hpec-promotion-link-container">
+                Optimize your practice operations. Discover tools and strategies at
+                <a href="https://shaynly.com" target="_blank" rel="noopener noreferrer" id="hpec-promo-link-html">shaynly.com</a>.
+            </div>
+        </div>
+
+
+    </div> <!-- End #hpec-calculator-container -->
+
+    
+
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+        (function() {
+            const { jsPDF } = window.jspdf;
+
+            const container = document.getElementById('hpec-calculator-container');
+            if (!container) { console.error("HPEC Calculator container not found."); return; }
+
+            const hpecForm = container.querySelector('#hpec-form');
+            const resultsContainer = container.querySelector('#hpec-results-container');
+            const elementToCapture = container.querySelector('#hpec-pdf-content');
+            const promoLinkContainer = container.querySelector('.hpec-promotion-link-container');
+            const errorMessage = container.querySelector('#hpec-error-message');
+            const downloadBtn = container.querySelector('#hpec-download-pdf-button');
+            const downloadBtnText = downloadBtn.querySelector('span');
+
+            // Input References
+            const patientsSeenInput = container.querySelector('#hpec-patients-seen');
+            const operatingHoursInput = container.querySelector('#hpec-operating-hours');
+            const avgWaitTimeInput = container.querySelector('#hpec-avg-wait-time');
+            const numProvidersInput = container.querySelector('#hpec-num-providers');
+            const providerHoursInput = container.querySelector('#hpec-provider-hours');
+            const totalRevenueInput = container.querySelector('#hpec-total-revenue');
+            const numRoomsInput = container.querySelector('#hpec-num-rooms');
+            const roomTimeInput = container.querySelector('#hpec-room-time');
+            const apptSlotsInput = container.querySelector('#hpec-appt-slots');
+
+            // Result References
+            const throughputResultEl = container.querySelector('#hpec-throughput-result');
+            const waitTimeResultEl = container.querySelector('#hpec-wait-time-result');
+            const ptsPerProviderHrResultEl = container.querySelector('#hpec-pts-per-provider-hr-result');
+            const revPerProviderHrResultEl = container.querySelector('#hpec-rev-per-provider-hr-result');
+            const roomUtilResultEl = container.querySelector('#hpec-room-util-result');
+            const slotUtilResultEl = container.querySelector('#hpec-slot-util-result');
+            const insightsListEl = container.querySelector('#hpec-insights-list');
+
+            // --- Helper Functions ---
+            function formatDecimal(value, digits = 1) {
+                if (isNaN(value) || !isFinite(value)) return "-";
+                return value.toFixed(digits);
+            }
+            function formatCurrency(value) {
+                if (isNaN(value) || !isFinite(value) || value <= 0) return "N/A"; // Handle optional revenue
+                return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }); // No cents needed usually
+            }
+            function showLoading(button, buttonTextElement) { button.disabled = true; button.classList.add('hpec-loading'); if (buttonTextElement) buttonTextElement.style.visibility = 'hidden'; }
+            function hideLoading(button, buttonTextElement) { button.disabled = false; button.classList.remove('hpec-loading'); if (buttonTextElement) buttonTextElement.style.visibility = 'visible'; }
+
+            // --- Input Listeners ---
+            const allInputs = container.querySelectorAll('#hpec-form input[type="number"]');
+            allInputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    if (errorMessage.style.display !== 'none') { errorMessage.style.display = 'none'; errorMessage.textContent = ''; }
+                    if (resultsContainer.style.display !== 'none') {
+                        resultsContainer.style.display = 'none';
+                        downloadBtn.style.display = 'none';
+                        promoLinkContainer.style.display = 'none';
+                    }
+                });
+            });
+
+            // --- Form Submission Logic ---
+            hpecForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Reset state
+                resultsContainer.style.display = 'none';
+                errorMessage.style.display = 'none'; errorMessage.textContent = '';
+                downloadBtn.style.display = 'none';
+                promoLinkContainer.style.display = 'none';
+
+                // --- Input Retrieval & Validation ---
+                let isValid = true; const errors = [];
+                const patientsSeen = parseFloat(patientsSeenInput.value);
+                const operatingHours = parseFloat(operatingHoursInput.value);
+                const avgWaitTime = parseFloat(avgWaitTimeInput.value);
+                const numProviders = parseFloat(numProvidersInput.value);
+                const providerHours = parseFloat(providerHoursInput.value);
+                const totalRevenue = parseFloat(totalRevenueInput.value); // Can be 0 or NaN if empty
+                const numRooms = parseFloat(numRoomsInput.value);
+                const roomTime = parseFloat(roomTimeInput.value);
+                const apptSlots = parseFloat(apptSlotsInput.value);
+
+                // Basic Validation
+                if (isNaN(patientsSeen) || patientsSeen < 0) { errors.push("Patients Seen"); isValid = false; }
+                if (isNaN(operatingHours) || operatingHours <= 0) { errors.push("Operating Hours (> 0)"); isValid = false; }
+                if (isNaN(avgWaitTime) || avgWaitTime < 0) { errors.push("Avg Wait Time"); isValid = false; }
+                if (isNaN(numProviders) || numProviders <= 0) { errors.push("Number of Providers (> 0)"); isValid = false; }
+                if (isNaN(providerHours) || providerHours <= 0) { errors.push("Total Provider Hours (> 0)"); isValid = false; }
+                if (isNaN(totalRevenue) || totalRevenue < 0) { errors.push("Total Revenue (>= 0)"); isValid = false; } // Allow 0, check NaN
+                if (isNaN(numRooms) || numRooms <= 0) { errors.push("Number of Rooms (> 0)"); isValid = false; }
+                if (isNaN(roomTime) || roomTime <= 0) { errors.push("Avg Room Time (> 0)"); isValid = false; }
+                if (isNaN(apptSlots) || apptSlots < 0) { errors.push("Appt Slots"); isValid = false; } // Allow 0, but will yield 0% or NaN util.
+                if (apptSlots > 0 && patientsSeen > apptSlots) { errors.push("Patients Seen cannot exceed Appt Slots"); isValid = false; }
+
+
+                if (!isValid) { errorMessage.innerHTML = `Please correct the following inputs: <br><strong>${errors.join(', ')}</strong>.`; errorMessage.style.display = 'block'; return; }
+
+                // --- Calculations ---
+                const throughput = operatingHours > 0 ? patientsSeen / operatingHours : 0;
+                const ptsPerProviderHr = providerHours > 0 ? patientsSeen / providerHours : 0;
+                const revPerProviderHr = providerHours > 0 && totalRevenue > 0 ? totalRevenue / providerHours : 0;
+
+                const totalRoomMinutesAvailable = numRooms * operatingHours * 60;
+                const totalRoomMinutesOccupied = patientsSeen * roomTime;
+                const roomUtilization = totalRoomMinutesAvailable > 0 ? (totalRoomMinutesOccupied / totalRoomMinutesAvailable) * 100 : 0;
+
+                const slotUtilization = apptSlots > 0 ? (patientsSeen / apptSlots) * 100 : 0;
+
+                // --- Display Results ---
+                throughputResultEl.textContent = `${formatDecimal(throughput, 1)} pts/hr`;
+                waitTimeResultEl.textContent = `${formatDecimal(avgWaitTime, 0)} min`;
+                ptsPerProviderHrResultEl.textContent = `${formatDecimal(ptsPerProviderHr, 1)} pts/hr`;
+                revPerProviderHrResultEl.textContent = formatCurrency(revPerProviderHr);
+                // Cap utilization at 100% for display, though calculation might exceed if inputs are inconsistent
+                roomUtilResultEl.textContent = `${formatDecimal(Math.min(roomUtilization, 100), 1)}%`;
+                slotUtilResultEl.textContent = `${formatDecimal(Math.min(slotUtilization, 100), 1)}%`;
+
+                // --- Generate Insights ---
+                generateInsights({ throughput, avgWaitTime, ptsPerProviderHr, revPerProviderHr, roomUtilization, slotUtilization, operatingHours, numProviders, numRooms });
+
+                // --- Show Results ---
+                resultsContainer.style.display = 'block';
+                downloadBtn.style.display = 'block';
+                promoLinkContainer.style.display = 'block';
+            });
+
+            // --- PDF Download Button Listener ---
+            downloadBtn.addEventListener('click', () => {
+                if (typeof html2canvas === 'undefined' || typeof jsPDF === 'undefined') { alert('PDF generation libraries could not be loaded.'); return; }
+
+                const pdfFilename = 'Practice-Efficiency-Report.pdf';
+                const promoTextLine1 = "Optimize your practice operations. Discover tools and strategies at";
+                const promoLinkText = "shaynly.com";
+                const promoLinkUrl = "https://shaynly.com";
+
+                showLoading(downloadBtn, downloadBtnText);
+
+                html2canvas(elementToCapture, { scale: 2, useCORS: true, logging: false }).then(canvas => {
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+                    const margin = 15; const contentWidth = pdfWidth - (margin * 2);
+
+                    const imgProps = pdf.getImageProperties(canvas);
+                    const imgHeight = (imgProps.height * contentWidth) / imgProps.width;
+                    let heightLeft = imgHeight; let currentYPosition = margin;
+
+                    pdf.addImage(canvas, 'PNG', margin, currentYPosition, contentWidth, imgHeight);
+                    heightLeft -= (pdfHeight - (margin * 2));
+
+                    while (heightLeft > 0) {
+                        currentYPosition = heightLeft - imgHeight - margin;
+                        pdf.addPage();
+                        pdf.addImage(canvas, 'PNG', margin, currentYPosition, contentWidth, imgHeight);
+                        heightLeft -= (pdfHeight - (margin * 2));
+                    }
+
+                    // --- Add the clickable link MANUALLY ---
+                    // Calculate Y position after the image content on the last page
+                    const lastPageHeight = pdf.internal.pageSize.getHeight();
+                    let linkYPosition = lastPageHeight + currentYPosition + 5; // currentYPosition is negative offset on last page
+
+                     // Check if we need a new page just for the link
+                    const requiredLinkSpace = 15;
+                    if (linkYPosition + requiredLinkSpace > lastPageHeight - margin) {
+                        pdf.addPage();
+                        linkYPosition = margin; // Start at top margin on new page
+                    } else {
+                        linkYPosition += 5; // Add buffer space
+                        pdf.setDrawColor(200, 200, 200); // Separator line
+                        pdf.line(margin, linkYPosition - 2, pdfWidth - margin, linkYPosition - 2);
+                        linkYPosition += 5;
+                    }
+
+                    pdf.setFontSize(9);
+                    pdf.setTextColor(52, 73, 94); // ~ var(--hpec-text-color)
+                    pdf.text(promoTextLine1, pdfWidth / 2, linkYPosition, { align: 'center' });
+                    linkYPosition += 4;
+                    pdf.setTextColor(41, 128, 185); // ~ var(--hpec-primary-color)
+                    pdf.textWithLink(promoLinkText, pdfWidth / 2, linkYPosition, { url: promoLinkUrl, align: 'center' });
+
+                    pdf.save(pdfFilename);
+                    hideLoading(downloadBtn, downloadBtnText);
+
+                }).catch(error => {
+                    console.error('Error generating PDF:', error);
+                    alert('Error generating PDF. Please try again.');
+                    hideLoading(downloadBtn, downloadBtnText);
+                });
+            });
+
+            // --- Insights Generation Function ---
+            function generateInsights(data) {
+                insightsListEl.innerHTML = ''; // Clear previous insights
+                let insights = [];
+                const { throughput, avgWaitTime, ptsPerProviderHr, revPerProviderHr, roomUtilization, slotUtilization, operatingHours, numProviders, numRooms } = data;
+
+                // Throughput
+                insights.push(`Practice sees an average of <span class="metric-value">${formatDecimal(throughput, 1)} patients per operating hour</span>. Evaluate against benchmarks for your specialty.`);
+
+                // Wait Time
+                 let waitTimeInsight = `Average patient wait time is <span class="metric-value">${formatDecimal(avgWaitTime, 0)} minutes</span>. `;
+                 if (avgWaitTime > 20) { waitTimeInsight += `<strong>High wait times can impact patient satisfaction.</strong> Analyze workflow bottlenecks (check-in, rooming, provider availability).`; }
+                 else if (avgWaitTime < 10) { waitTimeInsight += `Excellent! Low wait times enhance patient experience.`; }
+                 else { waitTimeInsight += `This is within a reasonable range for many practices. Monitor consistently.`; }
+                 insights.push(waitTimeInsight);
+
+                // Provider Productivity
+                 let providerProdInsight = `Each provider sees an average of <span class="metric-value">${formatDecimal(ptsPerProviderHr, 1)} patients per hour</span>. `;
+                 if (ptsPerProviderHr < 2.5) { providerProdInsight += `Consider factors impacting provider efficiency: EMR usability, support staff availability, scheduling template optimization.`; }
+                 else if (ptsPerProviderHr > 5) { providerProdInsight += `High productivity. Ensure adequate support to prevent provider burnout and maintain quality.`; }
+                 else { providerProdInsight += `This level reflects typical productivity for many specialties.`; }
+                 insights.push(providerProdInsight);
+
+                // Revenue per Provider Hour
+                 if (revPerProviderHr > 0) {
+                     insights.push(`Practice generates approximately <span class="metric-value">${formatCurrency(revPerProviderHr)} per provider hour</span>. Analyze coding accuracy, payor mix, and service offerings to optimize this.` );
+                 } else {
+                     insights.push(`Revenue per provider hour not calculated (revenue data not provided). Tracking this is key for financial health.` );
+                 }
+
+                 // Room Utilization
+                 let roomUtilInsight = `Estimated exam room utilization is <span class="metric-value">${formatDecimal(roomUtilization, 1)}%</span>. `;
+                 if (roomUtilization < 60) { roomUtilInsight += `<strong>Low utilization suggests potential overcapacity or inefficient patient flow.</strong> Review scheduling density and room turnover times.`; }
+                 else if (roomUtilization > 90) { roomUtilInsight += `<strong>High utilization may indicate a bottleneck.</strong> Consider optimizing room turnover, extending hours, or adding rooms if consistently high.`; }
+                 else { roomUtilInsight += `This rate suggests balanced room usage for many practices.`; }
+                 insights.push(roomUtilInsight);
+
+                 // Slot Utilization
+                  let slotUtilInsight = `Appointment slot utilization is <span class="metric-value">${formatDecimal(slotUtilization, 1)}%</span>. `;
+                 if (slotUtilization < 85) { slotUtilInsight += `<strong>Significant unused capacity exists.</strong> Review scheduling practices, patient recall/reminder systems, and marketing efforts to fill empty slots.`; }
+                 else if (slotUtilization > 98) { slotUtilInsight += `Very high utilization. Ensure processes can handle potential overbooks or urgent appointments. May indicate need for more capacity.`; }
+                 else { slotUtilInsight += `Strong utilization. Maintain effective scheduling and minimize no-shows.`; }
+                 insights.push(slotUtilInsight);
+
+                // Interaction Insights
+                if (avgWaitTime > 25 && roomUtilization < 65) {
+                     insights.push(`<strong>High wait times despite low room usage?</strong> This often points to workflow inefficiencies *before* the patient enters the room (e.g., check-in delays, staff shortages, poor communication) or inefficient provider movement between rooms.`);
+                }
+                 if (slotUtilization > 90 && throughput < (numProviders * 2.5)) { // High booking but low relative throughput
+                    insights.push(`<strong>High slot usage but relatively low throughput?</strong> This could indicate appointments are too long, complex cases are clustered, or significant time is lost between patients. Review appointment type durations and scheduling templates.`);
+                 }
+
+                // Concluding Remark
+                insights.push(`Regularly tracking these metrics helps identify areas for improvement in patient flow, resource allocation, and overall practice performance.`);
+
+                // Add insights to the list
+                insights.forEach(insightText => {
+                    const li = document.createElement('li');
+                    li.innerHTML = insightText;
+                    insightsListEl.appendChild(li);
+                });
+            }
+
+        })(); // End IIFE
+    </script>
+</body>
+</html>

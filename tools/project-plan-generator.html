@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Project Plan Generator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Premium Project Plan Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/project-plan-generator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/project-plan-generator.html">
+  <meta property="og:title" content="Premium Project Plan Generator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Premium Project Plan Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium Project Plan Generator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Premium Project Plan Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --warning: #f9c74f;
+            --danger: #ef476f;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --gray-light: #adb5bd;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e1e5ee;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #d81159;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+        }
+
+        .btn-success:hover {
+            background: #3aa9d7;
+        }
+
+        .task-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .task-item {
+            background: var(--light);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .task-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .task-info {
+            flex: 1;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .task-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .task-btn:hover {
+            color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 1100px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .output-preview {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .output-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .output-task {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .task-title {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .task-dates {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .task-dependencies {
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .badge-primary {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+
+        .badge-warning {
+            background: rgba(249, 199, 79, 0.1);
+            color: #f8961e;
+        }
+
+        .badge-success {
+            background: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .print-only {
+            display: none;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .output-preview, .output-preview * {
+                visibility: visible;
+            }
+            .output-preview {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                border: none;
+                padding: 0;
+            }
+            .no-print {
+                display: none;
+            }
+            .print-only {
+                display: block;
+            }
+        }
+
+        .dependency-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #dee2e6;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 4px 4px 0 0;
+            transition: var(--transition);
+        }
+
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .chart-container {
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .color-picker {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .color-option:hover {
+            transform: scale(1.2);
+        }
+
+        .color-option.selected {
+            border: 3px solid var(--dark);
+        }
+
+        .priority-select {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .priority-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid var(--gray-light);
+            background: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .priority-btn.selected {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .priority-high {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .priority-high.selected {
+            background: var(--danger);
+            color: white;
+        }
+
+        .priority-medium {
+            border-color: var(--warning);
+            color: var(--warning);
+        }
+
+        .priority-medium.selected {
+            background: var(--warning);
+            color: white;
+        }
+
+        .priority-low {
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .priority-low.selected {
+            background: var(--success);
+            color: white;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-success {
+            border-left: 4px solid var(--success);
+        }
+
+        .notification-error {
+            border-left: 4px solid var(--danger);
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Productivity & Management</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Premium Project Plan Generator</h1>
+      <p>Free interactive Premium Project Plan Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container">
+        <header>
+            <h1>Premium Project Plan Generator</h1>
+            <p class="subtitle">Create professional project plans with tasks, deadlines, dependencies, and visualizations</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-tasks"></i> Project Details</h2>
+                <div class="form-group">
+                    <label for="projectName">Project Name</label>
+                    <input type="text" id="projectName" placeholder="Enter project name">
+                </div>
+                <div class="form-group">
+                    <label for="projectDescription">Project Description</label>
+                    <textarea id="projectDescription" rows="3" placeholder="Describe your project"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="projectManager">Project Manager</label>
+                    <input type="text" id="projectManager" placeholder="Project manager name">
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate">
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date</label>
+                    <input type="date" id="endDate">
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-plus-circle"></i> Add New Task</h2>
+                <div class="form-group">
+                    <label for="taskName">Task Name</label>
+                    <input type="text" id="taskName" placeholder="Enter task name">
+                </div>
+                <div class="form-group">
+                    <label for="taskDeadline">Deadline</label>
+                    <input type="date" id="taskDeadline">
+                </div>
+                <div class="form-group">
+                    <label for="taskProgress">Progress (%)</label>
+                    <input type="range" id="taskProgress" min="0" max="100" value="0">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressVisual" style="width: 0%"></div>
+                    </div>
+                    <span id="progressValue">0%</span>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <div class="priority-select">
+                        <button class="priority-btn priority-high" data-priority="high">High</button>
+                        <button class="priority-btn priority-medium selected" data-priority="medium">Medium</button>
+                        <button class="priority-btn priority-low" data-priority="low">Low</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="taskDependencies">Dependencies (select multiple)</label>
+                    <select id="taskDependencies" multiple>
+                        <option value="" disabled>Select dependent tasks</option>
+                    </select>
+                    <small>Hold Ctrl/Cmd to select multiple tasks</small>
+                </div>
+                <button class="btn" id="addTaskBtn"><i class="fas fa-plus"></i> Add Task</button>
+
+                <h3 class="card-title" style="margin-top: 30px;"><i class="fas fa-list"></i> Project Tasks</h3>
+                <ul class="task-list" id="taskList">
+                    <li class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>No tasks added yet</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-chart-line"></i> Project Analytics</h2>
+            <div class="tabs">
+                <div class="tab active" data-tab="preview">Plan Preview</div>
+                <div class="tab" data-tab="gantt">Gantt Chart</div>
+                <div class="tab" data-tab="progress">Progress Tracking</div>
+            </div>
+
+            <div class="tab-content active" id="previewTab">
+                <div class="output-preview" id="outputPreview">
+                    <div class="output-header">
+                        <h2 id="previewProjectName">Project Name</h2>
+                        <p id="previewProjectDates">Start Date - End Date</p>
+                        <p id="previewProjectManager">Project Manager: </p>
+                        <p id="previewProjectDescription">Project description will appear here</p>
+                    </div>
+                    <div id="previewTasks">
+                        <div class="output-task">
+                            <div class="task-title">Sample Task 1</div>
+                            <div class="task-dates">Deadline: June 30, 2023 | Progress: 50%</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                            <div class="task-dependencies">
+                                <span class="badge badge-warning">Depends on: Sample Task 2</span>
+                            </div>
+                        </div>
+                        <div class="output-task">
+                            <div class="task-title">Sample Task 2</div>
+                            <div class="task-dates">Deadline: June 15, 2023 | Progress: 100%</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="ganttTab">
+                <div class="chart-container">
+                    <canvas id="ganttChart"></canvas>
+                </div>
+            </div>
+
+            <div class="tab-content" id="progressTab">
+                <div class="chart-container">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-accent" id="generateBtn"><i class="fas fa-bolt"></i> Generate Plan</button>
+                <button class="btn btn-success" id="saveBtn"><i class="fas fa-save"></i> Save Project</button>
+                <button class="btn btn-outline" id="printBtn"><i class="fas fa-print"></i> Print Plan</button>
+                <button class="btn btn-outline" id="exportBtn"><i class="fas fa-file-export"></i> Export JSON</button>
+                <button class="btn btn-outline" id="resetBtn"><i class="fas fa-trash"></i> Reset All</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Task Settings</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="taskColor">Task Color</label>
+                <div class="color-picker">
+                    <div class="color-option selected" style="background-color: #4361ee;" data-color="#4361ee"></div>
+                    <div class="color-option" style="background-color: #7209b7;" data-color="#7209b7"></div>
+                    <div class="color-option" style="background-color: #f72585;" data-color="#f72585"></div>
+                    <div class="color-option" style="background-color: #4cc9f0;" data-color="#4cc9f0"></div>
+                    <div class="color-option" style="background-color: #f9c74f;" data-color="#f9c74f"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="taskNotes">Notes</label>
+                <textarea id="taskNotes" rows="3" placeholder="Add notes about this task"></textarea>
+            </div>
+            <button class="btn" id="saveSettingsBtn">Save Settings</button>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Operation completed successfully!</span>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default dates to today and 30 days from today
+            const today = new Date();
+            const in30Days = new Date();
+            in30Days.setDate(today.getDate() + 30);
+            
+            document.getElementById('startDate').valueAsDate = today;
+            document.getElementById('endDate').valueAsDate = in30Days;
+            document.getElementById('taskDeadline').valueAsDate = in30Days;
+            
+            const tasks = [];
+            let taskIdCounter = 1;
+            let currentTaskId = null;
+            let currentPriority = 'medium';
+            let currentColor = '#4361ee';
+            
+            // DOM Elements
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
+            const generateBtn = document.getElementById('generateBtn');
+            const printBtn = document.getElementById('printBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const taskDependencies = document.getElementById('taskDependencies');
+            const saveBtn = document.getElementById('saveBtn');
+            const exportBtn = document.getElementById('exportBtn');
+            const progressSlider = document.getElementById('taskProgress');
+            const progressValue = document.getElementById('progressValue');
+            const progressVisual = document.getElementById('progressVisual');
+            const settingsModal = document.getElementById('settingsModal');
+            const closeModalBtn = document.querySelector('.close-modal');
+            const saveSettingsBtn = document.getElementById('saveSettingsBtn');
+            const notification = document.getElementById('notification');
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Charts
+            let ganttChart = null;
+            let progressChart = null;
+            
+            // Event Listeners
+            addTaskBtn.addEventListener('click', addTask);
+            generateBtn.addEventListener('click', generatePlan);
+            printBtn.addEventListener('click', printPlan);
+            resetBtn.addEventListener('click', resetAll);
+            saveBtn.addEventListener('click', saveProject);
+            exportBtn.addEventListener('click', exportProject);
+            progressSlider.addEventListener('input', updateProgress);
+            closeModalBtn.addEventListener('click', closeModal);
+            saveSettingsBtn.addEventListener('click', saveTaskSettings);
+            
+            // Priority buttons
+            document.querySelectorAll('.priority-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    currentPriority = this.getAttribute('data-priority');
+                });
+            });
+            
+            // Color options
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    currentColor = this.getAttribute('data-color');
+                });
+            });
+            
+            // Tab switching
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(tabId + 'Tab').classList.add('active');
+                    
+                    if (tabId === 'gantt') {
+                        renderGanttChart();
+                    } else if (tabId === 'progress') {
+                        renderProgressChart();
+                    }
+                });
+            });
+            
+            // Update progress visualization
+            function updateProgress() {
+                const value = progressSlider.value;
+                progressValue.textContent = value + '%';
+                progressVisual.style.width = value + '%';
+            }
+            
+            // Update dependency list when tasks change
+            function updateDependencyOptions() {
+                // Clear current options except the first one
+                while (taskDependencies.options.length > 1) {
+                    taskDependencies.remove(1);
+                }
+                
+                // Add each task as an option
+                tasks.forEach(task => {
+                    const option = document.createElement('option');
+                    option.value = task.id;
+                    option.textContent = task.name;
+                    taskDependencies.appendChild(option);
+                });
+            }
+            
+            // Add a new task
+            function addTask() {
+                const taskName = document.getElementById('taskName').value;
+                const taskDeadline = document.getElementById('taskDeadline').value;
+                const progress = document.getElementById('taskProgress').value;
+                
+                if (!taskName || !taskDeadline) {
+                    showNotification('Please enter both task name and deadline', 'error');
+                    return;
+                }
+                
+                // Get selected dependencies
+                const selectedDependencies = Array.from(taskDependencies.selectedOptions)
+                    .map(option => option.value);
+                
+                const task = {
+                    id: taskIdCounter++,
+                    name: taskName,
+                    deadline: taskDeadline,
+                    progress: progress,
+                    priority: currentPriority,
+                    color: currentColor,
+                    dependencies: selectedDependencies,
+                    notes: ''
+                };
+                
+                tasks.push(task);
+                renderTasks();
+                updateDependencyOptions();
+                
+                // Clear input fields
+                document.getElementById('taskName').value = '';
+                document.getElementById('taskDeadline').value = '';
+                document.getElementById('taskProgress').value = 0;
+                progressValue.textContent = '0%';
+                progressVisual.style.width = '0%';
+                taskDependencies.selectedIndex = -1;
+                
+                // Reset priority to medium
+                document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('selected'));
+                document.querySelector('.priority-btn[data-priority="medium"]').classList.add('selected');
+                currentPriority = 'medium';
+                
+                showNotification('Task added successfully!', 'success');
+            }
+            
+            // Render task list
+            function renderTasks() {
+                if (tasks.length === 0) {
+                    taskList.innerHTML = '<li class="empty-state"><i class="fas fa-inbox"></i><p>No tasks added yet</p></li>';
+                    return;
+                }
+                
+                taskList.innerHTML = '';
+                tasks.forEach(task => {
+                    const li = document.createElement('li');
+                    li.className = 'task-item';
+                    li.style.borderLeftColor = task.color;
+                    li.innerHTML = `
+                        <div class="task-info">
+                            <div><strong>${task.name}</strong> <span class="badge badge-${task.priority}">${task.priority}</span></div>
+                            <div>Deadline: ${formatDate(task.deadline)} | Progress: ${task.progress}%</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${task.progress}%"></div>
+                            </div>
+                            ${task.dependencies.length ? 
+                                `<div class="dependency-list">
+                                    ${task.dependencies.map(depId => {
+                                        const depTask = tasks.find(t => t.id == depId);
+                                        return depTask ? `<span class="badge badge-primary">${depTask.name}</span>` : '';
+                                    }).join('')}
+                                </div>` : ''
+                            }
+                        </div>
+                        <div class="task-actions">
+                            <button class="task-btn tooltip" onclick="openSettings(${task.id})">
+                                <i class="fas fa-cog"></i>
+                                <span class="tooltip-text">Settings</span>
+                            </button>
+                            <button class="task-btn tooltip" onclick="deleteTask(${task.id})">
+                                <i class="fas fa-trash"></i>
+                                <span class="tooltip-text">Delete</span>
+                            </button>
+                        </div>
+                    `;
+                    taskList.appendChild(li);
+                });
+            }
+            
+            // Open settings modal
+            window.openSettings = function(id) {
+                currentTaskId = id;
+                const task = tasks.find(t => t.id === id);
+                
+                if (task) {
+                    // Select the task's color
+                    document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+                    document.querySelector(`.color-option[data-color="${task.color}"]`).classList.add('selected');
+                    currentColor = task.color;
+                    
+                    // Set notes
+                    document.getElementById('taskNotes').value = task.notes || '';
+                    
+                    // Open modal
+                    settingsModal.style.display = 'flex';
+                }
+            };
+            
+            // Close modal
+            function closeModal() {
+                settingsModal.style.display = 'none';
+            }
+            
+            // Save task settings
+            function saveTaskSettings() {
+                if (currentTaskId) {
+                    const task = tasks.find(t => t.id === currentTaskId);
+                    if (task) {
+                        task.color = currentColor;
+                        task.notes = document.getElementById('taskNotes').value;
+                        renderTasks();
+                        closeModal();
+                        showNotification('Task settings saved!', 'success');
+                    }
+                }
+            }
+            
+            // Delete a task
+            window.deleteTask = function(id) {
+                const index = tasks.findIndex(task => task.id === id);
+                if (index !== -1) {
+                    tasks.splice(index, 1);
+                    
+                    // Remove this task as a dependency from other tasks
+                    tasks.forEach(task => {
+                        const depIndex = task.dependencies.indexOf(id.toString());
+                        if (depIndex !== -1) {
+                            task.dependencies.splice(depIndex, 1);
+                        }
+                    });
+                    
+                    renderTasks();
+                    updateDependencyOptions();
+                    showNotification('Task deleted successfully!', 'success');
+                }
+            };
+            
+            // Generate the project plan
+            function generatePlan() {
+                const projectName = document.getElementById('projectName').value || 'Unnamed Project';
+                const projectDescription = document.getElementById('projectDescription').value || 'No description provided';
+                const projectManager = document.getElementById('projectManager').value || 'Not specified';
+                const startDate = document.getElementById('startDate').value;
+                const endDate = document.getElementById('endDate').value;
+                
+                // Update preview
+                document.getElementById('previewProjectName').textContent = projectName;
+                document.getElementById('previewProjectDates').textContent = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+                document.getElementById('previewProjectManager').textContent = `Project Manager: ${projectManager}`;
+                document.getElementById('previewProjectDescription').textContent = projectDescription;
+                
+                // Update tasks in preview
+                const previewTasks = document.getElementById('previewTasks');
+                previewTasks.innerHTML = '';
+                
+                if (tasks.length === 0) {
+                    previewTasks.innerHTML = '<div class="empty-state"><p>No tasks added to this project</p></div>';
+                    return;
+                }
+                
+                tasks.forEach(task => {
+                    const taskEl = document.createElement('div');
+                    taskEl.className = 'output-task';
+                    
+                    let dependenciesHtml = '';
+                    if (task.dependencies.length > 0) {
+                        const dependencyNames = task.dependencies.map(depId => {
+                            const depTask = tasks.find(t => t.id == depId);
+                            return depTask ? depTask.name : '';
+                        }).filter(name => name !== '');
+                        
+                        if (dependencyNames.length > 0) {
+                            dependenciesHtml = `
+                                <div class="task-dependencies">
+                                    <span class="badge badge-warning">Depends on: ${dependencyNames.join(', ')}</span>
+                                </div>
+                            `;
+                        }
+                    }
+                    
+                    taskEl.innerHTML = `
+                        <div class="task-title">${task.name} <span class="badge badge-${task.priority}">${task.priority}</span></div>
+                        <div class="task-dates">Deadline: ${formatDate(task.deadline)} | Progress: ${task.progress}%</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${task.progress}%"></div>
+                        </div>
+                        ${dependenciesHtml}
+                    `;
+                    
+                    previewTasks.appendChild(taskEl);
+                });
+                
+                showNotification('Project plan generated successfully!', 'success');
+            }
+            
+            // Print the project plan
+            function printPlan() {
+                generatePlan();
+                window.print();
+            }
+            
+            // Save project to local storage
+            function saveProject() {
+                const projectData = {
+                    name: document.getElementById('projectName').value,
+                    description: document.getElementById('projectDescription').value,
+                    manager: document.getElementById('projectManager').value,
+                    startDate: document.getElementById('startDate').value,
+                    endDate: document.getElementById('endDate').value,
+                    tasks: tasks
+                };
+                
+                localStorage.setItem('savedProject', JSON.stringify(projectData));
+                showNotification('Project saved to local storage!', 'success');
+            }
+            
+            // Export project as JSON
+            function exportProject() {
+                const projectData = {
+                    name: document.getElementById('projectName').value,
+                    description: document.getElementById('projectDescription').value,
+                    manager: document.getElementById('projectManager').value,
+                    startDate: document.getElementById('startDate').value,
+                    endDate: document.getElementById('endDate').value,
+                    tasks: tasks
+                };
+                
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projectData, null, 2));
+                const downloadAnchorNode = document.createElement('a');
+                downloadAnchorNode.setAttribute("href", dataStr);
+                downloadAnchorNode.setAttribute("download", "project_plan.json");
+                document.body.appendChild(downloadAnchorNode);
+                downloadAnchorNode.click();
+                downloadAnchorNode.remove();
+                
+                showNotification('Project exported as JSON!', 'success');
+            }
+            
+            // Reset all inputs
+            function resetAll() {
+                if (confirm('Are you sure you want to reset everything? This cannot be undone.')) {
+                    // Reset form fields
+                    document.getElementById('projectName').value = '';
+                    document.getElementById('projectDescription').value = '';
+                    document.getElementById('projectManager').value = '';
+                    
+                    const today = new Date();
+                    const in30Days = new Date();
+                    in30Days.setDate(today.getDate() + 30);
+                    
+                    document.getElementById('startDate').valueAsDate = today;
+                    document.getElementById('endDate').valueAsDate = in30Days;
+                    
+                    // Reset tasks
+                    tasks.length = 0;
+                    renderTasks();
+                    updateDependencyOptions();
+                    
+                    // Reset preview
+                    document.getElementById('previewProjectName').textContent = 'Project Name';
+                    document.getElementById('previewProjectDates').textContent = 'Start Date - End Date';
+                    document.getElementById('previewProjectManager').textContent = 'Project Manager: ';
+                    document.getElementById('previewProjectDescription').textContent = 'Project description will appear here';
+                    document.getElementById('previewTasks').innerHTML = `
+                        <div class="output-task">
+                            <div class="task-title">Sample Task 1</div>
+                            <div class="task-dates">Deadline: June 30, 2023 | Progress: 50%</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                            <div class="task-dependencies">
+                                <span class="badge badge-warning">Depends on: Sample Task 2</span>
+                            </div>
+                        </div>
+                        <div class="output-task">
+                            <div class="task-title">Sample Task 2</div>
+                            <div class="task-dates">Deadline: June 15, 2023 | Progress: 100%</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    showNotification('Project has been reset!', 'success');
+                }
+            }
+            
+            // Render Gantt chart
+            function renderGanttChart() {
+                const ctx = document.getElementById('ganttChart').getContext('2d');
+                
+                if (ganttChart) {
+                    ganttChart.destroy();
+                }
+                
+                if (tasks.length === 0) {
+                    document.getElementById('ganttChart').innerHTML = '<div class="empty-state"><p>No tasks to display</p></div>';
+                    return;
+                }
+                
+                const labels = tasks.map(task => task.name);
+                const data = tasks.map(task => {
+                    const start = new Date(document.getElementById('startDate').value);
+                    const end = new Date(task.deadline);
+                    const diffTime = Math.abs(end - start);
+                    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                });
+                
+                ganttChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Days from project start',
+                            data: data,
+                            backgroundColor: tasks.map(task => task.color),
+                            borderColor: tasks.map(task => task.color + 'DD'),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Project Gantt Chart'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `Duration: ${context.raw} days`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Days from project start'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Render progress chart
+            function renderProgressChart() {
+                const ctx = document.getElementById('progressChart').getContext('2d');
+                
+                if (progressChart) {
+                    progressChart.destroy();
+                }
+                
+                if (tasks.length === 0) {
+                    document.getElementById('progressChart').innerHTML = '<div class="empty-state"><p>No tasks to display</p></div>';
+                    return;
+                }
+                
+                const labels = tasks.map(task => task.name);
+                const data = tasks.map(task => task.progress);
+                
+                progressChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Progress (%)',
+                            data: data,
+                            backgroundColor: tasks.map(task => task.color),
+                            borderColor: tasks.map(task => task.color + 'DD'),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Task Progress'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Progress (%)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Format date to readable string
+            function formatDate(dateString) {
+                if (!dateString) return 'Not set';
+                
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return new Date(dateString).toLocaleDateString(undefined, options);
+            }
+            
+            // Show notification
+            function showNotification(message, type) {
+                const notification = document.getElementById('notification');
+                const notificationText = document.getElementById('notificationText');
+                
+                notificationText.textContent = message;
+                notification.className = `notification notification-${type}`;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+            
+            // Initialize dependency options
+            updateDependencyOptions();
+            
+            // Close modal if clicked outside
+            window.addEventListener('click', function(event) {
+                if (event.target === settingsModal) {
+                    closeModal();
+                }
+            });
+            
+            // Check for saved project
+            const savedProject = localStorage.getItem('savedProject');
+            if (savedProject) {
+                if (confirm('A saved project was found. Do you want to load it?')) {
+                    try {
+                        const projectData = JSON.parse(savedProject);
+                        document.getElementById('projectName').value = projectData.name || '';
+                        document.getElementById('projectDescription').value = projectData.description || '';
+                        document.getElementById('projectManager').value = projectData.manager || '';
+                        document.getElementById('startDate').value = projectData.startDate || '';
+                        document.getElementById('endDate').value = projectData.endDate || '';
+                        
+                        if (projectData.tasks && projectData.tasks.length > 0) {
+                            tasks.length = 0;
+                            projectData.tasks.forEach(task => {
+                                tasks.push(task);
+                                if (task.id >= taskIdCounter) {
+                                    taskIdCounter = task.id + 1;
+                                }
+                            });
+                            renderTasks();
+                            updateDependencyOptions();
+                        }
+                        
+                        showNotification('Project loaded from local storage!', 'success');
+                    } catch (e) {
+                        console.error('Error loading project:', e);
+                        showNotification('Error loading saved project', 'error');
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

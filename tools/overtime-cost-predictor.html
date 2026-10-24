@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overtime Cost Predictor - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Overtime Cost Predictor for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/overtime-cost-predictor.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/overtime-cost-predictor.html">
+  <meta property="og:title" content="Overtime Cost Predictor - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Overtime Cost Predictor for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Overtime Cost Predictor - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Overtime Cost Predictor for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Overtime Cost Predictor</h1>
+      <p>Free interactive Overtime Cost Predictor for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-4xl">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2 text-center">⏰  Overtime Cost Predictor</h1>
+        <p class="text-gray-600 mb-8 text-center">
+            Predict the total payroll cost and see a visual breakdown of regular vs. overtime pay.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Input Section -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-bold text-gray-700 border-b pb-2">Pay & Hours Details</h2>
+
+                <!-- Hourly Rate & Multiplier -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="hourly-rate" class="block text-sm font-medium text-gray-700">Regular Hourly Rate ($)</label>
+                        <input type="number" id="hourly-rate" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="25" min="0">
+                    </div>
+                    <div>
+                        <label for="ot-multiplier" class="block text-sm font-medium text-gray-700">Overtime Multiplier</label>
+                        <input type="number" id="ot-multiplier" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="1.5" min="1" step="0.1">
+                        <p class="text-xs text-gray-400 mt-1">e.g., 1.5 for time-and-a-half</p>
+                    </div>
+                </div>
+
+                <!-- Weekly Hours -->
+                <div>
+                    <label for="total-weekly-hours" class="block text-sm font-medium text-gray-700">Total Weekly Hours Worked</label>
+                    <input type="number" id="total-weekly-hours" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="50" min="0">
+                </div>
+
+                <!-- Regular Hour Cap -->
+                <div>
+                    <label for="regular-hour-cap" class="block text-sm font-medium text-gray-700">Standard Weekly Hours Cap</label>
+                    <input type="number" id="regular-hour-cap" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" value="40" min="0">
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-bold text-gray-700 border-b pb-2">Projected Impact</h2>
+
+                <!-- Hours Breakdown -->
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm font-semibold text-gray-500 mb-1">Regular Hours</p>
+                        <p id="result-regular-hours" class="text-2xl font-bold text-gray-800">40</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-500 mb-1">Overtime Hours</p>
+                        <p id="result-overtime-hours" class="text-2xl font-bold text-orange-500">10</p>
+                    </div>
+                </div>
+
+                <!-- Pay Breakdown -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <p class="text-sm font-semibold text-gray-500 mb-1">Regular Pay</p>
+                        <p id="result-regular-pay" class="text-xl font-bold text-gray-800">$0.00</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <p class="text-sm font-semibold text-gray-500 mb-1">Overtime Pay</p>
+                        <p id="result-overtime-pay" class="text-xl font-bold text-orange-500">$0.00</p>
+                    </div>
+                </div>
+
+                <!-- Visual Chart -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center">
+                    <h3 class="text-lg font-bold text-gray-700 mb-4">Pay Breakdown</h3>
+                    <canvas id="costChart" class="w-full max-w-xs"></canvas>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6 rounded-lg shadow-lg">
+                        <p class="text-sm font-semibold mb-2">Total Projected Pay</p>
+                        <p id="result-total-pay" class="text-3xl font-bold">$0.00</p>
+                    </div>
+                     <div class="bg-teal-500 text-white p-6 rounded-lg shadow-lg">
+                        <p class="text-sm font-semibold mb-2">Effective Hourly Rate</p>
+                        <p id="result-effective-rate" class="text-3xl font-bold">$0.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = {
+                hourlyRate: document.getElementById('hourly-rate'),
+                otMultiplier: document.getElementById('ot-multiplier'),
+                totalWeeklyHours: document.getElementById('total-weekly-hours'),
+                regularHourCap: document.getElementById('regular-hour-cap')
+            };
+
+            const results = {
+                regularHours: document.getElementById('result-regular-hours'),
+                overtimeHours: document.getElementById('result-overtime-hours'),
+                regularPay: document.getElementById('result-regular-pay'),
+                overtimePay: document.getElementById('result-overtime-pay'),
+                totalPay: document.getElementById('result-total-pay'),
+                effectiveRate: document.getElementById('result-effective-rate'),
+                chartCanvas: document.getElementById('costChart')
+            };
+
+            let costChart;
+
+            const formatCurrency = (value) => {
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).format(value);
+            };
+
+            const calculateCost = () => {
+                const hourlyRate = parseFloat(inputs.hourlyRate.value) || 0;
+                const otMultiplier = parseFloat(inputs.otMultiplier.value) || 0;
+                const totalWeeklyHours = parseFloat(inputs.totalWeeklyHours.value) || 0;
+                const regularHourCap = parseFloat(inputs.regularHourCap.value) || 40;
+                
+                // Calculate regular and overtime hours
+                const regularHours = Math.min(totalWeeklyHours, regularHourCap);
+                const overtimeHours = Math.max(0, totalWeeklyHours - regularHourCap);
+
+                // Calculate pay
+                const regularPay = regularHours * hourlyRate;
+                const overtimePay = overtimeHours * (hourlyRate * otMultiplier);
+                const totalPay = regularPay + overtimePay;
+
+                // Calculate effective hourly rate
+                const effectiveRate = totalWeeklyHours > 0 ? totalPay / totalWeeklyHours : 0;
+
+                // Update the UI
+                results.regularHours.textContent = regularHours;
+                results.overtimeHours.textContent = overtimeHours;
+                results.regularPay.textContent = formatCurrency(regularPay);
+                results.overtimePay.textContent = formatCurrency(overtimePay);
+                results.totalPay.textContent = formatCurrency(totalPay);
+                results.effectiveRate.textContent = formatCurrency(effectiveRate);
+
+                // Update or create the chart
+                createOrUpdateChart(regularPay, overtimePay);
+            };
+
+            const createOrUpdateChart = (regularPay, overtimePay) => {
+                const data = {
+                    labels: ['Regular Pay', 'Overtime Pay'],
+                    datasets: [{
+                        data: [regularPay, overtimePay],
+                        backgroundColor: ['#3b82f6', '#f59e0b'],
+                        hoverBackgroundColor: ['#1d4ed8', '#d97706'],
+                    }]
+                };
+                
+                const config = {
+                    type: 'doughnut',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        family: 'Inter',
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed;
+                                        return `${label}: ${formatCurrency(value)}`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+
+                if (costChart) {
+                    costChart.data = data;
+                    costChart.update();
+                } else {
+                    costChart = new Chart(results.chartCanvas, config);
+                }
+            };
+
+            // Add event listeners to all input fields
+            for (const key in inputs) {
+                if (inputs.hasOwnProperty(key)) {
+                    inputs[key].addEventListener('input', calculateCost);
+                }
+            }
+
+            // Initial calculation on page load
+            calculateCost();
+        });
+    </script>
+</body>
+</html>

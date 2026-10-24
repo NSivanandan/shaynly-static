@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Color Palette Generator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Brand Color Palette Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/brand-color-palette-generator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/brand-color-palette-generator.html">
+  <meta property="og:title" content="Brand Color Palette Generator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Brand Color Palette Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Brand Color Palette Generator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Brand Color Palette Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        /* CSS Variables for theming */
+        :root {
+            --page-bg-grad-start: #667eea;
+            --page-bg-grad-end: #764ba2;
+            --toast-bg: #10b981;
+            --tool-bg: white;
+            --tool-bg-alt: #f8fafc;
+            --tool-text-primary: #1e293b;
+            --tool-text-secondary: #64748b;
+            --tool-border-color: #e2e8f0;
+            --tool-shadow-color: rgba(0, 0, 0, 0.1);
+            --tool-accent-primary: #667eea;
+            --tool-accent-secondary: #764ba2;
+            --tool-success-color: #10b981;
+            --tool-fail-color: #ef4444;
+            --tool-aaa-color: #059669;
+            --glassmorphism-bg: rgba(255, 255, 255, 0.25);
+            --glassmorphism-border: rgba(255, 255, 255, 0.18);
+        }
+
+        /* Dark theme variables */
+        body[data-theme="dark"] {
+            --page-bg-grad-start: #0f172a;
+            --page-bg-grad-end: #1e1b4b;
+            --toast-bg: #1e293b;
+            --tool-bg: #0f172a;
+            --tool-bg-alt: #1e293b;
+            --tool-text-primary: #f1f5f9;
+            --tool-text-secondary: #94a3b8;
+            --tool-border-color: #334155;
+            --tool-shadow-color: rgba(0, 0, 0, 0.4);
+            --tool-success-color: #34d399;
+            --tool-fail-color: #f87171;
+            --tool-aaa-color: #6ee7b7;
+            --glassmorphism-bg: rgba(15, 23, 42, 0.3);
+            --glassmorphism-border: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Using a system font stack instead of Google Fonts */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            background: linear-gradient(135deg, var(--page-bg-grad-start) 0%, var(--page-bg-grad-end) 100%) fixed;
+            min-height: 100vh;
+            color: var(--tool-text-primary);
+            transition: all 0.4s ease;
+            padding: 20px;
+            overflow-x: auto; /* Prevent horizontal scrolling */
+        }
+
+        /* Floating background shapes */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            background: var(--glassmorphism-bg);
+            border: 1px solid var(--glassmorphism-border);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 15%;
+            animation-delay: -7s;
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 70%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--glassmorphism-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2);
+            overflow: auto;
+            border: 1px solid var(--glassmorphism-border);
+            position: relative;
+        }
+
+        /* Header section */
+        .header {
+            background: linear-gradient(135deg, var(--tool-accent-primary) 0%, var(--tool-accent-secondary) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 0;
+        }
+
+        .header p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            position: relative;
+            z-index: 0;
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: inline flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 24px; /* For emoji fallback */
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Controls section */
+        .controls {
+            padding: 30px 40px;
+            background: var(--tool-bg);
+            border-bottom: 1px solid var(--tool-border-color);
+        }
+
+        .control-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--tool-border-color);
+            margin-bottom: 30px;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .control-tabs::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .tab-btn {
+            padding: 16px 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: var(--tool-text-secondary);
+            font-weight: 600;
+            position: relative;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: max-content;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .tab-btn:hover {
+            color: var(--tool-accent-primary);
+        }
+
+        .tab-btn.active {
+            color: var(--tool-accent-primary);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--tool-accent-primary), var(--tool-accent-secondary));
+            border-radius: 3px 3px 0 0;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .control-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            align-items: end;
+        }
+
+        .control-item {
+            display: grid;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .control-item label {
+            font-weight: 600;
+            color: var(--tool-text-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="color"] {
+            width: 60px;
+            height: 50px;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease;
+            -webkit-appearance: none; /* Hide default color picker */
+            -moz-appearance: none;
+            appearance: none;
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: 16px;
+        }
+
+        input[type="color"]::-moz-color-swatch {
+            border: none;
+            border-radius: 16px;
+        }
+
+        input[type="color"]:hover {
+            transform: scale(1.05);
+        }
+
+        select,
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            padding: 16px 20px;
+            border: 2px solid var(--tool-border-color);
+            background-color: var(--tool-bg);
+            color: var(--tool-text-primary);
+            border-radius: 16px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 150px;
+            height: 50px;
+            font-family: inherit;
+        }
+
+        select:focus,
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--tool-accent-primary);
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--tool-accent-primary) 15%, transparent);
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, var(--tool-accent-primary) 0%, var(--tool-accent-secondary) 100%);
+            color: white;
+            border: none;
+            padding: 0 32px;
+            height: 50px;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px color-mix(in srgb, var(--tool-accent-primary) 30%, transparent);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            overflow: auto;
+            text-decoration: none; /* For export links */
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px color-mix(in srgb, var(--tool-accent-primary) 40%, transparent);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn.secondary {
+            background: var(--tool-bg-alt);
+            color: var(--tool-text-primary);
+            box-shadow: 0 4px 15px var(--tool-shadow-color);
+            border: 2px solid var(--tool-border-color);
+        }
+
+        .btn.secondary:hover {
+            border-color: var(--tool-accent-primary);
+            background: color-mix(in srgb, var(--tool-accent-primary) 8%, transparent);
+        }
+
+        /* Main content layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            background: var(--tool-bg-alt);
+        }
+
+        .palette-section {
+            padding: 40px;
+        }
+
+        .palette-header {
+            display: inline flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .palette-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            color: var(--tool-text-primary);
+            background: linear-gradient(135deg, var(--tool-accent-primary), var(--tool-accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .palette-actions {
+            display: grid;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .colors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        /* Color Card */
+        .color-card {
+            background: var(--tool-bg);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px var(--tool-shadow-color);
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: grab;
+                    }
+
+        .color-card::before {
+            content: '';
+            position: Grid;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 48px var(--tool-shadow-color);
+        }
+
+        .color-card:hover::before {
+            opacity: 1;
+        }
+
+        .color-card.dragging {
+            opacity: 0.7;
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .color-card:active {
+            cursor: grabbing;
+        }
+
+        .color-card.locked {
+            border-color: var(--tool-accent-primary);
+            box-shadow: 0 8px 32px color-mix(in srgb, var(--tool-accent-primary) 25%, transparent);
+        }
+
+        .color-swatch {
+            height: 120px;
+            border-radius: 22px 22px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+                    }
+
+        .color-swatch::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .color-card:hover .color-swatch::after {
+            transform: translateX(100%);
+        }
+
+        .card-actions {
+            position: flex;
+            top: 12px;
+            right: 12px;
+            z-index: 10;
+        }
+
+        .lock-btn {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: inline flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 18px; /* For emoji fallback */
+        }
+
+        .lock-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .lock-btn:hover {
+            background: rgba(0, 0, 0, 0.6);
+            transform: scale(1.1);
+        }
+
+        .color-card.locked .lock-btn {
+            background: var(--tool-accent-primary);
+            box-shadow: 0 4px 12px color-mix(in srgb, var(--tool-accent-primary) 40%, transparent);
+        }
+
+        .color-info {
+            padding: 20px;
+        }
+
+        .color-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            white-space: nowrap;
+            overflow: auto;
+            text-overflow: ellipsis;
+            color: var(--tool-text-primary);
+        }
+
+        .color-value {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            color: var(--tool-text-secondary);
+            cursor: pointer;
+            background: var(--tool-bg-alt);
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: inline-block; /* To allow padding/margin */
+        }
+
+        .color-value:hover {
+            background: var(--tool-border-color);
+            color: var(--tool-text-primary);
+        }
+
+        /* Analysis Section */
+        .analysis-section {
+            padding: 40px;
+            border-top: 1px solid var(--tool-border-color);
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .analysis-card {
+            background: var(--tool-bg);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 8px 32px var(--tool-shadow-color);
+            border: 1px solid var(--tool-border-color);
+            transition: all 0.3s ease;
+        }
+
+        .analysis-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--tool-shadow-color);
+        }
+
+        .analysis-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: grid;
+            align-items: center;
+            gap: 12px;
+            color: var(--tool-text-primary);
+            font-weight: 700;
+        }
+
+        .analysis-card h3 svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .analysis-card p {
+            color: var(--tool-text-secondary);
+            line-height: 1.6;
+        }
+
+        .analysis-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .analysis-card li {
+            margin-bottom: 8px;
+            color: var(--tool-text-secondary);
+            display: grid;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .analysis-card li strong {
+            color: var(--tool-text-primary);
+        }
+
+        .analysis-card .status-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        .analysis-card .status-icon.pass {
+            color: var(--tool-success-color);
+        }
+
+        .analysis-card .status-icon.fail {
+            color: var(--tool-fail-color);
+        }
+
+        .analysis-card .status-icon.aaa {
+            color: var(--tool-aaa-color);
+        }
+
+        /* Loading state */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 80px;
+        }
+
+        .spinner {
+            border: 4px solid var(--tool-border-color);
+            border-top: 4px solid var(--tool-accent-primary);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--toast-bg);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 2000;
+            font-weight: 600;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Color blind simulation filters */
+        .protanopia-filter {
+            filter: url(#protanopia);
+        }
+
+        .deuteranopia-filter {
+            filter: url(#deuteranopia);
+        }
+
+        .tritanopia-filter {
+            filter: url(#tritanopia);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 24px;
+            }
+
+            .header {
+                padding: 40px 20px;
+            }
+
+            .controls,
+            .palette-section,
+            .analysis-section {
+                padding: 20px;
+            }
+
+            .control-group {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .colors {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .color-card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .palette-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 16px;
+            }
+
+            .palette-actions {
+                justify-content: center;
+            }
+
+            .analysis-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .tab-btn {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .theme-toggle {
+                width: 44px;
+                height: 44px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .control-item {
+                text-align: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .palette-actions {
+                flex-direction: column;
+            }
+
+            .palette-actions .btn {
+                width: 100%;
+            }
+        }
+
+        /* Large screen optimizations */
+        @media (min-width: 1200px) {
+            .main-content {
+                grid-template-columns: 2fr 1fr;
+            }
+
+            .analysis-section {
+                border-top: none;
+                border-left: 1px solid var(--tool-border-color);
+border-right: 1px solid var(--tool-border-color);
+            }
+
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .colors {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+        }
+
+        /* Enhanced animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .color-card {
+                animation: slideInUp 0.6s ease backwards;
+            }
+
+            .color-card:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+            .color-card:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            .color-card:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+            .color-card:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+            .color-card:nth-child(5) {
+                animation-delay: 0.5s;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for better accessibility */
+        .btn:focus-visible,
+        .color-card:focus-visible,
+        .lock-btn:focus-visible,
+        .tab-btn:focus-visible,
+        select:focus-visible,
+        input[type="text"]:focus-visible,
+        input[type="number"]:focus-visible,
+        textarea:focus-visible,
+        input[type="color"]:focus-visible {
+            outline: 3px solid var(--tool-accent-primary);
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .container {
+                border: 2px solid var(--tool-text-primary);
+            }
+
+            .color-card {
+                border: 1px solid var(--tool-text-primary);
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Brand Color Palette Generator</h1>
+      <p>Free interactive Brand Color Palette Generator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <!-- SVG Definitions for icons -->
+    <svg width="0" height="0" style="position:absolute; display: none;">
+        <defs>
+            <symbol id="icon-manual" viewBox="0 0 24 24">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </symbol>
+            <symbol id="icon-ai" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                <path d="M12 10.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-3.5-1.5c0 .83.67 1.5 1.5 1.5v-3c-.83 0-1.5.67-1.5 1.5zm7 0c0-.83-.67-1.5-1.5-1.5v3c.83 0 1.5-.67 1.5-1.5z"/>
+            </symbol>
+            <symbol id="icon-image" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+            </symbol>
+            <symbol id="icon-preview" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </symbol>
+            <symbol id="icon-contrast" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                <path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8V4z"/>
+            </symbol>
+            <symbol id="icon-blind" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm10.79 3.29l-3.58 3.58c.06.21.1.42.1.64 0 2.76-2.24 5-5 5s-5-2.24-5-5c0-.22.04-.43.1-.64L5.21 8.29A10.84 10.84 0 0 0 1 12c1.73 4.39 6 7.5 11 7.5 3.31 0 6.28-1.5 8.4-3.75-.49-.49-.95-1-1.37-1.5l-1.24-1.46z"/>
+            </symbol>
+            <symbol id="icon-gradient" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11 9h2v2h-2zm-2 2h2v2H9zm4 0h2v2h-2zm2 2h2v2h-2zM7 9h2v2H7zm12-5H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM9 18H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm2-2h-2v-2h2v2zM11 6h2v2h-2z"/>
+            </symbol>
+            <symbol id="icon-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 4v6h6"></path>
+                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </symbol>
+            <symbol id="icon-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </symbol>
+            <symbol id="icon-export" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </symbol>
+            <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </symbol>
+            <symbol id="icon-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
+            </symbol>
+            <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </symbol>
+            <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </symbol>
+            <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </symbol>
+            <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </symbol>
+            <symbol id="icon-shuffle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 3 21 3 21 8"></polyline>
+                <line x1="4" y1="20" x2="21" y2="3"></line>
+                <polyline points="21 16 21 21 16 21"></polyline>
+                <line x1="21" y1="21" x2="4" y2="3"></line>
+            </symbol>
+            <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </symbol>
+
+            <!-- Color Blindness Filters (SVG Filters) -->
+            <filter id="protanopia">
+                <feColorMatrix type="matrix" values="0.567 0.433 0 0 0 0.558 0.442 0 0 0 0 0.242 0.758 0 0 0 0 0 1 0"/>
+            </filter>
+            <filter id="deuteranopia">
+                <feColorMatrix type="matrix" values="0.625 0.375 0 0 0 0.7 0.3 0 0 0 0 0.3 0.7 0 0 0 0 0 1 0"/>
+            </filter>
+            <filter id="tritanopia">
+                <feColorMatrix type="matrix" values="0.95 0.05 0 0 0 0 0.433 0.567 0 0 0 0.475 0.525 0 0 0 0 0 1 0"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <svg class="icon" id="theme-icon">
+                    <use href="#icon-moon"></use>
+                </svg>
+            </button>
+            <h1>Brand Color Palette Generator</h1>
+            <p>Create stunning, accessible color palettes for your brand with advanced AI-powered suggestions and comprehensive analysis</p>
+        </header>
+
+        <section class="controls">
+            <div class="control-tabs">
+                <button class="tab-btn active" onclick="switchTab('generate')">
+                    <svg class="icon"><use href="#icon-manual"></use></svg> Generate
+                </button>
+                <button class="tab-btn" onclick="switchTab('ai-generate')">
+                    <svg class="icon"><use href="#icon-ai"></use></svg> AI Generate
+                </button>
+                <button class="tab-btn" onclick="switchTab('harmony')">
+                    <svg class="icon"><use href="#icon-gradient"></use></svg> Color Harmony
+                </button>
+                <button class="tab-btn" onclick="switchTab('accessibility')">
+                    <svg class="icon"><use href="#icon-contrast"></use></svg> Accessibility
+                </button>
+                <button class="tab-btn" onclick="switchTab('export')">
+                    <svg class="icon"><use href="#icon-export"></use></svg> Export
+                </button>
+            </div>
+
+            <!-- Generate Tab -->
+            <div id="generateTab" class="tab-content active">
+                <div class="control-group">
+                    <div class="control-item">
+                        <label for="baseColor">Base Color</label>
+                        <input type="color" id="baseColor" value="#667eea">
+                    </div>
+                    <div class="control-item">
+                        <label for="paletteType">Palette Type</label>
+                        <select id="paletteType">
+                            <option value="complementary">Complementary</option>
+                            <option value="triadic">Triadic</option>
+                            <option value="analogous">Analogous</option>
+                            <option value="monochromatic">Monochromatic</option>
+                            <option value="tetradic">Tetradic</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label for="colorCount">Number of Colors</label>
+                        <select id="colorCount">
+                            <option value="3">3 Colors</option>
+                            <option value="4">4 Colors</option>
+                            <option value="5" selected>5 Colors</option>
+                            <option value="6">6 Colors</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label>&nbsp;</label>
+                        <button class="btn" onclick="generatePalette()">
+                            <svg class="icon"><use href="#icon-manual"></use></svg> Generate Palette
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Generate Tab (Placeholder for Gemini API integration) -->
+            <div id="ai-generateTab" class="tab-content">
+                <div class="control-group">
+                    <div class="control-item" style="grid-column: 1 / -1;">
+                        <label for="aiPrompt">Describe your desired palette (e.g., "warm, earthy tones for a coffee shop", "vibrant, futuristic colors for a tech startup")</label>
+                        <textarea id="aiPrompt" placeholder="Enter your prompt here..."></textarea>
+                    </div>
+                    <div class="control-item" style="grid-column: 1 / -1; text-align: center;">
+                        <button class="btn" onclick="generateAIPalette()">
+                            <svg class="icon"><use href="#icon-ai"></use></svg> AI Generate Palette
+                        </button>
+                    </div>
+                </div>
+                <div id="aiLoading" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Generating AI Palette...</p>
+                </div>
+            </div>
+
+            <!-- Color Harmony Tab -->
+            <div id="harmonyTab" class="tab-content">
+                <div class="control-group">
+                    <div class="control-item">
+                        <label for="saturation">Saturation</label>
+                        <input type="range" id="saturation" min="0" max="100" value="70">
+                    </div>
+                    <div class="control-item">
+                        <label for="lightness">Lightness</label>
+                        <input type="range" id="lightness" min="0" max="100" value="50">
+                    </div>
+                    <div class="control-item">
+                        <label for="temperature">Temperature</label>
+                        <select id="temperature">
+                            <option value="neutral">Neutral</option>
+                            <option value="warm">Warm</option>
+                            <option value="cool">Cool</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label>&nbsp;</label>
+                        <button class="btn secondary" onclick="applyHarmony()">
+                            <svg class="icon"><use href="#icon-gradient"></use></svg> Apply Harmony
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accessibility Tab -->
+            <div id="accessibilityTab" class="tab-content">
+                <div class="control-group">
+                    <div class="control-item">
+                        <label for="contrastLevel">Contrast Standard</label>
+                        <select id="contrastLevel">
+                            <option value="aa">WCAG AA (4.5:1)</option>
+                            <option value="aaa">WCAG AAA (7:1)</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label for="colorBlindType">Color Blind Simulation</label>
+                        <select id="colorBlindType" onchange="applyColorBlindFilter()">
+                            <option value="none">None</option>
+                            <option value="protanopia">Protanopia (Red-Green)</option>
+                            <option value="deuteranopia">Deuteranopia (Red-Green)</option>
+                            <option value="tritanopia">Tritanopia (Blue-Yellow)</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label>&nbsp;</label>
+                        <button class="btn secondary" onclick="checkAccessibility()">
+                            <svg class="icon"><use href="#icon-contrast"></use></svg> Check Accessibility
+                        </button>
+                    </div>
+                </div>
+                <div id="accessibilityResults" class="analysis-grid" style="margin-top: 30px; display: none;">
+                    <!-- Accessibility results will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Export Tab -->
+            <div id="exportTab" class="tab-content">
+                <div class="control-group">
+                    <div class="control-item">
+                        <label for="exportFormat">Export Format</label>
+                        <select id="exportFormat" onchange="generateExportCode()">
+                            <option value="css">CSS Variables</option>
+                            <option value="scss">SCSS Variables</option>
+                            <option value="json">JSON</option>
+                            <option value="plaintext">Plain Text (HEX List)</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label>&nbsp;</label>
+                        <button class="btn" onclick="exportToFile()">
+                            <svg class="icon"><use href="#icon-export"></use></svg> Download File
+                        </button>
+                    </div>
+                    <div class="control-item" style="grid-column: 1 / -1; text-align: center;">
+                        <button class="btn secondary" onclick="copyExportCodeToClipboard()">
+                            <svg class="icon"><use href="#icon-copy"></use></svg> Copy to Clipboard
+                        </button>
+                    </div>
+                </div>
+                <pre id="exportCode" style="display: none; background: var(--tool-bg-alt); border: 1px solid var(--tool-border-color); border-radius: 12px; padding: 20px; margin-top: 20px; font-size: 0.9rem; overflow-x: auto; color: var(--tool-text-primary);"></pre>
+            </div>
+        </section>
+
+        <main class="main-content">
+            <!-- Palette Display Section -->
+            <section class="palette-section">
+                <div class="palette-header">
+                    <h2 class="palette-title">Your Color Palette</h2>
+                    <div class="palette-actions">
+                        <button class="btn secondary" onclick="shufflePalette()">
+                            <svg class="icon"><use href="#icon-shuffle"></use></svg> Shuffle
+                        </button>
+                        <button class="btn secondary" onclick="copyAllHexToClipboard()">
+                            <svg class="icon"><use href="#icon-copy"></use></svg> Copy All HEX
+                        </button>
+                        <button class="btn" onclick="generatePalette()">
+                            <svg class="icon"><use href="#icon-manual"></use></svg> Regenerate All
+                        </button>
+                    </div>
+                </div>
+                <div id="colorPalette" class="colors">
+                    <!-- Color cards will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Analysis Section -->
+            <section class="analysis-section">
+                <h2 class="palette-title" style="margin-bottom: 30px;">Palette Analysis</h2>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h3><svg class="icon"><use href="#icon-contrast"></use></svg> Contrast Ratios</h3>
+                        <ul id="contrastAnalysis">
+                            <!-- Contrast analysis results -->
+                        </ul>
+                    </div>
+                    <div class="analysis-card">
+                        <h3><svg class="icon"><use href="#icon-preview"></use></svg> Visual Preview</h3>
+                        <div id="visualPreview" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                            <!-- Dynamic text/background previews -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        // Global array to store current palette colors (HEX values)
+        let currentPalette = [];
+        let lockedColors = {}; // Stores locked colors: { hex: true }
+
+        // Initial palette generation on load
+        document.addEventListener('DOMContentLoaded', () => {
+            generatePalette();
+            // Set initial theme based on user preference or default to light
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.body.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        });
+
+        /**
+         * Toggles between light and dark themes.
+         */
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        /**
+         * Updates the theme toggle icon based on the current theme.
+         * @param {string} theme - The current theme ('light' or 'dark').
+         */
+        function updateThemeIcon(theme) {
+            const themeIcon = document.getElementById('theme-icon');
+            if (theme === 'dark') {
+                themeIcon.innerHTML = '<use href="#icon-sun"></use>';
+                themeIcon.setAttribute('aria-label', 'Switch to light mode');
+            } else {
+                themeIcon.innerHTML = '<use href="#icon-moon"></use>';
+                themeIcon.setAttribute('aria-label', 'Switch to dark mode');
+            }
+        }
+
+        /**
+         * Switches between control tabs.
+         * @param {string} tabId - The ID of the tab to activate (e.g., 'generate', 'harmony').
+         */
+        function switchTab(tabId) {
+            // Deactivate all tab buttons and content
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Activate the selected tab button and content
+            document.querySelector(`.tab-btn[onclick="switchTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(`${tabId}Tab`).classList.add('active');
+
+            // Clear accessibility results when switching away from accessibility tab
+            if (tabId !== 'accessibility') {
+                document.getElementById('accessibilityResults').style.display = 'none';
+                document.getElementById('accessibilityResults').innerHTML = '';
+            }
+            // Clear export code when switching away from export tab
+            if (tabId !== 'export') {
+                document.getElementById('exportCode').style.display = 'none';
+                document.getElementById('exportCode').innerHTML = '';
+            } else {
+                // If switching to export tab, generate code immediately
+                generateExportCode();
+            }
+        }
+
+        /**
+         * Converts a HEX color to an HSL object.
+         * @param {string} hex - The HEX color string (e.g., "#RRGGBB").
+         * @returns {object} HSL object {h, s, l}.
+         */
+        function hexToHsl(hex) {
+            let r = 0, g = 0, b = 0;
+            // Handle different hex formats
+            if (hex.length === 4) {
+                r = parseInt(hex[1] + hex[1], 16);
+                g = parseInt(hex[2] + hex[2], 16);
+                b = parseInt(hex[3] + hex[3], 16);
+            } else if (hex.length === 7) {
+                r = parseInt(hex.substring(1, 3), 16);
+                g = parseInt(hex.substring(3, 5), 16);
+                b = parseInt(hex.substring(5, 7), 16);
+            }
+
+            r /= 255;
+            g /= 255;
+            b /= 255;
+
+            let max = Math.max(r, g, b);
+            let min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+
+            if (max === min) {
+                h = s = 0; // achromatic
+            } else {
+                let d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r:
+                        h = (g - b) / d + (g < b ? 6 : 0);
+                        break;
+                    case g:
+                        h = (b - r) / d + 2;
+                        break;
+                    case b:
+                        h = (r - g) / d + 4;
+                        break;
+                }
+                h /= 6;
+            }
+
+            return {
+                h: h * 360,
+                s: s * 100,
+                l: l * 100
+            };
+        }
+
+        /**
+         * Converts an HSL object to a HEX color string.
+         * @param {object} hsl - HSL object {h, s, l}.
+         * @returns {string} HEX color string.
+         */
+        function hslToHex(hsl) {
+            let h = hsl.h;
+            let s = hsl.s / 100;
+            let l = hsl.l / 100;
+
+            let c = (1 - Math.abs(2 * l - 1)) * s;
+            let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+            let m = l - c / 2;
+            let r = 0, g = 0, b = 0;
+
+            if (0 <= h && h < 60) {
+                r = c;
+                g = x;
+                b = 0;
+            } else if (60 <= h && h < 120) {
+                r = x;
+                g = c;
+                b = 0;
+            } else if (120 <= h && h < 180) {
+                r = 0;
+                g = c;
+                b = x;
+            } else if (180 <= h && h < 240) {
+                r = 0;
+                g = x;
+                b = c;
+            } else if (240 <= h && h < 300) {
+                r = x;
+                g = 0;
+                b = c;
+            } else if (300 <= h && h < 360) {
+                r = c;
+                g = 0;
+                b = x;
+            }
+
+            r = Math.round((r + m) * 255).toString(16);
+            g = Math.round((g + m) * 255).toString(16);
+            b = Math.round((b + m) * 255).toString(16);
+
+            if (r.length === 1) r = "0" + r;
+            if (g.length === 1) g = "0" + g;
+            if (b.length === 1) b = "0" + b;
+
+            return "#" + r + g + b;
+        }
+
+        /**
+         * Generates a color palette based on a base color, type, and count.
+         */
+        function generatePalette() {
+            const baseColorHex = document.getElementById('baseColor').value;
+            const paletteType = document.getElementById('paletteType').value;
+            const colorCount = parseInt(document.getElementById('colorCount').value);
+
+            let baseHsl = hexToHsl(baseColorHex);
+            let newPalette = [];
+
+            // Add locked colors first
+            currentPalette.forEach(color => {
+                if (lockedColors[color]) {
+                    newPalette.push(color);
+                }
+            });
+
+            // Fill the rest of the palette based on type, avoiding locked colors
+            while (newPalette.length < colorCount) {
+                let generatedColor;
+                switch (paletteType) {
+                    case 'complementary':
+                        generatedColor = generateComplementary(baseHsl, newPalette.length);
+                        break;
+                    case 'triadic':
+                        generatedColor = generateTriadic(baseHsl, newPalette.length);
+                        break;
+                    case 'analogous':
+                        generatedColor = generateAnalogous(baseHsl, newPalette.length);
+                        break;
+                    case 'monochromatic':
+                        generatedColor = generateMonochromatic(baseHsl, newPalette.length);
+                        break;
+                    case 'tetradic':
+                        generatedColor = generateTetradic(baseHsl, newPalette.length);
+                        break;
+                    default:
+                        generatedColor = baseColorHex;
+                }
+
+                // Ensure unique colors and not already locked
+                if (!newPalette.includes(generatedColor)) {
+                    newPalette.push(generatedColor);
+                } else {
+                    // If duplicate, slightly adjust to find a new color
+                    let attempts = 0;
+                    let uniqueFound = false;
+                    while (!uniqueFound && attempts < 100) {
+                        let tempHsl = hexToHsl(generatedColor);
+                        tempHsl.h = (tempHsl.h + (Math.random() * 30 - 15) + 360) % 360; // Small random hue shift
+                        tempHsl.s = Math.min(100, Math.max(0, tempHsl.s + (Math.random() * 20 - 10))); // Small random saturation shift
+                        tempHsl.l = Math.min(100, Math.max(0, tempHsl.l + (Math.random() * 20 - 10))); // Small random lightness shift
+                        let newHex = hslToHex(tempHsl);
+                        if (!newPalette.includes(newHex) && !lockedColors[newHex]) {
+                            generatedColor = newHex;
+                            uniqueFound = true;
+                        }
+                        attempts++;
+                    }
+                    if (uniqueFound) {
+                        newPalette.push(generatedColor);
+                    } else {
+                        // Fallback if unable to find unique color after many attempts
+                        console.warn("Could not generate a unique color, adding a random fallback.");
+                        newPalette.push(getRandomHexColor());
+                    }
+                }
+            }
+
+            // Shuffle the non-locked colors to mix them up while keeping locked ones in place
+            const unlockedColors = newPalette.filter(color => !lockedColors[color]);
+            shuffleArray(unlockedColors);
+
+            let finalPalette = [];
+            let unlockedIndex = 0;
+            for (let i = 0; i < colorCount; i++) {
+                if (lockedColors[currentPalette[i]]) { // Keep original position of locked colors
+                    finalPalette.push(currentPalette[i]);
+                } else if (unlockedIndex < unlockedColors.length) {
+                    finalPalette.push(unlockedColors[unlockedIndex]);
+                    unlockedIndex++;
+                } else {
+                    // If we run out of shuffled unlocked colors, fill with random or base
+                    finalPalette.push(getRandomHexColor());
+                }
+            }
+
+            // If the new palette is smaller than the old one, remove excess from the end
+            finalPalette = finalPalette.slice(0, colorCount);
+
+            // If new palette has fewer locked colors than previous iteration, remove old locks
+            Object.keys(lockedColors).forEach(lockedHex => {
+                if (!finalPalette.includes(lockedHex)) {
+                    delete lockedColors[lockedHex];
+                }
+            });
+
+
+            currentPalette = finalPalette;
+            renderPalette();
+            checkAccessibility(); // Re-run accessibility check after generation
+        }
+
+        /**
+         * Generates a random HEX color.
+         * @returns {string} Random HEX color.
+         */
+        function getRandomHexColor() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+        }
+
+        /**
+         * Generates a complementary color.
+         * @param {object} hsl - Base HSL color.
+         * @param {number} index - Index for variation.
+         * @returns {string} HEX color.
+         */
+        function generateComplementary(hsl, index) {
+            if (index === 0) return hslToHex(hsl);
+            if (index === 1) return hslToHex({ h: (hsl.h + 180) % 360, s: hsl.s, l: hsl.l });
+            // Add variations for more colors
+            if (index === 2) return hslToHex({ h: hsl.h, s: Math.min(100, hsl.s + 20), l: Math.min(100, hsl.l + 10) });
+            if (index === 3) return hslToHex({ h: (hsl.h + 180) % 360, s: Math.max(0, hsl.s - 20), l: Math.max(0, hsl.l - 10) });
+            return hslToHex({ h: (hsl.h + (index * 30)) % 360, s: hsl.s, l: hsl.l });
+        }
+
+        /**
+         * Generates triadic colors.
+         * @param {object} hsl - Base HSL color.
+         * @param {number} index - Index for variation.
+         * @returns {string} HEX color.
+         */
+        function generateTriadic(hsl, index) {
+            const hues = [hsl.h, (hsl.h + 120) % 360, (hsl.h + 240) % 360];
+            const hue = hues[index % hues.length];
+            const s = hsl.s + (index % 2 === 0 ? 0 : 10); // Slight saturation variation
+            const l = hsl.l + (index % 2 === 0 ? 0 : -5); // Slight lightness variation
+            return hslToHex({ h: hue, s: Math.min(100, Math.max(0, s)), l: Math.min(100, Math.max(0, l)) });
+        }
+
+        /**
+         * Generates analogous colors.
+         * @param {object} hsl - Base HSL color.
+         * @param {number} index - Index for variation.
+         * @returns {string} HEX color.
+         */
+        function generateAnalogous(hsl, index) {
+            const offset = (index - Math.floor(document.getElementById('colorCount').value / 2)) * 30; // 30 degree steps
+            const h = (hsl.h + offset + 360) % 360;
+            return hslToHex({ h, s: hsl.s, l: hsl.l });
+        }
+
+        /**
+         * Generates monochromatic colors.
+         * @param {object} hsl - Base HSL color.
+         * @param {number} index - Index for variation.
+         * @returns {string} HEX color.
+         */
+        function generateMonochromatic(hsl, index) {
+            const lightnessStep = 100 / (parseInt(document.getElementById('colorCount').value) + 1);
+            const l = (index + 1) * lightnessStep;
+            return hslToHex({ h: hsl.h, s: hsl.s, l: Math.min(100, Math.max(0, l)) });
+        }
+
+        /**
+         * Generates tetradic colors.
+         * @param {object} hsl - Base HSL color.
+         * @param {number} index - Index for variation.
+         * @returns {string} HEX color.
+         */
+        function generateTetradic(hsl, index) {
+            const hues = [hsl.h, (hsl.h + 60) % 360, (hsl.h + 180) % 360, (hsl.h + 240) % 360];
+            const hue = hues[index % hues.length];
+            const s = hsl.s + (index % 2 === 0 ? 0 : 15);
+            const l = hsl.l + (index % 2 === 0 ? 0 : -10);
+            return hslToHex({ h: hue, s: Math.min(100, Math.max(0, s)), l: Math.min(100, Math.max(0, l)) });
+        }
+
+        /**
+         * Applies harmony adjustments (saturation, lightness, temperature) to the current palette.
+         */
+        function applyHarmony() {
+            const saturation = parseInt(document.getElementById('saturation').value);
+            const lightness = parseInt(document.getElementById('lightness').value);
+            const temperature = document.getElementById('temperature').value;
+
+            currentPalette = currentPalette.map(hex => {
+                if (lockedColors[hex]) return hex; // Don't modify locked colors
+
+                let hsl = hexToHsl(hex);
+                hsl.s = saturation;
+                hsl.l = lightness;
+
+                // Adjust hue for temperature
+                if (temperature === 'warm') {
+                    if (hsl.h >= 0 && hsl.h < 180) { // Red to Green-Yellow
+                        hsl.h = (hsl.h + 10) % 360;
+                    } else { // Green-Blue to Red-Violet
+                        hsl.h = (hsl.h - 10 + 360) % 360;
+                    }
+                } else if (temperature === 'cool') {
+                    if (hsl.h >= 0 && hsl.h < 180) { // Red to Green-Yellow
+                        hsl.h = (hsl.h - 10 + 360) % 360;
+                    } else { // Green-Blue to Red-Violet
+                        hsl.h = (hsl.h + 10) % 360;
+                    }
+                }
+                return hslToHex(hsl);
+            });
+            renderPalette();
+            checkAccessibility();
+            showToast('Harmony applied!');
+        }
+
+        /**
+         * Shuffles the non-locked colors in the current palette.
+         */
+        function shufflePalette() {
+            const unlockedColors = currentPalette.filter(color => !lockedColors[color]);
+            shuffleArray(unlockedColors);
+
+            let shuffledPalette = [];
+            let unlockedIndex = 0;
+            for (let i = 0; i < currentPalette.length; i++) {
+                if (lockedColors[currentPalette[i]]) {
+                    shuffledPalette.push(currentPalette[i]);
+                } else {
+                    shuffledPalette.push(unlockedColors[unlockedIndex]);
+                    unlockedIndex++;
+                }
+            }
+            currentPalette = shuffledPalette;
+            renderPalette();
+            showToast('Palette shuffled!');
+        }
+
+        /**
+         * Shuffles an array in place (Fisher-Yates algorithm).
+         * @param {Array} array - The array to shuffle.
+         */
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        /**
+         * Renders the current palette to the DOM.
+         */
+        function renderPalette() {
+            const paletteContainer = document.getElementById('colorPalette');
+            paletteContainer.innerHTML = ''; // Clear existing cards
+
+            currentPalette.forEach((color, index) => {
+                const colorCard = document.createElement('div');
+                colorCard.className = `color-card ${lockedColors[color] ? 'locked' : ''}`;
+                colorCard.setAttribute('draggable', 'true');
+                colorCard.dataset.color = color; // Store color for drag-drop
+
+                // Determine text color for swatch based on luminance
+                const textColor = getLuminance(color) > 0.5 ? '#1e293b' : '#f1f5f9';
+
+                colorCard.innerHTML = `
+                    <div class="color-swatch" style="background-color: ${color};">
+                        <div class="card-actions">
+                            <button class="lock-btn" data-color="${color}" onclick="toggleLock(event, '${color}')">
+                                <svg class="icon"><use href="#${lockedColors[color] ? 'icon-lock' : 'icon-unlock'}"></use></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">${color}</div>
+                        <div class="color-value" onclick="copyToClipboard(this, '${color}')">HEX: ${color.toUpperCase()}</div>
+                        <div class="color-value" onclick="copyToClipboard(this, '${rgbToHex(hexToRgb(color))}')">RGB: ${hexToRgb(color).r}, ${hexToRgb(color).g}, ${hexToRgb(color).b}</div>
+                        <div class="color-value" onclick="copyToClipboard(this, '${hslToCss(hexToHsl(color))}')">HSL: ${Math.round(hexToHsl(color).h)}, ${Math.round(hexToHsl(color).s)}%, ${Math.round(hexToHsl(color).l)}%</div>
+                    </div>
+                `;
+                paletteContainer.appendChild(colorCard);
+            });
+
+            addDragAndDropListeners();
+        }
+
+        /**
+         * Toggles the lock state of a color.
+         * @param {Event} event - The click event.
+         * @param {string} color - The HEX color to toggle.
+         */
+        function toggleLock(event, color) {
+            event.stopPropagation(); // Prevent card drag from starting
+            if (lockedColors[color]) {
+                delete lockedColors[color];
+                event.currentTarget.closest('.color-card').classList.remove('locked');
+                event.currentTarget.innerHTML = '<svg class="icon"><use href="#icon-unlock"></use></svg>';
+                showToast(`Unlocked ${color.toUpperCase()}`);
+            } else {
+                lockedColors[color] = true;
+                event.currentTarget.closest('.color-card').classList.add('locked');
+                event.currentTarget.innerHTML = '<svg class="icon"><use href="#icon-lock"></use></svg>';
+                showToast(`Locked ${color.toUpperCase()}`);
+            }
+        }
+
+        let draggedItem = null;
+
+        /**
+         * Adds drag and drop listeners to color cards.
+         */
+        function addDragAndDropListeners() {
+            const colorCards = document.querySelectorAll('.color-card');
+            colorCards.forEach(card => {
+                card.addEventListener('dragstart', handleDragStart);
+                card.addEventListener('dragover', handleDragOver);
+                card.addEventListener('dragleave', handleDragLeave);
+                card.addEventListener('drop', handleDrop);
+                card.addEventListener('dragend', handleDragEnd);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedItem = this;
+            setTimeout(() => this.classList.add('dragging'), 0);
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', this.dataset.color);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault(); // Necessary to allow drop
+            if (this !== draggedItem) {
+                const bounding = this.getBoundingClientRect();
+                const offset = bounding.y + (bounding.height / 2);
+                if (e.clientY - offset > 0) {
+                    this.style.borderBottom = '2px solid var(--tool-accent-primary)';
+                    this.style.borderTop = '';
+                } else {
+                    this.style.borderTop = '2px solid var(--tool-accent-primary)';
+                    this.style.borderBottom = '';
+                }
+            }
+        }
+
+        function handleDragLeave() {
+            this.style.borderBottom = '';
+            this.style.borderTop = '';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            this.style.borderBottom = '';
+            this.style.borderTop = '';
+
+            if (this !== draggedItem) {
+                const colorsContainer = document.getElementById('colorPalette');
+                const draggedColor = draggedItem.dataset.color;
+                const targetColor = this.dataset.color;
+
+                const draggedIndex = currentPalette.indexOf(draggedColor);
+                const targetIndex = currentPalette.indexOf(targetColor);
+
+                // Remove dragged color from its original position
+                currentPalette.splice(draggedIndex, 1);
+
+                // Insert dragged color at the new position
+                const bounding = this.getBoundingClientRect();
+                const offset = bounding.y + (bounding.height / 2);
+
+                if (e.clientY - offset > 0) {
+                    // Drop after the target
+                    currentPalette.splice(targetIndex + 1, 0, draggedColor);
+                } else {
+                    // Drop before the target
+                    currentPalette.splice(targetIndex, 0, draggedColor);
+                }
+                renderPalette(); // Re-render to reflect new order
+            }
+        }
+
+        function handleDragEnd() {
+            this.classList.remove('dragging');
+            draggedItem = null;
+            document.querySelectorAll('.color-card').forEach(card => {
+                card.style.borderBottom = '';
+                card.style.borderTop = '';
+            });
+        }
+
+
+        /**
+         * Converts a HEX color to an RGB object.
+         * @param {string} hex - The HEX color string.
+         * @returns {object} RGB object {r, g, b}.
+         */
+        function hexToRgb(hex) {
+            let r = 0, g = 0, b = 0;
+            // Handle different hex formats
+            if (hex.length === 4) {
+                r = parseInt(hex[1] + hex[1], 16);
+                g = parseInt(hex[2] + hex[2], 16);
+                b = parseInt(hex[3] + hex[3], 16);
+            } else if (hex.length === 7) {
+                r = parseInt(hex.substring(1, 3), 16);
+                g = parseInt(hex.substring(3, 5), 16);
+                b = parseInt(hex.substring(5, 7), 16);
+            }
+            return { r, g, b };
+        }
+
+        /**
+         * Converts an RGB object to a HEX color string.
+         * @param {object} rgb - RGB object {r, g, b}.
+         * @returns {string} HEX color string.
+         */
+        function rgbToHex(rgb) {
+            const toHex = (c) => {
+                const hex = Math.round(c).toString(16);
+                return hex.length === 1 ? "0" + hex : hex;
+            };
+            return `#${toHex(rgb.r)}${toHex(rgb.g)}${toHex(rgb.b)}`;
+        }
+
+        /**
+         * Converts an HSL object to a CSS HSL string.
+         * @param {object} hsl - HSL object {h, s, l}.
+         * @returns {string} CSS HSL string (e.g., "hsl(120, 100%, 50%)").
+         */
+        function hslToCss(hsl) {
+            return `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)`;
+        }
+
+        /**
+         * Calculates the relative luminance of a color.
+         * @param {string} hex - The HEX color string.
+         * @returns {number} The relative luminance (0-1).
+         */
+        function getLuminance(hex) {
+            const rgb = hexToRgb(hex);
+            const a = [rgb.r, rgb.g, rgb.b].map(v => {
+                v /= 255;
+                return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+            });
+            return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+        }
+
+        /**
+         * Calculates the contrast ratio between two HEX colors.
+         * @param {string} hex1 - First HEX color.
+         * @param {string} hex2 - Second HEX color.
+         * @returns {number} The contrast ratio.
+         */
+        function getContrastRatio(hex1, hex2) {
+            const l1 = getLuminance(hex1);
+            const l2 = getLuminance(hex2);
+            return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+        }
+
+        /**
+         * Checks the accessibility of the current palette based on WCAG guidelines.
+         */
+        function checkAccessibility() {
+            const contrastLevel = document.getElementById('contrastLevel').value;
+            const accessibilityResults = document.getElementById('accessibilityResults');
+            const visualPreview = document.getElementById('visualPreview');
+            accessibilityResults.innerHTML = '';
+            visualPreview.innerHTML = '';
+            accessibilityResults.style.display = 'grid'; // Show results grid
+
+            const requiredRatio = contrastLevel === 'aa' ? 4.5 : 7; // WCAG AA vs AAA
+
+            let contrastHtml = '';
+            let previewHtml = '';
+
+            // Check contrast for all pairs
+            for (let i = 0; i < currentPalette.length; i++) {
+                for (let j = i + 1; j < currentPalette.length; j++) {
+                    const color1 = currentPalette[i];
+                    const color2 = currentPalette[j];
+                    const ratio = getContrastRatio(color1, color2);
+                    const pass = ratio >= requiredRatio;
+                    const statusIcon = pass ? '<svg class="icon status-icon pass"><use href="#icon-check"></use></svg>' : '<svg class="icon status-icon fail"><use href="#icon-x"></use></svg>';
+                    const wcagLevel = pass ? (ratio >= 7 ? 'AAA' : 'AA') : 'Fail';
+
+                    contrastHtml += `
+                        <li>
+                            ${statusIcon}
+                            <strong>${color1.toUpperCase()}</strong> vs <strong>${color2.toUpperCase()}</strong>:
+                            ${ratio.toFixed(2)}:1 (${wcagLevel})
+                        </li>
+                    `;
+
+                    // Add visual preview for each pair
+                    previewHtml += `
+                        <div style="background-color: ${color1}; color: ${color2}; padding: 10px; border-radius: 8px; text-align: center; flex: 1 1 auto; min-width: 120px;">
+                            Text on Background
+                        </div>
+                        <div style="background-color: ${color2}; color: ${color1}; padding: 10px; border-radius: 8px; text-align: center; flex: 1 1 auto; min-width: 120px;">
+                            Text on Background
+                        </div>
+                    `;
+                }
+            }
+            document.getElementById('contrastAnalysis').innerHTML = contrastHtml;
+            visualPreview.innerHTML = previewHtml;
+        }
+
+        /**
+         * Applies color blind simulation filter to the body.
+         */
+        function applyColorBlindFilter() {
+            const colorBlindType = document.getElementById('colorBlindType').value;
+            const body = document.body;
+
+            // Remove existing filters
+            body.classList.remove('protanopia-filter', 'deuteranopia-filter', 'tritanopia-filter');
+
+            if (colorBlindType !== 'none') {
+                body.classList.add(`${colorBlindType}-filter`);
+                showToast(`Applied ${colorBlindType} filter`);
+            } else {
+                showToast('Color blind filter removed');
+            }
+        }
+
+        /**
+         * Generates the export code based on the selected format.
+         * This function populates the <pre> tag.
+         */
+        function generateExportCode() {
+            const exportFormat = document.getElementById('exportFormat').value;
+            const exportCodePre = document.getElementById('exportCode');
+            exportCodePre.style.display = 'block'; // Ensure the pre tag is visible
+
+            let code = '';
+            let fileName = 'brand-palette';
+            let mimeType = 'text/plain';
+
+            if (exportFormat === 'css') {
+                code = `:root {\n`;
+                currentPalette.forEach((color, index) => {
+                    code += `  --color-${index + 1}: ${color.toLowerCase()};\n`;
+                });
+                code += `}`;
+                fileName += '.css';
+                mimeType = 'text/css';
+            } else if (exportFormat === 'scss') {
+                currentPalette.forEach((color, index) => {
+                    code += `$color-${index + 1}: ${color.toLowerCase()};\n`;
+                });
+                fileName += '.scss';
+                mimeType = 'text/x-scss';
+            } else if (exportFormat === 'json') {
+                const paletteObject = {};
+                currentPalette.forEach((color, index) => {
+                    paletteObject[`color${index + 1}`] = color.toLowerCase();
+                });
+                code = JSON.stringify(paletteObject, null, 2);
+                fileName += '.json';
+                mimeType = 'application/json';
+            } else if (exportFormat === 'plaintext') {
+                code = currentPalette.map(color => color.toUpperCase()).join('\n');
+                fileName += '.txt';
+                mimeType = 'text/plain';
+            }
+
+            exportCodePre.textContent = code;
+            // Store filename and mimetype in data attributes for download
+            exportCodePre.dataset.filename = fileName;
+            exportCodePre.dataset.mimetype = mimeType;
+        }
+
+        /**
+         * Triggers the download of the generated code.
+         */
+        function exportToFile() {
+            const exportCodePre = document.getElementById('exportCode');
+            const code = exportCodePre.textContent;
+            const filename = exportCodePre.dataset.filename || 'brand-palette.txt';
+            const mimeType = exportCodePre.dataset.mimetype || 'text/plain';
+
+            if (!code) {
+                showToast('No code to download. Generate a palette first.', 'fail');
+                return;
+            }
+
+            const blob = new Blob([code], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast(`Downloaded ${filename}!`);
+        }
+
+        /**
+         * Copies the currently displayed export code to the clipboard.
+         */
+        function copyExportCodeToClipboard() {
+            const exportCodePre = document.getElementById('exportCode');
+            const codeToCopy = exportCodePre.textContent;
+
+            if (!codeToCopy) {
+                showToast('No code to copy. Generate a palette first.', 'fail');
+                return;
+            }
+            copyToClipboard(null, codeToCopy); // Use existing copyToClipboard function
+            showToast('Export code copied to clipboard!');
+        }
+
+        /**
+         * Copies all current palette HEX codes to the clipboard.
+         */
+        function copyAllHexToClipboard() {
+            const hexList = currentPalette.map(color => color.toUpperCase()).join('\n');
+            if (hexList) {
+                copyToClipboard(null, hexList);
+                showToast('All HEX codes copied to clipboard!');
+            } else {
+                showToast('No colors to copy.', 'fail');
+            }
+        }
+
+        /**
+         * Copies text to the clipboard.
+         * @param {HTMLElement} element - The element that was clicked (can be null).
+         * @param {string} text - The text to copy.
+         */
+        function copyToClipboard(element, text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy'); // Fallback for navigator.clipboard
+            document.body.removeChild(textarea);
+
+            // Toast message handled by calling functions
+        }
+
+        /**
+         * AI-powered palette generation using Gemini API.
+         */
+        async function generateAIPalette() {
+            const aiPrompt = document.getElementById('aiPrompt').value.trim();
+            const aiLoading = document.getElementById('aiLoading');
+            const paletteContainer = document.getElementById('colorPalette');
+            const colorCount = parseInt(document.getElementById('colorCount').value); // Get desired color count
+
+            if (!aiPrompt) {
+                showToast('Please enter a prompt for AI generation.', 'fail');
+                return;
+            }
+
+            aiLoading.style.display = 'block'; // Show loading spinner
+            paletteContainer.innerHTML = ''; // Clear current palette
+
+            try {
+                let chatHistory = [];
+                // Request a JSON response with a specific schema for colors
+                chatHistory.push({
+                    role: "user",
+                    parts: [{
+                        text: `Generate a brand color palette (${colorCount} distinct HEX colors) based on the following description: "${aiPrompt}". Provide the output as a JSON array of strings, where each string is a HEX color code (e.g., ["#RRGGBB", "#AABBCC"]). Ensure the colors are distinct and suitable for a brand palette. Only return the JSON array.`
+                    }]
+                });
+
+                const payload = {
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "ARRAY",
+                            items: {
+                                type: "STRING",
+                                pattern: "^#[0-9a-fA-F]{6}$" // Regex to ensure it's a valid hex color
+                            }
+                        }
+                    }
+                };
+
+                const apiKey = ""; // Canvas will automatically provide this
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const jsonString = result.candidates[0].content.parts[0].text;
+                    const generatedColors = JSON.parse(jsonString);
+
+                    if (Array.isArray(generatedColors) && generatedColors.every(c => typeof c === 'string' && c.startsWith('#') && c.length === 7)) {
+                        currentPalette = generatedColors.slice(0, colorCount); // Take exactly the requested number of colors
+                        lockedColors = {}; // Clear locks for new AI palette
+                        renderPalette();
+                        checkAccessibility();
+                        showToast('AI Palette generated successfully!');
+                    } else {
+                        throw new Error('Invalid JSON format received from AI.');
+                    }
+                } else {
+                    throw new Error('No valid response from AI.');
+                }
+            } catch (error) {
+                console.error('Error generating AI palette:', error);
+                showToast('Failed to generate AI palette. Please try again.', 'fail');
+            } finally {
+                aiLoading.style.display = 'none'; // Hide loading spinner
+            }
+        }
+    </script>
+</body>
+</html>

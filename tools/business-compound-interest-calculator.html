@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Business Compound Interest Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Business Compound Interest Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/business-compound-interest-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/business-compound-interest-calculator.html">
+  <meta property="og:title" content="Advanced Business Compound Interest Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Business Compound Interest Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Business Compound Interest Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Business Compound Interest Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Business Compound Interest Calculator</h1>
+      <p>Free interactive Advanced Business Compound Interest Calculator for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-6xl">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-2"> Business Compound Interest Calculator</h1>
+        <p class="text-center text-gray-500 mb-6">
+            Compare scenarios, visualize growth, and see a year-by-year breakdown.
+        </p>
+
+        <!-- Input Fields -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 1</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="principal1" class="block text-sm font-medium text-gray-700">Initial Principal ($)</label>
+                        <input type="number" id="principal1" placeholder="e.g., 10000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="monthlyContribution1" class="block text-sm font-medium text-gray-700">Monthly Contribution ($)</label>
+                        <input type="number" id="monthlyContribution1" placeholder="e.g., 500" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="annualRate1" class="block text-sm font-medium text-gray-700">Annual Interest Rate (%)</label>
+                        <input type="number" id="annualRate1" placeholder="e.g., 8" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4">Scenario 2</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="principal2" class="block text-sm font-medium text-gray-700">Initial Principal ($)</label>
+                        <input type="number" id="principal2" placeholder="e.g., 10000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="monthlyContribution2" class="block text-sm font-medium text-gray-700">Monthly Contribution ($)</label>
+                        <input type="number" id="monthlyContribution2" placeholder="e.g., 700" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="annualRate2" class="block text-sm font-medium text-gray-700">Annual Interest Rate (%)</label>
+                        <input type="number" id="annualRate2" placeholder="e.g., 9" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shared Inputs -->
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+            <h2 class="text-xl font-bold text-indigo-700 mb-4">Shared Details</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="years" class="block text-sm font-medium text-gray-700">Investment Period (Years)</label>
+                    <input type="number" id="years" placeholder="e.g., 10" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                </div>
+                <div>
+                    <label for="compoundingFrequency" class="block text-sm font-medium text-gray-700">Compounding Frequency</label>
+                    <select id="compoundingFrequency" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option value="monthly" selected>Monthly</option>
+                        <option value="daily">Daily</option>
+                        <option value="annually">Annually</option>
+                        <option value="semi-annually">Semi-Annually</option>
+                        <option value="quarterly">Quarterly</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="calculateBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+            Compare Scenarios
+        </button>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="mt-4 p-3 bg-red-100 text-red-700 rounded-md hidden">
+        </div>
+
+        <!-- Results Display -->
+        <div id="results" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Comparison Results</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Scenario 1 Summary -->
+                <div class="bg-indigo-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">Scenario 1 Summary</h3>
+                    <p class="text-lg font-semibold">Future Value: <span id="futureValue1" class="font-extrabold"></span></p>
+                    <p class="text-sm">Total Contributions: <span id="totalContributions1" class="font-bold"></span></p>
+                    <p class="text-sm">Total Interest Earned: <span id="totalInterest1" class="font-bold"></span></p>
+                </div>
+                <!-- Scenario 2 Summary -->
+                <div class="bg-indigo-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">Scenario 2 Summary</h3>
+                    <p class="text-lg font-semibold">Future Value: <span id="futureValue2" class="font-extrabold"></span></p>
+                    <p class="text-sm">Total Contributions: <span id="totalContributions2" class="font-bold"></span></p>
+                    <p class="text-sm">Total Interest Earned: <span id="totalInterest2" class="font-bold"></span></p>
+                </div>
+            </div>
+
+            <!-- Growth Chart -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Investment Growth Over Time</h2>
+                <canvas id="growthChart"></canvas>
+            </div>
+
+            <!-- Amortization-style Table -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Year-by-Year Breakdown</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Starting Balance</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contributions</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Interest Earned</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ending Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleBody" class="bg-white divide-y divide-gray-200">
+                            <!-- Table rows will be inserted here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        document.getElementById('calculateBtn').addEventListener('click', () => {
+            calculateAndDisplay(
+                parseFloat(document.getElementById('principal1').value),
+                parseFloat(document.getElementById('monthlyContribution1').value),
+                parseFloat(document.getElementById('annualRate1').value),
+                parseFloat(document.getElementById('principal2').value),
+                parseFloat(document.getElementById('monthlyContribution2').value),
+                parseFloat(document.getElementById('annualRate2').value),
+                parseFloat(document.getElementById('years').value),
+                document.getElementById('compoundingFrequency').value
+            );
+        });
+
+        function calculateAndDisplay(principal1, monthlyContribution1, annualRate1, principal2, monthlyContribution2, annualRate2, years, compoundingFrequency) {
+            // Get display elements
+            const resultsDiv = document.getElementById('results');
+            const errorDiv = document.getElementById('errorMsg');
+            
+            // Hide previous results and errors
+            resultsDiv.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+
+            // --- Input Validation ---
+            if (isNaN(years) || years <= 0) {
+                 showError('Investment period must be a positive number.');
+                return;
+            }
+
+            const isScenario1Valid = !isNaN(principal1) && !isNaN(monthlyContribution1) && !isNaN(annualRate1);
+            const isScenario2Valid = !isNaN(principal2) && !isNaN(monthlyContribution2) && !isNaN(annualRate2);
+
+            if (!isScenario1Valid && !isScenario2Valid) {
+                 showError('Please enter valid numbers for at least one scenario.');
+                return;
+            }
+
+            const results1 = isScenario1Valid ? calculate(principal1, monthlyContribution1, annualRate1, years, compoundingFrequency) : null;
+            const results2 = isScenario2Valid ? calculate(principal2, monthlyContribution2, annualRate2, years, compoundingFrequency) : null;
+
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            
+            // Display Scenario 1 results
+            if (results1) {
+                document.getElementById('futureValue1').textContent = formatter.format(results1.futureValue);
+                document.getElementById('totalContributions1').textContent = formatter.format(results1.totalContributions);
+                document.getElementById('totalInterest1').textContent = formatter.format(results1.totalInterest);
+            } else {
+                 document.getElementById('futureValue1').textContent = "N/A";
+                 document.getElementById('totalContributions1').textContent = "N/A";
+                 document.getElementById('totalInterest1').textContent = "N/A";
+            }
+            
+            // Display Scenario 2 results
+            if (results2) {
+                document.getElementById('futureValue2').textContent = formatter.format(results2.futureValue);
+                document.getElementById('totalContributions2').textContent = formatter.format(results2.totalContributions);
+                document.getElementById('totalInterest2').textContent = formatter.format(results2.totalInterest);
+            } else {
+                 document.getElementById('futureValue2').textContent = "N/A";
+                 document.getElementById('totalContributions2').textContent = "N/A";
+                 document.getElementById('totalInterest2').textContent = "N/A";
+            }
+            
+            // Generate chart and table if at least one scenario is valid
+            if (isScenario1Valid || isScenario2Valid) {
+                generateChart(results1, results2, years);
+                if (isScenario1Valid) {
+                    generateAmortizationTable(principal1, monthlyContribution1, annualRate1, years, compoundingFrequency);
+                } else {
+                    generateAmortizationTable(principal2, monthlyContribution2, annualRate2, years, compoundingFrequency);
+                }
+                 resultsDiv.classList.remove('hidden');
+            }
+        }
+
+        function calculate(principal, monthlyContribution, annualRate, years, compoundingFrequency) {
+            const months = years * 12;
+
+            let numCompoundsPerYear;
+            let rate;
+            switch (compoundingFrequency) {
+                case 'annually':
+                    numCompoundsPerYear = 1;
+                    rate = annualRate / 100;
+                    break;
+                case 'semi-annually':
+                    numCompoundsPerYear = 2;
+                    rate = (annualRate / 100) / 2;
+                    break;
+                case 'quarterly':
+                    numCompoundsPerYear = 4;
+                    rate = (annualRate / 100) / 4;
+                    break;
+                case 'monthly':
+                    numCompoundsPerYear = 12;
+                    rate = (annualRate / 100) / 12;
+                    break;
+                case 'daily':
+                    numCompoundsPerYear = 365;
+                    rate = (annualRate / 100) / 365;
+                    break;
+            }
+            
+            let futureValue = principal;
+            if (monthlyContribution > 0) {
+                 futureValue = (principal + (monthlyContribution * 12 / numCompoundsPerYear)) * Math.pow(1 + rate, numCompoundsPerYear * years);
+            } else {
+                 futureValue = principal * Math.pow(1 + rate, numCompoundsPerYear * years);
+            }
+
+            const totalContributions = principal + (monthlyContribution * months);
+            const totalInterest = futureValue - totalContributions;
+
+            const yearlyData = [];
+            let currentBalance = principal;
+            for (let i = 1; i <= years; i++) {
+                const contributionsThisYear = monthlyContribution * 12;
+                let balanceBeforeInterest = currentBalance + contributionsThisYear;
+                let interestThisYear = balanceBeforeInterest * (annualRate / 100);
+                let endingBalance = balanceBeforeInterest + interestThisYear;
+
+                yearlyData.push({
+                    year: i,
+                    startingBalance: currentBalance,
+                    contributions: contributionsThisYear,
+                    interestEarned: interestThisYear,
+                    endingBalance: endingBalance
+                });
+                currentBalance = endingBalance;
+            }
+
+            return { futureValue, totalContributions, totalInterest, yearlyData };
+        }
+
+        let myChart;
+        function generateChart(results1, results2, years) {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            
+            if (myChart) {
+                myChart.destroy();
+            }
+
+            const labels = Array.from({length: years}, (_, i) => `Year ${i + 1}`);
+
+            const datasets = [];
+
+            if (results1) {
+                const data1 = results1.yearlyData.map(d => d.endingBalance);
+                datasets.push({
+                    label: 'Scenario 1',
+                    data: data1,
+                    borderColor: 'rgb(79, 70, 229)',
+                    backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                    fill: false,
+                    tension: 0.1
+                });
+            }
+
+            if (results2) {
+                const data2 = results2.yearlyData.map(d => d.endingBalance);
+                datasets.push({
+                    label: 'Scenario 2',
+                    data: data2,
+                    borderColor: 'rgb(234, 88, 12)',
+                    backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                    fill: false,
+                    tension: 0.1
+                });
+            }
+
+            myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Value ($)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Years'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateAmortizationTable(principal, monthlyContribution, annualRate, years, compoundingFrequency) {
+            const scheduleBody = document.getElementById('scheduleBody');
+            scheduleBody.innerHTML = '';
+            
+            let currentBalance = principal;
+            const monthlyRate = (annualRate / 100) / 12;
+            const months = years * 12;
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
+            const yearlyData = calculate(principal, monthlyContribution, annualRate, years, compoundingFrequency).yearlyData;
+
+            yearlyData.forEach(data => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${data.year}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatter.format(data.startingBalance)}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatter.format(data.contributions)}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatter.format(data.interestEarned)}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatter.format(data.endingBalance)}</td>
+                `;
+                scheduleBody.appendChild(row);
+            });
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMsg');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

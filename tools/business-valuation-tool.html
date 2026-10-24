@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Business Valuation Tool - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Advanced Business Valuation Tool for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/business-valuation-tool.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/business-valuation-tool.html">
+  <meta property="og:title" content="Advanced Business Valuation Tool - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Advanced Business Valuation Tool for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced Business Valuation Tool - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Advanced Business Valuation Tool for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced Business Valuation Tool</h1>
+      <p>Free interactive Advanced Business Valuation Tool for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-2">Advanced Business Valuation Tool</h1>
+        <p class="text-center text-gray-500 mb-6">
+            Estimate your business value using both the Multiples and Discounted Cash Flow (DCF) methods.
+        </p>
+
+        <!-- Input Sections -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Financial Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">Financial & Valuation Inputs</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="annualRevenue" class="block text-sm font-medium text-gray-700">Current Annual Revenue ($)</label>
+                        <input type="number" id="annualRevenue" placeholder="e.g., 2000000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="annualEarnings" class="block text-sm font-medium text-gray-700">Current Annual Earnings (EBITDA) ($)</label>
+                        <input type="number" id="annualEarnings" placeholder="e.g., 500000" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="revenueMultiple" class="block text-sm font-medium text-gray-700">Revenue Multiple (x)</label>
+                        <input type="number" id="revenueMultiple" placeholder="e.g., 2.5" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="earningsMultiple" class="block text-sm font-medium text-gray-700">Earnings Multiple (x)</label>
+                        <input type="number" id="earningsMultiple" placeholder="e.g., 5" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- DCF Inputs -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">DCF Inputs</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="growthRate" class="block text-sm font-medium text-gray-700">Annual Growth Rate (%)</label>
+                        <input type="number" id="growthRate" placeholder="e.g., 10" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="terminalGrowthRate" class="block text-sm font-medium text-gray-700">Terminal Growth Rate (%)</label>
+                        <input type="number" id="terminalGrowthRate" placeholder="e.g., 3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="wacc" class="block text-sm font-medium text-gray-700">WACC (Discount Rate) (%)</label>
+                        <input type="number" id="wacc" placeholder="e.g., 12" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="dcfPeriod" class="block text-sm font-medium text-gray-700">DCF Forecast Period (Years)</label>
+                        <input type="number" id="dcfPeriod" placeholder="e.g., 5" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="calculateBtn" class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+            Calculate Valuation
+        </button>
+
+        <!-- Result Display -->
+        <div id="results" class="mt-8 p-6 bg-indigo-50 text-indigo-900 rounded-lg hidden">
+            <h2 class="text-xl font-bold text-indigo-800 mb-4">Valuation Results</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded-md shadow-sm">
+                    <h3 class="text-lg font-semibold text-indigo-700 mb-2">Multiples-Based Valuation:</h3>
+                    <p id="revenueValuation" class="text-base font-bold"></p>
+                    <p id="earningsValuation" class="text-base font-bold"></p>
+                    <div id="multiplesRange" class="mt-4 p-2 rounded-md text-center font-bold text-md bg-indigo-100"></div>
+                </div>
+                <div class="bg-white p-4 rounded-md shadow-sm">
+                    <h3 class="text-lg font-semibold text-indigo-700 mb-2">DCF-Based Valuation:</h3>
+                    <p id="dcfValuation" class="text-base font-bold"></p>
+                    <p id="terminalValue" class="text-sm text-gray-600"></p>
+                </div>
+            </div>
+            <div id="combinedRange" class="mt-6 p-4 rounded-md text-center font-bold text-xl bg-indigo-200"></div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="mt-4 p-3 bg-red-100 text-red-700 rounded-md hidden">
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+        document.getElementById('calculateBtn').addEventListener('click', calculateValuation);
+
+        function calculateValuation() {
+            // Get input values
+            const annualRevenue = parseFloat(document.getElementById('annualRevenue').value);
+            const annualEarnings = parseFloat(document.getElementById('annualEarnings').value);
+            const revenueMultiple = parseFloat(document.getElementById('revenueMultiple').value);
+            const earningsMultiple = parseFloat(document.getElementById('earningsMultiple').value);
+
+            const growthRate = parseFloat(document.getElementById('growthRate').value) / 100;
+            const terminalGrowthRate = parseFloat(document.getElementById('terminalGrowthRate').value) / 100;
+            const wacc = parseFloat(document.getElementById('wacc').value) / 100;
+            const dcfPeriod = parseFloat(document.getElementById('dcfPeriod').value);
+
+            // Get display elements
+            const resultsDiv = document.getElementById('results');
+            const errorDiv = document.getElementById('errorMsg');
+            
+            // Hide previous results and errors
+            resultsDiv.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+
+            // --- Input Validation ---
+            if (isNaN(annualRevenue) || isNaN(annualEarnings) || isNaN(revenueMultiple) || isNaN(earningsMultiple) ||
+                isNaN(growthRate) || isNaN(terminalGrowthRate) || isNaN(wacc) || isNaN(dcfPeriod)) {
+                showError('Please fill in all fields with valid numbers.');
+                return;
+            }
+
+            if (annualRevenue < 0 || annualEarnings < 0 || revenueMultiple < 0 || earningsMultiple < 0 ||
+                growthRate < 0 || terminalGrowthRate < 0 || wacc <= 0 || dcfPeriod < 1) {
+                 showError('All values must be non-negative. WACC must be positive, and DCF period must be at least 1.');
+                return;
+            }
+
+            if (wacc <= terminalGrowthRate) {
+                showError('WACC must be greater than the Terminal Growth Rate for the DCF calculation to be valid.');
+                return;
+            }
+
+            // --- Multiples Calculation ---
+            const revenueValuation = annualRevenue * revenueMultiple;
+            const earningsValuation = annualEarnings * earningsMultiple;
+            
+            const minMultiplesValuation = Math.min(revenueValuation, earningsValuation);
+            const maxMultiplesValuation = Math.max(revenueValuation, earningsValuation);
+
+            // --- DCF Calculation ---
+            let dcfValuation = 0;
+            let projectedEarnings = annualEarnings;
+            let terminalValue = 0;
+
+            for (let i = 1; i <= dcfPeriod; i++) {
+                projectedEarnings *= (1 + growthRate);
+                const presentValue = projectedEarnings / Math.pow(1 + wacc, i);
+                dcfValuation += presentValue;
+            }
+
+            // Terminal Value Calculation (Gordon Growth Model)
+            const earningsAfterPeriod = projectedEarnings * (1 + growthRate);
+            terminalValue = earningsAfterPeriod / (wacc - terminalGrowthRate);
+            
+            const pvTerminalValue = terminalValue / Math.pow(1 + wacc, dcfPeriod);
+            dcfValuation += pvTerminalValue;
+
+            // --- Display Results ---
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
+            document.getElementById('revenueValuation').textContent = `Revenue-based: ${formatter.format(revenueValuation)}`;
+            document.getElementById('earningsValuation').textContent = `Earnings-based: ${formatter.format(earningsValuation)}`;
+            document.getElementById('multiplesRange').textContent = `Range: ${formatter.format(minMultiplesValuation)} - ${formatter.format(maxMultiplesValuation)}`;
+
+            document.getElementById('dcfValuation').textContent = `DCF Valuation: ${formatter.format(dcfValuation)}`;
+            document.getElementById('terminalValue').textContent = `(Terminal Value: ${formatter.format(pvTerminalValue)})`;
+
+            const minCombined = Math.min(minMultiplesValuation, dcfValuation);
+            const maxCombined = Math.max(maxMultiplesValuation, dcfValuation);
+            document.getElementById('combinedRange').textContent = `Combined Valuation Range: ${formatter.format(minCombined)} - ${formatter.format(maxCombined)}`;
+            
+            resultsDiv.classList.remove('hidden');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMsg');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

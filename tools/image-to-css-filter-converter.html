@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Image to CSS Filter Converter - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Premium Image to CSS Filter Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/image-to-css-filter-converter.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/image-to-css-filter-converter.html">
+  <meta property="og:title" content="Premium Image to CSS Filter Converter - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Premium Image to CSS Filter Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium Image to CSS Filter Converter - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Premium Image to CSS Filter Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        :root {
+            --primary: #4a6cf7;
+            --primary-dark: #3a56d4;
+            --dark: #1d2b3a;
+            --light: #f5f8ff;
+            --gray: #e2e8f0;
+            --gray-dark: #94a3b8;
+            --radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .app-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        @media (max-width: 900px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .controls {
+            padding: 30px;
+            background: var(--light);
+        }
+        
+        .upload-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--gray);
+            border-radius: var(--radius);
+            padding: 40px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary);
+            background: #fafbff;
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .upload-area p {
+            margin: 10px 0;
+            color: var(--gray-dark);
+        }
+        
+        #file-input {
+            display: none;
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .filter-controls {
+            margin-top: 30px;
+        }
+        
+        .filter-group {
+            margin-bottom: 20px;
+        }
+        
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-value {
+            color: var(--primary);
+            font-weight: 600;
+            background: rgba(74, 108, 247, 0.1);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--gray);
+            outline: none;
+            border-radius: 3px;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        .preview {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+        
+        .preview-header {
+            margin-bottom: 20px;
+        }
+        
+        .image-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            border-radius: var(--radius);
+            overflow: hidden;
+            min-height: 300px;
+            position: relative;
+        }
+        
+        #preview-image {
+            max-width: 100%;
+            max-height: 400px;
+            display: block;
+            transition: filter 0.3s ease;
+        }
+        
+        .code-output {
+            margin-top: 30px;
+            background: var(--dark);
+            color: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            overflow: auto;
+            position: relative;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .code-title {
+            font-weight: 600;
+        }
+        
+        #copy-code {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        #copy-code:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        #css-code {
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+        
+        .reset-btn {
+            background: #ff4757;
+            margin-left: 10px;
+        }
+        
+        .reset-btn:hover {
+            background: #ff3745;
+        }
+        
+        .empty-state {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--gray-dark);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Design & Development</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Premium Image to CSS Filter Converter</h1>
+      <p>Free interactive Premium Image to CSS Filter Converter for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+    <div class="container">
+        <header>
+            <h1>Image to CSS Filter Converter</h1>
+            <p class="subtitle">Upload an image, apply CSS filters in real-time, and get the generated code for your project</p>
+        </header>
+        
+        <div class="app-container">
+            <div class="controls">
+                <div class="upload-container">
+                    <div class="upload-area" id="upload-area">
+                        <i>📁</i>
+                        <h3>Drag & Drop Your Image</h3>
+                        <p>or</p>
+                        <button class="btn" id="browse-btn">Browse Files</button>
+                        <input type="file" id="file-input" accept="image/*">
+                    </div>
+                </div>
+                
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span class="filter-label">Grayscale</span>
+                            <span class="filter-value" id="grayscale-value">0%</span>
+                        </div>
+                        <input type="range" class="slider" id="grayscale" min="0" max="100" value="0">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span class="filter-label">Sepia</span>
+                            <span class="filter-value" id="sepia-value">0%</span>
+                        </div>
+                        <input type="range" class="slider" id="sepia" min="0" max="100" value="0">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span class="filter-label">Blur</span>
+                            <span class="filter-value" id="blur-value">0px</span>
+                        </div>
+                        <input type="range" class="slider" id="blur" min="0" max="20" value="0">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span class="filter-label">Brightness</span>
+                            <span class="filter-value" id="brightness-value">100%</span>
+                        </div>
+                        <input type="range" class="slider" id="brightness" min="0" max="200" value="100">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span class="filter-label">Contrast</span>
+                            <span class="filter-value" id="contrast-value">100%</span>
+                        </div>
+                        <input type="range" class="slider" id="contrast" min="0" max="200" value="100">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span class="filter-label">Hue Rotate</span>
+                            <span class="filter-value" id="hue-rotate-value">0deg</span>
+                        </div>
+                        <input type="range" class="slider" id="hue-rotate" min="0" max="360" value="0">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span class="filter-label">Saturation</span>
+                            <span class="filter-value" id="saturate-value">100%</span>
+                        </div>
+                        <input type="range" class="slider" id="saturate" min="0" max="200" value="100">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span class="filter-label">Invert</span>
+                            <span class="filter-value" id="invert-value">0%</span>
+                        </div>
+                        <input type="range" class="slider" id="invert" min="0" max="100" value="0">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span class="filter-label">Opacity</span>
+                            <span class="filter-value" id="opacity-value">100%</span>
+                        </div>
+                        <input type="range" class="slider" id="opacity" min="0" max="100" value="100">
+                    </div>
+                    
+                    <button class="btn" id="reset-btn">Reset All Filters</button>
+                </div>
+            </div>
+            
+            <div class="preview">
+                <div class="preview-header">
+                    <h2>Preview</h2>
+                </div>
+                
+                <div class="image-container">
+                    <div class="empty-state" id="empty-state">
+                        <i>🖼️</i>
+                        <p>Upload an image to get started</p>
+                    </div>
+                    <img id="preview-image" src="" alt="Your image preview">
+                </div>
+                
+                <div class="code-output">
+                    <div class="code-header">
+                        <div class="code-title">Generated CSS Code</div>
+                        <button id="copy-code">Copy Code</button>
+                    </div>
+                    <pre id="css-code">/* Your CSS will appear here after applying filters */</pre>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Premium Image to CSS Filter Converter © 2023 | Created with ❤️</p>
+        </footer>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const fileInput = document.getElementById('file-input');
+            const browseBtn = document.getElementById('browse-btn');
+            const uploadArea = document.getElementById('upload-area');
+            const previewImage = document.getElementById('preview-image');
+            const emptyState = document.getElementById('empty-state');
+            const resetBtn = document.getElementById('reset-btn');
+            const copyCodeBtn = document.getElementById('copy-code');
+            const cssCode = document.getElementById('css-code');
+            
+            // Filter sliders
+            const grayscaleSlider = document.getElementById('grayscale');
+            const sepiaSlider = document.getElementById('sepia');
+            const blurSlider = document.getElementById('blur');
+            const brightnessSlider = document.getElementById('brightness');
+            const contrastSlider = document.getElementById('contrast');
+            const hueRotateSlider = document.getElementById('hue-rotate');
+            const saturateSlider = document.getElementById('saturate');
+            const invertSlider = document.getElementById('invert');
+            const opacitySlider = document.getElementById('opacity');
+            
+            // Filter value displays
+            const grayscaleValue = document.getElementById('grayscale-value');
+            const sepiaValue = document.getElementById('sepia-value');
+            const blurValue = document.getElementById('blur-value');
+            const brightnessValue = document.getElementById('brightness-value');
+            const contrastValue = document.getElementById('contrast-value');
+            const hueRotateValue = document.getElementById('hue-rotate-value');
+            const saturateValue = document.getElementById('saturate-value');
+            const invertValue = document.getElementById('invert-value');
+            const opacityValue = document.getElementById('opacity-value');
+            
+            // Event Listeners
+            browseBtn.addEventListener('click', () => fileInput.click());
+            uploadArea.addEventListener('click', () => fileInput.click());
+            uploadArea.addEventListener('dragover', handleDragOver);
+            uploadArea.addEventListener('drop', handleDrop);
+            fileInput.addEventListener('change', handleFileSelect);
+            resetBtn.addEventListener('click', resetFilters);
+            copyCodeBtn.addEventListener('click', copyCSSCcode);
+            
+            // Add input event listeners to all sliders
+            const sliders = [
+                grayscaleSlider, sepiaSlider, blurSlider, brightnessSlider, 
+                contrastSlider, hueRotateSlider, saturateSlider, invertSlider, opacitySlider
+            ];
+            
+            sliders.forEach(slider => {
+                slider.addEventListener('input', updateFilters);
+            });
+            
+            // Functions
+            function handleDragOver(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                uploadArea.style.borderColor = 'var(--primary)';
+                uploadArea.style.backgroundColor = '#fafbff';
+            }
+            
+            function handleDrop(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                uploadArea.style.borderColor = 'var(--gray)';
+                uploadArea.style.backgroundColor = 'white';
+                
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                    fileInput.files = e.dataTransfer.files;
+                    handleFileSelect(e);
+                }
+            }
+            
+            function handleFileSelect(e) {
+                const file = e.target.files[0] || e.dataTransfer.files[0];
+                
+                if (!file || !file.type.match('image.*')) {
+                    alert('Please select a valid image file.');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    emptyState.style.display = 'none';
+                    previewImage.style.display = 'block';
+                    resetFilters();
+                };
+                
+                reader.readAsDataURL(file);
+            }
+            
+            function updateFilters() {
+                // Get values from sliders
+                const grayscaleVal = grayscaleSlider.value;
+                const sepiaVal = sepiaSlider.value;
+                const blurVal = blurSlider.value;
+                const brightnessVal = brightnessSlider.value;
+                const contrastVal = contrastSlider.value;
+                const hueRotateVal = hueRotateSlider.value;
+                const saturateVal = saturateSlider.value;
+                const invertVal = invertSlider.value;
+                const opacityVal = opacitySlider.value;
+                
+                // Update value displays
+                grayscaleValue.textContent = `${grayscaleVal}%`;
+                sepiaValue.textContent = `${sepiaVal}%`;
+                blurValue.textContent = `${blurVal}px`;
+                brightnessValue.textContent = `${brightnessVal}%`;
+                contrastValue.textContent = `${contrastVal}%`;
+                hueRotateValue.textContent = `${hueRotateVal}deg`;
+                saturateValue.textContent = `${saturateVal}%`;
+                invertValue.textContent = `${invertVal}%`;
+                opacityValue.textContent = `${opacityVal}%`;
+                
+                // Build the filter string
+                const filterString = `
+                    grayscale(${grayscaleVal}%)
+                    sepia(${sepiaVal}%)
+                    blur(${blurVal}px)
+                    brightness(${brightnessVal}%)
+                    contrast(${contrastVal}%)
+                    hue-rotate(${hueRotateVal}deg)
+                    saturate(${saturateVal}%)
+                    invert(${invertVal}%)
+                    opacity(${opacityVal}%)
+                `.trim().replace(/\s+/g, ' ');
+                
+                // Apply the filter to the image
+                previewImage.style.filter = filterString;
+                
+                // Generate the CSS code
+                cssCode.textContent = `/* CSS Filter Code */
+.filtered-image {
+  filter: ${filterString};
+  /* For better browser compatibility */
+  -webkit-filter: ${filterString};
+}`;
+            }
+            
+            function resetFilters() {
+                grayscaleSlider.value = 0;
+                sepiaSlider.value = 0;
+                blurSlider.value = 0;
+                brightnessSlider.value = 100;
+                contrastSlider.value = 100;
+                hueRotateSlider.value = 0;
+                saturateSlider.value = 100;
+                invertSlider.value = 0;
+                opacitySlider.value = 100;
+                
+                updateFilters();
+            }
+            
+            function copyCSSCcode() {
+                const code = cssCode.textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    // Show feedback
+                    const originalText = copyCodeBtn.textContent;
+                    copyCodeBtn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyCodeBtn.textContent = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    alert('Failed to copy code to clipboard.');
+                });
+            }
+            
+            // Initialize
+            resetFilters();
+        });
+    </script>
+</body>
+</html>

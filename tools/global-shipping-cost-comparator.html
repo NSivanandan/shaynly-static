@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Shipping Cost Comparator (Simulated) - Shaynly Toolkit</title>
+  <meta name="description" content="Free interactive Global Shipping Cost Comparator (Simulated) for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <link rel="canonical" href="https://shaynly.com/tools/global-shipping-cost-comparator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/global-shipping-cost-comparator.html">
+  <meta property="og:title" content="Global Shipping Cost Comparator (Simulated) - Shaynly Toolkit">
+  <meta property="og:description" content="Free interactive Global Shipping Cost Comparator (Simulated) for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Global Shipping Cost Comparator (Simulated) - Shaynly Toolkit">
+  <meta name="twitter:description" content="Free interactive Global Shipping Cost Comparator (Simulated) for business owners, marketers, and developers. Fast, private, runs 100% in browser.">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .carrier-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .cheapest {
+            border-color: #10b981; /* green-500 */
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            transform: scale(1.02);
+            position: relative;
+            z-index: 10;
+        }
+        .service-option.cheapest-option {
+            background-color: #ecfdf5; /* green-50 */
+            border-left-color: #10b981; /* green-500 */
+        }
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Business & Finance</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Global Shipping Cost Comparator (Simulated)</h1>
+      <p>Free interactive Global Shipping Cost Comparator (Simulated) for business owners, marketers, and developers. Fast, private, runs 100% in browser.</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+      
+
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-4xl">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">📦 Global Shipping Cost Comparator (Simulated)</h1>
+        <p class="text-center text-gray-500 mb-8">Compare simulated international shipping costs based on weight and dimensions.</p>
+
+        <!-- Input Form -->
+        <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="weight" class="block text-sm font-medium text-gray-700 mb-1">Package Weight (lbs)</label>
+                    <input type="number" id="weight" placeholder="e.g., 5" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors" min="0" step="0.1">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Dimensions (inches)</label>
+                    <div class="flex space-x-2">
+                        <input type="number" id="length" placeholder="L" class="w-1/3 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" min="0" step="0.1">
+                        <input type="number" id="width" placeholder="W" class="w-1/3 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" min="0" step="0.1">
+                        <input type="number" id="height" placeholder="H" class="w-1/3 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" min="0" step="0.1">
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="origin-country" class="block text-sm font-medium text-gray-700 mb-1">Origin Country</label>
+                    <select id="origin-country" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                        <option value="US" selected>United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="AU">Australia</option>
+                        <option value="IN">India</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="destination-country" class="block text-sm font-medium text-gray-700 mb-1">Destination Country</label>
+                    <select id="destination-country" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="GB" selected>United Kingdom</option>
+                        <option value="AU">Australia</option>
+                        <option value="IN">India</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="origin-zip" class="block text-sm font-medium text-gray-700 mb-1">Origin Postal Code</label>
+                    <input type="text" id="origin-zip" placeholder="e.g., 90210 / 400001" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                </div>
+                <div>
+                    <label for="destination-zip" class="block text-sm font-medium text-gray-700 mb-1">Destination Postal Code</label>
+                    <input type="text" id="destination-zip" placeholder="e.g., SW1A 0AA / 400001" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                </div>
+            </div>
+            <button id="compare-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Compare Costs
+            </button>
+        </div>
+        
+        <!-- Results Display Area -->
+        <div id="results-container" class="mt-8 space-y-6">
+            <!-- Results will be dynamically inserted here -->
+        </div>
+
+    </div>
+
+    <!-- Custom Modal for Alerts -->
+    <div id="alert-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Error</h3>
+            <p id="alert-message" class="text-gray-700 mb-4"></p>
+            <button id="alert-close-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+                OK
+            </button>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get references to all necessary DOM elements
+            const weightInput = document.getElementById('weight');
+            const lengthInput = document.getElementById('length');
+            const widthInput = document.getElementById('width');
+            const heightInput = document.getElementById('height');
+            const originCountrySelect = document.getElementById('origin-country');
+            const destinationCountrySelect = document.getElementById('destination-country');
+            const originZipInput = document.getElementById('origin-zip');
+            const destinationZipInput = document.getElementById('destination-zip');
+            const compareBtn = document.getElementById('compare-btn');
+            const resultsContainer = document.getElementById('results-container');
+            const alertModal = document.getElementById('alert-modal');
+            const alertMessage = document.getElementById('alert-message');
+            const alertCloseBtn = document.getElementById('alert-close-btn');
+
+            // Hardcoded rates to simulate a backend lookup
+            // Costs are based on a base rate and a multiplier per pound of billable weight
+            // Estimated delivery times are also hardcoded for demonstration
+            const rates = {
+                usps: {
+                    name: "USPS",
+                    services: [
+                        { name: "First-Class International", multiplier: 2.5, base: 7.0, estDelivery: "7-21 business days" },
+                        { name: "Priority Mail International", multiplier: 4.5, base: 15.0, estDelivery: "6-10 business days" },
+                        { name: "Express International", multiplier: 8.0, base: 30.0, estDelivery: "3-5 business days" }
+                    ]
+                },
+                fedex: {
+                    name: "FedEx",
+                    services: [
+                        { name: "International Economy", multiplier: 5.2, base: 20.0, estDelivery: "3-6 business days" },
+                        { name: "International Priority", multiplier: 7.5, base: 40.0, estDelivery: "1-3 business days" }
+                    ]
+                },
+                ups: {
+                    name: "UPS",
+                    services: [
+                        { name: "Worldwide Expedited", multiplier: 5.0, base: 22.0, estDelivery: "2-5 business days" },
+                        { name: "Worldwide Saver", multiplier: 7.0, base: 35.0, estDelivery: "1-3 business days" }
+                    ]
+                }
+            };
+
+            // Dimensional Weight Divisor
+            const DIMENSIONAL_WEIGHT_DIVISOR = 139; // A common divisor for international shipping
+
+            /**
+             * Calculates the shipping cost for a given service and billable weight.
+             * @param {object} service - The service object from the rates.
+             * @param {number} billableWeight - The weight used for cost calculation.
+             * @returns {number} The calculated shipping cost.
+             */
+            const calculateCost = (service, billableWeight) => {
+                // Introduce a bit of random variance to simulate real-world pricing
+                const variance = 1 + (Math.random() - 0.5) * 0.1; // +/- 5%
+                const cost = (service.base + (billableWeight * service.multiplier)) * variance;
+                return Math.max(cost, 10); // Ensure a minimum cost for international
+            };
+
+            // Function to display a custom alert modal
+            const showAlert = (message) => {
+                alertMessage.textContent = message;
+                alertModal.classList.remove('hidden');
+            };
+
+            // Event listener for the compare button
+            compareBtn.addEventListener('click', () => {
+                // Get and validate input values
+                const weight = parseFloat(weightInput.value);
+                const length = parseFloat(lengthInput.value);
+                const width = parseFloat(widthInput.value);
+                const height = parseFloat(heightInput.value);
+                const originCountry = originCountrySelect.value;
+                const destinationCountry = destinationCountrySelect.value;
+                const originZip = originZipInput.value.trim();
+                const destinationZip = destinationZipInput.value.trim();
+
+                if (isNaN(weight) || weight <= 0) {
+                    showAlert("Please enter a valid package weight greater than zero.");
+                    return;
+                }
+                if (isNaN(length) || isNaN(width) || isNaN(height) || length <= 0 || width <= 0 || height <= 0) {
+                    showAlert("Please enter valid dimensions greater than zero.");
+                    return;
+                }
+                if (!originZip || !destinationZip) {
+                    showAlert("Please enter valid postal codes for both origin and destination.");
+                    return;
+                }
+                if (originCountry === destinationCountry) {
+                    showAlert("The current rates are for international shipping. Please select a different destination country or use a domestic comparator.");
+                    return;
+                }
+                
+                // Calculate dimensional weight
+                const cubicVolume = length * width * height;
+                const dimensionalWeight = cubicVolume / DIMENSIONAL_WEIGHT_DIVISOR;
+                const billableWeight = Math.max(weight, dimensionalWeight);
+                
+                // Clear previous results
+                resultsContainer.innerHTML = '';
+                
+                let allResults = [];
+
+                // Calculate costs for each carrier and service
+                for (const carrier in rates) {
+                    const carrierData = rates[carrier];
+                    carrierData.services.forEach(service => {
+                        const cost = calculateCost(service, billableWeight);
+                        allResults.push({
+                            carrier: carrierData.name,
+                            serviceName: service.name,
+                            cost: cost,
+                            estDelivery: service.estDelivery
+                        });
+                    });
+                }
+
+                // Find the cheapest overall option
+                let cheapestOption = null;
+                allResults.forEach(result => {
+                    if (!cheapestOption || result.cost < cheapestOption.cost) {
+                        cheapestOption = result;
+                    }
+                });
+
+                // Group results by carrier
+                const groupedResults = allResults.reduce((acc, result) => {
+                    if (!acc[result.carrier]) {
+                        acc[result.carrier] = [];
+                    }
+                    acc[result.carrier].push(result);
+                    return acc;
+                }, {});
+
+                // Display the results
+                for (const carrier in groupedResults) {
+                    const carrierDiv = document.createElement('div');
+                    carrierDiv.classList.add('p-6', 'rounded-lg', 'border-2', 'bg-white', 'shadow-sm');
+
+                    carrierDiv.innerHTML = `
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">${carrier}</h3>
+                        <div class="space-y-4"></div>
+                    `;
+
+                    const servicesDiv = carrierDiv.querySelector('div.space-y-4');
+
+                    groupedResults[carrier].forEach(item => {
+                        const isCheapest = cheapestOption && item.carrier === cheapestOption.carrier && item.serviceName === cheapestOption.serviceName;
+                        const serviceDiv = document.createElement('div');
+                        serviceDiv.classList.add('service-option', 'flex', 'justify-between', 'items-center', 'p-4', 'rounded-lg', 'border', 'border-gray-200');
+                        if (isCheapest) {
+                             serviceDiv.classList.add('cheapest-option', 'font-semibold', 'border-l-4');
+                        }
+
+                        serviceDiv.innerHTML = `
+                            <div>
+                                <p class="text-lg text-gray-800">${item.serviceName}</p>
+                                <p class="text-sm text-gray-500">Est. Delivery: ${item.estDelivery}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-blue-600">$${item.cost.toFixed(2)}</p>
+                            </div>
+                        `;
+                        servicesDiv.appendChild(serviceDiv);
+                    });
+                    resultsContainer.appendChild(carrierDiv);
+                }
+
+                // Add a summary of the cheapest option at the top
+                if (cheapestOption) {
+                    const summaryDiv = document.createElement('div');
+                    summaryDiv.classList.add('p-6', 'rounded-xl', 'bg-green-50', 'border-2', 'border-green-500', 'shadow-md', 'text-center', 'mb-6');
+                    summaryDiv.innerHTML = `
+                        <h3 class="text-2xl font-bold text-green-600">Cheapest Option Found!</h3>
+                        <p class="text-lg text-gray-700 mt-2">
+                            ${cheapestOption.carrier} - ${cheapestOption.serviceName} for 
+                            <span class="font-extrabold text-3xl text-blue-600">$${cheapestOption.cost.toFixed(2)}</span>
+                        </p>
+                        <p class="text-sm text-gray-500 mt-1">Est. Delivery: ${cheapestOption.estDelivery}</p>
+                    `;
+                    resultsContainer.prepend(summaryDiv);
+                }
+            });
+
+            // Event listener to close the modal
+            alertCloseBtn.addEventListener('click', () => {
+                alertModal.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced AdSense Revenue Calculator - Shaynly Toolkit</title>
+  <meta name="description" content="Estimate your potential AdSense earnings with our advanced calculator. Factor in niche, GEO, CTR, CPC, fill rate, viewability, and explore">
+  <link rel="canonical" href="https://shaynly.com/tools/adsense-revenue-calculator.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/adsense-revenue-calculator.html">
+  <meta property="og:title" content="Advanced AdSense Revenue Calculator - Shaynly Toolkit">
+  <meta property="og:description" content="Estimate your potential AdSense earnings with our advanced calculator. Factor in niche, GEO, CTR, CPC, fill rate, viewability, and explore">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced AdSense Revenue Calculator - Shaynly Toolkit">
+  <meta name="twitter:description" content="Estimate your potential AdSense earnings with our advanced calculator. Factor in niche, GEO, CTR, CPC, fill rate, viewability, and explore">
+  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0');
+  </script>
+
+  <!-- Global Tool Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./core/shaynly.css">
+
+  <style>
+    .tool-header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    .tool-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .tool-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .tool-back-link:hover {
+      text-decoration: underline;
+    }
+    .tool-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .tool-intro {
+      margin-bottom: 2rem;
+    }
+    .tool-intro h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .tool-intro p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .ad-slot {
+      margin: 2rem 0;
+      text-align: center;
+      min-height: 90px;
+      background: var(--surface-light);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  </style>
+
+  <style>
+        /*
+         * ADVANCED ADSENSE REVENUE CALCULATOR (ASRC) STYLES
+         * Prefix: asrc-
+         */
+        :root {
+            --asrc-primary-color: #4A90E2; /* Professional Blue */
+            --asrc-primary-hover-color: #357ABD;
+            --asrc-secondary-color: #50E3C2; /* Teal/Mint Green Accent */
+            --asrc-text-color: #333;
+            --asrc-text-muted-color: #777;
+            --asrc-background-color: #F7F9FC;
+            --asrc-surface-color: #FFFFFF;
+            --asrc-border-color: #E0E6ED;
+            --asrc-success-color: #7ED321; /* Green for positive results */
+            --asrc-warning-color: #F5A623; /* Orange for tips/warnings */
+            --asrc-danger-color: #D0021B;  /* Red for errors (if any) */
+
+            --asrc-font-primary: 'Poppins', 'Arial', sans-serif;
+            --asrc-font-secondary: 'Roboto', 'Arial', sans-serif;
+
+            --asrc-border-radius: 8px;
+            --asrc-spacing-unit: 16px;
+            --asrc-transition-speed: 0.25s ease-in-out;
+            --asrc-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- SCOPED RESET & BASE --- */
+        #asrc-tool-container,
+        #asrc-tool-container *,
+        #asrc-tool-container *::before,
+        #asrc-tool-container *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            text-decoration: none;
+            list-style: none;
+            background: transparent;
+            color: inherit;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        #asrc-tool-container {
+            font-family: var(--asrc-font-secondary);
+            background-color: var(--asrc-background-color);
+            color: var(--asrc-text-color);
+            line-height: 1.6;
+            padding: calc(var(--asrc-spacing-unit) * 1.5);
+        }
+        #asrc-tool-container a {
+            color: var(--asrc-primary-color);
+            text-decoration: none;
+        }
+        #asrc-tool-container a:hover {
+            color: var(--asrc-primary-hover-color);
+            text-decoration: underline;
+        }
+
+        /* --- LAYOUT --- */
+        #asrc-tool-container .asrc-main-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--asrc-surface-color);
+            padding: calc(var(--asrc-spacing-unit) * 2);
+            border-radius: var(--asrc-border-radius);
+            box-shadow: var(--asrc-shadow);
+        }
+
+        #asrc-tool-container .asrc-header {
+            text-align: center;
+            margin-bottom: calc(var(--asrc-spacing-unit) * 2);
+        }
+        #asrc-tool-container .asrc-header h1 {
+            font-family: var(--asrc-font-primary);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--asrc-primary-color);
+            margin-bottom: calc(var(--asrc-spacing-unit) * 0.5);
+        }
+        #asrc-tool-container .asrc-header p {
+            font-size: 1.1rem;
+            color: var(--asrc-text-muted-color);
+        }
+
+        #asrc-tool-container .asrc-calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: calc(var(--asrc-spacing-unit) * 2.5);
+        }
+        @media (min-width: 768px) {
+            #asrc-tool-container .asrc-calculator-grid {
+                grid-template-columns: 1fr 1fr; /* Inputs and Results side-by-side */
+            }
+        }
+
+        #asrc-tool-container .asrc-input-section, 
+        #asrc-tool-container .asrc-results-section {
+            padding: calc(var(--asrc-spacing-unit) * 1.5);
+            background-color: var(--asrc-surface-color); /* Keep surface color for inner cards if needed */
+            border-radius: var(--asrc-border-radius);
+            /* box-shadow: 0 2px 8px rgba(0,0,0,0.05); */ /* Lighter shadow for inner cards */
+        }
+         #asrc-tool-container .asrc-input-section {
+            border: 1px solid var(--asrc-border-color);
+         }
+
+
+        #asrc-tool-container .asrc-section-title {
+            font-family: var(--asrc-font-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--asrc-primary-color);
+            margin-bottom: calc(var(--asrc-spacing-unit) * 1.5);
+            padding-bottom: calc(var(--asrc-spacing-unit) * 0.5);
+            border-bottom: 2px solid var(--asrc-secondary-color);
+            display: flex;
+            align-items: center;
+        }
+        #asrc-tool-container .asrc-section-title i {
+            margin-right: calc(var(--asrc-spacing-unit) * 0.5);
+            color: var(--asrc-secondary-color);
+        }
+
+
+        /* --- FORM ELEMENTS --- */
+        #asrc-tool-container .asrc-form-group {
+            margin-bottom: calc(var(--asrc-spacing-unit) * 1.25);
+        }
+        #asrc-tool-container .asrc-form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: calc(var(--asrc-spacing-unit) * 0.5);
+            color: var(--asrc-text-color);
+            font-size: 0.95rem;
+        }
+        #asrc-tool-container .asrc-input-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        #asrc-tool-container .asrc-input, 
+        #asrc-tool-container .asrc-select {
+            width: 100%;
+            padding: calc(var(--asrc-spacing-unit) * 0.75);
+            border: 1px solid var(--asrc-border-color);
+            border-radius: var(--asrc-border-radius);
+            font-size: 1rem;
+            font-family: var(--asrc-font-secondary);
+            transition: border-color var(--asrc-transition-speed), box-shadow var(--asrc-transition-speed);
+            background-color: var(--asrc-surface-color);
+            color: var(--asrc-text-color);
+        }
+        #asrc-tool-container .asrc-input:focus, 
+        #asrc-tool-container .asrc-select:focus {
+            outline: none;
+            border-color: var(--asrc-primary-color);
+            box-shadow: 0 0 0 3px rgba(var(--asrc-primary-color-rgb, 74,144,226), 0.2); /* Fallback if CSS var not found */
+        }
+        #asrc-tool-container .asrc-input-suffix {
+            margin-left: calc(var(--asrc-spacing-unit) * 0.5);
+            font-weight: 500;
+            color: var(--asrc-text-muted-color);
+        }
+        #asrc-tool-container .asrc-slider {
+            width: 100%;
+            margin-top: calc(var(--asrc-spacing-unit) * 0.5);
+            cursor: pointer;
+        }
+        /* Custom slider styles */
+        #asrc-tool-container .asrc-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            background: var(--asrc-highlight-color, #ddd); /* Fallback for slider track */
+            border-radius: 4px;
+            outline: none;
+        }
+        #asrc-tool-container .asrc-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--asrc-primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+        #asrc-tool-container .asrc-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--asrc-primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none; /* Important for Firefox */
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+        #asrc-tool-container .asrc-slider-value {
+            display: inline-block;
+            min-width: 60px; /* Ensure space for value */
+            text-align: right;
+            font-weight: 500;
+            color: var(--asrc-primary-color);
+        }
+
+
+        /* --- RESULTS DISPLAY --- */
+        #asrc-tool-container .asrc-results-section {
+            background-color: var(--asrc-highlight-color, #e9f3ff); /* Fallback for results bg */
+            border: 1px solid var(--asrc-border-color);
+        }
+        #asrc-tool-container .asrc-result-item {
+            margin-bottom: var(--asrc-spacing-unit);
+            padding: var(--asrc-spacing-unit);
+            background-color: var(--asrc-surface-color);
+            border-radius: var(--asrc-border-radius);
+            border-left: 5px solid var(--asrc-primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+        #asrc-tool-container .asrc-result-item strong {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--asrc-success-color);
+            font-family: var(--asrc-font-primary);
+        }
+        #asrc-tool-container .asrc-result-item span {
+            font-size: 0.9rem;
+            color: var(--asrc-text-muted-color);
+        }
+        #asrc-tool-container .asrc-calculated-metric {
+            font-size: 0.95rem;
+            color: var(--asrc-text-muted-color);
+            margin-top: calc(var(--asrc-spacing-unit) * 0.75);
+        }
+        #asrc-tool-container .asrc-calculated-metric strong {
+            color: var(--asrc-primary-color);
+            font-size: 1em; /* Keep same size */
+            display: inline;
+        }
+
+
+        /* --- OPTIMIZATION TIPS --- */
+        #asrc-tool-container .asrc-optimization-tips {
+            margin-top: calc(var(--asrc-spacing-unit) * 2.5);
+            padding: calc(var(--asrc-spacing-unit) * 1.5);
+            background-color: var(--asrc-surface-color);
+            border-radius: var(--asrc-border-radius);
+            border: 1px solid var(--asrc-border-color);
+        }
+        #asrc-tool-container .asrc-tip {
+            padding: var(--asrc-spacing-unit);
+            margin-bottom: var(--asrc-spacing-unit);
+            border-radius: var(--asrc-border-radius);
+            border-left: 4px solid var(--asrc-warning-color);
+            background-color: #FFF9E8; /* Light yellow for tips */
+            color: #7A5B00;
+            font-size: 0.9rem;
+        }
+        #asrc-tool-container .asrc-tip i {
+            margin-right: calc(var(--asrc-spacing-unit) * 0.5);
+            color: var(--asrc-warning-color);
+        }
+        #asrc-tool-container .asrc-tip:last-child { margin-bottom: 0; }
+
+        /* --- DISCLAIMER & FOOTER --- */
+        #asrc-tool-container .asrc-disclaimer {
+            margin-top: calc(var(--asrc-spacing-unit) * 2);
+            padding: var(--asrc-spacing-unit);
+            background-color: var(--asrc-highlight-color, #f0f0f0);
+            border-radius: var(--asrc-border-radius);
+            font-size: 0.85rem;
+            text-align: center;
+            color: var(--asrc-text-muted-color);
+            border: 1px dashed var(--asrc-border-color);
+        }
+        #asrc-tool-container .asrc-footer {
+            text-align: center;
+            margin-top: calc(var(--asrc-spacing-unit) * 2);
+            padding-top: var(--asrc-spacing-unit);
+            border-top: 1px solid var(--asrc-border-color);
+            font-size: 0.85rem;
+            color: var(--asrc-text-muted-color);
+        }
+
+        #asrc-tool-container .asrc-sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+        #asrc-tool-container .asrc-hidden {
+            display: none !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            #asrc-tool-container .asrc-header h1 { font-size: 1.8rem; }
+            #asrc-tool-container .asrc-header p { font-size: 1rem; }
+            #asrc-tool-container .asrc-main-wrapper { padding: var(--asrc-spacing-unit); }
+            #asrc-tool-container .asrc-section-title { font-size: 1.3rem; }
+        }
+
+    </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="tool-header-bar">
+    <div class="tool-header-inner">
+      <a href="/tools/" class="tool-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shaynly Toolkit
+      </a>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <span class="cat-badge" style="background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Marketing & SEO</span>
+        <a href="/" style="font-weight:700;color:var(--text);text-decoration:none;font-size:0.95rem;">Shaynly Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="tool-intro">
+      <h1>Advanced AdSense Revenue Calculator</h1>
+      <p>Estimate your potential AdSense earnings with our advanced calculator. Factor in niche, GEO, CTR, CPC, fill rate, viewability, and explore</p>
+    </div>
+
+    <!-- Top Ad Placement -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Interactive Tool Body -->
+    <div class="tool-render-area">
+       <!-- This body tag is for standalone testing -->
+
+<div id="asrc-tool-container">
+    <main class="asrc-main-wrapper" role="main">
+        <header class="asrc-header">
+            <h1><i class="fas fa-calculator"></i> Advanced AdSense Revenue Calculator</h1>
+            <p>Estimate your potential AdSense earnings with powerful insights.</p>
+        </header>
+
+        <form id="asrc-calculator-form" class="asrc-calculator-form">
+            <div class="asrc-calculator-grid">
+                <section class="asrc-input-section" aria-labelledby="asrc-input-title">
+                    <h2 id="asrc-input-title" class="asrc-section-title"><i class="fas fa-edit"></i> Your Website Metrics</h2>
+                    
+                    <div class="asrc-form-group">
+                        <label for="asrc-impressions">Monthly Page Impressions:</label>
+                        <div class="asrc-input-wrapper">
+                            <input type="number" id="asrc-impressions" class="asrc-input" value="100000" min="1000" step="1000" required>
+                            <span id="asrc-impressions-value-display" class="asrc-slider-value" style="margin-left:10px;">100,000</span>
+                        </div>
+                        <input type="range" id="asrc-impressions-slider" class="asrc-slider" min="1000" max="5000000" step="1000" value="100000" aria-labelledby="asrc-impressions">
+                    </div>
+
+                    <div class="asrc-form-group">
+                        <label for="asrc-ctr">Average Page CTR (%):</label>
+                        <div class="asrc-input-wrapper">
+                            <input type="number" id="asrc-ctr" class="asrc-input" value="1.5" min="0.1" max="15" step="0.1" required>
+                            <span class="asrc-input-suffix">%</span>
+                        </div>
+                         <input type="range" id="asrc-ctr-slider" class="asrc-slider" min="0.1" max="15" step="0.1" value="1.5" aria-labelledby="asrc-ctr">
+                    </div>
+
+                    <div class="asrc-form-group">
+                        <label for="asrc-cpc">Average CPC ($):</label>
+                        <div class="asrc-input-wrapper">
+                             <span class="asrc-input-prefix" style="margin-right:5px;">$</span>
+                            <input type="number" id="asrc-cpc" class="asrc-input" value="0.25" min="0.01" max="10" step="0.01" required>
+                        </div>
+                         <input type="range" id="asrc-cpc-slider" class="asrc-slider" min="0.01" max="10" step="0.01" value="0.25" aria-labelledby="asrc-cpc">
+                    </div>
+
+                     <div class="asrc-form-group">
+                        <label for="asrc-page-rpm">OR Enter Page RPM ($) (Optional - Overrides CTR/CPC):</label>
+                        <div class="asrc-input-wrapper">
+                            <span class="asrc-input-prefix" style="margin-right:5px;">$</span>
+                            <input type="number" id="asrc-page-rpm" class="asrc-input" placeholder="e.g., 2.50" min="0" step="0.01">
+                        </div>
+                    </div>
+
+
+                    <div class="asrc-form-group">
+                        <label for="asrc-niche">Website Niche/Industry:</label>
+                        <select id="asrc-niche" class="asrc-select">
+                            <option value="general">General / Blog</option>
+                            <option value="technology">Technology</option>
+                            <option value="finance">Finance & Investing</option>
+                            <option value="health">Health & Fitness</option>
+                            <option value="education">Education</option>
+                            <option value="travel">Travel</option>
+                            <option value="ecommerce">E-commerce / Shopping</option>
+                            <option value="gaming">Gaming</option>
+                            <option value="news">News & Media</option>
+                            <option value="custom">Custom (Use my CTR/CPC)</option>
+                        </select>
+                    </div>
+
+                    <div class="asrc-form-group">
+                        <label for="asrc-geo">Primary Audience GEO Tier:</label>
+                        <select id="asrc-geo" class="asrc-select">
+                            <option value="tier1">Tier 1 (e.g., USA, UK, CA, AU)</option>
+                            <option value="tier2">Tier 2 (e.g., Europe, UAE, SG)</option>
+                            <option value="tier3">Tier 3 (e.g., India, PH, Africa)</option>
+                            <option value="global">Global Mix</option>
+                        </select>
+                    </div>
+
+                    <div class="asrc-form-group">
+                        <label for="asrc-fill-rate">Ad Fill Rate (%):</label>
+                        <input type="number" id="asrc-fill-rate" class="asrc-input" value="90" min="10" max="100" step="1">
+                    </div>
+
+                    <div class="asrc-form-group">
+                        <label for="asrc-viewability">Ad Viewability (%):</label>
+                        <input type="number" id="asrc-viewability" class="asrc-input" value="65" min="10" max="100" step="1">
+                    </div>
+
+                </section>
+
+                <section class="asrc-results-section" aria-labelledby="asrc-results-title" aria-live="polite">
+                    <h2 id="asrc-results-title" class="asrc-section-title"><i class="fas fa-chart-line"></i> Estimated Revenue</h2>
+                    
+                    <div id="asrc-daily-revenue" class="asrc-result-item">
+                        <strong>$0.00</strong>
+                        <span>Estimated Daily Revenue</span>
+                    </div>
+                    <div id="asrc-monthly-revenue" class="asrc-result-item">
+                        <strong>$0.00</strong>
+                        <span>Estimated Monthly Revenue</span>
+                    </div>
+                    <div id="asrc-yearly-revenue" class="asrc-result-item">
+                        <strong>$0.00</strong>
+                        <span>Estimated Yearly Revenue</span>
+                    </div>
+
+                    <div class="asrc-calculated-metrics">
+                        <p class="asrc-calculated-metric">Projected Page RPM: <strong id="asrc-projected-rpm">$0.00</strong></p>
+                        <p class="asrc-calculated-metric">Monetizable Impressions (monthly): <strong id="asrc-monetizable-impressions">0</strong></p>
+                        <p class="asrc-calculated-metric">Estimated Clicks (monthly): <strong id="asrc-total-clicks">0</strong></p>
+                    </div>
+                </section>
+            </div>
+
+            <section class="asrc-optimization-tips" aria-labelledby="asrc-tips-title">
+                <h2 id="asrc-tips-title" class="asrc-section-title"><i class="fas fa-lightbulb"></i> Optimization Insights</h2>
+                <div id="asrc-tips-container">
+                    <p class="asrc-tip"><i class="fas fa-info-circle"></i> Adjust the inputs above to see how different factors influence your potential earnings. Insights will appear here based on your entries.</p>
+                </div>
+            </section>
+
+            <div class="asrc-disclaimer">
+                <p><strong>Disclaimer:</strong> This calculator provides an estimation based on the data you input and general benchmarks. Actual AdSense earnings can vary significantly due to numerous factors including ad quality, seasonality, user engagement, adblock usage, policy changes, and specific advertiser demand for your audience.</p>
+            </div>
+        </form>
+       
+    </main>
+</div>
+
+
+
+
+    </div>
+
+    <!-- Bottom Ad Placement -->
+    <div class="ad-slot" style="margin-top:3rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Shaynly. All rights reserved. Free client-side tools run locally in your browser.</p>
+      <div style="display:flex;gap:1.5rem;font-size:0.9rem;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions-of-use/">Terms</a>
+        <a href="/site-map/">Site Directory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Advanced AdSense Revenue Calculator",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "FinancialManagementTool",
+      "operatingSystem": "Web (HTML, CSS, JavaScript)",
+      "description": "An advanced interactive calculator to estimate potential Google AdSense revenue, considering factors like page impressions, CTR, CPC, niche, GEO, ad fill rate, and ad viewability. Provides daily, monthly, and yearly projections.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+      "keywords": "AdSense calculator, ad revenue estimator, website monetization tool, CPC calculator, CTR impact, Page RPM estimator",
+      "url": "https://autoclicker.online/adsense-revenue-calculator" // Placeholder URL
+    }
+    </script>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Advanced AdSense Revenue Calculator - Estimate Your Earnings",
+      "description": "Use our sophisticated AdSense revenue calculator to project your potential earnings. Input your metrics, select niche and GEO, and get detailed daily, monthly, and yearly estimates with optimization tips.",
+      "url": "https://autoclicker.online/adsense-revenue-calculator", // Placeholder URL
+      "mainEntity": {
+        "@type": "SoftwareApplication",
+        "name": "Advanced AdSense Revenue Calculator"
+      }
+    }
+    </script>
+<script>
+    // IIFE for JS Scoping
+    (function() {
+        const nicheBenchmarks = {
+            general: { ctr: 1.2, cpc: 0.20 },
+            technology: { ctr: 1.0, cpc: 0.35 },
+            finance: { ctr: 0.8, cpc: 2.50 }, // Higher CPC
+            health: { ctr: 1.3, cpc: 0.45 },
+            education: { ctr: 1.1, cpc: 0.30 },
+            travel: { ctr: 1.5, cpc: 0.28 },
+            ecommerce: { ctr: 0.9, cpc: 0.22 },
+            gaming: { ctr: 1.8, cpc: 0.15 }, // Often lower CPC, higher CTR
+            news: { ctr: 0.7, cpc: 0.18 },
+            custom: { ctr: null, cpc: null } // User inputs their own
+        };
+
+        const geoMultipliers = {
+            tier1: 1.0,  // Baseline (USA, UK, CA, AU, etc.)
+            tier2: 0.6,  // Europe (non-Tier 1), UAE, SG, etc.
+            tier3: 0.25, // India, PH, LATAM, Africa etc.
+            global: 0.5 // A global mix average
+        };
+
+        // DOM Elements
+        const form = document.getElementById('asrc-calculator-form');
+        const impressionsInput = document.getElementById('asrc-impressions');
+        const impressionsSlider = document.getElementById('asrc-impressions-slider');
+        const impressionsValueDisplay = document.getElementById('asrc-impressions-value-display');
+        const ctrInput = document.getElementById('asrc-ctr');
+        const ctrSlider = document.getElementById('asrc-ctr-slider');
+        const cpcInput = document.getElementById('asrc-cpc');
+        const cpcSlider = document.getElementById('asrc-cpc-slider');
+        const pageRpmInput = document.getElementById('asrc-page-rpm');
+        const nicheSelect = document.getElementById('asrc-niche');
+        const geoSelect = document.getElementById('asrc-geo');
+        const fillRateInput = document.getElementById('asrc-fill-rate');
+        const viewabilityInput = document.getElementById('asrc-viewability');
+
+        const dailyRevenueDisplay = document.getElementById('asrc-daily-revenue').querySelector('strong');
+        const monthlyRevenueDisplay = document.getElementById('asrc-monthly-revenue').querySelector('strong');
+        const yearlyRevenueDisplay = document.getElementById('asrc-yearly-revenue').querySelector('strong');
+        const projectedRpmDisplay = document.getElementById('asrc-projected-rpm');
+        const monetizableImpressionsDisplay = document.getElementById('asrc-monetizable-impressions');
+        const totalClicksDisplay = document.getElementById('asrc-total-clicks');
+        const tipsContainer = document.getElementById('asrc-tips-container');
+        
+        if(document.getElementById('asrc-current-year')) {
+            document.getElementById('asrc-current-year').textContent = new Date().getFullYear();
+        }
+
+
+        function formatNumber(num) {
+            return num.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        }
+        function formatCurrency(num) {
+            return num.toLocaleString(undefined, { style: 'currency', currency: 'USD' });
+        }
+
+        function updateInputsFromNiche() {
+            const selectedNiche = nicheSelect.value;
+            if (selectedNiche !== 'custom' && nicheBenchmarks[selectedNiche]) {
+                const benchmark = nicheBenchmarks[selectedNiche];
+                if (benchmark.ctr !== null) {
+                    ctrInput.value = benchmark.ctr;
+                    ctrSlider.value = benchmark.ctr;
+                }
+                if (benchmark.cpc !== null) {
+                    cpcInput.value = benchmark.cpc;
+                    cpcSlider.value = benchmark.cpc;
+                }
+                // Disable RPM input if niche sets CTR/CPC, re-enable for custom
+                pageRpmInput.disabled = false; 
+                pageRpmInput.placeholder = "e.g., 2.50 (Overrides CTR/CPC)";
+            } else if (selectedNiche === 'custom') {
+                 pageRpmInput.disabled = false;
+                 pageRpmInput.placeholder = "e.g., 2.50 (Overrides CTR/CPC)";
+            }
+        }
+
+        function calculateRevenue() {
+            const impressions = parseFloat(impressionsInput.value) || 0;
+            let pageCtr = parseFloat(ctrInput.value) / 100 || 0;
+            let averageCpc = parseFloat(cpcInput.value) || 0;
+            const knownPageRpm = parseFloat(pageRpmInput.value) || null;
+
+            const fillRate = parseFloat(fillRateInput.value) / 100 || 0.9; // Default 90%
+            const viewability = parseFloat(viewabilityInput.value) / 100 || 0.65; // Default 65%
+            
+            const selectedNiche = nicheSelect.value;
+            const geoTier = geoSelect.value;
+
+            // Apply GEO multiplier to CPC if not using custom RPM
+            if (knownPageRpm === null && geoMultipliers[geoTier]) {
+                averageCpc *= geoMultipliers[geoTier];
+            }
+            
+            const effectiveImpressions = impressions * fillRate; // Impressions that actually get an ad
+            const viewableImpressions = effectiveImpressions * viewability; // Ads that are actually seen
+
+            let monthlyRevenue = 0;
+            let calculatedPageRpm = 0;
+            let monthlyClicks = 0;
+
+            if (knownPageRpm !== null && knownPageRpm > 0) {
+                // Calculate using Page RPM (viewable impressions should be used for RPM calc if specified)
+                // AdSense usually calculates RPM on ad impressions (effectiveImpressions)
+                monthlyRevenue = (effectiveImpressions / 1000) * knownPageRpm;
+                calculatedPageRpm = knownPageRpm; // This is the user-provided RPM
+                // Estimate clicks based on this RPM and an assumed average CPC if needed for tips, or leave as N/A
+                // For simplicity, if RPM is given, we might not need to show estimated clicks
+                // unless we back-calculate an implied CTR/CPC which can be complex.
+                if(averageCpc > 0) { // User might still have CPC field filled
+                     monthlyClicks = monthlyRevenue / averageCpc;
+                } else if (pageCtr > 0 && selectedNiche !== 'custom' && nicheBenchmarks[selectedNiche]?.cpc > 0) {
+                    // Use niche average CPC if available
+                    monthlyClicks = monthlyRevenue / (nicheBenchmarks[selectedNiche].cpc * (geoMultipliers[geoTier] || 1));
+                } else {
+                    monthlyClicks = 0; // Cannot reliably estimate clicks without CPC
+                }
+
+            } else {
+                // Calculate using CTR and CPC
+                monthlyClicks = viewableImpressions * pageCtr;
+                monthlyRevenue = monthlyClicks * averageCpc;
+                if (effectiveImpressions > 0) {
+                    calculatedPageRpm = (monthlyRevenue / effectiveImpressions) * 1000;
+                } else {
+                    calculatedPageRpm = 0;
+                }
+            }
+
+
+            const dailyRevenue = monthlyRevenue / 30;
+            const yearlyRevenue = monthlyRevenue * 12;
+
+            dailyRevenueDisplay.textContent = formatCurrency(dailyRevenue);
+            monthlyRevenueDisplay.textContent = formatCurrency(monthlyRevenue);
+            yearlyRevenueDisplay.textContent = formatCurrency(yearlyRevenue);
+            projectedRpmDisplay.textContent = formatCurrency(calculatedPageRpm);
+            monetizableImpressionsDisplay.textContent = formatNumber(effectiveImpressions); // Show effective impressions after fill rate
+            totalClicksDisplay.textContent = formatNumber(monthlyClicks);
+
+            generateOptimizationTips(impressions, pageCtr * 100, averageCpc, fillRate * 100, viewability * 100, calculatedPageRpm, selectedNiche);
+        }
+
+        function generateOptimizationTips(impressions, ctr, cpc, fillRate, viewability, rpm, niche) {
+            tipsContainer.innerHTML = ''; // Clear previous tips
+            let tips = [];
+
+            if (ctr < (nicheBenchmarks[niche]?.ctr || 1.0) * 0.8 && niche !== 'custom' ) { // 80% of niche average
+                 tips.push({icon: 'fas fa-mouse-pointer', text: `Your Page CTR (${ctr.toFixed(1)}%) is on the lower side for the '${niche}' niche. Consider optimizing ad placements, using engaging ad formats, or improving content relevance to attract more clicks.`});
+            } else if (ctr < 0.8) {
+                 tips.push({icon: 'fas fa-mouse-pointer', text: `A Page CTR of ${ctr.toFixed(1)}% is relatively low. Experiment with ad units, placements (above the fold, within content), and ensure ads are relevant to your content.`});
+            }
+
+            if (cpc < (nicheBenchmarks[niche]?.cpc || 0.20) * 0.7 && niche !== 'custom' && nicheBenchmarks[niche]?.cpc > 0.1) {
+                 tips.push({icon: 'fas fa-dollar-sign', text: `The Average CPC ($${cpc.toFixed(2)}) seems low for the '${niche}' niche. Ensure your content attracts high-value advertisers. Blocking low CPC ad categories or optimizing for higher-paying keywords can help.`});
+            } else if (cpc < 0.15 && niche !== 'finance' && niche !== 'custom') { // General low CPC
+                 tips.push({icon: 'fas fa-dollar-sign', text: `An Average CPC of $${cpc.toFixed(2)} offers room for improvement. Focus on creating high-quality, specific content that attracts valuable traffic. GEO targeting also significantly impacts CPC.`});
+            }
+
+            if (fillRate < 85) {
+                tips.push({icon: 'fas fa-battery-three-quarters', text: `An Ad Fill Rate of ${fillRate.toFixed(0)}% means some ad requests aren't being filled. Review your AdSense account for any policy issues, ensure your site has enough content, or consider ad network mediation if using multiple networks.`});
+            }
+            if (viewability < 60) {
+                tips.push({icon: 'fas fa-eye', text: `Ad Viewability at ${viewability.toFixed(0)}% is below industry average (often aiming for 70%+). Improve ad placements (e.g., sticky ads, above the fold, lazy loading for below-fold ads) to ensure more ads are actually seen by users.`});
+            }
+             if (rpm < 1.00 && pageRpmInput.value === "") { // If RPM is very low and not user-input
+                tips.push({icon: 'fas fa-tachometer-alt', text: `Your projected Page RPM ($${rpm.toFixed(2)}) is quite low. This indicates a combination of factors (CTR, CPC, viewability) might need significant improvement. Focus on content quality, ad optimization, and user experience.`});
+            }
+
+            if (impressions < 10000) {
+                tips.push({icon: 'fas fa-users', text: "With lower traffic, focus on maximizing value per visitor: improve CTR, target higher CPC keywords, and enhance user engagement to grow your audience."});
+            } else if (impressions > 500000) {
+                 tips.push({icon: 'fas fa-rocket', text: "High traffic offers great potential! Continuously A/B test ad placements, formats, and ensure your site speed is optimal to maintain user experience and maximize viewability."});
+            }
+            
+            if (geoSelect.value === "tier3") {
+                tips.push({icon: 'fas fa-globe-asia', text: "Audiences in Tier 3 GEOs typically have lower CPCs. Consider content strategies that appeal to higher-paying GEOs or explore local ad networks if AdSense CPCs are consistently very low."});
+            }
+
+
+            if (tips.length === 0) {
+                tips.push({icon: 'fas fa-check-circle', text: "Your metrics look within a reasonable range! Continue monitoring and A/B testing to further optimize your AdSense revenue."});
+            }
+
+            tips.forEach(tip => {
+                const tipElement = document.createElement('p');
+                tipElement.className = 'asrc-tip';
+                tipElement.innerHTML = `<i class="${tip.icon}"></i> ${tip.text}`;
+                tipsContainer.appendChild(tipElement);
+            });
+        }
+
+        // Event Listeners
+        impressionsInput.addEventListener('input', () => {
+            impressionsSlider.value = impressionsInput.value;
+            impressionsValueDisplay.textContent = formatNumber(parseFloat(impressionsInput.value) || 0);
+            calculateRevenue();
+        });
+        impressionsSlider.addEventListener('input', () => {
+            impressionsInput.value = impressionsSlider.value;
+            impressionsValueDisplay.textContent = formatNumber(parseFloat(impressionsSlider.value) || 0);
+            calculateRevenue();
+        });
+        ctrInput.addEventListener('input', () => {
+            ctrSlider.value = ctrInput.value;
+             pageRpmInput.value = ""; // Clear RPM if CTR/CPC is changed
+            calculateRevenue();
+        });
+         ctrSlider.addEventListener('input', () => {
+            ctrInput.value = ctrSlider.value;
+             pageRpmInput.value = "";
+            calculateRevenue();
+        });
+        cpcInput.addEventListener('input', () => {
+            cpcSlider.value = cpcInput.value;
+             pageRpmInput.value = "";
+            calculateRevenue();
+        });
+        cpcSlider.addEventListener('input', () => {
+            cpcInput.value = cpcSlider.value;
+            pageRpmInput.value = "";
+            calculateRevenue();
+        });
+
+        pageRpmInput.addEventListener('input', () => {
+            if (pageRpmInput.value !== "") {
+                // If RPM is entered, we might want to grey out or indicate CTR/CPC are less relevant for this calc
+                // For now, just recalculate. The calculateRevenue function prioritizes RPM if present.
+            }
+            calculateRevenue();
+        });
+
+
+        nicheSelect.addEventListener('change', () => {
+            pageRpmInput.value = ""; // Clear RPM when niche changes, to re-enable CTR/CPC based calcs
+            updateInputsFromNiche();
+            calculateRevenue();
+        });
+        geoSelect.addEventListener('change', calculateRevenue);
+        fillRateInput.addEventListener('input', calculateRevenue);
+        viewabilityInput.addEventListener('input', calculateRevenue);
+        
+        // Initial calculation and setup
+        updateInputsFromNiche(); // Set initial CTR/CPC based on default niche
+        impressionsValueDisplay.textContent = formatNumber(parseFloat(impressionsInput.value) || 0); // Initial display for impressions
+        calculateRevenue();
+
+    })(); // End of IIFE
+</script>
+</body>
+</html>
