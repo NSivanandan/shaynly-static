@@ -1,0 +1,25 @@
+# Official robots.txt for Shaynly.com
+# Business Marketing, Management & Digital Utilities
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://shaynly.com/sitemap.xml

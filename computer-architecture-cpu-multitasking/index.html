@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Computer Architecture: CPU Multitasking- Chapter-2 - Shaynly</title>
+  <meta name="description" content="n Part of&nbsp; Putting&nbsp;the&nbsp;“You”&nbsp;in&nbsp;CPU : a rabbit hole into how your computer runs programs. n nn n CPU Multitasking n nn n Let’s say">
+  <link rel="canonical" href="https://shaynly.com/computer-architecture-cpu-multitasking/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/computer-architecture-cpu-multitasking/">
+  <meta property="og:title" content="Learn Computer Architecture: CPU Multitasking- Chapter-2 - Shaynly">
+  <meta property="og:description" content="n Part of&nbsp; Putting&nbsp;the&nbsp;“You”&nbsp;in&nbsp;CPU : a rabbit hole into how your computer runs programs. n nn n CPU Multitasking n nn n Let’s say">
+  <meta property="og:image" content="https://shaynly.com/wp-content/uploads/2023/08/Learn-Computer-Architecture-CPU-Multitasking-Chapter-2.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Learn Computer Architecture: CPU Multitasking- Chapter-2 - Shaynly">
+  <meta name="twitter:description" content="n Part of&nbsp; Putting&nbsp;the&nbsp;“You”&nbsp;in&nbsp;CPU : a rabbit hole into how your computer runs programs. n nn n CPU Multitasking n nn n Let’s say">
+  <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2023/08/Learn-Computer-Architecture-CPU-Multitasking-Chapter-2.png">
+
+  <!-- RSS & Sitemap Auto-Discovery -->
+  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google tag (gtag.js) GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Learn Computer Architecture: CPU Multitasking- Chapter-2",
+  "name": "Learn Computer Architecture: CPU Multitasking- Chapter-2",
+  "description": "n Part of&nbsp; Putting&nbsp;the&nbsp;\u201cYou\u201d&nbsp;in&nbsp;CPU : a rabbit hole into how your computer runs programs. n nn n CPU Multitasking n nn n Let\u2019s say",
+  "url": "https://shaynly.com/computer-architecture-cpu-multitasking/",
+  "datePublished": "2023-08-12",
+  "dateModified": "2023-08-12",
+  "author": {
+    "@type": "Person",
+    "name": "Sivanandan N",
+    "jobTitle": "Founder & Strategic Marketer",
+    "url": "https://shaynly.com/about-us/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shaynly",
+    "url": "https://shaynly.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shaynly.com/assets/images/logo.png"
+    }
+  },
+  "image": "https://shaynly.com/wp-content/uploads/2023/08/Learn-Computer-Architecture-CPU-Multitasking-Chapter-2.png",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".article-title",
+      ".article-lead",
+      ".article-content p:first-of-type"
+    ]
+  }
+}
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-wrap">
+      <a href="/" class="logo-area">
+        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">Shaynly</span>
+        <span class="logo-tag">Business &amp; Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/tools/">Toolkit (22 Tools)</a>
+        <a href="/calculators/">Calculators</a>
+        <a href="/about-us/">About</a>
+        <a href="/contact-us/">Contact</a>
+        <a href="/tools/" class="nav-btn">Free Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Body -->
+  <main class="container">
+    
+    <div class="content-grid">
+      <article class="article-wrap">
+        <div class="breadcrumb">
+          <a href="/">Home</a> <span>/</span> <a href="/">Resources</a> <span>/</span> <span>Learn Computer Architecture: CPU Multitasking- Chapter-2</span>
+        </div>
+        <span class="cat-badge">Resources</span>
+        <h1 class="article-title">Learn Computer Architecture: CPU Multitasking- Chapter-2</h1>
+        <div class="article-meta">
+          <span>By <strong>Sivanandan N</strong></span>
+          <span>•</span>
+          <span>2023-08-12</span>
+          <span>•</span>
+          <span>6 min read</span>
+        </div>
+
+        <img src="/wp-content/uploads/2023/08/Learn-Computer-Architecture-CPU-Multitasking-Chapter-2.png" alt="Learn Computer Architecture: CPU Multitasking- Chapter-2" style="width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
+
+        <div class="article-content">
+          n<p>Part of&nbsp;<a href="https://cpu.land/">Putting&nbsp;the&nbsp;“You”&nbsp;in&nbsp;CPU</a>: a rabbit hole into how your computer runs programs.</p>nnnn<h2 class="wp-block-heading has-text-align-center">CPU Multitasking</h2>nnnn<p>Let’s say you’re building an operating system and you want users to be able to run multiple programs at once. You don’t have a fancy multi-core processor though, so your CPU can only run one instruction at a time!</p>nnnn<p>Luckily, you’re a very smart OS developer. You figure out that you can fake parallelism by letting processes take turns on the CPU. If you cycle through the processes and run a couple instructions from each one, they can all be responsive without any single process hogging the CPU.</p>nnnn<p>But how do you take control back from program code to switch processes? After a bit of research, you discover that most computers come with timer chips. You can program a timer chip to trigger a switch to an OS interrupt handler after a certain amount of time passes.</p>nnnn<h2 class="wp-block-heading" id="hardware-interrupts">Hardware Interrupts</h2>nnnn<p>Earlier, we talked about how software interrupts are used to hand control from a userland program to the OS. These are called “software” interrupts because they’re voluntarily triggered by a program — machine code executed by the processor in the normal fetch-execute cycle tells it to switch control to the kernel.<img src="https://cpu.land/images/keyboard-hardware-interrupt.png" alt="A drawing illustrating how hardware interrupts break normal execution. On top: a drawing of a keyboard with a highlighted key, with a lightning bolt drawn to a CPU on the right. On the bottom: some binary labeled &quot;program code,&quot; a similar lightning bolt, and some more binary labeled &quot;kernel code.&quot; The lightning bolt is labeled &quot;interrupt triggers context switch.&quot;" width="935" height="503"></p>nnnn<p>OS schedulers use&nbsp;<em>timer chips</em>&nbsp;like&nbsp;<a href="https://en.wikipedia.org/wiki/Programmable_interval_timer" rel="noreferrer noopener" target="_blank">PITs</a>&nbsp;to trigger hardware interrupts for multitasking:</p>nnnn<ol>n<li>Before jumping to program code, the OS sets the timer chip to trigger an interrupt after some period of time.</li>nnnn<li>The OS switches to user mode and jumps to the next instruction of the program.</li>nnnn<li>When the timer elapses, it triggers a hardware interrupt to switch to kernel mode and jump to OS code.</li>nnnn<li>The OS can now save where the program left off, load a different program, and repeat the process.</li>n</ol>nnnn<p>This is called&nbsp;<em>preemptive multitasking</em>; the interruption of a process is called&nbsp;<a href="https://en.wikipedia.org/wiki/Preemption_(computing)" rel="noreferrer noopener" target="_blank"><em>preemption</em></a>. If you’re, say, reading this article on a browser and listening to music on the same machine, your very own computer is probably following this exact cycle thousands of times a second.</p>nnnn<h2 class="wp-block-heading" id="timeslice-calculation">Timeslice Calculation</h2>nnnn<p>A&nbsp;<em>timeslice</em>&nbsp;is the duration an OS scheduler allows a process to run before preempting it. The simplest way to pick timeslices is to give every process the same timeslice, perhaps in the 10&nbsp;ms range, and cycle through tasks in order. This is called&nbsp;<em>fixed timeslice round-robin</em>&nbsp;scheduling.</p>nnnn<blockquote class="wp-block-quote">n<p><strong>Aside: fun jargon facts!</strong></p>nnnn<p>Did you know that timeslices are often called “quantums?” Now you do, and you can impress all your tech friends. I think I deserve heaps of praise for not saying quantum in every other sentence in this article.</p>nnnn<p>Speaking of timeslice jargon, Linux kernel devs use the&nbsp;<a href="https://github.com/torvalds/linux/blob/22b8cc3e78f5448b4c5df00303817a9137cd663f/include/linux/jiffies.h" rel="noreferrer noopener" target="_blank">jiffy</a>&nbsp;time unit to count fixed frequency timer ticks. Among other things, jiffies are used for measuring the lengths of timeslices. Linux’s jiffy frequency is typically 1000 Hz but can be configured when compiling the kernel.</p>n</blockquote>nnnn<p>A slight improvement to fixed timeslice scheduling is to pick a&nbsp;<em>target latency</em>&nbsp;— the ideal longest time for a process to respond. The target latency is the time it takes for a process to resume execution after being preempted, assuming a reasonable number of processes.&nbsp;<em>This is pretty hard to visualize! Don’t worry, a diagram is coming soon.</em></p>nnnn<p>Timeslices are calculated by dividing the target latency by the total number of tasks; this is better than fixed timeslice scheduling because it eliminates wasteful task switching with fewer processes. With a target latency of 15&nbsp;ms and 10 processes, each process would get 15/10 or 1.5&nbsp;ms to run. With only 3 processes, each process gets a longer 5&nbsp;ms timeslice while still hitting the target latency.</p>nnnn<p>Process switching is computationally expensive because it requires saving the entire state of the current program and restoring a different one. Past a certain point, too small a timeslice can result in performance problems with processes switching too rapidly. It’s common to give the timeslice duration a lower bound (<em>minimum granularity</em>). This does mean that the target latency is exceeded when there are enough processes for the minimum granularity to take effect.</p>nnnn<p>At the time of writing this article, Linux’s scheduler uses a target latency of 6&nbsp;ms and a minimum granularity of 0.75&nbsp;ms.<img src="https://cpu.land/images/linux-scheduler-target-latency.png" alt="A diagram titled &quot;Naive Dynamic Timeslice Round-Robin Scheduling.&quot; It depicts a time series of 3 different processes getting time to execute in a repeated cycle. In between the execution blocks of each process is a much shorter block labeled &quot;kernel scheduler.&quot; The length of each program execution block is labeled &quot;timeslice (2ms).&quot; The distance from the start of process 1 executing to the next start of process 1 executing, encompassing the execution time of processes 2 and 3, is labeled as &quot;target latency (6ms).&quot;" width="935" height="433"></p>nnnn<p>Round-robin scheduling with this <a href="https://shaynly.com/computer-architecture-basics/" target="_blank" rel="noopener">basic timeslice calculation is close to what most computers</a> do nowadays. It’s still a bit naive; most operating systems tend to have more complex schedulers which take process priorities and deadlines into account. Since 2007, Linux has used a scheduler called&nbsp;<a href="https://docs.kernel.org/scheduler/sched-design-CFS.html" rel="noreferrer noopener" target="_blank">Completely Fair Scheduler</a>. CFS does a bunch of very fancy computer science things to prioritize tasks and divvy up CPU time.</p>nnnn<p>Every time the OS preempts a process it needs to load the new program’s saved execution context, including its memory environment. This is accomplished by telling the CPU to use a different&nbsp;<em>page table</em>, the mapping from “virtual” to physical addresses. This is also the system that prevents programs from accessing each other’s memory; we’ll go down this rabbit hole in chapters&nbsp;<a href="https://cpu.land/the-translator-in-your-computer">5</a>&nbsp;and&nbsp;<a href="https://cpu.land/lets-talk-about-forks-and-cows">6</a>&nbsp;of this article.</p>nnnn<h2 class="wp-block-heading" id="note-1-kernel-preemptability">Note #1: Kernel Preemptability</h2>nnnn<p>So far, we’ve been only talking about the preemption and scheduling of userland processes. Kernel code might make programs feel laggy if it took too long handling a syscall or executing driver code.</p>nnnn<p>Modern kernels, including Linux, are&nbsp;<a href="https://en.wikipedia.org/wiki/Kernel_preemption" rel="noreferrer noopener" target="_blank">preemptive kernels</a>. This means they’re programmed in a way that allows kernel code itself to be interrupted and scheduled just like userland processes.</p>nnnn<p>This isn’t very important to know about unless you’re writing a kernel or something, but basically every article I’ve read has mentioned it so I thought I would too! Extra knowledge is rarely a bad thing.</p>nnnn<h2 class="wp-block-heading" id="note-2-a-history-lesson">Note #2: A History Lesson</h2>nnnn<p>Ancient operating systems, including classic Mac OS and versions of Windows long before NT, used a predecessor to preemptive multitasking. Rather than the OS deciding when to preempt programs, the programs themselves would choose to yield to the OS. They would trigger a software interrupt to say, “hey, you can let another program run now.” These explicit yields were the only way for the OS to regain control and switch to the next scheduled process.</p>nnnn<p>This is called&nbsp;<a href="https://en.wikipedia.org/wiki/Cooperative_multitasking" rel="noreferrer noopener" target="_blank"><em>cooperative multitasking</em></a>. It has a couple major flaws: malicious or just poorly designed programs can easily freeze the entire operating system, and it’s nigh impossible to ensure temporal consistency for realtime/time-sensitive tasks. For these reasons, the tech world switched to preemptive multitasking a long time ago and never looked back.</p>n
+        </div>
+      </article>
+
+      <aside class="sidebar">
+        <div class="widget">
+          <h4 class="widget-title">Client Utilities</h4>
+          <ul class="widget-list">
+            <li><a href="/tools/invoice.html">⚡ Free Invoice Generator</a></li>
+            <li><a href="/tools/gst.html">📊 India GST Calculator</a></li>
+            <li><a href="/tools/qr-studio.html">📱 Vector QR Code Studio</a></li>
+            <li><a href="/tools/brandkit.html">🎨 Brand Palette &amp; Kit</a></li>
+            <li><a href="/tools/utm.html">🔗 UTM Campaign Builder</a></li>
+            <li><a href="/tools/">Explore All 22 Offline Tools →</a></li>
+          </ul>
+        </div>
+
+        <div class="widget">
+          <h4 class="widget-title">Popular Topics</h4>
+          <ul class="widget-list">
+            <li><a href="/calculators/">Interactive Calculators</a></li>
+            <li><a href="/what-is-google-search-console-1-best-guide/">Google Search Console Guide</a></li>
+            <li><a href="/best-no-code-automation-tools-the-future-of-business-automation/">No-Code Business Automation</a></li>
+            <li><a href="/tax-return-filing-in-india-complete-guide/">Tax Return Filing in India</a></li>
+            <li><a href="/sambanova-ai/">SambaNova AI Deep-Dive</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+    
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <h4>About Shaynly</h4>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
+        </p>
+        <p style="font-size: 13px; color: #64748b;">
+          Published &amp; Managed by Sivanandan N.
+        </p>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 22 Client Tools</a></li>
+          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
+          <li><a href="/tools/gst.html">GST Calculator</a></li>
+          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
+          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
+          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Core Resources</h4>
+        <ul>
+          <li><a href="/calculators/">All Calculators</a></li>
+          <li><a href="/about-us/">About Shaynly</a></li>
+          <li><a href="/contact-us/">Contact &amp; Feedback</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms-and-conditions-of-use/">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Feeds &amp; Indexing</h4>
+        <ul>
+          <li><a href="/site-map/">HTML Site Directory</a></li>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/llms.txt">AI Index (llms.txt)</a></li>
+          <li><a href="/feed.xml">RSS Syndication Feed</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Shaynly. All rights reserved. • High-performance static architecture deployed on Cloudflare Pages.
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

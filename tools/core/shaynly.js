@@ -1,0 +1,12 @@
+const Shaynly={
+ store(ns){const k='shaynly:'+ns;return{get(d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},set(v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}}},
+ toast(m){let t=document.querySelector('.toast');if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.append(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2200)},
+ save(blobOrUrl,name){const a=document.createElement('a');a.href=typeof blobOrUrl==='string'?blobOrUrl:URL.createObjectURL(blobOrUrl);a.download=name;a.click()},
+ theme(){const s=this.store('theme'),t=s.get(null);if(t)document.documentElement.dataset.theme=t;return()=>{const n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;s.set(n)}},
+ bar(title){const tg=this.theme();document.body.insertAdjacentHTML('afterbegin',`<header class="bar"><a href="../index.html">Shaynly Toolkit</a><span class="muted">/ ${title}</span><span class="sp"></span><button class="btn alt" id="th">Theme</button></header>`);document.getElementById('th').onclick=tg},
+ fmt(n,cur){return new Intl.NumberFormat(cur==='INR'?'en-IN':'en-US',{style:'currency',currency:cur,maximumFractionDigits:2}).format(n)}
+};
+Shaynly.brand=()=>Shaynly.store('brand').get({});
+Shaynly.copy=async t=>{try{await navigator.clipboard.writeText(t);}catch{const a=document.createElement('textarea');a.value=t;document.body.append(a);a.select();document.execCommand('copy');a.remove()}Shaynly.toast('Copied to clipboard')};
+Shaynly.page=(title,left,right)=>{document.title=title;document.body.insertAdjacentHTML('beforeend',`<div class="wrap"><div class="grid"><section class="panel"><h2>${title}</h2>${left}</section><section class="panel"><h2>Result</h2>${right}</section></div></div>`);Shaynly.bar(title)};
+Shaynly.md=t=>{const e=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');let o='',ul=false;for(const l of t.split('\n')){const b=l.match(/^\s*[-*]\s+(.*)/);if(b){if(!ul){o+='<ul style="margin:4px 0 8px 20px">';ul=true}o+='<li>'+e(b[1])+'</li>';continue}if(ul){o+='</ul>';ul=false}const h=l.match(/^(#{1,4})\s+(.*)/);o+=h?`<h2 style="margin:16px 0 6px;font-size:${h[1].length<3?'1.1':'1'}rem">${e(h[2])}</h2>`:l.trim()?`<p style="margin:4px 0">${e(l)}</p>`:''}return o+(ul?'</ul>':'')};

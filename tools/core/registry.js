@@ -1,0 +1,25 @@
+// To add a tool: create tools/<id>.html and add one line here.
+const TOOLS=[
+ {id:'bizcard',name:'Business Card Designer',cat:'Brand assets',tier:'starter',desc:'Print-ready 300 dpi cards with bleed, three layouts and a contact-saving QR on the back.'},
+ {id:'signature',name:'Email Signature Designer',cat:'Brand assets',tier:'starter',desc:'Gmail and Outlook-safe table signature, copied as rich text or HTML.'},
+ {id:'brandkit',name:'Brand Kit Sheet',cat:'Brand assets',tier:'pro',desc:'One-page guidelines: palette, tints, WCAG contrast checks, fonts and logo rules.'},
+ {id:'proposal',name:'Proposal & Quote Builder',cat:'Sales & finance',tier:'pro',desc:'Branded proposals with optional add-ons the client can tick, GST and payment milestones.'},
+ {id:'calendar',name:'Content Calendar',cat:'Content',tier:'pro',desc:'Plan posts by channel and status, spot empty days, export CSV or print the month.'},
+ {id:'keywords',name:'Keyword Clusterer',cat:'AI search & SEO',tier:'pro',desc:'Group a keyword list into topic clusters with search intent labels.'},
+ {id:'imagetool',name:'Image Compressor & Converter',cat:'Brand assets',tier:'starter',desc:'Batch resize and convert to WebP, JPEG or PNG with before and after sizes.'},
+ {id:'audit',name:'SEO & AEO Audit Checklist',cat:'AI search & SEO',tier:'agency',desc:'26 weighted checks with a score, fix-first list and printable client report.'},
+ {id:'readiness',name:'AI-Search Readiness Checker',cat:'AI search & SEO',tier:'pro',desc:'Paste a page\'s HTML and get a structural score for answer-first content, schema and entities.'},
+ {id:'tracker',name:'AI Visibility Tracker',cat:'AI search & SEO',tier:'agency',desc:'Log whether ChatGPT, Gemini, Perplexity and others cite you, with rates by platform and prompt.'},
+ {id:'invoice',name:'Invoice Generator',cat:'Sales & finance',tier:'starter',desc:'GST-ready invoices with SAC codes, amount in words and a UPI pay QR. Print to PDF.'},
+ {id:'metrics',name:'Marketing Metrics Calculator',cat:'Sales & finance',tier:'starter',desc:'ROAS, break-even ROAS, CAC, LTV and payback with plain-English verdicts.'},
+ {id:'whatsapp',name:'WhatsApp Link Generator',cat:'Brand assets',tier:'starter',desc:'Click-to-chat links with a pre-filled message and QR code.'},
+ {id:'brand-profile',name:'Brand Profile',cat:'Start here',tier:'starter',desc:'Set your name, site and contact details once. Tools pre-fill from it.'},
+ {id:'schema',name:'Schema Generator',cat:'AI search & SEO',tier:'pro',desc:'JSON-LD for FAQ, Organization, LocalBusiness, Product, Article and HowTo.'},
+ {id:'serp',name:'SERP & Social Previewer',cat:'AI search & SEO',tier:'starter',desc:'See your title and description in Google and social cards, with length warnings.'},
+ {id:'robots-llms',name:'robots.txt & llms.txt',cat:'AI search & SEO',tier:'pro',desc:'Allow or block AI crawlers and write an llms.txt guide for AI assistants.'},
+ {id:'utm',name:'UTM Link Builder',cat:'AI search & SEO',tier:'starter',desc:'Clean campaign links with a QR code and a saved history.'},
+ {id:'qr-studio',name:'QR & Barcode Studio',cat:'Brand assets',tier:'starter',desc:'Branded QR codes with logo, UPI and WiFi codes, plus barcodes. PNG and SVG export.'},
+ {id:'commission',name:'Commission Calculator',cat:'Sales & finance',tier:'starter',desc:'Tiered payouts, marginal or retroactive, in ₹, $ or £. Export to CSV.'},
+ {id:'gst',name:'GST Calculator',cat:'Sales & finance',tier:'starter',desc:'Add or remove GST, with the CGST/SGST or IGST split.'},
+ {id:'rate',name:'Freelance Rate Calculator',cat:'Sales & finance',tier:'starter',desc:'Hourly rate, day rate and project price from your income goal.'}
+];

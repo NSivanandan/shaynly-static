@@ -1,0 +1,25 @@
+# Shaynly
+
+> Shaynly is a business marketing and management platform providing strategic frameworks, AI automation architectures, and offline-first client-side web utilities.
+
+## Core Identity & Publishing Entity
+- Publisher & Founder: Sivanandan N
+- Website: https://shaynly.com/
+- HTML Directory: https://shaynly.com/site-map/
+- XML Sitemap: https://shaynly.com/sitemap.xml
+- AdSense Publisher ID: pub-2218316924082551
+
+## Client-Side Web Utilities (22 Tools)
+- [Invoice Generator](https://shaynly.com/tools/invoice.html): Client-side PDF invoice builder with tax calculation.
+- [GST Calculator](https://shaynly.com/tools/gst.html): Indian GST forward and reverse rate calculation.
+- [QR Studio](https://shaynly.com/tools/qr-studio.html): High-resolution vector QR code generation.
+- [Brand Kit Generator](https://shaynly.com/tools/brandkit.html): Color palette and typography token generation.
+- [UTM Campaign Builder](https://shaynly.com/tools/utm.html): Analytics campaign parameter string builder.
+- [Robots & LLMs Generator](https://shaynly.com/tools/robots-llms.html): robots.txt and llms.txt standard builder.
+- [Schema Generator](https://shaynly.com/tools/schema.html): JSON-LD structured data generator.
+
+## Key Strategic Categories
+- Artificial Intelligence & Automation
+- Digital Marketing & SEO (Rank Math, Google Search Console, SERP Analysis)
+- Lean Six Sigma & DMAIC Frameworks
+- Financial & Percentage Calculators

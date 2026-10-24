@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QR & Barcode Studio</title>
+<link rel="stylesheet" href="../core/shaynly.css"></head><body><div class="wrap"><div class="grid">
+<section class="panel"><div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-m="qr">QR code</button><button role="tab" aria-selected="false" data-m="bar">Barcode</button></div>
+<div id="qrf">
+<div class="f"><label for="kind">Content type</label><select id="kind"><option value="url">Website link</option><option value="text">Plain text</option><option value="upi">UPI payment</option><option value="wifi">WiFi login</option></select></div>
+<div id="fields"></div>
+<div class="row"><div class="f"><label for="fg">Dot colour</label><input type="color" id="fg" value="#0b2b2e"></div><div class="f"><label for="bg">Background</label><input type="color" id="bg" value="#ffffff"></div></div>
+<div class="f"><label for="style">Dot style</label><select id="style"><option value="rounded">Rounded</option><option value="dots">Circles</option><option value="square">Square</option></select></div>
+<div class="f"><label for="size">Size: <span id="sv">480</span> px</label><input type="range" id="size" min="240" max="1024" step="16" value="480"></div>
+<div class="f"><label for="logo">Logo (optional)</label><input type="file" id="logo" accept="image/*"></div></div>
+<div id="barf" hidden><div class="f"><label for="bd">Data</label><input id="bd" value="SHAYNLY2026"></div>
+<div class="f"><label for="bfmt">Format</label><select id="bfmt"><option>CODE128</option><option>EAN13</option><option>UPC</option><option>CODE39</option></select></div>
+<div class="f"><label for="bh">Height: <span id="bhv">80</span></label><input type="range" id="bh" min="40" max="200" value="80"></div></div>
+</section>
+<section class="panel"><h2>Preview</h2><div id="out" style="text-align:center"><canvas id="cv" style="max-width:100%;border:1px solid var(--line);border-radius:8px"></canvas></div><p class="err" id="er" role="alert"></p>
+<div class="row" style="margin-top:14px"><button class="btn gold" id="png">Download PNG</button><button class="btn alt" id="svg">Download SVG</button></div></section></div></div>
+<script src="../core/vendor/qrcode.js"></script><script src="../core/vendor/jsbarcode.min.js"></script><script src="../core/shaynly.js"></script><script>
+Shaynly.bar('QR & Barcode Studio');const $=i=>document.getElementById(i),st=Shaynly.store('qr');let mode='qr',logoImg=null,els=[],S=480;
+const F={url:[['u','Website address','https://shaynly.com']],text:[['t','Text','']],upi:[['pa','UPI ID','name@bank'],['pn','Payee name',''],['am','Amount (optional)','']],wifi:[['ss','Network name',''],['pw','Password',''],['en','Security','WPA']]};
+function fields(){$('fields').innerHTML=F[$('kind').value].map(([k,l,p])=>`<div class="f"><label for="f_${k}">${l}</label><input id="f_${k}" placeholder="${p}" value="${(st.get({})[k]||'')}"></div>`).join('');$('fields').oninput=()=>{const o=st.get({});F[$('kind').value].forEach(([k])=>o[k]=$('f_'+k).value);st.set(o);draw()};}
+const v=k=>($('f_'+k)?.value||'').trim();
+function payload(){const k=$('kind').value;if(k==='url'){const u=v('u');if(!/^https?:\/\/\S+\.\S+/.test(u))throw'Enter a full web address starting with https://';return u}
+ if(k==='text'){if(!v('t'))throw'Enter the text to encode';return v('t')}
+ if(k==='upi'){if(!/^[\w.\-]+@[\w]+$/.test(v('pa')))throw'Enter a valid UPI ID, like name@bank';let s='upi://pay?pa='+encodeURIComponent(v('pa'))+'&pn='+encodeURIComponent(v('pn'));if(v('am'))s+='&am='+encodeURIComponent(v('am'))+'&cu=INR';return s}
+ if(!v('ss'))throw'Enter the network name';return`WIFI:T:${v('en')||'WPA'};S:${v('ss')};P:${v('pw')};;`}
+function build(text){const q=qrcode(0,'H');q.addData(text);q.make();const n=q.getModuleCount(),m=4,u=S/(n+2*m),st=$('style').value,fg=$('fg').value;els=[];
+ const eye=(r,c)=>(r<7&&c<7)||(r<7&&c>=n-7)||(r>=n-7&&c<7);
+ for(let r=0;r<n;r++)for(let c=0;c<n;c++){if(!q.isDark(r,c))continue;if(st!=='square'&&eye(r,c))continue;const x=(c+m)*u,y=(r+m)*u;els.push(st==='dots'?['c',x+u/2,y+u/2,u*.46]:['r',x,y,u+.4,st==='rounded'?u*.3:0])}
+ if(st!=='square')[[0,0],[0,n-7],[n-7,0]].forEach(([r,c])=>{const x=(c+m)*u,y=(r+m)*u,R=u*2;els.push(['ring',x,y,7*u,R],['r',x+2*u,y+2*u,3*u,R*.7])});
+ els.bg=[0,0,S,S]}
+function draw(){const er=$('er');er.textContent='';try{S=+$('size').value;$('sv').textContent=S;build(payload())}catch(e){er.textContent=e;return}
+ const cv=$('cv'),x=cv.getContext('2d');cv.width=cv.height=S;x.fillStyle=$('bg').value;x.fillRect(0,0,S,S);x.fillStyle=$('fg').value;x.strokeStyle=$('fg').value;
+ els.forEach(e=>{if(e[0]==='c'){x.beginPath();x.arc(e[1],e[2],e[3],0,7);x.fill()}else if(e[0]==='r'){x.beginPath();x.roundRect(e[1],e[2],e[3],e[3],e[4]);x.fill()}else{const u=e[3]/7;x.lineWidth=u;x.beginPath();x.roundRect(e[1]+u/2,e[2]+u/2,e[3]-u,e[3]-u,e[4]);x.stroke()}});
+ if(logoImg){const w=S*.2,a=logoImg.width/logoImg.height,lw=a>=1?w:w*a,lh=a>=1?w/a:w,p=S*.015;x.fillStyle=$('bg').value;x.beginPath();x.roundRect((S-lw)/2-p,(S-lh)/2-p,lw+2*p,lh+2*p,S*.02);x.fill();x.drawImage(logoImg,(S-lw)/2,(S-lh)/2,lw,lh)}}
+function bar(){const er=$('er');er.textContent='';try{JsBarcode($('cv'),$('bd').value,{format:$('bfmt').value,height:+$('bh').value,width:3,margin:16,background:'#fff',lineColor:'#0b2b2e'});$('bhv').textContent=$('bh').value}catch(e){er.textContent='This data does not fit '+$('bfmt').value+'. EAN13 needs 12 or 13 digits and UPC needs 11 or 12.'}}
+const go=()=>mode==='qr'?draw():bar();
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$('qrf').hidden=mode!=='qr';$('barf').hidden=mode==='qr';go()});
+['kind','fg','bg','style','size'].forEach(i=>$(i).oninput=()=>{if(i==='kind')fields();go()});['bd','bfmt','bh'].forEach(i=>$(i).oninput=bar);
+$('logo').onchange=e=>{const f=e.target.files[0];if(!f){logoImg=null;return draw()}const i=new Image();i.onload=()=>{logoImg=i;draw()};i.src=URL.createObjectURL(f)};
+$('png').onclick=()=>{if($('er').textContent)return;Shaynly.save($('cv').toDataURL('image/png'),(mode==='qr'?'qr':'barcode')+'.png');Shaynly.toast('PNG downloaded')};
+$('svg').onclick=()=>{if(mode!=='qr'){Shaynly.toast('SVG export is available for QR codes');return}if($('er').textContent)return;const f=$('fg').value,b=$('bg').value;
+ const body=els.map(e=>e[0]==='c'?`<circle cx="${e[1]}" cy="${e[2]}" r="${e[3]}"/>`:e[0]==='r'?`<rect x="${e[1]}" y="${e[2]}" width="${e[3]}" height="${e[3]}" rx="${e[4]}"/>`:`<rect x="${e[1]+e[3]/14}" y="${e[2]+e[3]/14}" width="${e[3]-e[3]/7}" height="${e[3]-e[3]/7}" rx="${e[4]}" fill="none" stroke="${f}" stroke-width="${e[3]/7}"/>`).join('');
+ let lg='';if(logoImg){const c=document.createElement('canvas');c.width=logoImg.width;c.height=logoImg.height;c.getContext('2d').drawImage(logoImg,0,0);const w=S*.2,a=logoImg.width/logoImg.height,lw=a>=1?w:w*a,lh=a>=1?w/a:w,p=S*.015;lg=`<rect x="${(S-lw)/2-p}" y="${(S-lh)/2-p}" width="${lw+2*p}" height="${lh+2*p}" rx="${S*.02}" fill="${b}"/><image href="${c.toDataURL()}" x="${(S-lw)/2}" y="${(S-lh)/2}" width="${lw}" height="${lh}"/>`}
+ Shaynly.save(new Blob([`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S} ${S}"><rect width="${S}" height="${S}" fill="${b}"/><g fill="${f}">${body}</g>${lg}</svg>`],{type:'image/svg+xml'}),'qr.svg');Shaynly.toast('SVG downloaded')};
+fields();draw();</script></body></html>

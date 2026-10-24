@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css"></head><body><script src="../core/vendor/qrcode.js"></script><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+Shaynly.page('AI-Search Readiness Checker',`<div class="f"><label for="h">Paste the page's HTML (View Source, then copy all)</label><textarea id="h" rows="16" placeholder="<html>…"></textarea></div><button class="btn gold" id="go">Check page</button><p class="muted" style="margin-top:10px">Runs in your browser; nothing is uploaded. This is a structural check. It cannot measure rankings or whether AI tools cite you.</p>`,'<div id="r"><p class="muted">Paste HTML and press Check page.</p></div>');
+const W=s=>(s.trim().match(/\S+/g)||[]).length;
+$('go').onclick=()=>{const d=new DOMParser().parseFromString($('h').value,'text/html'),q=s=>[...d.querySelectorAll(s)],C=[];
+ const add=(n,pts,ok,fix)=>C.push({n,pts,ok,fix});
+ const t=d.title.trim(),md=d.querySelector('meta[name=description]')?.content||'',h1=q('h1'),hs=q('h1,h2,h3,h4,h5,h6').map(h=>+h.tagName[1]);
+ add('Title 30 to 60 characters',8,t.length>=30&&t.length<=60,`Now ${t.length}. Rewrite to fit so it is not cut off.`);
+ add('Meta description 70 to 160 characters',4,md.length>=70&&md.length<=160,`Now ${md.length}. Summarise the page in a clickable way.`);
+ add('Exactly one H1',8,h1.length===1,`Found ${h1.length}.`);
+ add('Heading levels do not skip',4,hs.every((x,i)=>i==0||x-hs[i-1]<=1),'Go from H2 to H3, not H2 to H4.');
+ const qh=q('h2,h3').filter(h=>/\?$|^(what|how|why|when|which|who|can|does|do|is|are|should)\b/i.test(h.textContent.trim()));
+ add('Two or more question-style subheadings',8,qh.length>=2,`Found ${qh.length}. Phrase subheads like the prompts people type.`);
+ const ps=q('p').map(p=>p.textContent).filter(x=>W(x)>3),fp=ps[0]||'';
+ add('Opening paragraph is a direct answer (20 to 70 words)',12,W(fp)>=20&&W(fp)<=70,`First paragraph is ${W(fp)} words. Lead with the answer, then explain.`);
+ add('Paragraphs average 90 words or fewer',4,ps.length>0&&ps.reduce((a,p)=>a+W(p),0)/ps.length<=90,'Break long blocks so single passages can be quoted.');
+ add('Has a list or table',4,q('ul,ol,table').length>0,'Add steps or comparisons in list or table form.');
+ let ld=[],bad=0;q('script[type="application/ld+json"]').forEach(s=>{try{const j=JSON.parse(s.textContent);(Array.isArray(j)?j:j['@graph']||[j]).forEach(x=>ld.push(x['@type']))}catch{bad++}});
+ add('Valid JSON-LD structured data'+(ld.length?` (${ld.flat().join(', ')})`:''),12,ld.length>0&&!bad,bad?'JSON-LD failed to parse; fix the syntax.':'Add Organization plus a page-type schema.');
+ add('Organization or Person entity in schema',4,ld.flat().some(x=>/Organization|Person|LocalBusiness/.test(x)),'Define who publishes the page.');
+ const im=q('img');add('All images have alt text',4,im.every(i=>i.hasAttribute('alt')),`${im.filter(i=>!i.hasAttribute('alt')).length} missing.`);
+ add('At least 300 words of body text',4,W(d.body.textContent)>=300,`About ${W(d.body.textContent)} words.`);
+ add('Canonical URL set',4,!!d.querySelector('link[rel=canonical]'),'Add a canonical link.');
+ add('Author is identified',4,!!d.querySelector('meta[name=author],[rel=author],[itemprop=author]')||/"author"/.test($('h').value),'Show a named author with credentials.');
+ add('Publish or update date is machine-readable',4,!!d.querySelector('time,[itemprop=datePublished],meta[property="article:published_time"]')||/datePublished|dateModified/.test($('h').value),'Add a time element or schema dates.');
+ add('Social preview tags (Open Graph)',3,!!d.querySelector('meta[property="og:title"]'),'Add og:title, og:description, og:image.');
+ const tot=C.reduce((a,c)=>a+c.pts,0),got=C.reduce((a,c)=>a+(c.ok?c.pts:0),0),p=Math.round(got/tot*100);
+ $('r').innerHTML=`<div class="big">${p}/100</div><div class="meter"><i style="width:${p}%"></i></div>`+C.sort((a,b)=>a.ok-b.ok||b.pts-a.pts).map(c=>`<div class="chk"><b class="${c.ok?'ok':'no'}">${c.ok?'Pass':'Fix'}</b><span>${esc(c.n)}${c.ok?'':`<small>${esc(c.fix)}</small>`}</span></div>`).join('')};
+</script></body></html>

@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Commission Calculator</title>
+<link rel="stylesheet" href="../core/shaynly.css"></head><body><div class="wrap"><div class="grid">
+<section class="panel"><h2>Commission plan</h2>
+<div class="row"><div class="f"><label for="cur">Currency</label><select id="cur"><option value="INR">₹ INR</option><option value="USD">$ USD</option><option value="GBP">£ GBP</option><option value="CAD">C$ CAD</option></select></div>
+<div class="f"><label for="mode">Method</label><select id="mode"><option value="marginal">Marginal: each slab earns its own rate</option><option value="retro">Retroactive: the top slab reached applies to all sales</option></select></div></div>
+<table><thead><tr><th>Sales up to</th><th>Rate %</th><th></th></tr></thead><tbody id="tb"></tbody></table>
+<button class="btn alt" id="add" style="margin-top:12px">Add slab</button><p class="muted" style="margin-top:8px">The last slab has no upper limit, so every sale is always covered.</p></section>
+<section class="panel"><h2>Payout</h2><div class="f"><label for="sales">Total sales</label><input id="sales" type="number" min="0" step="any" placeholder="e.g. 750000"></div>
+<div class="big" id="pay">–</div><p class="err" id="er" role="alert"></p><table id="bd" style="margin-top:12px"></table>
+<button class="btn gold" id="csv" style="margin-top:14px">Download CSV</button></section></div></div>
+<script src="../core/shaynly.js"></script><script>
+Shaynly.bar('Commission Calculator');const $=i=>document.getElementById(i),s=Shaynly.store('commission');
+let P=s.get({cur:'INR',mode:'marginal',tiers:[{upto:100000,rate:5},{upto:500000,rate:7.5},{upto:null,rate:10}]}),rows=[];
+$('cur').value=P.cur;$('mode').value=P.mode;
+function tiers(){const t=P.tiers;t.sort((a,b)=>(a.upto??Infinity)-(b.upto??Infinity));return t}
+function render(){const t=tiers();$('tb').innerHTML=t.map((x,i)=>`<tr><td>${x.upto===null?'<span class="muted">No limit</span>':`<input type="number" min="1" data-i="${i}" data-k="upto" value="${x.upto}" aria-label="Slab ${i+1} upper limit">`}</td><td><input type="number" min="0" step="any" data-i="${i}" data-k="rate" value="${x.rate}" aria-label="Slab ${i+1} rate"></td><td>${x.upto===null||t.length<2?'':`<button class="btn alt" data-d="${i}" aria-label="Remove slab ${i+1}">Remove</button>`}</td></tr>`).join('');calc()}
+$('tb').oninput=e=>{const i=e.target.dataset.i;if(i===undefined)return;P.tiers[i][e.target.dataset.k]=e.target.value===''?0:+e.target.value;s.set(P);calc()};
+$('tb').onchange=render;$('tb').onclick=e=>{if(e.target.dataset.d!==undefined){P.tiers.splice(+e.target.dataset.d,1);s.set(P);render()}};
+$('add').onclick=()=>{const t=tiers(),last=t[t.length-2]?.upto||0;P.tiers.splice(t.length-1,0,{upto:last?last*2:100000,rate:t[t.length-1].rate});s.set(P);render()};
+$('cur').onchange=$('mode').onchange=()=>{P.cur=$('cur').value;P.mode=$('mode').value;s.set(P);calc()};$('sales').oninput=calc;
+function calc(){const er=$('er');er.textContent='';rows=[];const t=tiers(),f=n=>Shaynly.fmt(n,P.cur),ups=t.filter(x=>x.upto!==null).map(x=>x.upto);
+ if(new Set(ups).size!==ups.length){er.textContent='Two slabs have the same limit. Change one of them.';$('pay').textContent='–';$('bd').innerHTML='';return}
+ const v=$('sales').value;if(v===''){$('pay').textContent='–';$('bd').innerHTML='';return}const S=+v;if(!(S>=0)){er.textContent='Enter sales of zero or more.';return}
+ let tot=0,prev=0;
+ if(P.mode==='marginal'){for(const x of t){const hi=x.upto??Infinity,amt=Math.max(0,Math.min(S,hi)-prev);if(amt>0){const c=amt*x.rate/100;tot+=c;rows.push([`${f(prev)} to ${x.upto===null?'no limit':f(hi)}`,x.rate,amt,c])}prev=hi;if(S<=hi)break}}
+ else{const x=t.find(x=>x.upto===null||S<=x.upto);tot=S*x.rate/100;rows.push(['All sales',x.rate,S,tot])}
+ $('pay').textContent=f(tot);$('bd').innerHTML='<tr><th>Slab</th><th class="n">Rate</th><th class="n">Sales</th><th class="n">Commission</th></tr>'+rows.map(r=>`<tr><td>${r[0]}</td><td class="n">${r[1]}%</td><td class="n">${f(r[2])}</td><td class="n">${f(r[3])}</td></tr>`).join('')+`<tr><th>Total</th><th></th><th class="n">${f(S)}</th><th class="n">${f(tot)}</th></tr>`}
+$('csv').onclick=()=>{if(!rows.length){Shaynly.toast('Enter total sales first');return}Shaynly.save(new Blob(['Slab,Rate %,Sales,Commission\n'+rows.map(r=>`"${r[0]}",${r[1]},${r[2].toFixed(2)},${r[3].toFixed(2)}`).join('\n')],{type:'text/csv'}),'commission.csv')};
+render();</script></body></html>
