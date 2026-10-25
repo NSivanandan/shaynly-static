@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shaynly - Business Marketing, Management &amp; Digital Utilities</title>
-  <meta name="description" content="Shaynly provides strategic business marketing frameworks, management methodologies, developer resources, and 100+ client-side web tools.">
+  <title>Shaynly - Strategic Business Marketing, Management &amp; Client Tools</title>
+  <meta name="description" content="Evidence-based business marketing frameworks, management systems, and 100+ free client-side browser tools for creators and developers.">
   <link rel="canonical" href="https://shaynly.com/">
-    <!-- Site Icons & Favicon (SEO / Google Search / Apple Touch) -->
+
+  <!-- Site Icons & Favicon (SEO / Google Search / Apple Touch) -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
@@ -14,8 +15,9 @@
   <link rel="manifest" href="/site.webmanifest">
   <meta name="apple-mobile-web-app-title" content="Shaynly">
   <meta name="application-name" content="Shaynly">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <!-- Cloudflare Speculation Rules (Instant Zero-Perceived-Load Navigation) -->
+  <meta name="robots" content="index, follow">
+
+  <!-- Cloudflare Speculation Rules -->
   <script type="speculationrules">
   {
     "prerender": [
@@ -32,22 +34,12 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/">
-  <meta property="og:title" content="Shaynly - Business Marketing, Management &amp; Digital Utilities">
-  <meta property="og:description" content="Shaynly provides strategic business marketing frameworks, management methodologies, developer resources, and 100+ client-side web tools.">
+  <meta property="og:title" content="Shaynly - Strategic Business Marketing, Management &amp; Client Tools">
+  <meta property="og:description" content="Evidence-based business marketing frameworks, management systems, and 100+ free client-side browser tools.">
   <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
-
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shaynly - Business Marketing, Management &amp; Digital Utilities">
-  <meta name="twitter:description" content="Shaynly provides strategic business marketing frameworks, management methodologies, developer resources, and 100+ client-side web tools.">
-  <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
-
-  <!-- RSS & Sitemap Auto-Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Shaynly RSS Feed" href="https://shaynly.com/feed.xml">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://shaynly.com/sitemap.xml">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675">
+  <meta property="og:image:type" content="image/png">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
@@ -60,6 +52,80 @@
     gtag('js', new Date());
     gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
   </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .hero-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 12px;
+      margin-bottom: 36px;
+    }
+    .hero-banner h1 {
+      font-size: 38px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+    .hero-banner p {
+      font-size: 18px;
+      max-width: 650px;
+      margin: 0 auto 28px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .cat-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cat-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.08);
+    }
+    .cat-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 8px;
+    }
+    .cat-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .cat-card span.count {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
 </head>
 <body>
   <!-- Global Shaynly Header -->
@@ -81,24 +147,51 @@
     </div>
   </header>
 
-  <!-- Main Body -->
   <main class="container">
-    <div class="hero">
-      <h1>Strategic Business Marketing &amp; Digital Utilities</h1>
-      <p>Evidence-based management frameworks, AI automation architectures, and offline-first client-side browser tools.</p>
+    <div class="hero-banner">
+      <h1>Strategic Frameworks &amp; Free Browser Utilities</h1>
+      <p>
+        Evidence-based marketing strategies, executive business operations, and 100+ high-performance client tools.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="/category/marketing/" style="background: var(--primary); color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none;">Explore Marketing</a>
+        <a href="/tools/" style="background: rgba(255,255,255,0.1); color: #ffffff; border: 1px solid rgba(255,255,255,0.2); padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none;">100+ Free Tools &rarr;</a>
+      </div>
     </div>
 
-    <!-- Category Quick Navigation Pills: 4 Article Categories + Tools -->
-    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 1.5rem 0 2.5rem;">
-      <a href="/category/marketing/" class="cat-pill" style="padding: 10px 20px; border-radius: 20px; border: 1px solid var(--border); background: #ffffff; color: var(--slate-700); text-decoration: none; font-size: 0.9rem; font-weight: 600;">Marketing &amp; SEO</a>
-      <a href="/category/management/" class="cat-pill" style="padding: 10px 20px; border-radius: 20px; border: 1px solid var(--border); background: #ffffff; color: var(--slate-700); text-decoration: none; font-size: 0.9rem; font-weight: 600;">Business Management</a>
-      <a href="/category/technology/" class="cat-pill" style="padding: 10px 20px; border-radius: 20px; border: 1px solid var(--border); background: #ffffff; color: var(--slate-700); text-decoration: none; font-size: 0.9rem; font-weight: 600;">Technology &amp; AI</a>
-      <a href="/category/resources/" class="cat-pill" style="padding: 10px 20px; border-radius: 20px; border: 1px solid var(--border); background: #ffffff; color: var(--slate-700); text-decoration: none; font-size: 0.9rem; font-weight: 600;">Developer Resources</a>
-      <a href="/tools/" class="cat-pill" style="padding: 10px 22px; border-radius: 20px; border: 1px solid var(--primary); background: var(--primary); color: #ffffff; text-decoration: none; font-size: 0.9rem; font-weight: 700;">Interactive Tools (100+) &rarr;</a>
+    <h2 style="font-size: 24px; font-weight: 800; color: var(--slate-900); margin-bottom: 20px;">Strategic Knowledge Hubs</h2>
+    <div class="cat-grid">
+      <a href="/category/marketing/" class="cat-card">
+        <div>
+          <h3>Digital Marketing &amp; SEO</h3>
+          <p>Actionable search engine positioning, keyword intelligence, and acquisition systems.</p>
+        </div>
+        <span class="count">59 Articles &rarr;</span>
+      </a>
+      <a href="/category/management/" class="cat-card">
+        <div>
+          <h3>Business Management</h3>
+          <p>Executive strategy, scaling methodologies, high-leverage workflows, and operations.</p>
+        </div>
+        <span class="count">65 Articles &rarr;</span>
+      </a>
+      <a href="/category/technology/" class="cat-card">
+        <div>
+          <h3>Technology &amp; AI</h3>
+          <p>Generative AI workflows, deep-tech systems, machine learning architectures, and modern engineering.</p>
+        </div>
+        <span class="count">52 Articles &rarr;</span>
+      </a>
+      <a href="/category/resources/" class="cat-card">
+        <div>
+          <h3>Design &amp; Developer Resources</h3>
+          <p>Component libraries, CSS patterns, design systems, and frontend developer utilities.</p>
+        </div>
+        <span class="count">67 Articles &rarr;</span>
+      </a>
     </div>
 
-    <!-- AdSense Top Banner -->
-    <div style="margin: 20px 0; text-align: center;">
+    <div style="margin: 30px 0; text-align: center;">
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-2218316924082551"
@@ -108,15 +201,9 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- Section Heading -->
-    <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-      <div>
-        <h2 style="font-size: 26px; font-weight: 800; color: var(--slate-900); margin: 0 0 4px 0;">Featured Articles &amp; Frameworks</h2>
-        <p style="font-size: 14px; color: var(--text-muted); margin: 0;">Showing executive guides, growth playbooks, and strategic analyses</p>
-      </div>
-      <div style="font-size: 14px; font-weight: 700;">
-        <a href="/site-map/" style="color:var(--primary);text-decoration:none;">View All 240+ Guides &rarr;</a>
-      </div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px;">
+      <h2 style="font-size: 24px; font-weight: 800; color: var(--slate-900); margin: 0;">Latest Executive Guides</h2>
+      <a href="/site-map/" style="color: var(--primary); font-weight: 700; text-decoration: none; font-size: 14px;">View All 243 &rarr;</a>
     </div>
 
     <div class="cards-grid">
@@ -131,7 +218,7 @@
         <span class="card-cat">Management</span>
         <h3 class="card-title">Startup Booted Fundraising Strategy: How Founders Raise Without Losing Control in 2026</h3>
         <p class="card-desc">founder guide to startup booted fundraising strategy, non-dilutive capital, SAFE vs priced rounds, dilution planning, and control-preserving fundraising decisions.</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <div class="card-footer">
           <span>2026-05-13</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
@@ -146,8 +233,8 @@
              onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Marketing</span>
         <h3 class="card-title">Search Engine Positioning SEO: 2026 Guide to Rank #1 &amp; Dominate SERPs</h3>
-        <p class="card-desc">Top Google positions capture 28% of clicks. This 2026 guide delivers battle-tested search engine positioning SEO tactics from Shaynly Bangalore to boost your...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <p class="card-desc">Top Google positions capture 28% of clicks. This 2026 guide delivers battle-tested search engine positioning SEO tactics from Shaynly Bangalore to boost your rankings from page 2 to #1. Free audit + tools included.</p>
+        <div class="card-footer">
           <span>2026-02-22</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
@@ -157,13 +244,13 @@
              alt="Google Ads for Doctors SEO Outline: Building a High-Precision Patient Acquisition Engine"
              width="600"
              height="338"
-             loading="lazy" decoding="async"
+             loading="eager" fetchpriority="high"
              style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
              onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Marketing</span>
         <h3 class="card-title">Google Ads for Doctors SEO Outline: Building a High-Precision Patient Acquisition Engine</h3>
-        <p class="card-desc">The definitive Google Ads for Doctors SEO outline for 2026. HIPAA-compliant tracking, medical E-E-A-T, Local Service Ads, schema markup, Core Web Vitals, and a free...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <p class="card-desc">The definitive Google Ads for Doctors SEO outline for 2026. HIPAA-compliant tracking, medical E-E-A-T, Local Service Ads, schema markup, Core Web Vitals, and a free Patient Acquisition ROI Calculator. By Sivanandan N at Shaynly.</p>
+        <div class="card-footer">
           <span>2026-02-21</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
@@ -178,8 +265,8 @@
              onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Management</span>
         <h3 class="card-title">101+ Creative Fundraising Ideas for 2026: The Ultimate High-Margin Guide for Nonprofits &amp; Schools</h3>
-        <p class="card-desc">Discover 101+ high-margin creative fundraising ideas for 2026. Lean Six Sigma-optimized strategies for nonprofits, schools, and community groups. Includes an...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <p class="card-desc">Discover 101+ high-margin creative fundraising ideas for 2026. Lean Six Sigma-optimized strategies for nonprofits, schools, and community groups. Includes an interactive ROI calculator, Idea Finder tool, and corporate partnership blueprints. By Sivanandan N at Shaynly.</p>
+        <div class="card-footer">
           <span>2026-02-20</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
@@ -194,8 +281,8 @@
              onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Management</span>
         <h3 class="card-title">Creative Agency Business Model Revenue Structure: Engineering Profit with Lean Six Sigma</h3>
-        <p class="card-desc">The definitive guide to engineering profit in your creative agency using Lean Six Sigma. Eliminate the 8 DOWNTIME wastes, build recurring revenue structures, and...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <p class="card-desc">The definitive guide to engineering profit in your creative agency using Lean Six Sigma. Eliminate the 8 DOWNTIME wastes, build recurring revenue structures, and transform your agency from a service provider into a high-margin profit engine. By Sivanandan N at Shaynly.</p>
+        <div class="card-footer">
           <span>2026-02-19</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
@@ -210,8 +297,8 @@
              onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Technology</span>
         <h3 class="card-title">How to Add Your Website to Google Search: Complete 24-48 Hour Indexing Guide</h3>
-        <p class="card-desc">New site not appearing in Google? Complete step-by-step guide to add your website to Google Search in 24-48 hours using Google Search Console, sitemaps, and...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <p class="card-desc">New site not appearing in Google? Complete step-by-step guide to add your website to Google Search in 24-48 hours using Google Search Console, sitemaps, and WordPress optimization. Includes troubleshooting, local SEO tips for Bengaluru, and rapid indexing tactics.</p>
+        <div class="card-footer">
           <span>2026-01-29</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
@@ -226,8 +313,8 @@
              onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Technology</span>
         <h3 class="card-title">The 90-Day Digital Transformation 2.0: Navigating the 2026 Digital Cliff</h3>
-        <p class="card-desc">Executive summary on surviving the 2026 Digital Cliff where conversational AI replaces traditional search. Learn the Shaynly Growth Architecture: AI-First brand...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <p class="card-desc">Executive summary on surviving the 2026 Digital Cliff where conversational AI replaces traditional search. Learn the Shaynly Growth Architecture: AI-First brand authority, omnichannel dominance, and lean growth engine powered by DMAIC methodology. Transform from offline legacy in 90-day digital transformation.</p>
+        <div class="card-footer">
           <span>2026-01-28</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
@@ -242,8 +329,8 @@
              onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Technology</span>
         <h3 class="card-title">Google AI Agentic Search Has &quot;Hijacked&quot; Local Search 2026</h3>
-        <p class="card-desc">Critical briefing on how Google AI has stopped trusting manual inputs and now controls local search through agentic systems. Learn why the Map Pack is 50% dead, how...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <p class="card-desc">Critical briefing on how Google AI has stopped trusting manual inputs and now controls local search through agentic systems. Learn why the Map Pack is 50% dead, how AI agents scrape and override business data, and the blueprint for surviving the zero-click era. By Sivanandan N at Shaynly</p>
+        <div class="card-footer">
           <span>2026-01-27</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
@@ -259,158 +346,13 @@
         <span class="card-cat">Technology</span>
         <h3 class="card-title">The UCP Revolution: How Google&#x27;s Universal Commerce Protocol is Changing E-Commerce Forever</h3>
         <p class="card-desc">The UCP Revolution The UCP Revolution: How Google&#x27;s Universal Commerce Protocol is Changing E-Commerce Forever | Shaynly.com Table of Contents I. The End of...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <div class="card-footer">
           <span>2026-01-26</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/gmail-filtering-broken/">
-        <img src="/wp-content/uploads/2026/01/Gmail-Filtering-Broken-Why-Your-Primary-Inbox-is-Flooded.png.webp"
-             alt="Gmail Filtering Broken? Why Your Primary Inbox is Flooded"
-             width="600"
-             height="338"
-             loading="lazy" decoding="async"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
-             onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Technology</span>
-        <h3 class="card-title">Gmail Filtering Broken? Why Your Primary Inbox is Flooded</h3>
-        <p class="card-desc">Complete guide to the January 24, 2026 Gmail filtering Broken crisis. Learn why your Primary inbox is flooded with promotions, the death of Gmailify, and how to fix...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
-          <span>2026-01-24</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/manus-ai-agent/">
-        <img src="/wp-content/uploads/2025/03/Manus-AI-Agent.jpg.webp"
-             alt="Manus AI Agent: The Dawn of Truly Autonomous Artificial Intelligence in 2026"
-             width="600"
-             height="338"
-             loading="lazy" decoding="async"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
-             onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Technology</span>
-        <h3 class="card-title">Manus AI Agent: The Dawn of Truly Autonomous Artificial Intelligence in 2026</h3>
-        <p class="card-desc">The Evolution of AI Agents Core Features of Manus AI Agent Autonomous Task Execution Multi-Modal Capabilities Advanced Tool Invocation Cloud-Based Asynchronous...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
-          <span>2026-01-12</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/the-future-of-marketing-2026/">
-        <img src="/wp-content/uploads/2025/12/The-Future-of-Marketing-2026-Master-Visibility-Velocity-Veracity.png.webp"
-             alt="The Future of Marketing 2026: Master Visibility, Velocity &amp; Veracity"
-             width="600"
-             height="338"
-             loading="lazy" decoding="async"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
-             onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Marketing</span>
-        <h3 class="card-title">The Future of Marketing 2026: Master Visibility, Velocity &amp; Veracity</h3>
-        <p class="card-desc">The Future of Marketing 2026 is shifting from “publish and hope” to “design systems that get cited, trusted, and acted on.” In 2026, the most durable growth comes...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
-          <span>2025-12-31</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/why-employer-branding/">
-        <img src="/wp-content/uploads/2025/12/Why-Employer-Branding-is-Your-Most-Critical-Organizational-Capability.png.webp"
-             alt="Why Employer Branding is Your Most Critical Organizational Capability"
-             width="600"
-             height="338"
-             loading="lazy" decoding="async"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
-             onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Marketing</span>
-        <h3 class="card-title">Why Employer Branding is Your Most Critical Organizational Capability</h3>
-        <p class="card-desc">Discover how strategic employer branding drives financial performance, recruitment efficiency, and talent retention. Learn the key elements for building an enduring...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
-          <span>2025-12-28</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/business-valuation-tool/">
-        <img src="/wp-content/uploads/2025/12/Professional-Business-Valuation-Tool.png.webp"
-             alt="Business Valuation Tool &amp; DCF Model (Free Tool)"
-             width="600"
-             height="338"
-             loading="lazy" decoding="async"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
-             onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Business Valuation Tool &amp; DCF Model (Free Tool)</h3>
-        <p class="card-desc">Business Valuation Tool by Shaynly. Features DCF analysis, Market Multiples, Sensitivity Matrix, and Financial Health Checks.</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
-          <span>2025-12-16</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/adsense-rpm-calculator/">
-        <img src="/wp-content/uploads/2025/12/AdSense-RPM-Calculator-.png.webp"
-             alt="AdSense RPM Calculator - Professional Revenue Per Mille Tool 2026"
-             width="600"
-             height="338"
-             loading="lazy" decoding="async"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
-             onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">AdSense RPM Calculator - Professional Revenue Per Mille Tool 2026</h3>
-        <p class="card-desc">Advanced AdSense RPM Calculator - Professional Revenue Per Mille Tool 2025 📊 Advanced AdSense RPM Calculator Calculate Revenue Per Mille (RPM), Page RPM &amp; CPM with...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
-          <span>2025-12-05</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/4-types-of-seo/">
-        <img src="/wp-content/uploads/2025/11/The-4-Types-of-SEO-Your-Ultimate-Guide-to-Digital-Dominance.png.webp"
-             alt="The 4 Types of SEO: Your Ultimate Guide to Digital Dominance"
-             width="600"
-             height="338"
-             loading="lazy" decoding="async"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
-             onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Marketing</span>
-        <h3 class="card-title">The 4 Types of SEO: Your Ultimate Guide to Digital Dominance</h3>
-        <p class="card-desc">4 Types of SEO The 4 Types of SEO: A Complete Guide to Dominating Search Rankings Shaynly SEO Mastery The 4 Types of SEO: Your Ultimate Guide to Digital Dominance...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
-          <span>2025-11-17</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/facebook-seo-checklist/">
-        <img src="/wp-content/uploads/2025/11/Facebook-SEO-Visibility-Checklist.png.webp"
-             alt="Facebook SEO &amp; Visibility Checklist"
-             width="600"
-             height="338"
-             loading="lazy" decoding="async"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
-             onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Marketing</span>
-        <h3 class="card-title">Facebook SEO &amp; Visibility Checklist</h3>
-        <p class="card-desc">Facebook SEO Checklist Facebook SEO &amp; Visibility Checklist Facebook SEO &amp; Visibility Checklist A complete, actionable checklist to optimize your Facebook Page for...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
-          <span>2025-11-15</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/twitter-seo-checklist/">
-        <img src="/wp-content/uploads/2025/11/Twitter-SEO-Visibility-Checklist.png.webp"
-             alt="Twitter SEO &amp; Visibility Checklist"
-             width="600"
-             height="338"
-             loading="lazy" decoding="async"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;"
-             onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Marketing</span>
-        <h3 class="card-title">Twitter SEO &amp; Visibility Checklist</h3>
-        <p class="card-desc">Master Twitter SEO with our 16-step checklist. Boost profile visibility by 300%, optimize for the algorithm, and drive organic growth. Complete guide for maximum...</p>
-        <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
-          <span>2025-11-14</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
       </a>
     </div>
 
-    <!-- Client-Side Utilities Showcase Banner -->
     <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 12px; padding: 36px 30px; margin: 50px 0 30px; color: #ffffff; text-align: center;">
       <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 12px; color: #ffffff;">Need Free Business &amp; Marketing Tools?</h2>
       <p style="font-size: 15px; color: #94a3b8; max-width: 600px; margin: 0 auto 24px; line-height: 1.6;">

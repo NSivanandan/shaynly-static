@@ -6,7 +6,8 @@
   <title>Mastering Google Search Console - Shaynly</title>
   <meta name="description" content="Mastering Google Search Console: A Comprehensive Guide for Website Success Mastering Google Search Console Your Ultimate Guide to Understanding, Utilizing, and...">
   <link rel="canonical" href="https://shaynly.com/mastering-google-search-console/">
-    <!-- Site Icons & Favicon (SEO / Google Search / Apple Touch) -->
+
+  <!-- Site Icons & Favicon (SEO / Google Search / Apple Touch) -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
@@ -15,6 +16,7 @@
   <meta name="apple-mobile-web-app-title" content="Shaynly">
   <meta name="application-name" content="Shaynly">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
   <!-- Cloudflare Speculation Rules (Instant Zero-Perceived-Load Navigation) -->
   <script type="speculationrules">
   {
@@ -48,7 +50,7 @@
   <meta name="twitter:image" content="https://shaynly.com/wp-content/uploads/2025/05/Mastering-Google-Search-Console.png.webp">
   <meta name="twitter:image:alt" content="Mastering Google Search Console">
 
-  <!-- Schema.org JSON-LD Structured Data with ImageObject -->
+  <!-- Schema.org JSON-LD Structured Data with ImageObject & Author Authority -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -99,7 +101,7 @@
   "datePublished": "2025-05-20",
   "dateModified": "2025-05-20",
   "articleSection": "Technology & AI",
-  "wordCount": 6519,
+  "wordCount": 5151,
   "inLanguage": "en-US"
 }
   </script>
@@ -165,21 +167,29 @@
           </figcaption>
         </figure>
 
-        <aside class="aeo-factbox">
-          <div class="aeo-factbox-header">
-            <span class="aeo-factbox-dot"></span>
-            <span>Executive Direct Answer &amp; Key Takeaways</span>
+        <aside class="exec-brief-card">
+          <div class="exec-brief-header">
+            <span class="exec-brief-badge">Executive Brief</span>
           </div>
-          <p class="aeo-factbox-answer">Mastering Google Search Console: A Comprehensive Guide for Website Success Mastering Google Search Console Your Ultimate Guide to Understanding, Utilizing, and...</p>
-          <div class="aeo-factbox-grid">
-            <div>Strategic Domain:<span>Technology & AI</span></div>
-            <div>Core Framework:<span>Shaynly 2026 Executive Standard</span></div>
-            <div>Audience:<span>Directors, Architects &amp; Founders</span></div>
+          <p class="exec-brief-lead">Mastering Google Search Console: A Comprehensive Guide for Website Success Mastering Google Search Console Your Ultimate Guide to Understanding, Utilizing, and...</p>
+          <div class="exec-brief-meta-grid">
+            <div class="exec-brief-pill">
+              <span class="meta-label">Domain Scope</span>
+              <span class="meta-val">Technology Strategy</span>
+            </div>
+            <div class="exec-brief-pill">
+              <span class="meta-label">Benchmark</span>
+              <span class="meta-val">2026 Executive Standard</span>
+            </div>
+            <div class="exec-brief-pill">
+              <span class="meta-label">Practitioner Focus</span>
+              <span class="meta-val">Founders &amp; Architects</span>
+            </div>
           </div>
         </aside>
 
-        <!-- AdSense Top -->
-        <div style="margin: 20px 0; text-align: center;">
+        <!-- AdSense Top Banner -->
+        <div style="margin: 20px 0 28px; text-align: center;">
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-2218316924082551"
@@ -190,551 +200,7 @@
         </div>
 
         <div class="article-content">
-          <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mastering Google Search Console: A Comprehensive Guide for Website Success</title>
-    <meta name="description" content="Learn how to use Google Search Console effectively. Our in-depth guide covers setup, reports (Performance, Index, Experience), SEO tasks, and tips to boost your website's visibility.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-blue: #1A73E8; /* Google Blue */
-            --secondary-blue: #4285F4; /* Lighter Google Blue */
-            --accent-yellow: #FBBC05; /* Google Yellow */
-            --accent-green: #34A853; /* Google Green */
-            --accent-red: #EA4335; /* Google Red */
-            --light-bg: #F8F9FA; /* Very light grey, almost white */
-            --white-bg: #FFFFFF;
-            --text-dark: #202124; /* Google's dark text color */
-            --text-medium: #5F6368; /* Google's medium text color */
-            --border-color: #DADCE0; /* Google's border color */
-            --card-shadow: 0 1px 3px rgba(60,64,67,0.15), 0 1px 2px rgba(60,64,67,0.2);
-            --card-hover-shadow: 0 4px 6px rgba(60,64,67,0.15), 0 1px 3px rgba(60,64,67,0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.7;
-            color: var(--text-medium);
-            background-color: var(--white-bg);
-            font-size: 16px;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 25px 0;
-        }
-
-        h1, h2, h3, h4 {
-            color: var(--text-dark);
-            margin-bottom: 0.8em;
-            line-height: 1.3;
-            font-weight: 600;
-        }
-
-        h1 {
-            font-size: 2.9rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        h2 {
-            font-size: 2.3rem;
-            margin-top: 3rem;
-            padding-bottom: 0.7rem;
-            border-bottom: 3px solid var(--primary-blue);
-            display: flex;
-            align-items: center;
-        }
-        h2 i {
-            margin-right: 15px;
-            color: var(--primary-blue);
-            font-size: 2.1rem;
-        }
-        h3 {
-            font-size: 1.9rem;
-            color: var(--secondary-blue);
-            margin-top: 2.2rem;
-            font-weight: 600;
-        }
-        h4 {
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            margin-top: 1.8rem;
-            font-weight: 500;
-        }
-        h5 {
-            font-size: 1.2rem;
-            color: var(--secondary-blue);
-            margin-top: 1.5rem;
-            font-weight: 500;
-        }
-
-        p {
-            margin-bottom: 1.4em;
-        }
-
-        a {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        a:hover {
-            text-decoration: underline;
-            color: var(--secondary-blue);
-        }
-
-        img.responsive-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: var(--card-shadow);
-            margin: 1.5rem 0;
-            border: 1px solid var(--border-color);
-        }
-
-        /* Header */
-        .main-hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: var(--white-bg);
-            padding: 4.5rem 1.5rem;
-            text-align: center;
-            border-bottom-left-radius: 50% 20px;
-            border-bottom-right-radius: 50% 20px;
-            margin-bottom: 3rem;
-        }
-        .main-hero h1 {
-            color: var(--white-bg);
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-        .main-hero .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            max-width: 800px;
-            margin: 0.5rem auto 0;
-            font-weight: 300;
-        }
-
-        /* Introduction Section */
-        .intro-block {
-            background-color: var(--light-bg);
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            box-shadow: var(--card-shadow);
-            border-left: 6px solid var(--primary-blue);
-        }
-        .intro-block p {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-        .intro-block p strong {
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        /* Table of Contents */
-        .toc-wrapper {
-            background-color: #E8F0FE; /* Light Google Blue */
-            padding: 2rem 2.5rem;
-            border-radius: 12px;
-            margin-bottom: 3.5rem;
-            border: 1px solid var(--secondary-blue);
-            box-shadow: var(--card-shadow);
-        }
-        .toc-wrapper h3 {
-            margin-top: 0;
-            color: var(--primary-blue);
-            display: flex;
-            align-items: center;
-            font-size: 1.9rem;
-        }
-        .toc-wrapper h3 i {
-            margin-right: 12px;
-            color: var(--primary-blue);
-        }
-        .toc-wrapper ul {
-            list-style: none;
-            padding-left: 0;
-            columns: 2;
-            column-gap: 2.5rem;
-        }
-        .toc-wrapper ul li {
-            margin-bottom: 0.7em;
-        }
-        .toc-wrapper ul li a {
-            color: var(--primary-blue);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-        .toc-wrapper ul li a i {
-            margin-right: 8px;
-            color: var(--secondary-blue);
-            font-size: 0.9em;
-            transition: color 0.3s ease;
-        }
-        .toc-wrapper ul li a:hover {
-            color: var(--accent-yellow);
-            text-decoration: none;
-        }
-        .toc-wrapper ul li a:hover i {
-            color: var(--accent-yellow);
-        }
-
-        /* Definition Card / Info Card */
-        .info-card {
-            background-color: var(--white-bg);
-            border: 1px solid var(--border-color);
-            border-left: 7px solid var(--accent-green);
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            box-shadow: var(--card-shadow);
-        }
-        .info-card h4 {
-            margin-top: 0;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            font-size: 1.6rem;
-        }
-        .info-card h4 i {
-            margin-right: 12px;
-            color: var(--accent-green);
-            font-size: 1.3em;
-        }
-        .info-card ul {
-            list-style-position: inside;
-            padding-left: 5px;
-            margin-top: 1rem;
-        }
-        .info-card ul li { margin-bottom: 0.6rem; padding-left: 10px; position: relative;}
-        .info-card ul li::before {
-            content: "f058"; /* Font Awesome check circle solid */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            color: var(--accent-green);
-            position: absolute;
-            left: -5px;
-            top: 3px;
-        }
-
-        /* Styled Lists (e.g., for features, benefits) */
-        .custom-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .custom-list li {
-            background-color: var(--light-bg);
-            padding: 1.3rem 2rem;
-            margin-bottom: 1.2rem;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .custom-list li:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--card-hover-shadow);
-        }
-        .custom-list li i.list-icon { /* Specific class for list icons */
-            color: var(--secondary-blue);
-            margin-right: 18px;
-            font-size: 1.6em;
-            margin-top: 0.05em; /* Align with text */
-            flex-shrink: 0;
-        }
-        .custom-list li strong {
-            color: var(--primary-blue);
-            display: block;
-            margin-bottom: 0.4em;
-            font-weight: 600;
-        }
-
-        /* Steps/Process Flow (e.g., Setup Process) */
-        .steps-container {
-            margin: 2.5rem 0;
-        }
-        .step-card {
-            background-color: var(--white-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--card-shadow);
-            position: relative;
-            display: flex;
-            align-items: flex-start; /* Align icon and text block */
-            transition: all 0.3s ease;
-        }
-        .step-card:hover {
-            box-shadow: var(--card-hover-shadow);
-            border-left: 5px solid var(--accent-yellow);
-        }
-        .step-card .step-icon-container {
-            background-color: var(--primary-blue);
-            color: var(--white-bg);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-right: 2rem;
-            flex-shrink: 0;
-            box-shadow: 0 3px 7px rgba(0,0,0,0.15);
-        }
-        .step-card .step-content h5 {
-            margin-top: 0;
-            color: var(--primary-blue);
-            font-size: 1.4rem;
-            margin-bottom: 0.6rem;
-        }
-        .step-card .step-content p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Report/Feature Spotlight Section */
-        .feature-spotlight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .feature-card {
-            background: var(--white-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--card-hover-shadow);
-        }
-        .feature-card .feature-icon {
-            font-size: 2.8rem;
-            color: var(--secondary-blue);
-            margin-bottom: 1rem;
-        }
-        .feature-card h4 {
-            margin-top: 0;
-            color: var(--primary-blue);
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-        .feature-card p {
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-        .feature-card ul {
-            list-style: none;
-            padding-left: 0;
-            font-size: 0.9rem;
-        }
-        .feature-card ul li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: flex-start;
-        }
-        .feature-card ul li i {
-            color: var(--accent-green);
-            margin-right: 8px;
-            margin-top: 4px;
-            font-size: 0.9em;
-        }
-
-
-        /* Highlight Box / Callout */
-        .callout-box {
-            background-color: #E8F0FE; /* Light Google Blue */
-            border-left: 6px solid var(--primary-blue);
-            padding: 2rem;
-            margin: 2.5rem 0;
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-        }
-        .callout-box p {
-            margin-bottom: 0;
-            color: var(--text-dark);
-            font-weight: 400;
-            font-size: 1.1rem;
-        }
-        .callout-box strong {
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-        .callout-box.warning {
-            background-color: #FEF7E0; /* Light Google Yellow */
-            border-left-color: var(--accent-yellow);
-        }
-        .callout-box.warning strong { color: #AF6C00; } /* Darker yellow */
-        .callout-box.error {
-            background-color: #FCE8E6; /* Light Google Red */
-            border-left-color: var(--accent-red);
-        }
-        .callout-box.error strong { color: #C5221F; } /* Darker red */
-        .callout-box.success {
-            background-color: #E6F4EA; /* Light Google Green */
-            border-left-color: var(--accent-green);
-        }
-        .callout-box.success strong { color: #188038; } /* Darker green */
-
-
-        /* FAQ Section */
-        .faq-item {
-            background-color: var(--white-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            margin-bottom: 1.2rem;
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-        }
-        .faq-question {
-            padding: 1.3rem 2rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-            cursor: default;
-            display: flex;
-            align-items: center;
-            background-color: var(--light-bg);
-            border-bottom: 1px solid var(--border-color);
-        }
-        .faq-question i {
-            margin-right: 12px;
-            color: var(--secondary-blue);
-            font-size: 1.3em;
-        }
-        .faq-answer {
-            padding: 1.8rem 2rem;
-        }
-        .faq-answer p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Conclusion and CTA Section */
-        .conclusion-cta-section {
-            background: var(--light-bg);
-            border-top: 5px solid var(--primary-blue);
-            color: var(--text-dark);
-            padding: 3.5rem 2.5rem;
-            border-radius: 15px;
-            margin-top: 3rem;
-            text-align: center;
-        }
-        .conclusion-cta-section h2 {
-            color: var(--primary-blue);
-            border-bottom: none;
-            justify-content: center;
-            margin-bottom: 1.2rem;
-        }
-        .conclusion-cta-section h2 i {
-            color: var(--accent-yellow);
-        }
-        .conclusion-cta-section p {
-            color: var(--text-medium);
-            font-size: 1.2rem;
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 1.8rem;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-blue);
-            color: var(--white-bg);
-            padding: 0.9rem 2.2rem;
-            border-radius: 8px;
-            font-size: 1.15rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: var(--card-shadow);
-        }
-        .cta-button:hover {
-            background-color: var(--secondary-blue);
-            color: var(--white-bg);
-            text-decoration: none;
-            transform: translateY(-3px);
-            box-shadow: var(--card-hover-shadow);
-        }
-
-        /* Footer */
-        .main-footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            margin-top: 3rem;
-            background-color: var(--text-dark);
-            color: var(--light-bg);
-        }
-        .main-footer p {
-            margin-bottom: 0.6rem;
-            color: #BDC1C6; /* Lighter grey for footer text */
-            font-size: 0.95rem;
-        }
-        .main-footer a {
-            color: var(--secondary-blue);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2.1rem; }
-            h3 { font-size: 1.8rem; }
-            .toc-wrapper ul { columns: 1; }
-            .feature-spotlight-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .container { width: 95%; }
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.9rem; }
-            h2 i { font-size: 1.9rem; margin-right: 10px; }
-            h3 { font-size: 1.6rem; }
-            .main-hero { padding: 3.5rem 1rem; border-bottom-left-radius: 40px 15px; border-bottom-right-radius: 40px 15px; }
-            .step-card { flex-direction: column; align-items: center; text-align: center; }
-            .step-card .step-icon-container { margin-right: 0; margin-bottom: 1.5rem; }
-        }
-
-        @media (max-width: 480px) {
-            body { font-size: 15px; }
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.7rem; }
-            h3 { font-size: 1.5rem; }
-            .main-hero { padding: 3rem 1rem; border-bottom-left-radius: 30px 10px; border-bottom-right-radius: 30px 10px; }
-            .intro-block, .toc-wrapper, .info-card, .custom-list li, .step-card, .feature-card, .callout-box, .faq-item {
-                padding: 1.5rem;
-            }
-            .faq-question { font-size: 1rem; }
-            .cta-button { padding: 0.8rem 1.8rem; font-size: 1.1rem; }
-        }
-
-    </style>
-</head>
-<body>
-
-    
-
-    <div class="container">
+          <div class="container">
         <main>
             <article>
                 <section class="intro-block">
@@ -1407,35 +873,44 @@
         // No JavaScript is used for functionality.
     </script>
     -->
-</body>
-</html>
+        </div>
 
-        <div class="interactive-tool-embed">
-          <h4>⚡ Live Utility: Client-Side Vector QR Code Studio</h4>
-          <p>Generate a scannable, high-contrast QR code for any technical endpoint or documentation:</p>
-          <div class="tool-embed-grid">
-            <div class="tool-embed-field" style="grid-column: 1 / -1;">
-              <label>Target URL or Resource String</label>
-              <input type="text" id="embed-qr-data" value="https://shaynly.com" oninput="runEmbedQr()">
+        <div class="pro-tool-widget">
+          <div class="pro-tool-header">
+            <span class="pro-tool-badge">Live Utility Companion</span>
+            <h3 class="pro-tool-title">Quick Vector QR Code Generator</h3>
+            <p class="pro-tool-desc">Generate high-contrast, scannable QR vectors for any technical documentation or URL:</p>
+          </div>
+          <div class="pro-tool-body">
+            <div class="pro-tool-inputs-grid">
+              <div class="pro-input-group" style="grid-column: 1 / -1;">
+                <label>Destination URL or Payload</label>
+                <input type="text" id="w_qr_data" value="https://shaynly.com" oninput="genQr()">
+              </div>
+            </div>
+            <div class="pro-tool-output-card" style="align-items: center; justify-content: space-around;">
+              <div style="background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid var(--slate-200); display: inline-block;">
+                <img id="w_qr_img" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://shaynly.com" alt="QR Code Preview" width="110" height="110" style="display: block;">
+              </div>
+              <a href="/tools/qr-studio.html" class="pro-action-btn" style="text-decoration:none;">Open Full Vector QR Studio &rarr;</a>
             </div>
           </div>
-          <div class="tool-embed-result" style="align-items: center; justify-content: space-around;">
-            <div id="embed-qr-preview" style="background:#ffffff; padding:8px; border-radius:6px; display:inline-block;">
-              <img id="embed-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://shaynly.com" alt="QR Preview" width="110" height="110" style="display:block;">
-            </div>
-            <a href="/tools/qr-studio.html" class="share-calc-btn" style="text-decoration:none;">Open Full Vector QR Studio &rarr;</a>
+          <div class="pro-tool-footer">
+            <a href="/tools/qr-studio.html" class="pro-tool-link">
+              <span>Custom Styling, Logo Embedding &amp; SVG Vector Export</span>
+              &rarr;
+            </a>
           </div>
           <script>
-            function runEmbedQr(){
-              var d = document.getElementById('embed-qr-data').value.trim() || 'https://shaynly.com';
-              document.getElementById('embed-qr-img').src = 'https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=' + encodeURIComponent(d);
+            function genQr(){
+              var d = document.getElementById('w_qr_data').value.trim() || 'https://shaynly.com';
+              document.getElementById('w_qr_img').src = 'https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=' + encodeURIComponent(d);
             }
           </script>
         </div>
-        </div>
 
-        <!-- AdSense Bottom -->
-        <div style="margin: 30px 0; text-align: center;">
+        <!-- AdSense Bottom Banner -->
+        <div style="margin: 36px 0; text-align: center;">
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-2218316924082551"
@@ -1446,34 +921,70 @@
         </div>
       </article>
 
-      <!-- Sidebar -->
+      <!-- Modern Editorial Rail -->
       <aside class="sidebar">
-        <div class="sidebar-box">
-          <h3>Interactive Tools</h3>
-          <ul class="tool-link-list">
-            <li><a href="/tools/invoice.html">&rarr; Invoice Generator</a></li>
-            <li><a href="/tools/gst.html">&rarr; GST Calculator</a></li>
-            <li><a href="/tools/qr-studio.html">&rarr; QR Code Studio</a></li>
-            <li><a href="/tools/brandkit.html">&rarr; Brand Kit Designer</a></li>
-            <li><a href="/tools/utm.html">&rarr; UTM Campaign Builder</a></li>
-            <li><a href="/tools/">&rarr; View All 100+ Free Tools</a></li>
-          </ul>
+        <!-- Curated Toolkit Showcase -->
+        <div class="rail-card">
+          <div class="rail-card-header">
+            <span class="rail-card-title">Browser Utilities</span>
+            <span style="font-size:11px;font-weight:700;color:var(--primary);background:var(--primary-light);padding:2px 7px;border-radius:9999px;">100+ FREE</span>
+          </div>
+          <a href="/tools/invoice.html" class="rail-tool-item">
+            <div class="rail-tool-icon">🧾</div>
+            <div class="rail-tool-content">
+              <span class="rail-tool-name">Invoice Studio</span>
+              <span class="rail-tool-sub">GST &amp; corporate invoicing</span>
+            </div>
+          </a>
+          <a href="/tools/gst.html" class="rail-tool-item">
+            <div class="rail-tool-icon">🧮</div>
+            <div class="rail-tool-content">
+              <span class="rail-tool-name">GST Calculator</span>
+              <span class="rail-tool-sub">Instant multi-slab tax breakdown</span>
+            </div>
+          </a>
+          <a href="/tools/qr-studio.html" class="rail-tool-item">
+            <div class="rail-tool-icon">📱</div>
+            <div class="rail-tool-content">
+              <span class="rail-tool-name">QR Code Studio</span>
+              <span class="rail-tool-sub">Custom high-res vectors</span>
+            </div>
+          </a>
+          <a href="/tools/utm.html" class="rail-tool-item">
+            <div class="rail-tool-icon">🔗</div>
+            <div class="rail-tool-content">
+              <span class="rail-tool-name">UTM Campaign Builder</span>
+              <span class="rail-tool-sub">Traffic attribution links</span>
+            </div>
+          </a>
+          <a href="/tools/brandkit.html" class="rail-tool-item">
+            <div class="rail-tool-icon">🎨</div>
+            <div class="rail-tool-content">
+              <span class="rail-tool-name">Brand Kit Designer</span>
+              <span class="rail-tool-sub">Palettes &amp; typography specs</span>
+            </div>
+          </a>
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--slate-100); text-align: center;">
+            <a href="/tools/" style="font-size: 13px; font-weight: 700; color: var(--primary); text-decoration: none;">Explore All 100+ Free Tools &rarr;</a>
+          </div>
         </div>
 
-        <div class="sidebar-box">
-          <h3>Article Categories</h3>
-          <ul class="tool-link-list">
-            <li><a href="/category/marketing/">&rarr; Digital Marketing &amp; SEO</a></li>
-            <li><a href="/category/management/">&rarr; Business Management</a></li>
-            <li><a href="/category/technology/">&rarr; Technology &amp; AI</a></li>
-            <li><a href="/category/resources/">&rarr; Developer Resources</a></li>
-            <li><a href="/tools/">&rarr; Interactive Tools (100+)</a></li>
-          </ul>
+        <!-- Strategic Domains -->
+        <div class="rail-card">
+          <div class="rail-card-header">
+            <span class="rail-card-title">Editorial Disciplines</span>
+          </div>
+          <div class="rail-pills-wrap">
+            <a href="/category/marketing/" class="rail-pill">Marketing &amp; SEO</a>
+            <a href="/category/management/" class="rail-pill">Management &amp; Strategy</a>
+            <a href="/category/technology/" class="rail-pill">Technology &amp; AI</a>
+            <a href="/category/resources/" class="rail-pill">Developer Resources</a>
+          </div>
         </div>
 
-        <!-- High-Viewability Sticky Display Ad (RPM Booster) -->
-        <div class="sidebar-box sticky-ad">
-          <span class="ad-sponsor-label">Sponsored</span>
+        <!-- High-Viewability Sticky Display Ad Container -->
+        <div class="rail-sticky-ad">
+          <span class="ad-sponsor-label">Sponsored Advertisement</span>
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-2218316924082551"
