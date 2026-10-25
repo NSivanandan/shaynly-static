@@ -15,6 +15,18 @@
   <meta name="apple-mobile-web-app-title" content="Shaynly">
   <meta name="application-name" content="Shaynly">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <!-- Cloudflare Speculation Rules (Instant Zero-Perceived-Load Navigation) -->
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "source": "list",
+        "urls": ["/", "/category/marketing/", "/category/management/", "/category/technology/", "/category/resources/", "/tools/"],
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
 
   <!-- Open Graph / AEO -->
   <meta property="og:type" content="article">
@@ -59,11 +71,21 @@
     "name": "Sivanandan N",
     "jobTitle": "AI-Native Enterprise Architect",
     "url": "https://shaynly.com/about-us/",
+    "sameAs": [
+      "https://www.linkedin.com/in/sivanandan-n-968b6b107/",
+      "https://shaynly.com/about-us/"
+    ],
     "affiliation": {
       "@type": "Organization",
       "name": "Shaynly",
       "url": "https://shaynly.com"
-    }
+    },
+    "knowsAbout": [
+      "Search Engine Positioning & AEO",
+      "Generative AI Architectures",
+      "Enterprise Operations",
+      "Digital Growth Engineering"
+    ]
   },
   "publisher": {
     "@type": "Organization",
@@ -142,6 +164,19 @@
             Visual Guide: Collection of Firebase Resources: Navigating the World of Firebase &bull; Published by Shaynly
           </figcaption>
         </figure>
+
+        <aside class="aeo-factbox">
+          <div class="aeo-factbox-header">
+            <span class="aeo-factbox-dot"></span>
+            <span>Executive Direct Answer &amp; Key Takeaways</span>
+          </div>
+          <p class="aeo-factbox-answer">Firebase, Google's platform for building apps, offers a suite of tools and services that empower developers to create dynamic and engaging applications. With a...</p>
+          <div class="aeo-factbox-grid">
+            <div>Strategic Domain:<span>Design & Developer Resources</span></div>
+            <div>Core Framework:<span>Shaynly 2026 Executive Standard</span></div>
+            <div>Audience:<span>Directors, Architects &amp; Founders</span></div>
+          </div>
+        </aside>
 
         <!-- AdSense Top -->
         <div style="margin: 20px 0; text-align: center;">
@@ -732,6 +767,29 @@
 
 <li>📹&nbsp;ru&nbsp;<a href="https://t.me/firebase_ru">@firebase_ru - Telegram friendly chat</a></li>
 </ul>
+
+        <div class="interactive-tool-embed">
+          <h4>⚡ Live Utility: Client-Side Vector QR Code Studio</h4>
+          <p>Generate a scannable, high-contrast QR code for any technical endpoint or documentation:</p>
+          <div class="tool-embed-grid">
+            <div class="tool-embed-field" style="grid-column: 1 / -1;">
+              <label>Target URL or Resource String</label>
+              <input type="text" id="embed-qr-data" value="https://shaynly.com" oninput="runEmbedQr()">
+            </div>
+          </div>
+          <div class="tool-embed-result" style="align-items: center; justify-content: space-around;">
+            <div id="embed-qr-preview" style="background:#ffffff; padding:8px; border-radius:6px; display:inline-block;">
+              <img id="embed-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://shaynly.com" alt="QR Preview" width="110" height="110" style="display:block;">
+            </div>
+            <a href="/tools/qr-studio.html" class="share-calc-btn" style="text-decoration:none;">Open Full Vector QR Studio &rarr;</a>
+          </div>
+          <script>
+            function runEmbedQr(){
+              var d = document.getElementById('embed-qr-data').value.trim() || 'https://shaynly.com';
+              document.getElementById('embed-qr-img').src = 'https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=' + encodeURIComponent(d);
+            }
+          </script>
+        </div>
         </div>
 
         <!-- AdSense Bottom -->
@@ -769,6 +827,18 @@
             <li><a href="/category/resources/">&rarr; Developer Resources</a></li>
             <li><a href="/tools/">&rarr; Interactive Tools (100+)</a></li>
           </ul>
+        </div>
+
+        <!-- High-Viewability Sticky Display Ad (RPM Booster) -->
+        <div class="sidebar-box sticky-ad">
+          <span class="ad-sponsor-label">Sponsored</span>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-2218316924082551"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
       </aside>
     </div>

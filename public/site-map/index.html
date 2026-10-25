@@ -15,6 +15,18 @@
   <meta name="apple-mobile-web-app-title" content="Shaynly">
   <meta name="application-name" content="Shaynly">
   <meta name="robots" content="index, follow">
+  <!-- Cloudflare Speculation Rules (Instant Zero-Perceived-Load Navigation) -->
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "source": "list",
+        "urls": ["/", "/category/marketing/", "/category/management/", "/category/technology/", "/category/resources/", "/tools/"],
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">

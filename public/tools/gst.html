@@ -41,13 +41,34 @@
 <body>
   <script src="./core/shaynly.js"></script>
   <script>
-Shaynly.page('GST Calculator',`<div class="f"><label for="a">Amount (&#8377;)</label><input id="a" type="number" min="0" step="any" value="10000"></div><div class="row"><div class="f"><label for="r">GST rate %</label><input id="r" type="number" min="0" step="any" value="18" list="rl"><datalist id="rl"><option>0</option><option>3</option><option>5</option><option>12</option><option>18</option><option>28</option><option>40</option></datalist></div><div class="f"><label for="m">Amount is</label><select id="m"><option value="ex">Before GST</option><option value="in">Including GST</option></select></div></div><div class="f"><label for="sp">Supply</label><select id="sp"><option value="intra">Same state (CGST + SGST)</option><option value="inter">Different state (IGST)</option></select></div><p class="muted">Check the rate for your HSN or SAC code on the GST portal. Rates change.</p>`,'<div class="big" id="tot">&ndash;</div><table id="t" style="margin-top:12px"></table><p class="err" id="er" role="alert"></p><button class="btn alt" id="cp" style="margin-top:12px">Copy summary</button>');
+Shaynly.page('GST Calculator',`<div class="f"><label for="a">Amount (&#8377;)</label><input id="a" type="number" min="0" step="any" value="10000"></div><div class="row"><div class="f"><label for="r">GST rate %</label><input id="r" type="number" min="0" step="any" value="18" list="rl"><datalist id="rl"><option>0</option><option>3</option><option>5</option><option>12</option><option>18</option><option>28</option><option>40</option></datalist></div><div class="f"><label for="m">Amount is</label><select id="m"><option value="ex">Before GST</option><option value="in">Including GST</option></select></div></div><div class="f"><label for="sp">Supply</label><select id="sp"><option value="intra">Same state (CGST + SGST)</option><option value="inter">Different state (IGST)</option></select></div><p class="muted">Check the rate for your HSN or SAC code on the GST portal. Rates change.</p>`,'<div class="big" id="tot">&ndash;</div><table id="t" style="margin-top:12px"></table><p class="err" id="er" role="alert"></p><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;"><button class="btn alt" id="cp">Copy summary</button><button class="btn gold" id="share-calc">🔗 Share This Calculation</button></div>');
 const $=i=>document.getElementById(i),f=n=>Shaynly.fmt(n,'INR');let sm='';
 function r(){const a=+$('a').value,p=+$('r').value,er=$('er');er.textContent='';if(!(a>=0)||!(p>=0)){er.textContent='Enter an amount and rate of zero or more.';return}
  const base=$('m').value==='ex'?a:a/(1+p/100),tax=base*p/100,tot=base+tax,rows=[['Taxable value',base]];
  if($('sp').value==='intra')rows.push(['CGST @ '+p/2+'%',tax/2],['SGST @ '+p/2+'%',tax/2]);else rows.push(['IGST @ '+p+'%',tax]);
  $('tot').textContent=f(tot);$('t').innerHTML=rows.map(x=>`<tr><td>${x[0]}</td><td class="n">${f(x[1])}</td></tr>`).join('')+`<tr><th>Total</th><th class="n">${f(tot)}</th></tr>`;sm=rows.map(x=>x[0]+': '+f(x[1])).join('\n')+'\nTotal: '+f(tot)}
 document.querySelector('.grid').oninput=r;$('cp').onclick=()=>Shaynly.copy(sm);r();
+// URL Parameter auto-fill & Share Calculation Feature
+(function(){
+  try {
+    const p = new URLSearchParams(window.location.search);
+    if(p.get('amount') && $('a')) $('a').value = p.get('amount');
+    if(p.get('rate') && $('r')) $('r').value = p.get('rate');
+    if(p.get('mode') && $('m')) $('m').value = p.get('mode');
+    if(p.get('supply') && $('sp')) $('sp').value = p.get('supply');
+    r();
+    const btn = $('share-calc');
+    if(btn){
+      btn.onclick = function(){
+        const a = $('a').value, rt = $('r').value, m = $('m').value, sp = $('sp').value;
+        const u = window.location.origin + window.location.pathname + '?amount=' + encodeURIComponent(a) + '&rate=' + encodeURIComponent(rt) + '&mode=' + encodeURIComponent(m) + '&supply=' + encodeURIComponent(sp);
+        Shaynly.copy(u);
+        Shaynly.toast('Sharable calculation link copied!');
+      };
+    }
+  } catch(e){}
+})();
+
   </script>
 </body>
 </html>

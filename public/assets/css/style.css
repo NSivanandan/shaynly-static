@@ -92,6 +92,36 @@ body { font-family: var(--font); background: #ffffff; color: var(--text); line-h
 /* Sidebar */
 .sidebar-box { background: var(--slate-50); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
 .sidebar-box h3 { font-size: 16px; font-weight: 700; color: var(--slate-900); margin-bottom: 14px; }
+.sidebar-box.sticky-ad { position: -webkit-sticky; position: sticky; top: 85px; z-index: 10; background: #ffffff; border: 1px solid var(--border); text-align: center; padding: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+.ad-sponsor-label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 8px; text-align: center; }
+
+/* AEO Direct Answer & LLM Citation Box */
+.aeo-factbox { background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid var(--primary); border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 24px 0 32px; font-size: 14px; line-height: 1.6; color: var(--slate-700); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+.aeo-factbox-header { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--slate-900); text-transform: uppercase; font-size: 12px; letter-spacing: 0.6px; margin-bottom: 10px; }
+.aeo-factbox-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); display: inline-block; }
+.aeo-factbox-answer { font-size: 15px; font-weight: 500; color: var(--slate-900); margin-bottom: 14px; line-height: 1.6; }
+.aeo-factbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; font-size: 13px; color: var(--slate-600); border-top: 1px solid #e2e8f0; padding-top: 12px; }
+.aeo-factbox-grid span { display: block; color: var(--slate-900); font-weight: 600; margin-top: 2px; }
+
+/* Interactive In-Article Mini Utility Embeds */
+.interactive-tool-embed { background: #ffffff; border: 2px solid var(--primary-light); border-radius: 12px; padding: 24px; margin: 36px 0; box-shadow: 0 4px 20px rgba(217, 119, 6, 0.08); }
+.interactive-tool-embed h4 { font-size: 18px; font-weight: 800; color: var(--slate-900); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.interactive-tool-embed p { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
+.tool-embed-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 16px; }
+.tool-embed-field label { display: block; font-size: 12px; font-weight: 700; color: var(--slate-700); margin-bottom: 6px; }
+.tool-embed-field input, .tool-embed-field select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; outline: none; transition: border-color 0.2s; }
+.tool-embed-field input:focus { border-color: var(--primary); }
+.tool-embed-result { background: var(--slate-900); color: #ffffff; border-radius: 8px; padding: 16px; display: flex; justify-content: space-between; align-items: center; margin-top: 16px; flex-wrap: wrap; gap: 10px; }
+.tool-embed-result span.label { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+.tool-embed-result span.value { font-size: 22px; font-weight: 800; color: #fbbf24; }
+.tool-embed-cta { font-size: 13px; color: var(--primary); text-decoration: none; font-weight: 700; margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; }
+.tool-embed-cta:hover { text-decoration: underline; }
+
+/* Shareable Link Button & Toast */
+.share-calc-btn { background: var(--surface-light); border: 1px solid var(--border); color: var(--slate-700); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
+.share-calc-btn:hover { background: var(--primary-light); color: var(--primary-hover); border-color: var(--primary); }
+.toast-notify { position: fixed; bottom: 30px; right: 30px; background: var(--slate-900); color: #ffffff; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 9999; display: none; align-items: center; gap: 8px; transform: translateY(20px); transition: transform 0.3s ease; }
+.toast-notify.show { display: flex; transform: translateY(0); }
 .tool-link-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .tool-link-list a { color: var(--slate-700); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: 500; }
 .tool-link-list a:hover { color: var(--primary); }
