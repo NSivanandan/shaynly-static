@@ -5,7 +5,8 @@ const Shaynly={
  theme(){const s=this.store('theme'),t=s.get(null);if(t)document.documentElement.dataset.theme=t;return()=>{const n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;s.set(n)}},
  bar(title){
   const tg=this.theme();
-  const globalHeader = `<header class="header">
+  const globalHeader = `  <!-- Global Shaynly Header -->
+  <header class="header">
     <div class="header-wrap">
       <a href="/" class="logo-area">
         <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
@@ -14,9 +15,9 @@ const Shaynly={
       </a>
       <nav class="nav-links">
         <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
         <a href="/category/marketing/">Marketing</a>
         <a href="/category/management/">Management</a>
+        <a href="/category/technology/">Technology</a>
         <a href="/category/resources/">Resources</a>
         <a href="/tools/" class="nav-btn">Tools (100+)</a>
       </nav>
@@ -24,30 +25,32 @@ const Shaynly={
   </header>`;
   document.body.insertAdjacentHTML('afterbegin', globalHeader);
 
-  const globalFooter = `<footer class="footer">
+  const globalFooter = `  <!-- Global Shaynly Footer -->
+  <footer class="footer">
     <div class="footer-wrap">
       <div>
         <h4>About Shaynly</h4>
-        <p style="font-size:14px;line-height:1.7;margin-bottom:14px">
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px; color: #94a3b8;">
           Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
         </p>
-        <p style="font-size:13px;color:#64748b">Published &amp; Managed by Sivanandan N.</p>
+        <p style="font-size: 13px; color: #64748b;">
+          Published &amp; Managed by Sivanandan N.
+        </p>
       </div>
       <div>
         <h4>Article Categories</h4>
         <ul>
-          <li><a href="/category/technology/">Technology &amp; AI</a></li>
           <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
           <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
           <li><a href="/category/resources/">Developer Resources</a></li>
-          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
-          <li><a href="/category/business/">Business Strategy</a></li>
+          <li><a href="/tools/">Interactive Tools</a></li>
         </ul>
       </div>
       <div>
         <h4>Browser Utilities</h4>
         <ul>
-          <li><a href="/tools/">All 100+ Client Tools</a></li>
+          <li><a href="/tools/">All 100+ Free Tools</a></li>
           <li><a href="/tools/invoice.html">Invoice Generator</a></li>
           <li><a href="/tools/gst.html">GST Calculator</a></li>
           <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
@@ -56,17 +59,19 @@ const Shaynly={
         </ul>
       </div>
       <div>
-        <h4>Feeds &amp; Indexing</h4>
+        <h4>Core &amp; Legal</h4>
         <ul>
+          <li><a href="/about-us/">About Us</a></li>
+          <li><a href="/contact-us/">Contact Us</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms-and-conditions-of-use/">Terms of Use</a></li>
+          <li><a href="/site-map/">HTML Site Directory</a></li>
           <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/feed.xml">RSS Feed</a></li>
-          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
-          <li><a href="/site-map/">HTML Directory</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
+      &copy; 2026 Shaynly. All rights reserved. &bull; High-performance static architecture deployed on Cloudflare Pages.
     </div>
   </footer>`;
   document.body.insertAdjacentHTML('beforeend', globalFooter);

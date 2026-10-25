@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Design & Developer Resources - Shaynly</title>
-  <meta name="description" content="Curated collections of design systems, CSS/HTML frameworks, developer boilerplates, typography kits, and open-source assets.">
+  <meta name="description" content="Curated collections of design systems, CSS/HTML frameworks, developer boilerplates, typography kits, spreadsheet models, and open-source assets.">
   <link rel="canonical" href="https://shaynly.com/category/resources/">
   <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
@@ -13,13 +13,13 @@
   <meta property="og:site_name" content="Shaynly">
   <meta property="og:url" content="https://shaynly.com/category/resources/">
   <meta property="og:title" content="Design & Developer Resources - Shaynly">
-  <meta property="og:description" content="Curated collections of design systems, CSS/HTML frameworks, developer boilerplates, typography kits, and open-source assets.">
+  <meta property="og:description" content="Curated collections of design systems, CSS/HTML frameworks, developer boilerplates, typography kits, spreadsheet models, and open-source assets.">
   <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
-  <!-- Twitter Card -->
+  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Design & Developer Resources - Shaynly">
-  <meta name="twitter:description" content="Curated collections of design systems, CSS/HTML frameworks, developer boilerplates, typography kits, and open-source assets.">
+  <meta name="twitter:description" content="Curated collections of design systems, CSS/HTML frameworks, developer boilerplates, typography kits, spreadsheet models, and open-source assets.">
   <meta name="twitter:image" content="https://shaynly.com/assets/images/shaynly-og.png">
 
   <!-- Google AdSense -->
@@ -36,47 +36,58 @@
 
   <link rel="stylesheet" href="/assets/css/style.css">
   <style>
-    .cat-hero {
-      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-      padding: 3.5rem 1.5rem 2.5rem;
+    .cat-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 48px 20px;
       text-align: center;
-      border-bottom: 1px solid var(--border);
+      margin-bottom: 30px;
+      border-radius: 12px;
     }
-    .cat-hero h1 {
-      font-size: 2.3rem;
+    .cat-header h1 {
+      font-size: 32px;
       font-weight: 800;
-      color: var(--slate-900);
-      margin-bottom: 0.75rem;
+      margin-bottom: 12px;
+      color: #ffffff;
     }
-    .cat-hero p {
-      font-size: 1.05rem;
-      color: var(--text-muted);
+    .cat-header p {
+      font-size: 16px;
       max-width: 680px;
       margin: 0 auto;
+      color: #94a3b8;
       line-height: 1.6;
     }
-    .cat-nav-pills {
+    .pills-nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 10px;
       justify-content: center;
-      margin: 2rem 0;
+      margin-bottom: 30px;
     }
     .cat-pill {
-      padding: 8px 18px;
+      display: inline-block;
+      padding: 8px 16px;
       border-radius: 20px;
       border: 1px solid var(--border);
       background: #ffffff;
       color: var(--slate-700);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 13px;
       font-weight: 600;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
     .cat-pill:hover, .cat-pill.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
     }
   </style>
 </head>
@@ -91,39 +102,36 @@
       </a>
       <nav class="nav-links">
         <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
         <a href="/category/marketing/">Marketing</a>
         <a href="/category/management/">Management</a>
+        <a href="/category/technology/">Technology</a>
         <a href="/category/resources/">Resources</a>
         <a href="/tools/" class="nav-btn">Tools (100+)</a>
       </nav>
     </div>
   </header>
 
-  <section class="cat-hero">
-    <div style="font-size: 13px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">
-      Strategic Knowledge Hub
-    </div>
-    <h1>Design & Developer Resources</h1>
-    <p>Curated collections of design systems, CSS/HTML frameworks, developer boilerplates, typography kits, and open-source assets.</p>
-    <div style="margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--slate-500);">
-      Curated library of 49 published executive guides &amp; articles
-    </div>
-  </section>
-
   <main class="container">
-    <div class="cat-nav-pills">
-      <a href="/category/marketing/" class="cat-pill">Digital Marketing &amp; SEO</a>
-      <a href="/category/technology/" class="cat-pill">Technology &amp; AI</a>
-      <a href="/category/management/" class="cat-pill">Business Management &amp; Strategy</a>
-      <a href="/category/business/" class="cat-pill">Business &amp; Startups</a>
-      <a href="/category/resources/" class="cat-pill active">Design &amp; Developer Resources</a>
-      <a href="/category/healthcare/" class="cat-pill">Healthcare Practice &amp; Operations</a>
-      <a href="/category/excel/" class="cat-pill">Excel &amp; Financial Modeling</a>
+    <div class="breadcrumb" style="margin: 20px 0; font-size: 14px;">
+      <a href="/" style="color: var(--primary); text-decoration: none;">Home</a> <span>/</span> <a href="/category/resources/" style="color: var(--primary); text-decoration: none;">Categories</a> <span>/</span> <span>Design & Developer Resources</span>
     </div>
 
-    <!-- AdSense Banner -->
-    <div style="margin: 20px 0; text-align: center;">
+    <div class="cat-header">
+      <h1>Design & Developer Resources</h1>
+      <p>Curated collections of design systems, CSS/HTML frameworks, developer boilerplates, typography kits, spreadsheet models, and open-source assets.</p>
+    </div>
+
+    <!-- Category Pills Navigation -->
+    <div class="pills-nav">
+      <a href="/category/marketing/" class="cat-pill">Digital Marketing &amp; SEO</a>
+      <a href="/category/management/" class="cat-pill">Business Management &amp; Strategy</a>
+      <a href="/category/technology/" class="cat-pill">Technology &amp; AI</a>
+      <a href="/category/resources/" class="cat-pill active">Design &amp; Developer Resources</a>
+      <a href="/tools/" class="cat-pill" style="border-color:var(--primary);background:var(--primary);color:#ffffff;font-weight:700;">Tools (100+) &rarr;</a>
+    </div>
+
+    <!-- AdSense Top Banner -->
+    <div style="margin: 20px 0 30px; text-align: center;">
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-2218316924082551"
@@ -133,79 +141,30 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
+    <!-- Articles Grid -->
     <div class="cards-grid">
-      <a class="card" href="/css-pattern-generator/">
-        <img src="/wp-content/uploads/2025/11/CSS-Pattern-Generator.png" alt="CSS Pattern Generator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+      <a class="card" href="/best-free-online-percent-difference-calculator/">
+        <img src="/assets/images/shaynly-og.png" alt="Best free online Percent difference calculator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Resources</span>
-        <h3 class="card-title">CSS Pattern Generator</h3>
-        <p class="card-desc">PatternFlow | Advanced CSS Backgrounds PatternFlow Pattern Style Stripes Dots Grid ZigZag Waves Checkers Cross Diamond Iso Carbon Palette Primary Secondary...</p>
+        <h3 class="card-title">Best free online Percent difference calculator</h3>
+        <p class="card-desc">Learn how to use percent difference calculator and its practical uses in various fields such as science, finance, and engineering. Get examples and insights in this...</p>
         <div class="card-footer">
-          <span>2025-11-08</span>
+          <span>2023-05-04</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
       </a>
-      <a class="card" href="/logo-color-extractor/">
-        <img src="/wp-content/uploads/2025/10/THE-LOGO-COLOR-EXTRACTOR.png" alt="The Logo Color Extractor" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+      <a class="card" href="/best-free-scientific-calculator/">
+        <img src="/assets/images/shaynly-og.png" alt="Best Free Scientific Calculator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Resources</span>
-        <h3 class="card-title">The Logo Color Extractor</h3>
-        <p class="card-desc">Logo Color Extractor Logo Color Extractor Click to upload a logo PNG, JPG, or SVG Processing... Upload a logo to see its dominant colors here. Logo Color Extractor:...</p>
+        <h3 class="card-title">Best Free Scientific Calculator</h3>
+        <p class="card-desc">Scientific Calculator Scientific Calculator Enter a number: Select a function: Square Root Sine Cosine Tangent Calculate The Ultimate Guide to Scientific...</p>
         <div class="card-footer">
-          <span>2025-10-07</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/markdown-to-html-converter/">
-        <img src="/wp-content/uploads/2025/07/Markdown-to-HTML-Converter.png" alt="Markdown to HTML Converter" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Markdown to HTML Converter</h3>
-        <p class="card-desc">Markdown to HTML Converter Convert Markdown to HTML instantly with this powerful online tool. Supports GitHub Flavored Markdown, syntax highlighting, live previews,...</p>
-        <div class="card-footer">
-          <span>2025-07-21</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/color-contrast-checker/">
-        <img src="/wp-content/uploads/2025/07/Color-Contrast-Checker.png" alt="Color Contrast Checker" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Color Contrast Checker</h3>
-        <p class="card-desc">Ensure your designs are accessible with the Color Contrast Checker. Instantly test foreground and background color combinations for WCAG compliance, simulate color...</p>
-        <div class="card-footer">
-          <span>2025-07-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/brand-color-palette-generator/">
-        <img src="/wp-content/uploads/2025/07/Brand-Color-Palette-generator-shaynly.png" alt="Brand Color Palette generator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Brand Color Palette generator</h3>
-        <p class="card-desc">Unlock the secrets to creating a powerful and effective brand color palette using a professional brand color palette generator</p>
-        <div class="card-footer">
-          <span>2025-07-01</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/agency-website-templates/">
-        <img src="/wp-content/uploads/2025/03/AdPenguin-Preview-Image.png" alt="Agency Website Templates for Digital Marketing Agencies, Startups, SaaS Products" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Agency Website Templates for Digital Marketing Agencies, Startups, SaaS Products</h3>
-        <p class="card-desc">Choosing the right Marketing Agency Website Templates is crucial for digital marketing agencies, startups, and SaaS products</p>
-        <div class="card-footer">
-          <span>2025-03-27</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/css-background-animation-generator/">
-        <img src="/wp-content/uploads/2025/03/CSS-Background-Animation-Generator.jpg" alt="CSS Background Animation Generator 2026" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">CSS Background Animation Generator 2026</h3>
-        <p class="card-desc">Our CSS Background Animation Generator offers a powerful, code-free solution for implementing beautiful animated backgrounds on any website.</p>
-        <div class="card-footer">
-          <span>2025-03-19</span>
+          <span>2023-05-09</span>
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
       </a>
       <a class="card" href="/mastering-ui-graphics-learning-resource/">
-        <img src="/wp-content/uploads/2023/08/UI-Design-Enhancing-User-Experience-Through-Visual-Design.png" alt="Mastering UI Graphics: Enhancing User Experience Through Visual Design" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <img src="/assets/images/shaynly-og.png" alt="Mastering UI Graphics: Enhancing User Experience Through Visual Design" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Resources</span>
         <h3 class="card-title">Mastering UI Graphics: Enhancing User Experience Through Visual Design</h3>
         <p class="card-desc">User Interface (UI) graphics play a pivotal role in creating captivating and user-friendly digital experiences. The artful integration of colors, shapes, icons, and...</p>
@@ -214,28 +173,8 @@
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
       </a>
-      <a class="card" href="/css-button-style-generator/">
-        <img src="/wp-content/uploads/2024/09/CSS-Button-Style-Generator-Create-Custom-Buttons-Instantly.png" alt="Free CSS Button Style Generator: Create Custom Buttons Instantly" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Free CSS Button Style Generator: Create Custom Buttons Instantly</h3>
-        <p class="card-desc">Simplify your web design process with our CSS button style generator. Create beautiful, functional buttons without writing a single line of code.</p>
-        <div class="card-footer">
-          <span>2025-02-14</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/random-css-animation-generator/">
-        <img src="/wp-content/uploads/2024/09/Random-CSS-Animation-Generator.png" alt="Random CSS Animation Generator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Random CSS Animation Generator</h3>
-        <p class="card-desc">The content details a JavaScript-based random CSS animation generator for Free, outlining properties, timing functions, and functions to create animated CSS code...</p>
-        <div class="card-footer">
-          <span>2025-02-07</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
       <a class="card" href="/fonts-and-typography-resource/">
-        <img src="/wp-content/uploads/2023/08/Fonts-and-Typography-Resources-Shaynly.png" alt="Harnessing the Power of Fonts and Typography: Shaping Design and User Experience" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <img src="/assets/images/shaynly-og.png" alt="Harnessing the Power of Fonts and Typography: Shaping Design and User Experience" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Resources</span>
         <h3 class="card-title">Harnessing the Power of Fonts and Typography: Shaping Design and User Experience</h3>
         <p class="card-desc">Introduction Fonts and Typography Fonts, often regarded as the unsung heroes of design, wield a remarkable influence over visual communication and user experience....</p>
@@ -244,378 +183,8 @@
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
       </a>
-      <a class="card" href="/a-list-of-awesome-beginners-friendly-projects/">
-        <img src="/wp-content/uploads/2024/05/A-list-of-awesome-beginners-friendly-projects.jpg" alt="A list of awesome beginners-friendly projects." style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">A list of awesome beginners-friendly projects.</h3>
-        <p class="card-desc">A list of awesome beginners-friendly projects. NET Ansible C CC++ Clojure ClojureScript Dart Elixir Elm Go Haskell Java JavaScript Julia Kotlin LaTeX Markdown Perl...</p>
-        <div class="card-footer">
-          <span>2024-05-20</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/the-designers-toolkit/">
-        <img src="/wp-content/uploads/2024/04/designers-toolkit.png" alt="The Designer&#x27;s Toolkit: Insider Picks for Game-Changing Tools" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">The Designer&#x27;s Toolkit: Insider Picks for Game-Changing Tools</h3>
-        <p class="card-desc">Designer&#x27;s Toolkit￼ Accessibility Tools Animation Tools Augmented Reality Collaboration Tools Color Picker Tools Design Feedback Tools Design Handoff Tools Design...</p>
-        <div class="card-footer">
-          <span>2024-04-28</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/credence-resource-management/">
-        <img src="/wp-content/uploads/2024/01/Credence-Resource-Management.png" alt="Credence Resource Management: Navigating Business Success" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Credence Resource Management: Navigating Business Success</h3>
-        <p class="card-desc">In the fast-paced world of business, effective resource management is a key driver of success. One approach gaining traction is Credence Resource Management (CRM),...</p>
-        <div class="card-footer">
-          <span>2024-01-02</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/mastering-the-art-of-resource-management/">
-        <img src="/wp-content/uploads/2023/12/resource-Management.png" alt="Mastering the Art of Resource Management: A Comprehensive Guide" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Mastering the Art of Resource Management: A Comprehensive Guide</h3>
-        <p class="card-desc">Understanding the Fundamentals: The 5 Pillars of Resource Management Different Types of Resource Management Human Resource Management 1. Recruitment and Staffing:...</p>
-        <div class="card-footer">
-          <span>2023-12-30</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/treasure-trove-of-knowledge/">
-        <img src="/wp-content/uploads/2023/10/AI_A_warrior_and_huge_tribal_totem_blue_doodle_op_art_mythologi_8e8552d8-133e-4048-a464-79068a4aeb66.png" alt="Unveiling Awesome Lists: A Treasure Trove of Knowledge" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Unveiling Awesome Lists: A Treasure Trove of Knowledge</h3>
-        <p class="card-desc">If you&#x27;re a knowledge enthusiast, you&#x27;ve come to the right place. In this article, we&#x27;ll explore a plethora of incredible lists covering a wide range of captivating...</p>
-        <div class="card-footer">
-          <span>2023-10-24</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/unleashing-the-creative-power-of-html5-canvas/">
-        <img src="/wp-content/uploads/2023/09/Unleashing-Creativity-with-HTML5-Canvas.jpg" alt="Unleashing the Creative Power of HTML5 Canvas" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Unleashing the Creative Power of HTML5 Canvas</h3>
-        <p class="card-desc">HTML5 canvas stands as a remarkable and versatile feature that empowers developers and designers to breathe life into their digital creations.</p>
-        <div class="card-footer">
-          <span>2023-09-25</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/html5-video-element-enhancing-the-multimedia-experienc/">
-        <img src="/wp-content/uploads/2023/09/html-video.png" alt="HTML5 Video Element: Enhancing the Multimedia Experience" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">HTML5 Video Element: Enhancing the Multimedia Experience</h3>
-        <p class="card-desc">In this article, we will explore the HTML5 video element in detail, discussing its features, attributes, usage, and how it has transformed the multimedia experience...</p>
-        <div class="card-footer">
-          <span>2023-09-20</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/exploring-html5-new-features-and-enhancements/">
-        <img src="/wp-content/uploads/2023/09/html5.png" alt="Exploring the Rich World of HTML5: New Features and Enhancements" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Exploring the Rich World of HTML5: New Features and Enhancements</h3>
-        <p class="card-desc">In this comprehensive exploration, we will delve deep into the world of HTML5, unraveling its new features and how they have reshaped the web.</p>
-        <div class="card-footer">
-          <span>2023-09-20</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/semantic-html-vs-css-striking-the-balance/">
-        <img src="/wp-content/uploads/2023/09/Semantic-HTML-vs.-CSS-Styling.png" alt="Semantic HTML vs. CSS: Striking the Balance" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Semantic HTML vs. CSS: Striking the Balance</h3>
-        <p class="card-desc">In the realm of web development, two essential components play a critical role in creating visually appealing and well-structured websites: Semantic HTML and CSS...</p>
-        <div class="card-footer">
-          <span>2023-09-19</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/understanding-the-power-of-semantic-html-elements/">
-        <img src="/wp-content/uploads/2023/09/semantic-html-elements.png" alt="Understanding the Power of Semantic HTML Elements" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Understanding the Power of Semantic HTML Elements</h3>
-        <p class="card-desc">Improve web accessibility and SEO with semantic HTML elements.</p>
-        <div class="card-footer">
-          <span>2023-09-19</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/understanding-responsive-tables-in-html/">
-        <img src="/wp-content/uploads/2023/09/responsive-table.png" alt="Understanding Responsive Tables in HTML" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Understanding Responsive Tables in HTML</h3>
-        <p class="card-desc">Discover how to create responsive tables in HTML to adapt to different screen sizes.</p>
-        <div class="card-footer">
-          <span>2023-09-19</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/html-table-attributes-a-comprehensive-guide/">
-        <img src="/wp-content/uploads/2023/09/mastering-html-table-attributes.png" alt="HTML Table Attributes: A Comprehensive Guide" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">HTML Table Attributes: A Comprehensive Guide</h3>
-        <p class="card-desc">Master HTML table attributes to customize your tables and make them more interactive.</p>
-        <div class="card-footer">
-          <span>2023-09-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/mastering-html-tables/">
-        <img src="/wp-content/uploads/2023/09/html-tables.png" alt="Mastering HTML Tables: Building Structured and Accessible Data Displays" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Mastering HTML Tables: Building Structured and Accessible Data Displays</h3>
-        <p class="card-desc">Learn how to create tables in HTML to organize and display data effectively.</p>
-        <div class="card-footer">
-          <span>2023-09-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/best-practices-for-html-forms-creating-user-friendly/">
-        <img src="/wp-content/uploads/2023/09/Best-Practices-for-HTML-Forms.png" alt="Best Practices for HTML Forms: Creating User-Friendly and Accessible Web Experiences" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Best Practices for HTML Forms: Creating User-Friendly and Accessible Web Experiences</h3>
-        <p class="card-desc">Explore the best practices for designing and implementing HTML forms on your website.</p>
-        <div class="card-footer">
-          <span>2023-09-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/designing-effective-html-forms-a-comprehensive-guide/">
-        <img src="/wp-content/uploads/2023/09/html-form-design.png" alt="Designing Effective HTML Forms: A Comprehensive Guide" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Designing Effective HTML Forms: A Comprehensive Guide</h3>
-        <p class="card-desc">Design user-friendly HTML forms that enhance user experience and engagement.</p>
-        <div class="card-footer">
-          <span>2023-09-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/mastering-html-form-validation-ensuring-data-accuracy/">
-        <img src="/wp-content/uploads/2023/09/html-f.png" alt="Mastering HTML Form Validation: Ensuring Data Accuracy and User-Friendly Experiences" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Mastering HTML Form Validation: Ensuring Data Accuracy and User-Friendly Experiences</h3>
-        <p class="card-desc">Ensure data integrity in web forms using HTML form validation techniques.</p>
-        <div class="card-footer">
-          <span>2023-09-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/exploring-the-power-and-versatility-of-html-forms/">
-        <img src="/wp-content/uploads/2023/09/html-forms.png" alt="Exploring the Power and Versatility of HTML Forms" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Exploring the Power and Versatility of HTML Forms</h3>
-        <p class="card-desc">Master the art of creating HTML forms and collect user data effectively.</p>
-        <div class="card-footer">
-          <span>2023-09-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/html-vs-css/">
-        <img src="/wp-content/uploads/2023/09/html-vs.-css.png" alt="HTML vs. CSS: Unveiling the Dynamic Duo of Web Development" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">HTML vs. CSS: Unveiling the Dynamic Duo of Web Development</h3>
-        <p class="card-desc">Uncover the distinctions between HTML and CSS, the building blocks of web design.</p>
-        <div class="card-footer">
-          <span>2023-09-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/demystifying-html-syntax/">
-        <img src="/wp-content/uploads/2023/09/html-syntax.png" alt="Understanding HTML Syntax: Building the Foundation of Web Pages" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Understanding HTML Syntax: Building the Foundation of Web Pages</h3>
-        <p class="card-desc">Demystify HTML syntax and grasp the essentials of structuring web pages.</p>
-        <div class="card-footer">
-          <span>2023-09-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/exploring-html-elements-a-comprehensive-guide/">
-        <img src="/wp-content/uploads/2023/09/html-elements.png" alt="Exploring HTML Elements: A Comprehensive Guide" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Exploring HTML Elements: A Comprehensive Guide</h3>
-        <p class="card-desc">Dive into the world of HTML elements and discover their roles in creating web content.</p>
-        <div class="card-footer">
-          <span>2023-09-18</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/a-beginners-guide-to-html-coding/">
-        <img src="/wp-content/uploads/2023/09/html.png" alt="A Beginner&#x27;s Guide to HTML Coding" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">A Beginner&#x27;s Guide to HTML Coding</h3>
-        <p class="card-desc">Are you interested in creating your own websites or web applications? If so, you&#x27;ve come to the right place. In this beginner&#x27;s guide, we&#x27;ll introduce you to HTML...</p>
-        <div class="card-footer">
-          <span>2023-09-15</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/collection-of-firebase-resources/">
-        <img src="/wp-content/uploads/2023/08/Unveiling-the-Ultimate-Collection-of-Firebase-Resources-Documentation-Talks-Tools-Examples-Articles.png" alt="Collection of Firebase Resources: Navigating the World of Firebase" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Collection of Firebase Resources: Navigating the World of Firebase</h3>
-        <p class="card-desc">Firebase, Google&#x27;s platform for building apps, offers a suite of tools and services that empower developers to create dynamic and engaging applications. With a...</p>
-        <div class="card-footer">
-          <span>2023-08-14</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/guide-to-open-source-home-automation/">
-        <img src="/wp-content/uploads/2023/08/Discovering-the-Power-of-Home-Assistant-Your-Guide-to-Open-Source-Home-Automation.png" alt="Discovering the Power of Home Assistant: Your Guide to Open-Source Home Automation" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Discovering the Power of Home Assistant: Your Guide to Open-Source Home Automation</h3>
-        <p class="card-desc">Home Assistant is an open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts....</p>
-        <div class="card-footer">
-          <span>2023-08-14</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/compilation-of-flutter-resources/">
-        <img src="/wp-content/uploads/2023/08/Compilation-of-Flutter-Resources-Libraries-Tools-Tutorials-Articles-and-More.png" alt="The Ultimate Compilation of Flutter Resources: Libraries, Tools, Tutorials, Articles, and More" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">The Ultimate Compilation of Flutter Resources: Libraries, Tools, Tutorials, Articles, and More</h3>
-        <p class="card-desc">Flutter, Google&#x27;s open-source UI software development toolkit, has taken the app development world by storm. With its fast-paced growth and vibrant community,...</p>
-        <div class="card-footer">
-          <span>2023-08-14</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/list-of-programming-language-books/">
-        <img src="/wp-content/uploads/2023/08/Exploring-Programming-Concepts-A-Comprehensive-List-of-programming-Language-Books.png" alt="Exploring Programming Concepts: A Comprehensive List of programming Language Books" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Exploring Programming Concepts: A Comprehensive List of programming Language Books</h3>
-        <p class="card-desc">In the ever-evolving world of programming, staying up-to-date with the latest concepts and techniques is crucial for any developer. Whether you&#x27;re a novice or a...</p>
-        <div class="card-footer">
-          <span>2023-08-14</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/list-of-best-applications-and-tools-for-windows/">
-        <img src="/wp-content/uploads/2023/08/An-Awesome-Curated-List-of-Best-Applications-and-Tools-for-Windows.png" alt="An Awesome &amp; Curated List of Best Applications and Tools for Windows" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">An Awesome &amp; Curated List of Best Applications and Tools for Windows</h3>
-        <p class="card-desc">In today&#x27;s digital age, our reliance on technology has grown exponentially, and Windows remains one of the most popular operating systems worldwide. Whether you&#x27;re...</p>
-        <div class="card-footer">
-          <span>2023-08-13</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/how-to-run-a-program/">
-        <img src="/wp-content/uploads/2023/08/Learn-Computer-Architecture-How-to-program-Chapter-3.png" alt="Learn Computer Architecture: How to run a Program- Chapter-3" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Learn Computer Architecture: How to run a Program- Chapter-3</h3>
-        <p class="card-desc">How to Run a Program Part of Putting the “You” in CPU : a rabbit hole into how your computer runs programs. So far, we’ve covered how CPUs execute machine code...</p>
-        <div class="card-footer">
-          <span>2023-08-12</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/data-science-for-beginners/">
-        <img src="/wp-content/uploads/2023/08/00-Title.png" alt="Data Science for Beginners - A Curriculum" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Data Science for Beginners - A Curriculum</h3>
-        <p class="card-desc">In Data Science for Beginners course We have chosen two pedagogical tenets while building this curriculum: ensuring that it is project-based and that it includes...</p>
-        <div class="card-footer">
-          <span>2023-08-07</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/artificial-intelligence-for-beginners/">
-        <img src="/wp-content/uploads/2023/08/ai-overview.png" alt="Artificial Intelligence for Beginners - A Curriculum" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Artificial Intelligence for Beginners - A Curriculum</h3>
-        <p class="card-desc">Artificial Intelligence for Beginners Azure Cloud Advocates at Microsoft are pleased to offer a 12-week, 24-lesson curriculum all about Artificial Intelligence. In...</p>
-        <div class="card-footer">
-          <span>2023-08-07</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/frontline-engineering-managers/">
-        <img src="/wp-content/uploads/2023/08/Navigating-Leadership-Excellence-in-Engineering.png" alt="Empowering Frontline Engineering Managers: Essential Resources and Strategies" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Empowering Frontline Engineering Managers: Essential Resources and Strategies</h3>
-        <p class="card-desc">Frontline Engineering Managers Resources This is a curated list of talks, books, and other resources for front line engineering managers. Hopefully you can find...</p>
-        <div class="card-footer">
-          <span>2023-08-06</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/collection-of-resources-for-frontend-web-developers/">
-        <img src="/wp-content/uploads/2023/08/Collection-of-resources-for-frontend-web-developers.png" alt="Collection of resources for frontend web developers" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Collection of resources for frontend web developers</h3>
-        <p class="card-desc">Frontend Development Manually curated collection of resources for frontend web developers. You are viewing a browseable version, split by category in many small...</p>
-        <div class="card-footer">
-          <span>2023-08-04</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/html-css-templates-frameworks/">
-        <img src="/wp-content/uploads/2023/08/A-Journey-Through-HTML-CSS-Templates-Frameworks-Methodologies-and-Animations.png" alt="Elevating Web Design: A Guide Through HTML &amp; CSS Templates, Frameworks, Methodologies, and Animations" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Elevating Web Design: A Guide Through HTML &amp; CSS Templates, Frameworks, Methodologies, and Animations</h3>
-        <p class="card-desc">In the digital realm, the canvas of creativity extends far beyond visual elements; it encompasses the very building blocks of the online world. Explore a...</p>
-        <div class="card-footer">
-          <span>2023-08-02</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/design-galaxy-vectors-clip-art-and-product-mockups/">
-        <img src="/wp-content/uploads/2023/08/Design-galaxy-Unveiling-Vectors-Clip-Art-and-Product-Mockups.png" alt="Navigating the Design Galaxy: Unveiling Best Vectors, Clip Art, and Product Mockups" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Navigating the Design Galaxy: Unveiling Best Vectors, Clip Art, and Product Mockups</h3>
-        <p class="card-desc">In the boundless universe of design, where creativity knows no limits, vectors, clip art, and product mockups in design galaxy emerge as guiding stars. These...</p>
-        <div class="card-footer">
-          <span>2023-08-02</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/free-stock-resources/">
-        <img src="/wp-content/uploads/2023/08/Guide-to-Free-Stock-Resources-for-Your-Projects.png" alt="A Comprehensive Guide to Free Stock Resources for Your Projects" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">A Comprehensive Guide to Free Stock Resources for Your Projects</h3>
-        <p class="card-desc">In the vibrant realm of digital creativity, finding the right resources can be a game-changer. Whether you&#x27;re crafting websites, designing apps, or producing...</p>
-        <div class="card-footer">
-          <span>2023-08-02</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/favicons-and-icon-fonts/">
-        <img src="/wp-content/uploads/2023/08/A-Deep-Dive-into-Favicons-and-Icon-Fonts.png" alt="Favicons and Icon Fonts: Crafting Amazing Visual Identity" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Favicons and Icon Fonts: Crafting Amazing Visual Identity</h3>
-        <p class="card-desc">In the vast realm of digital design, every pixel holds potential. From websites to applications, the intricate artistry of favicons and icon fonts serves as a...</p>
-        <div class="card-footer">
-          <span>2023-08-02</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/logo-resources-and-creation-tools/">
-        <img src="/wp-content/uploads/2023/08/Navigating-Logo-Resources-and-Creation-Tools.png" alt="Unveiling a World of Design: Navigating Logo Resources and Creation Tools" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Unveiling a World of Design: Navigating Logo Resources and Creation Tools</h3>
-        <p class="card-desc">In the dynamic landscape of design, logos stand as iconic symbols that encapsulate a brand&#x27;s identity and values. The art of logo creation involves a delicate...</p>
-        <div class="card-footer">
-          <span>2023-08-02</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/discover-a-world-of-icons-a-comprehensive-guide/">
-        <img src="/wp-content/uploads/2023/08/Discover-a-World-of-Icons-Shaynly.png" alt="Discover a World of Icons: A Comprehensive Guide" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
-        <span class="card-cat">Resources</span>
-        <h3 class="card-title">Discover a World of Icons: A Comprehensive Guide</h3>
-        <p class="card-desc">Icons play a crucial role in enhancing the visual appeal and user experience of digital platforms. Whether you&#x27;re a designer, developer, or simply someone looking...</p>
-        <div class="card-footer">
-          <span>2023-08-02</span>
-          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
-        </div>
-      </a>
       <a class="card" href="/exploring-the-fascinating-world-of-colors/">
-        <img src="/wp-content/uploads/2023/08/Fascinating-World-of-Colors.png" alt="Exploring the Fascinating World of Colors" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <img src="/assets/images/shaynly-og.png" alt="Exploring the Fascinating World of Colors" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
         <span class="card-cat">Resources</span>
         <h3 class="card-title">Exploring the Fascinating World of Colors</h3>
         <p class="card-desc">Colors are all around us, shaping our perceptions and influencing our emotions. From the soothing blues of a tranquil ocean to the vibrant reds of a fiery sunset,...</p>
@@ -624,6 +193,757 @@
           <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
         </div>
       </a>
+      <a class="card" href="/discover-a-world-of-icons-a-comprehensive-guide/">
+        <img src="/assets/images/shaynly-og.png" alt="Discover a World of Icons: A Comprehensive Guide" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Discover a World of Icons: A Comprehensive Guide</h3>
+        <p class="card-desc">Icons play a crucial role in enhancing the visual appeal and user experience of digital platforms. Whether you&#x27;re a designer, developer, or simply someone looking...</p>
+        <div class="card-footer">
+          <span>2023-08-02</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/logo-resources-and-creation-tools/">
+        <img src="/assets/images/shaynly-og.png" alt="Unveiling a World of Design: Navigating Logo Resources and Creation Tools" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Unveiling a World of Design: Navigating Logo Resources and Creation Tools</h3>
+        <p class="card-desc">In the dynamic landscape of design, logos stand as iconic symbols that encapsulate a brand&#x27;s identity and values. The art of logo creation involves a delicate...</p>
+        <div class="card-footer">
+          <span>2023-08-02</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/favicons-and-icon-fonts/">
+        <img src="/assets/images/shaynly-og.png" alt="Favicons and Icon Fonts: Crafting Amazing Visual Identity" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Favicons and Icon Fonts: Crafting Amazing Visual Identity</h3>
+        <p class="card-desc">In the vast realm of digital design, every pixel holds potential. From websites to applications, the intricate artistry of favicons and icon fonts serves as a...</p>
+        <div class="card-footer">
+          <span>2023-08-02</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/free-stock-resources/">
+        <img src="/assets/images/shaynly-og.png" alt="A Comprehensive Guide to Free Stock Resources for Your Projects" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">A Comprehensive Guide to Free Stock Resources for Your Projects</h3>
+        <p class="card-desc">Whether you&#x27;re crafting websites, designing apps, or producing captivating multimedia content, the availability of high-quality stock photos, videos, music, and...</p>
+        <div class="card-footer">
+          <span>2023-08-02</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/design-galaxy-vectors-clip-art-and-product-mockups/">
+        <img src="/assets/images/shaynly-og.png" alt="Navigating the Design Galaxy: Unveiling Best Vectors, Clip Art, and Product Mockups" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Navigating the Design Galaxy: Unveiling Best Vectors, Clip Art, and Product Mockups</h3>
+        <p class="card-desc">In the boundless universe of design, where creativity knows no limits, vectors, clip art, and product mockups in design galaxy emerge as guiding stars. These...</p>
+        <div class="card-footer">
+          <span>2023-08-02</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/html-css-templates-frameworks/">
+        <img src="/assets/images/shaynly-og.png" alt="Elevating Web Design: A Guide Through HTML &amp; CSS Templates, Frameworks, Methodologies, and Animations" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Elevating Web Design: A Guide Through HTML &amp; CSS Templates, Frameworks, Methodologies, and Animations</h3>
+        <p class="card-desc">In the digital realm, the canvas of creativity extends far beyond visual elements; it encompasses the very building blocks of the online world. Explore a...</p>
+        <div class="card-footer">
+          <span>2023-08-02</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/list-of-generative-ai-projects-artworks-and-models/">
+        <img src="/assets/images/shaynly-og.png" alt="A curated list of Generative AI projects, tools, artworks, and models" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">A curated list of Generative AI projects, tools, artworks, and models</h3>
+        <p class="card-desc">Welcome to our Awesome List of Generative AI projects! This repository is a curated collection of references in the dynamic field of Generative AI, equipped with...</p>
+        <div class="card-footer">
+          <span>2023-08-03</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/collection-of-resources-for-frontend-web-developers/">
+        <img src="/assets/images/shaynly-og.png" alt="Collection of resources for frontend web developers" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Collection of resources for frontend web developers</h3>
+        <p class="card-desc">Frontend Development Manually curated collection of resources for frontend web developers. You are viewing a browseable version, split by category in many small...</p>
+        <div class="card-footer">
+          <span>2023-08-04</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/frontline-engineering-managers/">
+        <img src="/assets/images/shaynly-og.png" alt="Empowering Frontline Engineering Managers: Essential Resources and Strategies" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Empowering Frontline Engineering Managers: Essential Resources and Strategies</h3>
+        <p class="card-desc">Frontline Engineering Managers Resources This is a curated list of talks, books, and other resources for front line engineering managers. Hopefully you can find...</p>
+        <div class="card-footer">
+          <span>2023-08-06</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/self-hosted-free-software/">
+        <img src="/assets/images/shaynly-og.png" alt="A Catalog of Self-Hosted Free Software Network Services and Web Applications" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">A Catalog of Self-Hosted Free Software Network Services and Web Applications</h3>
+        <p class="card-desc">Self-hosting is the practice of hosting and managing applications on your own server(s) instead of consuming from SaaSS providers. This is a list of Free Software...</p>
+        <div class="card-footer">
+          <span>2023-08-06</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/artificial-intelligence-for-beginners/">
+        <img src="/assets/images/shaynly-og.png" alt="Artificial Intelligence for Beginners - A Curriculum" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Artificial Intelligence for Beginners - A Curriculum</h3>
+        <p class="card-desc">Artificial Intelligence for Beginners Azure Cloud Advocates at Microsoft are pleased to offer a 12-week, 24-lesson curriculum all about Artificial Intelligence. In...</p>
+        <div class="card-footer">
+          <span>2023-08-07</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/data-science-for-beginners/">
+        <img src="/assets/images/shaynly-og.png" alt="Data Science for Beginners - A Curriculum" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Data Science for Beginners - A Curriculum</h3>
+        <p class="card-desc">In Data Science for Beginners course We have chosen two pedagogical tenets while building this curriculum: ensuring that it is project-based and that it includes...</p>
+        <div class="card-footer">
+          <span>2023-08-07</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/machine-learning-for-beginners-a-curriculum/">
+        <img src="/assets/images/shaynly-og.png" alt="Machine Learning for Beginners - A Curriculum" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Machine Learning for Beginners - A Curriculum</h3>
+        <p class="card-desc">🌍 Travel around the world as we explore Machine Learning by means of world cultures 🌍 Machine Learning for Beginners: Azure Cloud Advocates at Microsoft are pleased...</p>
+        <div class="card-footer">
+          <span>2023-08-07</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/free-training-resource-for-c-c/">
+        <img src="/assets/images/shaynly-og.png" alt="Your Ultimate Free Training Resource for C/C++" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Your Ultimate Free Training Resource for C/C++</h3>
+        <p class="card-desc">Are you ready to embark on a journey into the world of programming, armed with the power of C and C++? Welcome to our comprehensive guide, where we will equip you...</p>
+        <div class="card-footer">
+          <span>2023-08-11</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/free-software-development-resources/">
+        <img src="/assets/images/shaynly-og.png" alt="Free Software Development Resources: Unleash Your Creativity with Clojure, Dart, Flutter, Elixir, Erlang, F#, and Java" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Free Software Development Resources: Unleash Your Creativity with Clojure, Dart, Flutter, Elixir, Erlang, F#, and Java</h3>
+        <p class="card-desc">In the ever-evolving landscape of software development, embracing a diverse array of programming languages opens up a world of possibilities. From crafting...</p>
+        <div class="card-footer">
+          <span>2023-08-11</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/computer-architecture-basics/">
+        <img src="/assets/images/shaynly-og.png" alt="Learn Computer Architecture: From Code to Kernel- Basics- 1" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Learn Computer Architecture: From Code to Kernel- Basics- 1</h3>
+        <p class="card-desc">I&#x27;ve done a lot of things with computers, but I&#x27;ve always had a gap in my knowledge: what exactly happens when you run a program on your computer? I thought about...</p>
+        <div class="card-footer">
+          <span>2023-08-12</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/computer-architecture-cpu-multitasking/">
+        <img src="/assets/images/shaynly-og.png" alt="Learn Computer Architecture: CPU Multitasking- Chapter-2" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Learn Computer Architecture: CPU Multitasking- Chapter-2</h3>
+        <p class="card-desc">Part of Putting the “You” in CPU : a rabbit hole into how your computer runs programs. CPU Multitasking Let’s say you’re building an operating system and you want...</p>
+        <div class="card-footer">
+          <span>2023-08-12</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/how-to-run-a-program/">
+        <img src="/assets/images/shaynly-og.png" alt="Learn Computer Architecture: How to run a Program- Chapter-3" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Learn Computer Architecture: How to run a Program- Chapter-3</h3>
+        <p class="card-desc">How to Run a Program Part of Putting the “You” in CPU : a rabbit hole into how your computer runs programs. So far, we’ve covered how CPUs execute machine code...</p>
+        <div class="card-footer">
+          <span>2023-08-12</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/learn-computer-architecture-becoming-an-elf-lord/">
+        <img src="/assets/images/shaynly-og.png" alt="Learn Computer Architecture: Becoming an Elf-Lord- Chapter-4" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Learn Computer Architecture: Becoming an Elf-Lord- Chapter-4</h3>
+        <p class="card-desc">Becoming an Elf-Lord Part of Putting the “You” in CPU : a rabbit hole into how your computer runs programs. We pretty thoroughly understand execve now. At the end...</p>
+        <div class="card-footer">
+          <span>2023-08-12</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/translator-in-your-computer/">
+        <img src="/assets/images/shaynly-og.png" alt="Learn Computer Architecture: Translator in Your Computer- Chapter-5" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Learn Computer Architecture: Translator in Your Computer- Chapter-5</h3>
+        <p class="card-desc">The Translator in Your Computer Part of Putting the “You” in CPU : a rabbit hole into how your computer runs programs. Up until now, every time I’ve talked about...</p>
+        <div class="card-footer">
+          <span>2023-08-12</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/learn-computer-architecture-forks-and-cows/">
+        <img src="/assets/images/shaynly-og.png" alt="Learn Computer Architecture: Forks and Cows- Chapter-6" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Learn Computer Architecture: Forks and Cows- Chapter-6</h3>
+        <p class="card-desc">Let&#x27;s Talk About Forks and Cows Part of Putting the “You” in CPU : a rabbit hole into how your computer runs programs. The final question: how did we get here?...</p>
+        <div class="card-footer">
+          <span>2023-08-12</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/list-of-best-applications-and-tools-for-windows/">
+        <img src="/assets/images/shaynly-og.png" alt="An Awesome &amp; Curated List of Best Applications and Tools for Windows" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">An Awesome &amp; Curated List of Best Applications and Tools for Windows</h3>
+        <p class="card-desc">In today&#x27;s digital age, our reliance on technology has grown exponentially, and Windows remains one of the most popular operating systems worldwide. Whether you&#x27;re...</p>
+        <div class="card-footer">
+          <span>2023-08-13</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/ultimate-list-of-awesome-chatgpt-prompts/">
+        <img src="/assets/images/shaynly-og.png" alt="The Ultimate list of Awesome ChatGPT Prompts" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">The Ultimate list of Awesome ChatGPT Prompts</h3>
+        <p class="card-desc">Welcome to the enchanting realm of the &quot;Awesome ChatGPT Prompts&quot; repository! Within these digital corridors, a treasure trove of prompt examples awaits, ready to...</p>
+        <div class="card-footer">
+          <span>2023-08-14</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/list-of-programming-language-books/">
+        <img src="/assets/images/shaynly-og.png" alt="Exploring Programming Concepts: A Comprehensive List of programming Language Books" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Exploring Programming Concepts: A Comprehensive List of programming Language Books</h3>
+        <p class="card-desc">In the ever-evolving world of programming, staying up-to-date with the latest concepts and techniques is crucial for any developer. Whether you&#x27;re a novice or a...</p>
+        <div class="card-footer">
+          <span>2023-08-14</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/compilation-of-flutter-resources/">
+        <img src="/assets/images/shaynly-og.png" alt="The Ultimate Compilation of Flutter Resources: Libraries, Tools, Tutorials, Articles, and More" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">The Ultimate Compilation of Flutter Resources: Libraries, Tools, Tutorials, Articles, and More</h3>
+        <p class="card-desc">Flutter, Google&#x27;s open-source UI software development toolkit, has taken the app development world by storm. With its fast-paced growth and vibrant community,...</p>
+        <div class="card-footer">
+          <span>2023-08-14</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/guide-to-open-source-home-automation/">
+        <img src="/assets/images/shaynly-og.png" alt="Discovering the Power of Home Assistant: Your Guide to Open-Source Home Automation" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Discovering the Power of Home Assistant: Your Guide to Open-Source Home Automation</h3>
+        <p class="card-desc">Home Assistant is an open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts....</p>
+        <div class="card-footer">
+          <span>2023-08-14</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/collection-of-firebase-resources/">
+        <img src="/assets/images/shaynly-og.png" alt="Collection of Firebase Resources: Navigating the World of Firebase" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Collection of Firebase Resources: Navigating the World of Firebase</h3>
+        <p class="card-desc">Firebase, Google&#x27;s platform for building apps, offers a suite of tools and services that empower developers to create dynamic and engaging applications. With a...</p>
+        <div class="card-footer">
+          <span>2023-08-14</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/technical-interview-questions/">
+        <img src="/assets/images/shaynly-og.png" alt="Mastering Technical Interview Questions: A Curated Compilation" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Mastering Technical Interview Questions: A Curated Compilation</h3>
+        <p class="card-desc">Are you gearing up for a technical job interview and feeling the jitters? Fear not! We&#x27;ve got your back with our comprehensive list of technical interview questions...</p>
+        <div class="card-footer">
+          <span>2023-08-15</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/a-beginners-guide-to-html-coding/">
+        <img src="/assets/images/shaynly-og.png" alt="A Beginner&#x27;s Guide to HTML Coding" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">A Beginner&#x27;s Guide to HTML Coding</h3>
+        <p class="card-desc">In this beginner&#x27;s guide, we&#x27;ll introduce you to HTML (Hypertext Markup Language), the fundamental language of the web. By the end of this article, you&#x27;ll have a...</p>
+        <div class="card-footer">
+          <span>2023-09-15</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/exploring-html-elements-a-comprehensive-guide/">
+        <img src="/assets/images/shaynly-og.png" alt="Exploring HTML Elements: A Comprehensive Guide" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Exploring HTML Elements: A Comprehensive Guide</h3>
+        <p class="card-desc">Dive into the world of HTML elements and discover their roles in creating web content.</p>
+        <div class="card-footer">
+          <span>2023-09-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/demystifying-html-syntax/">
+        <img src="/assets/images/shaynly-og.png" alt="Understanding HTML Syntax: Building the Foundation of Web Pages" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Understanding HTML Syntax: Building the Foundation of Web Pages</h3>
+        <p class="card-desc">Demystify HTML syntax and grasp the essentials of structuring web pages.</p>
+        <div class="card-footer">
+          <span>2023-09-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/html-vs-css/">
+        <img src="/assets/images/shaynly-og.png" alt="HTML vs. CSS: Unveiling the Dynamic Duo of Web Development" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">HTML vs. CSS: Unveiling the Dynamic Duo of Web Development</h3>
+        <p class="card-desc">Uncover the distinctions between HTML and CSS, the building blocks of web design.</p>
+        <div class="card-footer">
+          <span>2023-09-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/exploring-the-power-and-versatility-of-html-forms/">
+        <img src="/assets/images/shaynly-og.png" alt="Exploring the Power and Versatility of HTML Forms" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Exploring the Power and Versatility of HTML Forms</h3>
+        <p class="card-desc">Master the art of creating HTML forms and collect user data effectively.</p>
+        <div class="card-footer">
+          <span>2023-09-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/mastering-html-form-validation-ensuring-data-accuracy/">
+        <img src="/assets/images/shaynly-og.png" alt="Mastering HTML Form Validation: Ensuring Data Accuracy and User-Friendly Experiences" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Mastering HTML Form Validation: Ensuring Data Accuracy and User-Friendly Experiences</h3>
+        <p class="card-desc">Ensure data integrity in web forms using HTML form validation techniques.</p>
+        <div class="card-footer">
+          <span>2023-09-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/designing-effective-html-forms-a-comprehensive-guide/">
+        <img src="/assets/images/shaynly-og.png" alt="Designing Effective HTML Forms: A Comprehensive Guide" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Designing Effective HTML Forms: A Comprehensive Guide</h3>
+        <p class="card-desc">Design user-friendly HTML forms that enhance user experience and engagement.</p>
+        <div class="card-footer">
+          <span>2023-09-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/best-practices-for-html-forms-creating-user-friendly/">
+        <img src="/assets/images/shaynly-og.png" alt="Best Practices for HTML Forms: Creating User-Friendly and Accessible Web Experiences" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Best Practices for HTML Forms: Creating User-Friendly and Accessible Web Experiences</h3>
+        <p class="card-desc">Explore the best practices for designing and implementing HTML forms on your website.</p>
+        <div class="card-footer">
+          <span>2023-09-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/mastering-html-tables/">
+        <img src="/assets/images/shaynly-og.png" alt="Mastering HTML Tables: Building Structured and Accessible Data Displays" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Mastering HTML Tables: Building Structured and Accessible Data Displays</h3>
+        <p class="card-desc">Learn how to create tables in HTML to organize and display data effectively.</p>
+        <div class="card-footer">
+          <span>2023-09-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/html-table-attributes-a-comprehensive-guide/">
+        <img src="/assets/images/shaynly-og.png" alt="HTML Table Attributes: A Comprehensive Guide" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">HTML Table Attributes: A Comprehensive Guide</h3>
+        <p class="card-desc">Master HTML table attributes to customize your tables and make them more interactive.</p>
+        <div class="card-footer">
+          <span>2023-09-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/understanding-responsive-tables-in-html/">
+        <img src="/assets/images/shaynly-og.png" alt="Understanding Responsive Tables in HTML" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Understanding Responsive Tables in HTML</h3>
+        <p class="card-desc">Discover how to create responsive tables in HTML to adapt to different screen sizes.</p>
+        <div class="card-footer">
+          <span>2023-09-19</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/understanding-the-power-of-semantic-html-elements/">
+        <img src="/assets/images/shaynly-og.png" alt="Understanding the Power of Semantic HTML Elements" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Understanding the Power of Semantic HTML Elements</h3>
+        <p class="card-desc">Improve web accessibility and SEO with semantic HTML elements.</p>
+        <div class="card-footer">
+          <span>2023-09-19</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/semantic-html-vs-css-striking-the-balance/">
+        <img src="/assets/images/shaynly-og.png" alt="Semantic HTML vs. CSS: Striking the Balance" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Semantic HTML vs. CSS: Striking the Balance</h3>
+        <p class="card-desc">In this exploration, we&#x27;ll delve into the differences between Semantic HTML and CSS, understanding their roles, and how they come together to create a harmonious...</p>
+        <div class="card-footer">
+          <span>2023-09-19</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/exploring-html5-new-features-and-enhancements/">
+        <img src="/assets/images/shaynly-og.png" alt="Exploring the Rich World of HTML5: New Features and Enhancements" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Exploring the Rich World of HTML5: New Features and Enhancements</h3>
+        <p class="card-desc">In this comprehensive exploration, we will delve deep into the world of HTML5, unraveling its new features and how they have reshaped the web.</p>
+        <div class="card-footer">
+          <span>2023-09-20</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/html5-video-element-enhancing-the-multimedia-experienc/">
+        <img src="/assets/images/shaynly-og.png" alt="HTML5 Video Element: Enhancing the Multimedia Experience" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">HTML5 Video Element: Enhancing the Multimedia Experience</h3>
+        <p class="card-desc">In this article, we will explore the HTML5 video element in detail, discussing its features, attributes, usage, and how it has transformed the multimedia experience...</p>
+        <div class="card-footer">
+          <span>2023-09-20</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/unleashing-the-creative-power-of-html5-canvas/">
+        <img src="/assets/images/shaynly-og.png" alt="Unleashing the Creative Power of HTML5 Canvas" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Unleashing the Creative Power of HTML5 Canvas</h3>
+        <p class="card-desc">HTML5 canvas stands as a remarkable and versatile feature that empowers developers and designers to breathe life into their digital creations.</p>
+        <div class="card-footer">
+          <span>2023-09-25</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/treasure-trove-of-knowledge/">
+        <img src="/assets/images/shaynly-og.png" alt="Unveiling Awesome Lists: A Treasure Trove of Knowledge" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Unveiling Awesome Lists: A Treasure Trove of Knowledge</h3>
+        <p class="card-desc">If you&#x27;re a knowledge enthusiast, you&#x27;ve come to the right place. In this article, we&#x27;ll explore a plethora of incredible lists covering a wide range of captivating...</p>
+        <div class="card-footer">
+          <span>2023-10-24</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/how-to-separate-names-in-excel/">
+        <img src="/assets/images/shaynly-og.png" alt="How to Separate Names in Excel" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">How to Separate Names in Excel</h3>
+        <p class="card-desc">In today&#x27;s data-driven world, Excel remains a powerhouse for organizing information. However, one common challenge users face is dealing with combined names in a...</p>
+        <div class="card-footer">
+          <span>2023-12-26</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/how-to-freeze-a-row-in-excel-microsoft/">
+        <img src="/assets/images/shaynly-og.png" alt="How to Freeze a Row in Excel 2026" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">How to Freeze a Row in Excel 2026</h3>
+        <p class="card-desc">Excel, the powerhouse of spreadsheet software, offers a multitude of features that empower users to manage and analyze data seamlessly. One such feature that stands...</p>
+        <div class="card-footer">
+          <span>2023-12-26</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/how-to-create-a-drop-down-list-in-excel/">
+        <img src="/assets/images/shaynly-og.png" alt="How to create a drop down list in excel: Your Guide to Taming Excel Chaos" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">How to create a drop down list in excel: Your Guide to Taming Excel Chaos</h3>
+        <p class="card-desc">Ah, Excel. A powerful tool for data analysis, but sometimes it can feel like wrangling a herd of cats. Inconsistent data entry, typos, and messy formatting can...</p>
+        <div class="card-footer">
+          <span>2023-12-27</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/how-to-find-duplicates-in-excel/">
+        <img src="/assets/images/shaynly-og.png" alt="How to Find Duplicates in Excel" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">How to Find Duplicates in Excel</h3>
+        <p class="card-desc">Microsoft Excel offers various methods to identify and manage duplicate data within your spreadsheets. Whether you&#x27;re working with a small dataset or a large...</p>
+        <div class="card-footer">
+          <span>2023-12-27</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/how-to-enable-and-disable-macros-in-excel/">
+        <img src="/assets/images/shaynly-og.png" alt="How to enable and disable macros in Excel" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">How to enable and disable macros in Excel</h3>
+        <p class="card-desc">Before delving into the activation of macros within your Excel worksheets, it&#x27;s imperative to grasp the intricate nature of their potential hazards. While VBA codes...</p>
+        <div class="card-footer">
+          <span>2023-12-27</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/how-to-merge-cells-in-excel/">
+        <img src="/assets/images/shaynly-og.png" alt="How to Merge Cells in Excel" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">How to Merge Cells in Excel</h3>
+        <p class="card-desc">Microsoft Excel, a powerhouse in the realm of spreadsheet software, provides users with a myriad of tools to organize and present data effectively. One such tool...</p>
+        <div class="card-footer">
+          <span>2023-12-27</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/the-designers-toolkit/">
+        <img src="/assets/images/shaynly-og.png" alt="The Designer&#x27;s Toolkit: Insider Picks for Game-Changing Tools" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">The Designer&#x27;s Toolkit: Insider Picks for Game-Changing Tools</h3>
+        <p class="card-desc">Designer&#x27;s Toolkit￼ Accessibility Tools Animation Tools Augmented Reality Collaboration Tools Color Picker Tools Design Feedback Tools Design Handoff Tools Design...</p>
+        <div class="card-footer">
+          <span>2024-04-28</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/a-list-of-awesome-beginners-friendly-projects/">
+        <img src="/assets/images/shaynly-og.png" alt="A list of awesome beginners-friendly projects." style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">A list of awesome beginners-friendly projects.</h3>
+        <p class="card-desc">A list of awesome beginners-friendly projects. NET Ansible C CC++ Clojure ClojureScript Dart Elixir Elm Go Haskell Java JavaScript Julia Kotlin LaTeX Markdown Perl...</p>
+        <div class="card-footer">
+          <span>2024-05-20</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/appointment-scheduling-efficiency-calculator/">
+        <img src="/assets/images/shaynly-og.png" alt="Appointment Scheduling Efficiency Calculator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Appointment Scheduling Efficiency Calculator</h3>
+        <p class="card-desc">Appointment Scheduling Efficiency Calculator | Optimize Your Business Advanced Appointment Scheduling Efficiency Calculator Total Appointments Scheduled: The total...</p>
+        <div class="card-footer">
+          <span>2024-08-22</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/accounts-receivable-aging-calculator/">
+        <img src="/assets/images/shaynly-og.png" alt="Accounts Receivable Aging Calculator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Accounts Receivable Aging Calculator</h3>
+        <p class="card-desc">Accounts Receivable Aging Calculator | Analyze Outstanding Invoices Accounts Receivable Aging Calculator Total Accounts Receivable ($): The total amount of all...</p>
+        <div class="card-footer">
+          <span>2024-08-22</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/css-button-style-generator/">
+        <img src="/assets/images/shaynly-og.png" alt="Free CSS Button Style Generator: Create Custom Buttons Instantly" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Free CSS Button Style Generator: Create Custom Buttons Instantly</h3>
+        <p class="card-desc">Simplify your web design process with our CSS button style generator. Create beautiful, functional buttons without writing a single line of code.</p>
+        <div class="card-footer">
+          <span>2025-02-14</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/creative-text-animation-effects/">
+        <img src="/assets/images/shaynly-og.png" alt="Creative Text Animation Effects: Live Preview &amp; Customization" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Creative Text Animation Effects: Live Preview &amp; Customization</h3>
+        <p class="card-desc">Explore 45+ creative text animation effects with live preview &amp; copy-paste CSS code. Stunning animations perfect for modern web design!</p>
+        <div class="card-footer">
+          <span>2025-02-07</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/random-css-animation-generator/">
+        <img src="/assets/images/shaynly-og.png" alt="Random CSS Animation Generator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Random CSS Animation Generator</h3>
+        <p class="card-desc">The content details a JavaScript-based random CSS animation generator for Free, outlining properties, timing functions, and functions to create animated CSS code...</p>
+        <div class="card-footer">
+          <span>2025-02-07</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/smart-investment-calculator/">
+        <img src="/assets/images/shaynly-og.png" alt="Smart Investment Calculator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Smart Investment Calculator</h3>
+        <p class="card-desc">Smart Investment Calculator | Plan Your Wealthy Future Smart Investment Calculator Initial Investment ($): Monthly Contribution ($): Annual Interest Rate (%):...</p>
+        <div class="card-footer">
+          <span>2025-02-16</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/business-growth-calculator/">
+        <img src="/assets/images/shaynly-og.png" alt="Business Growth Calculator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Business Growth Calculator</h3>
+        <p class="card-desc">Shaynly Business Growth Calculator, a powerful tool designed to help you estimate your growth potential and make informed decisions about your future</p>
+        <div class="card-footer">
+          <span>2025-02-16</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/branded-bill-generator/">
+        <img src="/assets/images/shaynly-og.png" alt="Free Branded Bill Generator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Free Branded Bill Generator</h3>
+        <p class="card-desc">With the Branded Bill Generator, businesses of all sizes can effortlessly create customized, visually appealing invoices that stand out.</p>
+        <div class="card-footer">
+          <span>2025-02-23</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/business-card-generator/">
+        <img src="/assets/images/shaynly-og.png" alt="Business Card Generator: Create Stunning Cards Instantly" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Business Card Generator: Create Stunning Cards Instantly</h3>
+        <p class="card-desc">Free Business Card Generator by Shaynly.com, a sleek, no-strings-attached tool that turns bland credentials into stunning mini-billboards</p>
+        <div class="card-footer">
+          <span>2025-04-04</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/brand-protection-assessment-tool/">
+        <img src="/assets/images/shaynly-og.png" alt="Brand Protection Assessment Tool: Safeguarding Your Brand" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Brand Protection Assessment Tool: Safeguarding Your Brand</h3>
+        <p class="card-desc">The Comprehensive Brand Protection Assessment Tool offers a solution for evaluating your brand&#x27;s vulnerability to infringement, counterfeiting, and other threats</p>
+        <div class="card-footer">
+          <span>2025-03-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/css-background-animation-generator/">
+        <img src="/assets/images/shaynly-og.png" alt="CSS Background Animation Generator 2026" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">CSS Background Animation Generator 2026</h3>
+        <p class="card-desc">Our CSS Background Animation Generator offers a powerful, code-free solution for implementing beautiful animated backgrounds on any website.</p>
+        <div class="card-footer">
+          <span>2025-03-19</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/agency-website-templates/">
+        <img src="/assets/images/shaynly-og.png" alt="Agency Website Templates for Digital Marketing Agencies, Startups, SaaS Products" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Agency Website Templates for Digital Marketing Agencies, Startups, SaaS Products</h3>
+        <p class="card-desc">Choosing the right Marketing Agency Website Templates is crucial for digital marketing agencies, startups, and SaaS products</p>
+        <div class="card-footer">
+          <span>2025-03-27</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/color-contrast-checker/">
+        <img src="/assets/images/shaynly-og.png" alt="Color Contrast Checker" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Color Contrast Checker</h3>
+        <p class="card-desc">Ensure your designs are accessible with the Color Contrast Checker. Instantly test foreground and background color combinations for WCAG compliance, simulate color...</p>
+        <div class="card-footer">
+          <span>2025-07-18</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/image-format-converter/">
+        <img src="/assets/images/shaynly-og.png" alt="Image Format Converter" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Image Format Converter</h3>
+        <p class="card-desc">Convert images between JPG, PNG, WebP, SVG and PDF formats with our free Image format converter online tool. Batch process files, resize, rotate, crop, add...</p>
+        <div class="card-footer">
+          <span>2025-07-19</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/sitemap-generator/">
+        <img src="/assets/images/shaynly-og.png" alt="Sitemap Generator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Sitemap Generator</h3>
+        <p class="card-desc">Generate SEO-optimized XML sitemaps instantly. Add URLs individually or in bulk, customize priorities, change frequencies, and last-modified dates. Validate...</p>
+        <div class="card-footer">
+          <span>2025-07-20</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/markdown-to-html-converter/">
+        <img src="/assets/images/shaynly-og.png" alt="Markdown to HTML Converter" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Markdown to HTML Converter</h3>
+        <p class="card-desc">Markdown to HTML Converter Convert Markdown to HTML instantly with this powerful online tool. Supports GitHub Flavored Markdown, syntax highlighting, live previews,...</p>
+        <div class="card-footer">
+          <span>2025-07-21</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/logo-color-extractor/">
+        <img src="/assets/images/shaynly-og.png" alt="The Logo Color Extractor" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">The Logo Color Extractor</h3>
+        <p class="card-desc">An in-depth guide to the Logo Color Extractor. Discover how this powerful tool works, its benefits for designers and developers, and how it uses color quantization...</p>
+        <div class="card-footer">
+          <span>2025-10-07</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/particle-animation-generator/">
+        <img src="/assets/images/shaynly-og.png" alt="Particle Animation Generator - Customize Your Website Hero" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Particle Animation Generator - Customize Your Website Hero</h3>
+        <p class="card-desc">Design and instantly export beautiful, customizable particle animation generator for your website hero section. Live preview, adjustable colors, speed, and density.</p>
+        <div class="card-footer">
+          <span>2025-11-02</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/css-pattern-generator/">
+        <img src="/assets/images/shaynly-og.png" alt="CSS Pattern Generator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">CSS Pattern Generator</h3>
+        <p class="card-desc">PatternFlow | Advanced CSS Backgrounds PatternFlow Pattern Style Stripes Dots Grid ZigZag Waves Checkers Cross Diamond Iso Carbon Palette Primary Secondary...</p>
+        <div class="card-footer">
+          <span>2025-11-08</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/adsense-rpm-calculator/">
+        <img src="/assets/images/shaynly-og.png" alt="AdSense RPM Calculator - Professional Revenue Per Mille Tool 2026" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">AdSense RPM Calculator - Professional Revenue Per Mille Tool 2026</h3>
+        <p class="card-desc">Advanced AdSense RPM Calculator - Professional Revenue Per Mille Tool 2025 📊 Advanced AdSense RPM Calculator Calculate Revenue Per Mille (RPM), Page RPM &amp; CPM with...</p>
+        <div class="card-footer">
+          <span>2025-12-05</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="/business-valuation-tool/">
+        <img src="/assets/images/shaynly-og.png" alt="Business Valuation Tool &amp; DCF Model (Free Tool)" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;" onerror="this.src='/assets/images/shaynly-og.png'">
+        <span class="card-cat">Resources</span>
+        <h3 class="card-title">Business Valuation Tool &amp; DCF Model (Free Tool)</h3>
+        <p class="card-desc">Business Valuation Tool by Shaynly. Features DCF analysis, Market Multiples, Sensitivity Matrix, and Financial Health Checks.</p>
+        <div class="card-footer">
+          <span>2025-12-16</span>
+          <span style="color:var(--primary);font-weight:700;">Read Guide &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- AdSense Bottom Banner -->
+    <div style="margin: 40px 0 20px; text-align: center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2218316924082551"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </main>
 
@@ -640,33 +960,35 @@
         </p>
       </div>
       <div>
-        <h4>Client Web Utilities</h4>
+        <h4>Article Categories</h4>
         <ul>
+          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
+          <li><a href="/category/management/">Business Management</a></li>
+          <li><a href="/category/technology/">Technology &amp; AI</a></li>
+          <li><a href="/category/resources/">Developer Resources</a></li>
+          <li><a href="/tools/">Interactive Tools</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Browser Utilities</h4>
+        <ul>
+          <li><a href="/tools/">All 100+ Free Tools</a></li>
           <li><a href="/tools/invoice.html">Invoice Generator</a></li>
           <li><a href="/tools/gst.html">GST Calculator</a></li>
           <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
           <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
           <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-          <li><a href="/tools/">All 100+ Free Tools</a></li>
         </ul>
       </div>
       <div>
-        <h4>Core Resources</h4>
+        <h4>Core &amp; Legal</h4>
         <ul>
-          <li><a href="/calculators/">Business Calculators</a></li>
-          <li><a href="/about-us/">About Shaynly</a></li>
-          <li><a href="/contact-us/">Contact &amp; Support</a></li>
+          <li><a href="/about-us/">About Us</a></li>
+          <li><a href="/contact-us/">Contact Us</a></li>
           <li><a href="/privacy-policy/">Privacy Policy</a></li>
           <li><a href="/terms-and-conditions-of-use/">Terms of Use</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
           <li><a href="/site-map/">HTML Site Directory</a></li>
           <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/llms.txt">AI Index (llms.txt)</a></li>
-          <li><a href="/feed.xml">RSS Syndication Feed</a></li>
         </ul>
       </div>
     </div>
