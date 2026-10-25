@@ -1,119 +1,47 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
-  <!-- Master Tool Theme Alignment -->
-  <style>
-    :root {
-      --primary: #d97706 !important;
-      --primary-hover: #b45309 !important;
-      --primary-light: #fef3c7 !important;
-      --border: #e2e8f0 !important;
-      --text: #1e293b !important;
-      --text-muted: #64748b !important;
-    }
-    body {
-      background: #ffffff !important;
-      color: #1e293b !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .tool-header-bar {
-      display: none !important;
-    }
-    .tool-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-    .tool-render-area {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-      margin-top: 20px;
-    }
-    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
-      background-color: #d97706 !important;
-      border-color: #d97706 !important;
-      color: #ffffff !important;
-      border-radius: 8px !important;
-    }
-    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
-      background-color: #b45309 !important;
-      border-color: #b45309 !important;
-    }
-  </style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SERP &amp; Social Card Simulator - Shaynly</title>
+  <meta name="description" content="Simulate how your web pages appear in Google Search results and on social platforms (LinkedIn, Twitter, Facebook). Real-time pixel and character limits.">
+  <link rel="canonical" href="https://shaynly.com/tools/serp.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/serp.html">
+  <meta property="og:title" content="SERP &amp; Social Card Simulator - Shaynly">
+  <meta property="og:description" content="Simulate how your web pages appear in Google Search and social media cards.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <link rel="stylesheet" href="./core/shaynly.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-</head><body>
-<header class="header">
-    <div class="header-wrap">
-      <a href="/" class="logo-area">
-        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
-        <span class="logo-text">Shaynly</span>
-        <span class="logo-tag">Business &amp; Tools</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
-        <a href="/category/marketing/">Marketing</a>
-        <a href="/category/management/">Management</a>
-        <a href="/tools/" class="active">Toolkit (100+)</a>
-        <a href="/tools/" class="nav-btn">All Tools</a>
-      </nav>
-    </div>
-  </header><script src="../core/shaynly.js"></script><script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+</head>
+<body>
+  <script src="./core/shaynly.js"></script>
+  <script>
 Shaynly.page('SERP & Social Previewer',`<div class="f"><label for="ti">Page title <span id="tc" class="muted"></span></label><input id="ti" value="Brand identity design for growing businesses"></div><div class="f"><label for="ds">Meta description <span id="dc" class="muted"></span></label><textarea id="ds" rows="3">We design logos, websites and marketing systems that help small businesses get found and remembered.</textarea></div><div class="f"><label for="ul">Page URL</label><input id="ul" value="https://example.com/services/branding"></div><div class="f"><label for="im">Social image (optional)</label><input type="file" id="im" accept="image/*"></div>`,'<div id="g" style="background:#fff;color:#202124;border:1px solid var(--line);border-radius:8px;padding:16px;font-family:Arial,sans-serif"></div><h2 style="margin:18px 0 10px">Social card</h2><div id="s" style="border:1px solid var(--line);border-radius:8px;overflow:hidden;max-width:420px;background:var(--paper)"></div>');
 const $=i=>document.getElementById(i);let img='';const e=s=>s.replace(/[<&]/g,c=>c=='<'?'&lt;':'&amp;');
-function r(){const t=$('ti').value,d=$('ds').value,u=$('ul').value;let h='';try{const x=new URL(u);h=x.hostname+x.pathname.replace(/\/$/,'').split('/').filter(Boolean).map(p=>' › '+p).join('')}catch{h=u}
+function r(){const t=$('ti').value,d=$('ds').value,u=$('ul').value;let h='';try{const x=new URL(u);h=x.hostname+x.pathname.replace(/\/$/,'').split('/').filter(Boolean).map(p=>' &rsaquo; '+p).join('')}catch{h=u}
  const tl=t.length,dl=d.length;$('tc').textContent=tl+' characters. '+(tl>60?'Likely cut off in Google (aim for 60 or fewer).':tl<30?'Short. Use the space.':'Good length.');$('tc').style.color=tl>60?'var(--bad)':'';
  $('dc').textContent=dl+' characters. '+(dl>155?'Likely cut off (aim for 155 or fewer).':dl<70?'Short. Add detail.':'Good length.');$('dc').style.color=dl>155?'var(--bad)':'';
- $('g').innerHTML=`<div style="font-size:12px;color:#4d5156">${e(h)}</div><div style="font-size:20px;color:#1a0dab;margin:2px 0 3px">${e(tl>60?t.slice(0,57)+'…':t)}</div><div style="font-size:14px;color:#4d5156;line-height:1.5">${e(dl>155?d.slice(0,152)+'…':d)}</div>`;
- let dom='';try{dom=new URL(u).hostname}catch{}$('s').innerHTML=(img?`<img src="${img}" alt="" style="width:100%;aspect-ratio:1.91/1;object-fit:cover;display:block">`:'<div class="muted" style="aspect-ratio:1.91/1;display:grid;place-items:center">Add an image (1200×630 works best)</div>')+`<div style="padding:10px 14px"><div class="muted">${e(dom)}</div><strong>${e(t)}</strong><div class="muted">${e(d.slice(0,110))}</div></div>`}
+ $('g').innerHTML=`<div style="font-size:12px;color:#4d5156">${e(h)}</div><div style="font-size:20px;color:#1a0dab;margin:2px 0 3px">${e(tl>60?t.slice(0,57)+'...':t)}</div><div style="font-size:14px;color:#4d5156;line-height:1.5">${e(dl>155?d.slice(0,152)+'...':d)}</div>`;
+ let dom='';try{dom=new URL(u).hostname}catch{}$('s').innerHTML=(img?`<img src="${img}" alt="" style="width:100%;aspect-ratio:1.91/1;object-fit:cover;display:block">`:'<div class="muted" style="aspect-ratio:1.91/1;display:grid;place-items:center">Add an image (1200 &times; 630 works best)</div>')+`<div style="padding:10px 14px"><div class="muted">${e(dom)}</div><strong>${e(t)}</strong><div class="muted">${e(d.slice(0,110))}</div></div>`}
 ['ti','ds','ul'].forEach(i=>$(i).oninput=r);$('im').onchange=ev=>{const f=new FileReader();f.onload=()=>{img=f.result;r()};f.readAsDataURL(ev.target.files[0])};r();
-</script><footer class="footer">
-    <div class="footer-wrap">
-      <div>
-        <h4>About Shaynly</h4>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
-        </p>
-        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
-      </div>
-      <div>
-        <h4>Article Categories</h4>
-        <ul>
-          <li><a href="/category/technology/">Technology &amp; AI</a></li>
-          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
-          <li><a href="/category/management/">Business Management</a></li>
-          <li><a href="/category/resources/">Developer Resources</a></li>
-          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
-          <li><a href="/category/business/">Business Strategy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Browser Utilities</h4>
-        <ul>
-          <li><a href="/tools/">All 100+ Client Tools</a></li>
-          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
-          <li><a href="/tools/gst.html">GST Calculator</a></li>
-          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
-          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
-          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/feed.xml">RSS Feed</a></li>
-          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
-          <li><a href="/site-map/">HTML Directory</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
-    </div>
-  </footer>
-</body></html>
+  </script>
+</body>
+</html>

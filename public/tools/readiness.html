@@ -1,69 +1,41 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
-  <!-- Master Tool Theme Alignment -->
-  <style>
-    :root {
-      --primary: #d97706 !important;
-      --primary-hover: #b45309 !important;
-      --primary-light: #fef3c7 !important;
-      --border: #e2e8f0 !important;
-      --text: #1e293b !important;
-      --text-muted: #64748b !important;
-    }
-    body {
-      background: #ffffff !important;
-      color: #1e293b !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .tool-header-bar {
-      display: none !important;
-    }
-    .tool-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-    .tool-render-area {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-      margin-top: 20px;
-    }
-    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
-      background-color: #d97706 !important;
-      border-color: #d97706 !important;
-      color: #ffffff !important;
-      border-radius: 8px !important;
-    }
-    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
-      background-color: #b45309 !important;
-      border-color: #b45309 !important;
-    }
-  </style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI-Search Readiness Checker - Shaynly</title>
+  <meta name="description" content="Paste any page HTML to analyze its structural AI-search and GEO readiness. Checks JSON-LD, direct answer paragraphs, heading hierarchy, and entity schemas offline.">
+  <link rel="canonical" href="https://shaynly.com/tools/readiness.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/readiness.html">
+  <meta property="og:title" content="AI-Search Readiness Checker - Shaynly">
+  <meta property="og:description" content="Analyze your page HTML for structural AI-search and GEO readiness offline.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <link rel="stylesheet" href="./core/shaynly.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-</head><body>
-<header class="header">
-    <div class="header-wrap">
-      <a href="/" class="logo-area">
-        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
-        <span class="logo-text">Shaynly</span>
-        <span class="logo-tag">Business &amp; Tools</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
-        <a href="/category/marketing/">Marketing</a>
-        <a href="/category/management/">Management</a>
-        <a href="/tools/" class="active">Toolkit (100+)</a>
-        <a href="/tools/" class="nav-btn">All Tools</a>
-      </nav>
-    </div>
-  </header><script src="../core/vendor/qrcode.js"></script><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-Shaynly.page('AI-Search Readiness Checker',`<div class="f"><label for="h">Paste the page's HTML (View Source, then copy all)</label><textarea id="h" rows="16" placeholder="<html>…"></textarea></div><button class="btn gold" id="go">Check page</button><p class="muted" style="margin-top:10px">Runs in your browser; nothing is uploaded. This is a structural check. It cannot measure rankings or whether AI tools cite you.</p>`,'<div id="r"><p class="muted">Paste HTML and press Check page.</p></div>');
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+</head>
+<body>
+  <script src="./core/shaynly.js"></script>
+  <script>
+const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+Shaynly.page('AI-Search Readiness Checker',`<div class="f"><label for="h">Paste the page's HTML (View Source, then copy all)</label><textarea id="h" rows="16" placeholder="<html>..."></textarea></div><button class="btn gold" id="go">Check page</button><p class="muted" style="margin-top:10px">Runs in your browser; nothing is uploaded. This is a structural check. It cannot measure rankings or whether AI tools cite you.</p>`,'<div id="r"><p class="muted">Paste HTML and press Check page.</p></div>');
 const W=s=>(s.trim().match(/\S+/g)||[]).length;
 $('go').onclick=()=>{const d=new DOMParser().parseFromString($('h').value,'text/html'),q=s=>[...d.querySelectorAll(s)],C=[];
  const add=(n,pts,ok,fix)=>C.push({n,pts,ok,fix});
@@ -89,49 +61,6 @@ $('go').onclick=()=>{const d=new DOMParser().parseFromString($('h').value,'text/
  add('Social preview tags (Open Graph)',3,!!d.querySelector('meta[property="og:title"]'),'Add og:title, og:description, og:image.');
  const tot=C.reduce((a,c)=>a+c.pts,0),got=C.reduce((a,c)=>a+(c.ok?c.pts:0),0),p=Math.round(got/tot*100);
  $('r').innerHTML=`<div class="big">${p}/100</div><div class="meter"><i style="width:${p}%"></i></div>`+C.sort((a,b)=>a.ok-b.ok||b.pts-a.pts).map(c=>`<div class="chk"><b class="${c.ok?'ok':'no'}">${c.ok?'Pass':'Fix'}</b><span>${esc(c.n)}${c.ok?'':`<small>${esc(c.fix)}</small>`}</span></div>`).join('')};
-</script><footer class="footer">
-    <div class="footer-wrap">
-      <div>
-        <h4>About Shaynly</h4>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
-        </p>
-        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
-      </div>
-      <div>
-        <h4>Article Categories</h4>
-        <ul>
-          <li><a href="/category/technology/">Technology &amp; AI</a></li>
-          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
-          <li><a href="/category/management/">Business Management</a></li>
-          <li><a href="/category/resources/">Developer Resources</a></li>
-          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
-          <li><a href="/category/business/">Business Strategy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Browser Utilities</h4>
-        <ul>
-          <li><a href="/tools/">All 100+ Client Tools</a></li>
-          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
-          <li><a href="/tools/gst.html">GST Calculator</a></li>
-          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
-          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
-          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/feed.xml">RSS Feed</a></li>
-          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
-          <li><a href="/site-map/">HTML Directory</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
-    </div>
-  </footer>
-</body></html>
+  </script>
+</body>
+</html>

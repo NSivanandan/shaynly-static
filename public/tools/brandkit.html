@@ -1,68 +1,42 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
-  <!-- Master Tool Theme Alignment -->
-  <style>
-    :root {
-      --primary: #d97706 !important;
-      --primary-hover: #b45309 !important;
-      --primary-light: #fef3c7 !important;
-      --border: #e2e8f0 !important;
-      --text: #1e293b !important;
-      --text-muted: #64748b !important;
-    }
-    body {
-      background: #ffffff !important;
-      color: #1e293b !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .tool-header-bar {
-      display: none !important;
-    }
-    .tool-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-    .tool-render-area {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-      margin-top: 20px;
-    }
-    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
-      background-color: #d97706 !important;
-      border-color: #d97706 !important;
-      color: #ffffff !important;
-      border-radius: 8px !important;
-    }
-    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
-      background-color: #b45309 !important;
-      border-color: #b45309 !important;
-    }
-  </style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Brand Kit Designer - Shaynly</title>
+  <meta name="description" content="Design, preview, and export complete brand guidelines sheets with WCAG color contrast checks, typography pairings, and logo rules. Download PDF directly.">
+  <link rel="canonical" href="https://shaynly.com/tools/brandkit.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/brandkit.html">
+  <meta property="og:title" content="Brand Kit Designer - Shaynly">
+  <meta property="og:description" content="Design, preview, and export complete brand guidelines sheets with WCAG contrast checks.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <link rel="stylesheet" href="./core/shaynly.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-</head><body>
-<header class="header">
-    <div class="header-wrap">
-      <a href="/" class="logo-area">
-        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
-        <span class="logo-text">Shaynly</span>
-        <span class="logo-tag">Business &amp; Tools</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
-        <a href="/category/marketing/">Marketing</a>
-        <a href="/category/management/">Management</a>
-        <a href="/tools/" class="active">Toolkit (100+)</a>
-        <a href="/tools/" class="nav-btn">All Tools</a>
-      </nav>
-    </div>
-  </header><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+</head>
+<body>
+  <script src="./core/vendor/html2canvas.min.js"></script>
+  <script src="./core/vendor/jspdf.min.js"></script>
+  <script src="./core/shaynly.js"></script>
+  <script>
+const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const B=Shaynly.brand(),FN={'Georgia':'Georgia,serif','Palatino':'"Palatino Linotype",Palatino,serif','System sans':'system-ui,"Segoe UI",Roboto,sans-serif','Trebuchet':'"Trebuchet MS",sans-serif','Courier':'"Courier New",monospace'};
 Shaynly.page('Brand Kit Sheet',`<div class="f"><label for="nm">Brand name</label><input id="nm" value="${esc(B.name||'')}"></div><div class="row"><div class="f"><label for="c1">Primary</label><input type="color" id="c1" value="${B.color||'#1f6f6b'}"></div><div class="f"><label for="c2">Accent</label><input type="color" id="c2" value="#b8924a"></div><div class="f"><label for="c3">Dark</label><input type="color" id="c3" value="#12262a"></div></div><div class="row"><div class="f"><label for="hf">Heading font</label><select id="hf">${Object.keys(FN).map((k,i)=>`<option ${i==0?'selected':''}>${k}</option>`)}</select></div><div class="f"><label for="bf">Body font</label><select id="bf">${Object.keys(FN).map((k,i)=>`<option ${i==2?'selected':''}>${k}</option>`)}</select></div></div><div class="f"><label for="vo">Voice in three words</label><input id="vo" value="Clear, warm, expert"></div><p class="muted">Fonts are system fonts so the sheet looks the same offline. Logo comes from Brand Profile.</p>`,'<div id="kit" style="background:#fff;color:#111;padding:26px;border:1px solid var(--line);border-radius:8px"></div><button class="btn gold" id="pr" style="margin-top:14px">Print or save as PDF</button><style>@media print{body *{visibility:hidden}#kit,#kit *{visibility:visible}#kit{position:absolute;left:0;top:0;width:100%;border:0}}</style>');
 const L=h=>{const c=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(v=>v<=.03928?v/12.92:((v+.055)/1.055)**2.4);return .2126*c[0]+.7152*c[1]+.0722*c[2]},CR=(a,b)=>{const x=L(a),y=L(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05)},mix=(h,t,p)=>'#'+[1,3,5].map(i=>Math.round(parseInt(h.slice(i,i+2),16)*(1-p)+t*p).toString(16).padStart(2,'0')).join('');
@@ -74,50 +48,56 @@ function draw(){const c=[$('c1').value,$('c2').value,$('c3').value],hf=FN[$('hf'
  <h3 style="font-family:${hf};margin:18px 0 6px">Typography</h3><div style="font:600 28px ${hf}">${esc($('hf').value)}: Headlines</div><div style="font:15px/1.6 ${bf};max-width:520px">${esc($('bf').value)}: Body text is set for easy reading, with generous line spacing and short lines of around 60 to 75 characters.</div>
  <h3 style="font-family:${hf};margin:18px 0 6px">Logo use</h3><div style="font:13px/1.6 ${bf}">${B.logo?`<div style="display:inline-block;padding:${'18px'};border:1px dashed #aaa;margin:6px 0"><img src="${B.logo}" alt="" style="max-height:60px;display:block"></div><br>`:''}Keep clear space around the logo of at least one quarter of its height. Do not stretch, recolour or place it on busy backgrounds. Use the primary colour or white version on solid colour.</div>
  <h3 style="font-family:${hf};margin:18px 0 6px">Voice</h3><div style="font:14px ${bf}">${esc($('vo').value)}</div>`}
-document.querySelector('.grid').oninput=draw;$('pr').onclick=()=>window.print();draw();
-</script><footer class="footer">
-    <div class="footer-wrap">
-      <div>
-        <h4>About Shaynly</h4>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
-        </p>
-        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
-      </div>
-      <div>
-        <h4>Article Categories</h4>
-        <ul>
-          <li><a href="/category/technology/">Technology &amp; AI</a></li>
-          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
-          <li><a href="/category/management/">Business Management</a></li>
-          <li><a href="/category/resources/">Developer Resources</a></li>
-          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
-          <li><a href="/category/business/">Business Strategy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Browser Utilities</h4>
-        <ul>
-          <li><a href="/tools/">All 100+ Client Tools</a></li>
-          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
-          <li><a href="/tools/gst.html">GST Calculator</a></li>
-          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
-          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
-          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/feed.xml">RSS Feed</a></li>
-          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
-          <li><a href="/site-map/">HTML Directory</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
-    </div>
-  </footer>
-</body></html>
+document.querySelector('.grid').oninput=draw;
+
+$('pr').onclick = async () => {
+  const btn = $('pr');
+  const origText = btn.textContent;
+  btn.textContent = 'Generating Brand PDF...';
+  btn.disabled = true;
+
+  try {
+    const kitEl = document.getElementById('kit');
+    if (!kitEl) throw new Error('Brand kit element not found');
+
+    const canvas = await html2canvas(kitEl, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      logging: false
+    });
+
+    const imgData = canvas.toDataURL('image/png');
+    const brandName = document.getElementById('nm') ? document.getElementById('nm').value.trim() : 'brand-kit';
+    const cleanName = brandName.replace(/[^a-zA-Z0-9_-]/g, '_') || 'brand-kit';
+
+    const jsPDFClass = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+    if (jsPDFClass) {
+      const pdf = new jsPDFClass('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`${cleanName}-guidelines.pdf`);
+    } else {
+      const link = document.createElement('a');
+      link.download = `${cleanName}-guidelines.png`;
+      link.href = imgData;
+      link.click();
+    }
+
+    if (window.Shaynly && Shaynly.toast) {
+      Shaynly.toast('Brand sheet downloaded successfully!');
+    }
+  } catch (err) {
+    console.error('Export error:', err);
+    alert('Export error: ' + err.message);
+  } finally {
+    btn.textContent = origText;
+    btn.disabled = false;
+  }
+};
+
+draw();
+  </script>
+</body>
+</html>

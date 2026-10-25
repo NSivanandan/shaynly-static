@@ -1,84 +1,77 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QR & Barcode Studio</title>
-<link rel="stylesheet" href="../core/shaynly.css">
-  <!-- Master Tool Theme Alignment -->
-  <style>
-    :root {
-      --primary: #d97706 !important;
-      --primary-hover: #b45309 !important;
-      --primary-light: #fef3c7 !important;
-      --border: #e2e8f0 !important;
-      --text: #1e293b !important;
-      --text-muted: #64748b !important;
-    }
-    body {
-      background: #ffffff !important;
-      color: #1e293b !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .tool-header-bar {
-      display: none !important;
-    }
-    .tool-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-    .tool-render-area {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-      margin-top: 20px;
-    }
-    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
-      background-color: #d97706 !important;
-      border-color: #d97706 !important;
-      color: #ffffff !important;
-      border-radius: 8px !important;
-    }
-    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
-      background-color: #b45309 !important;
-      border-color: #b45309 !important;
-    }
-  </style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>QR &amp; Barcode Studio - Shaynly</title>
+  <meta name="description" content="Generate high-resolution vector QR codes and barcodes for URLs, UPI payments, WiFi access, and plain text. Download clean PNG or SVG files.">
+  <link rel="canonical" href="https://shaynly.com/tools/qr-studio.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/qr-studio.html">
+  <meta property="og:title" content="QR &amp; Barcode Studio - Shaynly">
+  <meta property="og:description" content="Generate high-resolution vector QR codes and barcodes for URLs, UPI payments, WiFi access, and plain text.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <link rel="stylesheet" href="./core/shaynly.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-</head><body>
-<header class="header">
-    <div class="header-wrap">
-      <a href="/" class="logo-area">
-        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
-        <span class="logo-text">Shaynly</span>
-        <span class="logo-tag">Business &amp; Tools</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
-        <a href="/category/marketing/">Marketing</a>
-        <a href="/category/management/">Management</a>
-        <a href="/tools/" class="active">Toolkit (100+)</a>
-        <a href="/tools/" class="nav-btn">All Tools</a>
-      </nav>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="grid">
+      <section class="panel">
+        <div class="tabs" role="tablist">
+          <button role="tab" aria-selected="true" data-m="qr">QR code</button>
+          <button role="tab" aria-selected="false" data-m="bar">Barcode</button>
+        </div>
+        <div id="qrf">
+          <div class="f"><label for="kind">Content type</label><select id="kind"><option value="url">Website link</option><option value="text">Plain text</option><option value="upi">UPI payment</option><option value="wifi">WiFi login</option></select></div>
+          <div id="fields"></div>
+          <div class="row"><div class="f"><label for="fg">Dot colour</label><input type="color" id="fg" value="#0b2b2e"></div><div class="f"><label for="bg">Background</label><input type="color" id="bg" value="#ffffff"></div></div>
+          <div class="f"><label for="style">Dot style</label><select id="style"><option value="rounded">Rounded</option><option value="dots">Circles</option><option value="square">Square</option></select></div>
+          <div class="f"><label for="size">Size: <span id="sv">480</span> px</label><input type="range" id="size" min="240" max="1024" step="16" value="480"></div>
+          <div class="f"><label for="logo">Logo (optional)</label><input type="file" id="logo" accept="image/*"></div>
+        </div>
+        <div id="barf" hidden>
+          <div class="f"><label for="bd">Data</label><input id="bd" value="SHAYNLY2026"></div>
+          <div class="f"><label for="bfmt">Format</label><select id="bfmt"><option>CODE128</option><option>EAN13</option><option>UPC</option><option>CODE39</option></select></div>
+          <div class="f"><label for="bh">Height: <span id="bhv">80</span></label><input type="range" id="bh" min="40" max="200" value="80"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Preview</h2>
+        <div id="out" style="text-align:center">
+          <canvas id="cv" style="max-width:100%;border:1px solid var(--line);border-radius:8px"></canvas>
+        </div>
+        <p class="err" id="er" role="alert"></p>
+        <div class="row" style="margin-top:14px">
+          <button class="btn gold" id="png">Download PNG</button>
+          <button class="btn alt" id="svg">Download SVG</button>
+        </div>
+      </section>
     </div>
-  </header><div class="wrap"><div class="grid">
-<section class="panel"><div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-m="qr">QR code</button><button role="tab" aria-selected="false" data-m="bar">Barcode</button></div>
-<div id="qrf">
-<div class="f"><label for="kind">Content type</label><select id="kind"><option value="url">Website link</option><option value="text">Plain text</option><option value="upi">UPI payment</option><option value="wifi">WiFi login</option></select></div>
-<div id="fields"></div>
-<div class="row"><div class="f"><label for="fg">Dot colour</label><input type="color" id="fg" value="#0b2b2e"></div><div class="f"><label for="bg">Background</label><input type="color" id="bg" value="#ffffff"></div></div>
-<div class="f"><label for="style">Dot style</label><select id="style"><option value="rounded">Rounded</option><option value="dots">Circles</option><option value="square">Square</option></select></div>
-<div class="f"><label for="size">Size: <span id="sv">480</span> px</label><input type="range" id="size" min="240" max="1024" step="16" value="480"></div>
-<div class="f"><label for="logo">Logo (optional)</label><input type="file" id="logo" accept="image/*"></div></div>
-<div id="barf" hidden><div class="f"><label for="bd">Data</label><input id="bd" value="SHAYNLY2026"></div>
-<div class="f"><label for="bfmt">Format</label><select id="bfmt"><option>CODE128</option><option>EAN13</option><option>UPC</option><option>CODE39</option></select></div>
-<div class="f"><label for="bh">Height: <span id="bhv">80</span></label><input type="range" id="bh" min="40" max="200" value="80"></div></div>
-</section>
-<section class="panel"><h2>Preview</h2><div id="out" style="text-align:center"><canvas id="cv" style="max-width:100%;border:1px solid var(--line);border-radius:8px"></canvas></div><p class="err" id="er" role="alert"></p>
-<div class="row" style="margin-top:14px"><button class="btn gold" id="png">Download PNG</button><button class="btn alt" id="svg">Download SVG</button></div></section></div></div>
-<script src="../core/vendor/qrcode.js"></script><script src="../core/vendor/jsbarcode.min.js"></script><script src="../core/shaynly.js"></script><script>
+  </div>
+
+  <script src="./core/vendor/qrcode.js"></script>
+  <script src="./core/vendor/jsbarcode.min.js"></script>
+  <script src="./core/shaynly.js"></script>
+  <script>
 Shaynly.bar('QR & Barcode Studio');const $=i=>document.getElementById(i),st=Shaynly.store('qr');let mode='qr',logoImg=null,els=[],S=480;
 const F={url:[['u','Website address','https://shaynly.com']],text:[['t','Text','']],upi:[['pa','UPI ID','name@bank'],['pn','Payee name',''],['am','Amount (optional)','']],wifi:[['ss','Network name',''],['pw','Password',''],['en','Security','WPA']]};
 function fields(){$('fields').innerHTML=F[$('kind').value].map(([k,l,p])=>`<div class="f"><label for="f_${k}">${l}</label><input id="f_${k}" placeholder="${p}" value="${(st.get({})[k]||'')}"></div>`).join('');$('fields').oninput=()=>{const o=st.get({});F[$('kind').value].forEach(([k])=>o[k]=$('f_'+k).value);st.set(o);draw()};}
@@ -106,49 +99,7 @@ $('svg').onclick=()=>{if(mode!=='qr'){Shaynly.toast('SVG export is available for
  const body=els.map(e=>e[0]==='c'?`<circle cx="${e[1]}" cy="${e[2]}" r="${e[3]}"/>`:e[0]==='r'?`<rect x="${e[1]}" y="${e[2]}" width="${e[3]}" height="${e[3]}" rx="${e[4]}"/>`:`<rect x="${e[1]+e[3]/14}" y="${e[2]+e[3]/14}" width="${e[3]-e[3]/7}" height="${e[3]-e[3]/7}" rx="${e[4]}" fill="none" stroke="${f}" stroke-width="${e[3]/7}"/>`).join('');
  let lg='';if(logoImg){const c=document.createElement('canvas');c.width=logoImg.width;c.height=logoImg.height;c.getContext('2d').drawImage(logoImg,0,0);const w=S*.2,a=logoImg.width/logoImg.height,lw=a>=1?w:w*a,lh=a>=1?w/a:w,p=S*.015;lg=`<rect x="${(S-lw)/2-p}" y="${(S-lh)/2-p}" width="${lw+2*p}" height="${lh+2*p}" rx="${S*.02}" fill="${b}"/><image href="${c.toDataURL()}" x="${(S-lw)/2}" y="${(S-lh)/2}" width="${lw}" height="${lh}"/>`}
  Shaynly.save(new Blob([`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S} ${S}"><rect width="${S}" height="${S}" fill="${b}"/><g fill="${f}">${body}</g>${lg}</svg>`],{type:'image/svg+xml'}),'qr.svg');Shaynly.toast('SVG downloaded')};
-fields();draw();</script><footer class="footer">
-    <div class="footer-wrap">
-      <div>
-        <h4>About Shaynly</h4>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
-        </p>
-        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
-      </div>
-      <div>
-        <h4>Article Categories</h4>
-        <ul>
-          <li><a href="/category/technology/">Technology &amp; AI</a></li>
-          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
-          <li><a href="/category/management/">Business Management</a></li>
-          <li><a href="/category/resources/">Developer Resources</a></li>
-          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
-          <li><a href="/category/business/">Business Strategy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Browser Utilities</h4>
-        <ul>
-          <li><a href="/tools/">All 100+ Client Tools</a></li>
-          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
-          <li><a href="/tools/gst.html">GST Calculator</a></li>
-          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
-          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
-          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/feed.xml">RSS Feed</a></li>
-          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
-          <li><a href="/site-map/">HTML Directory</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
-    </div>
-  </footer>
-</body></html>
+fields();draw();
+  </script>
+</body>
+</html>

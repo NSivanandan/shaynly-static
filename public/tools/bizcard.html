@@ -1,71 +1,45 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
-  <!-- Master Tool Theme Alignment -->
-  <style>
-    :root {
-      --primary: #d97706 !important;
-      --primary-hover: #b45309 !important;
-      --primary-light: #fef3c7 !important;
-      --border: #e2e8f0 !important;
-      --text: #1e293b !important;
-      --text-muted: #64748b !important;
-    }
-    body {
-      background: #ffffff !important;
-      color: #1e293b !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .tool-header-bar {
-      display: none !important;
-    }
-    .tool-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-    .tool-render-area {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-      margin-top: 20px;
-    }
-    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
-      background-color: #d97706 !important;
-      border-color: #d97706 !important;
-      color: #ffffff !important;
-      border-radius: 8px !important;
-    }
-    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
-      background-color: #b45309 !important;
-      border-color: #b45309 !important;
-    }
-  </style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Business Card Designer - Shaynly</title>
+  <meta name="description" content="Design print-ready 300 DPI business cards with live preview, custom bleed, typography, and back-side contact vCard QR code. Export vector PDF or PNG.">
+  <link rel="canonical" href="https://shaynly.com/tools/bizcard.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/bizcard.html">
+  <meta property="og:title" content="Business Card Designer - Shaynly">
+  <meta property="og:description" content="Design print-ready 300 DPI business cards with live preview and vCard QR code.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <link rel="stylesheet" href="./core/shaynly.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-</head><body>
-<header class="header">
-    <div class="header-wrap">
-      <a href="/" class="logo-area">
-        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
-        <span class="logo-text">Shaynly</span>
-        <span class="logo-tag">Business &amp; Tools</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
-        <a href="/category/marketing/">Marketing</a>
-        <a href="/category/management/">Management</a>
-        <a href="/tools/" class="active">Toolkit (100+)</a>
-        <a href="/tools/" class="nav-btn">All Tools</a>
-      </nav>
-    </div>
-  </header><script src="../core/vendor/qrcode.js"></script><script src="../core/vendor/jspdf.min.js"></script><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+</head>
+<body>
+  <script src="./core/vendor/qrcode.js"></script>
+  <script src="./core/vendor/jspdf.min.js"></script>
+  <script src="./core/shaynly.js"></script>
+  <script>
+const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const SZ={'90x55':[90,55],'89x51':[88.9,50.8],'85x55':[85,55]},B=Shaynly.brand();
 const inp=(k,l,v='')=>`<div class="f"><label for="${k}">${l}</label><input id="${k}" value="${esc(v)}"></div>`;
-Shaynly.page('Business Card Designer',`${inp('nm','Name','Your Name')}${inp('tt','Job title','Founder')}${inp('cm','Company',B.name||'')}${inp('ph','Phone',B.phone||'')}${inp('em','Email',B.email||'')}${inp('wb','Website',(B.website||'').replace(/^https?:\/\//,''))}<div class="row"><div class="f"><label for="co">Colour</label><input type="color" id="co" value="${B.color||'#1f6f6b'}"></div><div class="f"><label for="tp">Layout</label><select id="tp"><option value="solid">Solid colour</option><option value="light">White with accent</option><option value="split">Split</option></select></div></div><div class="row"><div class="f"><label for="sz">Card size (mm)</label><select id="sz"><option value="90x55">90 × 55 (India, Europe)</option><option value="89x51">3.5 × 2 in (US)</option><option value="85x55">85 × 55</option></select></div><div class="f"><label for="bl">Print bleed</label><select id="bl"><option value="3">3 mm (recommended)</option><option value="0">None</option></select></div></div><p class="muted">Logo comes from Brand Profile. The back carries a QR that saves your contact (vCard).</p>`,'<canvas id="fr" style="width:100%;border:1px solid var(--line);border-radius:6px"></canvas><canvas id="bk" style="width:100%;border:1px solid var(--line);border-radius:6px;margin-top:10px"></canvas><div class="row" style="margin-top:14px"><button class="btn gold" id="pdf">Print-ready PDF</button><button class="btn alt" id="png">PNG (front and back)</button></div><p class="muted" style="margin-top:8px">300 dpi. Ask your printer whether they need 3 mm bleed; most do.</p>');
+Shaynly.page('Business Card Designer',`${inp('nm','Name','Your Name')}${inp('tt','Job title','Founder')}${inp('cm','Company',B.name||'')}${inp('ph','Phone',B.phone||'')}${inp('em','Email',B.email||'')}${inp('wb','Website',(B.website||'').replace(/^https?:\/\//,''))}<div class="row"><div class="f"><label for="co">Colour</label><input type="color" id="co" value="${B.color||'#1f6f6b'}"></div><div class="f"><label for="tp">Layout</label><select id="tp"><option value="solid">Solid colour</option><option value="light">White with accent</option><option value="split">Split</option></select></div></div><div class="row"><div class="f"><label for="sz">Card size (mm)</label><select id="sz"><option value="90x55">90 &times; 55 mm (India, Europe)</option><option value="89x51">3.5 &times; 2 in (US)</option><option value="85x55">85 &times; 55 mm</option></select></div><div class="f"><label for="bl">Print bleed</label><select id="bl"><option value="3">3 mm (recommended)</option><option value="0">None</option></select></div></div><p class="muted">Logo comes from Brand Profile. The back carries a QR that saves your contact (vCard).</p>`,'<canvas id="fr" style="width:100%;border:1px solid var(--line);border-radius:6px"></canvas><canvas id="bk" style="width:100%;border:1px solid var(--line);border-radius:6px;margin-top:10px"></canvas><div class="row" style="margin-top:14px"><button class="btn gold" id="pdf">Print-ready PDF</button><button class="btn alt" id="png">PNG (front and back)</button></div><p class="muted" style="margin-top:8px">300 dpi. Ask your printer whether they need 3 mm bleed; most do.</p>');
 let logo=null;if(B.logo){logo=new Image();logo.onload=draw;logo.src=B.logo}
 const pm=300/25.4;
 function make(side){const bl=+$('bl').value,[mw,mh]=SZ[$('sz').value],W=Math.round((mw+2*bl)*pm),H=Math.round((mh+2*bl)*pm),c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d'),m=(bl+5)*pm,col=$('co').value,t=$('tp').value,f=(w,s,fam)=>`${w} ${s*pm}px ${fam||'system-ui,Segoe UI,Arial,sans-serif'}`;
@@ -80,50 +54,18 @@ function make(side){const bl=+$('bl').value,[mw,mh]=SZ[$('sz').value],W=Math.rou
 function draw(){['fr','bk'].forEach((id,i)=>{const c=make(i?'back':'front'),t=$(id);t.width=c.width;t.height=c.height;t.getContext('2d').drawImage(c,0,0)})}
 document.querySelector('.grid').oninput=draw;
 $('png').onclick=()=>{$('fr').toBlob(b=>Shaynly.save(b,'card-front.png'));$('bk').toBlob(b=>setTimeout(()=>Shaynly.save(b,'card-back.png'),300))};
-$('pdf').onclick=()=>{const bl=+$('bl').value,[mw,mh]=SZ[$('sz').value],w=mw+2*bl,h=mh+2*bl,o=w>h?'l':'p',p=new window.jspdf.jsPDF({unit:'mm',format:[w,h],orientation:o});p.addImage($('fr').toDataURL('image/png'),'PNG',0,0,w,h);p.addPage([w,h],o);p.addImage($('bk').toDataURL('image/png'),'PNG',0,0,w,h);p.save('business-card.pdf')};draw();
-</script><footer class="footer">
-    <div class="footer-wrap">
-      <div>
-        <h4>About Shaynly</h4>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
-        </p>
-        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
-      </div>
-      <div>
-        <h4>Article Categories</h4>
-        <ul>
-          <li><a href="/category/technology/">Technology &amp; AI</a></li>
-          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
-          <li><a href="/category/management/">Business Management</a></li>
-          <li><a href="/category/resources/">Developer Resources</a></li>
-          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
-          <li><a href="/category/business/">Business Strategy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Browser Utilities</h4>
-        <ul>
-          <li><a href="/tools/">All 100+ Client Tools</a></li>
-          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
-          <li><a href="/tools/gst.html">GST Calculator</a></li>
-          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
-          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
-          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/feed.xml">RSS Feed</a></li>
-          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
-          <li><a href="/site-map/">HTML Directory</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
-    </div>
-  </footer>
-</body></html>
+$('pdf').onclick=()=>{
+  const bl=+$('bl').value,[mw,mh]=SZ[$('sz').value],w=mw+2*bl,h=mh+2*bl,o=w>h?'l':'p';
+  const jsPDFClass = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+  if (!jsPDFClass) { alert('PDF library not ready'); return; }
+  const p=new jsPDFClass({unit:'mm',format:[w,h],orientation:o});
+  p.addImage($('fr').toDataURL('image/png'),'PNG',0,0,w,h);
+  p.addPage([w,h],o);
+  p.addImage($('bk').toDataURL('image/png'),'PNG',0,0,w,h);
+  p.save('business-card.pdf');
+  Shaynly.toast('PDF downloaded successfully');
+};
+draw();
+  </script>
+</body>
+</html>

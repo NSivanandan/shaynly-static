@@ -1,70 +1,42 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
-  <!-- Master Tool Theme Alignment -->
-  <style>
-    :root {
-      --primary: #d97706 !important;
-      --primary-hover: #b45309 !important;
-      --primary-light: #fef3c7 !important;
-      --border: #e2e8f0 !important;
-      --text: #1e293b !important;
-      --text-muted: #64748b !important;
-    }
-    body {
-      background: #ffffff !important;
-      color: #1e293b !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .tool-header-bar {
-      display: none !important;
-    }
-    .tool-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-    .tool-render-area {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-      margin-top: 20px;
-    }
-    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
-      background-color: #d97706 !important;
-      border-color: #d97706 !important;
-      color: #ffffff !important;
-      border-radius: 8px !important;
-    }
-    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
-      background-color: #b45309 !important;
-      border-color: #b45309 !important;
-    }
-  </style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Marketing Content Calendar - Shaynly</title>
+  <meta name="description" content="Visual multi-channel marketing content calendar with status tracking (Idea, Draft, Scheduled, Published), offline storage, and CSV export.">
+  <link rel="canonical" href="https://shaynly.com/tools/calendar.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/calendar.html">
+  <meta property="og:title" content="Marketing Content Calendar - Shaynly">
+  <meta property="og:description" content="Visual multi-channel marketing content calendar with status tracking and CSV export.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <link rel="stylesheet" href="./core/shaynly.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-</head><body>
-<header class="header">
-    <div class="header-wrap">
-      <a href="/" class="logo-area">
-        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
-        <span class="logo-text">Shaynly</span>
-        <span class="logo-tag">Business &amp; Tools</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
-        <a href="/category/marketing/">Marketing</a>
-        <a href="/category/management/">Management</a>
-        <a href="/tools/" class="active">Toolkit (100+)</a>
-        <a href="/tools/" class="nav-btn">All Tools</a>
-      </nav>
-    </div>
-  </header><script src="../core/shaynly.js"></script><script>const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+</head>
+<body>
+  <script src="./core/shaynly.js"></script>
+  <script>
+const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const PL=['Instagram','LinkedIn','X','Facebook','YouTube','Blog','Email'],ST=['Idea','Drafted','Scheduled','Published'],SC=Shaynly.store('calendar');let P=SC.get([]),cur=new Date();cur.setDate(1);let ed=null;
-Shaynly.page('Content Calendar',`<div class="f"><label for="d">Date</label><input type="date" id="d"></div><div class="f"><label for="t">Post idea or title</label><input id="t"></div><div class="row"><div class="f"><label for="p">Channel</label><select id="p">${PL.map(x=>`<option>${x}</option>`)}</select></div><div class="f"><label for="s">Status</label><select id="s">${ST.map(x=>`<option>${x}</option>`)}</select></div></div><div class="f"><label for="n">Notes</label><textarea id="n" rows="2"></textarea></div><div class="row"><button class="btn gold" id="sv">Add post</button><button class="btn alt" id="dl" hidden>Delete</button></div><div class="row" style="margin-top:12px"><button class="btn alt" id="csv">Export CSV</button><button class="btn alt" id="pr">Print month</button></div><div id="ins" class="muted" style="margin-top:14px"></div>`,'<div class="row" style="align-items:center;margin-bottom:10px"><button class="btn alt" id="pv" style="flex:0">‹</button><b id="mt" style="flex:1;text-align:center"></b><button class="btn alt" id="nx" style="flex:0">›</button></div><div id="g" style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px"></div><style>.cell{min-height:78px;border:1px solid var(--line);border-radius:6px;padding:3px;font-size:.72rem;cursor:pointer}.cell b{color:var(--ink2)}.chip{display:block;margin-top:2px;padding:1px 4px;border-radius:4px;background:var(--paper);border-left:3px solid var(--brass);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.chip.Published{border-color:var(--teal)}.chip.Idea{border-color:var(--line)}@media print{body *{visibility:hidden}#g,#g *,#mt{visibility:visible}#g{position:absolute;top:30px;left:0;width:100%}}</style>');
+Shaynly.page('Content Calendar',`<div class="f"><label for="d">Date</label><input type="date" id="d"></div><div class="f"><label for="t">Post idea or title</label><input id="t"></div><div class="row"><div class="f"><label for="p">Channel</label><select id="p">${PL.map(x=>`<option>${x}</option>`)}</select></div><div class="f"><label for="s">Status</label><select id="s">${ST.map(x=>`<option>${x}</option>`)}</select></div></div><div class="f"><label for="n">Notes</label><textarea id="n" rows="2"></textarea></div><div class="row"><button class="btn gold" id="sv">Add post</button><button class="btn alt" id="dl" hidden>Delete</button></div><div class="row" style="margin-top:12px"><button class="btn alt" id="csv">Export CSV</button></div><div id="ins" class="muted" style="margin-top:14px"></div>`,'<div class="row" style="align-items:center;margin-bottom:10px"><button class="btn alt" id="pv" style="flex:0">&lsaquo;</button><b id="mt" style="flex:1;text-align:center"></b><button class="btn alt" id="nx" style="flex:0">&rsaquo;</button></div><div id="g" style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px"></div><style>.cell{min-height:78px;border:1px solid var(--line);border-radius:6px;padding:3px;font-size:.72rem;cursor:pointer}.cell b{color:var(--ink2)}.chip{display:block;margin-top:2px;padding:1px 4px;border-radius:4px;background:var(--paper);border-left:3px solid var(--brass);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.chip.Published{border-color:var(--teal)}.chip.Idea{border-color:var(--line)}</style>');
 const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'),save=()=>SC.set(P);
 function draw(){$('mt').textContent=cur.toLocaleString('en',{month:'long',year:'numeric'});const y=cur.getFullYear(),m=cur.getMonth(),lead=(cur.getDay()+6)%7,n=new Date(y,m+1,0).getDate();let h=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<b class="muted" style="text-align:center;font-size:.75rem">${x}</b>`).join('');for(let i=0;i<lead;i++)h+='<div></div>';let empty=0;const mp=P.filter(x=>x.d.startsWith(iso(cur).slice(0,7)));
  for(let d=1;d<=n;d++){const k=iso(new Date(y,m,d)),ps=P.filter(x=>x.d===k);if(!ps.length)empty++;h+=`<div class="cell" data-d="${k}"><b>${d}</b>${ps.map(x=>`<span class="chip ${x.s}" data-id="${x.id}" title="${esc(x.p+': '+x.t)}">${esc(x.p.slice(0,2))}: ${esc(x.t)}</span>`).join('')}</div>`}
@@ -73,51 +45,8 @@ function draw(){$('mt').textContent=cur.toLocaleString('en',{month:'long',year:'
 $('g').onclick=e=>{const c=e.target.closest('.chip'),cell=e.target.closest('.cell');if(c){const x=P.find(p=>p.id==c.dataset.id);ed=x.id;['d','t','p','s','n'].forEach(k=>$(k).value=x[k]||'');$('sv').textContent='Save changes';$('dl').hidden=false}else if(cell){ed=null;$('d').value=cell.dataset.d;$('sv').textContent='Add post';$('dl').hidden=true;$('t').focus()}};
 $('sv').onclick=()=>{if(!$('d').value||!$('t').value.trim()){Shaynly.toast('Enter a date and a title');return}const o={d:$('d').value,t:$('t').value.trim(),p:$('p').value,s:$('s').value,n:$('n').value};if(ed)Object.assign(P.find(x=>x.id===ed),o);else P.push({id:Date.now(),...o});save();ed=null;$('t').value=$('n').value='';$('sv').textContent='Add post';$('dl').hidden=true;draw()};
 $('dl').onclick=()=>{P=P.filter(x=>x.id!==ed);save();ed=null;$('dl').hidden=true;$('sv').textContent='Add post';draw()};
-$('pv').onclick=()=>{cur.setMonth(cur.getMonth()-1);draw()};$('nx').onclick=()=>{cur.setMonth(cur.getMonth()+1);draw()};$('pr').onclick=()=>window.print();
+$('pv').onclick=()=>{cur.setMonth(cur.getMonth()-1);draw()};$('nx').onclick=()=>{cur.setMonth(cur.getMonth()+1);draw()};
 $('csv').onclick=()=>{if(!P.length)return;Shaynly.save(new Blob(['Date,Channel,Status,Title,Notes\n'+[...P].sort((a,b)=>a.d<b.d?-1:1).map(x=>[x.d,x.p,x.s,x.t,x.n||''].map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n')],{type:'text/csv'}),'content-calendar.csv')};$('d').value=iso(new Date());draw();
-</script><footer class="footer">
-    <div class="footer-wrap">
-      <div>
-        <h4>About Shaynly</h4>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
-        </p>
-        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
-      </div>
-      <div>
-        <h4>Article Categories</h4>
-        <ul>
-          <li><a href="/category/technology/">Technology &amp; AI</a></li>
-          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
-          <li><a href="/category/management/">Business Management</a></li>
-          <li><a href="/category/resources/">Developer Resources</a></li>
-          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
-          <li><a href="/category/business/">Business Strategy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Browser Utilities</h4>
-        <ul>
-          <li><a href="/tools/">All 100+ Client Tools</a></li>
-          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
-          <li><a href="/tools/gst.html">GST Calculator</a></li>
-          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
-          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
-          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/feed.xml">RSS Feed</a></li>
-          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
-          <li><a href="/site-map/">HTML Directory</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
-    </div>
-  </footer>
-</body></html>
+  </script>
+</body>
+</html>

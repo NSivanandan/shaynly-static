@@ -1,78 +1,63 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Commission Calculator</title>
-<link rel="stylesheet" href="../core/shaynly.css">
-  <!-- Master Tool Theme Alignment -->
-  <style>
-    :root {
-      --primary: #d97706 !important;
-      --primary-hover: #b45309 !important;
-      --primary-light: #fef3c7 !important;
-      --border: #e2e8f0 !important;
-      --text: #1e293b !important;
-      --text-muted: #64748b !important;
-    }
-    body {
-      background: #ffffff !important;
-      color: #1e293b !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .tool-header-bar {
-      display: none !important;
-    }
-    .tool-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-    .tool-render-area {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-      margin-top: 20px;
-    }
-    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
-      background-color: #d97706 !important;
-      border-color: #d97706 !important;
-      color: #ffffff !important;
-      border-radius: 8px !important;
-    }
-    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
-      background-color: #b45309 !important;
-      border-color: #b45309 !important;
-    }
-  </style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tiered Sales Commission Calculator - Shaynly</title>
+  <meta name="description" content="Calculate sales payouts with custom tiered slabs. Supports both marginal tiered rates and retroactive commission plans with CSV export.">
+  <link rel="canonical" href="https://shaynly.com/tools/commission.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/commission.html">
+  <meta property="og:title" content="Tiered Sales Commission Calculator - Shaynly">
+  <meta property="og:description" content="Calculate sales payouts with custom tiered slabs and CSV export.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <link rel="stylesheet" href="./core/shaynly.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-</head><body>
-<header class="header">
-    <div class="header-wrap">
-      <a href="/" class="logo-area">
-        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
-        <span class="logo-text">Shaynly</span>
-        <span class="logo-tag">Business &amp; Tools</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
-        <a href="/category/marketing/">Marketing</a>
-        <a href="/category/management/">Management</a>
-        <a href="/tools/" class="active">Toolkit (100+)</a>
-        <a href="/tools/" class="nav-btn">All Tools</a>
-      </nav>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="grid">
+      <section class="panel">
+        <h2>Commission plan</h2>
+        <div class="row">
+          <div class="f"><label for="cur">Currency</label><select id="cur"><option value="INR">&#8377; INR</option><option value="USD">$ USD</option><option value="GBP">&pound; GBP</option><option value="CAD">C$ CAD</option></select></div>
+          <div class="f"><label for="mode">Method</label><select id="mode"><option value="marginal">Marginal: each slab earns its own rate</option><option value="retro">Retroactive: top slab reached applies to all sales</option></select></div>
+        </div>
+        <table><thead><tr><th>Sales up to</th><th>Rate %</th><th></th></tr></thead><tbody id="tb"></tbody></table>
+        <button class="btn alt" id="add" style="margin-top:12px">Add slab</button>
+        <p class="muted" style="margin-top:8px">The last slab has no upper limit, so every sale is always covered.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Payout</h2>
+        <div class="f"><label for="sales">Total sales</label><input id="sales" type="number" min="0" step="any" placeholder="e.g. 750000"></div>
+        <div class="big" id="pay">&ndash;</div>
+        <p class="err" id="er" role="alert"></p>
+        <table id="bd" style="margin-top:12px"></table>
+        <button class="btn gold" id="csv" style="margin-top:14px">Download CSV</button>
+      </section>
     </div>
-  </header><div class="wrap"><div class="grid">
-<section class="panel"><h2>Commission plan</h2>
-<div class="row"><div class="f"><label for="cur">Currency</label><select id="cur"><option value="INR">₹ INR</option><option value="USD">$ USD</option><option value="GBP">£ GBP</option><option value="CAD">C$ CAD</option></select></div>
-<div class="f"><label for="mode">Method</label><select id="mode"><option value="marginal">Marginal: each slab earns its own rate</option><option value="retro">Retroactive: the top slab reached applies to all sales</option></select></div></div>
-<table><thead><tr><th>Sales up to</th><th>Rate %</th><th></th></tr></thead><tbody id="tb"></tbody></table>
-<button class="btn alt" id="add" style="margin-top:12px">Add slab</button><p class="muted" style="margin-top:8px">The last slab has no upper limit, so every sale is always covered.</p></section>
-<section class="panel"><h2>Payout</h2><div class="f"><label for="sales">Total sales</label><input id="sales" type="number" min="0" step="any" placeholder="e.g. 750000"></div>
-<div class="big" id="pay">–</div><p class="err" id="er" role="alert"></p><table id="bd" style="margin-top:12px"></table>
-<button class="btn gold" id="csv" style="margin-top:14px">Download CSV</button></section></div></div>
-<script src="../core/shaynly.js"></script><script>
+  </div>
+
+  <script src="./core/shaynly.js"></script>
+  <script>
 Shaynly.bar('Commission Calculator');const $=i=>document.getElementById(i),s=Shaynly.store('commission');
 let P=s.get({cur:'INR',mode:'marginal',tiers:[{upto:100000,rate:5},{upto:500000,rate:7.5},{upto:null,rate:10}]}),rows=[];
 $('cur').value=P.cur;$('mode').value=P.mode;
@@ -83,56 +68,14 @@ $('tb').onchange=render;$('tb').onclick=e=>{if(e.target.dataset.d!==undefined){P
 $('add').onclick=()=>{const t=tiers(),last=t[t.length-2]?.upto||0;P.tiers.splice(t.length-1,0,{upto:last?last*2:100000,rate:t[t.length-1].rate});s.set(P);render()};
 $('cur').onchange=$('mode').onchange=()=>{P.cur=$('cur').value;P.mode=$('mode').value;s.set(P);calc()};$('sales').oninput=calc;
 function calc(){const er=$('er');er.textContent='';rows=[];const t=tiers(),f=n=>Shaynly.fmt(n,P.cur),ups=t.filter(x=>x.upto!==null).map(x=>x.upto);
- if(new Set(ups).size!==ups.length){er.textContent='Two slabs have the same limit. Change one of them.';$('pay').textContent='–';$('bd').innerHTML='';return}
- const v=$('sales').value;if(v===''){$('pay').textContent='–';$('bd').innerHTML='';return}const S=+v;if(!(S>=0)){er.textContent='Enter sales of zero or more.';return}
+ if(new Set(ups).size!==ups.length){er.textContent='Two slabs have the same limit. Change one of them.';$('pay').textContent='-';$('bd').innerHTML='';return}
+ const v=$('sales').value;if(v===''){$('pay').textContent='-';$('bd').innerHTML='';return}const S=+v;if(!(S>=0)){er.textContent='Enter sales of zero or more.';return}
  let tot=0,prev=0;
  if(P.mode==='marginal'){for(const x of t){const hi=x.upto??Infinity,amt=Math.max(0,Math.min(S,hi)-prev);if(amt>0){const c=amt*x.rate/100;tot+=c;rows.push([`${f(prev)} to ${x.upto===null?'no limit':f(hi)}`,x.rate,amt,c])}prev=hi;if(S<=hi)break}}
  else{const x=t.find(x=>x.upto===null||S<=x.upto);tot=S*x.rate/100;rows.push(['All sales',x.rate,S,tot])}
  $('pay').textContent=f(tot);$('bd').innerHTML='<tr><th>Slab</th><th class="n">Rate</th><th class="n">Sales</th><th class="n">Commission</th></tr>'+rows.map(r=>`<tr><td>${r[0]}</td><td class="n">${r[1]}%</td><td class="n">${f(r[2])}</td><td class="n">${f(r[3])}</td></tr>`).join('')+`<tr><th>Total</th><th></th><th class="n">${f(S)}</th><th class="n">${f(tot)}</th></tr>`}
 $('csv').onclick=()=>{if(!rows.length){Shaynly.toast('Enter total sales first');return}Shaynly.save(new Blob(['Slab,Rate %,Sales,Commission\n'+rows.map(r=>`"${r[0]}",${r[1]},${r[2].toFixed(2)},${r[3].toFixed(2)}`).join('\n')],{type:'text/csv'}),'commission.csv')};
-render();</script><footer class="footer">
-    <div class="footer-wrap">
-      <div>
-        <h4>About Shaynly</h4>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
-        </p>
-        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
-      </div>
-      <div>
-        <h4>Article Categories</h4>
-        <ul>
-          <li><a href="/category/technology/">Technology &amp; AI</a></li>
-          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
-          <li><a href="/category/management/">Business Management</a></li>
-          <li><a href="/category/resources/">Developer Resources</a></li>
-          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
-          <li><a href="/category/business/">Business Strategy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Browser Utilities</h4>
-        <ul>
-          <li><a href="/tools/">All 100+ Client Tools</a></li>
-          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
-          <li><a href="/tools/gst.html">GST Calculator</a></li>
-          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
-          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
-          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/feed.xml">RSS Feed</a></li>
-          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
-          <li><a href="/site-map/">HTML Directory</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
-    </div>
-  </footer>
-</body></html>
+render();
+  </script>
+</body>
+</html>

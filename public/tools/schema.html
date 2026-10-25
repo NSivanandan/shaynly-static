@@ -1,75 +1,46 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tool</title><link rel="stylesheet" href="../core/shaynly.css">
-  <!-- Master Tool Theme Alignment -->
-  <style>
-    :root {
-      --primary: #d97706 !important;
-      --primary-hover: #b45309 !important;
-      --primary-light: #fef3c7 !important;
-      --border: #e2e8f0 !important;
-      --text: #1e293b !important;
-      --text-muted: #64748b !important;
-    }
-    body {
-      background: #ffffff !important;
-      color: #1e293b !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .tool-header-bar {
-      display: none !important;
-    }
-    .tool-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-    .tool-render-area {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-      margin-top: 20px;
-    }
-    .btn-primary, button[type="submit"], .btn-submit, .action-btn {
-      background-color: #d97706 !important;
-      border-color: #d97706 !important;
-      color: #ffffff !important;
-      border-radius: 8px !important;
-    }
-    .btn-primary:hover, button[type="submit"]:hover, .btn-submit:hover, .action-btn:hover {
-      background-color: #b45309 !important;
-      border-color: #b45309 !important;
-    }
-  </style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>JSON-LD Schema Markup Generator - Shaynly</title>
+  <meta name="description" content="Generate Google-compliant JSON-LD structured data schema for FAQs, Local Business, Products, Organizations, Articles, and How-Tos.">
+  <link rel="canonical" href="https://shaynly.com/tools/schema.html">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaynly">
+  <meta property="og:url" content="https://shaynly.com/tools/schema.html">
+  <meta property="og:title" content="JSON-LD Schema Markup Generator - Shaynly">
+  <meta property="og:description" content="Generate Google-compliant JSON-LD structured data schema for FAQs, Local Business, and Articles.">
+  <meta property="og:image" content="https://shaynly.com/assets/images/shaynly-og.png">
+
+  <link rel="stylesheet" href="./core/shaynly.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-</head><body>
-<header class="header">
-    <div class="header-wrap">
-      <a href="/" class="logo-area">
-        <img src="/assets/images/logo.png" alt="Shaynly Logo" class="logo-img" onerror="this.style.display='none'">
-        <span class="logo-text">Shaynly</span>
-        <span class="logo-tag">Business &amp; Tools</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category/technology/">Technology</a>
-        <a href="/category/marketing/">Marketing</a>
-        <a href="/category/management/">Management</a>
-        <a href="/tools/" class="active">Toolkit (100+)</a>
-        <a href="/tools/" class="nav-btn">All Tools</a>
-      </nav>
-    </div>
-  </header><script src="../core/shaynly.js"></script><script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218316924082551" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW10LSENP0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SW10LSENP0', { link_ad_clicks: true, send_page_view: true });
+  </script>
+</head>
+<body>
+  <script src="./core/shaynly.js"></script>
+  <script>
 const T={faq:[['faqs','Questions and answers','area','Separate each pair with a blank line. First line is the question; the rest is the answer.']],
 org:[['name','Name'],['url','Website'],['logo','Logo URL'],['email','Email'],['phone','Phone'],['sameAs','Social links (one per line)','area']],
-local:[['name','Business name'],['url','Website'],['phone','Phone'],['street','Street address'],['city','City'],['region','State'],['postal','PIN code'],['country','Country code','IN'],['price','Price range','₹₹']],
+local:[['name','Business name'],['url','Website'],['phone','Phone'],['street','Street address'],['city','City'],['region','State'],['postal','PIN code'],['country','Country code','IN'],['price','Price range','$$']],
 product:[['name','Product name'],['description','Description','area'],['image','Image URL'],['brand','Brand'],['price','Price'],['currency','Currency','INR'],['url','Product page URL']],
 article:[['headline','Headline'],['author','Author'],['date','Date published (YYYY-MM-DD)'],['image','Image URL'],['publisher','Publisher name'],['url','Page URL']],
 howto:[['name','Title'],['steps','Steps (one per line)','area']]};
-Shaynly.page('Schema Generator',`<div class="f"><label for="t">Schema type</label><select id="t"><option value="faq">FAQ page</option><option value="org">Organization</option><option value="local">Local business</option><option value="product">Product</option><option value="article">Article</option><option value="howto">How-to</option></select></div><div id="fs"></div>`,'<textarea id="o" rows="18" readonly style="font:12px/1.4 ui-monospace,monospace"></textarea><p class="err" id="er" role="alert"></p><div class="row" style="margin-top:12px"><button class="btn gold" id="cp">Copy script tag</button><button class="btn alt" id="dl">Download .json</button></div><p class="muted" style="margin-top:10px">Paste into your page head, then check it with Google Rich Results Test.</p>');
+Shaynly.page('Schema Generator',`<div class="f"><label for="t">Schema type</label><select id="t"><option value="faq">FAQ page</option><option value="org">Organization</option><option value="local">Local business</option><option value="product">Product</option><option value="article">Article</option><option value="howto">How-to</option></select></div><div id="fs"></div>`,'<textarea id="o" rows="18" readonly style="font:12px/1.4 ui-monospace,monospace;width:100%"></textarea><p class="err" id="er" role="alert"></p><div class="row" style="margin-top:12px"><button class="btn gold" id="cp">Copy script tag</button><button class="btn alt" id="dl">Download .json</button></div><p class="muted" style="margin-top:10px">Paste into your page head, then check it with Google Rich Results Test.</p>');
 const $=i=>document.getElementById(i),B=Shaynly.brand(),map={name:B.name,url:B.website,email:B.email,phone:B.phone,city:B.city,sameAs:B.sameAs,publisher:B.name,brand:B.name};let data;
 function form(){$('fs').innerHTML=T[$('t').value].map(([k,l,x,h])=>{const a=x==='area',v=map[k]||(!a&&x)||'';return`<div class="f"><label for="f_${k}">${l}</label>${a?`<textarea rows=${k==='faqs'?9:3} id="f_${k}">${map[k]||''}</textarea>`:`<input id="f_${k}" value="${v}">`}${h?`<span class="muted">${h}</span>`:''}</div>`}).join('');$('fs').oninput=gen;gen()}
 const g=k=>(document.getElementById('f_'+k)?.value||'').trim(),L=k=>g(k).split('\n').map(x=>x.trim()).filter(Boolean),C=o=>Object.fromEntries(Object.entries(o).filter(([,v])=>v&&(!Array.isArray(v)||v.length)));
@@ -83,49 +54,6 @@ function gen(){const t=$('t').value,er=$('er');er.textContent='';let d;
  if(!er.textContent&&!g(t==='faq'?'faqs':t==='article'?'headline':'name'))er.textContent='Fill in the first field to complete the markup.';
  data=JSON.stringify({'@context':'https://schema.org',...d},null,2);$('o').value='<script type="application/ld+json">\n'+data+'\n<\/script>'}
 $('t').onchange=form;$('cp').onclick=()=>Shaynly.copy($('o').value);$('dl').onclick=()=>Shaynly.save(new Blob([data],{type:'application/ld+json'}),'schema-'+$('t').value+'.json');form();
-</script><footer class="footer">
-    <div class="footer-wrap">
-      <div>
-        <h4>About Shaynly</h4>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-          Shaynly is a strategic business marketing and management platform providing evidence-based growth frameworks, offline-first client-side web tools, and digital utilities.
-        </p>
-        <p style="font-size: 13px; color: #64748b;">Published &amp; Managed by Sivanandan N.</p>
-      </div>
-      <div>
-        <h4>Article Categories</h4>
-        <ul>
-          <li><a href="/category/technology/">Technology &amp; AI</a></li>
-          <li><a href="/category/marketing/">Digital Marketing &amp; SEO</a></li>
-          <li><a href="/category/management/">Business Management</a></li>
-          <li><a href="/category/resources/">Developer Resources</a></li>
-          <li><a href="/category/healthcare/">Healthcare Practice</a></li>
-          <li><a href="/category/business/">Business Strategy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Browser Utilities</h4>
-        <ul>
-          <li><a href="/tools/">All 100+ Client Tools</a></li>
-          <li><a href="/tools/invoice.html">Invoice Generator</a></li>
-          <li><a href="/tools/gst.html">GST Calculator</a></li>
-          <li><a href="/tools/qr-studio.html">QR Code Studio</a></li>
-          <li><a href="/tools/brandkit.html">Brand Kit Generator</a></li>
-          <li><a href="/tools/utm.html">UTM Campaign Builder</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Feeds &amp; Indexing</h4>
-        <ul>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/feed.xml">RSS Feed</a></li>
-          <li><a href="/llms.txt">AI Agent Context (llms.txt)</a></li>
-          <li><a href="/site-map/">HTML Directory</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 Shaynly &bull; Business Marketing and Management &bull; All Rights Reserved.
-    </div>
-  </footer>
-</body></html>
+  </script>
+</body>
+</html>
